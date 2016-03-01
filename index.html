@@ -5,13 +5,37 @@
     <title>Project::Phaser-Pre2</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.4.6/phaser.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/labyrinth.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/player.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/creature.js" type="text/javascript" charset="utf-8"></script>
     <script src="./js/game.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
       console.log('Phaser running', Phaser);
+      //maze.walls = game.add.group();
+    
+    //maze.walls.add(game.add.sprite(200, 100, 'void'), game.add.sprite(20, 20, 'wall'));
+    /*
+    for(var i = 0, maxi = maze.generated.horiz.length;i<maxi;i++){
+      var row =  maze.generated.horiz[i];
+      for(var j = 0, maxj =  maze.generated.horiz.length;j<maxj;j++){
+        var cell = row[j] || false;
+        if(cell){
+          var cellX = i * maze.tile.width;
+          var cellY = j * maze.tile.height;
+          var newCell = game.add.sprite(cellX, cellY, 'wall');
+          game.physics.enable(newCell, Phaser.Physics.ARCADE);
+          newCell.body.immovable = true;
+          //newCell.anchor.set(0.5);
+          maze.walls.add(newCell);
+        }
+        console.log(i, j, cellX, cellY, cell);
+        console.log('maze.walls', maze.walls);
+        
+      }  
+    }
+    */
+
     </script>
   </head>
   <body>
-    
+    body
   </body>
 </html>

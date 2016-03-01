@@ -30,7 +30,8 @@ var settings = {
     jumping: 300,
     maxSpeed: 200,
     acceleration: 10,
-    slippery: 1.1
+    slippery: 1.1, 
+    bounce: 0.2
   }
 };
 
@@ -49,10 +50,11 @@ function preload(){
   game.stage.backgroundColor = '#eee';
   
   console.log("PHASER preloaded");
-  game.load.image('man', './assets/standright.png');
-  game.load.image('dino', './assets/dinoleft.png');
-  game.load.spritesheet('run', './assets/run.png', 42, 36, 6);
-  game.load.image('stone', './assets/99.png');
+  game.load.image('stand', './assets/man-standing.png');
+  game.load.spritesheet('dino', './assets/dino.png', 42, 36);
+  game.load.spritesheet('run', './assets/run.png', 42, 36);
+  game.load.image('platform-1', './assets/99.png');
+  game.load.image('platform-2', './assets/platform-2.png');
   game.load.image('background', './assets/bg3seamless.jpg');
   game.load.spritesheet('wall', './assets/tileset1.png', 16, 16, 3);
   game.load.spritesheet('void', './assets/tileset1.png', 16, 16, 1);
@@ -64,22 +66,45 @@ function create(){
   game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
   game.farBackground.x = -(this.camera.x * 0.7);
   
-  man = game.add.sprite(200, 50, 'run');
-  man.animations.add('run', [0,1,2,3,4,5], 10, true);
+  man = new Creature(game, {
+    image: 'run',
+    x: 200, 
+    y: 50, 
+    gravity: settings.physics.gravity,
+    bounce: settings.physics.bounce,
+    props: {
+      jumping: 300,
+      maxSpeed: 200,
+      acceleration: 10
+    },
+    animate: {
+      right: 'man-right',
+      left: 'man-left'
+    }
+  });
   
-  game.physics.enable(man, Phaser.Physics.ARCADE);
-  man.body.collideWorldBounds = true;
-  man.body.bounce.y = 0.2;
-  man.body.gravity.y = settings.physics.gravity;
-  
+  man.animations.add('man-left', [0,1,2,3,4,5], 10, false);
+  man.animations.add('man-right', [6,7,8,9,10,11], 10, false);
+
   game.camera.follow(man);
   
-  dino = new Player(game, {
+  dino = new Creature(game, {
     image: 'dino',
     x: 300, 
     y: 300, 
-    gravity: settings.physics.gravity
+    gravity: settings.physics.gravity,
+    bounce: settings.physics.bounce,
+    animate: {
+      right: 'dino-right',
+      left: 'dino-left'
+    }
   });
+  
+  dino.animations.add('dino-right', [0,1,2,3], 10, false);
+  dino.animations.add('dino-left', [8,9,10,11], 10, false);
+
+  game.add.existing(dino);
+  game.add.existing(man);
 
   platforms = game.add.group();
   platforms.enableBody = true;
@@ -88,34 +113,15 @@ function create(){
   for(var i = 0; i < 10; i++){
     var platform = platforms.create(Math.random() * settings.dimensions.WIDTH  | 0, 
       Math.random() * settings.dimensions.HEIGHT | 0, 
-      'stone', './assets/99.png');
+      'platform-1', './assets/99.png');
+    var platform2 = platforms.create(Math.random() * settings.dimensions.WIDTH  | 0, 
+      Math.random() * settings.dimensions.HEIGHT | 0, 
+      'platform-2', './assets/platform-2.png');
     platform.body.bounce.set(0);
     platform.body.immovable = true;
+    platform2.body.bounce.set(0);
+    platform2.body.immovable = true;
   }
-  
-  //maze.walls = game.add.group();
-  
-  //maze.walls.add(game.add.sprite(200, 100, 'void'), game.add.sprite(20, 20, 'wall'));
-  /*
-  for(var i = 0, maxi = maze.generated.horiz.length;i<maxi;i++){
-    var row =  maze.generated.horiz[i];
-    for(var j = 0, maxj =  maze.generated.horiz.length;j<maxj;j++){
-      var cell = row[j] || false;
-      if(cell){
-        var cellX = i * maze.tile.width;
-        var cellY = j * maze.tile.height;
-        var newCell = game.add.sprite(cellX, cellY, 'wall');
-        game.physics.enable(newCell, Phaser.Physics.ARCADE);
-        newCell.body.immovable = true;
-        //newCell.anchor.set(0.5);
-        maze.walls.add(newCell);
-      }
-      console.log(i, j, cellX, cellY, cell);
-      console.log('maze.walls', maze.walls);
-      
-    }  
-  }
-  */
   
   keys = game.input.keyboard.createCursorKeys();
 
@@ -134,17 +140,19 @@ function update(){
      dino.body.velocity.y -= Math.random() * 400;
      dino.body.velocity.x -= Math.random() * 50;
   }
+  dino.animations.play('dino-left');
 
   if(keys.left.isDown) {
-    if(man.body.velocity.x > -settings.physics.maxSpeed){
-        man.body.velocity.x -= settings.physics.acceleration;
-      }
+    man.runLeft();
   }
   else if(keys.right.isDown) {
+    man.runRight();
+    /*
     if(man.body.velocity.x < settings.physics.maxSpeed){
         man.body.velocity.x += settings.physics.acceleration;
       }
-    man.animations.play('run');
+    */  
+    //man.animations.play('right');
   }
   else{
     // slowing down / slippery rate: 10% after stopped moving

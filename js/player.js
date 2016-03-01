@@ -1,22 +1,31 @@
-function Player(game, config){
-  var player;
-
-  player = game.add.sprite(config.x, config.y, config.image);
-  game.physics.enable(player, Phaser.Physics.ARCADE);
-  player.body.collideWorldBounds = true;
-  player.body.gravity.y = config.gravity;
-  return player;
+function Creature(game, config){
+  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
+  game.physics.enable(this, Phaser.Physics.ARCADE);
+  this.props = config.props;
+  this.animate = config.animate;
+  this.body.collideWorldBounds = true;
+  this.body.gravity.y = config.gravity;
 }
 
-Player.prototype = {
-  preload: function(){
-    
-  },
-  create: function(){
+Creature.prototype = Object.create(Phaser.Sprite.prototype);
 
-  },
-  update: function(keys){
-  
+Creature.prototype.constructor = Creature;
+
+Creature.prototype.runRight = function(){
+  if(this.body.velocity.x < this.props.maxSpeed){
+    this.body.velocity.x += this.props.acceleration;
   }
+  this.animations.play(this.animate.right);
+};
+
+Creature.prototype.runLeft = function(){
+  if(this.body.velocity.x > -this.props.maxSpeed){
+    this.body.velocity.x -= this.props.acceleration;
+  }
+  this.animations.play(this.animate.left);
+}
+
+Creature.prototype.hit = function(keys){
+
 }
   
