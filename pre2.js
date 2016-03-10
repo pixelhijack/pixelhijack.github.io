@@ -55,11 +55,16 @@
 	var ptero;
 	var keys;
 	var platforms;
+	var lives = {
+	  up: null,
+	  hearts: []
+	};
 
 	var settings = {
 	  dimensions: {
 	    WIDTH: 546,
-	    HEIGHT: 372
+	    HEIGHT: 372,
+	    blocks: 5
 	  }, 
 	  physics: {
 	    gravity: 500,
@@ -88,6 +93,7 @@
 	  console.log("PHASER preloaded");
 	  
 	  game.load.image('stand', './assets/man-standing.png');
+	  game.load.spritesheet('lives', './assets/lives.png', 38, 24);
 	  game.load.spritesheet('dino', './assets/dino.png', 42, 36);
 	  game.load.spritesheet('pterodactylus', './assets/pterodactylus.png', 62, 50);
 	  game.load.spritesheet('run', './assets/run.png', 42, 36);
@@ -99,9 +105,12 @@
 	}
 
 	function create(){
+	  game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
+	  game.world.setBounds(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT);
+	  
 	  game.physics.startSystem(Phaser.Physics.ARCADE);
 	  
-	  game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
+	  //game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
 	  game.farBackground.x = -(this.camera.x * 0.7);
 	  
 	  man = new Creature('man', game, {
@@ -113,7 +122,8 @@
 	    props: {
 	      jumping: 300,
 	      maxSpeed: 200,
-	      acceleration: 10
+	      acceleration: 10,
+	      lives: 3
 	    },
 	    animate: {
 	      right: 'man-right',
@@ -123,7 +133,17 @@
 	  
 	  man.animations.add('man-left', [0,1,2,3,4,5], 10, false);
 	  man.animations.add('man-right', [6,7,8,9,10,11], 10, false);
-
+	  
+	  lives.up = game.add.sprite(20, 20, 'lives');
+	  lives.up.frame = 0;
+	  
+	  var heartSprites = man.lives();
+	  while(heartSprites--){
+	    var heart = game.add.sprite(60 + heartSprites*20, 20, 'lives');
+	    heart.frame = 1;  
+	    lives.hearts.push(heart);
+	  }
+	  
 	  game.camera.follow(man);
 	  
 	  dino = new Creature('dino', game, {
@@ -132,6 +152,11 @@
 	    y: 300, 
 	    gravity: settings.physics.gravity,
 	    bounce: settings.physics.bounce,
+	    props: {
+	      jumping: 400,
+	      maxSpeed: 300,
+	      acceleration: 20
+	    },
 	    animate: {
 	      right: 'dino-right',
 	      left: 'dino-left'
@@ -163,11 +188,11 @@
 	  platforms.enableBody = true;
 	  platforms.physicsBodyType = Phaser.Physics.ARCADE;
 	  
-	  for(var i = 0; i < 6; i++){
-	    var platform = platforms.create(Math.random() * settings.dimensions.WIDTH  | 0, 
+	  for(var i = 0; i < 50; i++){
+	    var platform = platforms.create(Math.random() * settings.dimensions.WIDTH * settings.dimensions.blocks  | 0, 
 	      Math.random() * settings.dimensions.HEIGHT | 0, 
 	      'platform-1', './assets/99.png');
-	    var platform2 = platforms.create(Math.random() * settings.dimensions.WIDTH  | 0, 
+	    var platform2 = platforms.create(Math.random() * settings.dimensions.WIDTH * settings.dimensions.blocks | 0, 
 	      Math.random() * settings.dimensions.HEIGHT | 0, 
 	      'platform-2', './assets/platform-2.png');
 	    platform.body.bounce.set(0);
@@ -184,20 +209,21 @@
 	function update(){
 	  
 	  game.physics.arcade.collide(man, platforms);
-	  game.physics.arcade.collide(man, dino);
+	  //game.physics.arcade.collide(man, dino);
 	  game.physics.arcade.collide(dino, platforms);
+	  
+	  game.physics.arcade.collide(man, dino, collisionCallback, processCallback, this);
 	  
 	  ptero.x -= 1;
 	  ptero.animations.play('fly');
 	  ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
 	  
+	  dino.move();
 	  dino.x <= 0 ? dino.x = game.world.width : dino.x;
-	  if(Math.random() < 0.05 && (dino.body.touching.down || dino.body.blocked.down)){
-	     dino.body.velocity.y -= Math.random() * 400;
-	     dino.body.velocity.x -= Math.random() * 50;
-	  }
-	  dino.animations.play('dino-left');
-
+	  if(Math.random() < 0.05){ dino.jump(); }
+	  if(dino.body.blocked.left){ dino.runRight(); }
+	  if(dino.body.blocked.right){ dino.runLeft(); }
+	  
 	  if(keys.left.isDown) {
 	    man.runLeft();
 	  }
@@ -214,15 +240,31 @@
 	    // slowing down / slippery rate: 10% after stopped moving
 	    man.body.velocity.x /= settings.physics.slippery;
 	  }
-	  if(keys.up.isDown && (man.body.touching.down || man.body.blocked.down)) {
-	      man.body.velocity.y -= settings.physics.jumping;
+	  if(keys.up.isDown) {
+	      man.jump();
 	  }
 	  else if(keys.down.isDown) {
 	      man.body.velocity.y += 1;
 	  }
+	  
+	  game.debug.text('LIVES: ' + man.lives(), 32, 96);
 
 	  console.log("PHASER updated");
 	}
+
+	function processCallback(){
+	  
+	}
+	function collisionCallback(){
+	  man.damage(1);
+	  console.log('DIE!', man.lives());
+	  game.debug.text('You died!!4!: ' + man.lives(), 32, 96);
+	  lives.hearts = lives.hearts.map(function(heart, i){
+	    heart.visible = i <= man.lives()-1 ? true : false;
+	    return heart;
+	  });
+	}
+
 
 /***/ },
 /* 1 */
@@ -273,18 +315,48 @@
 	      }
 	      this.animations.play(this.animate.right);
 	  },
-	  jump: function(){}, 
+	  move: function(){
+	    if(this.body.velocity.x >= 0){
+	      mixins.moveRight.bind(this);
+	    }else{
+	     mixins.moveLeft.bind(this); 
+	    }
+	  },
+	  jump: function(){
+	    if(this.body.touching.down || this.body.blocked.down){
+	      this.body.velocity.y -= this.props.jumping;
+	    }
+	  }, 
+	  turn: function(){
+	    
+	  },
+	  lives: function(){
+	    return this.props.lives;
+	  },
 	  duck: function(){},
 	  enter: function(){},
 	  hit: function(){},
-	  damage: function(){},
+	  damage: function(severity){
+	    this.props.lives -= severity;
+	    this.body.velocity.x -= severity * Math.random() * 20;
+	  },
 	  die: function(){},
 	  
+	  see: function(){},
 	  sniff: function(enemy){
 	    // @enemy: the position of the hero
 	    // @return: decision = call a behaviour based on sniffing out the approaching enemy
 	  },
-	  wait: function(){},
+	  decide: function(condition, behaviour){
+	    // @condition: based on decision
+	    // @behaviour: list of behaviours
+	    // @return: one behaviour 
+	  },
+	  wait: function(){
+	    this.body.velocity.x = 0;
+	    this.body.velocity.y = 0;
+	  },
+	  sleep: function(){},
 	  sentinel: function(){},
 	  follow: function(){}
 	};
@@ -293,11 +365,17 @@
 	  man: function(){
 	    this.runRight = mixins.moveRight;
 	    this.runLeft = mixins.moveLeft;
+	    this.jump = mixins.jump;
+	    this.damage = mixins.damage;
+	    this.lives = mixins.lives;
 	    return this;
 	  },
 	  dino: function(){
 	    this.runRight = mixins.moveRight;
 	    this.runLeft = mixins.moveLeft;
+	    this.move = mixins.move;
+	    this.jump = mixins.jump;
+	    this.wait = mixins.wait;
 	    return this;
 	  },
 	  ptero: function(){
