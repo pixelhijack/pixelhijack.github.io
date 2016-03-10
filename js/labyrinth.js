@@ -33,3 +33,5 @@ function labyrinth(x,y) {
 	return {x: x, y: y, horiz: horiz, verti: verti};
 };
 
+module.exports = labyrinth;
+
