@@ -72,7 +72,8 @@
 	    maxSpeed: 200,
 	    acceleration: 10,
 	    slippery: 1.1, 
-	    bounce: 0.2
+	    bounce: 0.2, 
+	    parallax: 0.1
 	  }
 	};
 
@@ -111,7 +112,6 @@
 	  game.physics.startSystem(Phaser.Physics.ARCADE);
 	  
 	  //game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
-	  game.farBackground.x = -(this.camera.x * 0.7);
 	  
 	  man = new Creature('man', game, {
 	    image: 'run',
@@ -166,6 +166,8 @@
 	  dino.animations.add('dino-right', [0,1,2,3], 10, false);
 	  dino.animations.add('dino-left', [8,9,10,11], 10, false);
 	  
+	  dino.runRight();
+	  
 	  ptero = new Creature('ptero', game, {
 	    image: 'pterodactylus',
 	    x: 0, 
@@ -187,7 +189,7 @@
 	  platforms = game.add.group();
 	  platforms.enableBody = true;
 	  platforms.physicsBodyType = Phaser.Physics.ARCADE;
-	  
+
 	  for(var i = 0; i < 50; i++){
 	    var platform = platforms.create(Math.random() * settings.dimensions.WIDTH * settings.dimensions.blocks  | 0, 
 	      Math.random() * settings.dimensions.HEIGHT | 0, 
@@ -208,11 +210,14 @@
 
 	function update(){
 	  
+	  game.farBackground.x = -(this.camera.x * settings.physics.parallax);
+	  
 	  game.physics.arcade.collide(man, platforms);
 	  //game.physics.arcade.collide(man, dino);
 	  game.physics.arcade.collide(dino, platforms);
 	  
 	  game.physics.arcade.collide(man, dino, collisionCallback, processCallback, this);
+	  game.physics.arcade.collide(man, ptero, collisionCallback, processCallback, this);
 	  
 	  ptero.x -= 1;
 	  ptero.animations.play('fly');
@@ -338,7 +343,7 @@
 	  hit: function(){},
 	  damage: function(severity){
 	    this.props.lives -= severity;
-	    this.body.velocity.x -= severity * Math.random() * 20;
+	    this.body.x -= severity * Math.random() * 100;
 	  },
 	  die: function(){},
 	  
