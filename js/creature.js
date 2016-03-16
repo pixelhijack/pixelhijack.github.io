@@ -7,6 +7,9 @@ var Creature = function(creatureType, game, config){
   this.animate = config.animate;
   this.body.collideWorldBounds = true;
   this.body.gravity.y = config.gravity;
+  this.anchor.setTo(0.5, 0.5);
+  
+  this.facingRight = true;
   
   // https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
   behaviours[creatureType].call(Creature.prototype);
