@@ -14,12 +14,15 @@ var lives = {
   up: null,
   hearts: []
 };
+var tilemap;
+var groundLayer, 
+  collisionLayer;
 
 var settings = {
   dimensions: {
     WIDTH: 546,
-    HEIGHT: 372,
-    blocks: 5
+    HEIGHT: 368, //372,
+    blocks: 3
   }, 
   physics: {
     gravity: 500,
@@ -35,7 +38,7 @@ var settings = {
 var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '', { 
   preload: preload, 
   create: create, 
-  update: update 
+  update: update
 });
 
 function preload(){
@@ -57,8 +60,9 @@ function preload(){
   game.load.image('platform-1', './assets/99.png');
   game.load.image('platform-2', './assets/platform-2.png');
   game.load.image('background', './assets/bg1seamless.png');
-  game.load.spritesheet('wall', './assets/tileset1.png', 16, 16, 3);
-  game.load.spritesheet('void', './assets/tileset1.png', 16, 16, 1);
+  
+  game.load.image('tiles', './assets/level-1-transparent.png');
+  game.load.tilemap('tilemap', './js/78x23.json', null, Phaser.Tilemap.TILED_JSON);
 }
 
 function create(){
@@ -67,6 +71,14 @@ function create(){
   
   game.physics.startSystem(Phaser.Physics.ARCADE);
   
+  tilemap = game.add.tilemap('tilemap');
+  tilemap.addTilesetImage('tileset1', 'tiles');
+  groundLayer = tilemap.createLayer('foreground-layer');
+  collisionLayer = tilemap.createLayer('collision-layer');
+  collisionLayer.visible = false;
+  tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
+  groundLayer.resizeWorld();
+
   //game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
   
   man = new Creature('man', game, {
@@ -131,8 +143,8 @@ function create(){
     }
   });
   
-  dino.animations.add('dino-right', [0,1,2,3], 10, false);
-  dino.animations.add('dino-left', [8,9,10,11], 10, false);
+  dino.animations.add('dino-right', [0,1,2,3], 10, true);
+  dino.animations.add('dino-left', [8,9,10,11], 10, true);
   
   dino.runRight();
   
@@ -154,11 +166,12 @@ function create(){
   game.add.existing(man);
   game.add.existing(ptero);
 
+/*
   platforms = game.add.group();
   platforms.enableBody = true;
   platforms.physicsBodyType = Phaser.Physics.ARCADE;
 
-  for(var i = 0; i < 50; i++){
+  for(var i = 0; i < 20; i++){
     var platform = platforms.create(Math.random() * settings.dimensions.WIDTH * settings.dimensions.blocks  | 0, 
       Math.random() * settings.dimensions.HEIGHT | 0, 
       'platform-1', './assets/99.png');
@@ -170,7 +183,8 @@ function create(){
     platform2.body.bounce.set(0);
     platform2.body.immovable = true;
   }
-  
+*/
+
   keys = game.input.keyboard.createCursorKeys();
   keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -180,6 +194,10 @@ function create(){
 function update(){
   
   game.farBackground.x = -(this.camera.x * settings.physics.parallax);
+  
+  game.physics.arcade.collide(man, collisionLayer);
+  game.physics.arcade.collide(dino, collisionLayer);
+  //collisionLayer.debug = true;
   
   game.physics.arcade.collide(man, platforms);
   //game.physics.arcade.collide(man, dino);
