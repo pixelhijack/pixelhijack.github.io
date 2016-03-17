@@ -4,6 +4,17 @@
 
 var Creature = require('./creature.js');
 
+// game states wrapper
+var PRE2 = function(){};
+// Play game state
+PRE2.Play = function(){};
+
+PRE2.Play.prototype = { 
+  preload: preload, 
+  create: create, 
+  update: update
+};
+
 var man;
 var dino;
 var ptero;
@@ -33,19 +44,15 @@ var settings = {
   }
 };
 
-var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '', { 
-  preload: preload, 
-  create: create, 
-  update: update
-});
+var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
+game.state.add('Play', PRE2.Play);
+game.state.start('Play');
 
 function preload(){
   
   game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
   game.scale.pageAlignHorizontally = true;
   game.scale.pageAlignVertically = true;
-  
-  game.stage.backgroundColor = '#eee';
   
   console.log("PHASER preloaded");
   
@@ -204,15 +211,6 @@ function update(){
   if(dino.body.blocked.left){ dino.moveRight(); }
   if(dino.body.blocked.right){ dino.moveLeft(); }
   
-  /*
-  
-    jump + move = 
-    jump + hit 
-    move + hit 
-    duck + move 
-    duck + hit
-    
-  */
   if(!keys.left.isDown && 
     !keys.right.isDown && 
     !keys.up.isDown && 
@@ -253,11 +251,8 @@ function update(){
   }else{
     weapon.visible = false;
   }
-  game.debug.text('touch down ' + man.body.touching.down, 32, 68);
-  game.debug.text('blocked down ' + man.body.blocked.down, 32, 82);
   game.debug.text('LIVES: ' + man.lives(), 32, 96);
   
-
   console.log("PHASER updated");
 }
 
@@ -266,10 +261,11 @@ function processCallback(){
 }
 function collisionCallback(){
   man.damage(1);
-  console.log('DIE!', man.lives());
-  game.debug.text('You died!!4!: ' + man.lives(), 32, 96);
   lives.hearts = lives.hearts.map(function(heart, i){
     heart.visible = i <= man.lives()-1 ? true : false;
     return heart;
   });
+  if(man.lives() <= 0){
+    game.state.start('Play');
+  }
 }

@@ -41,7 +41,7 @@ var mixins = {
   hit: function(){},
   damage: function(severity){
     this.props.lives -= severity;
-    this.body.velocity.x -= severity * Math.random() * 20;
+    this.body.velocity.x -= severity * Math.random() * 50;
   },
   die: function(){},
   
