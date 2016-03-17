@@ -1,0 +1,18 @@
+{
+  "name": "pre2-phaser-revival",
+  "version": "0.0.1",
+  "description": "",
+  "main": "pre2.js",
+  "scripts": {
+    "build": "node_modules/.bin/webpack --progress --colors --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixelhijack/pixelhijack.github.io.git"
+  },
+  "author": "pixelhijack",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  }
+}

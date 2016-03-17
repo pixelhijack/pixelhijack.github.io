@@ -54,7 +54,7 @@ function preload(){
   game.load.spritesheet('dino', './assets/dino.png', 42, 36);
   game.load.spritesheet('pterodactylus', './assets/pterodactylus.png', 62, 50);
   game.load.spritesheet('man', './assets/man.png', 32, 36);
-  game.load.spritesheet('club', './assets/clubs-96x36.png', 96, 36);
+  game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
   game.load.image('platform-1', './assets/99.png');
   game.load.image('platform-2', './assets/platform-2.png');
   game.load.image('background', './assets/bg1seamless.png');
@@ -91,26 +91,23 @@ function create(){
       maxSpeed: 200,
       acceleration: 10,
       lives: 3
-    },
-    animate: {
-      right: 'man-move-right',
-      left: 'man-move-left'
     }
   });
   
-  man.animations.add('man-move-left', [0,1,2,3,4,5], 10, false);
-  man.animations.add('man-move-right', [6,7,8,9,10,11], 10, false);
-  man.animations.add('man-hit-right', [12,13,14,15,16], 10, false);
-  man.animations.add('man-hit-left', [18,19,20,21,22], 10, false);
-  man.animations.add('man-stop-right', [24,25,26,27], 10, false);
-  man.animations.add('man-stop-left', [30,31,32,33], 10, false);
-  man.animations.add('man-jump-right', [36,37,38,39], 10, false);
-  man.animations.add('man-jump-left', [42,43,44,45], 10, false);
-  man.animations.add('man-idle-left', [48,49,50,51], 10, false);
-  man.animations.add('man-idle-left', [54,55,56,57], 10, false);
+  man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
+  man.animations.add('moving-right', [6,7,8,9,10,11], 10, false);
+  man.animations.add('hitting-right', [12,13,14,15,16], 10, false);
+  man.animations.add('hitting-left', [18,19,20,21,22], 10, false);
+  man.animations.add('stopping-right', [24,25,26,27], 10, false);
+  man.animations.add('stopping-left', [30,31,32,33], 10, false);
+  man.animations.add('jumping-right', [36,37,38,39], 10, false);
+  man.animations.add('jumping-left', [42,43,44,45], 10, false);
+  man.animations.add('idle-left', [48,49,50,51], 10, false);
+  man.animations.add('idle-left', [54,55,56,57], 10, false);
   
   weapon = game.add.sprite(man.body.x, man.body.y, 'club');
-  weapon.animations.add('club-hit', [0,1,2,3,4], 10, false);
+  weapon.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
+  weapon.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
   weapon.anchor.setTo(0.5, 0.5);
   
   lives.up = game.add.sprite(20, 20, 'lives');
@@ -135,10 +132,6 @@ function create(){
       jumping: 400,
       maxSpeed: 300,
       acceleration: 20
-    },
-    animate: {
-      right: 'dino-right',
-      left: 'dino-left'
     }
   });
   
@@ -152,11 +145,7 @@ function create(){
     x: 0, 
     y: 100, 
     gravity: 0,
-    bounce: 0,
-    animate: {
-      right: 'fly',
-      left: 'fly'
-    }
+    bounce: 0
   });
   
   ptero.animations.add('fly', [3,4,5], 10, true);
@@ -229,18 +218,16 @@ function update(){
     !keys.up.isDown && 
     !keys.down.isDown && 
     !keys.space.isDown ){
-      man.facingRight ? 
-          man.animations.play('man-idle-right') : 
-          man.animations.play('man-idle-left');
+      man.is('idle');
   }
   if(keys.left.isDown) {
     man.moveLeft();
-    man.animations.play('man-move-left');
+    man.is('moving');
     man.facingRight = false;
   }
   else if(keys.right.isDown) {
     man.moveRight();
-    man.animations.play('man-move-right');
+    man.is('moving');
     man.facingRight = true;
   }
   else{
@@ -251,20 +238,18 @@ function update(){
   if(keys.up.isDown) {
       man.jump();
       if(!man.body.touching.down || !man.body.blocked.down){
-        man.facingRight ? 
-          man.animations.play('man-jump-right') : 
-          man.animations.play('man-jump-left');
+        man.is('jumping');
       }
   }
   else if(keys.down.isDown) {
       // man.duck();
   }
   if(keys.space.isDown) {
-    man.animations.play('man-hit-right');
+    man.is('hitting');
     weapon.visible = true;
     weapon.x = man.x;
     weapon.y = man.y;
-    weapon.animations.play('club-hit');
+    weapon.animations.play('club-hit-' + man.direction());
   }else{
     weapon.visible = false;
   }
