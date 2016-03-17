@@ -142,8 +142,10 @@ function create(){
     }
   });
   
-  dino.animations.add('dino-right', [0,1,2,3], 10, true);
-  dino.animations.add('dino-left', [8,9,10,11], 10, true);
+  dino.animations.add('moving-right', [0,1,2,3], 10, true);
+  dino.animations.add('moving-left', [8,9,10,11], 10, true);
+  dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
+  dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
   
   dino.moveRight();
   
@@ -207,9 +209,20 @@ function update(){
   
   dino.move();
   dino.x <= 0 ? dino.x = game.world.width : dino.x;
-  if(Math.random() < 0.05){ dino.jump(); }
-  if(dino.body.blocked.left){ dino.moveRight(); }
-  if(dino.body.blocked.right){ dino.moveLeft(); }
+  if(Math.random() < 0.05){ 
+    dino.jump(); 
+    dino.animations.play('jumping-' + dino.direction());
+  }
+  if(dino.body.blocked.left){ 
+    dino.moveRight(); 
+    man.facingRight = true;
+    dino.animations.play('moving-right');
+  }
+  if(dino.body.blocked.right){ 
+    dino.moveLeft(); 
+    man.facingRight = false;
+    dino.animations.play('moving-left');
+  }
   
   man.animations.play(man.state + '-' + man.direction());
   
