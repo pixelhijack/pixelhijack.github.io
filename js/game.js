@@ -211,21 +211,23 @@ function update(){
   if(dino.body.blocked.left){ dino.moveRight(); }
   if(dino.body.blocked.right){ dino.moveLeft(); }
   
+  man.animations.play(man.state + '-' + man.direction());
+  
   if(!keys.left.isDown && 
     !keys.right.isDown && 
     !keys.up.isDown && 
     !keys.down.isDown && 
     !keys.space.isDown ){
-      man.is('idle');
+      man.state = 'idle';
   }
   if(keys.left.isDown) {
     man.moveLeft();
-    man.is('moving');
+    man.state = 'moving';
     man.facingRight = false;
   }
   else if(keys.right.isDown) {
     man.moveRight();
-    man.is('moving');
+    man.state = 'moving';
     man.facingRight = true;
   }
   else{
@@ -236,14 +238,14 @@ function update(){
   if(keys.up.isDown) {
       man.jump();
       if(!man.body.touching.down || !man.body.blocked.down){
-        man.is('jumping');
+        man.state = 'jumping';
       }
   }
   else if(keys.down.isDown) {
       // man.duck();
   }
   if(keys.space.isDown) {
-    man.is('hitting');
+    man.state = 'hitting';
     weapon.visible = true;
     weapon.x = man.x;
     weapon.y = man.y;
@@ -259,13 +261,21 @@ function update(){
 function processCallback(){
   
 }
-function collisionCallback(){
-  man.damage(1);
-  lives.hearts = lives.hearts.map(function(heart, i){
-    heart.visible = i <= man.lives()-1 ? true : false;
-    return heart;
-  });
-  if(man.lives() <= 0){
-    game.state.start('Play');
+function collisionCallback(hero, enemy){
+  if(man.body.touching.down && enemy.body.touching.up){
+    return;
+  }
+  if(man.state === 'hitting'){
+    enemy.kill();
+  }else{
+    man.damage(1);
+    lives.hearts = lives.hearts.map(function(heart, i){
+      heart.visible = i <= man.lives()-1 ? true : false;
+      return heart;
+    });
+    if(man.lives() <= 0){
+      man.kill();
+      game.state.start('Play');
+    }  
   }
 }

@@ -4,6 +4,7 @@ var Creature = function(creatureType, game, config){
   Phaser.Sprite.call(this, game, config.x, config.y, config.image);
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.props = config.props;
+  this._state = config.state || '';
   this.body.collideWorldBounds = true;
   this.body.gravity.y = config.gravity;
   this.anchor.setTo(0.5, 0.5);
@@ -18,10 +19,15 @@ Creature.prototype = Object.create(Phaser.Sprite.prototype);
 
 Creature.prototype.constructor = Creature;
 
-Creature.prototype.is = function is(state){
-  var animation = state + '-' + this.direction();
-  this.animations.play(animation);
-};
+Object.defineProperty(Creature.prototype, 'state', {
+    get: function() { return this._state; }, 
+    set: function(value) {
+        if (value !== this._state)
+        {
+            this._state = value;
+        }
+    }
+});
 
 Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';

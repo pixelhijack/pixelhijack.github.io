@@ -257,21 +257,23 @@
 	  if(dino.body.blocked.left){ dino.moveRight(); }
 	  if(dino.body.blocked.right){ dino.moveLeft(); }
 	  
+	  man.animations.play(man.state + '-' + man.direction());
+	  
 	  if(!keys.left.isDown && 
 	    !keys.right.isDown && 
 	    !keys.up.isDown && 
 	    !keys.down.isDown && 
 	    !keys.space.isDown ){
-	      man.is('idle');
+	      man.state = 'idle';
 	  }
 	  if(keys.left.isDown) {
 	    man.moveLeft();
-	    man.is('moving');
+	    man.state = 'moving';
 	    man.facingRight = false;
 	  }
 	  else if(keys.right.isDown) {
 	    man.moveRight();
-	    man.is('moving');
+	    man.state = 'moving';
 	    man.facingRight = true;
 	  }
 	  else{
@@ -282,14 +284,14 @@
 	  if(keys.up.isDown) {
 	      man.jump();
 	      if(!man.body.touching.down || !man.body.blocked.down){
-	        man.is('jumping');
+	        man.state = 'jumping';
 	      }
 	  }
 	  else if(keys.down.isDown) {
 	      // man.duck();
 	  }
 	  if(keys.space.isDown) {
-	    man.is('hitting');
+	    man.state = 'hitting';
 	    weapon.visible = true;
 	    weapon.x = man.x;
 	    weapon.y = man.y;
@@ -305,14 +307,22 @@
 	function processCallback(){
 	  
 	}
-	function collisionCallback(){
-	  man.damage(1);
-	  lives.hearts = lives.hearts.map(function(heart, i){
-	    heart.visible = i <= man.lives()-1 ? true : false;
-	    return heart;
-	  });
-	  if(man.lives() <= 0){
-	    game.state.start('Play');
+	function collisionCallback(hero, enemy){
+	  if(man.body.touching.down && enemy.body.touching.up){
+	    return;
+	  }
+	  if(man.state === 'hitting'){
+	    enemy.kill();
+	  }else{
+	    man.damage(1);
+	    lives.hearts = lives.hearts.map(function(heart, i){
+	      heart.visible = i <= man.lives()-1 ? true : false;
+	      return heart;
+	    });
+	    if(man.lives() <= 0){
+	      man.kill();
+	      game.state.start('Play');
+	    }  
 	  }
 	}
 
@@ -327,6 +337,7 @@
 	  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.props = config.props;
+	  this._state = config.state || '';
 	  this.body.collideWorldBounds = true;
 	  this.body.gravity.y = config.gravity;
 	  this.anchor.setTo(0.5, 0.5);
@@ -341,10 +352,15 @@
 
 	Creature.prototype.constructor = Creature;
 
-	Creature.prototype.is = function is(state){
-	  var animation = state + '-' + this.direction();
-	  this.animations.play(animation);
-	};
+	Object.defineProperty(Creature.prototype, 'state', {
+	    get: function() { return this._state; }, 
+	    set: function(value) {
+	        if (value !== this._state)
+	        {
+	            this._state = value;
+	        }
+	    }
+	});
 
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
@@ -397,10 +413,12 @@
 	  },
 	  duck: function(){},
 	  enter: function(){},
-	  hit: function(){},
+	  hit: function(){
+	    
+	  },
 	  damage: function(severity){
 	    this.props.lives -= severity;
-	    this.body.velocity.x -= severity * Math.random() * 50;
+	    this.body.velocity.x -= severity * Math.random() * 20;
 	  },
 	  die: function(){},
 	  

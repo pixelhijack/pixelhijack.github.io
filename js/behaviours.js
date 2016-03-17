@@ -38,10 +38,12 @@ var mixins = {
   },
   duck: function(){},
   enter: function(){},
-  hit: function(){},
+  hit: function(){
+    
+  },
   damage: function(severity){
     this.props.lives -= severity;
-    this.body.velocity.x -= severity * Math.random() * 50;
+    this.body.velocity.x -= severity * Math.random() * 20;
   },
   die: function(){},
   
