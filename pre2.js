@@ -62,7 +62,8 @@
 	};
 	var tilemap;
 	var groundLayer, 
-	  collisionLayer;
+	  collisionLayer, 
+	  objectsLayer;
 
 	var settings = {
 	  dimensions: {
@@ -72,11 +73,8 @@
 	  }, 
 	  physics: {
 	    gravity: 500,
-	    jumping: 300,
-	    maxSpeed: 200,
-	    acceleration: 10,
 	    slippery: 1.1, 
-	    bounce: 0.2, 
+	    bounce: 0.2,
 	    parallax: 0.05
 	  }
 	};
@@ -118,6 +116,7 @@
 	  game.physics.startSystem(Phaser.Physics.ARCADE);
 	  
 	  tilemap = game.add.tilemap('tilemap');
+	  console.log('map objects', tilemap.objects);
 	  tilemap.addTilesetImage('tileset1', 'tiles');
 	  groundLayer = tilemap.createLayer('foreground-layer');
 	  collisionLayer = tilemap.createLayer('collision-layer');
@@ -192,7 +191,7 @@
 	  dino.animations.add('dino-right', [0,1,2,3], 10, true);
 	  dino.animations.add('dino-left', [8,9,10,11], 10, true);
 	  
-	  dino.runRight();
+	  dino.moveRight();
 	  
 	  ptero = new Creature('ptero', game, {
 	    image: 'pterodactylus',
@@ -259,9 +258,18 @@
 	  dino.move();
 	  dino.x <= 0 ? dino.x = game.world.width : dino.x;
 	  if(Math.random() < 0.05){ dino.jump(); }
-	  if(dino.body.blocked.left){ dino.runRight(); }
-	  if(dino.body.blocked.right){ dino.runLeft(); }
+	  if(dino.body.blocked.left){ dino.moveRight(); }
+	  if(dino.body.blocked.right){ dino.moveLeft(); }
 	  
+	  /*
+	  
+	    jump + move = 
+	    jump + hit 
+	    move + hit 
+	    duck + move 
+	    duck + hit
+	    
+	  */
 	  if(!keys.left.isDown && 
 	    !keys.right.isDown && 
 	    !keys.up.isDown && 
@@ -272,16 +280,18 @@
 	          man.animations.play('man-idle-left');
 	  }
 	  if(keys.left.isDown) {
-	    man.runLeft();
+	    man.moveLeft();
+	    man.animations.play('man-move-left');
 	    man.facingRight = false;
 	  }
 	  else if(keys.right.isDown) {
-	    man.runRight();
+	    man.moveRight();
+	    man.animations.play('man-move-right');
 	    man.facingRight = true;
 	  }
 	  else{
 	    // slowing down / slippery rate: 10% after stopped moving
-	    man.body.velocity.x /= settings.physics.slippery;
+	    man.stop(settings.physics.slippery);
 	    //man.animations.play('man-stop-left');
 	  }
 	  if(keys.up.isDown) {
@@ -367,7 +377,6 @@
 	    if(this.body.velocity.x > -this.props.maxSpeed){
 	      this.body.velocity.x -= this.props.acceleration;
 	    }
-	    this.animations.play(this.animate.left);
 	  },
 	  /******************************
 	  *     MOVE RIGHT
@@ -376,7 +385,6 @@
 	    if(this.body.velocity.x < this.props.maxSpeed){
 	        this.body.velocity.x += this.props.acceleration;
 	      }
-	      this.animations.play(this.animate.right);
 	  },
 	  move: function(){
 	    if(this.body.velocity.x >= 0){
@@ -395,6 +403,9 @@
 	  },
 	  lives: function(){
 	    return this.props.lives;
+	  },
+	  stop: function(slippery){
+	    this.body.velocity.x /= slippery;
 	  },
 	  duck: function(){},
 	  enter: function(){},
@@ -426,16 +437,17 @@
 
 	var behaviours = {
 	  man: function(){
-	    this.runRight = mixins.moveRight;
-	    this.runLeft = mixins.moveLeft;
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
 	    this.jump = mixins.jump;
 	    this.damage = mixins.damage;
+	    this.stop = mixins.stop;
 	    this.lives = mixins.lives;
 	    return this;
 	  },
 	  dino: function(){
-	    this.runRight = mixins.moveRight;
-	    this.runLeft = mixins.moveLeft;
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
 	    this.move = mixins.move;
 	    this.jump = mixins.jump;
 	    this.wait = mixins.wait;

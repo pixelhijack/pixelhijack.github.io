@@ -6,7 +6,6 @@ var mixins = {
     if(this.body.velocity.x > -this.props.maxSpeed){
       this.body.velocity.x -= this.props.acceleration;
     }
-    this.animations.play(this.animate.left);
   },
   /******************************
   *     MOVE RIGHT
@@ -15,7 +14,6 @@ var mixins = {
     if(this.body.velocity.x < this.props.maxSpeed){
         this.body.velocity.x += this.props.acceleration;
       }
-      this.animations.play(this.animate.right);
   },
   move: function(){
     if(this.body.velocity.x >= 0){
@@ -34,6 +32,9 @@ var mixins = {
   },
   lives: function(){
     return this.props.lives;
+  },
+  stop: function(slippery){
+    this.body.velocity.x /= slippery;
   },
   duck: function(){},
   enter: function(){},
@@ -65,16 +66,17 @@ var mixins = {
 
 var behaviours = {
   man: function(){
-    this.runRight = mixins.moveRight;
-    this.runLeft = mixins.moveLeft;
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
     this.jump = mixins.jump;
     this.damage = mixins.damage;
+    this.stop = mixins.stop;
     this.lives = mixins.lives;
     return this;
   },
   dino: function(){
-    this.runRight = mixins.moveRight;
-    this.runLeft = mixins.moveLeft;
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
     this.move = mixins.move;
     this.jump = mixins.jump;
     this.wait = mixins.wait;
