@@ -184,6 +184,9 @@ function create(){
 
   keys = game.input.keyboard.createCursorKeys();
   keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  
+  game.input.addPointer();
+  game.input.addPointer();
 
   console.log("PHASER created");
 }
@@ -233,12 +236,12 @@ function update(){
     !keys.space.isDown ){
       man.state = 'idle';
   }
-  if(keys.left.isDown) {
+  if(keys.left.isDown || game.input.pointer1.isDown) {
     man.moveLeft();
     man.state = 'moving';
     man.facingRight = false;
   }
-  else if(keys.right.isDown) {
+  else if(keys.right.isDown || game.input.pointer2.isDown) {
     man.moveRight();
     man.state = 'moving';
     man.facingRight = true;
@@ -267,7 +270,8 @@ function update(){
     weapon.visible = false;
   }
   game.debug.text('LIVES: ' + man.lives(), 32, 96);
-  
+  game.debug.pointer(game.input.pointer1);
+  game.debug.pointer(game.input.pointer2);
   console.log("PHASER updated");
 }
 
