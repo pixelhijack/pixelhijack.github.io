@@ -40,7 +40,8 @@ var settings = {
     gravity: 500,
     slippery: 1.1, 
     bounce: 0.2,
-    parallax: 0.05
+    parallax: 0.05,
+    accelerationMultiplier: 5
   }
 };
 
@@ -187,7 +188,18 @@ function create(){
   
   game.input.addPointer();
   game.input.addPointer();
-
+  window.addEventListener("deviceorientation", function orientation(event){
+      man.state = 'moving';
+      if(event.beta >= 0){
+        man.moveRight(event.beta * settings.physics.accelerationMultiplier);
+        man.facingRight = true;
+      }else{
+        man.moveLeft(-event.beta * settings.physics.accelerationMultiplier);
+        man.facingRight = false;
+      }
+      //man.body.velocity.x += event.beta;
+      //man.body.velocity.y += event.gamma;
+    }, false);
   console.log("PHASER created");
 }
 
@@ -236,12 +248,12 @@ function update(){
     !keys.space.isDown ){
       man.state = 'idle';
   }
-  if(keys.left.isDown || game.input.pointer1.isDown) {
+  if(keys.left.isDown) {
     man.moveLeft();
     man.state = 'moving';
     man.facingRight = false;
   }
-  else if(keys.right.isDown || game.input.pointer2.isDown) {
+  else if(keys.right.isDown) {
     man.moveRight();
     man.state = 'moving';
     man.facingRight = true;
@@ -251,7 +263,7 @@ function update(){
     man.stop(settings.physics.slippery);
     //man.animations.play('man-stop-left');
   }
-  if(keys.up.isDown) {
+  if(keys.up.isDown || game.input.pointer1.isDown) {
       man.jump();
       if(!man.body.touching.down || !man.body.blocked.down){
         man.state = 'jumping';

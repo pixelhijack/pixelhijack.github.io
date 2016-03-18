@@ -2,17 +2,17 @@ var mixins = {
   /******************************
   *     MOVE LEFT
   ******************************/
-  moveLeft: function(){
+  moveLeft: function(overrideAcc){
     if(this.body.velocity.x > -this.props.maxSpeed){
-      this.body.velocity.x -= this.props.acceleration;
+      this.body.velocity.x -= overrideAcc || this.props.acceleration;
     }
   },
   /******************************
   *     MOVE RIGHT
   ******************************/
-  moveRight: function(){
+  moveRight: function(overrideAcc){
     if(this.body.velocity.x < this.props.maxSpeed){
-        this.body.velocity.x += this.props.acceleration;
+        this.body.velocity.x += overrideAcc || this.props.acceleration;
       }
   },
   move: function(){
