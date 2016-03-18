@@ -49,6 +49,7 @@
 	*/
 
 	var Creature = __webpack_require__(1);
+	var Zone = __webpack_require__(3);
 
 	// game states wrapper
 	var PRE2 = function(){};
@@ -73,8 +74,9 @@
 	};
 	var tilemap;
 	var groundLayer, 
-	  collisionLayer, 
-	  objectsLayer;
+	  collisionLayer;
+	var levelObjects = { };
+	var zones;
 
 	var settings = {
 	  dimensions: {
@@ -124,15 +126,30 @@
 	  game.physics.startSystem(Phaser.Physics.ARCADE);
 	  
 	  tilemap = game.add.tilemap('tilemap');
-	  console.log('map objects', tilemap.objects);
 	  tilemap.addTilesetImage('tileset1', 'tiles');
 	  groundLayer = tilemap.createLayer('foreground-layer');
 	  collisionLayer = tilemap.createLayer('collision-layer');
 	  collisionLayer.visible = false;
 	  tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
 	  groundLayer.resizeWorld();
-
-	  //game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH, settings.dimensions.HEIGHT, 'background');
+	  
+	  levelObjects.spikes = tilemap.objects['objects-layer'].filter(function(obj){
+	    return obj.type === 'spike';
+	  });
+	  
+	  zones = game.add.group();
+	  levelObjects.spikes.forEach(function(spike){
+	    var zone = new Zone('spike', game, {
+	      image: '',
+	      x: spike.x,
+	      y: spike.y,
+	      width: spike.width,
+	      height: spike.height
+	    });
+	    zones.add(zone);
+	  });
+	  
+	  console.log('map objects', tilemap.objects, levelObjects.spikes, zones);
 	  
 	  man = new Creature('man', game, {
 	    image: 'man',
@@ -248,6 +265,13 @@
 	}
 
 	function update(){
+	  
+	  zones.forEachAlive(function(zone){
+	    game.debug.body(zone);  
+	  }, this);
+	  if (game.physics.arcade.collide(man, zones, collisionCallback, processCallback, this)){
+	    console.log('SPIKE!');
+	  }
 	  
 	  game.farBackground.x = -(this.camera.x * settings.physics.parallax);
 	  
@@ -490,6 +514,25 @@
 	module.exports = behaviours;
 
 
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	var Zone = function(zoneType, game, config){
+	  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
+	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  this.width = config.width;
+	  this.height = config.height;
+	  this.visible = false;
+	};
+
+	Zone.prototype = Object.create(Phaser.Sprite.prototype);
+
+	Zone.prototype.constructor = Zone;
+
+	module.exports = Zone;
+	  
 
 /***/ }
 /******/ ]);
