@@ -16,7 +16,7 @@ PRE2.Play.prototype = {
 };
 
 var man;
-var dino;
+var dinos;
 var ptero;
 var keys; 
 var platforms;
@@ -42,6 +42,10 @@ var settings = {
     bounce: 0.2,
     parallax: 0.05,
     accelerationMultiplier: 5
+  }, 
+  enemies: {
+    dino: 3,
+    ptero: 1
   }
 };
 
@@ -130,25 +134,27 @@ function create(){
   
   game.camera.follow(man);
   
-  dino = new Creature('dino', game, {
-    image: 'dino',
-    x: 300, 
-    y: 300, 
-    gravity: settings.physics.gravity,
-    bounce: settings.physics.bounce,
-    props: {
-      jumping: 400,
-      maxSpeed: 300,
-      acceleration: 20
-    }
-  });
-  
-  dino.animations.add('moving-right', [0,1,2,3], 10, true);
-  dino.animations.add('moving-left', [8,9,10,11], 10, true);
-  dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
-  dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
-  
-  dino.moveRight();
+  dinos = game.add.group();
+  while(settings.enemies.dino--){
+    var dino = new Creature('dino', game, {
+      image: 'dino',
+      x: Math.random() * settings.dimensions.WIDTH, 
+      y: Math.random() * settings.dimensions.HEIGHT, 
+      gravity: settings.physics.gravity,
+      bounce: settings.physics.bounce,
+      props: {
+        jumping: 400,
+        maxSpeed: 300,
+        acceleration: 20
+      }
+    }); 
+    dino.animations.add('moving-right', [0,1,2,3], 10, true);
+    dino.animations.add('moving-left', [8,9,10,11], 10, true);
+    dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
+    dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
+    dino.moveRight();
+    dinos.add(dino);
+  }
   
   ptero = new Creature('ptero', game, {
     image: 'pterodactylus',
@@ -160,7 +166,7 @@ function create(){
   
   ptero.animations.add('fly', [3,4,5], 10, true);
 
-  game.add.existing(dino);
+  //game.add.existing(dino);
   game.add.existing(man);
   game.add.existing(ptero);
 
@@ -187,16 +193,13 @@ function create(){
   keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   
   game.input.addPointer();
-  game.input.addPointer();
+
   window.addEventListener("deviceorientation", function orientation(event){
+      var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
       man.state = 'moving';
-      if(event.beta >= 0){
-        man.moveRight(event.beta * settings.physics.accelerationMultiplier);
-      }else{
-        man.moveLeft(-event.beta * settings.physics.accelerationMultiplier);
-      }
-      //man.body.velocity.x += event.beta;
-      //man.body.velocity.y += event.gamma;
+      tilt >= 0 ? 
+        man.moveRight(tilt * settings.physics.accelerationMultiplier) :
+        man.moveLeft(-tilt * settings.physics.accelerationMultiplier);
     }, false);
   console.log("PHASER created");
 }
@@ -206,30 +209,32 @@ function update(){
   game.farBackground.x = -(this.camera.x * settings.physics.parallax);
   
   game.physics.arcade.collide(man, collisionLayer);
-  game.physics.arcade.collide(dino, collisionLayer);
+  game.physics.arcade.collide(dinos, collisionLayer);
   //collisionLayer.debug = true;
   
-  game.physics.arcade.collide(man, dino, collisionCallback, processCallback, this);
+  game.physics.arcade.collide(man, dinos, collisionCallback, processCallback, this);
   game.physics.arcade.collide(man, ptero, collisionCallback, processCallback, this);
   
   ptero.x -= 1;
   ptero.animations.play('fly');
   ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
   
-  dino.move();
-  dino.x <= 0 ? dino.x = game.world.width : dino.x;
-  if(Math.random() < 0.05){ 
-    dino.jump(); 
-    dino.animations.play('jumping-' + dino.direction());
-  }
-  if(dino.body.blocked.left){ 
-    dino.moveRight(); 
-    dino.animations.play('moving-right');
-  }
-  if(dino.body.blocked.right){ 
-    dino.moveLeft(); 
-    dino.animations.play('moving-left');
-  }
+  dinos.forEachAlive(function(dino){
+    dino.move();
+    dino.x <= 0 ? dino.x = game.world.width : dino.x;
+    if(Math.random() < 0.05){ 
+      dino.jump(); 
+      dino.animations.play('jumping-' + dino.direction());
+    }
+    if(dino.body.blocked.left){ 
+      dino.moveRight(); 
+      dino.animations.play('moving-right');
+    }
+    if(dino.body.blocked.right){ 
+      dino.moveLeft(); 
+      dino.animations.play('moving-left');
+    }
+  });
   
   man.animations.play(man.state + '-' + man.direction());
   
@@ -272,8 +277,9 @@ function update(){
     weapon.visible = false;
   }
   game.debug.text('LIVES: ' + man.lives(), 32, 96);
+  
   game.debug.pointer(game.input.pointer1);
-  game.debug.pointer(game.input.pointer2);
+
   console.log("PHASER updated");
 }
 
