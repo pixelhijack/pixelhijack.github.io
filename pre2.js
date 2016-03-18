@@ -175,7 +175,7 @@
 	  },
 	  addDinos: function(){
 	    dinos = game.add.group();
-	    while(settings.enemies.dino--){
+	    for(var i = 0, max = settings.enemies.dino;i<max;i++){
 	      var dino = new Creature('dino', game, {
 	        image: 'dino',
 	        x: Math.random() * settings.dimensions.WIDTH, 
@@ -341,8 +341,9 @@
 	        return heart;
 	      });
 	      if(man.lives() <= 0){
-	        //man.kill();
-	        //game.state.start('Play');
+	        man.kill();
+	        // restart while keep caches: 
+	        game.state.start('Play', true, false);
 	      }  
 	    }
 	  },
