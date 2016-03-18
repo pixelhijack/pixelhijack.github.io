@@ -255,10 +255,6 @@
 	  game.physics.arcade.collide(dino, collisionLayer);
 	  //collisionLayer.debug = true;
 	  
-	  game.physics.arcade.collide(man, platforms);
-	  //game.physics.arcade.collide(man, dino);
-	  game.physics.arcade.collide(dino, platforms);
-	  
 	  game.physics.arcade.collide(man, dino, collisionCallback, processCallback, this);
 	  game.physics.arcade.collide(man, ptero, collisionCallback, processCallback, this);
 	  
