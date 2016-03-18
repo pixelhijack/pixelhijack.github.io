@@ -192,10 +192,8 @@ function create(){
       man.state = 'moving';
       if(event.beta >= 0){
         man.moveRight(event.beta * settings.physics.accelerationMultiplier);
-        man.facingRight = true;
       }else{
         man.moveLeft(-event.beta * settings.physics.accelerationMultiplier);
-        man.facingRight = false;
       }
       //man.body.velocity.x += event.beta;
       //man.body.velocity.y += event.gamma;
@@ -230,12 +228,10 @@ function update(){
   }
   if(dino.body.blocked.left){ 
     dino.moveRight(); 
-    man.facingRight = true;
     dino.animations.play('moving-right');
   }
   if(dino.body.blocked.right){ 
     dino.moveLeft(); 
-    man.facingRight = false;
     dino.animations.play('moving-left');
   }
   
@@ -251,12 +247,10 @@ function update(){
   if(keys.left.isDown) {
     man.moveLeft();
     man.state = 'moving';
-    man.facingRight = false;
   }
   else if(keys.right.isDown) {
     man.moveRight();
     man.state = 'moving';
-    man.facingRight = true;
   }
   else{
     // slowing down / slippery rate: 10% after stopped moving

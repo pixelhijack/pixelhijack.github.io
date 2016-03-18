@@ -238,10 +238,8 @@
 	      man.state = 'moving';
 	      if(event.beta >= 0){
 	        man.moveRight(event.beta * settings.physics.accelerationMultiplier);
-	        man.facingRight = true;
 	      }else{
 	        man.moveLeft(-event.beta * settings.physics.accelerationMultiplier);
-	        man.facingRight = false;
 	      }
 	      //man.body.velocity.x += event.beta;
 	      //man.body.velocity.y += event.gamma;
@@ -276,12 +274,10 @@
 	  }
 	  if(dino.body.blocked.left){ 
 	    dino.moveRight(); 
-	    man.facingRight = true;
 	    dino.animations.play('moving-right');
 	  }
 	  if(dino.body.blocked.right){ 
 	    dino.moveLeft(); 
-	    man.facingRight = false;
 	    dino.animations.play('moving-left');
 	  }
 	  
@@ -297,12 +293,10 @@
 	  if(keys.left.isDown) {
 	    man.moveLeft();
 	    man.state = 'moving';
-	    man.facingRight = false;
 	  }
 	  else if(keys.right.isDown) {
 	    man.moveRight();
 	    man.state = 'moving';
-	    man.facingRight = true;
 	  }
 	  else{
 	    // slowing down / slippery rate: 10% after stopped moving
@@ -407,6 +401,7 @@
 	  *     MOVE LEFT
 	  ******************************/
 	  moveLeft: function(overrideAcc){
+	    this.facingRight = false;
 	    if(this.body.velocity.x > -this.props.maxSpeed){
 	      this.body.velocity.x -= overrideAcc || this.props.acceleration;
 	    }
@@ -415,6 +410,7 @@
 	  *     MOVE RIGHT
 	  ******************************/
 	  moveRight: function(overrideAcc){
+	    this.facingRight = true;
 	    if(this.body.velocity.x < this.props.maxSpeed){
 	        this.body.velocity.x += overrideAcc || this.props.acceleration;
 	      }

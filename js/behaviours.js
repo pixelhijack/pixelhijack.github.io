@@ -3,6 +3,7 @@ var mixins = {
   *     MOVE LEFT
   ******************************/
   moveLeft: function(overrideAcc){
+    this.facingRight = false;
     if(this.body.velocity.x > -this.props.maxSpeed){
       this.body.velocity.x -= overrideAcc || this.props.acceleration;
     }
@@ -11,6 +12,7 @@ var mixins = {
   *     MOVE RIGHT
   ******************************/
   moveRight: function(overrideAcc){
+    this.facingRight = true;
     if(this.body.velocity.x < this.props.maxSpeed){
         this.body.velocity.x += overrideAcc || this.props.acceleration;
       }
