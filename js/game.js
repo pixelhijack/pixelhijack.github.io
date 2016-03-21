@@ -254,11 +254,11 @@ PRE2.Play.prototype = {
     }
     if(keys.left.isDown) {
       man.moveLeft();
-      man.state = 'moving';
+      man.isGrounded() ? man.state = 'moving' : man.state = 'jumping';
     }
     else if(keys.right.isDown) {
       man.moveRight();
-      man.state = 'moving';
+      man.isGrounded() ? man.state = 'moving' : man.state = 'jumping';
     }
     else{
       // slowing down / slippery rate: 10% after stopped moving
@@ -267,7 +267,7 @@ PRE2.Play.prototype = {
     }
     if(keys.up.isDown || game.input.pointer1.isDown) {
         man.jump();
-        if(!man.body.touching.down || !man.body.blocked.down){
+        if(!man.isGrounded()){
           man.state = 'jumping';
         }
     }
