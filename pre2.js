@@ -48,56 +48,77 @@
 	  http://upkk670a72a1.pixelhijack.koding.io//index.html
 	*/
 
-	var Creature = __webpack_require__(1);
-
-	var man;
-	var dinos;
-	var ptero;
-	var keys; 
-	var platforms;
-	var weapon = {
-	  sprite: null,
-	  animRight: null,
-	  animLeft: null
-	};
-	var lives = {
-	  up: null,
-	  hearts: []
-	};
-	var tilemap;
-	var groundLayer, 
-	  collisionLayer, 
-	  objectsLayer;
-
-	var settings = {
-	  dimensions: {
-	    WIDTH: 546,
-	    HEIGHT: 368, //372,
-	    blocks: 3
-	  }, 
-	  physics: {
-	    gravity: 500,
-	    slippery: 1.1, 
-	    bounce: 0.2,
-	    parallax: 0.05,
-	    accelerationMultiplier: 5
-	  }, 
-	  enemies: {
-	    dino: 3,
-	    ptero: 1
-	  }
-	};
+	var Play = __webpack_require__(1);
 
 	// game states wrapper
-	var PRE2 = function(){};
-	// Play game state
-	PRE2.Play = function(){};
+	var PRE2 = {
+	  Play: Play
+	} || PRE2;
 
-	PRE2.Play.prototype = { 
+	module.exports = PRE2;
+
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* 
+	  http://upkk670a72a1.pixelhijack.koding.io//index.html
+	*/
+
+	var Creature = __webpack_require__(2);
+
+
+	// Play game state
+	var Play = function(game){
+	  // this.model = config.model etc  
+	};
+
+	// revealing prototype pattern
+	Play.prototype = function(){
+	  
+	  var man;
+	  var dinos;
+	  var ptero;
+	  var keys; 
+	  var platforms;
+	  var weapon = {
+	    sprite: null,
+	    animRight: null,
+	    animLeft: null
+	  };
+	  var lives = {
+	    up: null,
+	    hearts: []
+	  };
+	  var tilemap;
+	  var groundLayer, 
+	    collisionLayer, 
+	    objectsLayer;
+
+	  return {
+	    preload: preload,
+	    initWorld: initWorld,
+	    loadLevel: loadLevel,
+	    addHero: addHero,
+	    addDinos: addDinos,
+	    addPtero: addPtero,
+	    setInputs: setInputs,
+	    create: create,
+	    setParallax: setParallax,
+	    collisions: collisions,
+	    moveDinos: moveDinos,
+	    movePtero: movePtero,
+	    moveHero: moveHero, 
+	    debug: debug,
+	    update: update,
+	    onEnemyCollision: onEnemyCollision
+	  };
 	  /*=============
 	  *   PRELOAD
 	  =============*/
-	  preload: function(){
+	  function preload(){
 	  
 	    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	    game.scale.pageAlignHorizontally = true;
@@ -117,12 +138,14 @@
 	    
 	    game.load.image('tiles', './assets/level-1-transparent.png');
 	    game.load.tilemap('tilemap', './js/78x23.json', null, Phaser.Tilemap.TILED_JSON);
-	  }, 
-	  initWorld: function(){
+	  }
+	  
+	  function initWorld(){
 	    game.world.setBounds(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT);
 	    game.physics.startSystem(Phaser.Physics.ARCADE);
-	  },
-	  loadLevel: function(){
+	  }
+	  
+	  function loadLevel(){
 	    game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
 	    tilemap = game.add.tilemap('tilemap');
 	    tilemap.addTilesetImage('tileset1', 'tiles');
@@ -131,8 +154,8 @@
 	    collisionLayer.visible = false;
 	    tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
 	    groundLayer.resizeWorld();
-	  },
-	  addHero: function(){
+	  }
+	  function addHero(){
 	    man = new Creature('man', game, {
 	      image: 'man',
 	      x: 200, 
@@ -178,9 +201,9 @@
 	    
 	    game.camera.follow(man);
 	    game.add.existing(man);
-	    
-	  },
-	  addDinos: function(){
+	  }
+	  
+	  function addDinos(){
 	    dinos = game.add.group();
 	    for(var i = 0, max = settings.enemies.dino;i<max;i++){
 	      var dino = new Creature('dino', game, {
@@ -202,8 +225,9 @@
 	      dino.moveRight();
 	      dinos.add(dino);
 	    }
-	  },
-	  addPtero: function(){
+	  }
+	  
+	  function addPtero(){
 	    ptero = new Creature('ptero', game, {
 	      image: 'pterodactylus',
 	      x: 0, 
@@ -216,8 +240,9 @@
 	    
 	    game.add.existing(ptero);
 	  
-	  },
-	  setInputs: function(){
+	  }
+	  
+	  function setInputs(){
 	    keys = game.input.keyboard.createCursorKeys();
 	    keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	    
@@ -230,11 +255,12 @@
 	        man.moveRight(tilt * settings.physics.accelerationMultiplier) :
 	        man.moveLeft(-tilt * settings.physics.accelerationMultiplier);
 	    }, false);
-	  },
+	  }
+	  
 	  /*=============
 	  *   CREATE
 	  =============*/
-	  create: function(){
+	  function create(){
 	    this.initWorld();
 	    this.loadLevel();
 	    this.addHero();
@@ -243,11 +269,13 @@
 	    this.setInputs();
 	    
 	    console.log("PHASER created");
-	  }, 
-	  setParallax: function(){
+	  }
+	  
+	  function setParallax(){
 	    game.farBackground.x = -(this.camera.x * settings.physics.parallax);
-	  },
-	  collisions: function(){
+	  }
+	  
+	  function collisions(){
 	    game.physics.arcade.collide(man, collisionLayer);
 	    game.physics.arcade.collide(dinos, collisionLayer);
 	    //collisionLayer.debug = true;
@@ -260,8 +288,9 @@
 	        enemy.kill();
 	      }
 	    }, null, this);
-	  },
-	  moveDinos: function(){
+	  }
+	  
+	  function moveDinos(){
 	    dinos.forEachAlive(function(dino){
 	      dino.move();
 	      dino.x <= 0 ? dino.x = game.world.width : dino.x;
@@ -278,14 +307,15 @@
 	        dino.animations.play('moving-left');
 	      }
 	    });
-	  },
-	  movePtero: function(){
+	  }
+	  
+	  function movePtero(){
 	    ptero.x -= 1;
 	    ptero.animations.play('fly');
 	    ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
-	  },
-	  moveHero: function(){
-	    
+	  }
+	  
+	  function moveHero(){
 	    // weapon sprite should be always in sync with the man sprite
 	    weapon.sprite.x = man.x;
 	    weapon.sprite.y = man.y;
@@ -325,16 +355,18 @@
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
 	    }
-	  },
-	  debug: function(){
+	  }
+	  
+	  function debug(){
 	    game.debug.text('LIVES: ' + man.lives(), 32, 96);
 	    game.debug.pointer(game.input.pointer1);
 	    game.debug.body(weapon.sprite);
-	  },
+	  }
+	  
 	  /*=============
 	  *   UPDATE
 	  =============*/
-	  update: function(){
+	  function update(){
 	    this.setParallax();
 	    this.collisions();
 	    this.moveDinos();
@@ -344,8 +376,9 @@
 	    man.animations.play(man.state + '-' + man.direction());
 	    
 	    console.log("PHASER updated");
-	  },
-	  onEnemyCollision: function(hero, enemy){
+	  }
+	  
+	  function onEnemyCollision(hero, enemy){
 	    if(man.body.touching.down && enemy.body.touching.up){
 	      return;
 	    }
@@ -363,28 +396,49 @@
 	        game.state.start('Play', true, false);
 	      }  
 	    }
-	  },
-	  onProcess: function(){
-	    
 	  }
-	};
-
-
-	var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
-	game.state.add('Play', PRE2.Play);
-	game.state.start('Play');
-
+	  
+	  function onProcess(){}
+	}();
 
 	function toggleVivibility(sprite){
 	  sprite.visible = !sprite.visible;
 	}
 
+	module.exports = Play;
+
+	var settings = {
+	        dimensions: {
+	          WIDTH: 546,
+	          HEIGHT: 368, //372,
+	          blocks: 3
+	        }, 
+	        physics: {
+	          gravity: 500,
+	          slippery: 1.1, 
+	          bounce: 0.2,
+	          parallax: 0.05,
+	          accelerationMultiplier: 5
+	        }, 
+	        enemies: {
+	          dino: 3,
+	          ptero: 1
+	        }
+	      };
+
+	      var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
+	      var PRE2 = { 
+	        Play: Play
+	      };
+	      game.state.add('Play', PRE2.Play);
+	      game.state.start('Play');
+
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var behaviours = __webpack_require__(2);
+	var behaviours = __webpack_require__(3);
 
 	var Creature = function(creatureType, game, config){
 	  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
@@ -427,7 +481,7 @@
 	  
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports) {
 
 	var mixins = {
