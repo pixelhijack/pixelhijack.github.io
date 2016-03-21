@@ -207,6 +207,13 @@ PRE2.Play.prototype = {
     //collisionLayer.debug = true;
     game.physics.arcade.collide(man, dinos, this.onEnemyCollision, this.onProcess, this);
     game.physics.arcade.collide(man, ptero, this.onEnemyCollision, this.onProcess, this);
+    
+    // hit'n kill enemy: collision should calculated on weapon sprite
+    game.physics.arcade.collide(weapon.sprite, dinos, function(weaponSprite, enemy){
+      if(man.state === 'hitting'){
+        enemy.kill();
+      }
+    }, null, this);
   },
   moveDinos: function(){
     dinos.forEachAlive(function(dino){
