@@ -9,7 +9,11 @@ var dinos;
 var ptero;
 var keys; 
 var platforms;
-var weapon;
+var weapon = {
+  sprite: null,
+  animRight: null,
+  animLeft: null
+};
 var lives = {
   up: null,
   hearts: []
@@ -108,10 +112,13 @@ PRE2.Play.prototype = {
     man.animations.add('idle-left', [48,49,50,51], 10, false);
     man.animations.add('idle-left', [54,55,56,57], 10, false);
     
-    weapon = game.add.sprite(man.body.x, man.body.y, 'club');
-    weapon.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
-    weapon.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
-    weapon.anchor.setTo(0.5, 0.5);
+    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
+    weapon.sprite.anchor.setTo(0.5, 0.5);
+    weapon.sprite.visible = false;
+    weapon.animRight = weapon.sprite.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
+    weapon.animLeft = weapon.sprite.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
+    weapon.animRight.onComplete.add(toggleVivibility, this);
+    weapon.animLeft.onComplete.add(toggleVivibility, this);
     
     lives.up = game.add.sprite(20, 20, 'lives');
     lives.up.frame = 0;
@@ -225,6 +232,11 @@ PRE2.Play.prototype = {
     ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
   },
   moveHero: function(){
+    
+    // weapon sprite should be always in sync with the man sprite
+    weapon.sprite.x = man.x;
+    weapon.sprite.y = man.y;
+    
     if(!keys.left.isDown && 
       !keys.right.isDown && 
       !keys.up.isDown && 
@@ -256,13 +268,14 @@ PRE2.Play.prototype = {
     }
     if(keys.space.isDown) {
       man.state = 'hitting';
-      weapon.visible = true;
-      weapon.x = man.x;
-      weapon.y = man.y;
-      weapon.animations.play('club-hit-' + man.direction());
-    }else{
-      weapon.visible = false;
+      weapon.sprite.visible = true;
+      weapon.sprite.animations.play('club-hit-' + man.direction());
     }
+  },
+  debug: function(){
+    game.debug.text('LIVES: ' + man.lives(), 32, 96);
+    game.debug.pointer(game.input.pointer1);
+    game.debug.body(weapon.sprite);
   },
   /*=============
   *   UPDATE
@@ -273,13 +286,9 @@ PRE2.Play.prototype = {
     this.moveDinos();
     this.movePtero();
     this.moveHero();
+    this.debug();
     man.animations.play(man.state + '-' + man.direction());
     
-    
-    game.debug.text('LIVES: ' + man.lives(), 32, 96);
-    
-    game.debug.pointer(game.input.pointer1);
-  game.debug.body(weapon)
     console.log("PHASER updated");
   },
   onEnemyCollision: function(hero, enemy){
@@ -310,3 +319,8 @@ PRE2.Play.prototype = {
 var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
 game.state.add('Play', PRE2.Play);
 game.state.start('Play');
+
+
+function toggleVivibility(sprite){
+  sprite.visible = !sprite.visible;
+}
