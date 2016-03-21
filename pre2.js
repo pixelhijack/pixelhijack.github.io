@@ -155,7 +155,7 @@
 	    man.animations.add('stopping-left', [30,31,32,33], 10, false);
 	    man.animations.add('jumping-right', [36,37,38,39], 10, false);
 	    man.animations.add('jumping-left', [42,43,44,45], 10, false);
-	    man.animations.add('idle-left', [48,49,50,51], 10, false);
+	    man.animations.add('idle-right', [48,49,50,51], 10, false);
 	    man.animations.add('idle-left', [54,55,56,57], 10, false);
 	    
 	    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
@@ -294,7 +294,8 @@
 	      !keys.right.isDown && 
 	      !keys.up.isDown && 
 	      !keys.down.isDown && 
-	      !keys.space.isDown ){
+	      !keys.space.isDown &&
+	      man.isGrounded()){
 	        man.state = 'idle';
 	    }
 	    if(keys.left.isDown) {
@@ -416,6 +417,10 @@
 
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
+	};
+
+	Creature.prototype.isGrounded = function isGrounded(){
+	  return this.body.touching.down || this.body.blocked.down;
 	};
 
 	module.exports = Creature;

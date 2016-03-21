@@ -109,7 +109,7 @@ PRE2.Play.prototype = {
     man.animations.add('stopping-left', [30,31,32,33], 10, false);
     man.animations.add('jumping-right', [36,37,38,39], 10, false);
     man.animations.add('jumping-left', [42,43,44,45], 10, false);
-    man.animations.add('idle-left', [48,49,50,51], 10, false);
+    man.animations.add('idle-right', [48,49,50,51], 10, false);
     man.animations.add('idle-left', [54,55,56,57], 10, false);
     
     weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
@@ -248,7 +248,8 @@ PRE2.Play.prototype = {
       !keys.right.isDown && 
       !keys.up.isDown && 
       !keys.down.isDown && 
-      !keys.space.isDown ){
+      !keys.space.isDown &&
+      man.isGrounded()){
         man.state = 'idle';
     }
     if(keys.left.isDown) {

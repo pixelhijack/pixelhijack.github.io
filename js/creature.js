@@ -33,5 +33,9 @@ Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';
 };
 
+Creature.prototype.isGrounded = function isGrounded(){
+  return this.body.touching.down || this.body.blocked.down;
+};
+
 module.exports = Creature;
   
