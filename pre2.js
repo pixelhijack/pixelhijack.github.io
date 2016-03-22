@@ -50,7 +50,7 @@
 
 	var Play = __webpack_require__(1);
 
-	var configs = {
+	var settings = {
 	  dimensions: {
 	    WIDTH: 546,
 	    HEIGHT: 368, //372,
@@ -69,9 +69,9 @@
 	  }
 	};
 
-	var game = new Phaser.Game(configs.dimensions.WIDTH, configs.dimensions.HEIGHT, Phaser.AUTO, '');
+	var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
 	var PRE2 = { 
-	  Play: Play.bind(this, game, configs)
+	  Play: Play.bind(this, game, settings)
 	};
 	game.state.add('Play', PRE2.Play);
 	game.state.start('Play');
@@ -111,7 +111,8 @@
 	  var groundLayer, 
 	    collisionLayer, 
 	    objectsLayer;
-	    
+	  
+	  // public methods for Phaser
 	  this.preload = preload;
 	  this.create = create;
 	  this.update = update;

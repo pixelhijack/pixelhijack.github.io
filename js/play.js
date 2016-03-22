@@ -27,7 +27,8 @@ function Play(game, settings){
   var groundLayer, 
     collisionLayer, 
     objectsLayer;
-    
+  
+  // public methods for Phaser
   this.preload = preload;
   this.create = create;
   this.update = update;

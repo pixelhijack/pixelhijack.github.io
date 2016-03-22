@@ -4,7 +4,7 @@
 
 var Play = require('./play.js');
 
-var configs = {
+var settings = {
   dimensions: {
     WIDTH: 546,
     HEIGHT: 368, //372,
@@ -23,9 +23,9 @@ var configs = {
   }
 };
 
-var game = new Phaser.Game(configs.dimensions.WIDTH, configs.dimensions.HEIGHT, Phaser.AUTO, '');
+var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
 var PRE2 = { 
-  Play: Play.bind(this, game, configs)
+  Play: Play.bind(this, game, settings)
 };
 game.state.add('Play', PRE2.Play);
 game.state.start('Play');
