@@ -78,16 +78,26 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* 
-	  http://upkk670a72a1.pixelhijack.koding.io//index.html
-	*/
-
 	var Creature = __webpack_require__(2);
 
 
 	// Play game state
 	function Play(game, settings){
-	  // this.model = config.model etc  
+	  /*
+	    import {SETTINGS}:
+	      inputs
+	        keys
+	        pointers
+	    internal {GAME}
+	      game menu
+	        lives
+	        hearts
+	        score
+	        bonus
+	    export {MODELS}: 
+	      man
+	      enemies
+	  */ 
 	  
 	  var man;
 	  var dinos;
@@ -398,14 +408,13 @@
 	    }
 	  }
 	  
-	  function onProcess(){}
+	  function onProcess(){
+	    
+	  }
 	  
-	}
-
-
-
-	function toggleVivibility(sprite){
-	  sprite.visible = !sprite.visible;
+	  function toggleVivibility(sprite){
+	    sprite.visible = !sprite.visible;
+	  }
 	}
 
 	module.exports = Play;

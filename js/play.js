@@ -1,13 +1,23 @@
-/* 
-  http://upkk670a72a1.pixelhijack.koding.io//index.html
-*/
-
 var Creature = require('./creature.js');
 
 
 // Play game state
 function Play(game, settings){
-  // this.model = config.model etc  
+  /*
+    import {SETTINGS}:
+      inputs
+        keys
+        pointers
+    internal {GAME}
+      game menu
+        lives
+        hearts
+        score
+        bonus
+    export {MODELS}: 
+      man
+      enemies
+  */ 
   
   var man;
   var dinos;
@@ -318,14 +328,13 @@ function Play(game, settings){
     }
   }
   
-  function onProcess(){}
+  function onProcess(){
+    
+  }
   
-}
-
-
-
-function toggleVivibility(sprite){
-  sprite.visible = !sprite.visible;
+  function toggleVivibility(sprite){
+    sprite.visible = !sprite.visible;
+  }
 }
 
 module.exports = Play;
