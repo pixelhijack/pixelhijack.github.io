@@ -112,13 +112,19 @@
 	    up: null,
 	    hearts: []
 	  };
+	  var menu = {
+	    lives: null,
+	    hearts: null,
+	    score: null,
+	    bonus: null
+	  }
 	  var level = {
 	    background: null,
 	    tilemap: null,
 	    groundLayer: null,
 	    collisionLayer: null,
 	    objectsLayer: null
-	  }
+	  };
 
 	  // public methods for Phaser
 	  this.preload = preload;
@@ -199,18 +205,22 @@
 	    weapon.animRight.onComplete.add(toggleVivibility, this);
 	    weapon.animLeft.onComplete.add(toggleVivibility, this);
 	    
-	    lives.up = game.add.sprite(20, 20, 'lives');
-	    lives.up.frame = 0;
-	    
-	    var heartSprites = man.lives();
-	    while(heartSprites--){
-	      var heart = game.add.sprite(60 + heartSprites*20, 20, 'lives');
-	      heart.frame = 1;  
-	      lives.hearts.push(heart);
-	    }
-	    
 	    game.camera.follow(man);
 	    game.add.existing(man);
+	  }
+	  
+	  function renderMenu(){
+	    // UPs
+	    menu.lives= game.add.sprite(20, 20, 'lives');
+	    menu.lives.frame = 0;
+	    // hearts
+	    var hearts = man.lives();
+	    menu.hearts = game.add.group();
+	    for(var i=0;i<hearts;i++){
+	      var heart = game.add.sprite(60 + i*20, 20, 'lives');
+	      heart.frame = 1;
+	      menu.hearts.add(heart);
+	    }
 	  }
 	  
 	  function addDinos(){
@@ -274,6 +284,7 @@
 	    initWorld();
 	    loadLevel(level, 'tileset-level-1', 'tilemap-level-1');
 	    addHero();
+	    renderMenu();
 	    addDinos();
 	    addPtero();
 	    setInputs();
@@ -396,10 +407,7 @@
 	      enemy.kill();
 	    }else{
 	      man.damage(1);
-	      lives.hearts = lives.hearts.map(function(heart, i){
-	        heart.visible = i <= man.lives()-1 ? true : false;
-	        return heart;
-	      });
+	      renderMenu();
 	      if(man.lives() <= 0){
 	        man.kill();
 	        // restart while keep caches: 
