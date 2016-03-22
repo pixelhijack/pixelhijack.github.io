@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./js/play.js",
+    entry: "./js/index.js",
     output: {
         path: __dirname,
         filename: "pre2.js"

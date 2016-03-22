@@ -6,12 +6,8 @@ var Creature = require('./creature.js');
 
 
 // Play game state
-var Play = function(game){
+function Play(game, settings){
   // this.model = config.model etc  
-};
-
-// revealing prototype pattern
-Play.prototype = function(){
   
   var man;
   var dinos;
@@ -31,25 +27,11 @@ Play.prototype = function(){
   var groundLayer, 
     collisionLayer, 
     objectsLayer;
-
-  return {
-    preload: preload,
-    initWorld: initWorld,
-    loadLevel: loadLevel,
-    addHero: addHero,
-    addDinos: addDinos,
-    addPtero: addPtero,
-    setInputs: setInputs,
-    create: create,
-    setParallax: setParallax,
-    collisions: collisions,
-    moveDinos: moveDinos,
-    movePtero: movePtero,
-    moveHero: moveHero, 
-    debug: debug,
-    update: update,
-    onEnemyCollision: onEnemyCollision
-  };
+    
+  this.preload = preload;
+  this.create = create;
+  this.update = update;
+  
   /*=============
   *   PRELOAD
   =============*/
@@ -196,26 +178,26 @@ Play.prototype = function(){
   *   CREATE
   =============*/
   function create(){
-    this.initWorld();
-    this.loadLevel();
-    this.addHero();
-    this.addDinos();
-    this.addPtero();
-    this.setInputs();
+    initWorld();
+    loadLevel();
+    addHero();
+    addDinos();
+    addPtero();
+    setInputs();
     
     console.log("PHASER created");
   }
   
   function setParallax(){
-    game.farBackground.x = -(this.camera.x * settings.physics.parallax);
+    game.farBackground.x = -(game.camera.x * settings.physics.parallax);
   }
   
   function collisions(){
     game.physics.arcade.collide(man, collisionLayer);
     game.physics.arcade.collide(dinos, collisionLayer);
     //collisionLayer.debug = true;
-    game.physics.arcade.collide(man, dinos, this.onEnemyCollision, this.onProcess, this);
-    game.physics.arcade.collide(man, ptero, this.onEnemyCollision, this.onProcess, this);
+    game.physics.arcade.collide(man, dinos, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(man, ptero, onEnemyCollision, onProcess, this);
     
     // hit'n kill enemy: collision should calculated on weapon sprite
     game.physics.arcade.collide(weapon.sprite, dinos, function(weaponSprite, enemy){
@@ -302,12 +284,12 @@ Play.prototype = function(){
   *   UPDATE
   =============*/
   function update(){
-    this.setParallax();
-    this.collisions();
-    this.moveDinos();
-    this.movePtero();
-    this.moveHero();
-    this.debug();
+    setParallax();
+    collisions();
+    moveDinos();
+    movePtero();
+    moveHero();
+    debug();
     man.animations.play(man.state + '-' + man.direction());
     
     console.log("PHASER updated");
@@ -334,7 +316,10 @@ Play.prototype = function(){
   }
   
   function onProcess(){}
-}();
+  
+}
+
+
 
 function toggleVivibility(sprite){
   sprite.visible = !sprite.visible;
@@ -342,28 +327,3 @@ function toggleVivibility(sprite){
 
 module.exports = Play;
 
-var settings = {
-        dimensions: {
-          WIDTH: 546,
-          HEIGHT: 368, //372,
-          blocks: 3
-        }, 
-        physics: {
-          gravity: 500,
-          slippery: 1.1, 
-          bounce: 0.2,
-          parallax: 0.05,
-          accelerationMultiplier: 5
-        }, 
-        enemies: {
-          dino: 3,
-          ptero: 1
-        }
-      };
-
-      var game = new Phaser.Game(settings.dimensions.WIDTH, settings.dimensions.HEIGHT, Phaser.AUTO, '');
-      var PRE2 = { 
-        Play: Play
-      };
-      game.state.add('Play', PRE2.Play);
-      game.state.start('Play');
