@@ -13,7 +13,6 @@ function Play(game, settings){
   var dinos;
   var ptero;
   var keys; 
-  var platforms;
   var weapon = {
     sprite: null,
     animRight: null,
@@ -23,11 +22,14 @@ function Play(game, settings){
     up: null,
     hearts: []
   };
-  var tilemap;
-  var groundLayer, 
-    collisionLayer, 
-    objectsLayer;
-  
+  var level = {
+    background: null,
+    tilemap: null,
+    groundLayer: null,
+    collisionLayer: null,
+    objectsLayer: null
+  }
+
   // public methods for Phaser
   this.preload = preload;
   this.create = create;
@@ -54,8 +56,8 @@ function Play(game, settings){
     game.load.image('platform-2', './assets/platform-2.png');
     game.load.image('background', './assets/bg1seamless.png');
     
-    game.load.image('tiles', './assets/level-1-transparent.png');
-    game.load.tilemap('tilemap', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
+    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
   }
   
   function initWorld(){
@@ -63,15 +65,15 @@ function Play(game, settings){
     game.physics.startSystem(Phaser.Physics.ARCADE);
   }
   
-  function loadLevel(){
-    game.farBackground = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
-    tilemap = game.add.tilemap('tilemap');
-    tilemap.addTilesetImage('tileset1', 'tiles');
-    groundLayer = tilemap.createLayer('foreground-layer');
-    collisionLayer = tilemap.createLayer('collision-layer');
-    collisionLayer.visible = false;
-    tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
-    groundLayer.resizeWorld();
+  function loadLevel(levelModel, tileset, tilemap){
+    levelModel.background = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
+    levelModel.tilemap = game.add.tilemap(tilemap);
+    levelModel.tilemap.addTilesetImage('tileset1', tileset);
+    levelModel.groundLayer = levelModel.tilemap.createLayer('foreground-layer');
+    levelModel.collisionLayer = levelModel.tilemap.createLayer('collision-layer');
+    levelModel.collisionLayer.visible = false;
+    levelModel.tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
+    levelModel.groundLayer.resizeWorld();
   }
   function addHero(){
     man = new Creature('man', game, {
@@ -180,7 +182,7 @@ function Play(game, settings){
   =============*/
   function create(){
     initWorld();
-    loadLevel();
+    loadLevel(level, 'tileset-level-1', 'tilemap-level-1');
     addHero();
     addDinos();
     addPtero();
@@ -190,12 +192,12 @@ function Play(game, settings){
   }
   
   function setParallax(){
-    game.farBackground.x = -(game.camera.x * settings.physics.parallax);
+    level.background.x = -(game.camera.x * settings.physics.parallax);
   }
   
   function collisions(){
-    game.physics.arcade.collide(man, collisionLayer);
-    game.physics.arcade.collide(dinos, collisionLayer);
+    game.physics.arcade.collide(man, level.collisionLayer);
+    game.physics.arcade.collide(dinos, level.collisionLayer);
     //collisionLayer.debug = true;
     game.physics.arcade.collide(man, dinos, onEnemyCollision, onProcess, this);
     game.physics.arcade.collide(man, ptero, onEnemyCollision, onProcess, this);

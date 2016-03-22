@@ -1,7 +1,3 @@
-/* 
-  http://upkk670a72a1.pixelhijack.koding.io//index.html
-*/
-
 var Play = require('./play.js');
 
 var settings = {
