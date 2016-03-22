@@ -277,6 +277,12 @@
 	    }, false);
 	  }
 	  
+	  function onEvery(tickerInterval, callback){
+	    // 'callback' called on every 'tickerInterval' seconds
+	    var ticker = game.time.events.loop(Phaser.Timer.SECOND * tickerInterval, callback, this);
+	    ticker.timer.start();
+	  }
+	  
 	  /*=============
 	  *   CREATE
 	  =============*/
@@ -288,7 +294,11 @@
 	    addDinos();
 	    addPtero();
 	    setInputs();
-	    
+	    /* use a timer: 
+	    onEvery(1, function(){
+	      game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
+	    });
+	    */
 	    console.log("PHASER created");
 	  }
 	  
