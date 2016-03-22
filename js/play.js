@@ -214,11 +214,15 @@ function Play(game, settings){
     addDinos();
     addPtero();
     setInputs();
-    /* use a timer: 
-    onEvery(1, function(){
-      game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
+    
+    onEvery(10, function(){
+      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
+      var dinoToRevive = dinos.getFirstExists(false);
+      if(dinoToRevive){
+        dinoToRevive.reset(Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2);
+      }
     });
-    */
+    
     console.log("PHASER created");
   }
   

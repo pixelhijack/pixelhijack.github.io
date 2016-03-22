@@ -14,7 +14,7 @@ var settings = {
     accelerationMultiplier: 5
   }, 
   enemies: {
-    dino: 3,
+    dino: 5,
     ptero: 1
   }
 };
