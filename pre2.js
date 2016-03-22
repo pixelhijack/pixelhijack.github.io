@@ -57,7 +57,7 @@
 	    slippery: 1.1, 
 	    bounce: 0.2,
 	    parallax: 0.05,
-	    accelerationMultiplier: 5
+	    accelerationMultiplier: 3
 	  }, 
 	  enemies: {
 	    dino: 5,
