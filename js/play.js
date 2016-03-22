@@ -55,7 +55,7 @@ function Play(game, settings){
     game.load.image('background', './assets/bg1seamless.png');
     
     game.load.image('tiles', './assets/level-1-transparent.png');
-    game.load.tilemap('tilemap', './js/78x23.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('tilemap', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
   }
   
   function initWorld(){
