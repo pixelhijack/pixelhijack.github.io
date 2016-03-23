@@ -23,6 +23,7 @@ var levelManager = function(game, levelList){
     level.collisionLayer.visible = false;
     level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();
+    level.enemies = levelToLoad.enemies;
     
     return level;
   };

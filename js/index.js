@@ -12,10 +12,6 @@ var settings = {
     bounce: 0.2,
     parallax: 0.05,
     accelerationMultiplier: 3
-  }, 
-  enemies: {
-    dino: 5,
-    ptero: 1
   }
 };
 

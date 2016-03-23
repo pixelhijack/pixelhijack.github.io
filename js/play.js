@@ -139,7 +139,7 @@ function Play(game, settings){
   
   function addDinos(){
     dinos = game.add.group();
-    for(var i = 0, max = settings.enemies.dino;i<max;i++){
+    for(var i = 0, max = level.enemies.dino;i<max;i++){
       var dino = new Creature('dino', game, {
         image: 'dino',
         x: Math.random() * settings.dimensions.WIDTH, 

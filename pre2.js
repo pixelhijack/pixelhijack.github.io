@@ -58,10 +58,6 @@
 	    bounce: 0.2,
 	    parallax: 0.05,
 	    accelerationMultiplier: 3
-	  }, 
-	  enemies: {
-	    dino: 5,
-	    ptero: 1
 	  }
 	};
 
@@ -219,7 +215,7 @@
 	  
 	  function addDinos(){
 	    dinos = game.add.group();
-	    for(var i = 0, max = settings.enemies.dino;i<max;i++){
+	    for(var i = 0, max = level.enemies.dino;i<max;i++){
 	      var dino = new Creature('dino', game, {
 	        image: 'dino',
 	        x: Math.random() * settings.dimensions.WIDTH, 
@@ -615,6 +611,7 @@
 	    level.collisionLayer.visible = false;
 	    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
+	    level.enemies = levelToLoad.enemies;
 	    
 	    return level;
 	  };
