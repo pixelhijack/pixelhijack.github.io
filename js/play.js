@@ -124,13 +124,15 @@ function Play(game, settings){
   
   function renderMenu(){
     // UPs
-    menu.lives= game.add.sprite(20, 20, 'lives');
+    menu.lives = game.add.sprite(20, 20, 'lives');
+    menu.lives.fixedToCamera = true;
     menu.lives.frame = 0;
     // hearts
     var hearts = man.lives();
     menu.hearts = game.add.group();
     for(var i=0;i<hearts;i++){
       var heart = game.add.sprite(60 + i*20, 20, 'lives');
+      heart.fixedToCamera = true;
       heart.frame = 1;
       menu.hearts.add(heart);
     }

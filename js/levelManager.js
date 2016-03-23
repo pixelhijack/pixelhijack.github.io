@@ -16,6 +16,7 @@ var levelManager = function(game, levelList){
       throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
     }
     level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
+    level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
     level.tilemap = game.add.tilemap(levelToLoad.tilemap);
     level.tilemap.addTilesetImage(levelToLoad.tilesetImageName, levelToLoad.tileset);
     level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);

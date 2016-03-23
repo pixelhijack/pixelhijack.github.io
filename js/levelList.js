@@ -7,6 +7,7 @@ var levelList = [
     width: 78 * 16,
     height: 23 * 16,
     backgroundLayer: 'background-1',
+    fixedBackground: true, // this can be false also as seamless background, though it makes the game much slower :(
     groundLayer: 'foreground-layer',
     collisionLayer: 'collision-layer',
     objectsLayer: 'objects-layer', 
@@ -24,6 +25,7 @@ var levelList = [
     width: 49 * 16,
     height: 100 * 16,
     backgroundLayer: 'background-2',
+    fixedBackground: true,
     groundLayer: 'foreground-layer',
     collisionLayer: 'collision-layer',
     objectsLayer: null, 
