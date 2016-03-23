@@ -42,6 +42,8 @@ function Play(game, settings){
   }
   var levels = levelManager(game, levelList);
   var level;
+  
+  var events = { };
 
   // public methods for Phaser
   this.preload = preload;
@@ -210,6 +212,9 @@ function Play(game, settings){
     addPtero();
     setInputs();
     
+    events.somethingHappened = new Phaser.Signal();
+    events.somethingHappened.add(onSomethingHappened, this);
+    
     onEvery(10, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
       var dinoToRevive = dinos.getFirstExists(false);
@@ -219,6 +224,10 @@ function Play(game, settings){
     });
     
     console.log("PHASER created");
+  }
+  
+  function onSomethingHappened(evt, whereItHappn){
+    console.log('something just happened in Pre2 World!', whereItHappn);
   }
   
   function setParallax(){
@@ -299,6 +308,7 @@ function Play(game, settings){
     }
     else if(keys.down.isDown) {
         // man.duck();
+        events.somethingHappened.dispatch(this, man.x);
     }
     if(keys.space.isDown) {
       man.state = 'hitting';
