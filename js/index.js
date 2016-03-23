@@ -1,3 +1,4 @@
+var Menu = require('./menu.js');
 var Play = require('./play.js');
 
 var globalSettings = {

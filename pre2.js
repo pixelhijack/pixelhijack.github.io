@@ -44,6 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var Menu = __webpack_require__(6);
 	var Play = __webpack_require__(1);
 
 	var globalSettings = {
@@ -704,6 +705,28 @@
 	];
 
 	module.exports = levelList;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	function Menu(){
+	  
+	  /*
+	    press a key for a level: 1, 2, 3...
+	  */
+	  this.preload = function preload(){
+	    
+	  }
+	  this.create = function create(){
+	    
+	  }
+	  this.update = function update(){
+	    
+	  }
+	}
+
+	module.exports = Menu;
 
 /***/ }
 /******/ ]);
