@@ -1,4 +1,6 @@
 var Creature = require('./creature.js');
+var levelManager = require('./levelManager.js');
+var levelList = require('./levelList.js');
 
 
 // Play game state
@@ -38,13 +40,8 @@ function Play(game, settings){
     score: null,
     bonus: null
   }
-  var level = {
-    background: null,
-    tilemap: null,
-    groundLayer: null,
-    collisionLayer: null,
-    objectsLayer: null
-  };
+  var levels = levelManager(game, levelList);
+  var level;
 
   // public methods for Phaser
   this.preload = preload;
@@ -70,10 +67,13 @@ function Play(game, settings){
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     game.load.image('platform-1', './assets/99.png');
     game.load.image('platform-2', './assets/platform-2.png');
-    game.load.image('background', './assets/bg1seamless.png');
     
+    game.load.image('background-1', './assets/bg1seamless.png');
+    game.load.image('background-2', './assets/bg3seamless.jpg');
     game.load.image('tileset-level-1', './assets/level-1-transparent.png');
     game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
+    game.load.tilemap('tilemap-level-2', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
   }
   
   function initWorld(){
@@ -81,15 +81,9 @@ function Play(game, settings){
     game.physics.startSystem(Phaser.Physics.ARCADE);
   }
   
-  function loadLevel(levelModel, tileset, tilemap){
-    levelModel.background = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
-    levelModel.tilemap = game.add.tilemap(tilemap);
-    levelModel.tilemap.addTilesetImage('tileset1', tileset);
-    levelModel.groundLayer = levelModel.tilemap.createLayer('foreground-layer');
-    levelModel.collisionLayer = levelModel.tilemap.createLayer('collision-layer');
-    levelModel.collisionLayer.visible = false;
-    levelModel.tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
-    levelModel.groundLayer.resizeWorld();
+  function loadLevel(){
+    level = levels(1);
+    console.log('level set: ', level);
   }
   function addHero(){
     man = new Creature('man', game, {
@@ -208,7 +202,7 @@ function Play(game, settings){
   =============*/
   function create(){
     initWorld();
-    loadLevel(level, 'tileset-level-1', 'tilemap-level-1');
+    loadLevel();
     addHero();
     renderMenu();
     addDinos();
@@ -227,7 +221,7 @@ function Play(game, settings){
   }
   
   function setParallax(){
-    level.background.x = -(game.camera.x * settings.physics.parallax);
+    level.backgroundLayer.x = -(game.camera.x * settings.physics.parallax);
   }
   
   function collisions(){

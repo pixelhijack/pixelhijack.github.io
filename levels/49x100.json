@@ -36,7 +36,7 @@
         {
          "columns":20,
          "firstgid":1,
-         "image":"..\/..\/gfx\/pre2\/show\/tilesets\/tileset2.png",
+         "image":"tileset2.png",
          "imageheight":192,
          "imagewidth":320,
          "margin":0,

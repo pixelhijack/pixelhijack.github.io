@@ -79,6 +79,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Creature = __webpack_require__(2);
+	var levelManager = __webpack_require__(4);
+	var levelList = __webpack_require__(5);
 
 
 	// Play game state
@@ -118,13 +120,8 @@
 	    score: null,
 	    bonus: null
 	  }
-	  var level = {
-	    background: null,
-	    tilemap: null,
-	    groundLayer: null,
-	    collisionLayer: null,
-	    objectsLayer: null
-	  };
+	  var levels = levelManager(game, levelList);
+	  var level;
 
 	  // public methods for Phaser
 	  this.preload = preload;
@@ -150,10 +147,13 @@
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
 	    game.load.image('platform-1', './assets/99.png');
 	    game.load.image('platform-2', './assets/platform-2.png');
-	    game.load.image('background', './assets/bg1seamless.png');
 	    
+	    game.load.image('background-1', './assets/bg1seamless.png');
+	    game.load.image('background-2', './assets/bg3seamless.jpg');
 	    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
 	    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
+	    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
+	    game.load.tilemap('tilemap-level-2', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
 	  }
 	  
 	  function initWorld(){
@@ -161,15 +161,9 @@
 	    game.physics.startSystem(Phaser.Physics.ARCADE);
 	  }
 	  
-	  function loadLevel(levelModel, tileset, tilemap){
-	    levelModel.background = game.add.tileSprite(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT, 'background');
-	    levelModel.tilemap = game.add.tilemap(tilemap);
-	    levelModel.tilemap.addTilesetImage('tileset1', tileset);
-	    levelModel.groundLayer = levelModel.tilemap.createLayer('foreground-layer');
-	    levelModel.collisionLayer = levelModel.tilemap.createLayer('collision-layer');
-	    levelModel.collisionLayer.visible = false;
-	    levelModel.tilemap.setCollisionBetween(1, 200, true, 'collision-layer');
-	    levelModel.groundLayer.resizeWorld();
+	  function loadLevel(){
+	    level = levels(1);
+	    console.log('level set: ', level);
 	  }
 	  function addHero(){
 	    man = new Creature('man', game, {
@@ -288,7 +282,7 @@
 	  =============*/
 	  function create(){
 	    initWorld();
-	    loadLevel(level, 'tileset-level-1', 'tilemap-level-1');
+	    loadLevel();
 	    addHero();
 	    renderMenu();
 	    addDinos();
@@ -307,7 +301,7 @@
 	  }
 	  
 	  function setParallax(){
-	    level.background.x = -(game.camera.x * settings.physics.parallax);
+	    level.backgroundLayer.x = -(game.camera.x * settings.physics.parallax);
 	  }
 	  
 	  function collisions(){
@@ -591,6 +585,109 @@
 	module.exports = behaviours;
 
 
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	var levelManager = function(game, levelList){
+	  
+	  var level = {
+	    tilemap: null,
+	    backgroundLayer: null,
+	    groundLayer: null,
+	    collisionLayer: null,
+	    objectsLayer: null
+	  };
+	  
+	  return function setLevel(id){
+	    var levelToLoad = levelList.find(function(level){
+	      return level.id === id;
+	    });
+	    if(!levelToLoad){
+	      throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
+	    }
+	    level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
+	    level.tilemap = game.add.tilemap(levelToLoad.tilemap);
+	    level.tilemap.addTilesetImage(levelToLoad.tilesetImageName, levelToLoad.tileset);
+	    level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
+	    level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
+	    level.collisionLayer.visible = false;
+	    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
+	    level.groundLayer.resizeWorld();
+	    
+	    return level;
+	  };
+	}
+
+	// find polyfill...
+	if (!Array.prototype.find) {
+	  Array.prototype.find = function(predicate) {
+	    if (this === null) {
+	      throw new TypeError('Array.prototype.find called on null or undefined');
+	    }
+	    if (typeof predicate !== 'function') {
+	      throw new TypeError('predicate must be a function');
+	    }
+	    var list = Object(this);
+	    var length = list.length >>> 0;
+	    var thisArg = arguments[1];
+	    var value;
+
+	    for (var i = 0; i < length; i++) {
+	      value = list[i];
+	      if (predicate.call(thisArg, value, i, list)) {
+	        return value;
+	      }
+	    }
+	    return undefined;
+	  };
+	}
+
+	module.exports = levelManager;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	var levelList = [
+	  {
+	    id: 1,
+	    tileset: 'tileset-level-1',
+	    tilemap: 'tilemap-level-1',
+	    tilesetImageName: 'tileset1',
+	    width: 78 * 16,
+	    height: 23 * 16,
+	    backgroundLayer: 'background-1',
+	    groundLayer: 'foreground-layer',
+	    collisionLayer: 'collision-layer',
+	    objectsLayer: 'objects-layer', 
+	    enemies: {
+	      dino: 5,
+	      ptero: 2,
+	      bear: 0
+	    }
+	  },
+	  {
+	    id: 2,
+	    tileset: 'tileset-level-2',
+	    tilemap: 'tilemap-level-2',
+	    tilesetImageName: 'tileset2',
+	    width: 49 * 16,
+	    height: 100 * 16,
+	    backgroundLayer: 'background-2',
+	    groundLayer: 'foreground-layer',
+	    collisionLayer: 'collision-layer',
+	    objectsLayer: null, 
+	    enemies: {
+	      dino: 5,
+	      ptero: 2,
+	      bear: 0
+	    }
+	  }
+	];
+
+	module.exports = levelList;
 
 /***/ }
 /******/ ]);
