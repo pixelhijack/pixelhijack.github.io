@@ -418,6 +418,9 @@
 	  
 	  function onEnemyCollision(hero, enemy){
 	    if(man.body.touching.down && enemy.body.touching.up){
+	      if(man.state === 'hitting'){
+	        enemy.kill();
+	      }
 	      return;
 	    }
 	    if(man.state === 'hitting'){
