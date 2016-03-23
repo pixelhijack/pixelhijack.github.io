@@ -1,6 +1,7 @@
 var Play = require('./play.js');
 
 var settings = {
+  level: window.location.hash && window.location.hash.split('#')[1] || 1,
   dimensions: {
     WIDTH: 546,
     HEIGHT: 368, //372,

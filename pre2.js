@@ -47,6 +47,7 @@
 	var Play = __webpack_require__(1);
 
 	var settings = {
+	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
 	  dimensions: {
 	    WIDTH: 546,
 	    HEIGHT: 368, //372,
@@ -158,8 +159,7 @@
 	  }
 	  
 	  function loadLevel(){
-	    level = levels(1);
-	    console.log('level set: ', level);
+	    level = levels(settings.level);
 	  }
 	  function addHero(){
 	    man = new Creature('man', game, {
@@ -598,7 +598,7 @@
 	  
 	  return function setLevel(id){
 	    var levelToLoad = levelList.find(function(level){
-	      return level.id === id;
+	      return level.id === +id;
 	    });
 	    if(!levelToLoad){
 	      throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');

@@ -82,8 +82,7 @@ function Play(game, settings){
   }
   
   function loadLevel(){
-    level = levels(1);
-    console.log('level set: ', level);
+    level = levels(settings.level);
   }
   function addHero(){
     man = new Creature('man', game, {

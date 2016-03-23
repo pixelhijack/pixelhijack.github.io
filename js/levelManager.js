@@ -10,7 +10,7 @@ var levelManager = function(game, levelList){
   
   return function setLevel(id){
     var levelToLoad = levelList.find(function(level){
-      return level.id === id;
+      return level.id === +id;
     });
     if(!levelToLoad){
       throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
