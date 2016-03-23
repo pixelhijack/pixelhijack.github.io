@@ -311,6 +311,7 @@ function Play(game, settings){
     game.debug.text('LIVES: ' + man.lives(), 32, 96);
     game.debug.pointer(game.input.pointer1);
     game.debug.body(weapon.sprite);
+    game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
   }
   
   /*=============
@@ -322,7 +323,7 @@ function Play(game, settings){
     moveDinos();
     movePtero();
     moveHero();
-    debug();
+    //debug();
     man.animations.play(man.state + '-' + man.direction());
     
     console.log("PHASER updated");
