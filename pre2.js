@@ -310,6 +310,7 @@
 	  /*=============
 	  *   CREATE
 	  =============*/
+	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function create(){
 	    initWorld();
 	    loadLevel();
@@ -396,11 +397,11 @@
 	    }
 	    if(keys.left.isDown) {
 	      man.moveLeft();
-	      man.isGrounded() ? man.state = 'moving' : man.state = 'jumping';
+	      man.state = man.isGrounded() ? 'moving' : 'jumping';
 	    }
 	    else if(keys.right.isDown) {
 	      man.moveRight();
-	      man.isGrounded() ? man.state = 'moving' : man.state = 'jumping';
+	      man.state = man.isGrounded() ? 'moving' : 'jumping';
 	    }
 	    else{
 	      // slowing down / slippery rate: 10% after stopped moving
@@ -419,6 +420,7 @@
 	    }
 	    if(keys.space.isDown) {
 	      man.state = 'hitting';
+	      man.stop(settings.physics.slippery);
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
 	    }
@@ -434,6 +436,7 @@
 	  /*=============
 	  *   UPDATE
 	  =============*/
+	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function update(){
 	    setParallax();
 	    collisions();
