@@ -65,9 +65,6 @@ function Play(game, settings){
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
     
-    console.log("PHASER preloaded");
-    
-    game.load.image('stand', './assets/man-standing.png');
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
     game.load.spritesheet('dino', './assets/dino.png', 42, 36);
     game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
@@ -82,6 +79,8 @@ function Play(game, settings){
     game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
     game.load.tilemap('tilemap-level-2', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
+  
+    console.log("PHASER preloaded");
   }
   
   function initWorld(){
@@ -94,10 +93,7 @@ function Play(game, settings){
     enemies = enemyManager(game, level.enemies);
   }
   function addHero(){
-    man = new Creature('man', game, {
-      x: 200, 
-      y: 50
-    });
+    man = new Creature(game, 'man', 200, 50);
     
     man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
     man.animations.add('moving-right', [6,7,8,9,10,11], 10, false);
@@ -141,10 +137,7 @@ function Play(game, settings){
   function addDinos(){
     dinos = game.add.group();
     for(var i = 0, max = level.enemies.dino;i<max;i++){
-      var dino = new Creature('dino', game, {
-        x: Math.random() * settings.dimensions.WIDTH, 
-        y: settings.dimensions.HEIGHT / 2
-      }); 
+      var dino = new Creature(game, 'dino', Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2); 
       dino.animations.add('moving-right', [0,1,2,3], 10, true);
       dino.animations.add('moving-left', [8,9,10,11], 10, true);
       dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
@@ -155,10 +148,7 @@ function Play(game, settings){
   }
   
   function addPtero(){
-    ptero = new Creature('ptero', game, {
-      x: 0, 
-      y: 100,
-    });
+    ptero = new Creature(game, 'ptero', 0, 100);
     
     ptero.animations.add('fly', [3,4,5], 10, true);
     
