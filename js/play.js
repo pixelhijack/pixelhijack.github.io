@@ -1,5 +1,6 @@
 var Creature = require('./creature.js');
 var levelManager = require('./levelManager.js');
+var enemyManager = require('./enemyManager.js');
 var levelList = require('./levelList.js');
 
 
@@ -22,9 +23,12 @@ function Play(game, settings){
   */ 
   
   var man;
+  
   var dinos;
   var ptero;
+  
   var keys; 
+  
   var weapon = {
     sprite: null,
     animRight: null,
@@ -42,6 +46,8 @@ function Play(game, settings){
   }
   var levels = levelManager(game, levelList);
   var level;
+  
+  var enemies;
   
   var events = { };
 
@@ -85,6 +91,7 @@ function Play(game, settings){
   
   function loadLevel(){
     level = levels(settings.level);
+    enemies = enemyManager(game, level.enemies);
   }
   function addHero(){
     man = new Creature('man', game, {
