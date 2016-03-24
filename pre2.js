@@ -124,9 +124,6 @@
 	  
 	  var man;
 	  
-	  var dinos;
-	  var ptero;
-	  
 	  var keys; 
 	  
 	  var weapon = {
@@ -190,21 +187,18 @@
 	  
 	  function loadLevel(){
 	    level = levels(settings.level);
-	    enemies = enemyManager(game, level.enemies);
 	  }
+	  
+	  function loadEnemies(){
+	    enemies = enemyManager(game, level.enemies);
+	    enemies.initLevelEnemies();
+	    enemies.of.dino.forEachAlive(function(dino){ 
+	      dino.moveRight();
+	    });
+	  }
+	  
 	  function addHero(){
 	    man = new Creature(game, 'man', 200, 50);
-	    
-	    man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
-	    man.animations.add('moving-right', [6,7,8,9,10,11], 10, false);
-	    man.animations.add('hitting-right', [12,13,14,15,16], 10, false);
-	    man.animations.add('hitting-left', [18,19,20,21,22], 10, false);
-	    man.animations.add('stopping-right', [24,25,26,27], 10, false);
-	    man.animations.add('stopping-left', [30,31,32,33], 10, false);
-	    man.animations.add('jumping-right', [36,37,38,39], 10, false);
-	    man.animations.add('jumping-left', [42,43,44,45], 10, false);
-	    man.animations.add('idle-right', [48,49,50,51], 10, false);
-	    man.animations.add('idle-left', [54,55,56,57], 10, false);
 	    
 	    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
 	    weapon.sprite.anchor.setTo(0.5, 0.5);
@@ -232,28 +226,6 @@
 	      heart.frame = 1;
 	      menu.hearts.add(heart);
 	    }
-	  }
-	  
-	  function addDinos(){
-	    dinos = game.add.group();
-	    for(var i = 0, max = level.enemies.dino;i<max;i++){
-	      var dino = new Creature(game, 'dino', Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2); 
-	      dino.animations.add('moving-right', [0,1,2,3], 10, true);
-	      dino.animations.add('moving-left', [8,9,10,11], 10, true);
-	      dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
-	      dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
-	      dino.moveRight();
-	      dinos.add(dino);
-	    }
-	  }
-	  
-	  function addPtero(){
-	    ptero = new Creature(game, 'ptero', 0, 100);
-	    
-	    ptero.animations.add('fly', [3,4,5], 10, true);
-	    
-	    game.add.existing(ptero);
-	  
 	  }
 	  
 	  function setInputs(){
@@ -284,10 +256,9 @@
 	  function create(){
 	    initWorld();
 	    loadLevel();
+	    loadEnemies();
 	    addHero();
 	    renderMenu();
-	    addDinos();
-	    addPtero();
 	    setInputs();
 	    
 	    events.somethingHappened = new Phaser.Signal();
@@ -295,7 +266,7 @@
 	    
 	    onEvery(10, function(){
 	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-	      var dinoToRevive = dinos.getFirstExists(false);
+	      var dinoToRevive = enemies.of.dino.getFirstExists(false) || enemies.of.ptero.getFirstExists(false);
 	      if(dinoToRevive){
 	        dinoToRevive.reset(Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2);
 	      }
@@ -314,13 +285,13 @@
 	  
 	  function collisions(){
 	    game.physics.arcade.collide(man, level.collisionLayer);
-	    game.physics.arcade.collide(dinos, level.collisionLayer);
+	    game.physics.arcade.collide(enemies.of.dino, level.collisionLayer);
 	    //collisionLayer.debug = true;
-	    game.physics.arcade.collide(man, dinos, onEnemyCollision, onProcess, this);
-	    game.physics.arcade.collide(man, ptero, onEnemyCollision, onProcess, this);
+	    game.physics.arcade.collide(man, enemies.of.dino, onEnemyCollision, onProcess, this);
+	    game.physics.arcade.collide(man, enemies.of.ptero, onEnemyCollision, onProcess, this);
 	    
 	    // hit'n kill enemy: collision should calculated on weapon sprite
-	    game.physics.arcade.collide(weapon.sprite, dinos, function(weaponSprite, enemy){
+	    game.physics.arcade.collide(weapon.sprite, enemies.of.dino, function(weaponSprite, enemy){
 	      if(man.state === 'hitting'){
 	        enemy.kill();
 	      }
@@ -328,7 +299,7 @@
 	  }
 	  
 	  function moveDinos(){
-	    dinos.forEachAlive(function(dino){
+	    enemies.of.dino.forEachAlive(function(dino){
 	      dino.move();
 	      dino.x <= 0 ? dino.x = game.world.width : dino.x;
 	      if(Math.random() < 0.05){ 
@@ -346,10 +317,12 @@
 	    });
 	  }
 	  
-	  function movePtero(){
-	    ptero.x -= 1;
-	    ptero.animations.play('fly');
-	    ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
+	  function movePteros(){
+	    enemies.of.ptero.forEachAlive(function(ptero){
+	      ptero.x -= 1;
+	      ptero.animations.play('fly');
+	      ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
+	    });
 	  }
 	  
 	  function moveHero(){
@@ -411,7 +384,7 @@
 	    setParallax();
 	    collisions();
 	    moveDinos();
-	    movePtero();
+	    movePteros();
 	    moveHero();
 	    //debug();
 	    man.animations.play(man.state + '-' + man.direction());
@@ -470,6 +443,10 @@
 	  
 	  this.facingRight = true;
 	  
+	  configs[creatureType].animations.forEach(function(anim){
+	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
+	  }.bind(this));
+	  
 	  // https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
 	  behaviours[creatureType].call(Creature.prototype);
 	};
@@ -512,38 +489,64 @@
 	    jumping: 300,
 	    maxSpeed: 200,
 	    acceleration: 10, 
-	    lives: 1
+	    lives: 1, 
+	    animations: []
 	  },
 	  man: {
 	    maxSpeed: 200,
-	    lives: 3
+	    lives: 3, 
+	    animations: [
+	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
+	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
+	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
+	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
+	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
+	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
+	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
+	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
+	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
+	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
+	    ]
 	  },
 	  dino: {
 	    jumping: 400,
 	    maxSpeed: 300,
-	    acceleration: 20
+	    acceleration: 20, 
+	    animations: [
+	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
+	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
+	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
+	    ]
 	  },
 	  bear: {
-	    acceleration: 15 
+	    acceleration: 15, 
+	    animations: [] 
 	  },
 	  'super-bear': {
 	    acceleration: 30,
 	    maxSpeed: 400,
-	    image: 'super-bear-sprite-ref' // override sprite (creature name by default)
+	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
+	    animations: []
 	  },
 	  ptero: {
 	    gravity: 0,
 	    bounce: 0.1,
 	    jumping: 0,
 	    maxSpeed: 100,
-	    acceleration: 50
+	    acceleration: 50, 
+	    animations: [
+	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
+	    ]
 	  }, 
 	  gorilla: {
 	    // grim level bosses with lots of lifes!!
-	    lives: 10
+	    lives: 10, 
+	    animations: []
 	  },
 	  lollipop: {
-	    // objects also...?
+	    // objects also...? 
+	    animations: []
 	  }
 	};
 
@@ -15839,7 +15842,9 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+	var Creature = __webpack_require__(3);
 
 	/*  
 	    ENEMIES API: 
@@ -15862,7 +15867,7 @@
 	      for(var enemy in of){
 	        for(var i = 0, max = levelEnemies[enemy];i<max;i++){
 	          // of.dino.add(new Creature('dino', game, 126, 45)) =>
-	          //of[enemy].add(new Creature(enemy, game, Math.random() * game.width, game.height / 2));      
+	          of[enemy].add(new Creature(game, enemy, Math.random() * game.width, game.height / 2));
 	        }
 	      }    
 	    },
@@ -15870,27 +15875,6 @@
 	    population: function(){ }
 	  };
 	};
-
-	function Dino(game, x, y){
-	  var dino = new Creature('dino', game, {
-	    image: 'dino',
-	    x: x, 
-	    y: y, 
-	    gravity: 500,
-	    bounce: 0.2,
-	    props: {
-	      jumping: 400,
-	      maxSpeed: 300,
-	      acceleration: 20
-	    }
-	  }); 
-	  dino.animations.add('moving-right', [0,1,2,3], 10, true);
-	  dino.animations.add('moving-left', [8,9,10,11], 10, true);
-	  dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
-	  dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
-	  
-	  return dino;
-	}
 
 	module.exports = enemyManager;
 

@@ -12,6 +12,10 @@ var Creature = function(game, creatureType, x, y){
   
   this.facingRight = true;
   
+  configs[creatureType].animations.forEach(function(anim){
+    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
+  }.bind(this));
+  
   // https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
   behaviours[creatureType].call(Creature.prototype);
 };

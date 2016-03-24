@@ -24,9 +24,6 @@ function Play(game, settings){
   
   var man;
   
-  var dinos;
-  var ptero;
-  
   var keys; 
   
   var weapon = {
@@ -90,21 +87,18 @@ function Play(game, settings){
   
   function loadLevel(){
     level = levels(settings.level);
-    enemies = enemyManager(game, level.enemies);
   }
+  
+  function loadEnemies(){
+    enemies = enemyManager(game, level.enemies);
+    enemies.initLevelEnemies();
+    enemies.of.dino.forEachAlive(function(dino){ 
+      dino.moveRight();
+    });
+  }
+  
   function addHero(){
     man = new Creature(game, 'man', 200, 50);
-    
-    man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
-    man.animations.add('moving-right', [6,7,8,9,10,11], 10, false);
-    man.animations.add('hitting-right', [12,13,14,15,16], 10, false);
-    man.animations.add('hitting-left', [18,19,20,21,22], 10, false);
-    man.animations.add('stopping-right', [24,25,26,27], 10, false);
-    man.animations.add('stopping-left', [30,31,32,33], 10, false);
-    man.animations.add('jumping-right', [36,37,38,39], 10, false);
-    man.animations.add('jumping-left', [42,43,44,45], 10, false);
-    man.animations.add('idle-right', [48,49,50,51], 10, false);
-    man.animations.add('idle-left', [54,55,56,57], 10, false);
     
     weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
     weapon.sprite.anchor.setTo(0.5, 0.5);
@@ -132,28 +126,6 @@ function Play(game, settings){
       heart.frame = 1;
       menu.hearts.add(heart);
     }
-  }
-  
-  function addDinos(){
-    dinos = game.add.group();
-    for(var i = 0, max = level.enemies.dino;i<max;i++){
-      var dino = new Creature(game, 'dino', Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2); 
-      dino.animations.add('moving-right', [0,1,2,3], 10, true);
-      dino.animations.add('moving-left', [8,9,10,11], 10, true);
-      dino.animations.add('jumping-right', [0,1,2,3,4], 10, true);
-      dino.animations.add('jumping-left', [7,8,9,10,11], 10, true);
-      dino.moveRight();
-      dinos.add(dino);
-    }
-  }
-  
-  function addPtero(){
-    ptero = new Creature(game, 'ptero', 0, 100);
-    
-    ptero.animations.add('fly', [3,4,5], 10, true);
-    
-    game.add.existing(ptero);
-  
   }
   
   function setInputs(){
@@ -184,10 +156,9 @@ function Play(game, settings){
   function create(){
     initWorld();
     loadLevel();
+    loadEnemies();
     addHero();
     renderMenu();
-    addDinos();
-    addPtero();
     setInputs();
     
     events.somethingHappened = new Phaser.Signal();
@@ -195,7 +166,7 @@ function Play(game, settings){
     
     onEvery(10, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      var dinoToRevive = dinos.getFirstExists(false);
+      var dinoToRevive = enemies.of.dino.getFirstExists(false) || enemies.of.ptero.getFirstExists(false);
       if(dinoToRevive){
         dinoToRevive.reset(Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2);
       }
@@ -214,13 +185,13 @@ function Play(game, settings){
   
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
-    game.physics.arcade.collide(dinos, level.collisionLayer);
+    game.physics.arcade.collide(enemies.of.dino, level.collisionLayer);
     //collisionLayer.debug = true;
-    game.physics.arcade.collide(man, dinos, onEnemyCollision, onProcess, this);
-    game.physics.arcade.collide(man, ptero, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(man, enemies.of.dino, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(man, enemies.of.ptero, onEnemyCollision, onProcess, this);
     
     // hit'n kill enemy: collision should calculated on weapon sprite
-    game.physics.arcade.collide(weapon.sprite, dinos, function(weaponSprite, enemy){
+    game.physics.arcade.collide(weapon.sprite, enemies.of.dino, function(weaponSprite, enemy){
       if(man.state === 'hitting'){
         enemy.kill();
       }
@@ -228,7 +199,7 @@ function Play(game, settings){
   }
   
   function moveDinos(){
-    dinos.forEachAlive(function(dino){
+    enemies.of.dino.forEachAlive(function(dino){
       dino.move();
       dino.x <= 0 ? dino.x = game.world.width : dino.x;
       if(Math.random() < 0.05){ 
@@ -246,10 +217,12 @@ function Play(game, settings){
     });
   }
   
-  function movePtero(){
-    ptero.x -= 1;
-    ptero.animations.play('fly');
-    ptero.x <= 0 ? ptero.x = game.world.width : ptero.x;
+  function movePteros(){
+    enemies.of.ptero.forEachAlive(function(ptero){
+      ptero.x -= 1;
+      ptero.animations.play('fly');
+      ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
+    });
   }
   
   function moveHero(){
@@ -311,7 +284,7 @@ function Play(game, settings){
     setParallax();
     collisions();
     moveDinos();
-    movePtero();
+    movePteros();
     moveHero();
     //debug();
     man.animations.play(man.state + '-' + man.direction());
