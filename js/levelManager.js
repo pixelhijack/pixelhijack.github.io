@@ -5,7 +5,7 @@ var levelManager = function(game, levelList){
     backgroundLayer: null,
     groundLayer: null,
     collisionLayer: null,
-    objectsLayer: null
+    objects: {}
   };
   
   return function setLevel(id){
@@ -25,6 +25,29 @@ var levelManager = function(game, levelList){
     level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();
     level.enemies = levelToLoad.enemies;
+    
+    //  parse level json provided objects if given
+    if(levelToLoad.objectsLayer){
+      
+      level.objects.all = level.tilemap.objects[levelToLoad.objectsLayer];
+      // restrucuture as group by object type:
+      var objTypes = level.tilemap.objects[levelToLoad.objectsLayer]
+        .map(function(obj){
+          return obj.type || '';
+        })
+        .reduce(function(types, type){
+          if(types.indexOf(type) < 0){
+            types.push(type);
+          }
+          return types;
+        }, [])
+        .forEach(function(type){
+          level.objects[type] = level.tilemap.objects[levelToLoad.objectsLayer]
+            .filter(function(obj){
+              return obj.type === type;
+            });
+        });
+    }
     
     return level;
   };

@@ -335,7 +335,7 @@ function Play(game, settings){
     moveHero();
     //debug();
     man.animations.play(man.state + '-' + man.direction());
-    
+
     console.log("PHASER updated");
   }
   

@@ -44,8 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Menu = __webpack_require__(6);
-	var Play = __webpack_require__(1);
+	var Menu = __webpack_require__(1);
+	var Play = __webpack_require__(2);
 
 	var globalSettings = {
 	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
@@ -74,11 +74,33 @@
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	function Menu(){
+	  
+	  /*
+	    press a key for a level: 1, 2, 3...
+	  */
+	  this.preload = function preload(){
+	    
+	  }
+	  this.create = function create(){
+	    
+	  }
+	  this.update = function update(){
+	    
+	  }
+	}
+
+	module.exports = Menu;
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(2);
-	var levelManager = __webpack_require__(4);
-	var levelList = __webpack_require__(5);
+	var Creature = __webpack_require__(3);
+	var levelManager = __webpack_require__(5);
+	var levelList = __webpack_require__(6);
 
 
 	// Play game state
@@ -413,7 +435,7 @@
 	    moveHero();
 	    //debug();
 	    man.animations.play(man.state + '-' + man.direction());
-	    
+
 	    console.log("PHASER updated");
 	  }
 	  
@@ -451,10 +473,10 @@
 
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var behaviours = __webpack_require__(3);
+	var behaviours = __webpack_require__(4);
 
 	var Creature = function(creatureType, game, config){
 	  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
@@ -497,7 +519,7 @@
 	  
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	var mixins = {
@@ -600,7 +622,7 @@
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	var levelManager = function(game, levelList){
@@ -610,7 +632,7 @@
 	    backgroundLayer: null,
 	    groundLayer: null,
 	    collisionLayer: null,
-	    objectsLayer: null
+	    objects: {}
 	  };
 	  
 	  return function setLevel(id){
@@ -630,6 +652,29 @@
 	    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
+	    
+	    //  parse level json provided objects if given
+	    if(levelToLoad.objectsLayer){
+	      
+	      level.objects.all = level.tilemap.objects[levelToLoad.objectsLayer];
+	      // restrucuture as group by object type:
+	      var objTypes = level.tilemap.objects[levelToLoad.objectsLayer]
+	        .map(function(obj){
+	          return obj.type || '';
+	        })
+	        .reduce(function(types, type){
+	          if(types.indexOf(type) < 0){
+	            types.push(type);
+	          }
+	          return types;
+	        }, [])
+	        .forEach(function(type){
+	          level.objects[type] = level.tilemap.objects[levelToLoad.objectsLayer]
+	            .filter(function(obj){
+	              return obj.type === type;
+	            });
+	        });
+	    }
 	    
 	    return level;
 	  };
@@ -662,7 +707,7 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	var levelList = [
@@ -705,28 +750,6 @@
 	];
 
 	module.exports = levelList;
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	function Menu(){
-	  
-	  /*
-	    press a key for a level: 1, 2, 3...
-	  */
-	  this.preload = function preload(){
-	    
-	  }
-	  this.create = function create(){
-	    
-	  }
-	  this.update = function update(){
-	    
-	  }
-	}
-
-	module.exports = Menu;
 
 /***/ }
 /******/ ]);
