@@ -1,12 +1,13 @@
+var configs = require('./configs.js');
 var behaviours = require('./behaviours.js');
 
-var Creature = function(creatureType, game, config){
-  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
+var Creature = function(creatureType, game, opts){
+  Phaser.Sprite.call(this, game, opts.x, opts.y, (opts.image || creatureType));
   game.physics.enable(this, Phaser.Physics.ARCADE);
-  this.props = config.props;
-  this._state = config.state || '';
+  this.props = configs[creatureType] || configs['creatureDefaults'];
+  this._state = opts.state || '';
   this.body.collideWorldBounds = true;
-  this.body.gravity.y = config.gravity;
+  this.body.gravity.y = this.props.gravity;
   this.anchor.setTo(0.5, 0.5);
   
   this.facingRight = true;

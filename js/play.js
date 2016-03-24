@@ -70,7 +70,7 @@ function Play(game, settings){
     game.load.image('stand', './assets/man-standing.png');
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
     game.load.spritesheet('dino', './assets/dino.png', 42, 36);
-    game.load.spritesheet('pterodactylus', './assets/pterodactylus.png', 62, 50);
+    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
     game.load.spritesheet('man', './assets/man.png', 32, 36);
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     game.load.image('platform-1', './assets/99.png');
@@ -95,17 +95,8 @@ function Play(game, settings){
   }
   function addHero(){
     man = new Creature('man', game, {
-      image: 'man',
       x: 200, 
-      y: 50, 
-      gravity: settings.physics.gravity,
-      bounce: settings.physics.bounce,
-      props: {
-        jumping: 300,
-        maxSpeed: 200,
-        acceleration: 10,
-        lives: 3
-      }
+      y: 50
     });
     
     man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
@@ -151,16 +142,8 @@ function Play(game, settings){
     dinos = game.add.group();
     for(var i = 0, max = level.enemies.dino;i<max;i++){
       var dino = new Creature('dino', game, {
-        image: 'dino',
         x: Math.random() * settings.dimensions.WIDTH, 
-        y: settings.dimensions.HEIGHT / 2, 
-        gravity: settings.physics.gravity,
-        bounce: settings.physics.bounce,
-        props: {
-          jumping: 400,
-          maxSpeed: 300,
-          acceleration: 20
-        }
+        y: settings.dimensions.HEIGHT / 2
       }); 
       dino.animations.add('moving-right', [0,1,2,3], 10, true);
       dino.animations.add('moving-left', [8,9,10,11], 10, true);
@@ -173,11 +156,8 @@ function Play(game, settings){
   
   function addPtero(){
     ptero = new Creature('ptero', game, {
-      image: 'pterodactylus',
       x: 0, 
-      y: 100, 
-      gravity: 0,
-      bounce: 0
+      y: 100,
     });
     
     ptero.animations.add('fly', [3,4,5], 10, true);

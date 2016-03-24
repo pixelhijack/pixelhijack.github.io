@@ -170,7 +170,7 @@
 	    game.load.image('stand', './assets/man-standing.png');
 	    game.load.spritesheet('lives', './assets/lives.png', 38, 24);
 	    game.load.spritesheet('dino', './assets/dino.png', 42, 36);
-	    game.load.spritesheet('pterodactylus', './assets/pterodactylus.png', 62, 50);
+	    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
 	    game.load.spritesheet('man', './assets/man.png', 32, 36);
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
 	    game.load.image('platform-1', './assets/99.png');
@@ -195,17 +195,8 @@
 	  }
 	  function addHero(){
 	    man = new Creature('man', game, {
-	      image: 'man',
 	      x: 200, 
-	      y: 50, 
-	      gravity: settings.physics.gravity,
-	      bounce: settings.physics.bounce,
-	      props: {
-	        jumping: 300,
-	        maxSpeed: 200,
-	        acceleration: 10,
-	        lives: 3
-	      }
+	      y: 50
 	    });
 	    
 	    man.animations.add('moving-left', [0,1,2,3,4,5], 10, false);
@@ -251,16 +242,8 @@
 	    dinos = game.add.group();
 	    for(var i = 0, max = level.enemies.dino;i<max;i++){
 	      var dino = new Creature('dino', game, {
-	        image: 'dino',
 	        x: Math.random() * settings.dimensions.WIDTH, 
-	        y: settings.dimensions.HEIGHT / 2, 
-	        gravity: settings.physics.gravity,
-	        bounce: settings.physics.bounce,
-	        props: {
-	          jumping: 400,
-	          maxSpeed: 300,
-	          acceleration: 20
-	        }
+	        y: settings.dimensions.HEIGHT / 2
 	      }); 
 	      dino.animations.add('moving-right', [0,1,2,3], 10, true);
 	      dino.animations.add('moving-left', [8,9,10,11], 10, true);
@@ -273,11 +256,8 @@
 	  
 	  function addPtero(){
 	    ptero = new Creature('ptero', game, {
-	      image: 'pterodactylus',
 	      x: 0, 
-	      y: 100, 
-	      gravity: 0,
-	      bounce: 0
+	      y: 100,
 	    });
 	    
 	    ptero.animations.add('fly', [3,4,5], 10, true);
@@ -486,15 +466,16 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var configs = __webpack_require__(8);
 	var behaviours = __webpack_require__(4);
 
-	var Creature = function(creatureType, game, config){
-	  Phaser.Sprite.call(this, game, config.x, config.y, config.image);
+	var Creature = function(creatureType, game, opts){
+	  Phaser.Sprite.call(this, game, opts.x, opts.y, (opts.image || creatureType));
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
-	  this.props = config.props;
-	  this._state = config.state || '';
+	  this.props = configs[creatureType] || configs['creatureDefaults'];
+	  this._state = opts.state || '';
 	  this.body.collideWorldBounds = true;
-	  this.body.gravity.y = config.gravity;
+	  this.body.gravity.y = this.props.gravity;
 	  this.anchor.setTo(0.5, 0.5);
 	  
 	  this.facingRight = true;
@@ -817,6 +798,61 @@
 	}
 
 	module.exports = enemyManager;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	var configs = {
+	  creatureDefaults: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 300,
+	    maxSpeed: 300,
+	    acceleration: 10, 
+	    lives: 1
+	  },
+	  man: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 300,
+	    maxSpeed: 200,
+	    acceleration: 10,
+	    lives: 3
+	  },
+	  dino: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 400,
+	    maxSpeed: 300,
+	    acceleration: 20, 
+	    lives: 1
+	  },
+	  bear: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 300,
+	    maxSpeed: 200,
+	    acceleration: 10, 
+	    lives: 1
+	  },
+	  ptero: {
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    maxSpeed: 100,
+	    acceleration: 50, 
+	    lives: 1
+	  }, 
+	  gorilla: {
+	    // grim level bosses with lots of lifes!!
+	  },
+	  lollipop: {
+	    // objects also...?
+	  }
+	};
+
+	module.exports = configs;
 
 /***/ }
 /******/ ]);
