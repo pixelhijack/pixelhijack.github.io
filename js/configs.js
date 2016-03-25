@@ -8,11 +8,13 @@ var configs = {
     maxSpeed: 200,
     acceleration: 10, 
     lives: 1, 
+    lifespan: 10000,
     animations: []
   },
   man: {
     maxSpeed: 200,
     lives: 3, 
+    lifespan: Infinity,
     animations: [
       { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
       { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 

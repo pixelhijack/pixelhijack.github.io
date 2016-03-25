@@ -10,6 +10,11 @@ var Creature = function(game, creatureType, x, y){
   this.body.gravity.y = this.props.gravity;
   this.anchor.setTo(0.5, 0.5);
   
+  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
+  this._debugText.visible = false;
+  
+  this.lifespan = this.props.lifespan;
+
   this.facingRight = true;
   
   configs[creatureType].animations.forEach(function(anim){
@@ -40,6 +45,20 @@ Creature.prototype.direction = function direction(){
 
 Creature.prototype.isGrounded = function isGrounded(){
   return this.body.touching.down || this.body.blocked.down;
+};
+
+// use in update()
+Creature.prototype.debug = function debug(toDebug){
+  this._debugText.visible = true;
+  this._debugText.setText(toDebug);
+};
+
+/*==========================================
+  FIXME!! 
+http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
+==========================================*/
+Creature.prototype.revive = function revive(){
+  this.lifespan = this.props.lifespan;
 };
 
 module.exports = Creature;

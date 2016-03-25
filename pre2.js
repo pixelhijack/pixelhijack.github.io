@@ -256,6 +256,9 @@
 	  =============*/
 	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function create(){
+	    // for fps debugging:
+	    game.time.advancedTiming = true;
+	    
 	    initWorld();
 	    loadLevel();
 	    loadEnemies();
@@ -268,10 +271,8 @@
 	    
 	    onEvery(10, function(){
 	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-	      var dinoToRevive = enemies.of.dino.getFirstExists(false) || enemies.of.ptero.getFirstExists(false);
-	      if(dinoToRevive){
-	        dinoToRevive.reset(Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2);
-	      }
+	      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+	      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
 	    });
 	    
 	    console.log("PHASER created");
@@ -383,11 +384,23 @@
 	  =============*/
 	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function update(){
+	    // show FPS on bottom left corner
+	    game.debug.text(game.time.fps, 5, game.height - 5);
+	    
+	    // debug sprites
+	    enemies.of.dino.forEachAlive(function(dino){
+	      dino.debug(dino.lifespan / 1000 | 0);
+	    });
+	    enemies.of.ptero.forEachAlive(function(ptero){
+	      ptero.debug(ptero.lifespan / 1000 | 0);
+	    });
+	    
 	    setParallax();
 	    collisions();
 	    moveDinos();
 	    movePteros();
 	    moveHero();
+	    //enemies.forEachAlive(Creature.checkIfShouldDie);
 	    //debug();
 	    man.animations.play(man.state + '-' + man.direction());
 
@@ -443,6 +456,11 @@
 	  this.body.gravity.y = this.props.gravity;
 	  this.anchor.setTo(0.5, 0.5);
 	  
+	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
+	  this._debugText.visible = false;
+	  
+	  this.lifespan = this.props.lifespan;
+
 	  this.facingRight = true;
 	  
 	  configs[creatureType].animations.forEach(function(anim){
@@ -475,6 +493,20 @@
 	  return this.body.touching.down || this.body.blocked.down;
 	};
 
+	// use in update()
+	Creature.prototype.debug = function debug(toDebug){
+	  this._debugText.visible = true;
+	  this._debugText.setText(toDebug);
+	};
+
+	/*==========================================
+	  FIXME!! 
+	http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
+	==========================================*/
+	Creature.prototype.revive = function revive(){
+	  this.lifespan = this.props.lifespan;
+	};
+
 	module.exports = Creature;
 	  
 
@@ -492,11 +524,13 @@
 	    maxSpeed: 200,
 	    acceleration: 10, 
 	    lives: 1, 
+	    lifespan: 10000,
 	    animations: []
 	  },
 	  man: {
 	    maxSpeed: 200,
 	    lives: 3, 
+	    lifespan: Infinity,
 	    animations: [
 	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
 	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
@@ -759,6 +793,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Creature = __webpack_require__(3);
+	var util = __webpack_require__(9);
 
 	/*  
 	    ENEMIES API: 
@@ -768,6 +803,7 @@
 	    ...
 	*/
 	var enemyManager = function(game, levelEnemies){
+	  var utils = util(game);
 	  // init enemy pools
 	  var of = {};
 	  
@@ -778,19 +814,38 @@
 	  return {
 	    of: of,
 	    initLevelEnemies: function(){ 
-	      for(var enemy in of){
-	        for(var i = 0, max = levelEnemies[enemy];i<max;i++){
+	      for(var enemyType in of){
+	        for(var i = 0, max = levelEnemies[enemyType];i<max;i++){
 	          // of.dino.add(new Creature('dino', game, 126, 45)) =>
-	          of[enemy].add(new Creature(game, enemy, Math.random() * game.width, game.height / 2));
+	          var randomPoint = utils.randomWorldPoint();
+	          this.add(enemyType, randomPoint.x, randomPoint.y);
 	        }
 	      }    
 	    },
-	    add: function(){ },
+	    add: function(enemyType, whereX, whereY){ 
+	      var enemyWaiting = of[enemyType].getFirstDead();
+	      if(!enemyWaiting){
+	        var anotherEnemy = new Creature(game, enemyType, whereX, whereY);
+	        of[enemyType].add(anotherEnemy);
+	      }
+	    },
 	    revive: function(enemyType, whereX, whereY){
-	      var enemyToRevive = enemies.of[enemyType].getFirstExists(false);
+	      var enemyToRevive = of[enemyType].getFirstExists(false);
 	      if(enemyToRevive){
+	        enemyToRevive.revive();
 	        enemyToRevive.reset(whereX, whereY);
 	      }
+	    },
+	    forEachAlive: function(fn, args){
+	      for(var enemyType in of){
+	        // close your eyes please
+	        if(typeof fn === 'function'){
+	          of[enemyType].forEachAlive(function(creature){
+	            // should check if Creature really has the method...
+	            fn.apply(creature, args);  
+	          });
+	        }  
+	      }  
 	    },
 	    population: function(){ }
 	  };
@@ -860,6 +915,32 @@
 	];
 
 	module.exports = levelList;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	var util = function(game){
+	  
+	  return {
+	    randomPointIn: function(x1, y1, x2, y2){
+	      /*
+	      var rectangle = new Phaser.Rectangle(x1, y1, x2, y2), 
+	          p = new Phaser.Point();
+	        return rectangle.random().floor();
+	      */
+	        return {
+	          x: game.rnd.integerInRange(x1, x2),
+	          y: game.rnd.integerInRange(y1, y2)
+	        }
+	    },
+	    randomWorldPoint: function(){
+	      return this.randomPointIn(0, 0, game.world.width, game.world.height);
+	    }
+	  };
+	};
+
+	module.exports = util;
 
 /***/ }
 /******/ ]);

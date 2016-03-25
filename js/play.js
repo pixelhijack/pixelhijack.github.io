@@ -156,6 +156,9 @@ function Play(game, settings){
   =============*/
   // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
   function create(){
+    // for fps debugging:
+    game.time.advancedTiming = true;
+    
     initWorld();
     loadLevel();
     loadEnemies();
@@ -168,10 +171,8 @@ function Play(game, settings){
     
     onEvery(10, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      var dinoToRevive = enemies.of.dino.getFirstExists(false) || enemies.of.ptero.getFirstExists(false);
-      if(dinoToRevive){
-        dinoToRevive.reset(Math.random() * settings.dimensions.WIDTH, settings.dimensions.HEIGHT / 2);
-      }
+      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
     });
     
     console.log("PHASER created");
@@ -283,11 +284,23 @@ function Play(game, settings){
   =============*/
   // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
   function update(){
+    // show FPS on bottom left corner
+    game.debug.text(game.time.fps, 5, game.height - 5);
+    
+    // debug sprites
+    enemies.of.dino.forEachAlive(function(dino){
+      dino.debug(dino.lifespan / 1000 | 0);
+    });
+    enemies.of.ptero.forEachAlive(function(ptero){
+      ptero.debug(ptero.lifespan / 1000 | 0);
+    });
+    
     setParallax();
     collisions();
     moveDinos();
     movePteros();
     moveHero();
+    //enemies.forEachAlive(Creature.checkIfShouldDie);
     //debug();
     man.animations.play(man.state + '-' + man.direction());
 
