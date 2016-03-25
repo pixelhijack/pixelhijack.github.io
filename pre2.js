@@ -386,6 +386,7 @@
 	  function update(){
 	    // show FPS on bottom left corner
 	    game.debug.text(game.time.fps, 5, game.height - 5);
+	    game.debug.text(enemies.population(), 5, game.height - 15);
 	    
 	    // debug sprites
 	    enemies.of.dino.forEachAlive(function(dino){
@@ -590,7 +591,7 @@
 	  //configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
 	  var defaults = configs['creatureDefaults'];
 	  for(var prop in defaults){
-	    if(!configs[creature][prop]){
+	    if(configs[creature][prop] == undefined){
 	      configs[creature][prop] = defaults[prop];
 	    }
 	  }  
@@ -830,7 +831,7 @@
 	      }
 	    },
 	    revive: function(enemyType, whereX, whereY){
-	      var enemyToRevive = of[enemyType].getFirstExists(false);
+	      var enemyToRevive = of[enemyType].getFirstDead();
 	      if(enemyToRevive){
 	        enemyToRevive.revive();
 	        enemyToRevive.reset(whereX, whereY);
@@ -847,7 +848,13 @@
 	        }  
 	      }  
 	    },
-	    population: function(){ }
+	    population: function(){
+	      var allAnimal = 0;
+	      for(var enemyGroup in of){
+	        allAnimal += of[enemyGroup].children.filter(function(enemy){ return enemy.alive; }).length;
+	      }
+	      return allAnimal;
+	    }
 	  };
 	};
 

@@ -74,7 +74,7 @@ for(var creature in configs){
   //configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
   var defaults = configs['creatureDefaults'];
   for(var prop in defaults){
-    if(!configs[creature][prop]){
+    if(configs[creature][prop] == undefined){
       configs[creature][prop] = defaults[prop];
     }
   }  

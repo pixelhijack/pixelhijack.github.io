@@ -36,7 +36,7 @@ var enemyManager = function(game, levelEnemies){
       }
     },
     revive: function(enemyType, whereX, whereY){
-      var enemyToRevive = of[enemyType].getFirstExists(false);
+      var enemyToRevive = of[enemyType].getFirstDead();
       if(enemyToRevive){
         enemyToRevive.revive();
         enemyToRevive.reset(whereX, whereY);
@@ -53,7 +53,13 @@ var enemyManager = function(game, levelEnemies){
         }  
       }  
     },
-    population: function(){ }
+    population: function(){
+      var allAnimal = 0;
+      for(var enemyGroup in of){
+        allAnimal += of[enemyGroup].children.filter(function(enemy){ return enemy.alive; }).length;
+      }
+      return allAnimal;
+    }
   };
 };
 
