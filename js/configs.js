@@ -1,4 +1,4 @@
-var _ = require('lodash');
+//var _ = require('lodash');
 
 var configs = {
   creatureDefaults: {
@@ -69,7 +69,13 @@ var configs = {
 };
 
 for(var creature in configs){
-  configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
+  //configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
+  var defaults = configs['creatureDefaults'];
+  for(var prop in defaults){
+    if(!configs[creature][prop]){
+      configs[creature][prop] = defaults[prop];
+    }
+  }  
 }
 
 module.exports = configs;
