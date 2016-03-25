@@ -8,7 +8,7 @@ var configs = {
     maxSpeed: 200,
     acceleration: 10, 
     lives: 1, 
-    lifespan: 10000,
+    lifespan: 30000,
     animations: []
   },
   man: {
