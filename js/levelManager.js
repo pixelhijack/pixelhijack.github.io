@@ -26,6 +26,8 @@ var levelManager = function(game, levelList){
     level.groundLayer.resizeWorld();
     level.enemies = levelToLoad.enemies;
     
+    //level.groundLayer.debug = true;
+    
     //  parse level json provided objects if given
     if(levelToLoad.objectsLayer){
       
