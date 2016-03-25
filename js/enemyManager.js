@@ -26,6 +26,12 @@ var enemyManager = function(game, levelEnemies){
       }    
     },
     add: function(){ },
+    revive: function(enemyType, whereX, whereY){
+      var enemyToRevive = enemies.of[enemyType].getFirstExists(false);
+      if(enemyToRevive){
+        enemyToRevive.reset(whereX, whereY);
+      }
+    },
     population: function(){ }
   };
 };
