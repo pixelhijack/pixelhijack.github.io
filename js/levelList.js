@@ -34,6 +34,24 @@ var levelList = [
       ptero: 2,
       bear: 0
     }
+  },
+  {
+    id: 3,
+    tileset: 'tileset-level-3',
+    tilemap: 'tilemap-level-3',
+    tilesetImageName: 'tileset1_2',
+    width: 49 * 16,
+    height: 100 * 16,
+    backgroundLayer: 'background-2',
+    fixedBackground: true,
+    groundLayer: 'foreground-layer',
+    collisionLayer: 'collision-layer',
+    objectsLayer: null, 
+    enemies: {
+      dino: 5,
+      ptero: 2,
+      bear: 0
+    }
   }
 ];
 

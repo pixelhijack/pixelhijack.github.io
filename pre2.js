@@ -167,15 +167,17 @@
 	    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
 	    game.load.spritesheet('man', './assets/man.png', 32, 36);
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
-	    game.load.image('platform-1', './assets/99.png');
-	    game.load.image('platform-2', './assets/platform-2.png');
 	    
 	    game.load.image('background-1', './assets/bg1seamless.png');
 	    game.load.image('background-2', './assets/bg3seamless.jpg');
+	    
 	    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
-	    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
 	    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
-	    game.load.tilemap('tilemap-level-2', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
+	    game.load.image('tileset-level-3', './assets/tilesets/tileset1_2.png');
+	    
+	    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
+	    game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
+	    game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
 	  
 	    console.log("PHASER preloaded");
 	  }
@@ -15787,6 +15789,8 @@
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
 	    
+	    //level.groundLayer.debug = true;
+	    
 	    //  parse level json provided objects if given
 	    if(levelToLoad.objectsLayer){
 	      
@@ -15872,6 +15876,12 @@
 	      }    
 	    },
 	    add: function(){ },
+	    revive: function(enemyType, whereX, whereY){
+	      var enemyToRevive = enemies.of[enemyType].getFirstExists(false);
+	      if(enemyToRevive){
+	        enemyToRevive.reset(whereX, whereY);
+	      }
+	    },
 	    population: function(){ }
 	  };
 	};
@@ -15906,6 +15916,24 @@
 	    tileset: 'tileset-level-2',
 	    tilemap: 'tilemap-level-2',
 	    tilesetImageName: 'tileset2',
+	    width: 49 * 16,
+	    height: 100 * 16,
+	    backgroundLayer: 'background-2',
+	    fixedBackground: true,
+	    groundLayer: 'foreground-layer',
+	    collisionLayer: 'collision-layer',
+	    objectsLayer: null, 
+	    enemies: {
+	      dino: 5,
+	      ptero: 2,
+	      bear: 0
+	    }
+	  },
+	  {
+	    id: 3,
+	    tileset: 'tileset-level-3',
+	    tilemap: 'tilemap-level-3',
+	    tilesetImageName: 'tileset1_2',
 	    width: 49 * 16,
 	    height: 100 * 16,
 	    backgroundLayer: 'background-2',
