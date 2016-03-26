@@ -101,7 +101,7 @@
 	var Creature = __webpack_require__(3);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
-	var levelList = __webpack_require__(8);
+	var levelList = __webpack_require__(9);
 
 
 	// Play game state
@@ -525,7 +525,7 @@
 	    maxSpeed: 200,
 	    acceleration: 10, 
 	    lives: 1, 
-	    lifespan: 30000,
+	    lifespan: 100000,
 	    animations: []
 	  },
 	  man: {
@@ -730,7 +730,7 @@
 	    level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
 	    level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
 	    level.collisionLayer.visible = false;
-	    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
+	    level.tilemap.setCollisionBetween(1, 200, true, level.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
 	    
@@ -794,7 +794,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Creature = __webpack_require__(3);
-	var util = __webpack_require__(9);
+	var util = __webpack_require__(8);
 
 	/*  
 	    ENEMIES API: 
@@ -864,6 +864,32 @@
 /* 8 */
 /***/ function(module, exports) {
 
+	var util = function(game){
+	  
+	  return {
+	    randomPointIn: function(x1, y1, x2, y2){
+	      /*
+	      var rectangle = new Phaser.Rectangle(x1, y1, x2, y2), 
+	          p = new Phaser.Point();
+	        return rectangle.random().floor();
+	      */
+	        return {
+	          x: game.rnd.integerInRange(x1, x2),
+	          y: game.rnd.integerInRange(y1, y2)
+	        }
+	    },
+	    randomWorldPoint: function(){
+	      return this.randomPointIn(0, 0, game.world.width, game.world.height);
+	    }
+	  };
+	};
+
+	module.exports = util;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
 	var levelList = [
 	  {
 	    id: 1,
@@ -922,32 +948,6 @@
 	];
 
 	module.exports = levelList;
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	var util = function(game){
-	  
-	  return {
-	    randomPointIn: function(x1, y1, x2, y2){
-	      /*
-	      var rectangle = new Phaser.Rectangle(x1, y1, x2, y2), 
-	          p = new Phaser.Point();
-	        return rectangle.random().floor();
-	      */
-	        return {
-	          x: game.rnd.integerInRange(x1, x2),
-	          y: game.rnd.integerInRange(y1, y2)
-	        }
-	    },
-	    randomWorldPoint: function(){
-	      return this.randomPointIn(0, 0, game.world.width, game.world.height);
-	    }
-	  };
-	};
-
-	module.exports = util;
 
 /***/ }
 /******/ ]);
