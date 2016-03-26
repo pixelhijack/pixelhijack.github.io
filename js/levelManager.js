@@ -22,7 +22,12 @@ var levelManager = function(game, levelList){
     level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
     level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
     level.collisionLayer.visible = false;
-    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
+    if(levelToLoad.deathLayer){
+      level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
+      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
+      level.deathLayer.visible = false;
+    }
+    level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();
     level.enemies = levelToLoad.enemies;
     

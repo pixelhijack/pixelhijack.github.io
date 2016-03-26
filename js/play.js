@@ -189,9 +189,16 @@ function Play(game, settings){
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
     game.physics.arcade.collide(enemies.of.dino, level.collisionLayer);
-    //collisionLayer.debug = true;
     game.physics.arcade.collide(man, enemies.of.dino, onEnemyCollision, onProcess, this);
     game.physics.arcade.collide(man, enemies.of.ptero, onEnemyCollision, onProcess, this);
+    
+    if(level.deathLayer){
+      game.physics.arcade.collide(man, level.deathLayer, function(){
+        weapon.sprite.kill();
+        man.kill();
+        game.state.start('Play', true, false);
+      });
+    }
     
     // hit'n kill enemy: collision should calculated on weapon sprite
     game.physics.arcade.collide(weapon.sprite, enemies.of.dino, function(weaponSprite, enemy){
@@ -321,6 +328,7 @@ function Play(game, settings){
       man.damage(1);
       renderMenu();
       if(man.lives() <= 0){
+        weapon.sprite.kill();
         man.kill();
         // restart while keep caches: 
         game.state.start('Play', true, false);

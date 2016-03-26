@@ -10,6 +10,7 @@ var levelList = [
     fixedBackground: true, // this can be false also as seamless background, though it makes the game much slower :(
     groundLayer: 'foreground-layer',
     collisionLayer: 'collision-layer',
+    deathLayer: null,
     objectsLayer: 'objects-layer', 
     enemies: {
       dino: 5,
@@ -28,6 +29,7 @@ var levelList = [
     fixedBackground: true,
     groundLayer: 'foreground-layer',
     collisionLayer: 'collision-layer',
+    deathLayer: null,
     objectsLayer: null, 
     enemies: {
       dino: 5,
@@ -46,7 +48,8 @@ var levelList = [
     fixedBackground: true,
     groundLayer: 'foreground-layer',
     collisionLayer: 'collision-layer',
-    objectsLayer: null, 
+    deathLayer: 'death-layer',
+    objectsLayer: 'objects-layer', 
     enemies: {
       dino: 5,
       ptero: 2,

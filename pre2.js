@@ -289,9 +289,16 @@
 	  function collisions(){
 	    game.physics.arcade.collide(man, level.collisionLayer);
 	    game.physics.arcade.collide(enemies.of.dino, level.collisionLayer);
-	    //collisionLayer.debug = true;
 	    game.physics.arcade.collide(man, enemies.of.dino, onEnemyCollision, onProcess, this);
 	    game.physics.arcade.collide(man, enemies.of.ptero, onEnemyCollision, onProcess, this);
+	    
+	    if(level.deathLayer){
+	      game.physics.arcade.collide(man, level.deathLayer, function(){
+	        weapon.sprite.kill();
+	        man.kill();
+	        game.state.start('Play', true, false);
+	      });
+	    }
 	    
 	    // hit'n kill enemy: collision should calculated on weapon sprite
 	    game.physics.arcade.collide(weapon.sprite, enemies.of.dino, function(weaponSprite, enemy){
@@ -421,6 +428,7 @@
 	      man.damage(1);
 	      renderMenu();
 	      if(man.lives() <= 0){
+	        weapon.sprite.kill();
 	        man.kill();
 	        // restart while keep caches: 
 	        game.state.start('Play', true, false);
@@ -730,7 +738,12 @@
 	    level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
 	    level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
 	    level.collisionLayer.visible = false;
-	    level.tilemap.setCollisionBetween(1, 200, true, levelToLoad.collisionLayer);
+	    if(levelToLoad.deathLayer){
+	      level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
+	      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
+	      level.deathLayer.visible = false;
+	    }
+	    level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
 	    
@@ -902,6 +915,7 @@
 	    fixedBackground: true, // this can be false also as seamless background, though it makes the game much slower :(
 	    groundLayer: 'foreground-layer',
 	    collisionLayer: 'collision-layer',
+	    deathLayer: null,
 	    objectsLayer: 'objects-layer', 
 	    enemies: {
 	      dino: 5,
@@ -920,6 +934,7 @@
 	    fixedBackground: true,
 	    groundLayer: 'foreground-layer',
 	    collisionLayer: 'collision-layer',
+	    deathLayer: null,
 	    objectsLayer: null, 
 	    enemies: {
 	      dino: 5,
@@ -938,7 +953,8 @@
 	    fixedBackground: true,
 	    groundLayer: 'foreground-layer',
 	    collisionLayer: 'collision-layer',
-	    objectsLayer: null, 
+	    deathLayer: 'death-layer',
+	    objectsLayer: 'objects-layer', 
 	    enemies: {
 	      dino: 5,
 	      ptero: 2,
