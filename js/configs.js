@@ -8,7 +8,7 @@ var configs = {
     maxSpeed: 200,
     acceleration: 10, 
     lives: 1, 
-    lifespan: 100000,
+    lifespan: 10000,
     animations: []
   },
   man: {
@@ -30,8 +30,8 @@ var configs = {
   },
   dino: {
     jumping: 400,
-    maxSpeed: 300,
-    acceleration: 20, 
+    maxSpeed: 50,
+    acceleration: 5, 
     animations: [
       { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
       { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },

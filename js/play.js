@@ -2,6 +2,7 @@ var Creature = require('./creature.js');
 var levelManager = require('./levelManager.js');
 var enemyManager = require('./enemyManager.js');
 var levelList = require('./levelList.js');
+var util = require('./util.js');
 
 
 // Play game state
@@ -45,6 +46,8 @@ function Play(game, settings){
   var level;
   
   var enemies;
+  
+  var utils = util(game);
   
   var events = { };
 
@@ -94,7 +97,7 @@ function Play(game, settings){
   function loadEnemies(){
     enemies = enemyManager(game, level.enemies);
     enemies.initLevelEnemies();
-    enemies.of.dino.forEachAlive(function(dino){ 
+    enemies.global.dino.forEachAlive(function(dino){ 
       dino.moveRight();
     });
   }
@@ -171,8 +174,12 @@ function Play(game, settings){
     
     onEvery(10, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
-      enemies.revive('dino', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+      var randomPoint = utils.randomWorldPoint();
+      enemies.revive('dino', 300, 200);
+      enemies.revive('dino', 320, 200);
+      enemies.revive('dino', 340, 200);
+      enemies.revive('dino', 360, 200);
+      enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
     });
     
     console.log("PHASER created");
@@ -188,9 +195,9 @@ function Play(game, settings){
   
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
-    game.physics.arcade.collide(enemies.of.dino, level.collisionLayer);
-    game.physics.arcade.collide(man, enemies.of.dino, onEnemyCollision, onProcess, this);
-    game.physics.arcade.collide(man, enemies.of.ptero, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(enemies.global.dino, level.collisionLayer);
+    game.physics.arcade.collide(man, enemies.global.dino, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(man, enemies.global.ptero, onEnemyCollision, onProcess, this);
     
     if(level.deathLayer){
       game.physics.arcade.collide(man, level.deathLayer, function(){
@@ -201,7 +208,7 @@ function Play(game, settings){
     }
     
     // hit'n kill enemy: collision should calculated on weapon sprite
-    game.physics.arcade.collide(weapon.sprite, enemies.of.dino, function(weaponSprite, enemy){
+    game.physics.arcade.collide(weapon.sprite, enemies.global.dino, function(weaponSprite, enemy){
       if(man.state === 'hitting'){
         enemy.kill();
       }
@@ -209,8 +216,8 @@ function Play(game, settings){
   }
   
   function moveDinos(){
-    enemies.of.dino.forEachAlive(function(dino){
-      dino.move();
+    enemies.global.dino.forEachAlive(function(dino){
+      dino.move(1);
       dino.x <= 0 ? dino.x = game.world.width : dino.x;
       if(Math.random() < 0.05){ 
         dino.jump(); 
@@ -228,7 +235,7 @@ function Play(game, settings){
   }
   
   function movePteros(){
-    enemies.of.ptero.forEachAlive(function(ptero){
+    enemies.global.ptero.forEachAlive(function(ptero){
       ptero.x -= 1;
       ptero.animations.play('fly');
       ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
@@ -296,10 +303,10 @@ function Play(game, settings){
     game.debug.text(enemies.population(), 5, game.height - 15);
     
     // debug sprites
-    enemies.of.dino.forEachAlive(function(dino){
+    enemies.global.dino.forEachAlive(function(dino){
       dino.debug(dino.lifespan / 1000 | 0);
     });
-    enemies.of.ptero.forEachAlive(function(ptero){
+    enemies.global.ptero.forEachAlive(function(ptero){
       ptero.debug(ptero.lifespan / 1000 | 0);
     });
     

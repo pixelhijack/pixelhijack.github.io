@@ -19,9 +19,9 @@ var mixins = {
   },
   move: function(){
     if(this.body.velocity.x >= 0){
-      mixins.moveRight.bind(this);
+      mixins.moveRight.call(this);
     }else{
-     mixins.moveLeft.bind(this); 
+      mixins.moveLeft.call(this); 
     }
   },
   jump: function(){
