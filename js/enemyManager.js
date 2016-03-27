@@ -90,21 +90,27 @@ var enemyManager = function(game, levelEnemies, levelZones){
       }
     },
     forEachAlive: function(fn, args){
-      for(var enemyType in global){
+      for(var zone in zones){
         // close your eyes please
         if(typeof fn === 'function'){
-          global[enemyType].forEachAlive(function(creature){
-            // should check if Creature really has the method...
-            fn.apply(creature, args);  
-          });
+          for(var creatureType in zones[zone]['guard']){
+            zones[zone]['guard'][creatureType].forEachAlive(function(creature){
+              fn.apply(creature, args);  
+            });
+          }
+          for(var creatureType in zones[zone]['spawn']){
+            zones[zone]['spawn'][creatureType].forEachAlive(function(creature){
+              fn.apply(creature, args);  
+            });
+          }
         }  
       }  
     },
     population: function(){
       var allAnimal = 0;
-      for(var zone in zones){
-        allAnimal += zones[zone].children.filter(function(enemy){ return enemy.alive; }).length;
-      }
+      this.forEachAlive(function(){
+        allAnimal++;
+      });
       return allAnimal;
     }
   };

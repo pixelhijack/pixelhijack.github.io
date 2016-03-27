@@ -296,7 +296,7 @@ function Play(game, settings){
   function update(){
     // show FPS on bottom left corner
     game.debug.text(game.time.fps, 5, game.height - 5);
-    //game.debug.text(enemies.population(), 5, game.height - 15);
+    game.debug.text(enemies.population(), 5, game.height - 15);
     
     // debug sprites
     enemies.global.spawn.dino.forEachAlive(function(dino){
