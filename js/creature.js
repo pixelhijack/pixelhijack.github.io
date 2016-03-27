@@ -1,7 +1,7 @@
 var configs = require('./configs.js');
 var behaviours = require('./behaviours.js');
 
-var Creature = function(game, creatureType, x, y){
+var Creature = function(game, creatureType, x, y, origin){
   Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.props = configs[creatureType] || configs['creatureDefaults'];
@@ -13,6 +13,7 @@ var Creature = function(game, creatureType, x, y){
   this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
   this._debugText.visible = false;
   
+  this.origin = origin;
   this.lifespan = this.props.lifespan;
 
   this.facingRight = true;

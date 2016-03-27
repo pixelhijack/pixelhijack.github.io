@@ -95,10 +95,9 @@ function Play(game, settings){
   }
   
   function loadEnemies(){
-    enemies = enemyManager(game, level.enemies);
-    enemies.initLevelEnemies();
-    enemies.global.dino.forEachAlive(function(dino){ 
-      dino.moveRight();
+    enemies = enemyManager(game, level.enemies, level.objects.zone);
+    enemies.global.spawn.dino.forEachAlive(function(dino){ 
+      dino.move();
     });
   }
   
@@ -175,11 +174,8 @@ function Play(game, settings){
     onEvery(10, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
       var randomPoint = utils.randomWorldPoint();
-      enemies.revive('dino', 300, 200);
-      enemies.revive('dino', 320, 200);
-      enemies.revive('dino', 340, 200);
-      enemies.revive('dino', 360, 200);
-      enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+      //enemies.revive('dino', 360, 200);
+      //enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
     });
     
     console.log("PHASER created");
@@ -195,9 +191,9 @@ function Play(game, settings){
   
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
-    game.physics.arcade.collide(enemies.global.dino, level.collisionLayer);
-    game.physics.arcade.collide(man, enemies.global.dino, onEnemyCollision, onProcess, this);
-    game.physics.arcade.collide(man, enemies.global.ptero, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
+    game.physics.arcade.collide(man, enemies.global.spawn.dino, onEnemyCollision, onProcess, this);
+    game.physics.arcade.collide(man, enemies.global.spawn.ptero, onEnemyCollision, onProcess, this);
     
     if(level.deathLayer){
       game.physics.arcade.collide(man, level.deathLayer, function(){
@@ -208,7 +204,7 @@ function Play(game, settings){
     }
     
     // hit'n kill enemy: collision should calculated on weapon sprite
-    game.physics.arcade.collide(weapon.sprite, enemies.global.dino, function(weaponSprite, enemy){
+    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
       if(man.state === 'hitting'){
         enemy.kill();
       }
@@ -216,8 +212,8 @@ function Play(game, settings){
   }
   
   function moveDinos(){
-    enemies.global.dino.forEachAlive(function(dino){
-      dino.move(1);
+    enemies.global.spawn.dino.forEachAlive(function(dino){
+      dino.move();
       dino.x <= 0 ? dino.x = game.world.width : dino.x;
       if(Math.random() < 0.05){ 
         dino.jump(); 
@@ -235,7 +231,7 @@ function Play(game, settings){
   }
   
   function movePteros(){
-    enemies.global.ptero.forEachAlive(function(ptero){
+    enemies.global.spawn.ptero.forEachAlive(function(ptero){
       ptero.x -= 1;
       ptero.animations.play('fly');
       ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
@@ -300,14 +296,14 @@ function Play(game, settings){
   function update(){
     // show FPS on bottom left corner
     game.debug.text(game.time.fps, 5, game.height - 5);
-    game.debug.text(enemies.population(), 5, game.height - 15);
+    //game.debug.text(enemies.population(), 5, game.height - 15);
     
     // debug sprites
-    enemies.global.dino.forEachAlive(function(dino){
-      dino.debug(dino.lifespan / 1000 | 0);
+    enemies.global.spawn.dino.forEachAlive(function(dino){
+      dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
     });
-    enemies.global.ptero.forEachAlive(function(ptero){
-      ptero.debug(ptero.lifespan / 1000 | 0);
+    enemies.global.spawn.ptero.forEachAlive(function(ptero){
+      ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
     });
     
     setParallax();
@@ -315,8 +311,6 @@ function Play(game, settings){
     moveDinos();
     movePteros();
     moveHero();
-    //enemies.forEachAlive(Creature.checkIfShouldDie);
-    //debug();
     man.animations.play(man.state + '-' + man.direction());
 
     console.log("PHASER updated");

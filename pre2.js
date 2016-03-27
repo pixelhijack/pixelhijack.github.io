@@ -195,10 +195,9 @@
 	  }
 	  
 	  function loadEnemies(){
-	    enemies = enemyManager(game, level.enemies);
-	    enemies.initLevelEnemies();
-	    enemies.global.dino.forEachAlive(function(dino){ 
-	      dino.moveRight();
+	    enemies = enemyManager(game, level.enemies, level.objects.zone);
+	    enemies.global.spawn.dino.forEachAlive(function(dino){ 
+	      dino.move();
 	    });
 	  }
 	  
@@ -275,11 +274,8 @@
 	    onEvery(10, function(){
 	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
 	      var randomPoint = utils.randomWorldPoint();
-	      enemies.revive('dino', 300, 200);
-	      enemies.revive('dino', 320, 200);
-	      enemies.revive('dino', 340, 200);
-	      enemies.revive('dino', 360, 200);
-	      enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+	      //enemies.revive('dino', 360, 200);
+	      //enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
 	    });
 	    
 	    console.log("PHASER created");
@@ -295,9 +291,9 @@
 	  
 	  function collisions(){
 	    game.physics.arcade.collide(man, level.collisionLayer);
-	    game.physics.arcade.collide(enemies.global.dino, level.collisionLayer);
-	    game.physics.arcade.collide(man, enemies.global.dino, onEnemyCollision, onProcess, this);
-	    game.physics.arcade.collide(man, enemies.global.ptero, onEnemyCollision, onProcess, this);
+	    game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
+	    game.physics.arcade.collide(man, enemies.global.spawn.dino, onEnemyCollision, onProcess, this);
+	    game.physics.arcade.collide(man, enemies.global.spawn.ptero, onEnemyCollision, onProcess, this);
 	    
 	    if(level.deathLayer){
 	      game.physics.arcade.collide(man, level.deathLayer, function(){
@@ -308,7 +304,7 @@
 	    }
 	    
 	    // hit'n kill enemy: collision should calculated on weapon sprite
-	    game.physics.arcade.collide(weapon.sprite, enemies.global.dino, function(weaponSprite, enemy){
+	    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
 	      if(man.state === 'hitting'){
 	        enemy.kill();
 	      }
@@ -316,8 +312,8 @@
 	  }
 	  
 	  function moveDinos(){
-	    enemies.global.dino.forEachAlive(function(dino){
-	      dino.move(1);
+	    enemies.global.spawn.dino.forEachAlive(function(dino){
+	      dino.move();
 	      dino.x <= 0 ? dino.x = game.world.width : dino.x;
 	      if(Math.random() < 0.05){ 
 	        dino.jump(); 
@@ -335,7 +331,7 @@
 	  }
 	  
 	  function movePteros(){
-	    enemies.global.ptero.forEachAlive(function(ptero){
+	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
 	      ptero.x -= 1;
 	      ptero.animations.play('fly');
 	      ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
@@ -400,14 +396,14 @@
 	  function update(){
 	    // show FPS on bottom left corner
 	    game.debug.text(game.time.fps, 5, game.height - 5);
-	    game.debug.text(enemies.population(), 5, game.height - 15);
+	    //game.debug.text(enemies.population(), 5, game.height - 15);
 	    
 	    // debug sprites
-	    enemies.global.dino.forEachAlive(function(dino){
-	      dino.debug(dino.lifespan / 1000 | 0);
+	    enemies.global.spawn.dino.forEachAlive(function(dino){
+	      dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
 	    });
-	    enemies.global.ptero.forEachAlive(function(ptero){
-	      ptero.debug(ptero.lifespan / 1000 | 0);
+	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
+	      ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
 	    });
 	    
 	    setParallax();
@@ -415,8 +411,6 @@
 	    moveDinos();
 	    movePteros();
 	    moveHero();
-	    //enemies.forEachAlive(Creature.checkIfShouldDie);
-	    //debug();
 	    man.animations.play(man.state + '-' + man.direction());
 
 	    console.log("PHASER updated");
@@ -463,7 +457,7 @@
 	var configs = __webpack_require__(4);
 	var behaviours = __webpack_require__(5);
 
-	var Creature = function(game, creatureType, x, y){
+	var Creature = function(game, creatureType, x, y, origin){
 	  Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.props = configs[creatureType] || configs['creatureDefaults'];
@@ -475,6 +469,7 @@
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
 	  
+	  this.origin = origin;
 	  this.lifespan = this.props.lifespan;
 
 	  this.facingRight = true;
@@ -813,7 +808,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(3);
+	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(3);
 	var util = __webpack_require__(8);
 
 	/*  
@@ -823,30 +818,73 @@
 	    @Phaser.Group::enemies.global.bear
 	    @Phaser.Group::enemies.zone(1).bear
 	    ...
+	    
+	    enemyManager: 
+	      @levelEnemies: enemies of zones and types from level lists
+	      @levelZones: zone coordinates from tilemap's object-layers
+	      -> create phaser group for each zone - type - enemy type
+	      -> populate group references 
+	      every zone has:
+	        @guards: enemies placed in zones once
+	        @spawns: enemies spawning in the zone, moving away, subsequently
+	      
 	*/
-	var enemyManager = function(game, levelEnemies){
+	var enemyManager = function(game, levelEnemies, levelZones){
 	  var utils = util(game);
 	  // init enemy pools
-	  var global = {};
+	  var zones = {};
+	  
+	  // init enemy groups
+	  if(!levelEnemies || !levelEnemies.length){
+	    return;
+	  }
+	  levelEnemies.forEach(function(zone){
+	    zones[zone.id] = {};
+	    zones[zone.id].guard = {};
+	    zone.guard.forEach(function(guardingCreature){
+	      zones[zone.id].guard[guardingCreature.type] = game.add.group();
+	    });
+	    zones[zone.id].spawn = {};
+	    zone.spawn.forEach(function(spawningCreature){
+	      zones[zone.id].spawn[spawningCreature.type] = game.add.group();  
+	    });
+	  });
+	  
+	  // populate enemy groups
+	  levelEnemies.forEach(function(zone){
+	    zone.guard.forEach(function(group){
+	      for(var i = 0, max = group.number;i<max;i++){
+	        var point = !!levelZones[zone.id] ?
+	          utils.randomPointIn(levelZones[zone.id].x, 
+	                              levelZones[zone.id].x + levelZones[zone.id].width, 
+	                              levelZones[zone.id].y, 
+	                              levelZones[zone.id].y + levelZones[zone.id].height) :
+	          utils.randomWorldPoint();
+	        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
+	        creature.lifespan = group.lifespan; 
+	        //if(levelZones[zone.id]) utils.debugZone(levelZones[zone.id].x, levelZones[zone.id].y, levelZones[zone.id].width, levelZones[zone.id].height);
+	        zones[zone.id].guard[group.type].add(creature);
+	      }
+	    });
+	    zone.spawn.forEach(function(group){
+	      for(var i = 0, max = group.number;i<max;i++){
+	        // put the creature in the zone if there is one in objects-layer, else put anywhere
+	        var point = !!levelZones[zone.id] ?
+	          utils.centerPointIn(levelZones[zone.id].x, 
+	                              levelZones[zone.id].x + levelZones[zone.id].width, 
+	                              levelZones[zone.id].y, 
+	                              levelZones[zone.id].y + levelZones[zone.id].height) :
+	          utils.randomWorldPoint();
+	        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
+	        creature.lifespan = group.lifespan; 
+	        zones[zone.id].spawn[group.type].add(creature);
+	      }
+	    });
+	  });
 	  
 	  return {
-	    global: global,
-	    initLevelEnemies: function(){
-	      levelEnemies.global.forEach(function(creatureType){
-	        global[creatureType.type] = game.add.group();
-	      });
-	      for(var enemyType in global){
-	        var toAdd = levelEnemies.global.find(function(creature){ 
-	          return creature.type === enemyType;
-	        });
-	        if(toAdd && toAdd.number){
-	          for(var i = 0, max = toAdd.number;i<max;i++){
-	            var randomPoint = utils.randomWorldPoint();
-	            this.add(enemyType, randomPoint.x, randomPoint.y);
-	          } 
-	        }
-	      }    
-	    },
+	    zones: zones,
+	    global: zones.global,
 	    add: function(enemyType, whereX, whereY){ 
 	      var enemyWaiting = global[enemyType].getFirstDead();
 	      if(!enemyWaiting){
@@ -874,8 +912,8 @@
 	    },
 	    population: function(){
 	      var allAnimal = 0;
-	      for(var enemyGroup in global){
-	        allAnimal += global[enemyGroup].children.filter(function(enemy){ return enemy.alive; }).length;
+	      for(var zone in zones){
+	        allAnimal += zones[zone].children.filter(function(enemy){ return enemy.alive; }).length;
 	      }
 	      return allAnimal;
 	    }
@@ -883,6 +921,7 @@
 	};
 
 	module.exports = enemyManager;
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 8 */
@@ -902,8 +941,20 @@
 	          y: game.rnd.integerInRange(y1, y2)
 	        }
 	    },
+	    centerPointIn: function(x1, y1, x2, y2){
+	      return {
+	        x: x1 + (x2 - x1)/2,
+	        y: y1 + (y2 - y1)/2
+	      }
+	    },
 	    randomWorldPoint: function(){
 	      return this.randomPointIn(0, 0, game.world.width, game.world.height);
+	    },
+	    debugZone: function(x, y, width, height){
+	      var graphics = game.add.graphics(x, y);
+	      window.graphics = graphics;
+	      graphics.lineStyle(2, 0x0000FF, 1);
+	      graphics.drawRect(x, y, width, height);
 	    }
 	  };
 	};
@@ -928,20 +979,21 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: 'objects-layer', 
-	    enemies: {
-	      global: [
-	        { type: 'dino', number: 3 },
-	        { type: 'ptero', number: 2 },
-	        { type: 'bear', number: 0 }
-	      ], 
-	      zones: [
-	        {
-	          id: 1,
-	          guard: [],
-	          spawn: []
-	        }
-	      ]
-	    }
+	    enemies: [
+	      {
+	        id: 'global',
+	        guard: [],
+	        spawn: [
+	          { type: 'dino', number: 3, lifespan: 10000 },
+	          { type: 'ptero', number: 2, lifespan: 30000  },
+	          { type: 'bear', number: 0, lifespan: 20000  }
+	        ]
+	      }, {
+	        id: 1,
+	        guard: [],
+	        spawn: []
+	      }
+	    ]
 	  },
 	  {
 	    id: 2,
@@ -956,20 +1008,21 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: null, 
-	    enemies: {
-	      global: [
-	        { type: 'dino', number: 3 },
-	        { type: 'ptero', number: 2 },
-	        { type: 'bear', number: 0 }
-	      ], 
-	      zones: [
-	        {
-	          id: 1,
-	          guard: [],
-	          spawn: []
-	        }
-	      ]
-	    }
+	    enemies: [
+	      {
+	        id: 'global',
+	        guard: [],
+	        spawn: [
+	          { type: 'dino', number: 3, lifespan: 10000 },
+	          { type: 'ptero', number: 2, lifespan: 30000  },
+	          { type: 'bear', number: 0, lifespan: 20000  }
+	        ]
+	      }, {
+	        id: 1,
+	        guard: [],
+	        spawn: []
+	      }
+	    ]
 	  },
 	  {
 	    id: 3,
@@ -984,52 +1037,39 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: 'death-layer',
 	    objectsLayer: 'objects-layer', 
-	    enemies: {
-	      global: [
-	        { type: 'dino', number: 3 },
-	        { type: 'ptero', number: 2 },
-	        { type: 'bear', number: 0 }
-	      ], 
-	      zones: [
-	        {
-	          id: 1,
-	          guard: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ],
-	          spawn: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ]
-	        }, {
-	          id: 2,
-	          guard: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ],
-	          spawn: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ]
-	        }, {
-	          id: 3,
-	          guard: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ],
-	          spawn: [
-	            { type: 'dino', number: 3 },
-	            { type: 'ptero', number: 2 },
-	            { type: 'bear', number: 0 }
-	          ]
-	        }
-	      ]
-	    }
+	    enemies: [
+	      {
+	        id: 'global',
+	        guard: [],
+	        spawn: [
+	          { type: 'dino', number: 3, lifespan: Infinity },
+	          { type: 'ptero', number: 2, lifespan: Infinity },
+	          { type: 'bear', number: 0, lifespan: Infinity }
+	        ]
+	      }, {
+	        id: 1,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
+	      }, {
+	        id: 2,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
+	      }, {
+	        id: 3,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: [
+	          { type: 'dino', number: 0, lifespan: 10000 },
+	          { type: 'ptero', number: 0, lifespan: 30000 },
+	          { type: 'bear', number: 0, lifespan: 20000 }
+	        ]
+	      }
+	    ]
 	  }
 	];
 

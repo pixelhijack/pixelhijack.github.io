@@ -8,30 +8,73 @@ var util = require('./util.js');
     @Phaser.Group::enemies.global.bear
     @Phaser.Group::enemies.zone(1).bear
     ...
+    
+    enemyManager: 
+      @levelEnemies: enemies of zones and types from level lists
+      @levelZones: zone coordinates from tilemap's object-layers
+      -> create phaser group for each zone - type - enemy type
+      -> populate group references 
+      every zone has:
+        @guards: enemies placed in zones once
+        @spawns: enemies spawning in the zone, moving away, subsequently
+      
 */
-var enemyManager = function(game, levelEnemies){
+var enemyManager = function(game, levelEnemies, levelZones){
   var utils = util(game);
   // init enemy pools
-  var global = {};
+  var zones = {};
+  
+  // init enemy groups
+  if(!levelEnemies || !levelEnemies.length){
+    return;
+  }
+  levelEnemies.forEach(function(zone){
+    zones[zone.id] = {};
+    zones[zone.id].guard = {};
+    zone.guard.forEach(function(guardingCreature){
+      zones[zone.id].guard[guardingCreature.type] = game.add.group();
+    });
+    zones[zone.id].spawn = {};
+    zone.spawn.forEach(function(spawningCreature){
+      zones[zone.id].spawn[spawningCreature.type] = game.add.group();  
+    });
+  });
+  
+  // populate enemy groups
+  levelEnemies.forEach(function(zone){
+    zone.guard.forEach(function(group){
+      for(var i = 0, max = group.number;i<max;i++){
+        var point = !!levelZones[zone.id] ?
+          utils.randomPointIn(levelZones[zone.id].x, 
+                              levelZones[zone.id].x + levelZones[zone.id].width, 
+                              levelZones[zone.id].y, 
+                              levelZones[zone.id].y + levelZones[zone.id].height) :
+          utils.randomWorldPoint();
+        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
+        creature.lifespan = group.lifespan; 
+        //if(levelZones[zone.id]) utils.debugZone(levelZones[zone.id].x, levelZones[zone.id].y, levelZones[zone.id].width, levelZones[zone.id].height);
+        zones[zone.id].guard[group.type].add(creature);
+      }
+    });
+    zone.spawn.forEach(function(group){
+      for(var i = 0, max = group.number;i<max;i++){
+        // put the creature in the zone if there is one in objects-layer, else put anywhere
+        var point = !!levelZones[zone.id] ?
+          utils.centerPointIn(levelZones[zone.id].x, 
+                              levelZones[zone.id].x + levelZones[zone.id].width, 
+                              levelZones[zone.id].y, 
+                              levelZones[zone.id].y + levelZones[zone.id].height) :
+          utils.randomWorldPoint();
+        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
+        creature.lifespan = group.lifespan; 
+        zones[zone.id].spawn[group.type].add(creature);
+      }
+    });
+  });
   
   return {
-    global: global,
-    initLevelEnemies: function(){
-      levelEnemies.global.forEach(function(creatureType){
-        global[creatureType.type] = game.add.group();
-      });
-      for(var enemyType in global){
-        var toAdd = levelEnemies.global.find(function(creature){ 
-          return creature.type === enemyType;
-        });
-        if(toAdd && toAdd.number){
-          for(var i = 0, max = toAdd.number;i<max;i++){
-            var randomPoint = utils.randomWorldPoint();
-            this.add(enemyType, randomPoint.x, randomPoint.y);
-          } 
-        }
-      }    
-    },
+    zones: zones,
+    global: zones.global,
     add: function(enemyType, whereX, whereY){ 
       var enemyWaiting = global[enemyType].getFirstDead();
       if(!enemyWaiting){
@@ -59,8 +102,8 @@ var enemyManager = function(game, levelEnemies){
     },
     population: function(){
       var allAnimal = 0;
-      for(var enemyGroup in global){
-        allAnimal += global[enemyGroup].children.filter(function(enemy){ return enemy.alive; }).length;
+      for(var zone in zones){
+        allAnimal += zones[zone].children.filter(function(enemy){ return enemy.alive; }).length;
       }
       return allAnimal;
     }

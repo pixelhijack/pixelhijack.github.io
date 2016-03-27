@@ -12,20 +12,21 @@ var levelList = [
     collisionLayer: 'collision-layer',
     deathLayer: null,
     objectsLayer: 'objects-layer', 
-    enemies: {
-      global: [
-        { type: 'dino', number: 3 },
-        { type: 'ptero', number: 2 },
-        { type: 'bear', number: 0 }
-      ], 
-      zones: [
-        {
-          id: 1,
-          guard: [],
-          spawn: []
-        }
-      ]
-    }
+    enemies: [
+      {
+        id: 'global',
+        guard: [],
+        spawn: [
+          { type: 'dino', number: 3, lifespan: 10000 },
+          { type: 'ptero', number: 2, lifespan: 30000  },
+          { type: 'bear', number: 0, lifespan: 20000  }
+        ]
+      }, {
+        id: 1,
+        guard: [],
+        spawn: []
+      }
+    ]
   },
   {
     id: 2,
@@ -40,20 +41,21 @@ var levelList = [
     collisionLayer: 'collision-layer',
     deathLayer: null,
     objectsLayer: null, 
-    enemies: {
-      global: [
-        { type: 'dino', number: 3 },
-        { type: 'ptero', number: 2 },
-        { type: 'bear', number: 0 }
-      ], 
-      zones: [
-        {
-          id: 1,
-          guard: [],
-          spawn: []
-        }
-      ]
-    }
+    enemies: [
+      {
+        id: 'global',
+        guard: [],
+        spawn: [
+          { type: 'dino', number: 3, lifespan: 10000 },
+          { type: 'ptero', number: 2, lifespan: 30000  },
+          { type: 'bear', number: 0, lifespan: 20000  }
+        ]
+      }, {
+        id: 1,
+        guard: [],
+        spawn: []
+      }
+    ]
   },
   {
     id: 3,
@@ -68,52 +70,39 @@ var levelList = [
     collisionLayer: 'collision-layer',
     deathLayer: 'death-layer',
     objectsLayer: 'objects-layer', 
-    enemies: {
-      global: [
-        { type: 'dino', number: 3 },
-        { type: 'ptero', number: 2 },
-        { type: 'bear', number: 0 }
-      ], 
-      zones: [
-        {
-          id: 1,
-          guard: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ],
-          spawn: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ]
-        }, {
-          id: 2,
-          guard: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ],
-          spawn: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ]
-        }, {
-          id: 3,
-          guard: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ],
-          spawn: [
-            { type: 'dino', number: 3 },
-            { type: 'ptero', number: 2 },
-            { type: 'bear', number: 0 }
-          ]
-        }
-      ]
-    }
+    enemies: [
+      {
+        id: 'global',
+        guard: [],
+        spawn: [
+          { type: 'dino', number: 3, lifespan: Infinity },
+          { type: 'ptero', number: 2, lifespan: Infinity },
+          { type: 'bear', number: 0, lifespan: Infinity }
+        ]
+      }, {
+        id: 1,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
+      }, {
+        id: 2,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
+      }, {
+        id: 3,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: [
+          { type: 'dino', number: 0, lifespan: 10000 },
+          { type: 'ptero', number: 0, lifespan: 30000 },
+          { type: 'bear', number: 0, lifespan: 20000 }
+        ]
+      }
+    ]
   }
 ];
 
