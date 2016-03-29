@@ -1,7 +1,7 @@
 var Creature = require('./creature.js');
 var levelManager = require('./levelManager.js');
 var enemyManager = require('./enemyManager.js');
-var levelList = require('./levelList.js');
+var levelConfigs = require('./levelConfigs.js');
 var util = require('./util.js');
 
 
@@ -42,7 +42,7 @@ function Play(game, settings){
     score: null,
     bonus: null
   }
-  var levels = levelManager(game, levelList);
+  var levels = levelManager(game, levelConfigs);
   var level;
   
   var enemies;
@@ -219,7 +219,7 @@ function Play(game, settings){
   
   function movePteros(){
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
-      //ptero.update(game);
+      ptero.update(game);
     });
   }
   
@@ -283,14 +283,13 @@ function Play(game, settings){
     game.debug.text(game.time.fps, 5, game.height - 5);
     //game.debug.text(enemies.population(), 5, game.height - 15);
     
-    /* debug sprites
+    // debug sprites
     enemies.global.spawn.dino.forEachAlive(function(dino){
       dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
     });
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
       ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
     });
-    */
     
     setParallax();
     collisions();

@@ -101,7 +101,7 @@
 	var Creature = __webpack_require__(3);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
-	var levelList = __webpack_require__(9);
+	var levelConfigs = __webpack_require__(11);
 	var util = __webpack_require__(8);
 
 
@@ -142,7 +142,7 @@
 	    score: null,
 	    bonus: null
 	  }
-	  var levels = levelManager(game, levelList);
+	  var levels = levelManager(game, levelConfigs);
 	  var level;
 	  
 	  var enemies;
@@ -319,7 +319,7 @@
 	  
 	  function movePteros(){
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      //ptero.update(game);
+	      ptero.update(game);
 	    });
 	  }
 	  
@@ -383,14 +383,13 @@
 	    game.debug.text(game.time.fps, 5, game.height - 5);
 	    //game.debug.text(enemies.population(), 5, game.height - 15);
 	    
-	    /* debug sprites
+	    // debug sprites
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
 	      dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
 	    });
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
 	      ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
 	    });
-	    */
 	    
 	    setParallax();
 	    collisions();
@@ -440,13 +439,13 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var configs = __webpack_require__(4);
+	var creatureConfigs = __webpack_require__(10);
 	var movements = __webpack_require__(5);
 
 	var Creature = function(game, creatureType, x, y, origin){
-	  Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
+	  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
-	  this.props = configs[creatureType] || configs['creatureDefaults'];
+	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this._state = '';
 	  this.body.collideWorldBounds = true;
 	  this.body.gravity.y = this.props.gravity;
@@ -460,7 +459,7 @@
 
 	  this.facingRight = true;
 	  
-	  configs[creatureType].animations.forEach(function(anim){
+	  creatureConfigs[creatureType].animations.forEach(function(anim){
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
 	  }.bind(this));
 	  
@@ -510,94 +509,7 @@
 	  
 
 /***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	//var _ = require('lodash');
-
-	var configs = {
-	  creatureDefaults: {
-	    gravity: 500,
-	    bounce: 0.2,
-	    jumping: 300,
-	    maxSpeed: 200,
-	    acceleration: 10, 
-	    lives: 1, 
-	    lifespan: 10000,
-	    animations: []
-	  },
-	  man: {
-	    maxSpeed: 200,
-	    lives: 3, 
-	    lifespan: Infinity,
-	    animations: [
-	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
-	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
-	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
-	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
-	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
-	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
-	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
-	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
-	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
-	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
-	    ]
-	  },
-	  dino: {
-	    jumping: 400,
-	    maxSpeed: 50,
-	    acceleration: 5, 
-	    animations: [
-	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
-	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
-	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
-	    ]
-	  },
-	  bear: {
-	    acceleration: 15, 
-	    animations: [] 
-	  },
-	  'super-bear': {
-	    acceleration: 30,
-	    maxSpeed: 400,
-	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
-	    animations: []
-	  },
-	  ptero: {
-	    gravity: 0,
-	    bounce: 0.1,
-	    jumping: 0,
-	    maxSpeed: 100,
-	    acceleration: 50, 
-	    animations: [
-	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
-	    ]
-	  }, 
-	  gorilla: {
-	    // grim level bosses with lots of lifes!!
-	    lives: 10, 
-	    animations: []
-	  },
-	  lollipop: {
-	    // objects also...? 
-	    animations: []
-	  }
-	};
-
-	for(var creature in configs){
-	  //configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
-	  var defaults = configs['creatureDefaults'];
-	  for(var prop in defaults){
-	    if(configs[creature][prop] == undefined){
-	      configs[creature][prop] = defaults[prop];
-	    }
-	  }  
-	}
-
-	module.exports = configs;
-
-/***/ },
+/* 4 */,
 /* 5 */
 /***/ function(module, exports) {
 
@@ -991,10 +903,99 @@
 	module.exports = util;
 
 /***/ },
-/* 9 */
+/* 9 */,
+/* 10 */
 /***/ function(module, exports) {
 
-	var levelList = [
+	//var _ = require('lodash');
+
+	var creatureConfigs = {
+	  creatureDefaults: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 300,
+	    maxSpeed: 200,
+	    acceleration: 10, 
+	    lives: 1, 
+	    lifespan: 10000,
+	    animations: []
+	  },
+	  man: {
+	    maxSpeed: 200,
+	    lives: 3, 
+	    lifespan: Infinity,
+	    animations: [
+	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
+	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
+	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
+	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
+	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
+	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
+	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
+	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
+	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
+	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
+	    ]
+	  },
+	  dino: {
+	    jumping: 400,
+	    maxSpeed: 50,
+	    acceleration: 5, 
+	    animations: [
+	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
+	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
+	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
+	    ]
+	  },
+	  bear: {
+	    acceleration: 15, 
+	    animations: [] 
+	  },
+	  'super-bear': {
+	    acceleration: 30,
+	    maxSpeed: 400,
+	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
+	    animations: []
+	  },
+	  ptero: {
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    maxSpeed: 100,
+	    acceleration: 50, 
+	    animations: [
+	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
+	    ]
+	  }, 
+	  gorilla: {
+	    // grim level bosses with lots of lifes!!
+	    lives: 10, 
+	    animations: []
+	  },
+	  lollipop: {
+	    // objects also...? 
+	    animations: []
+	  }
+	};
+
+	for(var creature in creatureConfigs){
+	  //creatureConfigs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
+	  var defaults = creatureConfigs['creatureDefaults'];
+	  for(var prop in defaults){
+	    if(creatureConfigs[creature][prop] === undefined){
+	      creatureConfigs[creature][prop] = defaults[prop];
+	    }
+	  }  
+	}
+
+	module.exports = creatureConfigs;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	var levelConfigs = [
 	  {
 	    id: 1,
 	    tileset: 'tileset-level-1',
@@ -1102,7 +1103,7 @@
 	  }
 	];
 
-	module.exports = levelList;
+	module.exports = levelConfigs;
 
 /***/ }
 /******/ ]);

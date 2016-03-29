@@ -1,10 +1,10 @@
-var configs = require('./configs.js');
+var creatureConfigs = require('./creatureConfigs.js');
 var movements = require('./movements.js');
 
 var Creature = function(game, creatureType, x, y, origin){
-  Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
+  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
   game.physics.enable(this, Phaser.Physics.ARCADE);
-  this.props = configs[creatureType] || configs['creatureDefaults'];
+  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this._state = '';
   this.body.collideWorldBounds = true;
   this.body.gravity.y = this.props.gravity;
@@ -18,7 +18,7 @@ var Creature = function(game, creatureType, x, y, origin){
 
   this.facingRight = true;
   
-  configs[creatureType].animations.forEach(function(anim){
+  creatureConfigs[creatureType].animations.forEach(function(anim){
     this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
   }.bind(this));
   

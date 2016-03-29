@@ -1,6 +1,6 @@
 //var _ = require('lodash');
 
-var configs = {
+var creatureConfigs = {
   creatureDefaults: {
     gravity: 500,
     bounce: 0.2,
@@ -70,14 +70,14 @@ var configs = {
   }
 };
 
-for(var creature in configs){
-  //configs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
-  var defaults = configs['creatureDefaults'];
+for(var creature in creatureConfigs){
+  //creatureConfigs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
+  var defaults = creatureConfigs['creatureDefaults'];
   for(var prop in defaults){
-    if(configs[creature][prop] == undefined){
-      configs[creature][prop] = defaults[prop];
+    if(creatureConfigs[creature][prop] === undefined){
+      creatureConfigs[creature][prop] = defaults[prop];
     }
   }  
 }
 
-module.exports = configs;
+module.exports = creatureConfigs;

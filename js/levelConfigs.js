@@ -1,4 +1,4 @@
-var levelList = [
+var levelConfigs = [
   {
     id: 1,
     tileset: 'tileset-level-1',
@@ -106,4 +106,4 @@ var levelList = [
   }
 ];
 
-module.exports = levelList;
+module.exports = levelConfigs;
