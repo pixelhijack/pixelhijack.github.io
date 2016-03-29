@@ -863,7 +863,8 @@
 	  levelEnemies.forEach(function(zone){
 	    zone.guard.forEach(function(group){
 	      for(var i = 0, max = group.number;i<max;i++){
-	        var point = !!levelZones[zone.id] ?
+	        // if no levelZones defined in Tiled tilema OR levelZones are defined but missing the ID in the levelList level definition put at random point
+	        var point = !!levelZones || (levelZones && !!levelZones[zone.id]) ?
 	          utils.randomPointIn(levelZones[zone.id].x, 
 	                              levelZones[zone.id].x + levelZones[zone.id].width, 
 	                              levelZones[zone.id].y, 
@@ -878,7 +879,7 @@
 	    zone.spawn.forEach(function(group){
 	      for(var i = 0, max = group.number;i<max;i++){
 	        // put the creature in the zone if there is one in objects-layer, else put anywhere
-	        var point = !!levelZones[zone.id] ?
+	        var point = !!levelZones || (levelZones && !!levelZones[zone.id]) ?
 	          utils.centerPointIn(levelZones[zone.id].x, 
 	                              levelZones[zone.id].x + levelZones[zone.id].width, 
 	                              levelZones[zone.id].y, 
@@ -999,9 +1000,9 @@
 	        id: 'global',
 	        guard: [],
 	        spawn: [
-	          { type: 'dino', number: 3, lifespan: 10000 },
-	          { type: 'ptero', number: 2, lifespan: 30000  },
-	          { type: 'bear', number: 0, lifespan: 20000  }
+	          { type: 'dino', number: 3, lifespan: Infinity },
+	          { type: 'ptero', number: 2, lifespan: Infinity  },
+	          { type: 'bear', number: 0, lifespan: Infinity  }
 	        ]
 	      }, {
 	        id: 1,
@@ -1028,9 +1029,9 @@
 	        id: 'global',
 	        guard: [],
 	        spawn: [
-	          { type: 'dino', number: 3, lifespan: 10000 },
-	          { type: 'ptero', number: 2, lifespan: 30000  },
-	          { type: 'bear', number: 0, lifespan: 20000  }
+	          { type: 'dino', number: 3, lifespan: Infinity },
+	          { type: 'ptero', number: 2, lifespan: Infinity  },
+	          { type: 'bear', number: 0, lifespan: Infinity  }
 	        ]
 	      }, {
 	        id: 1,
