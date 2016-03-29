@@ -96,9 +96,11 @@ function Play(game, settings){
   
   function loadEnemies(){
     enemies = enemyManager(game, level.enemies, level.objects.zone);
+    /*
     enemies.global.spawn.dino.forEachAlive(function(dino){ 
       dino.move();
     });
+    */
   }
   
   function addHero(){
@@ -213,28 +215,13 @@ function Play(game, settings){
   
   function moveDinos(){
     enemies.global.spawn.dino.forEachAlive(function(dino){
-      dino.move();
-      dino.x <= 0 ? dino.x = game.world.width : dino.x;
-      if(Math.random() < 0.05){ 
-        dino.jump(); 
-        dino.animations.play('jumping-' + dino.direction());
-      }
-      if(dino.body.blocked.left){ 
-        dino.moveRight(); 
-        dino.animations.play('moving-right');
-      }
-      if(dino.body.blocked.right){ 
-        dino.moveLeft(); 
-        dino.animations.play('moving-left');
-      }
+      //dino.update(game);
     });
   }
   
   function movePteros(){
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
-      ptero.x -= 1;
-      ptero.animations.play('fly');
-      ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
+      //ptero.update(game);
     });
   }
   
@@ -296,7 +283,7 @@ function Play(game, settings){
   function update(){
     // show FPS on bottom left corner
     game.debug.text(game.time.fps, 5, game.height - 5);
-    game.debug.text(enemies.population(), 5, game.height - 15);
+    //game.debug.text(enemies.population(), 5, game.height - 15);
     
     // debug sprites
     enemies.global.spawn.dino.forEachAlive(function(dino){

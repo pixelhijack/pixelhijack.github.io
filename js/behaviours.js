@@ -84,11 +84,32 @@ var behaviours = {
     this.move = mixins.move;
     this.jump = mixins.jump;
     this.wait = mixins.wait;
+    this.update = function(game){
+      this.move();
+      this.x <= 0 ? this.x = game.world.width : this.x;
+      if(Math.random() < 0.05){ 
+        this.jump(); 
+        this.animations.play('jumping-' + this.direction());
+      }
+      if(this.body.blocked.left){ 
+        this.moveRight(); 
+        this.animations.play('moving-right');
+      }
+      if(this.body.blocked.right){ 
+        this.moveLeft(); 
+        this.animations.play('moving-left');
+      }
+    };
     return this;
   },
   ptero: function(){
     this.runRight = mixins.moveRight;
     this.runLeft = mixins.moveLeft;
+    this.update = function(game){
+      this.x -= 1;
+      this.animations.play('fly');
+      this.x = this.x <= this.width/2 ? game.world.width - 5 : this.x;
+    };
     return this;
   }
 };

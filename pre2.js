@@ -196,9 +196,11 @@
 	  
 	  function loadEnemies(){
 	    enemies = enemyManager(game, level.enemies, level.objects.zone);
+	    /*
 	    enemies.global.spawn.dino.forEachAlive(function(dino){ 
 	      dino.move();
 	    });
+	    */
 	  }
 	  
 	  function addHero(){
@@ -313,28 +315,13 @@
 	  
 	  function moveDinos(){
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
-	      dino.move();
-	      dino.x <= 0 ? dino.x = game.world.width : dino.x;
-	      if(Math.random() < 0.05){ 
-	        dino.jump(); 
-	        dino.animations.play('jumping-' + dino.direction());
-	      }
-	      if(dino.body.blocked.left){ 
-	        dino.moveRight(); 
-	        dino.animations.play('moving-right');
-	      }
-	      if(dino.body.blocked.right){ 
-	        dino.moveLeft(); 
-	        dino.animations.play('moving-left');
-	      }
+	      //dino.update(game);
 	    });
 	  }
 	  
 	  function movePteros(){
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      ptero.x -= 1;
-	      ptero.animations.play('fly');
-	      ptero.x = ptero.x <= ptero.width/2 ? game.world.width - 5 : ptero.x;
+	      //ptero.update(game);
 	    });
 	  }
 	  
@@ -396,7 +383,7 @@
 	  function update(){
 	    // show FPS on bottom left corner
 	    game.debug.text(game.time.fps, 5, game.height - 5);
-	    game.debug.text(enemies.population(), 5, game.height - 15);
+	    //game.debug.text(enemies.population(), 5, game.height - 15);
 	    
 	    // debug sprites
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
@@ -699,11 +686,32 @@
 	    this.move = mixins.move;
 	    this.jump = mixins.jump;
 	    this.wait = mixins.wait;
+	    this.update = function(game){
+	      this.move();
+	      this.x <= 0 ? this.x = game.world.width : this.x;
+	      if(Math.random() < 0.05){ 
+	        this.jump(); 
+	        this.animations.play('jumping-' + this.direction());
+	      }
+	      if(this.body.blocked.left){ 
+	        this.moveRight(); 
+	        this.animations.play('moving-right');
+	      }
+	      if(this.body.blocked.right){ 
+	        this.moveLeft(); 
+	        this.animations.play('moving-left');
+	      }
+	    };
 	    return this;
 	  },
 	  ptero: function(){
 	    this.runRight = mixins.moveRight;
 	    this.runLeft = mixins.moveLeft;
+	    this.update = function(game){
+	      this.x -= 1;
+	      this.animations.play('fly');
+	      this.x = this.x <= this.width/2 ? game.world.width - 5 : this.x;
+	    };
 	    return this;
 	  }
 	};
