@@ -196,11 +196,9 @@
 	  
 	  function loadEnemies(){
 	    enemies = enemyManager(game, level.enemies, level.objects.zone);
-	    /*
 	    enemies.global.spawn.dino.forEachAlive(function(dino){ 
-	      dino.move();
+	      //dino.move();
 	    });
-	    */
 	  }
 	  
 	  function addHero(){
@@ -315,13 +313,13 @@
 	  
 	  function moveDinos(){
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
-	      //dino.update(game);
+	      dino.update(game);
 	    });
 	  }
 	  
 	  function movePteros(){
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      //ptero.update(game);
+	      ptero.update(game);
 	    });
 	  }
 	  
@@ -678,6 +676,9 @@
 	    this.damage = mixins.damage;
 	    this.stop = mixins.stop;
 	    this.lives = mixins.lives;
+	    this.update = function(){
+	      
+	    };
 	    return this;
 	  },
 	  dino: function(){

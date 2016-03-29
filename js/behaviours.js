@@ -76,6 +76,9 @@ var behaviours = {
     this.damage = mixins.damage;
     this.stop = mixins.stop;
     this.lives = mixins.lives;
+    this.update = function(){
+      
+    };
     return this;
   },
   dino: function(){
