@@ -311,18 +311,15 @@
 	    }, null, this);
 	  }
 	  
-	  function moveDinos(){
+	  function moveSpawns(){
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
 	      dino.update();
 	    });
-	  }
-	  
-	  function movePteros(){
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
 	      ptero.update(game);
 	    });
 	  }
-	  
+
 	  function moveHero(){
 	    // weapon sprite should be always in sync with the man sprite
 	    weapon.sprite.x = man.x;
@@ -381,20 +378,16 @@
 	  function update(){
 	    // show FPS on bottom left corner
 	    game.debug.text(game.time.fps, 5, game.height - 5);
-	    //game.debug.text(enemies.population(), 5, game.height - 15);
+	    game.debug.text(enemies.population(), 5, game.height - 15);
 	    
 	    // debug sprites
-	    enemies.global.spawn.dino.forEachAlive(function(dino){
-	      dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
-	    });
-	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
+	    enemies.forEachAlive(function(creature){
+	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
 	    });
 	    
 	    setParallax();
 	    collisions();
-	    moveDinos();
-	    movePteros();
+	    moveSpawns();
 	    moveHero();
 	    man.animations.play(man.state + '-' + man.direction());
 
@@ -840,12 +833,12 @@
 	        if(typeof fn === 'function'){
 	          for(var creatureType in zones[zone]['guard']){
 	            zones[zone]['guard'][creatureType].forEachAlive(function(creature){
-	              fn.apply(creature, args);  
+	              fn.apply(this, arguments);  
 	            });
 	          }
 	          for(var creatureType in zones[zone]['spawn']){
 	            zones[zone]['spawn'][creatureType].forEachAlive(function(creature){
-	              fn.apply(creature, args);  
+	              fn.apply(this, arguments);  
 	            });
 	          }
 	        }  
@@ -1072,8 +1065,8 @@
 	        id: 'global',
 	        guard: [],
 	        spawn: [
-	          { type: 'dino', number: 3, lifespan: Infinity },
-	          { type: 'ptero', number: 2, lifespan: Infinity },
+	          { type: 'dino', number: 0, lifespan: Infinity },
+	          { type: 'ptero', number: 0, lifespan: Infinity },
 	          { type: 'bear', number: 0, lifespan: Infinity }
 	        ]
 	      }, {
@@ -1098,6 +1091,30 @@
 	          { type: 'ptero', number: 0, lifespan: 30000 },
 	          { type: 'bear', number: 0, lifespan: 20000 }
 	        ]
+	      }, {
+	        id: 4,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
+	      }, {
+	        id: 5,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
+	      }, {
+	        id: 6,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
+	      }, {
+	        id: 7,
+	        guard: [
+	          { type: 'dino', number: 1, lifespan: Infinity }
+	        ],
+	        spawn: []
 	      }
 	    ]
 	  }

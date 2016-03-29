@@ -211,18 +211,15 @@ function Play(game, settings){
     }, null, this);
   }
   
-  function moveDinos(){
+  function moveSpawns(){
     enemies.global.spawn.dino.forEachAlive(function(dino){
       dino.update();
     });
-  }
-  
-  function movePteros(){
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
       ptero.update(game);
     });
   }
-  
+
   function moveHero(){
     // weapon sprite should be always in sync with the man sprite
     weapon.sprite.x = man.x;
@@ -281,20 +278,16 @@ function Play(game, settings){
   function update(){
     // show FPS on bottom left corner
     game.debug.text(game.time.fps, 5, game.height - 5);
-    //game.debug.text(enemies.population(), 5, game.height - 15);
+    game.debug.text(enemies.population(), 5, game.height - 15);
     
     // debug sprites
-    enemies.global.spawn.dino.forEachAlive(function(dino){
-      dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
-    });
-    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-      ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
+    enemies.forEachAlive(function(creature){
+      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
     });
     
     setParallax();
     collisions();
-    moveDinos();
-    movePteros();
+    moveSpawns();
     moveHero();
     man.animations.play(man.state + '-' + man.direction());
 

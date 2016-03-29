@@ -96,12 +96,12 @@ var enemyManager = function(game, levelEnemies, levelZones){
         if(typeof fn === 'function'){
           for(var creatureType in zones[zone]['guard']){
             zones[zone]['guard'][creatureType].forEachAlive(function(creature){
-              fn.apply(creature, args);  
+              fn.apply(this, arguments);  
             });
           }
           for(var creatureType in zones[zone]['spawn']){
             zones[zone]['spawn'][creatureType].forEachAlive(function(creature){
-              fn.apply(creature, args);  
+              fn.apply(this, arguments);  
             });
           }
         }  

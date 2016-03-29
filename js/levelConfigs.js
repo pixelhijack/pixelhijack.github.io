@@ -75,8 +75,8 @@ var levelConfigs = [
         id: 'global',
         guard: [],
         spawn: [
-          { type: 'dino', number: 3, lifespan: Infinity },
-          { type: 'ptero', number: 2, lifespan: Infinity },
+          { type: 'dino', number: 0, lifespan: Infinity },
+          { type: 'ptero', number: 0, lifespan: Infinity },
           { type: 'bear', number: 0, lifespan: Infinity }
         ]
       }, {
@@ -101,6 +101,30 @@ var levelConfigs = [
           { type: 'ptero', number: 0, lifespan: 30000 },
           { type: 'bear', number: 0, lifespan: 20000 }
         ]
+      }, {
+        id: 4,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
+      }, {
+        id: 5,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
+      }, {
+        id: 6,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
+      }, {
+        id: 7,
+        guard: [
+          { type: 'dino', number: 1, lifespan: Infinity }
+        ],
+        spawn: []
       }
     ]
   }
