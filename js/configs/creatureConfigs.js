@@ -36,7 +36,9 @@ var creatureConfigs = {
       { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
       { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
       { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
-      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
+      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true },
+      { name: 'dead-right', frames: [5], fps: 10, loop: true },
+      { name: 'dead-left', frames: [6], fps: 10, loop: true }
     ]
   },
   bear: {
@@ -56,7 +58,8 @@ var creatureConfigs = {
     maxSpeed: 100,
     acceleration: 50, 
     animations: [
-      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
+      { name: 'fly-left', frames: [3,4,5], fps: 10, loop: true },
+      { name: 'fly-right', frames: [0,1,2], fps: 10, loop: true }
     ]
   }, 
   gorilla: {

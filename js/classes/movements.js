@@ -46,8 +46,11 @@ var mixins = {
     this.props.lives -= severity;
     this.body.velocity.x -= severity * Math.random() * 20;
   },
-  die: function(){},
-  
+  die: function(){
+    this.state = 'dead';
+    this.body.velocity.y -= Math.random() * 1000;
+    this.game.time.events.add(Phaser.Timer.SECOND * 3, this.kill, this);
+  },
   see: function(){},
   sniff: function(enemy){
     // @enemy: the position of the hero
@@ -84,11 +87,12 @@ var behaviours = {
     this.move = mixins.move;
     this.jump = mixins.jump;
     this.wait = mixins.wait;
+    this.die = mixins.die;
     return this;
   },
   ptero: function(){
-    this.runRight = mixins.moveRight;
-    this.runLeft = mixins.moveLeft;
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
     return this;
   }
 };
@@ -96,26 +100,30 @@ var behaviours = {
 // specific updates of a creature
 var updates = {
   dino: function(){
-    this.move();
     this.play(this.state + '-' + this.direction());
-    this.x <= 0 ? this.x = this.game.world.width : this.x;
-    if(Math.random() < 0.05){ 
-      this.jump(); 
-      this.state = 'jumping';
-    }
-    if(this.body.blocked.left){ 
-      this.moveRight(); 
-      this.state = 'moving';
-    }
-    if(this.body.blocked.right){ 
-      this.moveLeft(); 
-      this.state = 'moving';
+    if(this.state !== 'dead'){
+      this.move();
+      this.x <= 0 ? this.x = this.game.world.width : this.x;
+      if(Math.random() < 0.05){ 
+        this.jump(); 
+        this.state = 'jumping';
+      }
+      if(this.body.blocked.left){ 
+        this.moveRight(); 
+        this.state = 'moving';
+      }
+      if(this.body.blocked.right){ 
+        this.moveLeft(); 
+        this.state = 'moving';
+      }
     }
   },
   ptero: function(){
-    this.x -= 1;
-    this.animations.play('fly');
+    this.move();
+    this.state = 'fly';
+    this.play(this.state + '-' + this.direction());
     this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
   },
   man: function(){
     

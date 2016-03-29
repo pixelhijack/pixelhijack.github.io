@@ -44,8 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Menu = __webpack_require__(12);
-	var Play = __webpack_require__(13);
+	var Menu = __webpack_require__(1);
+	var Play = __webpack_require__(2);
 
 	var globalSettings = {
 	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
@@ -73,18 +73,7 @@
 
 
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/* 1 */
 /***/ function(module, exports) {
 
 	function Menu(){
@@ -106,14 +95,14 @@
 	module.exports = Menu;
 
 /***/ },
-/* 13 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(14);
-	var levelManager = __webpack_require__(17);
-	var enemyManager = __webpack_require__(18);
-	var levelConfigs = __webpack_require__(20);
-	var util = __webpack_require__(19);
+	var Creature = __webpack_require__(3);
+	var levelManager = __webpack_require__(6);
+	var enemyManager = __webpack_require__(7);
+	var levelConfigs = __webpack_require__(9);
+	var util = __webpack_require__(8);
 
 
 	// Play game state
@@ -384,7 +373,7 @@
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
-	      //creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
 	    });
 	    
 	    setParallax();
@@ -398,12 +387,12 @@
 	  function onEnemyCollision(hero, enemy){
 	    if(man.body.touching.down && enemy.body.touching.up){
 	      if(man.state === 'hitting'){
-	        enemy.kill();
+	        enemy.die();
 	      }
 	      return;
 	    }
 	    if(man.state === 'hitting'){
-	      enemy.kill();
+	      enemy.die();
 	    }else{
 	      man.damage(1);
 	      renderMenu();
@@ -430,11 +419,11 @@
 
 
 /***/ },
-/* 14 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var creatureConfigs = __webpack_require__(15);
-	var movements = __webpack_require__(16);
+	var creatureConfigs = __webpack_require__(4);
+	var movements = __webpack_require__(5);
 
 	var Creature = function(game, creatureType, x, y, origin){
 	  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
@@ -503,7 +492,7 @@
 	  
 
 /***/ },
-/* 15 */
+/* 4 */
 /***/ function(module, exports) {
 
 	//var _ = require('lodash');
@@ -544,7 +533,9 @@
 	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
 	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
 	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
-	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
+	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true },
+	      { name: 'dead-right', frames: [5], fps: 10, loop: true },
+	      { name: 'dead-left', frames: [6], fps: 10, loop: true }
 	    ]
 	  },
 	  bear: {
@@ -564,7 +555,8 @@
 	    maxSpeed: 100,
 	    acceleration: 50, 
 	    animations: [
-	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
+	      { name: 'fly-left', frames: [3,4,5], fps: 10, loop: true },
+	      { name: 'fly-right', frames: [0,1,2], fps: 10, loop: true }
 	    ]
 	  }, 
 	  gorilla: {
@@ -591,7 +583,7 @@
 	module.exports = creatureConfigs;
 
 /***/ },
-/* 16 */
+/* 5 */
 /***/ function(module, exports) {
 
 	// general behaviour reducers any entity can use
@@ -642,8 +634,11 @@
 	    this.props.lives -= severity;
 	    this.body.velocity.x -= severity * Math.random() * 20;
 	  },
-	  die: function(){},
-	  
+	  die: function(){
+	    this.state = 'dead';
+	    this.body.velocity.y -= Math.random() * 1000;
+	    this.game.time.events.add(Phaser.Timer.SECOND * 3, this.kill, this);
+	  },
 	  see: function(){},
 	  sniff: function(enemy){
 	    // @enemy: the position of the hero
@@ -680,11 +675,12 @@
 	    this.move = mixins.move;
 	    this.jump = mixins.jump;
 	    this.wait = mixins.wait;
+	    this.die = mixins.die;
 	    return this;
 	  },
 	  ptero: function(){
-	    this.runRight = mixins.moveRight;
-	    this.runLeft = mixins.moveLeft;
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
 	    return this;
 	  }
 	};
@@ -692,26 +688,30 @@
 	// specific updates of a creature
 	var updates = {
 	  dino: function(){
-	    this.move();
 	    this.play(this.state + '-' + this.direction());
-	    this.x <= 0 ? this.x = this.game.world.width : this.x;
-	    if(Math.random() < 0.05){ 
-	      this.jump(); 
-	      this.state = 'jumping';
-	    }
-	    if(this.body.blocked.left){ 
-	      this.moveRight(); 
-	      this.state = 'moving';
-	    }
-	    if(this.body.blocked.right){ 
-	      this.moveLeft(); 
-	      this.state = 'moving';
+	    if(this.state !== 'dead'){
+	      this.move();
+	      this.x <= 0 ? this.x = this.game.world.width : this.x;
+	      if(Math.random() < 0.05){ 
+	        this.jump(); 
+	        this.state = 'jumping';
+	      }
+	      if(this.body.blocked.left){ 
+	        this.moveRight(); 
+	        this.state = 'moving';
+	      }
+	      if(this.body.blocked.right){ 
+	        this.moveLeft(); 
+	        this.state = 'moving';
+	      }
 	    }
 	  },
 	  ptero: function(){
-	    this.x -= 1;
-	    this.animations.play('fly');
+	    this.move();
+	    this.state = 'fly';
+	    this.play(this.state + '-' + this.direction());
 	    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
 	  },
 	  man: function(){
 	    
@@ -727,7 +727,7 @@
 
 
 /***/ },
-/* 17 */
+/* 6 */
 /***/ function(module, exports) {
 
 	var levelManager = function(game, levelList){
@@ -819,11 +819,11 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 18 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(14);
-	var util = __webpack_require__(19);
+	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(3);
+	var util = __webpack_require__(8);
 
 	/*  
 	    ENEMIES API: 
@@ -945,7 +945,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 19 */
+/* 8 */
 /***/ function(module, exports) {
 
 	var util = function(game){
@@ -983,7 +983,7 @@
 	module.exports = util;
 
 /***/ },
-/* 20 */
+/* 9 */
 /***/ function(module, exports) {
 
 	var levelConfigs = [

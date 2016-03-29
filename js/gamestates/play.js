@@ -273,7 +273,7 @@ function Play(game, settings){
     
     // debug sprites
     enemies.forEachAlive(function(creature){
-      //creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
     });
     
     setParallax();
@@ -287,12 +287,12 @@ function Play(game, settings){
   function onEnemyCollision(hero, enemy){
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state === 'hitting'){
-        enemy.kill();
+        enemy.die();
       }
       return;
     }
     if(man.state === 'hitting'){
-      enemy.kill();
+      enemy.die();
     }else{
       man.damage(1);
       renderMenu();
