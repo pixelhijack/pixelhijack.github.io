@@ -1,5 +1,5 @@
 // general behaviour reducers any entity can use
-var movements = {
+var mixins = {
   /******************************
   *     MOVE LEFT
   ******************************/
@@ -20,9 +20,9 @@ var movements = {
   },
   move: function(){
     if(this.body.velocity.x >= 0){
-      movements.moveRight.call(this);
+      mixins.moveRight.call(this);
     }else{
-      movements.moveLeft.call(this); 
+      mixins.moveLeft.call(this); 
     }
   },
   jump: function(){
@@ -72,30 +72,30 @@ var movements = {
 // creature class mixins implementing behaviours should be added here
 var behaviours = {
   man: function(){
-    this.moveRight = movements.moveRight;
-    this.moveLeft = movements.moveLeft;
-    this.jump = movements.jump;
-    this.damage = movements.damage;
-    this.stop = movements.stop;
-    this.lives = movements.lives;
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.jump = mixins.jump;
+    this.damage = mixins.damage;
+    this.stop = mixins.stop;
+    this.lives = mixins.lives;
     return this;
   },
   dino: function(){
-    this.moveRight = movements.moveRight;
-    this.moveLeft = movements.moveLeft;
-    this.move = movements.move;
-    this.jump = movements.jump;
-    this.wait = movements.wait;
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.jump = mixins.jump;
+    this.wait = mixins.wait;
     return this;
   },
   ptero: function(){
-    this.runRight = movements.moveRight;
-    this.runLeft = movements.moveLeft;
+    this.runRight = mixins.moveRight;
+    this.runLeft = mixins.moveLeft;
     return this;
   }
 };
 
-// specific update movements of a creature
+// specific updates of a creature
 var updates = {
   dino: function(){
     this.move();
@@ -124,7 +124,7 @@ var updates = {
 };
 
 module.exports = {
-  movements: movements,
+  mixins: mixins,
   behaviours: behaviours,
   updates: updates
 };
