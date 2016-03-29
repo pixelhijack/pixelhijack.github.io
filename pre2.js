@@ -311,15 +311,6 @@
 	    }, null, this);
 	  }
 	  
-	  function moveSpawns(){
-	    enemies.global.spawn.dino.forEachAlive(function(dino){
-	      dino.update();
-	    });
-	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      ptero.update(game);
-	    });
-	  }
-
 	  function moveHero(){
 	    // weapon sprite should be always in sync with the man sprite
 	    weapon.sprite.x = man.x;
@@ -387,7 +378,6 @@
 	    
 	    setParallax();
 	    collisions();
-	    moveSpawns();
 	    moveHero();
 	    man.animations.play(man.state + '-' + man.direction());
 
@@ -450,7 +440,7 @@
 	  this.origin = origin;
 	  this.lifespan = this.props.lifespan;
 
-	  this.facingRight = true;
+	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
 	  creatureConfigs[creatureType].animations.forEach(function(anim){
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
@@ -526,12 +516,10 @@
 	        this.body.velocity.x += overrideAcc || this.props.acceleration;
 	      }
 	  },
-	  move: function(){
-	    if(this.body.velocity.x >= 0){
-	      mixins.moveRight.call(this);
-	    }else{
-	      mixins.moveLeft.call(this); 
-	    }
+	  move: function(overrideAcc){
+	    this.facingRight ? 
+	      mixins.moveRight.call(this, overrideAcc) : 
+	      mixins.moveLeft.call(this, overrideAcc);
 	  },
 	  jump: function(){
 	    if(this.body.touching.down || this.body.blocked.down){
@@ -607,18 +595,19 @@
 	var updates = {
 	  dino: function(){
 	    this.move();
+	    this.play(this.state + '-' + this.direction());
 	    this.x <= 0 ? this.x = this.game.world.width : this.x;
 	    if(Math.random() < 0.05){ 
 	      this.jump(); 
-	      this.animations.play('jumping-' + this.direction());
+	      this.state = 'jumping';
 	    }
 	    if(this.body.blocked.left){ 
 	      this.moveRight(); 
-	      this.animations.play('moving-right');
+	      this.state = 'moving';
 	    }
 	    if(this.body.blocked.right){ 
 	      this.moveLeft(); 
-	      this.animations.play('moving-left');
+	      this.state = 'moving';
 	    }
 	  },
 	  ptero: function(){

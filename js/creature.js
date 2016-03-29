@@ -16,7 +16,7 @@ var Creature = function(game, creatureType, x, y, origin){
   this.origin = origin;
   this.lifespan = this.props.lifespan;
 
-  this.facingRight = true;
+  this.facingRight = Math.random() < 0.5 ? true : false;
   
   creatureConfigs[creatureType].animations.forEach(function(anim){
     this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);

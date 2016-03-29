@@ -18,12 +18,10 @@ var mixins = {
         this.body.velocity.x += overrideAcc || this.props.acceleration;
       }
   },
-  move: function(){
-    if(this.body.velocity.x >= 0){
-      mixins.moveRight.call(this);
-    }else{
-      mixins.moveLeft.call(this); 
-    }
+  move: function(overrideAcc){
+    this.facingRight ? 
+      mixins.moveRight.call(this, overrideAcc) : 
+      mixins.moveLeft.call(this, overrideAcc);
   },
   jump: function(){
     if(this.body.touching.down || this.body.blocked.down){
@@ -99,18 +97,19 @@ var behaviours = {
 var updates = {
   dino: function(){
     this.move();
+    this.play(this.state + '-' + this.direction());
     this.x <= 0 ? this.x = this.game.world.width : this.x;
     if(Math.random() < 0.05){ 
       this.jump(); 
-      this.animations.play('jumping-' + this.direction());
+      this.state = 'jumping';
     }
     if(this.body.blocked.left){ 
       this.moveRight(); 
-      this.animations.play('moving-right');
+      this.state = 'moving';
     }
     if(this.body.blocked.right){ 
       this.moveLeft(); 
-      this.animations.play('moving-left');
+      this.state = 'moving';
     }
   },
   ptero: function(){

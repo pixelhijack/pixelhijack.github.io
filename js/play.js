@@ -211,15 +211,6 @@ function Play(game, settings){
     }, null, this);
   }
   
-  function moveSpawns(){
-    enemies.global.spawn.dino.forEachAlive(function(dino){
-      dino.update();
-    });
-    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-      ptero.update(game);
-    });
-  }
-
   function moveHero(){
     // weapon sprite should be always in sync with the man sprite
     weapon.sprite.x = man.x;
@@ -287,7 +278,6 @@ function Play(game, settings){
     
     setParallax();
     collisions();
-    moveSpawns();
     moveHero();
     man.animations.play(man.state + '-' + man.direction());
 
