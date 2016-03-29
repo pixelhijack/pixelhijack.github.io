@@ -283,13 +283,14 @@ function Play(game, settings){
     game.debug.text(game.time.fps, 5, game.height - 5);
     //game.debug.text(enemies.population(), 5, game.height - 15);
     
-    // debug sprites
+    /* debug sprites
     enemies.global.spawn.dino.forEachAlive(function(dino){
       dino.debug(dino.origin +','+(dino.lifespan / 1000 | 0));
     });
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
       ptero.debug(ptero.origin +','+(ptero.lifespan / 1000 | 0));
     });
+    */
     
     setParallax();
     collisions();
