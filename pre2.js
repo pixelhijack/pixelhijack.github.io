@@ -313,13 +313,13 @@
 	  
 	  function moveDinos(){
 	    enemies.global.spawn.dino.forEachAlive(function(dino){
-	      dino.update(game);
+	      dino.update();
 	    });
 	  }
 	  
 	  function movePteros(){
 	    enemies.global.spawn.ptero.forEachAlive(function(ptero){
-	      ptero.update(game);
+	      //ptero.update(game);
 	    });
 	  }
 	  
@@ -440,7 +440,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var configs = __webpack_require__(4);
-	var behaviours = __webpack_require__(5);
+	var mixins = __webpack_require__(10);
 
 	var Creature = function(game, creatureType, x, y, origin){
 	  Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
@@ -463,8 +463,10 @@
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
 	  }.bind(this));
 	  
-	  // https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
-	  behaviours[creatureType].call(Creature.prototype);
+	  // apply creature 'class' by extend the object with behavioural mixins
+	  mixins.behaviours[creatureType].call(Creature.prototype);
+	  // apply the creature's own update to be called
+	  this.update = mixins.updates[creatureType].bind(this);
 	};
 
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -595,133 +597,7 @@
 	module.exports = configs;
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	var mixins = {
-	  /******************************
-	  *     MOVE LEFT
-	  ******************************/
-	  moveLeft: function(overrideAcc){
-	    this.facingRight = false;
-	    if(this.body.velocity.x > -this.props.maxSpeed){
-	      this.body.velocity.x -= overrideAcc || this.props.acceleration;
-	    }
-	  },
-	  /******************************
-	  *     MOVE RIGHT
-	  ******************************/
-	  moveRight: function(overrideAcc){
-	    this.facingRight = true;
-	    if(this.body.velocity.x < this.props.maxSpeed){
-	        this.body.velocity.x += overrideAcc || this.props.acceleration;
-	      }
-	  },
-	  move: function(){
-	    if(this.body.velocity.x >= 0){
-	      mixins.moveRight.call(this);
-	    }else{
-	      mixins.moveLeft.call(this); 
-	    }
-	  },
-	  jump: function(){
-	    if(this.body.touching.down || this.body.blocked.down){
-	      this.body.velocity.y -= this.props.jumping;
-	    }
-	  }, 
-	  turn: function(){
-	    
-	  },
-	  lives: function(){
-	    return this.props.lives;
-	  },
-	  stop: function(slippery){
-	    this.body.velocity.x /= slippery;
-	  },
-	  duck: function(){},
-	  enter: function(){},
-	  hit: function(){
-	    
-	  },
-	  damage: function(severity){
-	    this.props.lives -= severity;
-	    this.body.velocity.x -= severity * Math.random() * 20;
-	  },
-	  die: function(){},
-	  
-	  see: function(){},
-	  sniff: function(enemy){
-	    // @enemy: the position of the hero
-	    // @return: decision = call a behaviour based on sniffing out the approaching enemy
-	  },
-	  decide: function(condition, behaviour){
-	    // @condition: based on decision
-	    // @behaviour: list of behaviours
-	    // @return: one behaviour 
-	  },
-	  wait: function(){
-	    this.body.velocity.x = 0;
-	    this.body.velocity.y = 0;
-	  },
-	  sleep: function(){},
-	  sentinel: function(){},
-	  follow: function(){}
-	};
-
-	var behaviours = {
-	  man: function(){
-	    this.moveRight = mixins.moveRight;
-	    this.moveLeft = mixins.moveLeft;
-	    this.jump = mixins.jump;
-	    this.damage = mixins.damage;
-	    this.stop = mixins.stop;
-	    this.lives = mixins.lives;
-	    this.update = function(){
-	      
-	    };
-	    return this;
-	  },
-	  dino: function(){
-	    this.moveRight = mixins.moveRight;
-	    this.moveLeft = mixins.moveLeft;
-	    this.move = mixins.move;
-	    this.jump = mixins.jump;
-	    this.wait = mixins.wait;
-	    this.update = function(game){
-	      this.move();
-	      this.x <= 0 ? this.x = game.world.width : this.x;
-	      if(Math.random() < 0.05){ 
-	        this.jump(); 
-	        this.animations.play('jumping-' + this.direction());
-	      }
-	      if(this.body.blocked.left){ 
-	        this.moveRight(); 
-	        this.animations.play('moving-right');
-	      }
-	      if(this.body.blocked.right){ 
-	        this.moveLeft(); 
-	        this.animations.play('moving-left');
-	      }
-	    };
-	    return this;
-	  },
-	  ptero: function(){
-	    this.runRight = mixins.moveRight;
-	    this.runLeft = mixins.moveLeft;
-	    this.update = function(game){
-	      this.x -= 1;
-	      this.animations.play('fly');
-	      this.x = this.x <= this.width/2 ? game.world.width - 5 : this.x;
-	    };
-	    return this;
-	  }
-	};
-
-	module.exports = behaviours;
-
-
-
-/***/ },
+/* 5 */,
 /* 6 */
 /***/ function(module, exports) {
 
@@ -1090,6 +966,143 @@
 	];
 
 	module.exports = levelList;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	// general behaviour reducers any entity can use
+	var movements = {
+	  /******************************
+	  *     MOVE LEFT
+	  ******************************/
+	  moveLeft: function(overrideAcc){
+	    this.facingRight = false;
+	    if(this.body.velocity.x > -this.props.maxSpeed){
+	      this.body.velocity.x -= overrideAcc || this.props.acceleration;
+	    }
+	  },
+	  /******************************
+	  *     MOVE RIGHT
+	  ******************************/
+	  moveRight: function(overrideAcc){
+	    this.facingRight = true;
+	    if(this.body.velocity.x < this.props.maxSpeed){
+	        this.body.velocity.x += overrideAcc || this.props.acceleration;
+	      }
+	  },
+	  move: function(){
+	    if(this.body.velocity.x >= 0){
+	      movements.moveRight.call(this);
+	    }else{
+	      movements.moveLeft.call(this); 
+	    }
+	  },
+	  jump: function(){
+	    if(this.body.touching.down || this.body.blocked.down){
+	      this.body.velocity.y -= this.props.jumping;
+	    }
+	  }, 
+	  turn: function(){
+	    
+	  },
+	  lives: function(){
+	    return this.props.lives;
+	  },
+	  stop: function(slippery){
+	    this.body.velocity.x /= slippery;
+	  },
+	  duck: function(){},
+	  enter: function(){},
+	  hit: function(){
+	    
+	  },
+	  damage: function(severity){
+	    this.props.lives -= severity;
+	    this.body.velocity.x -= severity * Math.random() * 20;
+	  },
+	  die: function(){},
+	  
+	  see: function(){},
+	  sniff: function(enemy){
+	    // @enemy: the position of the hero
+	    // @return: decision = call a behaviour based on sniffing out the approaching enemy
+	  },
+	  decide: function(condition, behaviour){
+	    // @condition: based on decision
+	    // @behaviour: list of behaviours
+	    // @return: one behaviour 
+	  },
+	  wait: function(){
+	    this.body.velocity.x = 0;
+	    this.body.velocity.y = 0;
+	  },
+	  sleep: function(){},
+	  sentinel: function(){},
+	  follow: function(){}
+	};
+
+	// creature class mixins implementing behaviours should be added here
+	var behaviours = {
+	  man: function(){
+	    this.moveRight = movements.moveRight;
+	    this.moveLeft = movements.moveLeft;
+	    this.jump = movements.jump;
+	    this.damage = movements.damage;
+	    this.stop = movements.stop;
+	    this.lives = movements.lives;
+	    return this;
+	  },
+	  dino: function(){
+	    this.moveRight = movements.moveRight;
+	    this.moveLeft = movements.moveLeft;
+	    this.move = movements.move;
+	    this.jump = movements.jump;
+	    this.wait = movements.wait;
+	    return this;
+	  },
+	  ptero: function(){
+	    this.runRight = movements.moveRight;
+	    this.runLeft = movements.moveLeft;
+	    return this;
+	  }
+	};
+
+	// specific update movements of a creature
+	var updates = {
+	  dino: function(){
+	    this.move();
+	    this.x <= 0 ? this.x = this.game.world.width : this.x;
+	    if(Math.random() < 0.05){ 
+	      this.jump(); 
+	      this.animations.play('jumping-' + this.direction());
+	    }
+	    if(this.body.blocked.left){ 
+	      this.moveRight(); 
+	      this.animations.play('moving-right');
+	    }
+	    if(this.body.blocked.right){ 
+	      this.moveLeft(); 
+	      this.animations.play('moving-left');
+	    }
+	  },
+	  ptero: function(){
+	    this.x -= 1;
+	    this.animations.play('fly');
+	    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	  },
+	  man: function(){
+	    
+	  }
+	};
+
+	module.exports = {
+	  movements: movements,
+	  behaviours: behaviours,
+	  updates: updates
+	};
+
+
 
 /***/ }
 /******/ ]);

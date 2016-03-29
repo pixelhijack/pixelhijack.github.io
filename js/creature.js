@@ -1,5 +1,5 @@
 var configs = require('./configs.js');
-var behaviours = require('./behaviours.js');
+var mixins = require('./mixins.js');
 
 var Creature = function(game, creatureType, x, y, origin){
   Phaser.Sprite.call(this, game, x, y, (creatureType || configs[creatureType].image));
@@ -22,8 +22,10 @@ var Creature = function(game, creatureType, x, y, origin){
     this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
   }.bind(this));
   
-  // https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/
-  behaviours[creatureType].call(Creature.prototype);
+  // apply creature 'class' by extend the object with behavioural mixins
+  mixins.behaviours[creatureType].call(Creature.prototype);
+  // apply the creature's own update to be called
+  this.update = mixins.updates[creatureType].bind(this);
 };
 
 Creature.prototype = Object.create(Phaser.Sprite.prototype);

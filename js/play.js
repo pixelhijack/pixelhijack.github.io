@@ -213,13 +213,13 @@ function Play(game, settings){
   
   function moveDinos(){
     enemies.global.spawn.dino.forEachAlive(function(dino){
-      dino.update(game);
+      dino.update();
     });
   }
   
   function movePteros(){
     enemies.global.spawn.ptero.forEachAlive(function(ptero){
-      ptero.update(game);
+      //ptero.update(game);
     });
   }
   

@@ -1,4 +1,5 @@
-var mixins = {
+// general behaviour reducers any entity can use
+var movements = {
   /******************************
   *     MOVE LEFT
   ******************************/
@@ -19,9 +20,9 @@ var mixins = {
   },
   move: function(){
     if(this.body.velocity.x >= 0){
-      mixins.moveRight.call(this);
+      movements.moveRight.call(this);
     }else{
-      mixins.moveLeft.call(this); 
+      movements.moveLeft.call(this); 
     }
   },
   jump: function(){
@@ -68,54 +69,63 @@ var mixins = {
   follow: function(){}
 };
 
+// creature class mixins implementing behaviours should be added here
 var behaviours = {
   man: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.jump = mixins.jump;
-    this.damage = mixins.damage;
-    this.stop = mixins.stop;
-    this.lives = mixins.lives;
-    this.update = function(){
-      
-    };
+    this.moveRight = movements.moveRight;
+    this.moveLeft = movements.moveLeft;
+    this.jump = movements.jump;
+    this.damage = movements.damage;
+    this.stop = movements.stop;
+    this.lives = movements.lives;
     return this;
   },
   dino: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.update = function(game){
-      this.move();
-      this.x <= 0 ? this.x = game.world.width : this.x;
-      if(Math.random() < 0.05){ 
-        this.jump(); 
-        this.animations.play('jumping-' + this.direction());
-      }
-      if(this.body.blocked.left){ 
-        this.moveRight(); 
-        this.animations.play('moving-right');
-      }
-      if(this.body.blocked.right){ 
-        this.moveLeft(); 
-        this.animations.play('moving-left');
-      }
-    };
+    this.moveRight = movements.moveRight;
+    this.moveLeft = movements.moveLeft;
+    this.move = movements.move;
+    this.jump = movements.jump;
+    this.wait = movements.wait;
     return this;
   },
   ptero: function(){
-    this.runRight = mixins.moveRight;
-    this.runLeft = mixins.moveLeft;
-    this.update = function(game){
-      this.x -= 1;
-      this.animations.play('fly');
-      this.x = this.x <= this.width/2 ? game.world.width - 5 : this.x;
-    };
+    this.runRight = movements.moveRight;
+    this.runLeft = movements.moveLeft;
     return this;
   }
 };
 
-module.exports = behaviours;
+// specific update movements of a creature
+var updates = {
+  dino: function(){
+    this.move();
+    this.x <= 0 ? this.x = this.game.world.width : this.x;
+    if(Math.random() < 0.05){ 
+      this.jump(); 
+      this.animations.play('jumping-' + this.direction());
+    }
+    if(this.body.blocked.left){ 
+      this.moveRight(); 
+      this.animations.play('moving-right');
+    }
+    if(this.body.blocked.right){ 
+      this.moveLeft(); 
+      this.animations.play('moving-left');
+    }
+  },
+  ptero: function(){
+    this.x -= 1;
+    this.animations.play('fly');
+    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+  },
+  man: function(){
+    
+  }
+};
+
+module.exports = {
+  movements: movements,
+  behaviours: behaviours,
+  updates: updates
+};
 
