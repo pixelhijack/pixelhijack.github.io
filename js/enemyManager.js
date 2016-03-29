@@ -44,8 +44,8 @@ var enemyManager = function(game, levelEnemies, levelZones){
   levelEnemies.forEach(function(zone){
     zone.guard.forEach(function(group){
       for(var i = 0, max = group.number;i<max;i++){
-        // if no levelZones defined in Tiled tilema OR levelZones are defined but missing the ID in the levelList level definition put at random point
-        var point = !!levelZones || (levelZones && !!levelZones[zone.id]) ?
+        // if no levelZones defined in Tiled tilemap OR levelZones are defined but missing the ID in the levelList level definition put at random point
+        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
           utils.randomPointIn(levelZones[zone.id].x, 
                               levelZones[zone.id].x + levelZones[zone.id].width, 
                               levelZones[zone.id].y, 
@@ -60,7 +60,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
     zone.spawn.forEach(function(group){
       for(var i = 0, max = group.number;i<max;i++){
         // put the creature in the zone if there is one in objects-layer, else put anywhere
-        var point = !!levelZones || (levelZones && !!levelZones[zone.id]) ?
+        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
           utils.centerPointIn(levelZones[zone.id].x, 
                               levelZones[zone.id].x + levelZones[zone.id].width, 
                               levelZones[zone.id].y, 
