@@ -555,8 +555,12 @@
 	    maxSpeed: 100,
 	    acceleration: 50, 
 	    animations: [
-	      { name: 'fly-left', frames: [3,4,5], fps: 10, loop: true },
-	      { name: 'fly-right', frames: [0,1,2], fps: 10, loop: true }
+	      { name: 'fly-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
+	      { name: 'fly-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
+	      { name: 'descend-left', frames: [3], fps: 12, loop: true },
+	      { name: 'descend-right', frames: [2], fps: 12, loop: true },
+	      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
+	      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
 	    ]
 	  }, 
 	  gorilla: {
@@ -636,8 +640,8 @@
 	  },
 	  die: function(){
 	    this.state = 'dead';
-	    this.body.velocity.y -= Math.random() * 1000;
-	    this.game.time.events.add(Phaser.Timer.SECOND * 3, this.kill, this);
+	    this.body.velocity.y -= Math.random() * 500;
+	    this.game.time.events.add(Phaser.Timer.SECOND * 1, this.kill, this);
 	  },
 	  see: function(){},
 	  sniff: function(enemy){
@@ -652,6 +656,12 @@
 	  wait: function(){
 	    this.body.velocity.x = 0;
 	    this.body.velocity.y = 0;
+	  },
+	  descend: function(){
+	    this.body.velocity.y += this.props.acceleration;
+	  },
+	  ascend: function(){
+	    this.body.velocity.y -= this.props.acceleration;
 	  },
 	  sleep: function(){},
 	  sentinel: function(){},
@@ -681,6 +691,8 @@
 	  ptero: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
+	    this.descend = mixins.descend;
+	    this.ascend = mixins.ascend;
 	    return this;
 	  }
 	};
@@ -707,10 +719,22 @@
 	    }
 	  },
 	  ptero: function(){
+	    this.play(this.state + '-' + this.direction());
 	    this.move();
 	    this.state = 'fly';
-	    this.play(this.state + '-' + this.direction());
 	    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	    if(Math.random() < 0.01){
+	      this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
+	        this.state = 'descend';
+	        this.descend();
+	      }, this);
+	    }
+	    if(Math.random() < 0.01){
+	      this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
+	        this.state = 'ascend';
+	        this.ascend();
+	      }, this);
+	    }
 	    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
 	  },
 	  man: function(){

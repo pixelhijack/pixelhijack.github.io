@@ -58,8 +58,12 @@ var creatureConfigs = {
     maxSpeed: 100,
     acceleration: 50, 
     animations: [
-      { name: 'fly-left', frames: [3,4,5], fps: 10, loop: true },
-      { name: 'fly-right', frames: [0,1,2], fps: 10, loop: true }
+      { name: 'fly-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
+      { name: 'fly-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
+      { name: 'descend-left', frames: [3], fps: 12, loop: true },
+      { name: 'descend-right', frames: [2], fps: 12, loop: true },
+      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
+      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
     ]
   }, 
   gorilla: {
