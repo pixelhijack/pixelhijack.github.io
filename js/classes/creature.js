@@ -1,4 +1,4 @@
-var creatureConfigs = require('./creatureConfigs.js');
+var creatureConfigs = require('../configs/creatureConfigs.js');
 var movements = require('./movements.js');
 
 var Creature = function(game, creatureType, x, y, origin){

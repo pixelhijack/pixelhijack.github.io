@@ -1,4 +1,4 @@
-var Creature = require('./creature.js');
+var Creature = require('../classes/creature.js');
 var util = require('./util.js');
 
 /*  

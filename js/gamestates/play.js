@@ -1,8 +1,8 @@
-var Creature = require('./creature.js');
-var levelManager = require('./levelManager.js');
-var enemyManager = require('./enemyManager.js');
-var levelConfigs = require('./levelConfigs.js');
-var util = require('./util.js');
+var Creature = require('../classes/creature.js');
+var levelManager = require('../services/levelManager.js');
+var enemyManager = require('../services/enemyManager.js');
+var levelConfigs = require('../configs/levelConfigs.js');
+var util = require('../services/util.js');
 
 
 // Play game state
@@ -273,7 +273,7 @@ function Play(game, settings){
     
     // debug sprites
     enemies.forEachAlive(function(creature){
-      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+      //creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
     });
     
     setParallax();

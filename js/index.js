@@ -1,5 +1,5 @@
-var Menu = require('./menu.js');
-var Play = require('./play.js');
+var Menu = require('./gamestates/menu.js');
+var Play = require('./gamestates/play.js');
 
 var globalSettings = {
   level: window.location.hash && window.location.hash.split('#')[1] || 1,

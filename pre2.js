@@ -44,8 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Menu = __webpack_require__(1);
-	var Play = __webpack_require__(2);
+	var Menu = __webpack_require__(12);
+	var Play = __webpack_require__(13);
 
 	var globalSettings = {
 	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
@@ -73,7 +73,18 @@
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */
 /***/ function(module, exports) {
 
 	function Menu(){
@@ -95,14 +106,14 @@
 	module.exports = Menu;
 
 /***/ },
-/* 2 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(3);
-	var levelManager = __webpack_require__(6);
-	var enemyManager = __webpack_require__(7);
-	var levelConfigs = __webpack_require__(11);
-	var util = __webpack_require__(8);
+	var Creature = __webpack_require__(14);
+	var levelManager = __webpack_require__(17);
+	var enemyManager = __webpack_require__(18);
+	var levelConfigs = __webpack_require__(20);
+	var util = __webpack_require__(19);
 
 
 	// Play game state
@@ -373,7 +384,7 @@
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
-	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+	      //creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
 	    });
 	    
 	    setParallax();
@@ -419,11 +430,11 @@
 
 
 /***/ },
-/* 3 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var creatureConfigs = __webpack_require__(10);
-	var movements = __webpack_require__(5);
+	var creatureConfigs = __webpack_require__(15);
+	var movements = __webpack_require__(16);
 
 	var Creature = function(game, creatureType, x, y, origin){
 	  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
@@ -492,8 +503,95 @@
 	  
 
 /***/ },
-/* 4 */,
-/* 5 */
+/* 15 */
+/***/ function(module, exports) {
+
+	//var _ = require('lodash');
+
+	var creatureConfigs = {
+	  creatureDefaults: {
+	    gravity: 500,
+	    bounce: 0.2,
+	    jumping: 300,
+	    maxSpeed: 200,
+	    acceleration: 10, 
+	    lives: 1, 
+	    lifespan: 10000,
+	    animations: []
+	  },
+	  man: {
+	    maxSpeed: 200,
+	    lives: 3, 
+	    lifespan: Infinity,
+	    animations: [
+	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
+	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
+	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
+	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
+	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
+	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
+	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
+	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
+	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
+	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
+	    ]
+	  },
+	  dino: {
+	    jumping: 400,
+	    maxSpeed: 50,
+	    acceleration: 5, 
+	    animations: [
+	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
+	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
+	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
+	    ]
+	  },
+	  bear: {
+	    acceleration: 15, 
+	    animations: [] 
+	  },
+	  'super-bear': {
+	    acceleration: 30,
+	    maxSpeed: 400,
+	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
+	    animations: []
+	  },
+	  ptero: {
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    maxSpeed: 100,
+	    acceleration: 50, 
+	    animations: [
+	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
+	    ]
+	  }, 
+	  gorilla: {
+	    // grim level bosses with lots of lifes!!
+	    lives: 10, 
+	    animations: []
+	  },
+	  lollipop: {
+	    // objects also...? 
+	    animations: []
+	  }
+	};
+
+	for(var creature in creatureConfigs){
+	  //creatureConfigs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
+	  var defaults = creatureConfigs['creatureDefaults'];
+	  for(var prop in defaults){
+	    if(creatureConfigs[creature][prop] === undefined){
+	      creatureConfigs[creature][prop] = defaults[prop];
+	    }
+	  }  
+	}
+
+	module.exports = creatureConfigs;
+
+/***/ },
+/* 16 */
 /***/ function(module, exports) {
 
 	// general behaviour reducers any entity can use
@@ -629,7 +727,7 @@
 
 
 /***/ },
-/* 6 */
+/* 17 */
 /***/ function(module, exports) {
 
 	var levelManager = function(game, levelList){
@@ -721,11 +819,11 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 7 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(3);
-	var util = __webpack_require__(8);
+	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(14);
+	var util = __webpack_require__(19);
 
 	/*  
 	    ENEMIES API: 
@@ -847,7 +945,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 8 */
+/* 19 */
 /***/ function(module, exports) {
 
 	var util = function(game){
@@ -885,96 +983,7 @@
 	module.exports = util;
 
 /***/ },
-/* 9 */,
-/* 10 */
-/***/ function(module, exports) {
-
-	//var _ = require('lodash');
-
-	var creatureConfigs = {
-	  creatureDefaults: {
-	    gravity: 500,
-	    bounce: 0.2,
-	    jumping: 300,
-	    maxSpeed: 200,
-	    acceleration: 10, 
-	    lives: 1, 
-	    lifespan: 10000,
-	    animations: []
-	  },
-	  man: {
-	    maxSpeed: 200,
-	    lives: 3, 
-	    lifespan: Infinity,
-	    animations: [
-	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
-	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
-	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
-	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
-	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
-	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
-	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
-	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
-	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
-	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
-	    ]
-	  },
-	  dino: {
-	    jumping: 400,
-	    maxSpeed: 50,
-	    acceleration: 5, 
-	    animations: [
-	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
-	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
-	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true }
-	    ]
-	  },
-	  bear: {
-	    acceleration: 15, 
-	    animations: [] 
-	  },
-	  'super-bear': {
-	    acceleration: 30,
-	    maxSpeed: 400,
-	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
-	    animations: []
-	  },
-	  ptero: {
-	    gravity: 0,
-	    bounce: 0.1,
-	    jumping: 0,
-	    maxSpeed: 100,
-	    acceleration: 50, 
-	    animations: [
-	      { name: 'fly', frames: [3,4,5], fps: 10, loop: true }
-	    ]
-	  }, 
-	  gorilla: {
-	    // grim level bosses with lots of lifes!!
-	    lives: 10, 
-	    animations: []
-	  },
-	  lollipop: {
-	    // objects also...? 
-	    animations: []
-	  }
-	};
-
-	for(var creature in creatureConfigs){
-	  //creatureConfigs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
-	  var defaults = creatureConfigs['creatureDefaults'];
-	  for(var prop in defaults){
-	    if(creatureConfigs[creature][prop] === undefined){
-	      creatureConfigs[creature][prop] = defaults[prop];
-	    }
-	  }  
-	}
-
-	module.exports = creatureConfigs;
-
-/***/ },
-/* 11 */
+/* 20 */
 /***/ function(module, exports) {
 
 	var levelConfigs = [
