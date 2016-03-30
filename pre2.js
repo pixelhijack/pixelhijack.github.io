@@ -168,6 +168,7 @@
 	    game.load.spritesheet('lives', './assets/lives.png', 38, 24);
 	    game.load.spritesheet('dino', './assets/dino.png', 42, 36);
 	    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
+	    game.load.spritesheet('bear', './assets/bears.png', 44, 44);
 	    game.load.spritesheet('man', './assets/man.png', 32, 36);
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
 	    
@@ -385,6 +386,9 @@
 	  }
 	  
 	  function onEnemyCollision(hero, enemy){
+	    if(enemy.state === 'dead'){
+	      return;
+	    }
 	    if(man.body.touching.down && enemy.body.touching.up){
 	      if(man.state === 'hitting'){
 	        enemy.die();
@@ -502,7 +506,7 @@
 	    gravity: 500,
 	    bounce: 0.2,
 	    jumping: 300,
-	    maxSpeed: 200,
+	    maxSpeed: 100,
 	    acceleration: 10, 
 	    lives: 1, 
 	    lifespan: 10000,
@@ -526,7 +530,7 @@
 	    ]
 	  },
 	  dino: {
-	    jumping: 400,
+	    jumping: 300,
 	    maxSpeed: 50,
 	    acceleration: 5, 
 	    animations: [
@@ -540,11 +544,18 @@
 	  },
 	  bear: {
 	    acceleration: 15, 
-	    animations: [] 
+	    animations: [
+	      { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [11,10,9], fps: 10, loop: true },
+	      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+	      { name: 'spawn-left', frames: [15,14,13,12], fps: 10, loop: false },
+	      { name: 'dead-right', frames: [7], fps: 10, loop: true },
+	      { name: 'dead-left', frames: [8], fps: 10, loop: true }
+	    ] 
 	  },
 	  'super-bear': {
 	    acceleration: 30,
-	    maxSpeed: 400,
+	    maxSpeed: 200,
 	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
 	    animations: []
 	  },
@@ -615,6 +626,16 @@
 	      mixins.moveRight.call(this, overrideAcc) : 
 	      mixins.moveLeft.call(this, overrideAcc);
 	  },
+	  turnIfBlocked: function(){
+	    if(this.body.blocked.left){ 
+	      mixins.moveRight.call(this); 
+	      this.state = 'moving';
+	    }
+	    if(this.body.blocked.right){ 
+	      mixins.moveLeft.call(this); 
+	      this.state = 'moving';
+	    }
+	  },
 	  jump: function(){
 	    if(this.body.touching.down || this.body.blocked.down){
 	      this.body.velocity.y -= this.props.jumping;
@@ -640,8 +661,9 @@
 	  },
 	  die: function(){
 	    this.state = 'dead';
-	    this.body.velocity.y -= Math.random() * 500;
-	    this.game.time.events.add(Phaser.Timer.SECOND * 1, this.kill, this);
+	    this.body.velocity.y -= Math.random() * 800;
+	    // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
+	    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
 	  },
 	  see: function(){},
 	  sniff: function(enemy){
@@ -685,15 +707,23 @@
 	    this.move = mixins.move;
 	    this.jump = mixins.jump;
 	    this.wait = mixins.wait;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.die = mixins.die;
 	    return this;
 	  },
 	  ptero: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.descend = mixins.descend;
 	    this.ascend = mixins.ascend;
 	    return this;
+	  },
+	  bear: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.die = mixins.die;
 	  }
 	};
 
@@ -702,19 +732,15 @@
 	  dino: function(){
 	    this.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
+	      this.turnIfBlocked();
 	      this.move();
 	      this.x <= 0 ? this.x = this.game.world.width : this.x;
+	      if(Math.random() < 0.005){ 
+	        this.facingRight = !this.facingRight;
+	      }
 	      if(Math.random() < 0.05){ 
 	        this.jump(); 
 	        this.state = 'jumping';
-	      }
-	      if(this.body.blocked.left){ 
-	        this.moveRight(); 
-	        this.state = 'moving';
-	      }
-	      if(this.body.blocked.right){ 
-	        this.moveLeft(); 
-	        this.state = 'moving';
 	      }
 	    }
 	  },
@@ -722,7 +748,8 @@
 	    this.play(this.state + '-' + this.direction());
 	    this.move();
 	    this.state = 'fly';
-	    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	    //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	    this.turnIfBlocked();
 	    if(Math.random() < 0.01){
 	      this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
 	        this.state = 'descend';
@@ -736,6 +763,12 @@
 	      }, this);
 	    }
 	    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
+	  },
+	  bear: function(){
+	    this.play(this.state + '-' + this.direction());
+	    this.turnIfBlocked();
+	    this.move();
+	    this.state = 'moving';
 	  },
 	  man: function(){
 	    
@@ -995,6 +1028,20 @@
 	    randomWorldPoint: function(){
 	      return this.randomPointIn(0, 0, game.world.width, game.world.height);
 	    },
+	    fate: {
+	      sometimes: function(){
+	        return Math.random() < 0.5;
+	      },
+	      rarely: function(){
+	        return Math.random() < 0.1;
+	      },
+	      hardly: function(){
+	        return Math.random() < 0.05;
+	      },
+	      hardlyEver: function(){
+	        return Math.random() < 0.01;
+	      }
+	    },
 	    debugZone: function(x, y, width, height){
 	      var graphics = game.add.graphics(x, y);
 	      window.graphics = graphics;
@@ -1031,7 +1078,7 @@
 	        spawn: [
 	          { type: 'dino', number: 3, lifespan: Infinity },
 	          { type: 'ptero', number: 2, lifespan: Infinity  },
-	          { type: 'bear', number: 0, lifespan: Infinity  }
+	          { type: 'bear', number: 2, lifespan: Infinity  }
 	        ]
 	      }, {
 	        id: 1,

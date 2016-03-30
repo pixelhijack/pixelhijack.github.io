@@ -68,6 +68,7 @@ function Play(game, settings){
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
     game.load.spritesheet('dino', './assets/dino.png', 42, 36);
     game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
+    game.load.spritesheet('bear', './assets/bears.png', 44, 44);
     game.load.spritesheet('man', './assets/man.png', 32, 36);
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     

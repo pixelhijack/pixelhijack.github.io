@@ -23,6 +23,16 @@ var mixins = {
       mixins.moveRight.call(this, overrideAcc) : 
       mixins.moveLeft.call(this, overrideAcc);
   },
+  turnIfBlocked: function(){
+    if(this.body.blocked.left){ 
+      mixins.moveRight.call(this); 
+      this.state = 'moving';
+    }
+    if(this.body.blocked.right){ 
+      mixins.moveLeft.call(this); 
+      this.state = 'moving';
+    }
+  },
   jump: function(){
     if(this.body.touching.down || this.body.blocked.down){
       this.body.velocity.y -= this.props.jumping;
@@ -94,15 +104,23 @@ var behaviours = {
     this.move = mixins.move;
     this.jump = mixins.jump;
     this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
     this.die = mixins.die;
     return this;
   },
   ptero: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
     this.descend = mixins.descend;
     this.ascend = mixins.ascend;
     return this;
+  },
+  bear: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.die = mixins.die;
   }
 };
 
@@ -111,6 +129,7 @@ var updates = {
   dino: function(){
     this.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
+      this.turnIfBlocked();
       this.move();
       this.x <= 0 ? this.x = this.game.world.width : this.x;
       if(Math.random() < 0.005){ 
@@ -120,21 +139,14 @@ var updates = {
         this.jump(); 
         this.state = 'jumping';
       }
-      if(this.body.blocked.left){ 
-        this.moveRight(); 
-        this.state = 'moving';
-      }
-      if(this.body.blocked.right){ 
-        this.moveLeft(); 
-        this.state = 'moving';
-      }
     }
   },
   ptero: function(){
     this.play(this.state + '-' + this.direction());
     this.move();
     this.state = 'fly';
-    this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+    //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+    this.turnIfBlocked();
     if(Math.random() < 0.01){
       this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
         this.state = 'descend';
@@ -148,6 +160,12 @@ var updates = {
       }, this);
     }
     //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
+  },
+  bear: function(){
+    this.play(this.state + '-' + this.direction());
+    this.turnIfBlocked();
+    this.move();
+    this.state = 'moving';
   },
   man: function(){
     

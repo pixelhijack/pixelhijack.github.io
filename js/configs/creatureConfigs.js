@@ -5,7 +5,7 @@ var creatureConfigs = {
     gravity: 500,
     bounce: 0.2,
     jumping: 300,
-    maxSpeed: 200,
+    maxSpeed: 100,
     acceleration: 10, 
     lives: 1, 
     lifespan: 10000,
@@ -29,7 +29,7 @@ var creatureConfigs = {
     ]
   },
   dino: {
-    jumping: 400,
+    jumping: 300,
     maxSpeed: 50,
     acceleration: 5, 
     animations: [
@@ -43,11 +43,18 @@ var creatureConfigs = {
   },
   bear: {
     acceleration: 15, 
-    animations: [] 
+    animations: [
+      { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
+      { name: 'moving-left', frames: [11,10,9], fps: 10, loop: true },
+      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+      { name: 'spawn-left', frames: [15,14,13,12], fps: 10, loop: false },
+      { name: 'dead-right', frames: [7], fps: 10, loop: true },
+      { name: 'dead-left', frames: [8], fps: 10, loop: true }
+    ] 
   },
   'super-bear': {
     acceleration: 30,
-    maxSpeed: 400,
+    maxSpeed: 200,
     image: 'super-bear-sprite-ref', // override sprite (creature name by default)
     animations: []
   },

@@ -19,7 +19,7 @@ var levelConfigs = [
         spawn: [
           { type: 'dino', number: 3, lifespan: Infinity },
           { type: 'ptero', number: 2, lifespan: Infinity  },
-          { type: 'bear', number: 0, lifespan: Infinity  }
+          { type: 'bear', number: 2, lifespan: Infinity  }
         ]
       }, {
         id: 1,
