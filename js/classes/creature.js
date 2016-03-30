@@ -5,7 +5,7 @@ var Creature = function(game, creatureType, x, y, origin){
   Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
-  this._state = '';
+  this.state = '';
   this.body.collideWorldBounds = true;
   this.body.gravity.y = creatureConfigs[creatureType].gravity;
   this.body.mass = creatureConfigs[creatureType].mass;
@@ -39,16 +39,6 @@ var Creature = function(game, creatureType, x, y, origin){
 Creature.prototype = Object.create(Phaser.Sprite.prototype);
 
 Creature.prototype.constructor = Creature;
-
-Object.defineProperty(Creature.prototype, 'state', {
-    get: function() { return this._state; }, 
-    set: function(value) {
-        if (value !== this._state)
-        {
-            this._state = value;
-        }
-    }
-});
 
 Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';

@@ -199,7 +199,7 @@ function Play(game, settings){
     game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
     
     enemies.forEachAlive(function(enemy){
-      if(enemy.props.collide || enemy.state !== 'dead'){
+      if(enemy.props.collide && enemy.state !== 'dead'){
         game.physics.arcade.collide(enemy, level.collisionLayer);
       }
       if(enemy.inCamera && enemy.state !== 'dead' && man.state !== 'hurt'){
