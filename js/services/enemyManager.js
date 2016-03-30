@@ -53,6 +53,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
           utils.randomWorldPoint();
         var creature = new Creature(game, group.type, point.x, point.y, zone.id);
         creature.lifespan = group.lifespan; 
+        creature.boundTo = levelZones[zone.id].boundTo || {};
         //if(levelZones[zone.id]) utils.debugZone(levelZones[zone.id].x, levelZones[zone.id].y, levelZones[zone.id].width, levelZones[zone.id].height);
         zones[zone.id].guard[group.type].add(creature);
       }

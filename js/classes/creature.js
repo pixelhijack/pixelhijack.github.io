@@ -14,6 +14,12 @@ var Creature = function(game, creatureType, x, y, origin){
   this._debugText.visible = false;
   
   this.origin = origin;
+  /*  @boundTo
+    {x, y}            - a point
+    {x, x}            - a section
+    {x1, y1, x2, y2}  - an exact zone
+  */
+  this.boundTo = { };
   this.lifespan = this.props.lifespan;
 
   this.facingRight = Math.random() < 0.5 ? true : false;
