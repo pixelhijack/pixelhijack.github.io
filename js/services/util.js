@@ -21,6 +21,20 @@ var util = function(game){
     randomWorldPoint: function(){
       return this.randomPointIn(0, 0, game.world.width, game.world.height);
     },
+    fate: {
+      sometimes: function(){
+        return Math.random() < 0.5;
+      },
+      rarely: function(){
+        return Math.random() < 0.1;
+      },
+      hardly: function(){
+        return Math.random() < 0.05;
+      },
+      hardlyEver: function(){
+        return Math.random() < 0.01;
+      }
+    },
     debugZone: function(x, y, width, height){
       var graphics = game.add.graphics(x, y);
       window.graphics = graphics;
