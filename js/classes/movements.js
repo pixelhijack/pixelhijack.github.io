@@ -52,14 +52,17 @@ var mixins = {
   hit: function(){
     
   },
-  hurt: function(numbTime){
+  hurt: function(force){
     this.props.lives -= 1;
-    this.body.velocity.x -= 50;
-    this.stunnedUntil = this.game.time.now + (numbTime || 2000);
+    this.body.velocity.x -= force * 3;
+    this.body.velocity.y -= force * 3;
+    this.stunnedUntil = this.game.time.now + force * 5;
   },
-  die: function(){
+  die: function(force){
     this.state = 'dead';
-    this.body.velocity.y -= 300;
+    this.props.collide = false;
+    this.body.velocity.x -= force * 3;
+    this.body.velocity.y -= force * 3;
     // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
     this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
   },

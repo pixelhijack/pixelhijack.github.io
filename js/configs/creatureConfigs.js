@@ -4,9 +4,11 @@ var creatureConfigs = {
   creatureDefaults: {
     gravity: 500,
     bounce: 0.2,
+    mass: 1,
     jumping: 300,
     maxSpeed: 100,
-    acceleration: 10, 
+    acceleration: 10,
+    collide: true,
     lives: 1, 
     lifespan: 10000,
     animations: []
@@ -33,6 +35,7 @@ var creatureConfigs = {
     ]
   },
   dino: {
+    mass: 1.5,
     jumping: 300,
     maxSpeed: 50,
     acceleration: 5, 
@@ -46,6 +49,7 @@ var creatureConfigs = {
     ]
   },
   bear: {
+    mass: 1.2,
     acceleration: 15, 
     animations: [
       { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
@@ -63,9 +67,11 @@ var creatureConfigs = {
     animations: []
   },
   ptero: {
+    mass: 0.5,
     gravity: 0,
     bounce: 0.1,
     jumping: 0,
+    collide: false,
     maxSpeed: 100,
     acceleration: 50, 
     animations: [

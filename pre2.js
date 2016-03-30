@@ -213,6 +213,9 @@
 	    weapon.animRight.onComplete.add(toggleVivibility, this);
 	    weapon.animLeft.onComplete.add(toggleVivibility, this);
 	    
+	    // restore lifes if game state reloaded:
+	    man.props.lives = 3;
+	    
 	    game.camera.follow(man);
 	    game.add.existing(man);
 	  }
@@ -292,13 +295,16 @@
 	  
 	  function collisions(){
 	    game.physics.arcade.collide(man, level.collisionLayer);
+	    
 	    game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
 	    
 	    enemies.forEachAlive(function(enemy){
-	      if(!enemy.inCamera || enemy.state === 'dead' || man.state === 'hurt'){
-	        return;
+	      if(enemy.props.collide || enemy.state !== 'dead'){
+	        game.physics.arcade.collide(enemy, level.collisionLayer);
 	      }
-	      game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
+	      if(enemy.inCamera && enemy.state !== 'dead' && man.state !== 'hurt'){
+	        game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
+	      }
 	    });
 	    
 	    if(level.deathLayer){
@@ -400,19 +406,21 @@
 	  }
 	  
 	  function onEnemyCollision(hero, enemy){
+	    var enemyMomentum = enemy.body.velocity.x * enemy.body.mass,
+	        heroMomentum = man.body.velocity.x * man.body.mass;
 	    // jumping on top of the enemies!
 	    if(man.body.touching.down && enemy.body.touching.up){
 	      if(man.state === 'hitting'){
-	        enemy.die();
+	        enemy.die(heroMomentum);
 	      }
 	      return;
 	    }
 	    if(man.state === 'hitting'){
-	      enemy.die();
+	      enemy.die(heroMomentum);
 	    }else{
-	      man.hurt();
+	      man.hurt(enemyMomentum);
 	      renderMenu();
-	      if(man.lives() <= -100000){
+	      if(man.lives() <= 0){
 	        weapon.sprite.kill();
 	        man.kill();
 	        // restart while keep caches: 
@@ -447,7 +455,8 @@
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this._state = '';
 	  this.body.collideWorldBounds = true;
-	  this.body.gravity.y = this.props.gravity;
+	  this.body.gravity.y = creatureConfigs[creatureType].gravity;
+	  this.body.mass = creatureConfigs[creatureType].mass;
 	  this.anchor.setTo(0.5, 0.5);
 	  
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
@@ -460,7 +469,7 @@
 	    {x1, y1, x2, y2}  - an exact zone
 	  */
 	  this.boundTo = { };
-	  this.lifespan = this.props.lifespan;
+	  this.lifespan = creatureConfigs[creatureType].lifespan;
 	  this.stunnedUntil = 0;
 
 	  this.facingRight = Math.random() < 0.5 ? true : false;
@@ -524,9 +533,11 @@
 	  creatureDefaults: {
 	    gravity: 500,
 	    bounce: 0.2,
+	    mass: 1,
 	    jumping: 300,
 	    maxSpeed: 100,
-	    acceleration: 10, 
+	    acceleration: 10,
+	    collide: true,
 	    lives: 1, 
 	    lifespan: 10000,
 	    animations: []
@@ -553,6 +564,7 @@
 	    ]
 	  },
 	  dino: {
+	    mass: 1.5,
 	    jumping: 300,
 	    maxSpeed: 50,
 	    acceleration: 5, 
@@ -566,6 +578,7 @@
 	    ]
 	  },
 	  bear: {
+	    mass: 1.2,
 	    acceleration: 15, 
 	    animations: [
 	      { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
@@ -583,9 +596,11 @@
 	    animations: []
 	  },
 	  ptero: {
+	    mass: 0.5,
 	    gravity: 0,
 	    bounce: 0.1,
 	    jumping: 0,
+	    collide: false,
 	    maxSpeed: 100,
 	    acceleration: 50, 
 	    animations: [
@@ -678,14 +693,17 @@
 	  hit: function(){
 	    
 	  },
-	  hurt: function(numbTime){
+	  hurt: function(force){
 	    this.props.lives -= 1;
-	    this.body.velocity.x -= 50;
-	    this.stunnedUntil = this.game.time.now + (numbTime || 2000);
+	    this.body.velocity.x -= force * 3;
+	    this.body.velocity.y -= force * 3;
+	    this.stunnedUntil = this.game.time.now + force * 5;
 	  },
-	  die: function(){
+	  die: function(force){
 	    this.state = 'dead';
-	    this.body.velocity.y -= 300;
+	    this.props.collide = false;
+	    this.body.velocity.x -= force * 3;
+	    this.body.velocity.y -= force * 3;
 	    // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
 	    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
 	  },

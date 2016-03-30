@@ -113,6 +113,9 @@ function Play(game, settings){
     weapon.animRight.onComplete.add(toggleVivibility, this);
     weapon.animLeft.onComplete.add(toggleVivibility, this);
     
+    // restore lifes if game state reloaded:
+    man.props.lives = 3;
+    
     game.camera.follow(man);
     game.add.existing(man);
   }
@@ -192,13 +195,16 @@ function Play(game, settings){
   
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
+    
     game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
     
     enemies.forEachAlive(function(enemy){
-      if(!enemy.inCamera || enemy.state === 'dead' || man.state === 'hurt'){
-        return;
+      if(enemy.props.collide || enemy.state !== 'dead'){
+        game.physics.arcade.collide(enemy, level.collisionLayer);
       }
-      game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
+      if(enemy.inCamera && enemy.state !== 'dead' && man.state !== 'hurt'){
+        game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
+      }
     });
     
     if(level.deathLayer){
@@ -300,19 +306,21 @@ function Play(game, settings){
   }
   
   function onEnemyCollision(hero, enemy){
+    var enemyMomentum = enemy.body.velocity.x * enemy.body.mass,
+        heroMomentum = man.body.velocity.x * man.body.mass;
     // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state === 'hitting'){
-        enemy.die();
+        enemy.die(heroMomentum);
       }
       return;
     }
     if(man.state === 'hitting'){
-      enemy.die();
+      enemy.die(heroMomentum);
     }else{
-      man.hurt();
+      man.hurt(enemyMomentum);
       renderMenu();
-      if(man.lives() <= -100000){
+      if(man.lives() <= 0){
         weapon.sprite.kill();
         man.kill();
         // restart while keep caches: 

@@ -7,7 +7,8 @@ var Creature = function(game, creatureType, x, y, origin){
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this._state = '';
   this.body.collideWorldBounds = true;
-  this.body.gravity.y = this.props.gravity;
+  this.body.gravity.y = creatureConfigs[creatureType].gravity;
+  this.body.mass = creatureConfigs[creatureType].mass;
   this.anchor.setTo(0.5, 0.5);
   
   this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
@@ -20,7 +21,7 @@ var Creature = function(game, creatureType, x, y, origin){
     {x1, y1, x2, y2}  - an exact zone
   */
   this.boundTo = { };
-  this.lifespan = this.props.lifespan;
+  this.lifespan = creatureConfigs[creatureType].lifespan;
   this.stunnedUntil = 0;
 
   this.facingRight = Math.random() < 0.5 ? true : false;
