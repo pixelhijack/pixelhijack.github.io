@@ -58,7 +58,7 @@ var mixins = {
   },
   die: function(){
     this.state = 'dead';
-    this.body.velocity.y -= Math.random() * 800;
+    this.body.velocity.y -= 300;
     // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
     this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
   },
@@ -162,10 +162,12 @@ var updates = {
     //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
   },
   bear: function(){
-    this.play(this.state + '-' + this.direction());
-    this.turnIfBlocked();
-    this.move();
-    this.state = 'moving';
+    if(this.state !== 'dead'){
+      this.play(this.state + '-' + this.direction());
+      this.turnIfBlocked();
+      this.move();
+      this.state = 'moving';
+    }
   },
   man: function(){
     
