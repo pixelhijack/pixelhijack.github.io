@@ -320,9 +320,11 @@ function Play(game, settings){
       renderMenu();
       if(man.lives() < 0){
         weapon.sprite.kill();
-        man.kill();
-        // restart while keep caches: 
-        game.state.start('Play', true, false);
+        man.die();
+        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
+          // restart while keep caches: 
+          game.state.start('Play', true, false);
+        }, this);
       }
     }
   }

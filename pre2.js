@@ -420,9 +420,11 @@
 	      renderMenu();
 	      if(man.lives() < 0){
 	        weapon.sprite.kill();
-	        man.kill();
-	        // restart while keep caches: 
-	        game.state.start('Play', true, false);
+	        man.die();
+	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
+	          // restart while keep caches: 
+	          game.state.start('Play', true, false);
+	        }, this);
 	      }
 	    }
 	  }
@@ -685,7 +687,7 @@
 	    this.props.lives -= 1;
 	    this.body.velocity.x -= force * 3;
 	    this.body.velocity.y -= force * 3;
-	    this.stunnedUntil = this.game.time.now + force * 5;
+	    this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
 	  },
 	  die: function(force){
 	    this.state = 'dead';

@@ -56,7 +56,7 @@ var mixins = {
     this.props.lives -= 1;
     this.body.velocity.x -= force * 3;
     this.body.velocity.y -= force * 3;
-    this.stunnedUntil = this.game.time.now + force * 5;
+    this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
   },
   die: function(force){
     this.state = 'dead';
