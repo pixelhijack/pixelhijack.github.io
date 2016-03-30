@@ -196,8 +196,6 @@ function Play(game, settings){
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
     
-    game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
-    
     enemies.forEachAlive(function(enemy){
       if(enemy.props.collide && enemy.state !== 'dead'){
         game.physics.arcade.collide(enemy, level.collisionLayer);
