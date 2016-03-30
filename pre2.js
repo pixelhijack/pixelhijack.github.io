@@ -394,7 +394,7 @@
 	    enemies.forEachAlive(function(creature){
 	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
 	    });
-	    man.debug(man.state);
+	    man.debug(man.props.lives +' '+ man.state);
 	    
 	    setParallax();
 	    collisions();
@@ -418,12 +418,12 @@
 	    }else{
 	      man.hurt(enemyMomentum);
 	      renderMenu();
-	      if(man.lives() <= 0){
+	      if(man.lives() < 0){
 	        weapon.sprite.kill();
 	        man.kill();
 	        // restart while keep caches: 
 	        game.state.start('Play', true, false);
-	      }  
+	      }
 	    }
 	  }
 	  
