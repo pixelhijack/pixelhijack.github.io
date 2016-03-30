@@ -21,6 +21,7 @@ var Creature = function(game, creatureType, x, y, origin){
   */
   this.boundTo = { };
   this.lifespan = this.props.lifespan;
+  this.stunnedUntil = 0;
 
   this.facingRight = Math.random() < 0.5 ? true : false;
   

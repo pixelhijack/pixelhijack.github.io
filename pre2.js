@@ -293,8 +293,9 @@
 	  function collisions(){
 	    game.physics.arcade.collide(man, level.collisionLayer);
 	    game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
+	    
 	    enemies.forEachAlive(function(enemy){
-	      if(!enemy.inCamera){
+	      if(!enemy.inCamera || enemy.state === 'dead' || man.state === 'hurt'){
 	        return;
 	      }
 	      game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
@@ -320,6 +321,14 @@
 	    // weapon sprite should be always in sync with the man sprite
 	    weapon.sprite.x = man.x;
 	    weapon.sprite.y = man.y;
+
+	    if(man.stunnedUntil > game.time.now){
+	      keys.enabled = false;
+	      man.state = 'hurt';
+	      return;
+	    } else {
+	      keys.enabled = true;
+	    }
 	    
 	    if(!keys.left.isDown && 
 	      !keys.right.isDown && 
@@ -372,6 +381,7 @@
 	  =============*/
 	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function update(){
+	    
 	    // show FPS on bottom left corner
 	    game.debug.text(game.time.fps, 5, game.height - 5);
 	    game.debug.text(enemies.population(), 5, game.height - 15);
@@ -380,19 +390,17 @@
 	    enemies.forEachAlive(function(creature){
 	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
 	    });
+	    man.debug(man.state);
 	    
 	    setParallax();
 	    collisions();
 	    moveHero();
-	    man.animations.play(man.state + '-' + man.direction());
-
+	    
 	    console.log("PHASER updated");
 	  }
 	  
 	  function onEnemyCollision(hero, enemy){
-	    if(enemy.state === 'dead'){
-	      return;
-	    }
+	    // jumping on top of the enemies!
 	    if(man.body.touching.down && enemy.body.touching.up){
 	      if(man.state === 'hitting'){
 	        enemy.die();
@@ -402,9 +410,9 @@
 	    if(man.state === 'hitting'){
 	      enemy.die();
 	    }else{
-	      man.damage(1);
+	      man.hurt();
 	      renderMenu();
-	      if(man.lives() <= 0){
+	      if(man.lives() <= -100000){
 	        weapon.sprite.kill();
 	        man.kill();
 	        // restart while keep caches: 
@@ -453,6 +461,7 @@
 	  */
 	  this.boundTo = { };
 	  this.lifespan = this.props.lifespan;
+	  this.stunnedUntil = 0;
 
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
@@ -532,11 +541,15 @@
 	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
 	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
 	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
-	      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
-	      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
+	      { name: 'stopping-left', frames: [30,31,32,33,33,33,33,33,33,33,33,33,33,33], fps: 10, loop: false }, 
+	      { name: 'jumping-right', frames: [36,37,38,39,39,39,39,39,39,39,39,39,39,39], fps: 10, loop: false }, 
 	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
 	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
-	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
+	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false },
+	      { name: 'hurt-right', frames: [61], fps: 10, loop: true },
+	      { name: 'hurt-left', frames: [60], fps: 10, loop: true },
+	      { name: 'dead-right', frames: [61], fps: 10, loop: false },
+	      { name: 'dead-left', frames: [60], fps: 10, loop: false }
 	    ]
 	  },
 	  dino: {
@@ -665,9 +678,10 @@
 	  hit: function(){
 	    
 	  },
-	  damage: function(severity){
-	    this.props.lives -= severity;
-	    this.body.velocity.x -= severity * Math.random() * 20;
+	  hurt: function(numbTime){
+	    this.props.lives -= 1;
+	    this.body.velocity.x -= 50;
+	    this.stunnedUntil = this.game.time.now + (numbTime || 2000);
 	  },
 	  die: function(){
 	    this.state = 'dead';
@@ -706,7 +720,7 @@
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
 	    this.jump = mixins.jump;
-	    this.damage = mixins.damage;
+	    this.hurt = mixins.hurt;
 	    this.stop = mixins.stop;
 	    this.lives = mixins.lives;
 	    return this;
@@ -775,15 +789,15 @@
 	    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
 	  },
 	  bear: function(){
+	    this.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
-	      this.play(this.state + '-' + this.direction());
 	      this.turnIfBlocked();
 	      this.move();
 	      this.state = 'moving';
 	    }
 	  },
 	  man: function(){
-	    
+	    this.animations.play(this.state + '-' + this.direction());
 	  }
 	};
 

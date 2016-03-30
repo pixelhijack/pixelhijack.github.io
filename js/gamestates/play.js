@@ -193,8 +193,9 @@ function Play(game, settings){
   function collisions(){
     game.physics.arcade.collide(man, level.collisionLayer);
     game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
+    
     enemies.forEachAlive(function(enemy){
-      if(!enemy.inCamera){
+      if(!enemy.inCamera || enemy.state === 'dead' || man.state === 'hurt'){
         return;
       }
       game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
@@ -220,6 +221,14 @@ function Play(game, settings){
     // weapon sprite should be always in sync with the man sprite
     weapon.sprite.x = man.x;
     weapon.sprite.y = man.y;
+
+    if(man.stunnedUntil > game.time.now){
+      keys.enabled = false;
+      man.state = 'hurt';
+      return;
+    } else {
+      keys.enabled = true;
+    }
     
     if(!keys.left.isDown && 
       !keys.right.isDown && 
@@ -272,6 +281,7 @@ function Play(game, settings){
   =============*/
   // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
   function update(){
+    
     // show FPS on bottom left corner
     game.debug.text(game.time.fps, 5, game.height - 5);
     game.debug.text(enemies.population(), 5, game.height - 15);
@@ -280,19 +290,17 @@ function Play(game, settings){
     enemies.forEachAlive(function(creature){
       creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
     });
+    man.debug(man.state);
     
     setParallax();
     collisions();
     moveHero();
-    man.animations.play(man.state + '-' + man.direction());
-
+    
     console.log("PHASER updated");
   }
   
   function onEnemyCollision(hero, enemy){
-    if(enemy.state === 'dead'){
-      return;
-    }
+    // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state === 'hitting'){
         enemy.die();
@@ -302,9 +310,9 @@ function Play(game, settings){
     if(man.state === 'hitting'){
       enemy.die();
     }else{
-      man.damage(1);
+      man.hurt();
       renderMenu();
-      if(man.lives() <= 0){
+      if(man.lives() <= -100000){
         weapon.sprite.kill();
         man.kill();
         // restart while keep caches: 

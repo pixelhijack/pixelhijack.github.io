@@ -21,11 +21,15 @@ var creatureConfigs = {
       { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
       { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
       { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
-      { name: 'stopping-left', frames: [30,31,32,33], fps: 10, loop: false }, 
-      { name: 'jumping-right', frames: [36,37,38,39], fps: 10, loop: false }, 
+      { name: 'stopping-left', frames: [30,31,32,33,33,33,33,33,33,33,33,33,33,33], fps: 10, loop: false }, 
+      { name: 'jumping-right', frames: [36,37,38,39,39,39,39,39,39,39,39,39,39,39], fps: 10, loop: false }, 
       { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
       { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
-      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false }  
+      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false },
+      { name: 'hurt-right', frames: [61], fps: 10, loop: true },
+      { name: 'hurt-left', frames: [60], fps: 10, loop: true },
+      { name: 'dead-right', frames: [61], fps: 10, loop: false },
+      { name: 'dead-left', frames: [60], fps: 10, loop: false }
     ]
   },
   dino: {

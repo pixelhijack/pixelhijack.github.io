@@ -52,9 +52,10 @@ var mixins = {
   hit: function(){
     
   },
-  damage: function(severity){
-    this.props.lives -= severity;
-    this.body.velocity.x -= severity * Math.random() * 20;
+  hurt: function(numbTime){
+    this.props.lives -= 1;
+    this.body.velocity.x -= 50;
+    this.stunnedUntil = this.game.time.now + (numbTime || 2000);
   },
   die: function(){
     this.state = 'dead';
@@ -93,7 +94,7 @@ var behaviours = {
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
     this.jump = mixins.jump;
-    this.damage = mixins.damage;
+    this.hurt = mixins.hurt;
     this.stop = mixins.stop;
     this.lives = mixins.lives;
     return this;
@@ -162,15 +163,15 @@ var updates = {
     //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
   },
   bear: function(){
+    this.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
-      this.play(this.state + '-' + this.direction());
       this.turnIfBlocked();
       this.move();
       this.state = 'moving';
     }
   },
   man: function(){
-    
+    this.animations.play(this.state + '-' + this.direction());
   }
 };
 
