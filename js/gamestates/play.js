@@ -194,6 +194,9 @@ function Play(game, settings){
     game.physics.arcade.collide(man, level.collisionLayer);
     game.physics.arcade.collide(enemies.global.spawn.dino, level.collisionLayer);
     enemies.forEachAlive(function(enemy){
+      if(!enemy.inCamera){
+        return;
+      }
       game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
     });
     
