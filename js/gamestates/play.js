@@ -285,6 +285,9 @@ function Play(game, settings){
   }
   
   function onEnemyCollision(hero, enemy){
+    if(enemy.state === 'dead'){
+      return;
+    }
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state === 'hitting'){
         enemy.die();

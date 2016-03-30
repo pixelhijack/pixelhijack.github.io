@@ -48,8 +48,9 @@ var mixins = {
   },
   die: function(){
     this.state = 'dead';
-    this.body.velocity.y -= Math.random() * 500;
-    this.game.time.events.add(Phaser.Timer.SECOND * 1, this.kill, this);
+    this.body.velocity.y -= Math.random() * 800;
+    // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
+    this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
   },
   see: function(){},
   sniff: function(enemy){
@@ -112,6 +113,9 @@ var updates = {
     if(this.state !== 'dead'){
       this.move();
       this.x <= 0 ? this.x = this.game.world.width : this.x;
+      if(Math.random() < 0.005){ 
+        this.facingRight = !this.facingRight;
+      }
       if(Math.random() < 0.05){ 
         this.jump(); 
         this.state = 'jumping';
