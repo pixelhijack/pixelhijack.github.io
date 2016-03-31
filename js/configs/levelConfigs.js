@@ -17,9 +17,12 @@ var levelConfigs = [
         id: 'global',
         guard: [],
         spawn: [
-          { type: 'dino', number: 3, lifespan: Infinity },
+          { type: 'dino', number: 1, lifespan: Infinity },
           { type: 'ptero', number: 2, lifespan: Infinity  },
-          { type: 'bear', number: 2, lifespan: Infinity  }
+          { type: 'bear', number: 1, lifespan: Infinity  },
+          { type: 'dragonfly', number: 1, lifespan: Infinity  },
+          { type: 'spider', number: 1, lifespan: Infinity  },
+          { type: 'native', number: 1, lifespan: Infinity  }
         ]
       }, {
         id: 1,

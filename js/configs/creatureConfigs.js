@@ -75,14 +75,60 @@ var creatureConfigs = {
     maxSpeed: 100,
     acceleration: 50, 
     animations: [
-      { name: 'fly-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
-      { name: 'fly-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
+      { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
+      { name: 'moving-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
       { name: 'descend-left', frames: [3], fps: 12, loop: true },
       { name: 'descend-right', frames: [2], fps: 12, loop: true },
       { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
       { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
     ]
   }, 
+  dragonfly: {
+    mass: 0.5,
+    gravity: 0,
+    bounce: 0.1,
+    jumping: 0,
+    collide: false,
+    maxSpeed: 50,
+    acceleration: 10, 
+    animations: [
+      { name: 'moving-right', frames: [0,1], fps: 12, loop: true },
+      { name: 'moving-left', frames: [8,9], fps: 12, loop: true },
+      { name: 'turn-right', frames: [2,3], fps: 12, loop: true },
+      { name: 'turn-left', frames: [2,3], fps: 12, loop: true },
+      { name: 'dead-right', frames: [4], fps: 12, loop: true },
+      { name: 'dead-left', frames: [5], fps: 12, loop: true }
+    ]
+  },
+  spider: {
+    mass: 0.3,
+    jumping: 0,
+    bounce: 0.3,
+    maxSpeed: 75,
+    acceleration: 10,
+    animations: [
+      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+      { name: 'spawn-left', frames: [0,1,2,3], fps: 10, loop: false },
+      { name: 'moving-right', frames: [16,17,18,19], fps: 10, loop: true },
+      { name: 'moving-left', frames: [22,23,24,25], fps: 10, loop: true },
+      { name: 'climbing-right', frames: [20], fps: 10, loop: true },
+      { name: 'climbing-left', frames: [21], fps: 10, loop: true },
+      { name: 'waiting-right', frames: [3,4,5], fps: 10, loop: true },
+      { name: 'waiting-left', frames: [3,4,5], fps: 10, loop: true },
+      { name: 'dead-right', frames: [6], fps: 10, loop: false },
+      { name: 'dead-left', frames: [7], fps: 10, loop: false }
+    ]
+  },
+  native: {
+    maxSpeed: 150,
+    acceleration: 20,
+    animations: [
+      { name: 'moving-right', frames: [0,1,2], fps: 10, loop: true },
+      { name: 'moving-left', frames: [7,6,5], fps: 10, loop: true },
+      { name: 'dead-right', frames: [3], fps: 10, loop: false },
+      { name: 'dead-left', frames: [4], fps: 10, loop: false }
+    ]
+  },
   gorilla: {
     // grim level bosses with lots of lifes!!
     lives: 10, 

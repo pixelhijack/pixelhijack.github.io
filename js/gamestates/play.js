@@ -69,6 +69,9 @@ function Play(game, settings){
     game.load.spritesheet('dino', './assets/dino.png', 42, 36);
     game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
     game.load.spritesheet('bear', './assets/bears.png', 44, 44);
+    game.load.spritesheet('dragonfly', './assets/dragonflies.png', 36, 22);
+    game.load.spritesheet('spider', './assets/spiders.png', 32, 26);
+    game.load.spritesheet('native', './assets/natives.png', 28, 32);
     game.load.spritesheet('man', './assets/man.png', 32, 36);
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     

@@ -169,6 +169,9 @@
 	    game.load.spritesheet('dino', './assets/dino.png', 42, 36);
 	    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
 	    game.load.spritesheet('bear', './assets/bears.png', 44, 44);
+	    game.load.spritesheet('dragonfly', './assets/dragonflies.png', 36, 22);
+	    game.load.spritesheet('spider', './assets/spiders.png', 32, 26);
+	    game.load.spritesheet('native', './assets/natives.png', 28, 32);
 	    game.load.spritesheet('man', './assets/man.png', 32, 36);
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
 	    
@@ -594,14 +597,60 @@
 	    maxSpeed: 100,
 	    acceleration: 50, 
 	    animations: [
-	      { name: 'fly-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
-	      { name: 'fly-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
+	      { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
+	      { name: 'moving-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
 	      { name: 'descend-left', frames: [3], fps: 12, loop: true },
 	      { name: 'descend-right', frames: [2], fps: 12, loop: true },
 	      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
 	      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
 	    ]
 	  }, 
+	  dragonfly: {
+	    mass: 0.5,
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    collide: false,
+	    maxSpeed: 50,
+	    acceleration: 10, 
+	    animations: [
+	      { name: 'moving-right', frames: [0,1], fps: 12, loop: true },
+	      { name: 'moving-left', frames: [8,9], fps: 12, loop: true },
+	      { name: 'turn-right', frames: [2,3], fps: 12, loop: true },
+	      { name: 'turn-left', frames: [2,3], fps: 12, loop: true },
+	      { name: 'dead-right', frames: [4], fps: 12, loop: true },
+	      { name: 'dead-left', frames: [5], fps: 12, loop: true }
+	    ]
+	  },
+	  spider: {
+	    mass: 0.3,
+	    jumping: 0,
+	    bounce: 0.3,
+	    maxSpeed: 75,
+	    acceleration: 10,
+	    animations: [
+	      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+	      { name: 'spawn-left', frames: [0,1,2,3], fps: 10, loop: false },
+	      { name: 'moving-right', frames: [16,17,18,19], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [22,23,24,25], fps: 10, loop: true },
+	      { name: 'climbing-right', frames: [20], fps: 10, loop: true },
+	      { name: 'climbing-left', frames: [21], fps: 10, loop: true },
+	      { name: 'waiting-right', frames: [3,4,5], fps: 10, loop: true },
+	      { name: 'waiting-left', frames: [3,4,5], fps: 10, loop: true },
+	      { name: 'dead-right', frames: [6], fps: 10, loop: false },
+	      { name: 'dead-left', frames: [7], fps: 10, loop: false }
+	    ]
+	  },
+	  native: {
+	    maxSpeed: 150,
+	    acceleration: 20,
+	    animations: [
+	      { name: 'moving-right', frames: [0,1,2], fps: 10, loop: true },
+	      { name: 'moving-left', frames: [7,6,5], fps: 10, loop: true },
+	      { name: 'dead-right', frames: [3], fps: 10, loop: false },
+	      { name: 'dead-left', frames: [4], fps: 10, loop: false }
+	    ]
+	  },
 	  gorilla: {
 	    // grim level bosses with lots of lifes!!
 	    lives: 10, 
@@ -663,6 +712,11 @@
 	      mixins.moveLeft.call(this); 
 	      this.state = 'moving';
 	    }
+	  },
+	  hurry: function(){
+	    this.turnIfBlocked();
+	    this.move();
+	    this.state = 'moving';
 	  },
 	  jump: function(){
 	    if(this.body.touching.down || this.body.blocked.down){
@@ -740,6 +794,7 @@
 	    this.jump = mixins.jump;
 	    this.wait = mixins.wait;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
 	    this.die = mixins.die;
 	    return this;
 	  },
@@ -755,6 +810,28 @@
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.die = mixins.die;
+	  }, 
+	  dragonfly: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.die = mixins.die;
+	  },
+	  spider: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.die = mixins.die;
+	  },
+	  native: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
 	    this.die = mixins.die;
 	  }
 	};
@@ -779,7 +856,7 @@
 	  ptero: function(){
 	    this.play(this.state + '-' + this.direction());
 	    this.move();
-	    this.state = 'fly';
+	    this.state = 'moving';
 	    //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
 	    this.turnIfBlocked();
 	    if(Math.random() < 0.01){
@@ -799,13 +876,29 @@
 	  bear: function(){
 	    this.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
-	      this.turnIfBlocked();
-	      this.move();
-	      this.state = 'moving';
+	      this.hurry();
 	    }
 	  },
 	  man: function(){
 	    this.animations.play(this.state + '-' + this.direction());
+	  }, 
+	  dragonfly: function(){
+	    this.animations.play(this.state + '-' + this.direction());
+	    if(this.state !== 'dead'){
+	     this.hurry();
+	    }
+	  },
+	  spider: function(){
+	    this.animations.play(this.state + '-' + this.direction());
+	    if(this.state !== 'dead'){
+	      this.hurry();
+	    }
+	  },
+	  native: function(){
+	    this.animations.play(this.state + '-' + this.direction());
+	    if(this.state !== 'dead'){
+	      this.hurry();
+	    }
 	  }
 	};
 
@@ -1111,9 +1204,12 @@
 	        id: 'global',
 	        guard: [],
 	        spawn: [
-	          { type: 'dino', number: 3, lifespan: Infinity },
+	          { type: 'dino', number: 1, lifespan: Infinity },
 	          { type: 'ptero', number: 2, lifespan: Infinity  },
-	          { type: 'bear', number: 2, lifespan: Infinity  }
+	          { type: 'bear', number: 1, lifespan: Infinity  },
+	          { type: 'dragonfly', number: 1, lifespan: Infinity  },
+	          { type: 'spider', number: 1, lifespan: Infinity  },
+	          { type: 'native', number: 1, lifespan: Infinity  }
 	        ]
 	      }, {
 	        id: 1,

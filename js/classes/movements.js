@@ -33,6 +33,11 @@ var mixins = {
       this.state = 'moving';
     }
   },
+  hurry: function(){
+    this.turnIfBlocked();
+    this.move();
+    this.state = 'moving';
+  },
   jump: function(){
     if(this.body.touching.down || this.body.blocked.down){
       this.body.velocity.y -= this.props.jumping;
@@ -109,6 +114,7 @@ var behaviours = {
     this.jump = mixins.jump;
     this.wait = mixins.wait;
     this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
     this.die = mixins.die;
     return this;
   },
@@ -124,6 +130,28 @@ var behaviours = {
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
     this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.die = mixins.die;
+  }, 
+  dragonfly: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.die = mixins.die;
+  },
+  spider: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.die = mixins.die;
+  },
+  native: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
     this.die = mixins.die;
   }
 };
@@ -148,7 +176,7 @@ var updates = {
   ptero: function(){
     this.play(this.state + '-' + this.direction());
     this.move();
-    this.state = 'fly';
+    this.state = 'moving';
     //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
     this.turnIfBlocked();
     if(Math.random() < 0.01){
@@ -168,13 +196,29 @@ var updates = {
   bear: function(){
     this.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
-      this.turnIfBlocked();
-      this.move();
-      this.state = 'moving';
+      this.hurry();
     }
   },
   man: function(){
     this.animations.play(this.state + '-' + this.direction());
+  }, 
+  dragonfly: function(){
+    this.animations.play(this.state + '-' + this.direction());
+    if(this.state !== 'dead'){
+     this.hurry();
+    }
+  },
+  spider: function(){
+    this.animations.play(this.state + '-' + this.direction());
+    if(this.state !== 'dead'){
+      this.hurry();
+    }
+  },
+  native: function(){
+    this.animations.play(this.state + '-' + this.direction());
+    if(this.state !== 'dead'){
+      this.hurry();
+    }
   }
 };
 
