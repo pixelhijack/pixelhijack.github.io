@@ -403,6 +403,10 @@
 	    collisions();
 	    moveHero();
 	    
+	    if(game.input.activePointer.leftButton.isDown){
+	      game.debug.pointer(game.input.activePointer);
+	    }
+	    
 	    console.log("PHASER updated");
 	  }
 	  
