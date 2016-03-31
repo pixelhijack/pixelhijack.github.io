@@ -1,4 +1,5 @@
 var Creature = require('../classes/creature.js');
+var Group = require('../classes/group.js');
 var util = require('./util.js');
 
 /*  
@@ -32,11 +33,11 @@ var enemyManager = function(game, levelEnemies, levelZones){
     zones[zone.id] = {};
     zones[zone.id].guard = {};
     zone.guard.forEach(function(guardingCreature){
-      zones[zone.id].guard[guardingCreature.type] = game.add.group();
+      zones[zone.id].guard[guardingCreature.type] = new Group(game);
     });
     zones[zone.id].spawn = {};
     zone.spawn.forEach(function(spawningCreature){
-      zones[zone.id].spawn[spawningCreature.type] = game.add.group();  
+      zones[zone.id].spawn[spawningCreature.type] = new Group(game);  
     });
   });
   

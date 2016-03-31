@@ -1011,6 +1011,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(3);
+	var Group = __webpack_require__(10);
 	var util = __webpack_require__(8);
 
 	/*  
@@ -1044,11 +1045,11 @@
 	    zones[zone.id] = {};
 	    zones[zone.id].guard = {};
 	    zone.guard.forEach(function(guardingCreature){
-	      zones[zone.id].guard[guardingCreature.type] = game.add.group();
+	      zones[zone.id].guard[guardingCreature.type] = new Group(game);
 	    });
 	    zones[zone.id].spawn = {};
 	    zone.spawn.forEach(function(spawningCreature){
-	      zones[zone.id].spawn[spawningCreature.type] = game.add.group();  
+	      zones[zone.id].spawn[spawningCreature.type] = new Group(game);  
 	    });
 	  });
 	  
@@ -1265,6 +1266,7 @@
 	    deathLayer: 'death-layer',
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
+	      
 	      {
 	        id: 'global',
 	        guard: [],
@@ -1325,6 +1327,21 @@
 	];
 
 	module.exports = levelConfigs;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	
+	var Group = function(game, props){
+	  Phaser.Group.call(this, game);
+	  this.props = props || {};
+	};
+
+	Group.prototype = Object.create(Phaser.Group.prototype);
+	Group.prototype.constructor = Group;
+
+	module.exports = Group;
 
 /***/ }
 /******/ ]);

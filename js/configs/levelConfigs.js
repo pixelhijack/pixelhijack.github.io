@@ -74,6 +74,7 @@ var levelConfigs = [
     deathLayer: 'death-layer',
     objectsLayer: 'objects-layer', 
     enemies: [
+      
       {
         id: 'global',
         guard: [],
