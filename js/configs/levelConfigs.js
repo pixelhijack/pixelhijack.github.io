@@ -14,20 +14,100 @@ var levelConfigs = [
     objectsLayer: 'objects-layer', 
     enemies: [
       {
-        id: 'global',
-        guard: [],
-        spawn: [
-          { type: 'dino', number: 1, lifespan: Infinity },
-          { type: 'ptero', number: 2, lifespan: Infinity  },
-          { type: 'bear', number: 1, lifespan: Infinity  },
-          { type: 'dragonfly', number: 1, lifespan: Infinity  },
-          { type: 'spider', number: 1, lifespan: Infinity  },
-          { type: 'native', number: 1, lifespan: Infinity  }
-        ]
-      }, {
         id: 1,
-        guard: [],
-        spawn: []
+        type: 'bear',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 2,
+        type: 'dino',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 3,
+        type: 'ptero',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 4,
+        type: 'dragonfly',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 5,
+        type: 'spider',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 6,
+        type: 'native',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
       }
     ]
   },
@@ -46,17 +126,100 @@ var levelConfigs = [
     objectsLayer: null, 
     enemies: [
       {
-        id: 'global',
-        guard: [],
-        spawn: [
-          { type: 'dino', number: 3, lifespan: Infinity },
-          { type: 'ptero', number: 2, lifespan: Infinity  },
-          { type: 'bear', number: 0, lifespan: Infinity  }
-        ]
-      }, {
         id: 1,
-        guard: [],
-        spawn: []
+        type: 'bear',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 2,
+        type: 'dino',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 3,
+        type: 'ptero',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 4,
+        type: 'dragonfly',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 5,
+        type: 'spider',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        id: 6,
+        type: 'native',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 200,
+          y: 200
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
       }
     ]
   },
@@ -74,61 +237,53 @@ var levelConfigs = [
     deathLayer: 'death-layer',
     objectsLayer: 'objects-layer', 
     enemies: [
-      
       {
-        id: 'global',
-        guard: [],
-        spawn: [
-          { type: 'dino', number: 0, lifespan: Infinity },
-          { type: 'ptero', number: 0, lifespan: Infinity },
-          { type: 'bear', number: 0, lifespan: Infinity }
-        ]
-      }, {
         id: 1,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
-      }, {
+        type: 'bear', // 1-2 bears constantly run through the view
+        number: 2,
+        lifespan: 10000,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 100,
+          y: 100
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
         id: 2,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
-      }, {
+        type: 'spider', // spiders coming from a cave frequently
+        number: 3,
+        lifespan: Infinity,
+        revive: 10000,
+        move: true,
+        origin: {
+          x: 100,
+          y: 100
+        },
+        boundTo: {
+          x: 568,
+          y: 734
+        }
+      },
+      {
         id: 3,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: [
-          { type: 'dino', number: 0, lifespan: 10000 },
-          { type: 'ptero', number: 0, lifespan: 30000 },
-          { type: 'bear', number: 0, lifespan: 20000 }
-        ]
-      }, {
-        id: 4,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
-      }, {
-        id: 5,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
-      }, {
-        id: 6,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
-      }, {
-        id: 7,
-        guard: [
-          { type: 'dino', number: 1, lifespan: Infinity }
-        ],
-        spawn: []
+        type: 'dino', // a guard dino standing waiting
+        number: 1,
+        lifespan: Infinity,
+        revive: true,
+        move: 200,  // attacks if man distance is 200
+        origin: {
+          x: 100,
+          y: 100
+        },
+        boundTo: {
+          x1: 568,  // stays between x1 x2 zone
+          x2: 734
+        }
       }
     ]
   }

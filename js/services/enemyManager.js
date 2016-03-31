@@ -22,62 +22,36 @@ var util = require('./util.js');
 */
 var enemyManager = function(game, levelEnemies, levelZones){
   var utils = util(game);
-  // init enemy pools
-  var zones = {};
   
-  // init enemy groups
+  var groups = [];
+  
   if(!levelEnemies || !levelEnemies.length){
     return;
   }
-  levelEnemies.forEach(function(zone){
-    zones[zone.id] = {};
-    zones[zone.id].guard = {};
-    zone.guard.forEach(function(guardingCreature){
-      zones[zone.id].guard[guardingCreature.type] = new Group(game);
-    });
-    zones[zone.id].spawn = {};
-    zone.spawn.forEach(function(spawningCreature){
-      zones[zone.id].spawn[spawningCreature.type] = new Group(game);  
-    });
-  });
   
-  // populate enemy groups
-  levelEnemies.forEach(function(zone){
-    zone.guard.forEach(function(group){
-      for(var i = 0, max = group.number;i<max;i++){
-        // if no levelZones defined in Tiled tilemap OR levelZones are defined but missing the ID in the levelList level definition put at random point
-        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
-          utils.randomPointIn(levelZones[zone.id].x, 
-                              levelZones[zone.id].x + levelZones[zone.id].width, 
-                              levelZones[zone.id].y, 
-                              levelZones[zone.id].y + levelZones[zone.id].height) :
-          utils.randomWorldPoint();
-        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
-        creature.lifespan = group.lifespan; 
-        //creature.boundTo = levelZones[zone.id].boundTo || {};
-        //if(levelZones[zone.id]) utils.debugZone(levelZones[zone.id].x, levelZones[zone.id].y, levelZones[zone.id].width, levelZones[zone.id].height);
-        zones[zone.id].guard[group.type].add(creature);
-      }
-    });
-    zone.spawn.forEach(function(group){
-      for(var i = 0, max = group.number;i<max;i++){
-        // put the creature in the zone if there is one in objects-layer, else put anywhere
-        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
-          utils.centerPointIn(levelZones[zone.id].x, 
-                              levelZones[zone.id].x + levelZones[zone.id].width, 
-                              levelZones[zone.id].y, 
-                              levelZones[zone.id].y + levelZones[zone.id].height) :
-          utils.randomWorldPoint();
-        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
-        creature.lifespan = group.lifespan; 
-        zones[zone.id].spawn[group.type].add(creature);
-      }
-    });
+  groups = levelEnemies.map(function(groupConfig){
+    var group = new Group(game, groupConfig, true);
+    return group;
   });
   
   return {
-    zones: zones,
-    global: zones.global,
+    forEachAlive: function(fn){
+      groups.forEach(function(group){
+        group.forEachAlive(function(creature){
+          if(typeof fn === 'function'){
+            fn.apply(this, arguments);
+          }  
+        });
+      });
+    },
+    population: function(){
+      var zoo = 0;
+      this.forEachAlive(function(){
+        zoo++;
+      });
+      return zoo;
+    }
+    /*,
     add: function(enemyType, whereX, whereY){ 
       var enemyWaiting = global[enemyType].getFirstDead();
       if(!enemyWaiting){
@@ -91,31 +65,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
         enemyToRevive.lifespan = enemyToRevive.props.lifespan;
         enemyToRevive.reset(whereX, whereY);
       }
-    },
-    forEachAlive: function(fn, args){
-      for(var zone in zones){
-        // close your eyes please
-        if(typeof fn === 'function'){
-          for(var creatureType in zones[zone]['guard']){
-            zones[zone]['guard'][creatureType].forEachAlive(function(creature){
-              fn.apply(this, arguments);  
-            });
-          }
-          for(var creatureType in zones[zone]['spawn']){
-            zones[zone]['spawn'][creatureType].forEachAlive(function(creature){
-              fn.apply(this, arguments);  
-            });
-          }
-        }  
-      }  
-    },
-    population: function(){
-      var allAnimal = 0;
-      this.forEachAlive(function(){
-        allAnimal++;
-      });
-      return allAnimal;
-    }
+    }*/
   };
 };
 

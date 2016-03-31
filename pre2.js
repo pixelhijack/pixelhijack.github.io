@@ -101,8 +101,8 @@
 	var Creature = __webpack_require__(3);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
-	var levelConfigs = __webpack_require__(9);
-	var util = __webpack_require__(8);
+	var levelConfigs = __webpack_require__(10);
+	var util = __webpack_require__(9);
 
 
 	// Play game state
@@ -200,9 +200,6 @@
 	  
 	  function loadEnemies(){
 	    enemies = enemyManager(game, level.enemies, level.objects.zone);
-	    enemies.global.spawn.dino.forEachAlive(function(dino){ 
-	      //dino.move();
-	    });
 	  }
 	  
 	  function addHero(){
@@ -316,12 +313,13 @@
 	      });
 	    }
 	    
-	    // hit'n kill enemy: collision should calculated on weapon sprite
+	    /* hit'n kill enemy: collision should calculated on weapon sprite
 	    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
 	      if(man.state === 'hitting'){
 	        enemy.kill();
 	      }
 	    }, null, this);
+	    */
 	  }
 	  
 	  function moveHero(){
@@ -395,7 +393,7 @@
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
-	      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+	      creature.debug((creature.lifespan / 1000 | 0));
 	    });
 	    man.debug(man.props.lives +' '+ man.state);
 	    
@@ -456,7 +454,7 @@
 	var creatureConfigs = __webpack_require__(4);
 	var movements = __webpack_require__(5);
 
-	var Creature = function(game, creatureType, x, y, origin){
+	var Creature = function(game, creatureType, x, y){
 	  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
@@ -468,8 +466,7 @@
 	  
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
-	  
-	  this.origin = origin;
+
 	  /*  @boundTo
 	    {x, y}            - a point
 	    {x, x}            - a section
@@ -1010,9 +1007,9 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var Creature = __webpack_require__(3);
-	var Group = __webpack_require__(10);
-	var util = __webpack_require__(8);
+	var Creature = __webpack_require__(3);
+	var Group = __webpack_require__(8);
+	var util = __webpack_require__(9);
 
 	/*  
 	    ENEMIES API: 
@@ -1034,62 +1031,36 @@
 	*/
 	var enemyManager = function(game, levelEnemies, levelZones){
 	  var utils = util(game);
-	  // init enemy pools
-	  var zones = {};
 	  
-	  // init enemy groups
+	  var groups = [];
+	  
 	  if(!levelEnemies || !levelEnemies.length){
 	    return;
 	  }
-	  levelEnemies.forEach(function(zone){
-	    zones[zone.id] = {};
-	    zones[zone.id].guard = {};
-	    zone.guard.forEach(function(guardingCreature){
-	      zones[zone.id].guard[guardingCreature.type] = new Group(game);
-	    });
-	    zones[zone.id].spawn = {};
-	    zone.spawn.forEach(function(spawningCreature){
-	      zones[zone.id].spawn[spawningCreature.type] = new Group(game);  
-	    });
-	  });
 	  
-	  // populate enemy groups
-	  levelEnemies.forEach(function(zone){
-	    zone.guard.forEach(function(group){
-	      for(var i = 0, max = group.number;i<max;i++){
-	        // if no levelZones defined in Tiled tilemap OR levelZones are defined but missing the ID in the levelList level definition put at random point
-	        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
-	          utils.randomPointIn(levelZones[zone.id].x, 
-	                              levelZones[zone.id].x + levelZones[zone.id].width, 
-	                              levelZones[zone.id].y, 
-	                              levelZones[zone.id].y + levelZones[zone.id].height) :
-	          utils.randomWorldPoint();
-	        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
-	        creature.lifespan = group.lifespan; 
-	        //creature.boundTo = levelZones[zone.id].boundTo || {};
-	        //if(levelZones[zone.id]) utils.debugZone(levelZones[zone.id].x, levelZones[zone.id].y, levelZones[zone.id].width, levelZones[zone.id].height);
-	        zones[zone.id].guard[group.type].add(creature);
-	      }
-	    });
-	    zone.spawn.forEach(function(group){
-	      for(var i = 0, max = group.number;i<max;i++){
-	        // put the creature in the zone if there is one in objects-layer, else put anywhere
-	        var point = !!levelZones && (levelZones && !!levelZones[zone.id]) ?
-	          utils.centerPointIn(levelZones[zone.id].x, 
-	                              levelZones[zone.id].x + levelZones[zone.id].width, 
-	                              levelZones[zone.id].y, 
-	                              levelZones[zone.id].y + levelZones[zone.id].height) :
-	          utils.randomWorldPoint();
-	        var creature = new Creature(game, group.type, point.x, point.y, zone.id);
-	        creature.lifespan = group.lifespan; 
-	        zones[zone.id].spawn[group.type].add(creature);
-	      }
-	    });
+	  groups = levelEnemies.map(function(groupConfig){
+	    var group = new Group(game, groupConfig, true);
+	    return group;
 	  });
 	  
 	  return {
-	    zones: zones,
-	    global: zones.global,
+	    forEachAlive: function(fn){
+	      groups.forEach(function(group){
+	        group.forEachAlive(function(creature){
+	          if(typeof fn === 'function'){
+	            fn.apply(this, arguments);
+	          }  
+	        });
+	      });
+	    },
+	    population: function(){
+	      var zoo = 0;
+	      this.forEachAlive(function(){
+	        zoo++;
+	      });
+	      return zoo;
+	    }
+	    /*,
 	    add: function(enemyType, whereX, whereY){ 
 	      var enemyWaiting = global[enemyType].getFirstDead();
 	      if(!enemyWaiting){
@@ -1103,39 +1074,41 @@
 	        enemyToRevive.lifespan = enemyToRevive.props.lifespan;
 	        enemyToRevive.reset(whereX, whereY);
 	      }
-	    },
-	    forEachAlive: function(fn, args){
-	      for(var zone in zones){
-	        // close your eyes please
-	        if(typeof fn === 'function'){
-	          for(var creatureType in zones[zone]['guard']){
-	            zones[zone]['guard'][creatureType].forEachAlive(function(creature){
-	              fn.apply(this, arguments);  
-	            });
-	          }
-	          for(var creatureType in zones[zone]['spawn']){
-	            zones[zone]['spawn'][creatureType].forEachAlive(function(creature){
-	              fn.apply(this, arguments);  
-	            });
-	          }
-	        }  
-	      }  
-	    },
-	    population: function(){
-	      var allAnimal = 0;
-	      this.forEachAlive(function(){
-	        allAnimal++;
-	      });
-	      return allAnimal;
-	    }
+	    }*/
 	  };
 	};
 
 	module.exports = enemyManager;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Creature = __webpack_require__(3);
+
+	var Group = function(game, props, autopopulate){
+	  Phaser.Group.call(this, game);
+	  this.props = props || {};
+	  if(autopopulate){
+	    this.populate();
+	  }
+	};
+
+	Group.prototype = Object.create(Phaser.Group.prototype);
+	Group.prototype.constructor = Group;
+
+	Group.prototype.populate = function populate(){
+	  for(var i = 1, max = this.props.number; i <= max; i++){
+	    var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.x);
+	    creature.lifespan = this.props.lifespan;
+	    this.add(creature);
+	  }  
+	};
+
+	module.exports = Group;
+
+/***/ },
+/* 9 */
 /***/ function(module, exports) {
 
 	var util = function(game){
@@ -1187,7 +1160,7 @@
 	module.exports = util;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	var levelConfigs = [
@@ -1206,20 +1179,100 @@
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
 	      {
-	        id: 'global',
-	        guard: [],
-	        spawn: [
-	          { type: 'dino', number: 1, lifespan: Infinity },
-	          { type: 'ptero', number: 2, lifespan: Infinity  },
-	          { type: 'bear', number: 1, lifespan: Infinity  },
-	          { type: 'dragonfly', number: 1, lifespan: Infinity  },
-	          { type: 'spider', number: 1, lifespan: Infinity  },
-	          { type: 'native', number: 1, lifespan: Infinity  }
-	        ]
-	      }, {
 	        id: 1,
-	        guard: [],
-	        spawn: []
+	        type: 'bear',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 2,
+	        type: 'dino',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 3,
+	        type: 'ptero',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 4,
+	        type: 'dragonfly',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 5,
+	        type: 'spider',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 6,
+	        type: 'native',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
 	      }
 	    ]
 	  },
@@ -1238,17 +1291,100 @@
 	    objectsLayer: null, 
 	    enemies: [
 	      {
-	        id: 'global',
-	        guard: [],
-	        spawn: [
-	          { type: 'dino', number: 3, lifespan: Infinity },
-	          { type: 'ptero', number: 2, lifespan: Infinity  },
-	          { type: 'bear', number: 0, lifespan: Infinity  }
-	        ]
-	      }, {
 	        id: 1,
-	        guard: [],
-	        spawn: []
+	        type: 'bear',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 2,
+	        type: 'dino',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 3,
+	        type: 'ptero',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 4,
+	        type: 'dragonfly',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 5,
+	        type: 'spider',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        id: 6,
+	        type: 'native',
+	        number: 2,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 200,
+	          y: 200
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
 	      }
 	    ]
 	  },
@@ -1266,82 +1402,59 @@
 	    deathLayer: 'death-layer',
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
-	      
 	      {
-	        id: 'global',
-	        guard: [],
-	        spawn: [
-	          { type: 'dino', number: 0, lifespan: Infinity },
-	          { type: 'ptero', number: 0, lifespan: Infinity },
-	          { type: 'bear', number: 0, lifespan: Infinity }
-	        ]
-	      }, {
 	        id: 1,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
-	      }, {
+	        type: 'bear', // 1-2 bears constantly run through the view
+	        number: 2,
+	        lifespan: 10000,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 100,
+	          y: 100
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
 	        id: 2,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
-	      }, {
+	        type: 'spider', // spiders coming from a cave frequently
+	        number: 3,
+	        lifespan: Infinity,
+	        revive: 10000,
+	        move: true,
+	        origin: {
+	          x: 100,
+	          y: 100
+	        },
+	        boundTo: {
+	          x: 568,
+	          y: 734
+	        }
+	      },
+	      {
 	        id: 3,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: [
-	          { type: 'dino', number: 0, lifespan: 10000 },
-	          { type: 'ptero', number: 0, lifespan: 30000 },
-	          { type: 'bear', number: 0, lifespan: 20000 }
-	        ]
-	      }, {
-	        id: 4,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
-	      }, {
-	        id: 5,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
-	      }, {
-	        id: 6,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
-	      }, {
-	        id: 7,
-	        guard: [
-	          { type: 'dino', number: 1, lifespan: Infinity }
-	        ],
-	        spawn: []
+	        type: 'dino', // a guard dino standing waiting
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: true,
+	        move: 200,  // attacks if man distance is 200
+	        origin: {
+	          x: 100,
+	          y: 100
+	        },
+	        boundTo: {
+	          x1: 568,  // stays between x1 x2 zone
+	          x2: 734
+	        }
 	      }
 	    ]
 	  }
 	];
 
 	module.exports = levelConfigs;
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	
-	var Group = function(game, props){
-	  Phaser.Group.call(this, game);
-	  this.props = props || {};
-	};
-
-	Group.prototype = Object.create(Phaser.Group.prototype);
-	Group.prototype.constructor = Group;
-
-	module.exports = Group;
 
 /***/ }
 /******/ ]);

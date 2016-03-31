@@ -1,7 +1,7 @@
 var creatureConfigs = require('../configs/creatureConfigs.js');
 var movements = require('./movements.js');
 
-var Creature = function(game, creatureType, x, y, origin){
+var Creature = function(game, creatureType, x, y){
   Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
@@ -13,8 +13,7 @@ var Creature = function(game, creatureType, x, y, origin){
   
   this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
   this._debugText.visible = false;
-  
-  this.origin = origin;
+
   /*  @boundTo
     {x, y}            - a point
     {x, x}            - a section

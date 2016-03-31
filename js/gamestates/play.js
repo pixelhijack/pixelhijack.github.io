@@ -100,9 +100,6 @@ function Play(game, settings){
   
   function loadEnemies(){
     enemies = enemyManager(game, level.enemies, level.objects.zone);
-    enemies.global.spawn.dino.forEachAlive(function(dino){ 
-      //dino.move();
-    });
   }
   
   function addHero(){
@@ -216,12 +213,13 @@ function Play(game, settings){
       });
     }
     
-    // hit'n kill enemy: collision should calculated on weapon sprite
+    /* hit'n kill enemy: collision should calculated on weapon sprite
     game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
       if(man.state === 'hitting'){
         enemy.kill();
       }
     }, null, this);
+    */
   }
   
   function moveHero(){
@@ -295,7 +293,7 @@ function Play(game, settings){
     
     // debug sprites
     enemies.forEachAlive(function(creature){
-      creature.debug(creature.origin +','+(creature.lifespan / 1000 | 0));
+      creature.debug((creature.lifespan / 1000 | 0));
     });
     man.debug(man.props.lives +' '+ man.state);
     
