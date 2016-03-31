@@ -29,7 +29,18 @@ var enemyManager = function(game, levelEnemies, levelZones){
     return;
   }
   
+  // populate enemy groups
   groups = levelEnemies.map(function(groupConfig){
+    
+    // if levelZones given, override spawning points of enemy defaults
+    if(!!levelZones && !!levelZones[groupConfig.id]){
+      groupConfig.origin =  utils.centerPointIn(
+        levelZones[groupConfig.id].x, 
+        levelZones[groupConfig.id].x + levelZones[groupConfig.id].width, 
+        levelZones[groupConfig.id].y, 
+        levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
+    }
+    
     var group = new Group(game, groupConfig, true);
     return group;
   });

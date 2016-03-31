@@ -1038,7 +1038,18 @@
 	    return;
 	  }
 	  
+	  // populate enemy groups
 	  groups = levelEnemies.map(function(groupConfig){
+	    
+	    // if levelZones given, override spawning points of enemy defaults
+	    if(!!levelZones && !!levelZones[groupConfig.id]){
+	      groupConfig.origin =  utils.centerPointIn(
+	        levelZones[groupConfig.id].x, 
+	        levelZones[groupConfig.id].x + levelZones[groupConfig.id].width, 
+	        levelZones[groupConfig.id].y, 
+	        levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
+	    }
+	    
 	    var group = new Group(game, groupConfig, true);
 	    return group;
 	  });
@@ -1099,7 +1110,7 @@
 
 	Group.prototype.populate = function populate(){
 	  for(var i = 1, max = this.props.number; i <= max; i++){
-	    var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.x);
+	    var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.y);
 	    creature.lifespan = this.props.lifespan;
 	    this.add(creature);
 	  }  
@@ -1186,8 +1197,8 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 200,
-	          y: 200
+	          x: 90,
+	          y: 260
 	        },
 	        boundTo: {
 	          x: Infinity,
@@ -1203,7 +1214,7 @@
 	        move: true,
 	        origin: {
 	          x: 200,
-	          y: 200
+	          y: 250
 	        },
 	        boundTo: {
 	          x: Infinity,
@@ -1234,8 +1245,8 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 200,
-	          y: 200
+	          x: 800,
+	          y: 100
 	        },
 	        boundTo: {
 	          x: Infinity,
@@ -1266,8 +1277,8 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 200,
-	          y: 200
+	          x: 450,
+	          y: 0
 	        },
 	        boundTo: {
 	          x: Infinity,

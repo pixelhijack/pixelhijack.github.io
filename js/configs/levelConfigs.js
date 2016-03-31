@@ -21,8 +21,8 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 200,
-          y: 200
+          x: 90,
+          y: 260
         },
         boundTo: {
           x: Infinity,
@@ -38,7 +38,7 @@ var levelConfigs = [
         move: true,
         origin: {
           x: 200,
-          y: 200
+          y: 250
         },
         boundTo: {
           x: Infinity,
@@ -69,8 +69,8 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 200,
-          y: 200
+          x: 800,
+          y: 100
         },
         boundTo: {
           x: Infinity,
@@ -101,8 +101,8 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 200,
-          y: 200
+          x: 450,
+          y: 0
         },
         boundTo: {
           x: Infinity,
