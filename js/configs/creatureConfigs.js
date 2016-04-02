@@ -10,8 +10,12 @@ var creatureConfigs = {
     acceleration: 10,
     collide: true,
     lives: 1, 
-    lifespan: 10000,
-    animations: []
+    lifespan: Infinity,
+    animations: [], 
+    boundTo : {
+      x1: 1000,
+      x2: 1200
+    }
   },
   man: {
     maxSpeed: 200,

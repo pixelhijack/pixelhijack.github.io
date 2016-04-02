@@ -14,7 +14,7 @@ Group.prototype.constructor = Group;
 Group.prototype.populate = function populate(){
   for(var i = 1, max = this.props.number; i <= max; i++){
     var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.y);
-    creature.lifespan = this.props.lifespan;
+    creature.props.boundTo = this.props.boundTo;
     this.add(creature);
   }  
 };

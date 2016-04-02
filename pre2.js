@@ -403,6 +403,7 @@
 	    
 	    if(game.input.activePointer.leftButton.isDown){
 	      game.debug.pointer(game.input.activePointer);
+	      console.log('clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
 	    }
 	    
 	    console.log("PHASER updated");
@@ -472,7 +473,7 @@
 	    {x, x}            - a section
 	    {x1, y1, x2, y2}  - an exact zone
 	  */
-	  this.boundTo = { };
+	  //this.boundTo = { };
 	  this.lifespan = creatureConfigs[creatureType].lifespan;
 	  this.stunnedUntil = 0;
 
@@ -494,6 +495,10 @@
 
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
+	};
+
+	Creature.prototype.setBound = function setBound(value){
+	  this.boundTo = value;
 	};
 
 	Creature.prototype.isGrounded = function isGrounded(){
@@ -533,8 +538,12 @@
 	    acceleration: 10,
 	    collide: true,
 	    lives: 1, 
-	    lifespan: 10000,
-	    animations: []
+	    lifespan: Infinity,
+	    animations: [], 
+	    boundTo : {
+	      x1: 1000,
+	      x2: 1200
+	    }
 	  },
 	  man: {
 	    maxSpeed: 200,
@@ -773,7 +782,23 @@
 	    this.body.velocity.y -= this.props.acceleration;
 	  },
 	  sleep: function(){},
-	  sentinel: function(){},
+	  sentinel: function(){
+	    if(!!this.props.boundTo){
+	      if(this.props.boundTo.hasOwnProperty('x1') && 
+	          this.props.boundTo.hasOwnProperty('x2') &&
+	          !this.props.boundTo.hasOwnProperty('y1') &&
+	          !this.props.boundTo.hasOwnProperty('y1')){
+	        if(this.x < this.props.boundTo.x1){
+	          this.facingRight = true;
+	          mixins.move.call(this);
+	        }
+	        if(this.x > this.props.boundTo.x2){
+	          this.facingRight = false;
+	          mixins.move.call(this);
+	        }
+	      }
+	    }
+	  },
 	  follow: function(){}
 	};
 
@@ -796,6 +821,7 @@
 	    this.wait = mixins.wait;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
 	    this.die = mixins.die;
 	    return this;
 	  },
@@ -812,6 +838,7 @@
 	    this.moveLeft = mixins.moveLeft;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
 	    this.die = mixins.die;
 	  }, 
 	  dragonfly: function(){
@@ -826,6 +853,7 @@
 	    this.moveLeft = mixins.moveLeft;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
 	    this.die = mixins.die;
 	  },
 	  native: function(){
@@ -833,6 +861,7 @@
 	    this.moveLeft = mixins.moveLeft;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
 	    this.die = mixins.die;
 	  }
 	};
@@ -844,6 +873,7 @@
 	    if(this.state !== 'dead'){
 	      this.turnIfBlocked();
 	      this.move();
+	      this.sentinel();
 	      this.x <= 0 ? this.x = this.game.world.width : this.x;
 	      if(Math.random() < 0.005){ 
 	        this.facingRight = !this.facingRight;
@@ -878,6 +908,7 @@
 	    this.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
 	      this.hurry();
+	      this.sentinel();
 	    }
 	  },
 	  man: function(){
@@ -893,12 +924,14 @@
 	    this.animations.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
 	      this.hurry();
+	      this.sentinel();
 	    }
 	  },
 	  native: function(){
 	    this.animations.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
 	      this.hurry();
+	      this.sentinel();
 	    }
 	  }
 	};
@@ -1041,7 +1074,7 @@
 	  // populate enemy groups
 	  groups = levelEnemies.map(function(groupConfig){
 	    
-	    // if levelZones given, override spawning points of enemy defaults
+	    /* if levelZones given, override spawning points of enemy defaults
 	    if(!!levelZones && !!levelZones[groupConfig.id]){
 	      groupConfig.origin =  utils.centerPointIn(
 	        levelZones[groupConfig.id].x, 
@@ -1049,10 +1082,26 @@
 	        levelZones[groupConfig.id].y, 
 	        levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
 	    }
+	    */
 	    
-	    var group = new Group(game, groupConfig, true);
+	    var group = game.add.group();
+	    for(var i = 1, max = groupConfig.number; i <= max; i++){
+	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+	      //creature.setBound(groupConfig.boundTo);
+	      group.add(creature);
+	    }
+	    group.setAll('props.boundTo', groupConfig.boundTo);
 	    return group;
 	  });
+	  
+	  /*
+	  groups.forEach(function(group, i){
+	    var config = levelEnemies.find(function(groupConfig){
+	      return groupConfig.id === i;
+	    });
+	    group.setAll('props.boundTo', config.boundTo);
+	  });
+	  */
 	  
 	  return {
 	    forEachAlive: function(fn){
@@ -1111,7 +1160,7 @@
 	Group.prototype.populate = function populate(){
 	  for(var i = 1, max = this.props.number; i <= max; i++){
 	    var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.y);
-	    creature.lifespan = this.props.lifespan;
+	    creature.props.boundTo = this.props.boundTo;
 	    this.add(creature);
 	  }  
 	};
@@ -1190,9 +1239,25 @@
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
 	      {
+	        id: 0,
+	        type: 'bear',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 130,
+	          y: 270
+	        },
+	        boundTo: {
+	          x1: 0,
+	          x2: 200
+	        }
+	      },
+	      {
 	        id: 1,
 	        type: 'bear',
-	        number: 2,
+	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
 	        move: true,
@@ -1201,8 +1266,8 @@
 	          y: 260
 	        },
 	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
+	          x1: 200,
+	          x2: 400
 	        }
 	      },
 	      {
@@ -1213,12 +1278,28 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 200,
-	          y: 250
+	          x: 347,
+	          y: 266
 	        },
 	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
+	          x1: 347,
+	          x2: 517
+	        }
+	      },
+	      {
+	        id: 2,
+	        type: 'dino',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 682,
+	          y: 279
+	        },
+	        boundTo: {
+	          x1: 682,
+	          x2: 788
 	        }
 	      },
 	      {
@@ -1246,7 +1327,7 @@
 	        move: true,
 	        origin: {
 	          x: 800,
-	          y: 100
+	          y: 130
 	        },
 	        boundTo: {
 	          x: Infinity,
@@ -1261,12 +1342,12 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 200,
-	          y: 200
+	          x: 44,
+	          y: 198
 	        },
 	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
+	          x1: 44,
+	          x2: 102
 	        }
 	      },
 	      {
@@ -1277,12 +1358,12 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 450,
-	          y: 0
+	          x: 470,
+	          y: 30
 	        },
 	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
+	          x1: 408,
+	          x2: 534
 	        }
 	      }
 	    ]
@@ -1421,12 +1502,12 @@
 	        revive: 5000,
 	        move: true,
 	        origin: {
-	          x: 100,
-	          y: 100
+	          x: 438,
+	          y: 527
 	        },
 	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
+	          x1: 438,
+	          x2: 531
 	        }
 	      },
 	      {
@@ -1453,12 +1534,12 @@
 	        revive: true,
 	        move: 200,  // attacks if man distance is 200
 	        origin: {
-	          x: 100,
-	          y: 100
+	          x: 94,
+	          y: 156
 	        },
 	        boundTo: {
-	          x1: 568,  // stays between x1 x2 zone
-	          x2: 734
+	          x1: 8,  // stays between x1 x2 zone
+	          x2: 94
 	        }
 	      }
 	    ]

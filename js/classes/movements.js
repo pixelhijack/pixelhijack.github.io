@@ -92,7 +92,23 @@ var mixins = {
     this.body.velocity.y -= this.props.acceleration;
   },
   sleep: function(){},
-  sentinel: function(){},
+  sentinel: function(){
+    if(!!this.props.boundTo){
+      if(this.props.boundTo.hasOwnProperty('x1') && 
+          this.props.boundTo.hasOwnProperty('x2') &&
+          !this.props.boundTo.hasOwnProperty('y1') &&
+          !this.props.boundTo.hasOwnProperty('y1')){
+        if(this.x < this.props.boundTo.x1){
+          this.facingRight = true;
+          mixins.move.call(this);
+        }
+        if(this.x > this.props.boundTo.x2){
+          this.facingRight = false;
+          mixins.move.call(this);
+        }
+      }
+    }
+  },
   follow: function(){}
 };
 
@@ -115,6 +131,7 @@ var behaviours = {
     this.wait = mixins.wait;
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
     this.die = mixins.die;
     return this;
   },
@@ -131,6 +148,7 @@ var behaviours = {
     this.moveLeft = mixins.moveLeft;
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
     this.die = mixins.die;
   }, 
   dragonfly: function(){
@@ -145,6 +163,7 @@ var behaviours = {
     this.moveLeft = mixins.moveLeft;
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
     this.die = mixins.die;
   },
   native: function(){
@@ -152,6 +171,7 @@ var behaviours = {
     this.moveLeft = mixins.moveLeft;
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
     this.die = mixins.die;
   }
 };
@@ -163,6 +183,7 @@ var updates = {
     if(this.state !== 'dead'){
       this.turnIfBlocked();
       this.move();
+      this.sentinel();
       this.x <= 0 ? this.x = this.game.world.width : this.x;
       if(Math.random() < 0.005){ 
         this.facingRight = !this.facingRight;
@@ -197,6 +218,7 @@ var updates = {
     this.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
       this.hurry();
+      this.sentinel();
     }
   },
   man: function(){
@@ -212,12 +234,14 @@ var updates = {
     this.animations.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
       this.hurry();
+      this.sentinel();
     }
   },
   native: function(){
     this.animations.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
       this.hurry();
+      this.sentinel();
     }
   }
 };

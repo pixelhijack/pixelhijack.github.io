@@ -32,7 +32,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
   // populate enemy groups
   groups = levelEnemies.map(function(groupConfig){
     
-    // if levelZones given, override spawning points of enemy defaults
+    /* if levelZones given, override spawning points of enemy defaults
     if(!!levelZones && !!levelZones[groupConfig.id]){
       groupConfig.origin =  utils.centerPointIn(
         levelZones[groupConfig.id].x, 
@@ -40,10 +40,26 @@ var enemyManager = function(game, levelEnemies, levelZones){
         levelZones[groupConfig.id].y, 
         levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
     }
+    */
     
-    var group = new Group(game, groupConfig, true);
+    var group = game.add.group();
+    for(var i = 1, max = groupConfig.number; i <= max; i++){
+      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+      //creature.setBound(groupConfig.boundTo);
+      group.add(creature);
+    }
+    group.setAll('props.boundTo', groupConfig.boundTo);
     return group;
   });
+  
+  /*
+  groups.forEach(function(group, i){
+    var config = levelEnemies.find(function(groupConfig){
+      return groupConfig.id === i;
+    });
+    group.setAll('props.boundTo', config.boundTo);
+  });
+  */
   
   return {
     forEachAlive: function(fn){

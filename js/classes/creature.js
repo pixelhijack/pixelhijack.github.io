@@ -19,7 +19,7 @@ var Creature = function(game, creatureType, x, y){
     {x, x}            - a section
     {x1, y1, x2, y2}  - an exact zone
   */
-  this.boundTo = { };
+  //this.boundTo = { };
   this.lifespan = creatureConfigs[creatureType].lifespan;
   this.stunnedUntil = 0;
 
@@ -41,6 +41,10 @@ Creature.prototype.constructor = Creature;
 
 Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';
+};
+
+Creature.prototype.setBound = function setBound(value){
+  this.boundTo = value;
 };
 
 Creature.prototype.isGrounded = function isGrounded(){

@@ -303,6 +303,7 @@ function Play(game, settings){
     
     if(game.input.activePointer.leftButton.isDown){
       game.debug.pointer(game.input.activePointer);
+      console.log('clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
     }
     
     console.log("PHASER updated");

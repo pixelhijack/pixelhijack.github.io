@@ -14,9 +14,25 @@ var levelConfigs = [
     objectsLayer: 'objects-layer', 
     enemies: [
       {
+        id: 0,
+        type: 'bear',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 130,
+          y: 270
+        },
+        boundTo: {
+          x1: 0,
+          x2: 200
+        }
+      },
+      {
         id: 1,
         type: 'bear',
-        number: 2,
+        number: 1,
         lifespan: Infinity,
         revive: 5000,
         move: true,
@@ -25,8 +41,8 @@ var levelConfigs = [
           y: 260
         },
         boundTo: {
-          x: Infinity,
-          y: Infinity
+          x1: 200,
+          x2: 400
         }
       },
       {
@@ -37,12 +53,28 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 200,
-          y: 250
+          x: 347,
+          y: 266
         },
         boundTo: {
-          x: Infinity,
-          y: Infinity
+          x1: 347,
+          x2: 517
+        }
+      },
+      {
+        id: 2,
+        type: 'dino',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 682,
+          y: 279
+        },
+        boundTo: {
+          x1: 682,
+          x2: 788
         }
       },
       {
@@ -70,7 +102,7 @@ var levelConfigs = [
         move: true,
         origin: {
           x: 800,
-          y: 100
+          y: 130
         },
         boundTo: {
           x: Infinity,
@@ -85,12 +117,12 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 200,
-          y: 200
+          x: 44,
+          y: 198
         },
         boundTo: {
-          x: Infinity,
-          y: Infinity
+          x1: 44,
+          x2: 102
         }
       },
       {
@@ -101,12 +133,12 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 450,
-          y: 0
+          x: 470,
+          y: 30
         },
         boundTo: {
-          x: Infinity,
-          y: Infinity
+          x1: 408,
+          x2: 534
         }
       }
     ]
@@ -245,12 +277,12 @@ var levelConfigs = [
         revive: 5000,
         move: true,
         origin: {
-          x: 100,
-          y: 100
+          x: 438,
+          y: 527
         },
         boundTo: {
-          x: Infinity,
-          y: Infinity
+          x1: 438,
+          x2: 531
         }
       },
       {
@@ -277,12 +309,12 @@ var levelConfigs = [
         revive: true,
         move: 200,  // attacks if man distance is 200
         origin: {
-          x: 100,
-          y: 100
+          x: 94,
+          y: 156
         },
         boundTo: {
-          x1: 568,  // stays between x1 x2 zone
-          x2: 734
+          x1: 8,  // stays between x1 x2 zone
+          x2: 94
         }
       }
     ]
