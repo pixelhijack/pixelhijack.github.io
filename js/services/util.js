@@ -40,7 +40,15 @@ var util = function(game){
       window.graphics = graphics;
       graphics.lineStyle(2, 0x0000FF, 1);
       graphics.drawRect(x, y, width, height);
-    }
+    }, 
+    debugRuler: function(){
+      // ruler for showing world x or y coordinates on every i.e. 100pixels
+    },
+    onEvery: function(tickerIntervalMillisec, callback){
+      var ticker = game.time.events.loop(Phaser.Timer.SECOND * 0.001 * tickerIntervalMillisec, callback, this);
+      ticker.timer.start();
+      return ticker;
+  }
   };
 };
 

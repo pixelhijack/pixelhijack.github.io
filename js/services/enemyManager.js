@@ -24,36 +24,44 @@ var enemyManager = function(game, levelEnemies, levelZones){
   var utils = util(game);
   
   var groups = [];
-  
-  if(!levelEnemies || !levelEnemies.length){
-    return;
-  }
-  
+  var reviveTimers = [];
+
   // populate enemy groups
   groups = levelEnemies.map(function(groupConfig){
     
-    /* if levelZones given, override spawning points of enemy defaults
-    if(!!levelZones && !!levelZones[groupConfig.id]){
-      groupConfig.origin =  utils.centerPointIn(
-        levelZones[groupConfig.id].x, 
-        levelZones[groupConfig.id].x + levelZones[groupConfig.id].width, 
-        levelZones[groupConfig.id].y, 
-        levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
-    }
-    */
+    // cache groupConfig as the group props for later use
+    var group = new Group(game, groupConfig);
     
-    var group = game.add.group();
     for(var i = 1, max = groupConfig.number; i <= max; i++){
       var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
       group.add(creature);
     }
     group.setAll('props.boundTo', groupConfig.boundTo);
+    group.setAll('props.move', groupConfig.move);
     group.setAll('lifespan', groupConfig.lifespan);
     return group;
   });
   
+  // start timers to recycle revivable enemy groups
+  reviveTimers = groups
+    .filter(function(group){
+      return group.props.revive;
+    })
+    .map(function(group){
+      var revivables = utils.onEvery(group.props.revive, revive.bind(this, group));
+      return revivables;
+    });
+    
+  function revive(group){
+    var enemyToRevive = group.getFirstDead();
+    if(enemyToRevive){
+      enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
+    }
+  }
+  
   
   return {
+    revive: revive,
     forEachAlive: function(fn){
       groups.forEach(function(group){
         group.forEachAlive(function(creature){

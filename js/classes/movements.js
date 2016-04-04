@@ -65,7 +65,7 @@ var mixins = {
   },
   die: function(force){
     this.state = 'dead';
-    this.props.collide = false;
+    //this.props.collide = false;
     this.body.velocity.x -= force * 3;
     this.body.velocity.y -= force * 3;
     // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/

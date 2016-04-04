@@ -251,12 +251,6 @@
 	    }, false);
 	  }
 	  
-	  function onEvery(tickerInterval, callback){
-	    // 'callback' called on every 'tickerInterval' seconds
-	    var ticker = game.time.events.loop(Phaser.Timer.SECOND * tickerInterval, callback, this);
-	    ticker.timer.start();
-	  }
-	  
 	  /*=============
 	  *   CREATE
 	  =============*/
@@ -275,11 +269,9 @@
 	    events.somethingHappened = new Phaser.Signal();
 	    events.somethingHappened.add(onSomethingHappened, this);
 	    
-	    onEvery(10, function(){
+	    var aTimer = utils.onEvery(10000, function(){
 	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-	      var randomPoint = utils.randomWorldPoint();
-	      //enemies.revive('dino', 360, 200);
-	      //enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+	      console.log('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
 	    });
 	    
 	    console.log("PHASER created");
@@ -511,8 +503,10 @@
 	  FIXME!! 
 	http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
 	==========================================*/
-	Creature.prototype.revive = function revive(){
+	Creature.prototype.revive = function revive(x, y){
 	  this.lifespan = this.props.lifespan;
+	  this.state = 'moving';
+	  this.reset(x, y);
 	};
 
 	module.exports = Creature;
@@ -632,6 +626,7 @@
 	  spider: {
 	    mass: 0.3,
 	    jumping: 0,
+	    collide: true,
 	    bounce: 0.3,
 	    maxSpeed: 50,
 	    acceleration: 10,
@@ -752,7 +747,7 @@
 	  },
 	  die: function(force){
 	    this.state = 'dead';
-	    this.props.collide = false;
+	    //this.props.collide = false;
 	    this.body.velocity.x -= force * 3;
 	    this.body.velocity.y -= force * 3;
 	    // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
@@ -1063,36 +1058,44 @@
 	  var utils = util(game);
 	  
 	  var groups = [];
-	  
-	  if(!levelEnemies || !levelEnemies.length){
-	    return;
-	  }
-	  
+	  var reviveTimers = [];
+
 	  // populate enemy groups
 	  groups = levelEnemies.map(function(groupConfig){
 	    
-	    /* if levelZones given, override spawning points of enemy defaults
-	    if(!!levelZones && !!levelZones[groupConfig.id]){
-	      groupConfig.origin =  utils.centerPointIn(
-	        levelZones[groupConfig.id].x, 
-	        levelZones[groupConfig.id].x + levelZones[groupConfig.id].width, 
-	        levelZones[groupConfig.id].y, 
-	        levelZones[groupConfig.id].y + levelZones[groupConfig.id].height);
-	    }
-	    */
+	    // cache groupConfig as the group props for later use
+	    var group = new Group(game, groupConfig);
 	    
-	    var group = game.add.group();
 	    for(var i = 1, max = groupConfig.number; i <= max; i++){
 	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
 	      group.add(creature);
 	    }
 	    group.setAll('props.boundTo', groupConfig.boundTo);
+	    group.setAll('props.move', groupConfig.move);
 	    group.setAll('lifespan', groupConfig.lifespan);
 	    return group;
 	  });
 	  
+	  // start timers to recycle revivable enemy groups
+	  reviveTimers = groups
+	    .filter(function(group){
+	      return group.props.revive;
+	    })
+	    .map(function(group){
+	      var revivables = utils.onEvery(group.props.revive, revive.bind(this, group));
+	      return revivables;
+	    });
+	    
+	  function revive(group){
+	    var enemyToRevive = group.getFirstDead();
+	    if(enemyToRevive){
+	      enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
+	    }
+	  }
+	  
 	  
 	  return {
+	    revive: revive,
 	    forEachAlive: function(fn){
 	      groups.forEach(function(group){
 	        group.forEachAlive(function(creature){
@@ -1135,24 +1138,13 @@
 
 	var Creature = __webpack_require__(3);
 
-	var Group = function(game, props, autopopulate){
+	var Group = function(game, props){
 	  Phaser.Group.call(this, game);
 	  this.props = props || {};
-	  if(autopopulate){
-	    this.populate();
-	  }
 	};
 
 	Group.prototype = Object.create(Phaser.Group.prototype);
 	Group.prototype.constructor = Group;
-
-	Group.prototype.populate = function populate(){
-	  for(var i = 1, max = this.props.number; i <= max; i++){
-	    var creature = new Creature(this.game, this.props.type, this.props.origin.x, this.props.origin.y);
-	    creature.props.boundTo = this.props.boundTo;
-	    this.add(creature);
-	  }  
-	};
 
 	module.exports = Group;
 
@@ -1202,7 +1194,15 @@
 	      window.graphics = graphics;
 	      graphics.lineStyle(2, 0x0000FF, 1);
 	      graphics.drawRect(x, y, width, height);
-	    }
+	    }, 
+	    debugRuler: function(){
+	      // ruler for showing world x or y coordinates on every i.e. 100pixels
+	    },
+	    onEvery: function(tickerIntervalMillisec, callback){
+	      var ticker = game.time.events.loop(Phaser.Timer.SECOND * 0.001 * tickerIntervalMillisec, callback, this);
+	      ticker.timer.start();
+	      return ticker;
+	  }
 	  };
 	};
 
@@ -1232,7 +1232,7 @@
 	        type: 'bear',
 	        number: 1,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 130,
@@ -1244,11 +1244,27 @@
 	        }
 	      },
 	      {
+	        id: 2,
+	        type: 'dino',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: false,
+	        move: true,
+	        origin: {
+	          x: 347,
+	          y: 266
+	        },
+	        boundTo: {
+	          x1: 347,
+	          x2: 517
+	        }
+	      },
+	      {
 	        id: 1,
 	        type: 'bear',
 	        number: 1,
 	        lifespan: 20000,
-	        revive: 5000,
+	        revive: true,
 	        move: true,
 	        origin: {
 	          x: 90,
@@ -1262,25 +1278,9 @@
 	      {
 	        id: 2,
 	        type: 'dino',
-	        number: 2,
-	        lifespan: Infinity,
-	        revive: 5000,
-	        move: true,
-	        origin: {
-	          x: 347,
-	          y: 266
-	        },
-	        boundTo: {
-	          x1: 347,
-	          x2: 517
-	        }
-	      },
-	      {
-	        id: 2,
-	        type: 'dino',
 	        number: 1,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 682,
@@ -1296,39 +1296,33 @@
 	        type: 'ptero',
 	        number: 2,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
 	        },
-	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
-	        }
+	        boundTo: { }
 	      },
 	      {
 	        id: 4,
 	        type: 'dragonfly',
 	        number: 2,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 800,
 	          y: 130
 	        },
-	        boundTo: {
-	          x: Infinity,
-	          y: Infinity
-	        }
+	        boundTo: { }
 	      },
 	      {
 	        id: 5,
 	        type: 'spider',
 	        number: 2,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 44,
@@ -1344,7 +1338,7 @@
 	        type: 'native',
 	        number: 2,
 	        lifespan: Infinity,
-	        revive: 5000,
+	        revive: false,
 	        move: true,
 	        origin: {
 	          x: 470,
@@ -1486,33 +1480,33 @@
 	      {
 	        id: 1,
 	        type: 'bear', // 1-2 bears constantly run through the view
-	        number: 2,
-	        lifespan: 10000,
-	        revive: 5000,
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: false,
 	        move: true,
 	        origin: {
-	          x: 438,
-	          y: 527
+	          x: 344,
+	          y: 277
 	        },
 	        boundTo: {
-	          x1: 438,
-	          x2: 531
+	          x1: 344,
+	          x2: 404
 	        }
 	      },
 	      {
 	        id: 2,
 	        type: 'spider', // spiders coming from a cave frequently
-	        number: 3,
-	        lifespan: Infinity,
+	        number: 1,
+	        lifespan: 10000,
 	        revive: 10000,
 	        move: true,
 	        origin: {
-	          x: 100,
-	          y: 100
+	          x: 10,
+	          y: 10
 	        },
 	        boundTo: {
-	          x: 568,
-	          y: 734
+	          x1: Infinity,
+	          x2: Infinity
 	        }
 	      },
 	      {
@@ -1520,7 +1514,7 @@
 	        type: 'dino', // a guard dino standing waiting
 	        number: 1,
 	        lifespan: Infinity,
-	        revive: true,
+	        revive: 5000,
 	        move: 200,  // attacks if man distance is 200
 	        origin: {
 	          x: 94,

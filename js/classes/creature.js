@@ -57,8 +57,10 @@ Creature.prototype.debug = function debug(toDebug){
   FIXME!! 
 http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
 ==========================================*/
-Creature.prototype.revive = function revive(){
+Creature.prototype.revive = function revive(x, y){
   this.lifespan = this.props.lifespan;
+  this.state = 'moving';
+  this.reset(x, y);
 };
 
 module.exports = Creature;

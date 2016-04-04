@@ -151,12 +151,6 @@ function Play(game, settings){
     }, false);
   }
   
-  function onEvery(tickerInterval, callback){
-    // 'callback' called on every 'tickerInterval' seconds
-    var ticker = game.time.events.loop(Phaser.Timer.SECOND * tickerInterval, callback, this);
-    ticker.timer.start();
-  }
-  
   /*=============
   *   CREATE
   =============*/
@@ -175,11 +169,9 @@ function Play(game, settings){
     events.somethingHappened = new Phaser.Signal();
     events.somethingHappened.add(onSomethingHappened, this);
     
-    onEvery(10, function(){
+    var aTimer = utils.onEvery(10000, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      var randomPoint = utils.randomWorldPoint();
-      //enemies.revive('dino', 360, 200);
-      //enemies.revive('ptero', Math.random() * settings.dimensions.WIDTH, Math.random() * settings.dimensions.HEIGHT);
+      console.log('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
     });
     
     console.log("PHASER created");

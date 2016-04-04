@@ -18,7 +18,7 @@ var levelConfigs = [
         type: 'bear',
         number: 1,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 130,
@@ -30,11 +30,27 @@ var levelConfigs = [
         }
       },
       {
+        id: 2,
+        type: 'dino',
+        number: 1,
+        lifespan: Infinity,
+        revive: false,
+        move: true,
+        origin: {
+          x: 347,
+          y: 266
+        },
+        boundTo: {
+          x1: 347,
+          x2: 517
+        }
+      },
+      {
         id: 1,
         type: 'bear',
         number: 1,
         lifespan: 20000,
-        revive: 5000,
+        revive: true,
         move: true,
         origin: {
           x: 90,
@@ -48,25 +64,9 @@ var levelConfigs = [
       {
         id: 2,
         type: 'dino',
-        number: 2,
-        lifespan: Infinity,
-        revive: 5000,
-        move: true,
-        origin: {
-          x: 347,
-          y: 266
-        },
-        boundTo: {
-          x1: 347,
-          x2: 517
-        }
-      },
-      {
-        id: 2,
-        type: 'dino',
         number: 1,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 682,
@@ -82,39 +82,33 @@ var levelConfigs = [
         type: 'ptero',
         number: 2,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 200,
           y: 200
         },
-        boundTo: {
-          x: Infinity,
-          y: Infinity
-        }
+        boundTo: { }
       },
       {
         id: 4,
         type: 'dragonfly',
         number: 2,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 800,
           y: 130
         },
-        boundTo: {
-          x: Infinity,
-          y: Infinity
-        }
+        boundTo: { }
       },
       {
         id: 5,
         type: 'spider',
         number: 2,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 44,
@@ -130,7 +124,7 @@ var levelConfigs = [
         type: 'native',
         number: 2,
         lifespan: Infinity,
-        revive: 5000,
+        revive: false,
         move: true,
         origin: {
           x: 470,
@@ -272,33 +266,33 @@ var levelConfigs = [
       {
         id: 1,
         type: 'bear', // 1-2 bears constantly run through the view
-        number: 2,
-        lifespan: 10000,
-        revive: 5000,
+        number: 1,
+        lifespan: Infinity,
+        revive: false,
         move: true,
         origin: {
-          x: 438,
-          y: 527
+          x: 344,
+          y: 277
         },
         boundTo: {
-          x1: 438,
-          x2: 531
+          x1: 344,
+          x2: 404
         }
       },
       {
         id: 2,
         type: 'spider', // spiders coming from a cave frequently
-        number: 3,
-        lifespan: Infinity,
+        number: 1,
+        lifespan: 10000,
         revive: 10000,
         move: true,
         origin: {
-          x: 100,
-          y: 100
+          x: 10,
+          y: 10
         },
         boundTo: {
-          x: 568,
-          y: 734
+          x1: Infinity,
+          x2: Infinity
         }
       },
       {
@@ -306,7 +300,7 @@ var levelConfigs = [
         type: 'dino', // a guard dino standing waiting
         number: 1,
         lifespan: Infinity,
-        revive: true,
+        revive: 5000,
         move: 200,  // attacks if man distance is 200
         origin: {
           x: 94,

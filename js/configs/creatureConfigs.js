@@ -108,6 +108,7 @@ var creatureConfigs = {
   spider: {
     mass: 0.3,
     jumping: 0,
+    collide: true,
     bounce: 0.3,
     maxSpeed: 50,
     acceleration: 10,
