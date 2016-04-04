@@ -38,6 +38,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
     }
     group.setAll('props.boundTo', groupConfig.boundTo);
     group.setAll('props.move', groupConfig.move);
+    group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
     group.setAll('lifespan', groupConfig.lifespan);
     return group;
   });
@@ -55,6 +56,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
   function revive(group){
     var enemyToRevive = group.getFirstDead();
     if(enemyToRevive){
+      console.info('[enemyManager] reviving a %s', enemyToRevive.key, enemyToRevive);
       enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
     }
   }
@@ -78,21 +80,6 @@ var enemyManager = function(game, levelEnemies, levelZones){
       });
       return zoo;
     }
-    /*,
-    add: function(enemyType, whereX, whereY){ 
-      var enemyWaiting = global[enemyType].getFirstDead();
-      if(!enemyWaiting){
-        var anotherEnemy = new Creature(game, enemyType, whereX, whereY);
-        global[enemyType].add(anotherEnemy);
-      }
-    },
-    revive: function(enemyType, whereX, whereY){
-      var enemyToRevive = global[enemyType].getFirstDead();
-      if(enemyToRevive){
-        enemyToRevive.lifespan = enemyToRevive.props.lifespan;
-        enemyToRevive.reset(whereX, whereY);
-      }
-    }*/
   };
 };
 

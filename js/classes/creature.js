@@ -20,7 +20,7 @@ var Creature = function(game, creatureType, x, y){
     {x1, y1, x2, y2}  - an exact zone
   */
   //this.boundTo = { };
-  this.lifespan = creatureConfigs[creatureType].lifespan;
+  this.lifespan = this.props.lifespan;
   this.stunnedUntil = 0;
 
   this.facingRight = Math.random() < 0.5 ? true : false;

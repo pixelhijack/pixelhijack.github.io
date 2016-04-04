@@ -49,8 +49,8 @@ var levelConfigs = [
         id: 1,
         type: 'bear',
         number: 1,
-        lifespan: 20000,
-        revive: true,
+        lifespan: 10000,
+        revive: 5000,
         move: true,
         origin: {
           x: 90,
@@ -299,7 +299,7 @@ var levelConfigs = [
         id: 3,
         type: 'dino', // a guard dino standing waiting
         number: 1,
-        lifespan: Infinity,
+        lifespan: 8000,
         revive: 5000,
         move: 200,  // attacks if man distance is 200
         origin: {

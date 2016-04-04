@@ -86,7 +86,7 @@ function Play(game, settings){
     game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
   
-    console.log("PHASER preloaded");
+    console.info('[play] PHASER preloaded');
   }
   
   function initWorld(){
@@ -171,14 +171,14 @@ function Play(game, settings){
     
     var aTimer = utils.onEvery(10000, function(){
       //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      console.log('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
+      console.info('[play][Timers] Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
     });
     
-    console.log("PHASER created");
+    console.info('[play] PHASER created');
   }
   
   function onSomethingHappened(evt, whereItHappn){
-    console.log('something just happened in Pre2 World!', whereItHappn);
+    console.info('[play][Events] something just happened in Pre2 World!', whereItHappn);
   }
   
   function setParallax(){
@@ -295,10 +295,10 @@ function Play(game, settings){
     
     if(game.input.activePointer.leftButton.isDown){
       game.debug.pointer(game.input.activePointer);
-      console.log('clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
+      console.info('[play][Events] clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
     }
     
-    console.log("PHASER updated");
+    console.info('[play] PHASER updated');
   }
   
   function onEnemyCollision(hero, enemy){

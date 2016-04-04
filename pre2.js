@@ -186,7 +186,7 @@
 	    game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
 	    game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
 	  
-	    console.log("PHASER preloaded");
+	    console.info('[play] PHASER preloaded');
 	  }
 	  
 	  function initWorld(){
@@ -271,14 +271,14 @@
 	    
 	    var aTimer = utils.onEvery(10000, function(){
 	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-	      console.log('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
+	      console.info('[play][Timers] Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
 	    });
 	    
-	    console.log("PHASER created");
+	    console.info('[play] PHASER created');
 	  }
 	  
 	  function onSomethingHappened(evt, whereItHappn){
-	    console.log('something just happened in Pre2 World!', whereItHappn);
+	    console.info('[play][Events] something just happened in Pre2 World!', whereItHappn);
 	  }
 	  
 	  function setParallax(){
@@ -395,10 +395,10 @@
 	    
 	    if(game.input.activePointer.leftButton.isDown){
 	      game.debug.pointer(game.input.activePointer);
-	      console.log('clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
+	      console.info('[play][Events] clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
 	    }
 	    
-	    console.log("PHASER updated");
+	    console.info('[play] PHASER updated');
 	  }
 	  
 	  function onEnemyCollision(hero, enemy){
@@ -466,7 +466,7 @@
 	    {x1, y1, x2, y2}  - an exact zone
 	  */
 	  //this.boundTo = { };
-	  this.lifespan = creatureConfigs[creatureType].lifespan;
+	  this.lifespan = this.props.lifespan;
 	  this.stunnedUntil = 0;
 
 	  this.facingRight = Math.random() < 0.5 ? true : false;
@@ -1072,6 +1072,7 @@
 	    }
 	    group.setAll('props.boundTo', groupConfig.boundTo);
 	    group.setAll('props.move', groupConfig.move);
+	    group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
 	    group.setAll('lifespan', groupConfig.lifespan);
 	    return group;
 	  });
@@ -1089,6 +1090,7 @@
 	  function revive(group){
 	    var enemyToRevive = group.getFirstDead();
 	    if(enemyToRevive){
+	      console.info('[enemyManager] reviving a %s', enemyToRevive.key, enemyToRevive);
 	      enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
 	    }
 	  }
@@ -1112,21 +1114,6 @@
 	      });
 	      return zoo;
 	    }
-	    /*,
-	    add: function(enemyType, whereX, whereY){ 
-	      var enemyWaiting = global[enemyType].getFirstDead();
-	      if(!enemyWaiting){
-	        var anotherEnemy = new Creature(game, enemyType, whereX, whereY);
-	        global[enemyType].add(anotherEnemy);
-	      }
-	    },
-	    revive: function(enemyType, whereX, whereY){
-	      var enemyToRevive = global[enemyType].getFirstDead();
-	      if(enemyToRevive){
-	        enemyToRevive.lifespan = enemyToRevive.props.lifespan;
-	        enemyToRevive.reset(whereX, whereY);
-	      }
-	    }*/
 	  };
 	};
 
@@ -1263,8 +1250,8 @@
 	        id: 1,
 	        type: 'bear',
 	        number: 1,
-	        lifespan: 20000,
-	        revive: true,
+	        lifespan: 10000,
+	        revive: 5000,
 	        move: true,
 	        origin: {
 	          x: 90,
@@ -1513,7 +1500,7 @@
 	        id: 3,
 	        type: 'dino', // a guard dino standing waiting
 	        number: 1,
-	        lifespan: Infinity,
+	        lifespan: 8000,
 	        revive: 5000,
 	        move: 200,  // attacks if man distance is 200
 	        origin: {
