@@ -5,6 +5,10 @@ var mixins = {
   ******************************/
   moveLeft: function(overrideAcc){
     this.facingRight = false;
+    if(overrideAcc === 0){
+      this.body.velocity.x = 0;
+      this.body.velocity.y = 0;
+    }
     if(this.body.velocity.x > -this.props.maxSpeed){
       this.body.velocity.x -= overrideAcc || this.props.acceleration;
     }
@@ -14,6 +18,10 @@ var mixins = {
   ******************************/
   moveRight: function(overrideAcc){
     this.facingRight = true;
+    if(overrideAcc === 0){
+      this.body.velocity.x = 0;
+      this.body.velocity.y = 0;
+    }
     if(this.body.velocity.x < this.props.maxSpeed){
         this.body.velocity.x += overrideAcc || this.props.acceleration;
       }
@@ -82,8 +90,8 @@ var mixins = {
     // @return: one behaviour 
   },
   wait: function(){
-    this.body.velocity.x = 0;
-    this.body.velocity.y = 0;
+    this.body.moves = false;
+    this.state = 'idle';
   },
   descend: function(){
     this.body.velocity.y += this.props.acceleration;
@@ -93,21 +101,28 @@ var mixins = {
   },
   sleep: function(){},
   sentinel: function(){
-    if(!!this.props.boundTo){
-      if(this.props.boundTo.hasOwnProperty('x1') && 
-          this.props.boundTo.hasOwnProperty('x2') &&
-          !this.props.boundTo.hasOwnProperty('y1') &&
-          !this.props.boundTo.hasOwnProperty('y1')){
-        if(this.x < this.props.boundTo.x1){
-          this.facingRight = true;
-          mixins.move.call(this);
-        }
-        if(this.x > this.props.boundTo.x2){
-          this.facingRight = false;
-          mixins.move.call(this);
-        }
+    // @boundTo: {x1, x2} or {x1, y1, x2, y2} Rectangle
+    // @behaviour 'sentinel back & forth': if bound to a zone, stay there
+    if(this.boundTo.hasOwnProperty('width')){
+      if(this.x < this.boundTo.x){
+        this.facingRight = true;
+        mixins.move.call(this);
+      }
+      if(this.x > this.boundTo.x + this.boundTo.width){
+        this.facingRight = false;
+        mixins.move.call(this);
       }
     }
+    // @boundTo: {x, y} Point
+    // @behaviour 'hurry somewhere': if bound to a point, head there
+    // @behaviour 'wait at': if reached the point, wait there
+    if(!this.boundTo.hasOwnProperty('width')){
+      if(Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
+        console.info('[AI] REACHED THERE!!', this.x);
+        mixins.wait.call(this);
+        return false;
+      }
+    }  
   },
   follow: function(){}
 };
@@ -240,8 +255,9 @@ var updates = {
   native: function(){
     this.animations.play(this.state + '-' + this.direction());
     if(this.state !== 'dead'){
-      this.hurry();
-      this.sentinel();
+      if(!this.sentinel()){
+        this.hurry(); 
+      }
     }
   }
 };

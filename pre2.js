@@ -460,12 +460,10 @@
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
 
-	  /*  @boundTo
-	    {x, y}            - a point
-	    {x, x}            - a section
-	    {x1, y1, x2, y2}  - an exact zone
+	  /*
+	    @this.lifespan: the actual, used by Phaser
+	    @this.props.lifespan: the abstract from creature & level configs
 	  */
-	  //this.boundTo = { };
 	  this.lifespan = this.props.lifespan;
 	  this.stunnedUntil = 0;
 
@@ -482,8 +480,40 @@
 	};
 
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
-
 	Creature.prototype.constructor = Creature;
+
+	  /*  @boundTo
+	    {x, y}            - a point
+	    {x1, x2}          - a section
+	    {x1, y1, x2, y2}  - an exact zone
+	  */
+	Object.defineProperty(Creature.prototype, 'boundTo', {
+	    get: function() { return this._boundTo; }, 
+	    set: function(bounds) {
+	      // {x, y}
+	      if(bounds.hasOwnProperty('x') && 
+	        bounds.hasOwnProperty('y')){
+	          this._boundTo = new Phaser.Point(bounds.x, bounds.y);
+	      }
+	      // {x1, x2}
+	      else if(bounds.hasOwnProperty('x1') && 
+	              bounds.hasOwnProperty('x2') &&
+	              !bounds.hasOwnProperty('y1') &&
+	              !bounds.hasOwnProperty('y2')){
+	          this._boundTo = new Phaser.Rectangle(bounds.x1, 0, bounds.x2 - bounds.x1, this.game.height);
+	      }
+	      // {x1, y1, x2, y2}
+	      else if(bounds.hasOwnProperty('x1') && 
+	              bounds.hasOwnProperty('x2') &&
+	              bounds.hasOwnProperty('y1') &&
+	              bounds.hasOwnProperty('y2')){
+	          this._boundTo = new Phaser.Rectangle(bounds.x1, bounds.y1, bounds.x2 - bounds.x1, bounds.y2 - bounds.y1);
+	      // default: bound to the whole world
+	      } else {
+	        this._boundTo = new Phaser.Point(0, 0, this.game.width, this.game.height);
+	      }
+	    }
+	});
 
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
@@ -687,6 +717,10 @@
 	  ******************************/
 	  moveLeft: function(overrideAcc){
 	    this.facingRight = false;
+	    if(overrideAcc === 0){
+	      this.body.velocity.x = 0;
+	      this.body.velocity.y = 0;
+	    }
 	    if(this.body.velocity.x > -this.props.maxSpeed){
 	      this.body.velocity.x -= overrideAcc || this.props.acceleration;
 	    }
@@ -696,6 +730,10 @@
 	  ******************************/
 	  moveRight: function(overrideAcc){
 	    this.facingRight = true;
+	    if(overrideAcc === 0){
+	      this.body.velocity.x = 0;
+	      this.body.velocity.y = 0;
+	    }
 	    if(this.body.velocity.x < this.props.maxSpeed){
 	        this.body.velocity.x += overrideAcc || this.props.acceleration;
 	      }
@@ -764,8 +802,8 @@
 	    // @return: one behaviour 
 	  },
 	  wait: function(){
-	    this.body.velocity.x = 0;
-	    this.body.velocity.y = 0;
+	    this.body.moves = false;
+	    this.state = 'idle';
 	  },
 	  descend: function(){
 	    this.body.velocity.y += this.props.acceleration;
@@ -775,21 +813,28 @@
 	  },
 	  sleep: function(){},
 	  sentinel: function(){
-	    if(!!this.props.boundTo){
-	      if(this.props.boundTo.hasOwnProperty('x1') && 
-	          this.props.boundTo.hasOwnProperty('x2') &&
-	          !this.props.boundTo.hasOwnProperty('y1') &&
-	          !this.props.boundTo.hasOwnProperty('y1')){
-	        if(this.x < this.props.boundTo.x1){
-	          this.facingRight = true;
-	          mixins.move.call(this);
-	        }
-	        if(this.x > this.props.boundTo.x2){
-	          this.facingRight = false;
-	          mixins.move.call(this);
-	        }
+	    // @boundTo: {x1, x2} or {x1, y1, x2, y2} Rectangle
+	    // @behaviour 'sentinel back & forth': if bound to a zone, stay there
+	    if(this.boundTo.hasOwnProperty('width')){
+	      if(this.x < this.boundTo.x){
+	        this.facingRight = true;
+	        mixins.move.call(this);
+	      }
+	      if(this.x > this.boundTo.x + this.boundTo.width){
+	        this.facingRight = false;
+	        mixins.move.call(this);
 	      }
 	    }
+	    // @boundTo: {x, y} Point
+	    // @behaviour 'hurry somewhere': if bound to a point, head there
+	    // @behaviour 'wait at': if reached the point, wait there
+	    if(!this.boundTo.hasOwnProperty('width')){
+	      if(Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
+	        console.info('[AI] REACHED THERE!!', this.x);
+	        mixins.wait.call(this);
+	        return false;
+	      }
+	    }  
 	  },
 	  follow: function(){}
 	};
@@ -922,8 +967,9 @@
 	  native: function(){
 	    this.animations.play(this.state + '-' + this.direction());
 	    if(this.state !== 'dead'){
-	      this.hurry();
-	      this.sentinel();
+	      if(!this.sentinel()){
+	        this.hurry(); 
+	      }
 	    }
 	  }
 	};
@@ -1070,7 +1116,8 @@
 	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
 	      group.add(creature);
 	    }
-	    group.setAll('props.boundTo', groupConfig.boundTo);
+	    //group.setAll('props.boundTo', groupConfig.boundTo); 
+	    group.setAll('boundTo', groupConfig.boundTo);
 	    group.setAll('props.move', groupConfig.move);
 	    group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
 	    group.setAll('lifespan', groupConfig.lifespan);
@@ -1215,7 +1262,6 @@
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
 	      {
-	        id: 0,
 	        type: 'bear',
 	        number: 1,
 	        lifespan: Infinity,
@@ -1231,23 +1277,6 @@
 	        }
 	      },
 	      {
-	        id: 2,
-	        type: 'dino',
-	        number: 1,
-	        lifespan: Infinity,
-	        revive: false,
-	        move: true,
-	        origin: {
-	          x: 347,
-	          y: 266
-	        },
-	        boundTo: {
-	          x1: 347,
-	          x2: 517
-	        }
-	      },
-	      {
-	        id: 1,
 	        type: 'bear',
 	        number: 1,
 	        lifespan: 10000,
@@ -1263,7 +1292,6 @@
 	        }
 	      },
 	      {
-	        id: 2,
 	        type: 'dino',
 	        number: 1,
 	        lifespan: Infinity,
@@ -1279,7 +1307,6 @@
 	        }
 	      },
 	      {
-	        id: 3,
 	        type: 'ptero',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1292,7 +1319,6 @@
 	        boundTo: { }
 	      },
 	      {
-	        id: 4,
 	        type: 'dragonfly',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1305,7 +1331,6 @@
 	        boundTo: { }
 	      },
 	      {
-	        id: 5,
 	        type: 'spider',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1321,7 +1346,6 @@
 	        }
 	      },
 	      {
-	        id: 6,
 	        type: 'native',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1353,7 +1377,6 @@
 	    objectsLayer: null, 
 	    enemies: [
 	      {
-	        id: 1,
 	        type: 'bear',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1369,7 +1392,6 @@
 	        }
 	      },
 	      {
-	        id: 2,
 	        type: 'dino',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1385,7 +1407,6 @@
 	        }
 	      },
 	      {
-	        id: 3,
 	        type: 'ptero',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1401,7 +1422,6 @@
 	        }
 	      },
 	      {
-	        id: 4,
 	        type: 'dragonfly',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1417,7 +1437,6 @@
 	        }
 	      },
 	      {
-	        id: 5,
 	        type: 'spider',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1433,7 +1452,6 @@
 	        }
 	      },
 	      {
-	        id: 6,
 	        type: 'native',
 	        number: 2,
 	        lifespan: Infinity,
@@ -1465,7 +1483,6 @@
 	    objectsLayer: 'objects-layer', 
 	    enemies: [
 	      {
-	        id: 1,
 	        type: 'bear', // 1-2 bears constantly run through the view
 	        number: 1,
 	        lifespan: Infinity,
@@ -1481,7 +1498,21 @@
 	        }
 	      },
 	      {
-	        id: 2,
+	        type: 'native',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: false,
+	        move: true,
+	        origin: {
+	          x: 10,
+	          y: 10
+	        },
+	        boundTo: {
+	          x: 101,
+	          y: 158
+	        }
+	      },
+	      {
 	        type: 'spider', // spiders coming from a cave frequently
 	        number: 1,
 	        lifespan: 10000,
@@ -1497,7 +1528,6 @@
 	        }
 	      },
 	      {
-	        id: 3,
 	        type: 'dino', // a guard dino standing waiting
 	        number: 1,
 	        lifespan: 8000,

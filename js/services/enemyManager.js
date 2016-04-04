@@ -36,7 +36,8 @@ var enemyManager = function(game, levelEnemies, levelZones){
       var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
       group.add(creature);
     }
-    group.setAll('props.boundTo', groupConfig.boundTo);
+    //group.setAll('props.boundTo', groupConfig.boundTo); 
+    group.setAll('boundTo', groupConfig.boundTo);
     group.setAll('props.move', groupConfig.move);
     group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
     group.setAll('lifespan', groupConfig.lifespan);

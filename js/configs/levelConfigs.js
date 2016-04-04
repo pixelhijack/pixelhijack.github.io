@@ -14,7 +14,6 @@ var levelConfigs = [
     objectsLayer: 'objects-layer', 
     enemies: [
       {
-        id: 0,
         type: 'bear',
         number: 1,
         lifespan: Infinity,
@@ -30,23 +29,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 2,
-        type: 'dino',
-        number: 1,
-        lifespan: Infinity,
-        revive: false,
-        move: true,
-        origin: {
-          x: 347,
-          y: 266
-        },
-        boundTo: {
-          x1: 347,
-          x2: 517
-        }
-      },
-      {
-        id: 1,
         type: 'bear',
         number: 1,
         lifespan: 10000,
@@ -62,7 +44,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 2,
         type: 'dino',
         number: 1,
         lifespan: Infinity,
@@ -78,7 +59,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 3,
         type: 'ptero',
         number: 2,
         lifespan: Infinity,
@@ -91,7 +71,6 @@ var levelConfigs = [
         boundTo: { }
       },
       {
-        id: 4,
         type: 'dragonfly',
         number: 2,
         lifespan: Infinity,
@@ -104,7 +83,6 @@ var levelConfigs = [
         boundTo: { }
       },
       {
-        id: 5,
         type: 'spider',
         number: 2,
         lifespan: Infinity,
@@ -120,7 +98,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 6,
         type: 'native',
         number: 2,
         lifespan: Infinity,
@@ -152,7 +129,6 @@ var levelConfigs = [
     objectsLayer: null, 
     enemies: [
       {
-        id: 1,
         type: 'bear',
         number: 2,
         lifespan: Infinity,
@@ -168,7 +144,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 2,
         type: 'dino',
         number: 2,
         lifespan: Infinity,
@@ -184,7 +159,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 3,
         type: 'ptero',
         number: 2,
         lifespan: Infinity,
@@ -200,7 +174,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 4,
         type: 'dragonfly',
         number: 2,
         lifespan: Infinity,
@@ -216,7 +189,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 5,
         type: 'spider',
         number: 2,
         lifespan: Infinity,
@@ -232,7 +204,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 6,
         type: 'native',
         number: 2,
         lifespan: Infinity,
@@ -264,7 +235,6 @@ var levelConfigs = [
     objectsLayer: 'objects-layer', 
     enemies: [
       {
-        id: 1,
         type: 'bear', // 1-2 bears constantly run through the view
         number: 1,
         lifespan: Infinity,
@@ -280,7 +250,21 @@ var levelConfigs = [
         }
       },
       {
-        id: 2,
+        type: 'native',
+        number: 1,
+        lifespan: Infinity,
+        revive: false,
+        move: true,
+        origin: {
+          x: 10,
+          y: 10
+        },
+        boundTo: {
+          x: 101,
+          y: 158
+        }
+      },
+      {
         type: 'spider', // spiders coming from a cave frequently
         number: 1,
         lifespan: 10000,
@@ -296,7 +280,6 @@ var levelConfigs = [
         }
       },
       {
-        id: 3,
         type: 'dino', // a guard dino standing waiting
         number: 1,
         lifespan: 8000,
