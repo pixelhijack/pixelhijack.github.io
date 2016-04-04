@@ -54,6 +54,7 @@ var creatureConfigs = {
   },
   bear: {
     mass: 1.2,
+    maxSpeed: 75,
     acceleration: 15, 
     animations: [
       { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
@@ -76,7 +77,7 @@ var creatureConfigs = {
     bounce: 0.1,
     jumping: 0,
     collide: false,
-    maxSpeed: 100,
+    maxSpeed: 50,
     acceleration: 50, 
     animations: [
       { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
@@ -108,7 +109,7 @@ var creatureConfigs = {
     mass: 0.3,
     jumping: 0,
     bounce: 0.3,
-    maxSpeed: 75,
+    maxSpeed: 50,
     acceleration: 10,
     animations: [
       { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
@@ -124,7 +125,7 @@ var creatureConfigs = {
     ]
   },
   native: {
-    maxSpeed: 150,
+    maxSpeed: 100,
     acceleration: 20,
     animations: [
       { name: 'moving-right', frames: [0,1,2], fps: 10, loop: true },

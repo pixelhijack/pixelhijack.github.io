@@ -43,10 +43,6 @@ Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';
 };
 
-Creature.prototype.setBound = function setBound(value){
-  this.boundTo = value;
-};
-
 Creature.prototype.isGrounded = function isGrounded(){
   return this.body.touching.down || this.body.blocked.down;
 };

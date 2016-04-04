@@ -497,10 +497,6 @@
 	  return this.facingRight ? 'right' : 'left';
 	};
 
-	Creature.prototype.setBound = function setBound(value){
-	  this.boundTo = value;
-	};
-
 	Creature.prototype.isGrounded = function isGrounded(){
 	  return this.body.touching.down || this.body.blocked.down;
 	};
@@ -582,6 +578,7 @@
 	  },
 	  bear: {
 	    mass: 1.2,
+	    maxSpeed: 75,
 	    acceleration: 15, 
 	    animations: [
 	      { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
@@ -604,7 +601,7 @@
 	    bounce: 0.1,
 	    jumping: 0,
 	    collide: false,
-	    maxSpeed: 100,
+	    maxSpeed: 50,
 	    acceleration: 50, 
 	    animations: [
 	      { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
@@ -636,7 +633,7 @@
 	    mass: 0.3,
 	    jumping: 0,
 	    bounce: 0.3,
-	    maxSpeed: 75,
+	    maxSpeed: 50,
 	    acceleration: 10,
 	    animations: [
 	      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
@@ -652,7 +649,7 @@
 	    ]
 	  },
 	  native: {
-	    maxSpeed: 150,
+	    maxSpeed: 100,
 	    acceleration: 20,
 	    animations: [
 	      { name: 'moving-right', frames: [0,1,2], fps: 10, loop: true },
@@ -1087,21 +1084,13 @@
 	    var group = game.add.group();
 	    for(var i = 1, max = groupConfig.number; i <= max; i++){
 	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
-	      //creature.setBound(groupConfig.boundTo);
 	      group.add(creature);
 	    }
 	    group.setAll('props.boundTo', groupConfig.boundTo);
+	    group.setAll('lifespan', groupConfig.lifespan);
 	    return group;
 	  });
 	  
-	  /*
-	  groups.forEach(function(group, i){
-	    var config = levelEnemies.find(function(groupConfig){
-	      return groupConfig.id === i;
-	    });
-	    group.setAll('props.boundTo', config.boundTo);
-	  });
-	  */
 	  
 	  return {
 	    forEachAlive: function(fn){
@@ -1258,7 +1247,7 @@
 	        id: 1,
 	        type: 'bear',
 	        number: 1,
-	        lifespan: Infinity,
+	        lifespan: 20000,
 	        revive: 5000,
 	        move: true,
 	        origin: {

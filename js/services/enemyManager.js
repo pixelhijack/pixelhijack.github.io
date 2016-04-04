@@ -45,21 +45,13 @@ var enemyManager = function(game, levelEnemies, levelZones){
     var group = game.add.group();
     for(var i = 1, max = groupConfig.number; i <= max; i++){
       var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
-      //creature.setBound(groupConfig.boundTo);
       group.add(creature);
     }
     group.setAll('props.boundTo', groupConfig.boundTo);
+    group.setAll('lifespan', groupConfig.lifespan);
     return group;
   });
   
-  /*
-  groups.forEach(function(group, i){
-    var config = levelEnemies.find(function(groupConfig){
-      return groupConfig.id === i;
-    });
-    group.setAll('props.boundTo', config.boundTo);
-  });
-  */
   
   return {
     forEachAlive: function(fn){

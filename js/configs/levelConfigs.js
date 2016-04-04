@@ -33,7 +33,7 @@ var levelConfigs = [
         id: 1,
         type: 'bear',
         number: 1,
-        lifespan: Infinity,
+        lifespan: 20000,
         revive: 5000,
         move: true,
         origin: {
