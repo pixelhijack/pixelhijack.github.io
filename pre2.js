@@ -107,22 +107,7 @@
 
 	// Play game state
 	function Play(game, settings){
-	  /*
-	    import {SETTINGS}:
-	      inputs
-	        keys
-	        pointers
-	    internal {GAME}
-	      game menu
-	        lives
-	        hearts
-	        score
-	        bonus
-	    export {MODELS}: 
-	      man
-	      enemies
-	  */ 
-	  
+
 	  var man;
 	  
 	  var keys; 
@@ -218,7 +203,7 @@
 	    
 	    // subscribe enemies on man's actions:
 	    enemies.forEachAlive(function(creature){
-	      man.noise.add(creature.onEnemyMovements, creature);
+	      creature.listen(man, creature.onEnemyMovements);
 	    });
 	    
 	    game.camera.follow(man);
@@ -476,8 +461,6 @@
 	  
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
-	  this.noise = new Phaser.Signal();
-	  
 	  creatureConfigs[creatureType].animations.forEach(function(anim){
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
 	  }.bind(this));
@@ -486,6 +469,10 @@
 	  movements.behaviours[creatureType].call(Creature.prototype);
 	  // apply the creature's own update to be called
 	  this.update = movements.updates[creatureType].bind(this);
+	  // every creature makes noises: an observable phaser channel to subscribe for:
+	  this.noise = new Phaser.Signal();
+	  // every creature react to other noises: event listener collection here:
+	  this.reactions = movements.reactions[creatureType] || movements.reactions.default;
 	};
 
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -538,8 +525,17 @@
 	  this._debugText.setText(toDebug);
 	};
 
-	Creature.prototype.onEnemyMovements = function onEnemyMovements(args){
-	  console.log('[creature][Signals][%s] heard some noise!', this.key, args);
+	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
+	  var reaction = this.reactions[evt.who + ':' + evt.event];
+	  if(reaction){
+	    reaction.call(this, evt);
+	  }
+	  //console.log('[creature][Signals][%s] heard some noise!', this.key, event);
+	}
+
+	Creature.prototype.listen = function listen(subject, reaction){
+	  // subscribe a creature to man's noises: man.noise.add(creature.onEnemyMovements, creature);
+	  subject.noise.add(reaction, this);
 	}
 
 	Creature.prototype.shout = function shout(eventType, args){
@@ -997,10 +993,29 @@
 	  }
 	};
 
+	var reactions = {
+	  default: {
+	    'man:hurt': function(evt){
+	      console.log('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
+	    }
+	  },
+	  native: {
+	    'man:hunting': function(evt){
+	      console.log('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
+	    }
+	  }, 
+	  spider: {
+	    'man:hurt': function(evt){
+	      console.log('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
+	    }
+	  }
+	};
+
 	module.exports = {
 	  mixins: mixins,
 	  behaviours: behaviours,
-	  updates: updates
+	  updates: updates, 
+	  reactions: reactions
 	};
 
 

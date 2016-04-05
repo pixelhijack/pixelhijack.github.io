@@ -268,9 +268,28 @@ var updates = {
   }
 };
 
+var reactions = {
+  default: {
+    'man:hurt': function(evt){
+      console.log('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
+    }
+  },
+  native: {
+    'man:hunting': function(evt){
+      console.log('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
+    }
+  }, 
+  spider: {
+    'man:hurt': function(evt){
+      console.log('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
+    }
+  }
+};
+
 module.exports = {
   mixins: mixins,
   behaviours: behaviours,
-  updates: updates
+  updates: updates, 
+  reactions: reactions
 };
 

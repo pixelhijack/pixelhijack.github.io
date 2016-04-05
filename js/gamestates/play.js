@@ -7,22 +7,7 @@ var util = require('../services/util.js');
 
 // Play game state
 function Play(game, settings){
-  /*
-    import {SETTINGS}:
-      inputs
-        keys
-        pointers
-    internal {GAME}
-      game menu
-        lives
-        hearts
-        score
-        bonus
-    export {MODELS}: 
-      man
-      enemies
-  */ 
-  
+
   var man;
   
   var keys; 
@@ -118,7 +103,7 @@ function Play(game, settings){
     
     // subscribe enemies on man's actions:
     enemies.forEachAlive(function(creature){
-      man.noise.add(creature.onEnemyMovements, creature);
+      creature.listen(man, creature.onEnemyMovements);
     });
     
     game.camera.follow(man);
