@@ -19,7 +19,7 @@ var creatureConfigs = {
   },
   man: {
     maxSpeed: 200,
-    lives: 3, 
+    lives: 8, 
     lifespan: Infinity,
     animations: [
       { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 

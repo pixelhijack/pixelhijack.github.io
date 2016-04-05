@@ -1,6 +1,7 @@
 var Creature = require('../classes/creature.js');
 var levelManager = require('../services/levelManager.js');
 var enemyManager = require('../services/enemyManager.js');
+var menuManager = require('../services/menuManager.js');
 var levelConfigs = require('../configs/levelConfigs.js');
 var util = require('../services/util.js');
 
@@ -17,16 +18,7 @@ function Play(game, settings){
     animRight: null,
     animLeft: null
   };
-  var lives = {
-    up: null,
-    hearts: []
-  };
-  var menu = {
-    lives: null,
-    hearts: null,
-    score: null,
-    bonus: null
-  }
+  var menu;
   var levels = levelManager(game, levelConfigs);
   var level;
   
@@ -98,9 +90,6 @@ function Play(game, settings){
     weapon.animRight.onComplete.add(toggleVivibility, this);
     weapon.animLeft.onComplete.add(toggleVivibility, this);
     
-    // restore lifes if game state reloaded:
-    man.props.lives = 3;
-    
     // subscribe enemies on man's actions:
     enemies.forEachAlive(function(creature){
       creature.listen(man, creature.onEnemyMovements);
@@ -111,19 +100,9 @@ function Play(game, settings){
   }
   
   function renderMenu(){
-    // UPs
-    menu.lives = game.add.sprite(20, 20, 'lives');
-    menu.lives.fixedToCamera = true;
-    menu.lives.frame = 0;
-    // hearts
-    var hearts = man.lives();
-    menu.hearts = game.add.group();
-    for(var i=0;i<hearts;i++){
-      var heart = game.add.sprite(60 + i*20, 20, 'lives');
-      heart.fixedToCamera = true;
-      heart.frame = 1;
-      menu.hearts.add(heart);
-    }
+    menu = menuManager(game, man);
+    // subscribe menu modul on man's actions:
+    menu.listen(man, menu.update);
   }
   
   function setInputs(){
@@ -305,12 +284,11 @@ function Play(game, settings){
       enemy.die(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{
+      var shouldReload = man.lives() % 4 - 1 === 0;
       man.hurt(enemyMomentum);
-      man.shout('hurt', 'by a: ' + enemy.key);
-      renderMenu();
-      if(man.lives() < 0){
+      man.shout('hurt', { livesLeft: man.lives() });
+      if(shouldReload){
         weapon.sprite.kill();
-        man.die();
         game.time.events.add(Phaser.Timer.SECOND * 3, function(){
           // restart while keep caches: 
           game.state.start('Play', true, false);

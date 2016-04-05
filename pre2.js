@@ -101,6 +101,7 @@
 	var Creature = __webpack_require__(3);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
+	var menuManager = __webpack_require__(11);
 	var levelConfigs = __webpack_require__(10);
 	var util = __webpack_require__(9);
 
@@ -117,16 +118,7 @@
 	    animRight: null,
 	    animLeft: null
 	  };
-	  var lives = {
-	    up: null,
-	    hearts: []
-	  };
-	  var menu = {
-	    lives: null,
-	    hearts: null,
-	    score: null,
-	    bonus: null
-	  }
+	  var menu;
 	  var levels = levelManager(game, levelConfigs);
 	  var level;
 	  
@@ -198,9 +190,6 @@
 	    weapon.animRight.onComplete.add(toggleVivibility, this);
 	    weapon.animLeft.onComplete.add(toggleVivibility, this);
 	    
-	    // restore lifes if game state reloaded:
-	    man.props.lives = 3;
-	    
 	    // subscribe enemies on man's actions:
 	    enemies.forEachAlive(function(creature){
 	      creature.listen(man, creature.onEnemyMovements);
@@ -211,19 +200,9 @@
 	  }
 	  
 	  function renderMenu(){
-	    // UPs
-	    menu.lives = game.add.sprite(20, 20, 'lives');
-	    menu.lives.fixedToCamera = true;
-	    menu.lives.frame = 0;
-	    // hearts
-	    var hearts = man.lives();
-	    menu.hearts = game.add.group();
-	    for(var i=0;i<hearts;i++){
-	      var heart = game.add.sprite(60 + i*20, 20, 'lives');
-	      heart.fixedToCamera = true;
-	      heart.frame = 1;
-	      menu.hearts.add(heart);
-	    }
+	    menu = menuManager(game, man);
+	    // subscribe menu modul on man's actions:
+	    menu.listen(man, menu.update);
 	  }
 	  
 	  function setInputs(){
@@ -405,12 +384,11 @@
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
+	      var shouldReload = man.lives() % 4 - 1 === 0;
 	      man.hurt(enemyMomentum);
-	      man.shout('hurt', 'by a: ' + enemy.key);
-	      renderMenu();
-	      if(man.lives() < 0){
+	      man.shout('hurt', { livesLeft: man.lives() });
+	      if(shouldReload){
 	        weapon.sprite.kill();
-	        man.die();
 	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 	          // restart while keep caches: 
 	          game.state.start('Play', true, false);
@@ -542,10 +520,6 @@
 	  this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
 	}
 
-	/*==========================================
-	  FIXME!! 
-	http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
-	==========================================*/
 	Creature.prototype.revive = function revive(x, y){
 	  this.lifespan = this.props.lifespan;
 	  this.state = 'moving';
@@ -580,7 +554,7 @@
 	  },
 	  man: {
 	    maxSpeed: 200,
-	    lives: 3, 
+	    lives: 8, 
 	    lifespan: Infinity,
 	    animations: [
 	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
@@ -792,8 +766,8 @@
 	  },
 	  hurt: function(force){
 	    this.props.lives -= 1;
-	    this.body.velocity.x -= force * 3;
-	    this.body.velocity.y -= force * 3;
+	    this.body.velocity.x += force * 3;
+	    this.body.velocity.y += force * 3;
 	    this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
 	  },
 	  die: function(force){
@@ -996,17 +970,17 @@
 	var reactions = {
 	  default: {
 	    'man:hurt': function(evt){
-	      console.log('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
+	      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
 	    }
 	  },
 	  native: {
 	    'man:hunting': function(evt){
-	      console.log('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
+	      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
 	    }
 	  }, 
 	  spider: {
 	    'man:hurt': function(evt){
-	      console.log('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
+	      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
 	    }
 	  }
 	};
@@ -1585,6 +1559,49 @@
 	];
 
 	module.exports = levelConfigs;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	var Menu = function(game, man){
+	  
+	  var lives, 
+	      livesCount,
+	      hearts, 
+	      score;
+	      
+	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" })
+	      
+	  lives = game.add.sprite(30, 20, 'lives');
+	  lives.fixedToCamera = true;
+	  lives.frame = 0;
+	  
+	  hearts = game.add.group();
+	  for(var i=0;i<3;i++){
+	    var heart = game.add.sprite(60 + i * 20, 20, 'lives');
+	    heart.fixedToCamera = true;
+	    heart.frame = 1;
+	    hearts.add(heart);
+	  }
+
+	  return {
+	    listen: function(subject, onEventCallback){
+	      subject.noise.add(onEventCallback, this);
+	    },
+	    update: function(evt){
+	      console.info('[EVENT][Menu]: updating', evt);
+	      var actualHeart = evt.args.livesLeft % 4 - 1;
+	      hearts.children.forEach(function(heart, i){
+	        if(i >= actualHeart){
+	          heart.visible = false;
+	        }
+	      });
+	    }
+	  };
+	};
+
+	module.exports = Menu;
 
 /***/ }
 /******/ ]);

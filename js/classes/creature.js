@@ -104,10 +104,6 @@ Creature.prototype.shout = function shout(eventType, args){
   this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
 }
 
-/*==========================================
-  FIXME!! 
-http://www.html5gamedevs.com/topic/9158-sprite-lifespan-problem/
-==========================================*/
 Creature.prototype.revive = function revive(x, y){
   this.lifespan = this.props.lifespan;
   this.state = 'moving';

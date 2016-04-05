@@ -67,8 +67,8 @@ var mixins = {
   },
   hurt: function(force){
     this.props.lives -= 1;
-    this.body.velocity.x -= force * 3;
-    this.body.velocity.y -= force * 3;
+    this.body.velocity.x += force * 3;
+    this.body.velocity.y += force * 3;
     this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
   },
   die: function(force){
@@ -271,17 +271,17 @@ var updates = {
 var reactions = {
   default: {
     'man:hurt': function(evt){
-      console.log('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
     }
   },
   native: {
     'man:hunting': function(evt){
-      console.log('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
     }
   }, 
   spider: {
     'man:hurt': function(evt){
-      console.log('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
     }
   }
 };
