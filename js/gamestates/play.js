@@ -82,7 +82,7 @@ function Play(game, settings){
   }
   
   function addHero(){
-    man = new Creature(game, 'man', 200, 50);
+    man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
     
     weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
     weapon.sprite.anchor.setTo(0.5, 0.5);

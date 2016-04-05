@@ -5,7 +5,11 @@ var levelManager = function(game, levelList){
     backgroundLayer: null,
     groundLayer: null,
     collisionLayer: null,
-    objects: {}
+    objects: {}, 
+    entryPoint: {
+      x: 200, 
+      y: 50
+    }
   };
   
   return function setLevel(id){
@@ -30,6 +34,8 @@ var levelManager = function(game, levelList){
     level.tilemap.setCollisionBetween(0, 1000, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();
     level.enemies = levelToLoad.enemies;
+    
+    level.entryPoint = levelToLoad.entryPoint;
     
     //level.groundLayer.debug = true;
     

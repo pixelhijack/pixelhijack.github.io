@@ -182,7 +182,7 @@
 	  }
 	  
 	  function addHero(){
-	    man = new Creature(game, 'man', 200, 50);
+	    man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
 	    
 	    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
 	    weapon.sprite.anchor.setTo(0.5, 0.5);
@@ -1007,7 +1007,11 @@
 	    backgroundLayer: null,
 	    groundLayer: null,
 	    collisionLayer: null,
-	    objects: {}
+	    objects: {}, 
+	    entryPoint: {
+	      x: 200, 
+	      y: 50
+	    }
 	  };
 	  
 	  return function setLevel(id){
@@ -1032,6 +1036,8 @@
 	    level.tilemap.setCollisionBetween(0, 1000, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
+	    
+	    level.entryPoint = levelToLoad.entryPoint;
 	    
 	    //level.groundLayer.debug = true;
 	    
@@ -1317,6 +1323,10 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: 'objects-layer', 
+	    entryPoint: {
+	      x: 200, 
+	      y: 50
+	    },
 	    enemies: [
 	      {
 	        type: 'bear',
@@ -1432,6 +1442,10 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: null, 
+	    entryPoint: {
+	      x: 200, 
+	      y: 50
+	    },
 	    enemies: [
 	      {
 	        type: 'bear',
@@ -1538,6 +1552,10 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: 'death-layer',
 	    objectsLayer: 'objects-layer', 
+	    entryPoint: {
+	      x: 285, 
+	      y: 206
+	    },
 	    enemies: [
 	      {
 	        type: 'bear', // 1-2 bears constantly run through the view
@@ -1614,6 +1632,10 @@
 	    collisionLayer: 'collision-layer',
 	    deathLayer: 'death-layer',
 	    objectsLayer: null, 
+	    entryPoint: {
+	      x: 311, 
+	      y: 291
+	    },
 	    enemies: [
 	      {
 	        type: 'spider', 
@@ -1707,7 +1729,7 @@
 	      },
 	      {
 	        type: 'ptero',
-	        number: 8,
+	        number: 3,
 	        lifespan: Infinity,
 	        revive: 5000,
 	        move: true,

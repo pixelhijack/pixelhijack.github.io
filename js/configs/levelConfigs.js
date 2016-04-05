@@ -12,6 +12,10 @@ var levelConfigs = [
     collisionLayer: 'collision-layer',
     deathLayer: null,
     objectsLayer: 'objects-layer', 
+    entryPoint: {
+      x: 200, 
+      y: 50
+    },
     enemies: [
       {
         type: 'bear',
@@ -127,6 +131,10 @@ var levelConfigs = [
     collisionLayer: 'collision-layer',
     deathLayer: null,
     objectsLayer: null, 
+    entryPoint: {
+      x: 200, 
+      y: 50
+    },
     enemies: [
       {
         type: 'bear',
@@ -233,6 +241,10 @@ var levelConfigs = [
     collisionLayer: 'collision-layer',
     deathLayer: 'death-layer',
     objectsLayer: 'objects-layer', 
+    entryPoint: {
+      x: 285, 
+      y: 206
+    },
     enemies: [
       {
         type: 'bear', // 1-2 bears constantly run through the view
@@ -309,6 +321,10 @@ var levelConfigs = [
     collisionLayer: 'collision-layer',
     deathLayer: 'death-layer',
     objectsLayer: null, 
+    entryPoint: {
+      x: 311, 
+      y: 291
+    },
     enemies: [
       {
         type: 'spider', 
@@ -402,7 +418,7 @@ var levelConfigs = [
       },
       {
         type: 'ptero',
-        number: 8,
+        number: 3,
         lifespan: Infinity,
         revive: 5000,
         move: true,
