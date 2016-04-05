@@ -101,8 +101,8 @@
 	var Creature = __webpack_require__(3);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
-	var menuManager = __webpack_require__(11);
-	var levelConfigs = __webpack_require__(10);
+	var menuManager = __webpack_require__(10);
+	var levelConfigs = __webpack_require__(11);
 	var util = __webpack_require__(9);
 
 
@@ -158,10 +158,12 @@
 	    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
 	    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
 	    game.load.image('tileset-level-3', './assets/tilesets/tileset1_2.png');
+	    game.load.image('tileset-level-4', './assets/tilesets/L2_bank.png');
 	    
 	    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
 	    game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
 	    game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
+	    game.load.tilemap('tilemap-level-4', './levels/L2v1.json', null, Phaser.Tilemap.TILED_JSON);
 	  
 	    console.info('[play] PHASER preloaded');
 	  }
@@ -742,7 +744,7 @@
 	  },
 	  hurry: function(){
 	    this.turnIfBlocked();
-	    this.move();
+	    mixins.move.call(this);
 	    this.state = 'moving';
 	  },
 	  jump: function(){
@@ -1027,7 +1029,7 @@
 	      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
 	      level.deathLayer.visible = false;
 	    }
-	    level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.collisionLayer);
+	    level.tilemap.setCollisionBetween(0, 1000, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
 	    
@@ -1256,6 +1258,49 @@
 
 /***/ },
 /* 10 */
+/***/ function(module, exports) {
+
+	var Menu = function(game, man){
+	  
+	  var lives, 
+	      livesCount,
+	      hearts, 
+	      score;
+	      
+	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" })
+	      
+	  lives = game.add.sprite(30, 20, 'lives');
+	  lives.fixedToCamera = true;
+	  lives.frame = 0;
+	  
+	  hearts = game.add.group();
+	  for(var i=0;i<3;i++){
+	    var heart = game.add.sprite(60 + i * 20, 20, 'lives');
+	    heart.fixedToCamera = true;
+	    heart.frame = 1;
+	    hearts.add(heart);
+	  }
+
+	  return {
+	    listen: function(subject, onEventCallback){
+	      subject.noise.add(onEventCallback, this);
+	    },
+	    update: function(evt){
+	      console.info('[EVENT][Menu]: updating', evt);
+	      var actualHeart = evt.args.livesLeft % 4 - 1;
+	      hearts.children.forEach(function(heart, i){
+	        if(i >= actualHeart){
+	          heart.visible = false;
+	        }
+	      });
+	    }
+	  };
+	};
+
+	module.exports = Menu;
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
 	var levelConfigs = [
@@ -1555,53 +1600,146 @@
 	        }
 	      }
 	    ]
+	  }, 
+	  {
+	    id: 4,
+	    tileset: 'tileset-level-4',
+	    tilemap: 'tilemap-level-4',
+	    tilesetImageName: 'L2_bank',
+	    width: 100 * 16,
+	    height: 50 * 16,
+	    backgroundLayer: 'background-1',
+	    fixedBackground: true, 
+	    groundLayer: 'ground-layer',
+	    collisionLayer: 'collision-layer',
+	    deathLayer: 'death-layer',
+	    objectsLayer: null, 
+	    enemies: [
+	      {
+	        type: 'spider', 
+	        number: 1,
+	        lifespan: 10000,
+	        revive: 10000,
+	        move: true,
+	        origin: {
+	          x: 513,
+	          y: 225
+	        },
+	        boundTo: {
+	          x1: 0,
+	          x2: 0
+	        }
+	      },
+	      {
+	        type: 'spider', 
+	        number: 1,
+	        lifespan: 10000,
+	        revive: 10000,
+	        move: true,
+	        origin: {
+	          x: 0,
+	          y: 0
+	        },
+	        boundTo: {
+	          x1: 0,
+	          x2: Infinity
+	        }
+	      },
+	      {
+	        type: 'spider', 
+	        number: 1,
+	        lifespan: 10000,
+	        revive: 10000,
+	        move: true,
+	        origin: {
+	          x: 436,
+	          y: 555
+	        },
+	        boundTo: {
+	          x1: 0,
+	          x2: Infinity
+	        }
+	      },
+	      {
+	        type: 'spider', 
+	        number: 1,
+	        lifespan: 10000,
+	        revive: 10000,
+	        move: true,
+	        origin: {
+	          x: 611,
+	          y: 496
+	        },
+	        boundTo: {
+	          x1: 0,
+	          x2: Infinity
+	        }
+	      },
+	      {
+	        type: 'dino', 
+	        number: 3,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: 200,  
+	        origin: {
+	          x: 925,
+	          y: 300
+	        },
+	        boundTo: {
+	          x1: 0,  
+	          x2: 925
+	        }
+	      }, 
+	      {
+	        type: 'native',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: false,
+	        move: true,
+	        origin: {
+	          x: 1400,
+	          y: 178
+	        },
+	        boundTo: {
+	          x1: 1400,
+	          x2: 1535
+	        }
+	      },
+	      {
+	        type: 'ptero',
+	        number: 8,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 1130,
+	          y: 216
+	        },
+	        boundTo: {
+	          x: Infinity,
+	          y: Infinity
+	        }
+	      },
+	      {
+	        type: 'dragonfly',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 56,
+	          y: 364
+	        },
+	        boundTo: {
+	          x1: 56,
+	          x2: 1200
+	        }
+	      }
+	    ]
 	  }
 	];
 
 	module.exports = levelConfigs;
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	var Menu = function(game, man){
-	  
-	  var lives, 
-	      livesCount,
-	      hearts, 
-	      score;
-	      
-	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" })
-	      
-	  lives = game.add.sprite(30, 20, 'lives');
-	  lives.fixedToCamera = true;
-	  lives.frame = 0;
-	  
-	  hearts = game.add.group();
-	  for(var i=0;i<3;i++){
-	    var heart = game.add.sprite(60 + i * 20, 20, 'lives');
-	    heart.fixedToCamera = true;
-	    heart.frame = 1;
-	    hearts.add(heart);
-	  }
-
-	  return {
-	    listen: function(subject, onEventCallback){
-	      subject.noise.add(onEventCallback, this);
-	    },
-	    update: function(evt){
-	      console.info('[EVENT][Menu]: updating', evt);
-	      var actualHeart = evt.args.livesLeft % 4 - 1;
-	      hearts.children.forEach(function(heart, i){
-	        if(i >= actualHeart){
-	          heart.visible = false;
-	        }
-	      });
-	    }
-	  };
-	};
-
-	module.exports = Menu;
 
 /***/ }
 /******/ ]);

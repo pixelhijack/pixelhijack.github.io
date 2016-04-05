@@ -58,10 +58,12 @@ function Play(game, settings){
     game.load.image('tileset-level-1', './assets/level-1-transparent.png');
     game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
     game.load.image('tileset-level-3', './assets/tilesets/tileset1_2.png');
+    game.load.image('tileset-level-4', './assets/tilesets/L2_bank.png');
     
     game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('tilemap-level-4', './levels/L2v1.json', null, Phaser.Tilemap.TILED_JSON);
   
     console.info('[play] PHASER preloaded');
   }

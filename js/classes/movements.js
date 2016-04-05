@@ -43,7 +43,7 @@ var mixins = {
   },
   hurry: function(){
     this.turnIfBlocked();
-    this.move();
+    mixins.move.call(this);
     this.state = 'moving';
   },
   jump: function(){

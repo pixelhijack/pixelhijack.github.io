@@ -295,6 +295,142 @@ var levelConfigs = [
         }
       }
     ]
+  }, 
+  {
+    id: 4,
+    tileset: 'tileset-level-4',
+    tilemap: 'tilemap-level-4',
+    tilesetImageName: 'L2_bank',
+    width: 100 * 16,
+    height: 50 * 16,
+    backgroundLayer: 'background-1',
+    fixedBackground: true, 
+    groundLayer: 'ground-layer',
+    collisionLayer: 'collision-layer',
+    deathLayer: 'death-layer',
+    objectsLayer: null, 
+    enemies: [
+      {
+        type: 'spider', 
+        number: 1,
+        lifespan: 10000,
+        revive: 10000,
+        move: true,
+        origin: {
+          x: 513,
+          y: 225
+        },
+        boundTo: {
+          x1: 0,
+          x2: 0
+        }
+      },
+      {
+        type: 'spider', 
+        number: 1,
+        lifespan: 10000,
+        revive: 10000,
+        move: true,
+        origin: {
+          x: 0,
+          y: 0
+        },
+        boundTo: {
+          x1: 0,
+          x2: Infinity
+        }
+      },
+      {
+        type: 'spider', 
+        number: 1,
+        lifespan: 10000,
+        revive: 10000,
+        move: true,
+        origin: {
+          x: 436,
+          y: 555
+        },
+        boundTo: {
+          x1: 0,
+          x2: Infinity
+        }
+      },
+      {
+        type: 'spider', 
+        number: 1,
+        lifespan: 10000,
+        revive: 10000,
+        move: true,
+        origin: {
+          x: 611,
+          y: 496
+        },
+        boundTo: {
+          x1: 0,
+          x2: Infinity
+        }
+      },
+      {
+        type: 'dino', 
+        number: 3,
+        lifespan: Infinity,
+        revive: 5000,
+        move: 200,  
+        origin: {
+          x: 925,
+          y: 300
+        },
+        boundTo: {
+          x1: 0,  
+          x2: 925
+        }
+      }, 
+      {
+        type: 'native',
+        number: 1,
+        lifespan: Infinity,
+        revive: false,
+        move: true,
+        origin: {
+          x: 1400,
+          y: 178
+        },
+        boundTo: {
+          x1: 1400,
+          x2: 1535
+        }
+      },
+      {
+        type: 'ptero',
+        number: 8,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 1130,
+          y: 216
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      },
+      {
+        type: 'dragonfly',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 56,
+          y: 364
+        },
+        boundTo: {
+          x1: 56,
+          x2: 1200
+        }
+      }
+    ]
   }
 ];
 
