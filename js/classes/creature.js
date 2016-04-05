@@ -20,7 +20,7 @@ var Creature = function(game, creatureType, x, y){
   */
   this.lifespan = this.props.lifespan;
   this.stunnedUntil = 0;
-
+  
   this.facingRight = Math.random() < 0.5 ? true : false;
   
   creatureConfigs[creatureType].animations.forEach(function(anim){
@@ -82,6 +82,10 @@ Creature.prototype.debug = function debug(toDebug){
   this._debugText.visible = true;
   this._debugText.setText(toDebug);
 };
+
+Creature.prototype.onEnemyMovements = function onEnemyMovements(args){
+    console.log('[creature][Signals][%s] heard some noise!', this.key, args);
+  }
 
 /*==========================================
   FIXME!! 

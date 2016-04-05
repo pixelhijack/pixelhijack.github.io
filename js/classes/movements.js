@@ -118,7 +118,7 @@ var mixins = {
     // @behaviour 'wait at': if reached the point, wait there
     if(!this.boundTo.hasOwnProperty('width')){
       if(Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
-        console.info('[movements] %s reached boundTo point', this.key);
+        //console.info('[movements] %s reached boundTo point', this.key);
         mixins.wait.call(this);
         return false;
       }

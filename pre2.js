@@ -216,6 +216,11 @@
 	    // restore lifes if game state reloaded:
 	    man.props.lives = 3;
 	    
+	    man.noises = new Phaser.Signal();
+	    enemies.forEachAlive(function(creature){
+	      man.noises.add(creature.onEnemyMovements, creature);
+	    });
+	    
 	    game.camera.follow(man);
 	    game.add.existing(man);
 	  }
@@ -413,8 +418,10 @@
 	    }
 	    if(man.state === 'hitting'){
 	      enemy.die(heroMomentum);
+	      man.noises.dispatch({ type: 'man:hunting', x: man.x, y: man.y });
 	    }else{
 	      man.hurt(enemyMomentum);
+	      man.noises.dispatch({ type: 'man:hurt', x: man.x, y: man.y });
 	      renderMenu();
 	      if(man.lives() < 0){
 	        weapon.sprite.kill();
@@ -466,7 +473,7 @@
 	  */
 	  this.lifespan = this.props.lifespan;
 	  this.stunnedUntil = 0;
-
+	  
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
 	  creatureConfigs[creatureType].animations.forEach(function(anim){
@@ -528,6 +535,10 @@
 	  this._debugText.visible = true;
 	  this._debugText.setText(toDebug);
 	};
+
+	Creature.prototype.onEnemyMovements = function onEnemyMovements(args){
+	    console.log('[creature][Signals][%s] heard some noise!', this.key, args);
+	  }
 
 	/*==========================================
 	  FIXME!! 
@@ -830,7 +841,7 @@
 	    // @behaviour 'wait at': if reached the point, wait there
 	    if(!this.boundTo.hasOwnProperty('width')){
 	      if(Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
-	        console.info('[movements] %s reached boundTo point', this.key);
+	        //console.info('[movements] %s reached boundTo point', this.key);
 	        mixins.wait.call(this);
 	        return false;
 	      }

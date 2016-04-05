@@ -116,6 +116,11 @@ function Play(game, settings){
     // restore lifes if game state reloaded:
     man.props.lives = 3;
     
+    man.noises = new Phaser.Signal();
+    enemies.forEachAlive(function(creature){
+      man.noises.add(creature.onEnemyMovements, creature);
+    });
+    
     game.camera.follow(man);
     game.add.existing(man);
   }
@@ -313,8 +318,10 @@ function Play(game, settings){
     }
     if(man.state === 'hitting'){
       enemy.die(heroMomentum);
+      man.noises.dispatch({ type: 'man:hunting', x: man.x, y: man.y });
     }else{
       man.hurt(enemyMomentum);
+      man.noises.dispatch({ type: 'man:hurt', x: man.x, y: man.y });
       renderMenu();
       if(man.lives() < 0){
         weapon.sprite.kill();
