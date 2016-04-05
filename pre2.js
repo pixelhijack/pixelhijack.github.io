@@ -216,9 +216,9 @@
 	    // restore lifes if game state reloaded:
 	    man.props.lives = 3;
 	    
-	    man.noises = new Phaser.Signal();
+	    // subscribe enemies on man's actions:
 	    enemies.forEachAlive(function(creature){
-	      man.noises.add(creature.onEnemyMovements, creature);
+	      man.noise.add(creature.onEnemyMovements, creature);
 	    });
 	    
 	    game.camera.follow(man);
@@ -418,10 +418,10 @@
 	    }
 	    if(man.state === 'hitting'){
 	      enemy.die(heroMomentum);
-	      man.noises.dispatch({ type: 'man:hunting', x: man.x, y: man.y });
+	      man.shout('hunting', { killed: enemy });
 	    }else{
 	      man.hurt(enemyMomentum);
-	      man.noises.dispatch({ type: 'man:hurt', x: man.x, y: man.y });
+	      man.shout('hurt', 'by a: ' + enemy.key);
 	      renderMenu();
 	      if(man.lives() < 0){
 	        weapon.sprite.kill();
@@ -475,6 +475,8 @@
 	  this.stunnedUntil = 0;
 	  
 	  this.facingRight = Math.random() < 0.5 ? true : false;
+	  
+	  this.noise = new Phaser.Signal();
 	  
 	  creatureConfigs[creatureType].animations.forEach(function(anim){
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
@@ -537,8 +539,12 @@
 	};
 
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(args){
-	    console.log('[creature][Signals][%s] heard some noise!', this.key, args);
-	  }
+	  console.log('[creature][Signals][%s] heard some noise!', this.key, args);
+	}
+
+	Creature.prototype.shout = function shout(eventType, args){
+	  this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
+	}
 
 	/*==========================================
 	  FIXME!! 

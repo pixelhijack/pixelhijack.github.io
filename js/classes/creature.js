@@ -23,6 +23,8 @@ var Creature = function(game, creatureType, x, y){
   
   this.facingRight = Math.random() < 0.5 ? true : false;
   
+  this.noise = new Phaser.Signal();
+  
   creatureConfigs[creatureType].animations.forEach(function(anim){
     this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
   }.bind(this));
@@ -84,8 +86,12 @@ Creature.prototype.debug = function debug(toDebug){
 };
 
 Creature.prototype.onEnemyMovements = function onEnemyMovements(args){
-    console.log('[creature][Signals][%s] heard some noise!', this.key, args);
-  }
+  console.log('[creature][Signals][%s] heard some noise!', this.key, args);
+}
+
+Creature.prototype.shout = function shout(eventType, args){
+  this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
+}
 
 /*==========================================
   FIXME!! 
