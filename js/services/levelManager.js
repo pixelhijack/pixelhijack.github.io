@@ -4,6 +4,7 @@ var levelManager = function(game, levelList){
     tilemap: null,
     backgroundLayer: null,
     groundLayer: null,
+    foregroundLayer: null,
     collisionLayer: null,
     objects: {}, 
     entryPoint: {
@@ -28,8 +29,11 @@ var levelManager = function(game, levelList){
     level.collisionLayer.visible = false;
     if(levelToLoad.deathLayer){
       level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
-      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
+      level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.deathLayer);
       level.deathLayer.visible = true;
+    }
+    if(levelToLoad.foregroundLayer){
+      level.foregroundLayer = level.tilemap.createLayer(levelToLoad.foregroundLayer);
     }
     level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();

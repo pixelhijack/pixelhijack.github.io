@@ -198,7 +198,8 @@
 	    });
 	    
 	    game.camera.follow(man);
-	    game.add.existing(man);
+	    //game.add.existing(man);
+	    game.world.addAt(man, 2);
 	  }
 	  
 	  function renderMenu(){
@@ -1010,6 +1011,7 @@
 	    tilemap: null,
 	    backgroundLayer: null,
 	    groundLayer: null,
+	    foregroundLayer: null,
 	    collisionLayer: null,
 	    objects: {}, 
 	    entryPoint: {
@@ -1034,8 +1036,11 @@
 	    level.collisionLayer.visible = false;
 	    if(levelToLoad.deathLayer){
 	      level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
-	      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
+	      level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.deathLayer);
 	      level.deathLayer.visible = true;
+	    }
+	    if(levelToLoad.foregroundLayer){
+	      level.foregroundLayer = level.tilemap.createLayer(levelToLoad.foregroundLayer);
 	    }
 	    level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
@@ -1324,7 +1329,7 @@
 	    height: 23 * 16,
 	    backgroundLayer: 'background-1',
 	    fixedBackground: true, // this can be false also as seamless background, though it makes the game much slower :(
-	    groundLayer: 'foreground-layer',
+	    groundLayer: 'ground-layer',
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: 'objects-layer', 
@@ -1443,7 +1448,7 @@
 	    height: 100 * 16,
 	    backgroundLayer: 'background-2',
 	    fixedBackground: true,
-	    groundLayer: 'foreground-layer',
+	    groundLayer: 'ground-layer',
 	    collisionLayer: 'collision-layer',
 	    deathLayer: null,
 	    objectsLayer: null, 
@@ -1553,7 +1558,7 @@
 	    height: 100 * 16,
 	    backgroundLayer: 'background-2',
 	    fixedBackground: true,
-	    groundLayer: 'foreground-layer',
+	    groundLayer: 'ground-layer',
 	    collisionLayer: 'collision-layer',
 	    deathLayer: 'death-layer',
 	    objectsLayer: 'objects-layer', 
@@ -1634,6 +1639,7 @@
 	    backgroundLayer: 'background-2',
 	    fixedBackground: true, 
 	    groundLayer: 'ground-layer',
+	    foregroundLayer: 'foreground-layer',
 	    collisionLayer: 'collision-layer',
 	    deathLayer: 'death-layer',
 	    objectsLayer: null, 

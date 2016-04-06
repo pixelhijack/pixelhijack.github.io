@@ -98,7 +98,8 @@ function Play(game, settings){
     });
     
     game.camera.follow(man);
-    game.add.existing(man);
+    //game.add.existing(man);
+    game.world.addAt(man, 2);
   }
   
   function renderMenu(){
