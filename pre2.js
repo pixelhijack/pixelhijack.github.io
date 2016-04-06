@@ -622,7 +622,9 @@
 	      { name: 'descend-left', frames: [3], fps: 12, loop: true },
 	      { name: 'descend-right', frames: [2], fps: 12, loop: true },
 	      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
-	      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
+	      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true },
+	      { name: 'dead-right', frames: [6], fps: 10, loop: true },
+	      { name: 'dead-left', frames: [7], fps: 10, loop: true }
 	    ]
 	  }, 
 	  dragonfly: {
@@ -863,6 +865,7 @@
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.descend = mixins.descend;
 	    this.ascend = mixins.ascend;
+	    this.die = mixins.die;
 	    return this;
 	  },
 	  bear: function(){
@@ -918,23 +921,24 @@
 	  },
 	  ptero: function(){
 	    this.play(this.state + '-' + this.direction());
-	    this.move();
-	    this.state = 'moving';
-	    //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
-	    this.turnIfBlocked();
-	    if(Math.random() < 0.01){
-	      this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
-	        this.state = 'descend';
-	        this.descend();
-	      }, this);
+	    if(this.state !== 'dead'){
+	      this.move();
+	      this.state = 'moving';
+	      //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+	      this.turnIfBlocked();
+	      if(Math.random() < 0.01){
+	        this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
+	          this.state = 'descend';
+	          this.descend();
+	        }, this);
+	      }
+	      if(Math.random() < 0.01){
+	        this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
+	          this.state = 'ascend';
+	          this.ascend();
+	        }, this);
+	      }
 	    }
-	    if(Math.random() < 0.01){
-	      this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
-	        this.state = 'ascend';
-	        this.ascend();
-	      }, this);
-	    }
-	    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
 	  },
 	  bear: function(){
 	    this.play(this.state + '-' + this.direction());
@@ -1031,15 +1035,16 @@
 	    if(levelToLoad.deathLayer){
 	      level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
 	      level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
-	      level.deathLayer.visible = false;
+	      level.deathLayer.visible = true;
 	    }
-	    level.tilemap.setCollisionBetween(0, 1000, true, levelToLoad.collisionLayer);
+	    level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.collisionLayer);
 	    level.groundLayer.resizeWorld();
 	    level.enemies = levelToLoad.enemies;
 	    
 	    level.entryPoint = levelToLoad.entryPoint;
 	    
-	    //level.groundLayer.debug = true;
+	    //level.collisionLayer.debug = true;
+	    //level.deathLayer.debug = true;
 	    
 	    //  parse level json provided objects if given
 	    if(levelToLoad.objectsLayer){
@@ -1626,7 +1631,7 @@
 	    tilesetImageName: 'L2_bank',
 	    width: 100 * 16,
 	    height: 50 * 16,
-	    backgroundLayer: 'background-1',
+	    backgroundLayer: 'background-2',
 	    fixedBackground: true, 
 	    groundLayer: 'ground-layer',
 	    collisionLayer: 'collision-layer',

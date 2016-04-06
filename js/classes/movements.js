@@ -162,6 +162,7 @@ var behaviours = {
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.descend = mixins.descend;
     this.ascend = mixins.ascend;
+    this.die = mixins.die;
     return this;
   },
   bear: function(){
@@ -217,23 +218,24 @@ var updates = {
   },
   ptero: function(){
     this.play(this.state + '-' + this.direction());
-    this.move();
-    this.state = 'moving';
-    //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
-    this.turnIfBlocked();
-    if(Math.random() < 0.01){
-      this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
-        this.state = 'descend';
-        this.descend();
-      }, this);
+    if(this.state !== 'dead'){
+      this.move();
+      this.state = 'moving';
+      //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
+      this.turnIfBlocked();
+      if(Math.random() < 0.01){
+        this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
+          this.state = 'descend';
+          this.descend();
+        }, this);
+      }
+      if(Math.random() < 0.01){
+        this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
+          this.state = 'ascend';
+          this.ascend();
+        }, this);
+      }
     }
-    if(Math.random() < 0.01){
-      this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
-        this.state = 'ascend';
-        this.ascend();
-      }, this);
-    }
-    //this.x = this.x <= this.game.world.width - (this.width * 0.5) ? this.x : 0;
   },
   bear: function(){
     this.play(this.state + '-' + this.direction());

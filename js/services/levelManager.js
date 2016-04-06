@@ -29,15 +29,16 @@ var levelManager = function(game, levelList){
     if(levelToLoad.deathLayer){
       level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
       level.tilemap.setCollisionBetween(1, 352, true, levelToLoad.deathLayer);
-      level.deathLayer.visible = false;
+      level.deathLayer.visible = true;
     }
-    level.tilemap.setCollisionBetween(0, 1000, true, levelToLoad.collisionLayer);
+    level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.collisionLayer);
     level.groundLayer.resizeWorld();
     level.enemies = levelToLoad.enemies;
     
     level.entryPoint = levelToLoad.entryPoint;
     
-    //level.groundLayer.debug = true;
+    //level.collisionLayer.debug = true;
+    //level.deathLayer.debug = true;
     
     //  parse level json provided objects if given
     if(levelToLoad.objectsLayer){

@@ -315,7 +315,7 @@ var levelConfigs = [
     tilesetImageName: 'L2_bank',
     width: 100 * 16,
     height: 50 * 16,
-    backgroundLayer: 'background-1',
+    backgroundLayer: 'background-2',
     fixedBackground: true, 
     groundLayer: 'ground-layer',
     collisionLayer: 'collision-layer',

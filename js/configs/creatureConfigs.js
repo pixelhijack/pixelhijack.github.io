@@ -85,7 +85,9 @@ var creatureConfigs = {
       { name: 'descend-left', frames: [3], fps: 12, loop: true },
       { name: 'descend-right', frames: [2], fps: 12, loop: true },
       { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
-      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true }
+      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true },
+      { name: 'dead-right', frames: [6], fps: 10, loop: true },
+      { name: 'dead-left', frames: [7], fps: 10, loop: true }
     ]
   }, 
   dragonfly: {
