@@ -461,6 +461,21 @@ var levelConfigs = [
           x1: 1037,
           x2: 1358
         }
+      },
+      {
+        type: 'parrot',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 1204,
+          y: 216
+        },
+        boundTo: {
+          x1: 1204,
+          x2: 1532
+        }
       }
     ]
   }

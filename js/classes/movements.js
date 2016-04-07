@@ -165,6 +165,15 @@ var behaviours = {
     this.die = mixins.die;
     return this;
   },
+  parrot: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.descend = mixins.descend;
+    this.ascend = mixins.ascend;
+    this.die = mixins.die;
+    return this;
+  },
   bear: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
@@ -248,6 +257,12 @@ var updates = {
     this.render();
   }, 
   dragonfly: function(){
+    this.render();
+    if(this.state !== 'dead'){
+     this.hurry();
+    }
+  },
+  parrot: function(){
     this.render();
     if(this.state !== 'dead'){
      this.hurry();

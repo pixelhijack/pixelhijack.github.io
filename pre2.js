@@ -428,6 +428,7 @@
 	var Creature = function(game, creatureType, x, y){
 	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  this.creatureType = creatureType;
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this.state = '';
 	  this.body.collideWorldBounds = true;
@@ -501,7 +502,7 @@
 	});
 
 	Creature.prototype.render = function render(){
-	  this.play(this.state);
+	  this.play(this.state); 
 	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
 	};
 
@@ -525,7 +526,7 @@
 	  if(reaction){
 	    reaction.call(this, evt);
 	  }
-	  //console.log('[creature][Signals][%s] heard some noise!', this.key, event);
+	  //console.log('[creature][Signals][%s] heard some noise!', this.creatureType, event);
 	}
 
 	Creature.prototype.listen = function listen(subject, reaction){
@@ -534,7 +535,7 @@
 	}
 
 	Creature.prototype.shout = function shout(eventType, args){
-	  this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
+	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x, y: this.y, args: args });
 	}
 
 	Creature.prototype.revive = function revive(x, y){
@@ -668,6 +669,19 @@
 	    animations: [
 	      { name: 'moving', frames: [373,376,378], fps: 10, loop: true },
 	      { name: 'dead', frames: [380], fps: 10, loop: false }
+	    ]
+	  },
+	  parrot: {
+	    mass: 0.5,
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    collide: false,
+	    maxSpeed: 100,
+	    acceleration: 10,
+	    animations: [
+	      { name: 'moving', frames: [394,397,398], fps: 10, loop: true },
+	      { name: 'dead', frames: [400], fps: 10, loop: false }
 	    ]
 	  },
 	  gorilla: {
@@ -864,6 +878,15 @@
 	    this.die = mixins.die;
 	    return this;
 	  },
+	  parrot: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.descend = mixins.descend;
+	    this.ascend = mixins.ascend;
+	    this.die = mixins.die;
+	    return this;
+	  },
 	  bear: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
@@ -947,6 +970,12 @@
 	    this.render();
 	  }, 
 	  dragonfly: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	     this.hurry();
+	    }
+	  },
+	  parrot: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
 	     this.hurry();
@@ -1776,6 +1805,21 @@
 	        boundTo: {
 	          x1: 1037,
 	          x2: 1358
+	        }
+	      },
+	      {
+	        type: 'parrot',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 1204,
+	          y: 216
+	        },
+	        boundTo: {
+	          x1: 1204,
+	          x2: 1532
 	        }
 	      }
 	    ]

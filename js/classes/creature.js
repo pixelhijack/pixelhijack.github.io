@@ -4,6 +4,7 @@ var movements = require('./movements.js');
 var Creature = function(game, creatureType, x, y){
   Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
   game.physics.enable(this, Phaser.Physics.ARCADE);
+  this.creatureType = creatureType;
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this.state = '';
   this.body.collideWorldBounds = true;
@@ -77,7 +78,7 @@ Object.defineProperty(Creature.prototype, 'boundTo', {
 });
 
 Creature.prototype.render = function render(){
-  this.play(this.state);
+  this.play(this.state); 
   this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
 };
 
@@ -101,7 +102,7 @@ Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
   if(reaction){
     reaction.call(this, evt);
   }
-  //console.log('[creature][Signals][%s] heard some noise!', this.key, event);
+  //console.log('[creature][Signals][%s] heard some noise!', this.creatureType, event);
 }
 
 Creature.prototype.listen = function listen(subject, reaction){
@@ -110,7 +111,7 @@ Creature.prototype.listen = function listen(subject, reaction){
 }
 
 Creature.prototype.shout = function shout(eventType, args){
-  this.noise.dispatch({ who: this.key, event: eventType, x: this.x, y: this.y, args: args });
+  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x, y: this.y, args: args });
 }
 
 Creature.prototype.revive = function revive(x, y){

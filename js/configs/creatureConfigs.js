@@ -118,6 +118,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [380], fps: 10, loop: false }
     ]
   },
+  parrot: {
+    mass: 0.5,
+    gravity: 0,
+    bounce: 0.1,
+    jumping: 0,
+    collide: false,
+    maxSpeed: 100,
+    acceleration: 10,
+    animations: [
+      { name: 'moving', frames: [394,397,398], fps: 10, loop: true },
+      { name: 'dead', frames: [400], fps: 10, loop: false }
+    ]
+  },
   gorilla: {
     // grim level bosses with lots of lifes!!
     lives: 10, 
