@@ -154,6 +154,7 @@
 	    
 	    game.load.image('background-1', './assets/bg1seamless.png');
 	    game.load.image('background-2', './assets/bg3seamless.jpg');
+	    game.load.image('background-3', './assets/bg_04.png');
 	    
 	    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
 	    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
@@ -492,6 +493,12 @@
 	    }
 	});
 
+	Creature.prototype.render = function render(){
+	  this.play(this.state);
+	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
+	};
+
+
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
 	};
@@ -561,18 +568,18 @@
 	    lifespan: Infinity,
 	    animations: [
 	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
-	      { name: 'moving-right', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
-	      { name: 'hitting-right', frames: [12,13,14,15,16], fps: 10, loop: false }, 
+	      { name: 'moving', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
+	      { name: 'hitting', frames: [12,13,14,15,16], fps: 10, loop: false }, 
 	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
-	      { name: 'stopping-right', frames: [24,25,26,27], fps: 10, loop: false }, 
+	      { name: 'stopping', frames: [24,25,26,27], fps: 10, loop: false }, 
 	      { name: 'stopping-left', frames: [30,31,32,33,33,33,33,33,33,33,33,33,33,33], fps: 10, loop: false }, 
-	      { name: 'jumping-right', frames: [36,37,38,39,39,39,39,39,39,39,39,39,39,39], fps: 10, loop: false }, 
+	      { name: 'jumping', frames: [36,37,38,39,39,39,39,39,39,39,39,39,39,39], fps: 10, loop: false }, 
 	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
-	      { name: 'idle-right', frames: [48,49,50,51], fps: 10, loop: false }, 
+	      { name: 'idle', frames: [48,49,50,51], fps: 10, loop: false }, 
 	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false },
-	      { name: 'hurt-right', frames: [61], fps: 10, loop: true },
+	      { name: 'hurt', frames: [61], fps: 10, loop: true },
 	      { name: 'hurt-left', frames: [60], fps: 10, loop: true },
-	      { name: 'dead-right', frames: [61], fps: 10, loop: false },
+	      { name: 'dead', frames: [61], fps: 10, loop: false },
 	      { name: 'dead-left', frames: [60], fps: 10, loop: false }
 	    ]
 	  },
@@ -582,11 +589,11 @@
 	    maxSpeed: 50,
 	    acceleration: 5, 
 	    animations: [
-	      { name: 'moving-right', frames: [0,1,2,3], fps: 10, loop: true },
+	      { name: 'moving', frames: [0,1,2,3], fps: 10, loop: true },
 	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
-	      { name: 'jumping-right', frames: [0,1,2,3,4], fps: 10, loop: true },
+	      { name: 'jumping', frames: [0,1,2,3,4], fps: 10, loop: true },
 	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true },
-	      { name: 'dead-right', frames: [5], fps: 10, loop: true },
+	      { name: 'dead', frames: [5], fps: 10, loop: true },
 	      { name: 'dead-left', frames: [6], fps: 10, loop: true }
 	    ]
 	  },
@@ -595,11 +602,11 @@
 	    maxSpeed: 75,
 	    acceleration: 15, 
 	    animations: [
-	      { name: 'moving-right', frames: [4,5,6], fps: 10, loop: true },
+	      { name: 'moving', frames: [4,5,6], fps: 10, loop: true },
 	      { name: 'moving-left', frames: [11,10,9], fps: 10, loop: true },
-	      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+	      { name: 'spawn', frames: [0,1,2,3], fps: 10, loop: false },
 	      { name: 'spawn-left', frames: [15,14,13,12], fps: 10, loop: false },
-	      { name: 'dead-right', frames: [7], fps: 10, loop: true },
+	      { name: 'dead', frames: [7], fps: 10, loop: true },
 	      { name: 'dead-left', frames: [8], fps: 10, loop: true }
 	    ] 
 	  },
@@ -619,12 +626,12 @@
 	    acceleration: 50, 
 	    animations: [
 	      { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
-	      { name: 'moving-right', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
+	      { name: 'moving', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
 	      { name: 'descend-left', frames: [3], fps: 12, loop: true },
-	      { name: 'descend-right', frames: [2], fps: 12, loop: true },
+	      { name: 'descend', frames: [2], fps: 12, loop: true },
 	      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
-	      { name: 'ascend-right', frames: [0,1,2], fps: 20, loop: true },
-	      { name: 'dead-right', frames: [6], fps: 10, loop: true },
+	      { name: 'ascend', frames: [0,1,2], fps: 20, loop: true },
+	      { name: 'dead', frames: [6], fps: 10, loop: true },
 	      { name: 'dead-left', frames: [7], fps: 10, loop: true }
 	    ]
 	  }, 
@@ -637,11 +644,11 @@
 	    maxSpeed: 50,
 	    acceleration: 10, 
 	    animations: [
-	      { name: 'moving-right', frames: [0,1], fps: 12, loop: true },
+	      { name: 'moving', frames: [0,1], fps: 12, loop: true },
 	      { name: 'moving-left', frames: [8,9], fps: 12, loop: true },
-	      { name: 'turn-right', frames: [2,3], fps: 12, loop: true },
+	      { name: 'turn', frames: [2,3], fps: 12, loop: true },
 	      { name: 'turn-left', frames: [2,3], fps: 12, loop: true },
-	      { name: 'dead-right', frames: [4], fps: 12, loop: true },
+	      { name: 'dead', frames: [4], fps: 12, loop: true },
 	      { name: 'dead-left', frames: [5], fps: 12, loop: true }
 	    ]
 	  },
@@ -653,15 +660,15 @@
 	    maxSpeed: 50,
 	    acceleration: 10,
 	    animations: [
-	      { name: 'spawn-right', frames: [0,1,2,3], fps: 10, loop: false },
+	      { name: 'spawn', frames: [0,1,2,3], fps: 10, loop: false },
 	      { name: 'spawn-left', frames: [0,1,2,3], fps: 10, loop: false },
-	      { name: 'moving-right', frames: [16,17,18,19], fps: 10, loop: true },
+	      { name: 'moving', frames: [16,17,18,19], fps: 10, loop: true },
 	      { name: 'moving-left', frames: [22,23,24,25], fps: 10, loop: true },
-	      { name: 'climbing-right', frames: [20], fps: 10, loop: true },
+	      { name: 'climbing', frames: [20], fps: 10, loop: true },
 	      { name: 'climbing-left', frames: [21], fps: 10, loop: true },
-	      { name: 'waiting-right', frames: [3,4,5], fps: 10, loop: true },
+	      { name: 'waiting', frames: [3,4,5], fps: 10, loop: true },
 	      { name: 'waiting-left', frames: [3,4,5], fps: 10, loop: true },
-	      { name: 'dead-right', frames: [6], fps: 10, loop: false },
+	      { name: 'dead', frames: [6], fps: 10, loop: false },
 	      { name: 'dead-left', frames: [7], fps: 10, loop: false }
 	    ]
 	  },
@@ -669,9 +676,9 @@
 	    maxSpeed: 100,
 	    acceleration: 20,
 	    animations: [
-	      { name: 'moving-right', frames: [0,1,2], fps: 10, loop: true },
+	      { name: 'moving', frames: [0,1,2], fps: 10, loop: true },
 	      { name: 'moving-left', frames: [7,6,5], fps: 10, loop: true },
-	      { name: 'dead-right', frames: [3], fps: 10, loop: false },
+	      { name: 'dead', frames: [3], fps: 10, loop: false },
 	      { name: 'dead-left', frames: [4], fps: 10, loop: false }
 	    ]
 	  },
@@ -905,7 +912,7 @@
 	// specific updates of a creature
 	var updates = {
 	  dino: function(){
-	    this.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	      this.turnIfBlocked();
 	      this.move();
@@ -921,7 +928,7 @@
 	    }
 	  },
 	  ptero: function(){
-	    this.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	      this.move();
 	      this.state = 'moving';
@@ -942,30 +949,30 @@
 	    }
 	  },
 	  bear: function(){
-	    this.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	      this.hurry();
 	      this.sentinel();
 	    }
 	  },
 	  man: function(){
-	    this.animations.play(this.state + '-' + this.direction());
+	    this.render();
 	  }, 
 	  dragonfly: function(){
-	    this.animations.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	     this.hurry();
 	    }
 	  },
 	  spider: function(){
-	    this.animations.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	      this.hurry();
 	      this.sentinel();
 	    }
 	  },
 	  native: function(){
-	    this.animations.play(this.state + '-' + this.direction());
+	    this.render();
 	    if(this.state !== 'dead'){
 	      if(!this.sentinel()){
 	        this.hurry(); 

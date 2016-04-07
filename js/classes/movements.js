@@ -201,7 +201,7 @@ var behaviours = {
 // specific updates of a creature
 var updates = {
   dino: function(){
-    this.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
       this.turnIfBlocked();
       this.move();
@@ -217,7 +217,7 @@ var updates = {
     }
   },
   ptero: function(){
-    this.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
       this.move();
       this.state = 'moving';
@@ -238,30 +238,30 @@ var updates = {
     }
   },
   bear: function(){
-    this.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
       this.hurry();
       this.sentinel();
     }
   },
   man: function(){
-    this.animations.play(this.state + '-' + this.direction());
+    this.render();
   }, 
   dragonfly: function(){
-    this.animations.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
      this.hurry();
     }
   },
   spider: function(){
-    this.animations.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
       this.hurry();
       this.sentinel();
     }
   },
   native: function(){
-    this.animations.play(this.state + '-' + this.direction());
+    this.render();
     if(this.state !== 'dead'){
       if(!this.sentinel()){
         this.hurry(); 

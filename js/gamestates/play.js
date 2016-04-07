@@ -54,6 +54,7 @@ function Play(game, settings){
     
     game.load.image('background-1', './assets/bg1seamless.png');
     game.load.image('background-2', './assets/bg3seamless.jpg');
+    game.load.image('background-3', './assets/bg_04.png');
     
     game.load.image('tileset-level-1', './assets/level-1-transparent.png');
     game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');

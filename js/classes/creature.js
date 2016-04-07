@@ -73,6 +73,12 @@ Object.defineProperty(Creature.prototype, 'boundTo', {
     }
 });
 
+Creature.prototype.render = function render(){
+  this.play(this.state);
+  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
+};
+
+
 Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';
 };
