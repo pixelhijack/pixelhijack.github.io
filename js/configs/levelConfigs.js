@@ -446,6 +446,21 @@ var levelConfigs = [
           x1: 56,
           x2: 1200
         }
+      },
+      {
+        type: 'bear',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 1037,
+          y: 532
+        },
+        boundTo: {
+          x1: 1037,
+          x2: 1358
+        }
       }
     ]
   }

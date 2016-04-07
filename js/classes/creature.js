@@ -2,7 +2,7 @@ var creatureConfigs = require('../configs/creatureConfigs.js');
 var movements = require('./movements.js');
 
 var Creature = function(game, creatureType, x, y){
-  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
+  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this.state = '';
@@ -24,6 +24,9 @@ var Creature = function(game, creatureType, x, y){
   this.facingRight = Math.random() < 0.5 ? true : false;
   
   creatureConfigs[creatureType].animations.forEach(function(anim){
+    anim.frames = anim.frames.map(function(frameNumber){
+      return frameNumber.toString();
+    });
     this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
   }.bind(this));
   

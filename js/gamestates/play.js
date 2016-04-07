@@ -43,6 +43,7 @@ function Play(game, settings){
     game.scale.pageAlignVertically = true;
     
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
+    /*
     game.load.spritesheet('dino', './assets/dino.png', 42, 36);
     game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
     game.load.spritesheet('bear', './assets/bears.png', 44, 44);
@@ -50,7 +51,10 @@ function Play(game, settings){
     game.load.spritesheet('spider', './assets/spiders.png', 32, 26);
     game.load.spritesheet('native', './assets/natives.png', 28, 32);
     game.load.spritesheet('man', './assets/man.png', 32, 36);
+    */
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
+    
+    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json');
     
     game.load.image('background-1', './assets/bg1seamless.png');
     game.load.image('background-2', './assets/bg3seamless.jpg');

@@ -143,6 +143,7 @@
 	    game.scale.pageAlignVertically = true;
 	    
 	    game.load.spritesheet('lives', './assets/lives.png', 38, 24);
+	    /*
 	    game.load.spritesheet('dino', './assets/dino.png', 42, 36);
 	    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
 	    game.load.spritesheet('bear', './assets/bears.png', 44, 44);
@@ -150,7 +151,10 @@
 	    game.load.spritesheet('spider', './assets/spiders.png', 32, 26);
 	    game.load.spritesheet('native', './assets/natives.png', 28, 32);
 	    game.load.spritesheet('man', './assets/man.png', 32, 36);
+	    */
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
+	    
+	    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json');
 	    
 	    game.load.image('background-1', './assets/bg1seamless.png');
 	    game.load.image('background-2', './assets/bg3seamless.jpg');
@@ -422,7 +426,7 @@
 	var movements = __webpack_require__(5);
 
 	var Creature = function(game, creatureType, x, y){
-	  Phaser.Sprite.call(this, game, x, y, (creatureType || creatureConfigs[creatureType].image));
+	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this.state = '';
@@ -444,6 +448,9 @@
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
 	  creatureConfigs[creatureType].animations.forEach(function(anim){
+	    anim.frames = anim.frames.map(function(frameNumber){
+	      return frameNumber.toString();
+	    });
 	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
 	  }.bind(this));
 	  
@@ -567,20 +574,13 @@
 	    lives: 8, 
 	    lifespan: Infinity,
 	    animations: [
-	      { name: 'moving-left', frames: [0,1,2,3,4,5], fps: 10, loop: false }, 
-	      { name: 'moving', frames: [6,7,8,9,10,11], fps: 10, loop: false }, 
-	      { name: 'hitting', frames: [12,13,14,15,16], fps: 10, loop: false }, 
-	      { name: 'hitting-left', frames: [18,19,20,21,22], fps: 10, loop: false }, 
-	      { name: 'stopping', frames: [24,25,26,27], fps: 10, loop: false }, 
-	      { name: 'stopping-left', frames: [30,31,32,33,33,33,33,33,33,33,33,33,33,33], fps: 10, loop: false }, 
-	      { name: 'jumping', frames: [36,37,38,39,39,39,39,39,39,39,39,39,39,39], fps: 10, loop: false }, 
-	      { name: 'jumping-left', frames: [42,43,44,45], fps: 10, loop: false }, 
-	      { name: 'idle', frames: [48,49,50,51], fps: 10, loop: false }, 
-	      { name: 'idle-left', frames: [54,55,56,57], fps: 10, loop: false },
-	      { name: 'hurt', frames: [61], fps: 10, loop: true },
-	      { name: 'hurt-left', frames: [60], fps: 10, loop: true },
-	      { name: 'dead', frames: [61], fps: 10, loop: false },
-	      { name: 'dead-left', frames: [60], fps: 10, loop: false }
+	      { name: 'moving', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
+	      { name: 'hitting', frames: [22,24,28,31,34], fps: 10, loop: false }, 
+	      { name: 'stopping', frames: [42,45,49,52], fps: 10, loop: false }, 
+	      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,13,13], fps: 10, loop: false }, 
+	      { name: 'idle', frames: [25,27,30,35,36], fps: 10, loop: false }, 
+	      { name: 'hurt', frames: [19], fps: 10, loop: true },
+	      { name: 'dead', frames: [19], fps: 10, loop: false }
 	    ]
 	  },
 	  dino: {
@@ -589,12 +589,9 @@
 	    maxSpeed: 50,
 	    acceleration: 5, 
 	    animations: [
-	      { name: 'moving', frames: [0,1,2,3], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [8,9,10,11], fps: 10, loop: true },
-	      { name: 'jumping', frames: [0,1,2,3,4], fps: 10, loop: true },
-	      { name: 'jumping-left', frames: [7,8,9,10,11], fps: 10, loop: true },
-	      { name: 'dead', frames: [5], fps: 10, loop: true },
-	      { name: 'dead-left', frames: [6], fps: 10, loop: true }
+	      { name: 'moving', frames: [360,361,364,367], fps: 10, loop: true },
+	      { name: 'jumping', frames: [360,361,364,367,369], fps: 10, loop: true },
+	      { name: 'dead', frames: [371], fps: 10, loop: true }
 	    ]
 	  },
 	  bear: {
@@ -602,12 +599,9 @@
 	    maxSpeed: 75,
 	    acceleration: 15, 
 	    animations: [
-	      { name: 'moving', frames: [4,5,6], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [11,10,9], fps: 10, loop: true },
-	      { name: 'spawn', frames: [0,1,2,3], fps: 10, loop: false },
-	      { name: 'spawn-left', frames: [15,14,13,12], fps: 10, loop: false },
-	      { name: 'dead', frames: [7], fps: 10, loop: true },
-	      { name: 'dead-left', frames: [8], fps: 10, loop: true }
+	      { name: 'moving', frames: [320,321,324], fps: 10, loop: true },
+	      { name: 'spawn', frames: [366,363,358,317], fps: 10, loop: false },
+	      { name: 'dead', frames: [328], fps: 10, loop: true }
 	    ] 
 	  },
 	  'super-bear': {
@@ -625,14 +619,10 @@
 	    maxSpeed: 50,
 	    acceleration: 50, 
 	    animations: [
-	      { name: 'moving-left', frames: [3,3,3,3,3,4,5,3,4,5,3,3,3,3,3,4,5,3,4,5], fps: 12, loop: true },
-	      { name: 'moving', frames: [0,1,2,0,1,2,2,2,2,2,2,0,1,2,0,1,2,2,2,2,2,2,2], fps: 12, loop: true },
-	      { name: 'descend-left', frames: [3], fps: 12, loop: true },
-	      { name: 'descend', frames: [2], fps: 12, loop: true },
-	      { name: 'ascend-left', frames: [3,4,5], fps: 20, loop: true },
-	      { name: 'ascend', frames: [0,1,2], fps: 20, loop: true },
-	      { name: 'dead', frames: [6], fps: 10, loop: true },
-	      { name: 'dead-left', frames: [7], fps: 10, loop: true }
+	      { name: 'moving', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
+	      { name: 'descend', frames: [405], fps: 12, loop: true },
+	      { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
+	      { name: 'dead', frames: [403], fps: 10, loop: true },
 	    ]
 	  }, 
 	  dragonfly: {
@@ -644,12 +634,9 @@
 	    maxSpeed: 50,
 	    acceleration: 10, 
 	    animations: [
-	      { name: 'moving', frames: [0,1], fps: 12, loop: true },
-	      { name: 'moving-left', frames: [8,9], fps: 12, loop: true },
-	      { name: 'turn', frames: [2,3], fps: 12, loop: true },
-	      { name: 'turn-left', frames: [2,3], fps: 12, loop: true },
-	      { name: 'dead', frames: [4], fps: 12, loop: true },
-	      { name: 'dead-left', frames: [5], fps: 12, loop: true }
+	      { name: 'moving', frames: [337,338], fps: 12, loop: true },
+	      { name: 'turn', frames: [339,340], fps: 12, loop: true },
+	      { name: 'dead', frames: [342], fps: 12, loop: true }
 	    ]
 	  },
 	  spider: {
@@ -660,26 +647,19 @@
 	    maxSpeed: 50,
 	    acceleration: 10,
 	    animations: [
-	      { name: 'spawn', frames: [0,1,2,3], fps: 10, loop: false },
-	      { name: 'spawn-left', frames: [0,1,2,3], fps: 10, loop: false },
-	      { name: 'moving', frames: [16,17,18,19], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [22,23,24,25], fps: 10, loop: true },
-	      { name: 'climbing', frames: [20], fps: 10, loop: true },
-	      { name: 'climbing-left', frames: [21], fps: 10, loop: true },
-	      { name: 'waiting', frames: [3,4,5], fps: 10, loop: true },
-	      { name: 'waiting-left', frames: [3,4,5], fps: 10, loop: true },
-	      { name: 'dead', frames: [6], fps: 10, loop: false },
-	      { name: 'dead-left', frames: [7], fps: 10, loop: false }
+	      { name: 'spawn', frames: [365,368,370,372], fps: 10, loop: false },
+	      { name: 'moving', frames: [299,302,305,309], fps: 10, loop: true },
+	      { name: 'climbing', frames: [319], fps: 10, loop: true },
+	      { name: 'waiting', frames: [332,335,372], fps: 10, loop: true },
+	      { name: 'dead', frames: [322], fps: 10, loop: false }
 	    ]
 	  },
 	  native: {
 	    maxSpeed: 100,
 	    acceleration: 20,
 	    animations: [
-	      { name: 'moving', frames: [0,1,2], fps: 10, loop: true },
-	      { name: 'moving-left', frames: [7,6,5], fps: 10, loop: true },
-	      { name: 'dead', frames: [3], fps: 10, loop: false },
-	      { name: 'dead-left', frames: [4], fps: 10, loop: false }
+	      { name: 'moving', frames: [373,376,378], fps: 10, loop: true },
+	      { name: 'dead', frames: [380], fps: 10, loop: false }
 	    ]
 	  },
 	  gorilla: {
@@ -1773,6 +1753,21 @@
 	        boundTo: {
 	          x1: 56,
 	          x2: 1200
+	        }
+	      },
+	      {
+	        type: 'bear',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 1037,
+	          y: 532
+	        },
+	        boundTo: {
+	          x1: 1037,
+	          x2: 1358
 	        }
 	      }
 	    ]
