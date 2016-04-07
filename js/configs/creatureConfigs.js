@@ -131,6 +131,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [400], fps: 10, loop: false }
     ]
   },
+  frog: {
+    mass: 1,
+    collide: true,
+    bounce: 1.5,
+    jumping: 500,
+    maxSpeed: 80,
+    acceleration: 40, 
+    animations: [
+      { name: 'moving', frames: [325,327,331,325], fps: 10, loop: false },
+      { name: 'jumping', frames: [325,327,331,325], fps: 10, loop: false },
+      { name: 'dead', frames: [334], fps: 10, loop: true }
+    ]
+  },
   gorilla: {
     // grim level bosses with lots of lifes!!
     lives: 10, 

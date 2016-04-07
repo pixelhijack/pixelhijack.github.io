@@ -476,6 +476,20 @@ var levelConfigs = [
           x1: 1204,
           x2: 1532
         }
+      },
+      {
+        type: 'frog',
+        number: 1,
+        lifespan: 20000,
+        revive: 1000,
+        move: true,
+        origin: {
+          x: 55,
+          y: 663
+        },
+        boundTo: {
+          
+        }
       }
     ]
   }

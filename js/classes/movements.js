@@ -99,7 +99,11 @@ var mixins = {
   ascend: function(){
     this.body.velocity.y -= this.props.acceleration;
   },
-  sleep: function(){},
+  watch: function(){
+    this.state = 'idle';
+    this.body.velocity.x = 0;
+    this.body.velocity.y = 0;
+  },
   sentinel: function(){
     // @boundTo: {x1, x2} or {x1, y1, x2, y2} Rectangle
     // @behaviour 'sentinel back & forth': if bound to a zone, stay there
@@ -204,6 +208,19 @@ var behaviours = {
     this.hurry = mixins.hurry;
     this.sentinel = mixins.sentinel;
     this.die = mixins.die;
+  },
+  frog: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.jump = mixins.jump;
+    this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.die = mixins.die;
+    this.watch = mixins.watch;
+    return this;
   }
 };
 
@@ -280,6 +297,20 @@ var updates = {
     if(this.state !== 'dead'){
       if(!this.sentinel()){
         this.hurry(); 
+      }
+    }
+  },
+  frog: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.turnIfBlocked();
+      this.move();
+      if(Math.random() < 0.005){ 
+        this.facingRight = !this.facingRight;
+      }
+      if(Math.random() < 0.05){ 
+        this.jump(); 
+        this.state = 'jumping';
       }
     }
   }

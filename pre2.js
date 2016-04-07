@@ -684,6 +684,19 @@
 	      { name: 'dead', frames: [400], fps: 10, loop: false }
 	    ]
 	  },
+	  frog: {
+	    mass: 1,
+	    collide: true,
+	    bounce: 1.5,
+	    jumping: 500,
+	    maxSpeed: 80,
+	    acceleration: 40, 
+	    animations: [
+	      { name: 'moving', frames: [325,327,331,325], fps: 10, loop: false },
+	      { name: 'jumping', frames: [325,327,331,325], fps: 10, loop: false },
+	      { name: 'dead', frames: [334], fps: 10, loop: true }
+	    ]
+	  },
 	  gorilla: {
 	    // grim level bosses with lots of lifes!!
 	    lives: 10, 
@@ -812,7 +825,11 @@
 	  ascend: function(){
 	    this.body.velocity.y -= this.props.acceleration;
 	  },
-	  sleep: function(){},
+	  watch: function(){
+	    this.state = 'idle';
+	    this.body.velocity.x = 0;
+	    this.body.velocity.y = 0;
+	  },
 	  sentinel: function(){
 	    // @boundTo: {x1, x2} or {x1, y1, x2, y2} Rectangle
 	    // @behaviour 'sentinel back & forth': if bound to a zone, stay there
@@ -917,6 +934,19 @@
 	    this.hurry = mixins.hurry;
 	    this.sentinel = mixins.sentinel;
 	    this.die = mixins.die;
+	  },
+	  frog: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.move = mixins.move;
+	    this.jump = mixins.jump;
+	    this.wait = mixins.wait;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
+	    this.die = mixins.die;
+	    this.watch = mixins.watch;
+	    return this;
 	  }
 	};
 
@@ -993,6 +1023,20 @@
 	    if(this.state !== 'dead'){
 	      if(!this.sentinel()){
 	        this.hurry(); 
+	      }
+	    }
+	  },
+	  frog: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.turnIfBlocked();
+	      this.move();
+	      if(Math.random() < 0.005){ 
+	        this.facingRight = !this.facingRight;
+	      }
+	      if(Math.random() < 0.05){ 
+	        this.jump(); 
+	        this.state = 'jumping';
 	      }
 	    }
 	  }
@@ -1820,6 +1864,20 @@
 	        boundTo: {
 	          x1: 1204,
 	          x2: 1532
+	        }
+	      },
+	      {
+	        type: 'frog',
+	        number: 1,
+	        lifespan: 20000,
+	        revive: 1000,
+	        move: true,
+	        origin: {
+	          x: 55,
+	          y: 663
+	        },
+	        boundTo: {
+	          
 	        }
 	      }
 	    ]
