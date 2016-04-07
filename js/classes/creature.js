@@ -9,7 +9,7 @@ var Creature = function(game, creatureType, x, y){
   this.body.collideWorldBounds = true;
   this.body.gravity.y = creatureConfigs[creatureType].gravity;
   this.body.mass = creatureConfigs[creatureType].mass;
-  this.anchor.setTo(0.5, 0.5);
+  this.anchor.setTo(creatureConfigs[creatureType].correctedAnchor.x, creatureConfigs[creatureType].correctedAnchor.y);
   
   this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
   this._debugText.visible = false;

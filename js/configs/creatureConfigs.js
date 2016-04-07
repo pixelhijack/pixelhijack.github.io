@@ -15,6 +15,10 @@ var creatureConfigs = {
     boundTo : {
       x1: 1000,
       x2: 1200
+    },
+    correctedAnchor: {
+      x: 0.5,
+      y: 0.5
     }
   },
   man: {
@@ -25,11 +29,15 @@ var creatureConfigs = {
       { name: 'moving', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
       { name: 'hitting', frames: [22,24,28,31,34], fps: 10, loop: false }, 
       { name: 'stopping', frames: [42,45,49,52], fps: 10, loop: false }, 
-      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,13,13], fps: 10, loop: false }, 
+      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
       { name: 'idle', frames: [25,27,30,35,36], fps: 10, loop: false }, 
       { name: 'hurt', frames: [19], fps: 10, loop: true },
       { name: 'dead', frames: [19], fps: 10, loop: false }
-    ]
+    ],
+    correctedAnchor: {
+      x: 0.5,
+      y: 0.8
+    }
   },
   dino: {
     mass: 1.5,
@@ -70,7 +78,7 @@ var creatureConfigs = {
       { name: 'moving', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
       { name: 'descend', frames: [405], fps: 12, loop: true },
       { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
-      { name: 'dead', frames: [403], fps: 10, loop: true },
+      { name: 'dead', frames: [471], fps: 10, loop: true },
     ]
   }, 
   dragonfly: {

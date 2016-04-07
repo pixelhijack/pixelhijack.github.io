@@ -90,7 +90,7 @@ function Play(game, settings){
     man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
     
     weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
-    weapon.sprite.anchor.setTo(0.5, 0.5);
+    weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);
     weapon.sprite.visible = false;
     weapon.animRight = weapon.sprite.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
     weapon.animLeft = weapon.sprite.animations.add('club-hit-left', [9,8,7,6,5], 10, false);

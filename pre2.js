@@ -190,7 +190,7 @@
 	    man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
 	    
 	    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
-	    weapon.sprite.anchor.setTo(0.5, 0.5);
+	    weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);
 	    weapon.sprite.visible = false;
 	    weapon.animRight = weapon.sprite.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
 	    weapon.animLeft = weapon.sprite.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
@@ -433,7 +433,7 @@
 	  this.body.collideWorldBounds = true;
 	  this.body.gravity.y = creatureConfigs[creatureType].gravity;
 	  this.body.mass = creatureConfigs[creatureType].mass;
-	  this.anchor.setTo(0.5, 0.5);
+	  this.anchor.setTo(creatureConfigs[creatureType].correctedAnchor.x, creatureConfigs[creatureType].correctedAnchor.y);
 	  
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
@@ -567,6 +567,10 @@
 	    boundTo : {
 	      x1: 1000,
 	      x2: 1200
+	    },
+	    correctedAnchor: {
+	      x: 0.5,
+	      y: 0.5
 	    }
 	  },
 	  man: {
@@ -577,11 +581,15 @@
 	      { name: 'moving', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
 	      { name: 'hitting', frames: [22,24,28,31,34], fps: 10, loop: false }, 
 	      { name: 'stopping', frames: [42,45,49,52], fps: 10, loop: false }, 
-	      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,13,13], fps: 10, loop: false }, 
+	      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
 	      { name: 'idle', frames: [25,27,30,35,36], fps: 10, loop: false }, 
 	      { name: 'hurt', frames: [19], fps: 10, loop: true },
 	      { name: 'dead', frames: [19], fps: 10, loop: false }
-	    ]
+	    ],
+	    correctedAnchor: {
+	      x: 0.5,
+	      y: 0.8
+	    }
 	  },
 	  dino: {
 	    mass: 1.5,
@@ -622,7 +630,7 @@
 	      { name: 'moving', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
 	      { name: 'descend', frames: [405], fps: 12, loop: true },
 	      { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
-	      { name: 'dead', frames: [403], fps: 10, loop: true },
+	      { name: 'dead', frames: [471], fps: 10, loop: true },
 	    ]
 	  }, 
 	  dragonfly: {
