@@ -212,8 +212,11 @@
 	      creature.listen(man, creature.onEnemyMovements);
 	    });
 	    
-	    
-	    things = thingManager(game, level.bonus);
+	    things = thingManager(game, {
+	      bonus: level.bonus,
+	      portals: level.portals,
+	      platforms: level.platforms
+	    });
 	    
 	    game.camera.follow(man);
 	    //game.add.existing(man);
@@ -294,6 +297,12 @@
 	        game.state.start('Play', true, false, { levelNumber: globalSettings.level });
 	      });
 	    }
+	    
+	    things.portals.forEach(function(portal){
+	      game.physics.arcade.collide(man, portal, function(){
+	        game.state.start('Play', true, false, { levelNumber: portal.jumpTo });
+	      }, null, this);
+	    });
 	    
 	    /* hit'n kill enemy: collision should calculated on weapon sprite
 	    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
@@ -1387,9 +1396,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Thing = __webpack_require__(6);
+	var Portal = __webpack_require__(16);
 	var Group = __webpack_require__(9);
 
-	var thingManager = function(game, thingList){
+	var thingManager = function(game, thingsToLoad){
 	  
 	  var things = {
 	    bonus: new Group(game),
@@ -1397,9 +1407,14 @@
 	    platforms: new Group(game)
 	  };
 	  
-	  thingList.forEach(function(thingConfig){
-	    var thing = new Thing(game, thingConfig.img, thingConfig.x, thingConfig.y);
-	    things.bonus.add(thing);
+	  thingsToLoad.bonus.forEach(function(bonusConfig){
+	    var bonus = new Thing(game, bonusConfig.img, bonusConfig.x, bonusConfig.y);
+	    things.bonus.add(bonus);
+	  });
+	  
+	  thingsToLoad.portals.forEach(function(portalConfig){
+	    var portal = new Portal(game, portalConfig.jumpTo, portalConfig.x, portalConfig.y);
+	    things.portals.add(portal);
 	  });
 	  
 	  return things;
@@ -1474,6 +1489,13 @@
 	      x: 200, 
 	      y: 50
 	    },
+	    portals: [
+	      {
+	        jumpTo: 3,
+	        x: 1121,
+	        y: 132
+	      }  
+	    ],
 	    enemies: [
 	      {
 	        type: 'bear',
@@ -1703,6 +1725,13 @@
 	      x: 285, 
 	      y: 206
 	    },
+	    portals: [
+	      {
+	        jumpTo: 4,
+	        x: 761,
+	        y: 1290
+	      }  
+	    ],
 	    enemies: [
 	      {
 	        type: 'bear', // 1-2 bears constantly run through the view
@@ -1784,14 +1813,15 @@
 	      x: 311, 
 	      y: 291
 	    },
-	    portals: [],
+	    portals: [
+	      {
+	        jumpTo: 1,
+	        x: 1569,
+	        y: 139
+	      }  
+	    ],
 	    platforms: [],
 	    bonus: [
-	      {
-	        img: atlas.PORTAL_LEVEL_GO,
-	        x: 329,
-	        y: 154
-	      },
 	      {
 	        img: atlas.BONUS_BIG_MCDONALDS,
 	        x: 86,
@@ -2464,6 +2494,33 @@
 	};
 
 	module.exports = assetMap;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var atlas = __webpack_require__(15);
+
+	var Portal = function(game, jumpTo, x, y){
+	  
+	  this.jumpTo = jumpTo;
+	  
+	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
+	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  this.frameName = atlas.PORTAL_LEVEL_GO;
+	  this.anchor.setTo(0.5, 0.5);
+	  game.add.existing(this);
+	  
+	  
+	  this.update = function(){
+
+	  }
+	};
+
+	Portal.prototype = Object.create(Phaser.Sprite.prototype);
+	Portal.prototype.constructor = Portal;
+
+	module.exports = Portal;
 
 /***/ }
 /******/ ]);

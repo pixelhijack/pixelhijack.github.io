@@ -18,6 +18,13 @@ var levelConfigs = [
       x: 200, 
       y: 50
     },
+    portals: [
+      {
+        jumpTo: 3,
+        x: 1121,
+        y: 132
+      }  
+    ],
     enemies: [
       {
         type: 'bear',
@@ -247,6 +254,13 @@ var levelConfigs = [
       x: 285, 
       y: 206
     },
+    portals: [
+      {
+        jumpTo: 4,
+        x: 761,
+        y: 1290
+      }  
+    ],
     enemies: [
       {
         type: 'bear', // 1-2 bears constantly run through the view
@@ -328,14 +342,15 @@ var levelConfigs = [
       x: 311, 
       y: 291
     },
-    portals: [],
+    portals: [
+      {
+        jumpTo: 1,
+        x: 1569,
+        y: 139
+      }  
+    ],
     platforms: [],
     bonus: [
-      {
-        img: atlas.PORTAL_LEVEL_GO,
-        x: 329,
-        y: 154
-      },
       {
         img: atlas.BONUS_BIG_MCDONALDS,
         x: 86,

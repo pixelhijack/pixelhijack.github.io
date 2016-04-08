@@ -112,8 +112,11 @@ function Play(game, globalSettings){
       creature.listen(man, creature.onEnemyMovements);
     });
     
-    
-    things = thingManager(game, level.bonus);
+    things = thingManager(game, {
+      bonus: level.bonus,
+      portals: level.portals,
+      platforms: level.platforms
+    });
     
     game.camera.follow(man);
     //game.add.existing(man);
@@ -194,6 +197,12 @@ function Play(game, globalSettings){
         game.state.start('Play', true, false, { levelNumber: globalSettings.level });
       });
     }
+    
+    things.portals.forEach(function(portal){
+      game.physics.arcade.collide(man, portal, function(){
+        game.state.start('Play', true, false, { levelNumber: portal.jumpTo });
+      }, null, this);
+    });
     
     /* hit'n kill enemy: collision should calculated on weapon sprite
     game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
