@@ -352,6 +352,26 @@ var levelConfigs = [
     platforms: [],
     bonus: [
       {
+        img: atlas.ALPHABET_Z,
+        x: 448,
+        y: 196
+      },
+      {
+        img: atlas.ALPHABET_O,
+        x: 458,
+        y: 193
+      },
+      {
+        img: atlas.ALPHABET_O,
+        x: 468,
+        y: 195
+      },
+      {
+        img: atlas.ALPHABET_EXCLAMATION_MARK,
+        x: 478,
+        y: 196
+      },
+      {
         img: atlas.BONUS_BIG_MCDONALDS,
         x: 86,
         y: 250
