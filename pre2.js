@@ -641,6 +641,17 @@
 	    image: 'super-bear-sprite-ref', // override sprite (creature name by default)
 	    animations: []
 	  },
+	  tiger: {
+	    mass: 1.5,
+	    jumping: 300,
+	    maxSpeed: 50,
+	    acceleration: 20, 
+	    animations: [
+	      { name: 'moving', frames: [393,395], fps: 10, loop: true },
+	      { name: 'jumping', frames: [399,401], fps: 10, loop: false },
+	      { name: 'dead', frames: [402], fps: 10, loop: true }
+	    ]
+	  },
 	  ptero: {
 	    mass: 0.5,
 	    gravity: 0,
@@ -990,7 +1001,19 @@
 	    this.die = mixins.die;
 	    this.watch = mixins.watch;
 	    return this;
-	  }
+	  },
+	  tiger: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.move = mixins.move;
+	    this.jump = mixins.jump;
+	    this.wait = mixins.wait;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
+	    this.die = mixins.die;
+	    return this;
+	  },
 	};
 
 	// specific updates of a creature
@@ -1088,7 +1111,19 @@
 	        this.state = 'jumping';
 	      }
 	    }
-	  }
+	  },
+	  tiger: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      if(Math.random() < 0.005){ 
+	        this.jump(); 
+	        this.state = 'jumping';
+	      }else{
+	        this.turnIfBlocked();
+	        this.move();
+	      }
+	    }
+	  },
 	};
 
 	var reactions = {

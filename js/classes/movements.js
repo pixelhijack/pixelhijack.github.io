@@ -229,7 +229,19 @@ var behaviours = {
     this.die = mixins.die;
     this.watch = mixins.watch;
     return this;
-  }
+  },
+  tiger: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.jump = mixins.jump;
+    this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.die = mixins.die;
+    return this;
+  },
 };
 
 // specific updates of a creature
@@ -327,7 +339,19 @@ var updates = {
         this.state = 'jumping';
       }
     }
-  }
+  },
+  tiger: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      if(Math.random() < 0.005){ 
+        this.jump(); 
+        this.state = 'jumping';
+      }else{
+        this.turnIfBlocked();
+        this.move();
+      }
+    }
+  },
 };
 
 var reactions = {

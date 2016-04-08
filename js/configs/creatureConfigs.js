@@ -66,6 +66,17 @@ var creatureConfigs = {
     image: 'super-bear-sprite-ref', // override sprite (creature name by default)
     animations: []
   },
+  tiger: {
+    mass: 1.5,
+    jumping: 300,
+    maxSpeed: 50,
+    acceleration: 20, 
+    animations: [
+      { name: 'moving', frames: [393,395], fps: 10, loop: true },
+      { name: 'jumping', frames: [399,401], fps: 10, loop: false },
+      { name: 'dead', frames: [402], fps: 10, loop: true }
+    ]
+  },
   ptero: {
     mass: 0.5,
     gravity: 0,
