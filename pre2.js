@@ -63,7 +63,7 @@
 	  }
 	};
 
-	var game = new Phaser.Game(globalSettings.dimensions.WIDTH, globalSettings.dimensions.HEIGHT, Phaser.AUTO, '');
+	var game = new Phaser.Game(globalSettings.dimensions.WIDTH, globalSettings.dimensions.HEIGHT, Phaser.AUTO, '', null, false, false);
 	var PRE2 = { 
 	  Play: Play.bind(this, game, globalSettings)
 	};
