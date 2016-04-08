@@ -1,6 +1,8 @@
 var Creature = require('../classes/creature.js');
+var Thing = require('../classes/things.js');
 var levelManager = require('../services/levelManager.js');
 var enemyManager = require('../services/enemyManager.js');
+var thingManager = require('../services/thingManager.js');
 var menuManager = require('../services/menuManager.js');
 var levelConfigs = require('../configs/levelConfigs.js');
 var util = require('../services/util.js');
@@ -24,6 +26,8 @@ function Play(game, globalSettings){
   var levelNo;
   
   var enemies;
+  
+  var things;
   
   var utils = util(game);
   
@@ -60,7 +64,7 @@ function Play(game, globalSettings){
     */
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     
-    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json');
+    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
     
     game.load.image('background-1', './assets/bg1seamless.png');
     game.load.image('background-2', './assets/bg3seamless.jpg');
@@ -107,6 +111,11 @@ function Play(game, globalSettings){
     enemies.forEachAlive(function(creature){
       creature.listen(man, creature.onEnemyMovements);
     });
+    
+    
+    things = thingManager(game, level.things);
+    //things = new Thing(game, '281', 308, 200);
+    
     
     game.camera.follow(man);
     //game.add.existing(man);

@@ -99,8 +99,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Creature = __webpack_require__(3);
+	var Thing = __webpack_require__(12);
 	var levelManager = __webpack_require__(6);
 	var enemyManager = __webpack_require__(7);
+	var thingManager = __webpack_require__(13);
 	var menuManager = __webpack_require__(10);
 	var levelConfigs = __webpack_require__(11);
 	var util = __webpack_require__(9);
@@ -124,6 +126,8 @@
 	  var levelNo;
 	  
 	  var enemies;
+	  
+	  var things;
 	  
 	  var utils = util(game);
 	  
@@ -160,7 +164,7 @@
 	    */
 	    game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
 	    
-	    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json');
+	    game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 	    
 	    game.load.image('background-1', './assets/bg1seamless.png');
 	    game.load.image('background-2', './assets/bg3seamless.jpg');
@@ -207,6 +211,11 @@
 	    enemies.forEachAlive(function(creature){
 	      creature.listen(man, creature.onEnemyMovements);
 	    });
+	    
+	    
+	    things = thingManager(game, level.things);
+	    //things = new Thing(game, '281', 308, 200);
+	    
 	    
 	    game.camera.follow(man);
 	    //game.add.existing(man);
@@ -1088,6 +1097,7 @@
 	    foregroundLayer: null,
 	    collisionLayer: null,
 	    objects: {}, 
+	    things: [],
 	    entryPoint: {
 	      x: 200, 
 	      y: 50
@@ -1121,6 +1131,8 @@
 	    level.enemies = levelToLoad.enemies;
 	    
 	    level.entryPoint = levelToLoad.entryPoint;
+	    
+	    level.things = levelToLoad.things || [];
 	    
 	    //level.collisionLayer.debug = true;
 	    //level.deathLayer.debug = true;
@@ -1721,6 +1733,33 @@
 	      x: 311, 
 	      y: 291
 	    },
+	    things: [
+	      {
+	        img: '310',
+	        x: 329,
+	        y: 154
+	      },
+	      {
+	        img: '106',
+	        x: 86,
+	        y: 250
+	      },
+	      {
+	        img: '103',
+	        x: 147,
+	        y: 216
+	      },
+	      {
+	        img: '101',
+	        x: 209,
+	        y: 250
+	      },
+	      {
+	        img: '157',
+	        x: 984,
+	        y: 237
+	      }
+	    ],
 	    enemies: [
 	      {
 	        type: 'spider', 
@@ -1891,6 +1930,52 @@
 	];
 
 	module.exports = levelConfigs;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	var Thing = function(game, frameName, x, y, configs){
+	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
+	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  this.frameName = frameName;
+	  this.anchor.setTo(0.5, 0.5);
+	  game.add.existing(this);
+	  
+	  
+	  this.update = function(){
+
+	  }
+	};
+
+	Thing.prototype = Object.create(Phaser.Sprite.prototype);
+	Thing.prototype.constructor = Thing;
+
+	module.exports = Thing;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Thing = __webpack_require__(12);
+	var Group = __webpack_require__(8);
+	var thingManager = function(game, thingList){
+	  
+	  var things = {
+	    bonuses: new Group(game),
+	    portals: new Group(game),
+	    platforms: new Group(game)
+	  };
+	  
+	  thingList.forEach(function(thingConfig){
+	    var thing = new Thing(game, thingConfig.img, thingConfig.x, thingConfig.y);
+	    things.portals.add(thing);
+	  });
+	  
+	  return things;
+	};
+
+	module.exports = thingManager;
 
 /***/ }
 /******/ ]);
