@@ -1,3 +1,5 @@
+var atlas = require('./assetMap.js');
+
 var levelConfigs = [
   {
     id: 1,
@@ -328,27 +330,27 @@ var levelConfigs = [
     },
     things: [
       {
-        img: '310',
+        img: atlas.PORTAL_LEVEL_GO,
         x: 329,
         y: 154
       },
       {
-        img: '106',
+        img: atlas.BONUS_BIG_MCDONALDS,
         x: 86,
         y: 250
       },
       {
-        img: '103',
+        img: atlas.BONUS_BIG_BANANA,
         x: 147,
         y: 216
       },
       {
-        img: '101',
+        img: atlas.BONUS_BIG_ICECREAM,
         x: 209,
         y: 250
       },
       {
-        img: '157',
+        img: atlas.BONUS_CHICKEN,
         x: 984,
         y: 237
       }
