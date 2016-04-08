@@ -7,7 +7,9 @@ var levelManager = function(game, levelList){
     foregroundLayer: null,
     collisionLayer: null,
     objects: {}, 
-    things: [],
+    bonus: [],
+    portals: [],
+    platforms: [],
     entryPoint: {
       x: 200, 
       y: 50
@@ -42,7 +44,9 @@ var levelManager = function(game, levelList){
     
     level.entryPoint = levelToLoad.entryPoint;
     
-    level.things = levelToLoad.things || [];
+    level.bonus = levelToLoad.bonus || [];
+    level.portals = levelToLoad.portals || [];
+    level.platforms = levelToLoad.platforms || [];
     
     //level.collisionLayer.debug = true;
     //level.deathLayer.debug = true;

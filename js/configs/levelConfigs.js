@@ -328,7 +328,9 @@ var levelConfigs = [
       x: 311, 
       y: 291
     },
-    things: [
+    portals: [],
+    platforms: [],
+    bonus: [
       {
         img: atlas.PORTAL_LEVEL_GO,
         x: 329,

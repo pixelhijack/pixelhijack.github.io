@@ -213,9 +213,7 @@
 	    });
 	    
 	    
-	    things = thingManager(game, level.things);
-	    //things = new Thing(game, '281', 308, 200);
-	    
+	    things = thingManager(game, level.bonus);
 	    
 	    game.camera.follow(man);
 	    //game.add.existing(man);
@@ -598,7 +596,7 @@
 	      { name: 'hitting', frames: [22,24,28,31,34], fps: 10, loop: false }, 
 	      { name: 'stopping', frames: [42,45,49,52], fps: 10, loop: false }, 
 	      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
-	      { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 10, loop: true }, 
+	      { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
 	      { name: 'hurt', frames: [19], fps: 10, loop: true },
 	      { name: 'dead', frames: [19], fps: 10, loop: false }
 	    ],
@@ -1119,7 +1117,9 @@
 	    foregroundLayer: null,
 	    collisionLayer: null,
 	    objects: {}, 
-	    things: [],
+	    bonus: [],
+	    portals: [],
+	    platforms: [],
 	    entryPoint: {
 	      x: 200, 
 	      y: 50
@@ -1154,7 +1154,9 @@
 	    
 	    level.entryPoint = levelToLoad.entryPoint;
 	    
-	    level.things = levelToLoad.things || [];
+	    level.bonus = levelToLoad.bonus || [];
+	    level.portals = levelToLoad.portals || [];
+	    level.platforms = levelToLoad.platforms || [];
 	    
 	    //level.collisionLayer.debug = true;
 	    //level.deathLayer.debug = true;
@@ -1386,17 +1388,18 @@
 
 	var Thing = __webpack_require__(6);
 	var Group = __webpack_require__(9);
+
 	var thingManager = function(game, thingList){
 	  
 	  var things = {
-	    bonuses: new Group(game),
+	    bonus: new Group(game),
 	    portals: new Group(game),
 	    platforms: new Group(game)
 	  };
 	  
 	  thingList.forEach(function(thingConfig){
 	    var thing = new Thing(game, thingConfig.img, thingConfig.x, thingConfig.y);
-	    things.portals.add(thing);
+	    things.bonus.add(thing);
 	  });
 	  
 	  return things;
@@ -1781,7 +1784,9 @@
 	      x: 311, 
 	      y: 291
 	    },
-	    things: [
+	    portals: [],
+	    platforms: [],
+	    bonus: [
 	      {
 	        img: atlas.PORTAL_LEVEL_GO,
 	        x: 329,

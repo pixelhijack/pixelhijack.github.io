@@ -113,9 +113,7 @@ function Play(game, globalSettings){
     });
     
     
-    things = thingManager(game, level.things);
-    //things = new Thing(game, '281', 308, 200);
-    
+    things = thingManager(game, level.bonus);
     
     game.camera.follow(man);
     //game.add.existing(man);
