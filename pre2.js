@@ -743,6 +743,19 @@
 	      { name: 'dead', frames: [334], fps: 10, loop: true }
 	    ]
 	  },
+	  turtle: {
+	    mass: 2,
+	    jumping: 0,
+	    collide: true,
+	    bounce: 0.3,
+	    maxSpeed: 50,
+	    acceleration: 10,
+	    animations: [
+	      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: false },
+	      { name: 'moving', frames: [387,389,390,391], fps: 10, loop: true },
+	      { name: 'dead', frames: [392], fps: 10, loop: false }
+	    ]
+	  },
 	  gorilla: {
 	    // grim level bosses with lots of lifes!!
 	    lives: 10, 
@@ -1014,6 +1027,14 @@
 	    this.die = mixins.die;
 	    return this;
 	  },
+	  turtle: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
+	    this.die = mixins.die;
+	  }
 	};
 
 	// specific updates of a creature
@@ -1124,6 +1145,13 @@
 	      }
 	    }
 	  },
+	  turtle: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.hurry();
+	      this.sentinel();
+	    }
+	  }
 	};
 
 	var reactions = {
@@ -1968,7 +1996,7 @@
 	      },
 	      {
 	        type: 'dino', 
-	        number: 3,
+	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
 	        move: 200,  
@@ -1998,7 +2026,7 @@
 	      },
 	      {
 	        type: 'ptero',
-	        number: 3,
+	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
 	        move: true,
@@ -2081,7 +2109,22 @@
 	          y: 541
 	        },
 	        boundTo: {
-
+	      
+	        }
+	      },
+	      {
+	        type: 'turtle',
+	        number: 1,
+	        lifespan: Infinity,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 764,
+	          y: 301
+	        },
+	        boundTo: {
+	          x1: 764,
+	          x2: 1003
 	        }
 	      }
 	    ]

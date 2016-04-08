@@ -435,7 +435,7 @@ var levelConfigs = [
       },
       {
         type: 'dino', 
-        number: 3,
+        number: 1,
         lifespan: Infinity,
         revive: 5000,
         move: 200,  
@@ -465,7 +465,7 @@ var levelConfigs = [
       },
       {
         type: 'ptero',
-        number: 3,
+        number: 2,
         lifespan: Infinity,
         revive: 5000,
         move: true,
@@ -548,7 +548,22 @@ var levelConfigs = [
           y: 541
         },
         boundTo: {
-
+      
+        }
+      },
+      {
+        type: 'turtle',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 764,
+          y: 301
+        },
+        boundTo: {
+          x1: 764,
+          x2: 1003
         }
       }
     ]

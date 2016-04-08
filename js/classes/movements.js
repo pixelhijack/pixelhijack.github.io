@@ -242,6 +242,14 @@ var behaviours = {
     this.die = mixins.die;
     return this;
   },
+  turtle: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.die = mixins.die;
+  }
 };
 
 // specific updates of a creature
@@ -352,6 +360,13 @@ var updates = {
       }
     }
   },
+  turtle: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.hurry();
+      this.sentinel();
+    }
+  }
 };
 
 var reactions = {

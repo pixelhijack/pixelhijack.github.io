@@ -168,6 +168,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [334], fps: 10, loop: true }
     ]
   },
+  turtle: {
+    mass: 2,
+    jumping: 0,
+    collide: true,
+    bounce: 0.3,
+    maxSpeed: 50,
+    acceleration: 10,
+    animations: [
+      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: false },
+      { name: 'moving', frames: [387,389,390,391], fps: 10, loop: true },
+      { name: 'dead', frames: [392], fps: 10, loop: false }
+    ]
+  },
   gorilla: {
     // grim level bosses with lots of lifes!!
     lives: 10, 
