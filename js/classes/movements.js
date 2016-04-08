@@ -99,6 +99,10 @@ var mixins = {
   ascend: function(){
     this.body.velocity.y -= this.props.acceleration;
   },
+  diagonalDescend: function(dx, dy){
+    this.y += dy;
+    this.x += dx;
+  },
   watch: function(){
     this.state = 'idle';
     this.body.velocity.x = 0;
@@ -193,6 +197,10 @@ var behaviours = {
     this.hurry = mixins.hurry;
     this.die = mixins.die;
   },
+  bat: function(){
+    this.diagonalDescend = mixins.diagonalDescend;
+    this.die = mixins.die;
+  },
   spider: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
@@ -283,6 +291,12 @@ var updates = {
     this.render();
     if(this.state !== 'dead'){
      this.hurry();
+    }
+  },
+  bat: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.diagonalDescend(0.5, 1);
     }
   },
   spider: function(){

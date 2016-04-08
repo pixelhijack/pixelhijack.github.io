@@ -535,6 +535,20 @@ var levelConfigs = [
         },
         boundTo: {
           
+        },
+      },
+      {
+        type: 'bat',
+        number: 1,
+        lifespan: 4000,
+        revive: 5000,
+        move: true,
+        origin: {
+          x: 307,
+          y: 541
+        },
+        boundTo: {
+
         }
       }
     ]

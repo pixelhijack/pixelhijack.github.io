@@ -95,6 +95,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [342], fps: 12, loop: true }
     ]
   },
+  bat: {
+    mass: 0.5,
+    gravity: 0,
+    bounce: 0.1,
+    jumping: 0,
+    collide: false,
+    maxSpeed: 20,
+    acceleration: 10, 
+    animations: [
+      { name: 'moving', frames: [357,359], fps: 10, loop: true },
+      { name: 'dead', frames: [362], fps: 10, loop: true }
+    ]
+  },
   spider: {
     mass: 0.3,
     jumping: 0,

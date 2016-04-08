@@ -670,6 +670,19 @@
 	      { name: 'dead', frames: [342], fps: 12, loop: true }
 	    ]
 	  },
+	  bat: {
+	    mass: 0.5,
+	    gravity: 0,
+	    bounce: 0.1,
+	    jumping: 0,
+	    collide: false,
+	    maxSpeed: 20,
+	    acceleration: 10, 
+	    animations: [
+	      { name: 'moving', frames: [357,359], fps: 10, loop: true },
+	      { name: 'dead', frames: [362], fps: 10, loop: true }
+	    ]
+	  },
 	  spider: {
 	    mass: 0.3,
 	    jumping: 0,
@@ -847,6 +860,10 @@
 	  ascend: function(){
 	    this.body.velocity.y -= this.props.acceleration;
 	  },
+	  diagonalDescend: function(dx, dy){
+	    this.y += dy;
+	    this.x += dx;
+	  },
 	  watch: function(){
 	    this.state = 'idle';
 	    this.body.velocity.x = 0;
@@ -941,6 +958,10 @@
 	    this.hurry = mixins.hurry;
 	    this.die = mixins.die;
 	  },
+	  bat: function(){
+	    this.diagonalDescend = mixins.diagonalDescend;
+	    this.die = mixins.die;
+	  },
 	  spider: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
@@ -1031,6 +1052,12 @@
 	    this.render();
 	    if(this.state !== 'dead'){
 	     this.hurry();
+	    }
+	  },
+	  bat: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.diagonalDescend(0.5, 1);
 	    }
 	  },
 	  spider: function(){
@@ -2006,6 +2033,20 @@
 	        },
 	        boundTo: {
 	          
+	        },
+	      },
+	      {
+	        type: 'bat',
+	        number: 1,
+	        lifespan: 4000,
+	        revive: 5000,
+	        move: true,
+	        origin: {
+	          x: 307,
+	          y: 541
+	        },
+	        boundTo: {
+
 	        }
 	      }
 	    ]
