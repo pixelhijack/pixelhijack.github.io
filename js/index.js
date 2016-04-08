@@ -22,5 +22,5 @@ var PRE2 = {
   Play: Play.bind(this, game, globalSettings)
 };
 game.state.add('Play', PRE2.Play);
-game.state.start('Play');
+game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 

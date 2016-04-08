@@ -68,7 +68,7 @@
 	  Play: Play.bind(this, game, globalSettings)
 	};
 	game.state.add('Play', PRE2.Play);
-	game.state.start('Play');
+	game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 
 
 
@@ -107,7 +107,7 @@
 
 
 	// Play game state
-	function Play(game, settings){
+	function Play(game, globalSettings){
 
 	  var man;
 	  
@@ -121,6 +121,7 @@
 	  var menu;
 	  var levels = levelManager(game, levelConfigs);
 	  var level;
+	  var levelNo;
 	  
 	  var enemies;
 	  
@@ -129,6 +130,11 @@
 	  var events = { };
 
 	  // public methods for Phaser
+	  this.init = function init(initConfigs){
+	    console.log('INIT:', initConfigs);
+	    levelNo = initConfigs.levelNumber;
+	    window.location.hash = '#' + initConfigs.levelNumber;
+	  };
 	  this.preload = preload;
 	  this.create = create;
 	  this.update = update;
@@ -174,12 +180,12 @@
 	  }
 	  
 	  function initWorld(){
-	    game.world.setBounds(0, 0, settings.dimensions.WIDTH * settings.dimensions.blocks, settings.dimensions.HEIGHT);
+	    game.world.setBounds(0, 0, globalSettings.dimensions.WIDTH * globalSettings.dimensions.blocks, globalSettings.dimensions.HEIGHT);
 	    game.physics.startSystem(Phaser.Physics.ARCADE);
 	  }
 	  
 	  function loadLevel(){
-	    level = levels(settings.level);
+	    level = levels(levelNo);
 	  }
 	  
 	  function loadEnemies(){
@@ -223,8 +229,8 @@
 	      var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
 	      man.state = 'moving';
 	      tilt >= 0 ? 
-	        man.moveRight(tilt * settings.physics.accelerationMultiplier) :
-	        man.moveLeft(-tilt * settings.physics.accelerationMultiplier);
+	        man.moveRight(tilt * globalSettings.physics.accelerationMultiplier) :
+	        man.moveLeft(-tilt * globalSettings.physics.accelerationMultiplier);
 	    }, false);
 	  }
 	  
@@ -259,7 +265,7 @@
 	  }
 	  
 	  function setParallax(){
-	    level.backgroundLayer.x = -(game.camera.x * settings.physics.parallax);
+	    level.backgroundLayer.x = -(game.camera.x * globalSettings.physics.parallax);
 	  }
 	  
 	  function collisions(){
@@ -278,7 +284,7 @@
 	      game.physics.arcade.collide(man, level.deathLayer, function(){
 	        weapon.sprite.kill();
 	        man.kill();
-	        game.state.start('Play', true, false);
+	        game.state.start('Play', true, false, { levelNumber: globalSettings.level });
 	      });
 	    }
 	    
@@ -322,7 +328,7 @@
 	    }
 	    else{
 	      // slowing down / slippery rate: 10% after stopped moving
-	      man.stop(settings.physics.slippery);
+	      man.stop(globalSettings.physics.slippery);
 	      //man.animations.play('man-stop-left');
 	    }
 	    if(keys.up.isDown || game.input.pointer1.isDown) {
@@ -337,7 +343,7 @@
 	    }
 	    if(keys.space.isDown) {
 	      man.state = 'hitting';
-	      man.stop(settings.physics.slippery);
+	      man.stop(globalSettings.physics.slippery);
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
 	    }
@@ -399,7 +405,7 @@
 	        weapon.sprite.kill();
 	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 	          // restart while keep caches: 
-	          game.state.start('Play', true, false);
+	          game.state.start('Play', true, false, { levelNumber: globalSettings.level });
 	        }, this);
 	      }
 	    }
