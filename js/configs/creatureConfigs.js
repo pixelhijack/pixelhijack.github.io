@@ -168,6 +168,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [348], fps: 10, loop: true }
     ]
   },
+  bug: {
+    mass: 1,
+    collide: true,
+    bounce: 1.5,
+    jumping: 300,
+    maxSpeed: 50,
+    acceleration: 25, 
+    animations: [
+      { name: 'moving', frames: [344,346], fps: 10, loop: true },
+      { name: 'jumping', frames: [344,346], fps: 10, loop: true },
+      { name: 'dead', frames: [344], fps: 10, loop: true }
+    ]
+  },
   frog: {
     mass: 1,
     collide: true,

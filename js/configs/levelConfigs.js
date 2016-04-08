@@ -579,6 +579,20 @@ var levelConfigs = [
         boundTo: {
           
         },
+      },
+      {
+        type: 'bug',
+        number: 1,
+        lifespan: 20000,
+        revive: 1000,
+        move: true,
+        origin: {
+          x: 533,
+          y: 311
+        },
+        boundTo: {
+          
+        },
       }
     ]
   }

@@ -743,6 +743,19 @@
 	      { name: 'dead', frames: [348], fps: 10, loop: true }
 	    ]
 	  },
+	  bug: {
+	    mass: 1,
+	    collide: true,
+	    bounce: 1.5,
+	    jumping: 300,
+	    maxSpeed: 50,
+	    acceleration: 25, 
+	    animations: [
+	      { name: 'moving', frames: [344,346], fps: 10, loop: true },
+	      { name: 'jumping', frames: [344,346], fps: 10, loop: true },
+	      { name: 'dead', frames: [344], fps: 10, loop: true }
+	    ]
+	  },
 	  frog: {
 	    mass: 1,
 	    collide: true,
@@ -1028,6 +1041,19 @@
 	    this.watch = mixins.watch;
 	    return this;
 	  },
+	  bug: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.move = mixins.move;
+	    this.jump = mixins.jump;
+	    this.wait = mixins.wait;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
+	    this.die = mixins.die;
+	    this.watch = mixins.watch;
+	    return this;
+	  },
 	  frog: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
@@ -1146,6 +1172,20 @@
 	    }
 	  },
 	  insect: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.turnIfBlocked();
+	      this.move();
+	      if(Math.random() < 0.005){ 
+	        this.facingRight = !this.facingRight;
+	      }
+	      if(Math.random() < 0.05){ 
+	        this.jump(); 
+	        this.state = 'jumping';
+	      }
+	    }
+	  },
+	  bug: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
 	      this.turnIfBlocked();
@@ -2169,6 +2209,20 @@
 	      },
 	      {
 	        type: 'insect',
+	        number: 1,
+	        lifespan: 20000,
+	        revive: 1000,
+	        move: true,
+	        origin: {
+	          x: 533,
+	          y: 311
+	        },
+	        boundTo: {
+	          
+	        },
+	      },
+	      {
+	        type: 'bug',
 	        number: 1,
 	        lifespan: 20000,
 	        revive: 1000,
