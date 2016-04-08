@@ -565,6 +565,20 @@ var levelConfigs = [
           x1: 764,
           x2: 1003
         }
+      },
+      {
+        type: 'insect',
+        number: 1,
+        lifespan: 20000,
+        revive: 1000,
+        move: true,
+        origin: {
+          x: 533,
+          y: 311
+        },
+        boundTo: {
+          
+        },
       }
     ]
   }

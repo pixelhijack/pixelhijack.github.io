@@ -217,6 +217,19 @@ var behaviours = {
     this.sentinel = mixins.sentinel;
     this.die = mixins.die;
   },
+  insect: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.jump = mixins.jump;
+    this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.die = mixins.die;
+    this.watch = mixins.watch;
+    return this;
+  },
   frog: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
@@ -331,6 +344,20 @@ var updates = {
     if(this.state !== 'dead'){
       if(!this.sentinel()){
         this.hurry(); 
+      }
+    }
+  },
+  insect: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.turnIfBlocked();
+      this.move();
+      if(Math.random() < 0.005){ 
+        this.facingRight = !this.facingRight;
+      }
+      if(Math.random() < 0.05){ 
+        this.jump(); 
+        this.state = 'jumping';
       }
     }
   },

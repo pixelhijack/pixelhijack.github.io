@@ -155,6 +155,19 @@ var creatureConfigs = {
       { name: 'dead', frames: [400], fps: 10, loop: false }
     ]
   },
+  insect: {
+    mass: 1,
+    collide: true,
+    bounce: 1.5,
+    jumping: 300,
+    maxSpeed: 50,
+    acceleration: 25, 
+    animations: [
+      { name: 'moving', frames: [323,348,349], fps: 10, loop: true },
+      { name: 'jumping', frames: [323,348,349], fps: 10, loop: true },
+      { name: 'dead', frames: [348], fps: 10, loop: true }
+    ]
+  },
   frog: {
     mass: 1,
     collide: true,
@@ -176,9 +189,9 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 10,
     animations: [
-      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: false },
+      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: true },
       { name: 'moving', frames: [387,389,390,391], fps: 10, loop: true },
-      { name: 'dead', frames: [392], fps: 10, loop: false }
+      { name: 'dead', frames: [392], fps: 10, loop: true }
     ]
   },
   gorilla: {
