@@ -1,8 +1,5 @@
 // general behaviour reducers any entity can use
 var mixins = {
-  /******************************
-  *     MOVE LEFT
-  ******************************/
   moveLeft: function(overrideAcc){
     this.facingRight = false;
     if(overrideAcc === 0){
@@ -13,9 +10,6 @@ var mixins = {
       this.body.velocity.x -= overrideAcc || this.props.acceleration;
     }
   },
-  /******************************
-  *     MOVE RIGHT
-  ******************************/
   moveRight: function(overrideAcc){
     this.facingRight = true;
     if(overrideAcc === 0){
@@ -143,6 +137,28 @@ var mixins = {
 
 // creature class mixins implementing behaviours should be added here
 var behaviours = {
+  walker: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.jump = mixins.jump;
+    this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.watch = mixins.watch;
+    this.die = mixins.die;
+    return this;
+  },
+  flier: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.descend = mixins.descend;
+    this.ascend = mixins.ascend;
+    this.die = mixins.die;
+    return this;
+  },
   man: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
@@ -153,128 +169,44 @@ var behaviours = {
     return this;
   },
   dino: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
-    return this;
+    behaviours.walker.call(this);
   },
   ptero: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.descend = mixins.descend;
-    this.ascend = mixins.ascend;
-    this.die = mixins.die;
-    return this;
+    behaviours.flier.call(this);
   },
   parrot: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.descend = mixins.descend;
-    this.ascend = mixins.ascend;
-    this.die = mixins.die;
-    return this;
+    behaviours.flier.call(this);
   },
   bear: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
+    behaviours.walker.call(this);
   }, 
   dragonfly: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.die = mixins.die;
+    behaviours.flier.call(this);
   },
   bat: function(){
     this.diagonalDescend = mixins.diagonalDescend;
     this.die = mixins.die;
   },
   spider: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
+    behaviours.walker.call(this);
   },
   native: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
+    behaviours.walker.call(this);
   },
   insect: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
-    this.watch = mixins.watch;
-    return this;
+    behaviours.walker.call(this);
   },
   bug: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
-    this.watch = mixins.watch;
-    return this;
+    behaviours.walker.call(this);
   },
   frog: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
-    this.watch = mixins.watch;
-    return this;
+    behaviours.walker.call(this);
   },
   tiger: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.move = mixins.move;
-    this.jump = mixins.jump;
-    this.wait = mixins.wait;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
-    return this;
+    behaviours.walker.call(this);
   },
   turtle: function(){
-    this.moveRight = mixins.moveRight;
-    this.moveLeft = mixins.moveLeft;
-    this.turnIfBlocked = mixins.turnIfBlocked;
-    this.hurry = mixins.hurry;
-    this.sentinel = mixins.sentinel;
-    this.die = mixins.die;
+    behaviours.walker.call(this);
   }
 };
 
@@ -426,17 +358,17 @@ var updates = {
 var reactions = {
   default: {
     'man:hurt': function(evt){
-      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.creatureType, evt);  
     }
   },
   native: {
     'man:hunting': function(evt){
-      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.creatureType, evt);  
     }
   }, 
   spider: {
     'man:hurt': function(evt){
-      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.key, evt);  
+      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.creatureType, evt);  
     }
   }
 };
