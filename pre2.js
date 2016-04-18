@@ -1332,24 +1332,7 @@
 	var Group = __webpack_require__(9);
 	var util = __webpack_require__(10);
 
-	/*  
-	    ENEMIES API: 
-	    var enemies = enemyManager(game, level.enemies);
-	    @Phaser.Group::enemies.global.dino
-	    @Phaser.Group::enemies.global.bear
-	    @Phaser.Group::enemies.zone(1).bear
-	    ...
-	    
-	    enemyManager: 
-	      @levelEnemies: enemies of zones and types from level lists
-	      @levelZones: zone coordinates from tilemap's object-layers
-	      -> create phaser group for each zone - type - enemy type
-	      -> populate group references 
-	      every zone has:
-	        @guards: enemies placed in zones once
-	        @spawns: enemies spawning in the zone, moving away, subsequently
-	      
-	*/
+
 	var enemyManager = function(game, levelEnemies, levelZones){
 	  var utils = util(game);
 	  
@@ -1387,7 +1370,7 @@
 	  function revive(group){
 	    var enemyToRevive = group.getFirstDead();
 	    if(enemyToRevive){
-	      console.info('[enemyManager] reviving a %s', enemyToRevive.key, enemyToRevive);
+	      console.info('[enemyManager] reviving a %s', enemyToRevive.creatureType, enemyToRevive);
 	      enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
 	    }
 	  }
