@@ -8,6 +8,15 @@ var levelConfigs = require('../configs/levelConfigs.js');
 var util = require('../services/util.js');
 
 
+window.addEventListener('error', function(e){
+  var stack = e && e.error && e.error.stack;
+  var message = e && e.error && e.error.toString();
+  if(stack){
+    message += '\n' + stack;
+  }
+  console.error('[PRE2-ERROR]', message);
+});
+
 // Play game state
 function Play(game, globalSettings){
 
@@ -21,8 +30,8 @@ function Play(game, globalSettings){
     animLeft: null
   };
   var menu;
-  var levels = levelManager(game, levelConfigs);
-  var level;
+  var level = levelManager(game, levelConfigs);
+
   var levelNo;
   
   var enemies;
@@ -35,7 +44,7 @@ function Play(game, globalSettings){
 
   // public methods for Phaser
   this.init = function init(initConfigs){
-    console.log('INIT:', initConfigs);
+    console.info('INIT:', initConfigs);
     levelNo = initConfigs.levelNumber;
     window.location.hash = '#' + initConfigs.levelNumber;
   };
@@ -53,32 +62,11 @@ function Play(game, globalSettings){
     game.scale.pageAlignVertically = true;
     
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
-    /*
-    game.load.spritesheet('dino', './assets/dino.png', 42, 36);
-    game.load.spritesheet('ptero', './assets/pterodactylus.png', 62, 50);
-    game.load.spritesheet('bear', './assets/bears.png', 44, 44);
-    game.load.spritesheet('dragonfly', './assets/dragonflies.png', 36, 22);
-    game.load.spritesheet('spider', './assets/spiders.png', 32, 26);
-    game.load.spritesheet('native', './assets/natives.png', 28, 32);
-    game.load.spritesheet('man', './assets/man.png', 32, 36);
-    */
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
     
     game.load.atlas('pre2atlas', 'assets/pre2atlas.png', 'assets/pre2atlas.json', Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
     
-    game.load.image('background-1', './assets/bg1seamless.png');
-    game.load.image('background-2', './assets/bg3seamless.jpg');
-    game.load.image('background-3', './assets/bg_04.png');
-    
-    game.load.image('tileset-level-1', './assets/level-1-transparent.png');
-    game.load.image('tileset-level-2', './assets/tilesets/tileset2.png');
-    game.load.image('tileset-level-3', './assets/tilesets/tileset1_2.png');
-    game.load.image('tileset-level-4', './assets/tilesets/L2_bank.png');
-    
-    game.load.tilemap('tilemap-level-1', './levels/78x23.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.tilemap('tilemap-level-2', './levels/49x100-old.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.tilemap('tilemap-level-3', './levels/49x100.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.tilemap('tilemap-level-4', './levels/L2v1.json', null, Phaser.Tilemap.TILED_JSON);
+    level.preloadAssets(levelNo);
   
     console.info('[play] PHASER preloaded');
   }
@@ -89,7 +77,7 @@ function Play(game, globalSettings){
   }
   
   function loadLevel(){
-    level = levels(levelNo);
+    level.setLevel();
   }
   
   function loadEnemies(){

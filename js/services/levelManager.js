@@ -1,5 +1,7 @@
 var levelManager = function(game, levelList){
   
+  var levelToLoad;
+  
   var level = {
     tilemap: null,
     backgroundLayer: null,
@@ -16,17 +18,27 @@ var levelManager = function(game, levelList){
     }
   };
   
-  return function setLevel(id){
-    var levelToLoad = levelList.find(function(level){
+  level.preloadAssets = function(id){
+    levelToLoad = levelList.find(function(level){
       return level.id === +id;
     });
     if(!levelToLoad){
       throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
     }
+    // load background
+    game.load.image(levelToLoad.backgroundLayer, 'assets/backgrounds/' + levelToLoad.backgroundImage + '.png');
+    // load tileset
+    game.load.image(levelToLoad.tileset, 'assets/tilesets/' + levelToLoad.tilesetImage + '.png');
+    // load tilemap
+    game.load.tilemap(levelToLoad.tilemap, 'levels/' + levelToLoad.tiledJson + '.json', null, Phaser.Tilemap.TILED_JSON);
+  };
+  
+  level.setLevel = function(){
+    
     level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
     level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
     level.tilemap = game.add.tilemap(levelToLoad.tilemap);
-    level.tilemap.addTilesetImage(levelToLoad.tilesetImageName, levelToLoad.tileset);
+    level.tilemap.addTilesetImage(levelToLoad.tilesetImage, levelToLoad.tileset);
     level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
     level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
     level.collisionLayer.visible = false;
@@ -73,10 +85,9 @@ var levelManager = function(game, levelList){
             });
         });
     }
-    
-    return level;
   };
-}
+  return level;
+};
 
 // find polyfill...
 if (!Array.prototype.find) {
