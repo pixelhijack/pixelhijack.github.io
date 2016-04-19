@@ -1,6 +1,7 @@
 // general behaviour reducers any entity can use
 var mixins = {
   moveLeft: function(overrideAcc){
+    this.body.moves = true;
     this.facingRight = false;
     if(overrideAcc === 0){
       this.body.velocity.x = 0;
@@ -11,6 +12,7 @@ var mixins = {
     }
   },
   moveRight: function(overrideAcc){
+    this.body.moves = true;
     this.facingRight = true;
     if(overrideAcc === 0){
       this.body.velocity.x = 0;
@@ -52,7 +54,7 @@ var mixins = {
     return this.props.lives;
   },
   stop: function(slippery){
-    this.body.velocity.x /= slippery;
+    this.body.velocity.x /= (slippery || 1.1);
   },
   duck: function(){},
   enter: function(){},
@@ -228,9 +230,8 @@ var updates = {
   waitStill: function(){
     this.render();
     if(this.state !== 'dead'){
-      this.state = 'moving';
-      this.body.velocity.x = 0;
-      this.body.velocity.y = 0;
+      this.state = 'idle';
+      this.body.moves = false;
     }
   },
   jumpAttack: function(){
@@ -307,6 +308,7 @@ var updates = {
   bat: function(){
     this.render();
     if(this.state !== 'dead'){
+      this.state = 'moving';
       this.diagonalDescend(0.5, 1);
     }
   },
@@ -314,7 +316,6 @@ var updates = {
     this.render();
     if(this.state !== 'dead'){
       this.crawl();
-      //this.hurry();
       this.sentinel();
     }
   },
@@ -379,24 +380,23 @@ var updates = {
 };
 
 var reactions = {
-  default: {
-    'man:hurt': function(evt){
-      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.creatureType, evt);  
+  attackIfClose: function(evt){
+    if(Math.abs(this.x - evt.x) < this.props.sense){
+      console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
+      this.update = updates[this.creatureType];
+    } else {
+      this.update = updates.waitStill;
     }
   },
-  native: {
-    'man:hunting': function(evt){
-      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.creatureType, evt);  
+  attackIfAwakened: function(evt){
+    if(Math.abs(this.x - evt.x) < this.props.sense){
+      console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
+      this.update = updates[this.creatureType];
     }
-  }, 
-  frog: {
-    'man:near': function(evt){
-      console.info('[EVENT][%s:%s][%s:] Man is near!', evt.who, evt.event, this.creatureType, evt);  
-      if(Math.abs(this.x - evt.x) < this.props.sense){
-        this.update = updates.jumpAttack;
-      } else {
-        this.update = updates.waitStill;
-      }
+  },
+  fleeWhenAttacked: function(evt){
+    if(evt.event === 'hunting' && Math.abs(this.x - evt.x) < this.props.sense){
+      this.flee();
     }
   }
 };

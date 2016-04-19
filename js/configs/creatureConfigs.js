@@ -11,7 +11,7 @@ var creatureConfigs = {
     collide: true,
     lives: 1, 
     lifespan: Infinity,
-    sense: 200,
+    sense: 150,
     animations: [], 
     boundTo : {
       x1: 1000,

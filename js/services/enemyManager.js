@@ -23,6 +23,9 @@ var enemyManager = function(game, levelEnemies, levelZones){
       if(groupConfig.movement){
          creature.update = movements.updates[groupConfig.movement];
       }
+      if(groupConfig.reaction){
+        creature.reaction = groupConfig.reaction;
+      }
       group.add(creature);
     }
     //group.setAll('props.boundTo', groupConfig.boundTo); 

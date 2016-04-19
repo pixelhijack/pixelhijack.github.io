@@ -378,7 +378,7 @@
 	      //creature.debug((creature.lifespan / 1000 | 0));
 	      //creature.debug(creature.creatureId);
 	    });
-	    man.debug(man.props.lives +' '+ man.state);
+	    //man.debug(man.props.lives +' '+ man.state);
 	    
 	    setParallax();
 	    collisions();
@@ -477,8 +477,8 @@
 	  this.update = movements.updates[creatureType].bind(this);
 	  // every creature makes noises: an observable phaser channel to subscribe for:
 	  this.noise = new Phaser.Signal();
-	  // every creature react to other noises: event listener collection here:
-	  this.reactions = movements.reactions[creatureType] || movements.reactions.default;
+	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
+	  this.reaction = null;
 	};
 
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -538,11 +538,9 @@
 	};
 
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
-	  var reaction = this.reactions[evt.who + ':' + evt.event];
-	  if(reaction){
-	    reaction.call(this, evt);
+	  if(this.reaction && movements.reactions[this.reaction]){
+	    movements.reactions[this.reaction].call(this, evt);
 	  }
-	  //console.log('[creature][Signals][%s] heard some noise!', this.creatureType, event);
 	}
 
 	Creature.prototype.listen = function listen(subject, reaction){
@@ -580,7 +578,7 @@
 	    collide: true,
 	    lives: 1, 
 	    lifespan: Infinity,
-	    sense: 200,
+	    sense: 150,
 	    animations: [], 
 	    boundTo : {
 	      x1: 1000,
@@ -821,6 +819,7 @@
 	// general behaviour reducers any entity can use
 	var mixins = {
 	  moveLeft: function(overrideAcc){
+	    this.body.moves = true;
 	    this.facingRight = false;
 	    if(overrideAcc === 0){
 	      this.body.velocity.x = 0;
@@ -831,6 +830,7 @@
 	    }
 	  },
 	  moveRight: function(overrideAcc){
+	    this.body.moves = true;
 	    this.facingRight = true;
 	    if(overrideAcc === 0){
 	      this.body.velocity.x = 0;
@@ -872,7 +872,7 @@
 	    return this.props.lives;
 	  },
 	  stop: function(slippery){
-	    this.body.velocity.x /= slippery;
+	    this.body.velocity.x /= (slippery || 1.1);
 	  },
 	  duck: function(){},
 	  enter: function(){},
@@ -1048,9 +1048,8 @@
 	  waitStill: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
-	      this.state = 'moving';
-	      this.body.velocity.x = 0;
-	      this.body.velocity.y = 0;
+	      this.state = 'idle';
+	      this.body.moves = false;
 	    }
 	  },
 	  jumpAttack: function(){
@@ -1127,6 +1126,7 @@
 	  bat: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
+	      this.state = 'moving';
 	      this.diagonalDescend(0.5, 1);
 	    }
 	  },
@@ -1134,7 +1134,6 @@
 	    this.render();
 	    if(this.state !== 'dead'){
 	      this.crawl();
-	      //this.hurry();
 	      this.sentinel();
 	    }
 	  },
@@ -1199,24 +1198,23 @@
 	};
 
 	var reactions = {
-	  default: {
-	    'man:hurt': function(evt){
-	      console.info('[EVENT][%s:%s][%s:] Who cares...', evt.who, evt.event, this.creatureType, evt);  
+	  attackIfClose: function(evt){
+	    if(Math.abs(this.x - evt.x) < this.props.sense){
+	      console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
+	      this.update = updates[this.creatureType];
+	    } else {
+	      this.update = updates.waitStill;
 	    }
 	  },
-	  native: {
-	    'man:hunting': function(evt){
-	      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.creatureType, evt);  
+	  attackIfAwakened: function(evt){
+	    if(Math.abs(this.x - evt.x) < this.props.sense){
+	      console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
+	      this.update = updates[this.creatureType];
 	    }
-	  }, 
-	  frog: {
-	    'man:near': function(evt){
-	      console.info('[EVENT][%s:%s][%s:] Man is near!', evt.who, evt.event, this.creatureType, evt);  
-	      if(Math.abs(this.x - evt.x) < this.props.sense){
-	        this.update = updates.jumpAttack;
-	      } else {
-	        this.update = updates.waitStill;
-	      }
+	  },
+	  fleeWhenAttacked: function(evt){
+	    if(evt.event === 'hunting' && Math.abs(this.x - evt.x) < this.props.sense){
+	      this.flee();
 	    }
 	  }
 	};
@@ -1401,6 +1399,9 @@
 	      // override general creature-specific updates
 	      if(groupConfig.movement){
 	         creature.update = movements.updates[groupConfig.movement];
+	      }
+	      if(groupConfig.reaction){
+	        creature.reaction = groupConfig.reaction;
 	      }
 	      group.add(creature);
 	    }
@@ -2152,7 +2153,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 130,
 	          y: 270
@@ -2167,7 +2167,6 @@
 	        number: 1,
 	        lifespan: 10000,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 90,
 	          y: 260
@@ -2182,7 +2181,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 682,
 	          y: 279
@@ -2197,7 +2195,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2209,7 +2206,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 800,
 	          y: 130
@@ -2221,7 +2217,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 44,
 	          y: 198
@@ -2236,7 +2231,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 470,
 	          y: 30
@@ -2273,7 +2267,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2288,7 +2281,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2303,7 +2295,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2318,7 +2309,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2333,7 +2323,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2348,7 +2337,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 200,
 	          y: 200
@@ -2392,7 +2380,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 344,
 	          y: 277
@@ -2407,7 +2394,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 10,
 	          y: 10
@@ -2422,7 +2408,6 @@
 	        number: 1,
 	        lifespan: 10000,
 	        revive: 10000,
-	        move: true,
 	        origin: {
 	          x: 10,
 	          y: 10
@@ -2437,7 +2422,6 @@
 	        number: 1,
 	        lifespan: 8000,
 	        revive: 5000,
-	        move: 200,  // attacks if man distance is 200
 	        origin: {
 	          x: 94,
 	          y: 156
@@ -2525,7 +2509,6 @@
 	        number: 1,
 	        lifespan: 40000,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 513,
 	          y: 225
@@ -2540,7 +2523,6 @@
 	        number: 1,
 	        lifespan: 40000,
 	        revive: 10000,
-	        move: true,
 	        origin: {
 	          x: 1,
 	          y: 1
@@ -2555,7 +2537,6 @@
 	        number: 1,
 	        lifespan: 10000,
 	        revive: 10000,
-	        move: true,
 	        origin: {
 	          x: 436,
 	          y: 555
@@ -2570,7 +2551,8 @@
 	        number: 1,
 	        lifespan: 10000,
 	        revive: 10000,
-	        move: true,
+	        movement: 'waitStill',
+	        reaction: 'attackIfClose',
 	        origin: {
 	          x: 611,
 	          y: 496
@@ -2585,7 +2567,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: 200,  
 	        origin: {
 	          x: 925,
 	          y: 300
@@ -2600,7 +2581,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: false,
-	        move: true,
 	        origin: {
 	          x: 1400,
 	          y: 178
@@ -2615,7 +2595,6 @@
 	        number: 2,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 1130,
 	          y: 216
@@ -2630,7 +2609,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 56,
 	          y: 364
@@ -2645,7 +2623,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 1037,
 	          y: 532
@@ -2660,7 +2637,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 1204,
 	          y: 216
@@ -2676,6 +2652,7 @@
 	        lifespan: 20000,
 	        revive: 1000,
 	        movement: 'waitStill',
+	        reaction: 'attackIfClose',
 	        origin: {
 	          x: 55,
 	          y: 663
@@ -2689,7 +2666,8 @@
 	        number: 1,
 	        lifespan: 4000,
 	        revive: 5000,
-	        move: true,
+	        movement: 'waitStill',
+	        reaction: 'attackIfAwakened',
 	        origin: {
 	          x: 307,
 	          y: 541
@@ -2703,7 +2681,6 @@
 	        number: 1,
 	        lifespan: Infinity,
 	        revive: 5000,
-	        move: true,
 	        origin: {
 	          x: 764,
 	          y: 301
@@ -2718,7 +2695,8 @@
 	        number: 1,
 	        lifespan: 20000,
 	        revive: 1000,
-	        move: true,
+	        movement: 'waitStill',
+	        reaction: 'attackIfClose',
 	        origin: {
 	          x: 533,
 	          y: 311
@@ -2732,7 +2710,8 @@
 	        number: 1,
 	        lifespan: 20000,
 	        revive: 1000,
-	        move: true,
+	        movement: 'waitStill',
+	        reaction: 'attackIfClose',
 	        origin: {
 	          x: 533,
 	          y: 311

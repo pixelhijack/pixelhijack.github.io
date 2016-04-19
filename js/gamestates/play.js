@@ -278,7 +278,7 @@ function Play(game, globalSettings){
       //creature.debug((creature.lifespan / 1000 | 0));
       //creature.debug(creature.creatureId);
     });
-    man.debug(man.props.lives +' '+ man.state);
+    //man.debug(man.props.lives +' '+ man.state);
     
     setParallax();
     collisions();

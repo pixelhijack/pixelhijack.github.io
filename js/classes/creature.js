@@ -39,8 +39,8 @@ var Creature = function(game, creatureType, x, y){
   this.update = movements.updates[creatureType].bind(this);
   // every creature makes noises: an observable phaser channel to subscribe for:
   this.noise = new Phaser.Signal();
-  // every creature react to other noises: event listener collection here:
-  this.reactions = movements.reactions[creatureType] || movements.reactions.default;
+  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
+  this.reaction = null;
 };
 
 Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -100,11 +100,9 @@ Creature.prototype.debug = function debug(toDebug){
 };
 
 Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
-  var reaction = this.reactions[evt.who + ':' + evt.event];
-  if(reaction){
-    reaction.call(this, evt);
+  if(this.reaction && movements.reactions[this.reaction]){
+    movements.reactions[this.reaction].call(this, evt);
   }
-  //console.log('[creature][Signals][%s] heard some noise!', this.creatureType, event);
 }
 
 Creature.prototype.listen = function listen(subject, reaction){

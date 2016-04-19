@@ -33,7 +33,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 130,
           y: 270
@@ -48,7 +47,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 10000,
         revive: 5000,
-        move: true,
         origin: {
           x: 90,
           y: 260
@@ -63,7 +61,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 682,
           y: 279
@@ -78,7 +75,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -90,7 +86,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 800,
           y: 130
@@ -102,7 +97,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 44,
           y: 198
@@ -117,7 +111,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 470,
           y: 30
@@ -154,7 +147,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -169,7 +161,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -184,7 +175,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -199,7 +189,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -214,7 +203,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -229,7 +217,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 200,
           y: 200
@@ -273,7 +260,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 344,
           y: 277
@@ -288,7 +274,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 10,
           y: 10
@@ -303,7 +288,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 10000,
         revive: 10000,
-        move: true,
         origin: {
           x: 10,
           y: 10
@@ -318,7 +302,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 8000,
         revive: 5000,
-        move: 200,  // attacks if man distance is 200
         origin: {
           x: 94,
           y: 156
@@ -406,7 +389,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 40000,
         revive: 5000,
-        move: true,
         origin: {
           x: 513,
           y: 225
@@ -421,7 +403,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 40000,
         revive: 10000,
-        move: true,
         origin: {
           x: 1,
           y: 1
@@ -436,7 +417,6 @@ var levelConfigs = [
         number: 1,
         lifespan: 10000,
         revive: 10000,
-        move: true,
         origin: {
           x: 436,
           y: 555
@@ -451,7 +431,8 @@ var levelConfigs = [
         number: 1,
         lifespan: 10000,
         revive: 10000,
-        move: true,
+        movement: 'waitStill',
+        reaction: 'attackIfClose',
         origin: {
           x: 611,
           y: 496
@@ -466,7 +447,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: 5000,
-        move: 200,  
         origin: {
           x: 925,
           y: 300
@@ -481,7 +461,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: false,
-        move: true,
         origin: {
           x: 1400,
           y: 178
@@ -496,7 +475,6 @@ var levelConfigs = [
         number: 2,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 1130,
           y: 216
@@ -511,7 +489,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 56,
           y: 364
@@ -526,7 +503,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 1037,
           y: 532
@@ -541,7 +517,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 1204,
           y: 216
@@ -557,6 +532,7 @@ var levelConfigs = [
         lifespan: 20000,
         revive: 1000,
         movement: 'waitStill',
+        reaction: 'attackIfClose',
         origin: {
           x: 55,
           y: 663
@@ -570,7 +546,8 @@ var levelConfigs = [
         number: 1,
         lifespan: 4000,
         revive: 5000,
-        move: true,
+        movement: 'waitStill',
+        reaction: 'attackIfAwakened',
         origin: {
           x: 307,
           y: 541
@@ -584,7 +561,6 @@ var levelConfigs = [
         number: 1,
         lifespan: Infinity,
         revive: 5000,
-        move: true,
         origin: {
           x: 764,
           y: 301
@@ -599,7 +575,8 @@ var levelConfigs = [
         number: 1,
         lifespan: 20000,
         revive: 1000,
-        move: true,
+        movement: 'waitStill',
+        reaction: 'attackIfClose',
         origin: {
           x: 533,
           y: 311
@@ -613,7 +590,8 @@ var levelConfigs = [
         number: 1,
         lifespan: 20000,
         revive: 1000,
-        move: true,
+        movement: 'waitStill',
+        reaction: 'attackIfClose',
         origin: {
           x: 533,
           y: 311
