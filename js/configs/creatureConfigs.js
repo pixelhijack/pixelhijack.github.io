@@ -11,6 +11,7 @@ var creatureConfigs = {
     collide: true,
     lives: 1, 
     lifespan: Infinity,
+    sense: 200,
     animations: [], 
     boundTo : {
       x1: 1000,
@@ -45,6 +46,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 5, 
     animations: [
+      { name: 'idle', frames: [360,360,360,360,360,360,360,367], fps: 5, loop: true },
       { name: 'moving', frames: [360,361,364,367], fps: 10, loop: true },
       { name: 'jumping', frames: [360,361,364,367,369], fps: 10, loop: true },
       { name: 'dead', frames: [371], fps: 10, loop: true }
@@ -55,6 +57,7 @@ var creatureConfigs = {
     maxSpeed: 75,
     acceleration: 15, 
     animations: [
+      { name: 'idle', frames: [321], fps: 10, loop: false },
       { name: 'moving', frames: [320,321,324], fps: 10, loop: true },
       { name: 'spawn', frames: [366,363,358,317], fps: 10, loop: false },
       { name: 'dead', frames: [328], fps: 10, loop: true }
@@ -72,6 +75,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 20, 
     animations: [
+      { name: 'idle', frames: [393,395], fps: 10, loop: true },
       { name: 'moving', frames: [393,395], fps: 10, loop: true },
       { name: 'jumping', frames: [399,401], fps: 10, loop: false },
       { name: 'dead', frames: [402], fps: 10, loop: true }
@@ -86,6 +90,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 50, 
     animations: [
+      { name: 'idle', frames: [405,403,404], fps: 15, loop: true },
       { name: 'moving', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
       { name: 'descend', frames: [405], fps: 12, loop: true },
       { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
@@ -102,6 +107,7 @@ var creatureConfigs = {
     acceleration: 10, 
     animations: [
       { name: 'moving', frames: [337,338], fps: 12, loop: true },
+      { name: 'moving', frames: [337,338], fps: 12, loop: true },
       { name: 'turn', frames: [339,340], fps: 12, loop: true },
       { name: 'dead', frames: [342], fps: 12, loop: true }
     ]
@@ -115,6 +121,7 @@ var creatureConfigs = {
     maxSpeed: 20,
     acceleration: 10, 
     animations: [
+      { name: 'idle', frames: [351,352,351,351,351,351], fps: 10, loop: true },
       { name: 'moving', frames: [357,359], fps: 10, loop: true },
       { name: 'dead', frames: [362], fps: 10, loop: true }
     ]
@@ -127,6 +134,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 10,
     animations: [
+      { name: 'idle', frames: [335], fps: 10, loop: true },
       { name: 'spawn', frames: [365,368,370,372], fps: 10, loop: false },
       { name: 'moving', frames: [299,302,305,309], fps: 10, loop: true },
       { name: 'turn', frames: [319], fps: 10, loop: true },
@@ -139,6 +147,7 @@ var creatureConfigs = {
     maxSpeed: 100,
     acceleration: 20,
     animations: [
+      { name: 'idle', frames: [373], fps: 10, loop: true },
       { name: 'moving', frames: [373,376,378], fps: 10, loop: true },
       { name: 'dead', frames: [380], fps: 10, loop: false }
     ]
@@ -152,6 +161,7 @@ var creatureConfigs = {
     maxSpeed: 100,
     acceleration: 10,
     animations: [
+      { name: 'moving', frames: [394,397,398], fps: 12, loop: true },
       { name: 'moving', frames: [394,397,398], fps: 10, loop: true },
       { name: 'dead', frames: [400], fps: 10, loop: false }
     ]
@@ -164,6 +174,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 25, 
     animations: [
+      { name: 'idle', frames: [348,348,348,348,348,348,349], fps: 10, loop: true },
       { name: 'moving', frames: [323,348,349], fps: 10, loop: true },
       { name: 'jumping', frames: [323,348,349], fps: 10, loop: true },
       { name: 'dead', frames: [348], fps: 10, loop: true }
@@ -177,6 +188,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 25, 
     animations: [
+      { name: 'idle', frames: [344,344,344,344,344,344,344,344,346], fps: 10, loop: true },
       { name: 'moving', frames: [344,346], fps: 10, loop: true },
       { name: 'jumping', frames: [344,346], fps: 10, loop: true },
       { name: 'dead', frames: [344], fps: 10, loop: true }
@@ -190,6 +202,7 @@ var creatureConfigs = {
     maxSpeed: 80,
     acceleration: 40, 
     animations: [
+      { name: 'idle', frames: [325], fps: 10, loop: true },
       { name: 'moving', frames: [325,327,331,325], fps: 10, loop: false },
       { name: 'jumping', frames: [325,327,331,325], fps: 10, loop: false },
       { name: 'dead', frames: [334], fps: 10, loop: true }
@@ -203,6 +216,7 @@ var creatureConfigs = {
     maxSpeed: 50,
     acceleration: 10,
     animations: [
+      { name: 'idle', frames: [390], fps: 10, loop: true },
       { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: true },
       { name: 'moving', frames: [387,389,390,391], fps: 10, loop: true },
       { name: 'dead', frames: [392], fps: 10, loop: true }

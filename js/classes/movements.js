@@ -392,8 +392,10 @@ var reactions = {
   frog: {
     'man:near': function(evt){
       console.info('[EVENT][%s:%s][%s:] Man is near!', evt.who, evt.event, this.creatureType, evt);  
-      if(Math.abs(this.x - evt.x) < 200){
+      if(Math.abs(this.x - evt.x) < this.props.sense){
         this.update = updates.jumpAttack;
+      } else {
+        this.update = updates.waitStill;
       }
     }
   }
