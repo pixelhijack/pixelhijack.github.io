@@ -123,13 +123,14 @@ var creatureConfigs = {
     mass: 0.3,
     jumping: 0,
     collide: true,
-    bounce: 0.3,
+    bounce: 0,
     maxSpeed: 50,
     acceleration: 10,
     animations: [
       { name: 'spawn', frames: [365,368,370,372], fps: 10, loop: false },
       { name: 'moving', frames: [299,302,305,309], fps: 10, loop: true },
-      { name: 'climbing', frames: [319], fps: 10, loop: true },
+      { name: 'turn', frames: [319], fps: 10, loop: true },
+      { name: 'climbing', frames: [341,343,345,347], fps: 10, loop: true },
       { name: 'waiting', frames: [332,335,372], fps: 10, loop: true },
       { name: 'dead', frames: [322], fps: 10, loop: false }
     ]

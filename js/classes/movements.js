@@ -97,6 +97,32 @@ var mixins = {
     this.y += dy;
     this.x += dx;
   },
+  crawl: function(){
+    if(this.body.velocity.y > 0){
+      this.scale.y = -1;
+    } else {
+      this.scale.y = 1;
+    }
+    if(this.body.blocked.left || this.body.blocked.right){
+      this.body.gravity.y = 0;
+      this.state = 'climbing';
+      this.move();
+      //this.scale.y = this.body.velocity.y > 0 && this.isGrounded() ? -1 : 1;
+      
+      // crawling up:
+      if(this.body.blocked.down){
+        this.body.velocity.y -= this.props.acceleration;
+      }
+      //crawling down:
+      if(this.body.blocked.up){
+        this.body.velocity.y += this.props.acceleration;
+      }
+    } else {
+      this.body.gravity.y = this.props.gravity;
+      this.move();
+      this.state = 'moving';
+    }
+  },
   watch: function(){
     this.state = 'idle';
     this.body.velocity.x = 0;
@@ -150,12 +176,26 @@ var behaviours = {
     this.die = mixins.die;
     return this;
   },
+  crawler: function(){
+    this.moveRight = mixins.moveRight;
+    this.moveLeft = mixins.moveLeft;
+    this.move = mixins.move;
+    this.crawl = mixins.crawl;
+    this.wait = mixins.wait;
+    this.turnIfBlocked = mixins.turnIfBlocked;
+    this.hurry = mixins.hurry;
+    this.sentinel = mixins.sentinel;
+    this.watch = mixins.watch;
+    this.die = mixins.die;
+    return this;
+  },
   flier: function(){
     this.moveRight = mixins.moveRight;
     this.moveLeft = mixins.moveLeft;
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.descend = mixins.descend;
     this.ascend = mixins.ascend;
+    this.diagonalDescend = mixins.diagonalDescend;
     this.die = mixins.die;
     return this;
   },
@@ -167,58 +207,31 @@ var behaviours = {
     this.stop = mixins.stop;
     this.lives = mixins.lives;
     return this;
-  },
-  dino: function(){
-    behaviours.walker.call(this);
-  },
-  ptero: function(){
-    behaviours.flier.call(this);
-  },
-  parrot: function(){
-    behaviours.flier.call(this);
-  },
-  bear: function(){
-    behaviours.walker.call(this);
-  }, 
-  dragonfly: function(){
-    behaviours.flier.call(this);
-  },
-  bat: function(){
-    this.diagonalDescend = mixins.diagonalDescend;
-    this.die = mixins.die;
-  },
-  spider: function(){
-    behaviours.walker.call(this);
-  },
-  native: function(){
-    behaviours.walker.call(this);
-  },
-  insect: function(){
-    behaviours.walker.call(this);
-  },
-  bug: function(){
-    behaviours.walker.call(this);
-  },
-  frog: function(){
-    behaviours.walker.call(this);
-  },
-  tiger: function(){
-    behaviours.walker.call(this);
-  },
-  turtle: function(){
-    behaviours.walker.call(this);
   }
 };
+behaviours.dino = behaviours.walker;
+behaviours.ptero = behaviours.flier;
+behaviours.parrot = behaviours.flier;
+behaviours.bear = behaviours.walker;
+behaviours.dragonfly = behaviours.flier;
+behaviours.bat = behaviours.flier;
+behaviours.spider = behaviours.crawler;
+behaviours.native = behaviours.walker;
+behaviours.insect = behaviours.walker;
+behaviours.bug = behaviours.walker;
+behaviours.frog = behaviours.walker;
+behaviours.tiger = behaviours.walker;
+behaviours.turtle = behaviours.walker;
 
 // specific updates of a creature
 var updates = {
+  
   dino: function(){
     this.render();
     if(this.state !== 'dead'){
       this.turnIfBlocked();
       this.move();
       this.sentinel();
-      this.x <= 0 ? this.x = this.game.world.width : this.x;
       if(Math.random() < 0.005){ 
         this.facingRight = !this.facingRight;
       }
@@ -233,7 +246,6 @@ var updates = {
     if(this.state !== 'dead'){
       this.move();
       this.state = 'moving';
-      //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
       this.turnIfBlocked();
       if(Math.random() < 0.01){
         this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
@@ -280,7 +292,8 @@ var updates = {
   spider: function(){
     this.render();
     if(this.state !== 'dead'){
-      this.hurry();
+      this.crawl();
+      //this.hurry();
       this.sentinel();
     }
   },

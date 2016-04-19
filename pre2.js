@@ -372,7 +372,8 @@
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
-	      creature.debug((creature.lifespan / 1000 | 0));
+	      //creature.debug((creature.lifespan / 1000 | 0));
+	      //creature.debug(creature.creatureId);
 	    });
 	    man.debug(man.props.lives +' '+ man.state);
 	    
@@ -439,6 +440,8 @@
 	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.creatureType = creatureType;
+	  // @creatureId: creatureType-x-y-enemyGroupIterator
+	  this.creatureId = creatureType;
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this.state = '';
 	  this.body.collideWorldBounds = true;
@@ -686,13 +689,14 @@
 	    mass: 0.3,
 	    jumping: 0,
 	    collide: true,
-	    bounce: 0.3,
+	    bounce: 0,
 	    maxSpeed: 50,
 	    acceleration: 10,
 	    animations: [
 	      { name: 'spawn', frames: [365,368,370,372], fps: 10, loop: false },
 	      { name: 'moving', frames: [299,302,305,309], fps: 10, loop: true },
-	      { name: 'climbing', frames: [319], fps: 10, loop: true },
+	      { name: 'turn', frames: [319], fps: 10, loop: true },
+	      { name: 'climbing', frames: [341,343,345,347], fps: 10, loop: true },
 	      { name: 'waiting', frames: [332,335,372], fps: 10, loop: true },
 	      { name: 'dead', frames: [322], fps: 10, loop: false }
 	    ]
@@ -896,6 +900,32 @@
 	    this.y += dy;
 	    this.x += dx;
 	  },
+	  crawl: function(){
+	    if(this.body.velocity.y > 0){
+	      this.scale.y = -1;
+	    } else {
+	      this.scale.y = 1;
+	    }
+	    if(this.body.blocked.left || this.body.blocked.right){
+	      this.body.gravity.y = 0;
+	      this.state = 'climbing';
+	      this.move();
+	      //this.scale.y = this.body.velocity.y > 0 && this.isGrounded() ? -1 : 1;
+	      
+	      // crawling up:
+	      if(this.body.blocked.down){
+	        this.body.velocity.y -= this.props.acceleration;
+	      }
+	      //crawling down:
+	      if(this.body.blocked.up){
+	        this.body.velocity.y += this.props.acceleration;
+	      }
+	    } else {
+	      this.body.gravity.y = this.props.gravity;
+	      this.move();
+	      this.state = 'moving';
+	    }
+	  },
 	  watch: function(){
 	    this.state = 'idle';
 	    this.body.velocity.x = 0;
@@ -949,12 +979,26 @@
 	    this.die = mixins.die;
 	    return this;
 	  },
+	  crawler: function(){
+	    this.moveRight = mixins.moveRight;
+	    this.moveLeft = mixins.moveLeft;
+	    this.move = mixins.move;
+	    this.crawl = mixins.crawl;
+	    this.wait = mixins.wait;
+	    this.turnIfBlocked = mixins.turnIfBlocked;
+	    this.hurry = mixins.hurry;
+	    this.sentinel = mixins.sentinel;
+	    this.watch = mixins.watch;
+	    this.die = mixins.die;
+	    return this;
+	  },
 	  flier: function(){
 	    this.moveRight = mixins.moveRight;
 	    this.moveLeft = mixins.moveLeft;
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.descend = mixins.descend;
 	    this.ascend = mixins.ascend;
+	    this.diagonalDescend = mixins.diagonalDescend;
 	    this.die = mixins.die;
 	    return this;
 	  },
@@ -966,58 +1010,31 @@
 	    this.stop = mixins.stop;
 	    this.lives = mixins.lives;
 	    return this;
-	  },
-	  dino: function(){
-	    behaviours.walker.call(this);
-	  },
-	  ptero: function(){
-	    behaviours.flier.call(this);
-	  },
-	  parrot: function(){
-	    behaviours.flier.call(this);
-	  },
-	  bear: function(){
-	    behaviours.walker.call(this);
-	  }, 
-	  dragonfly: function(){
-	    behaviours.flier.call(this);
-	  },
-	  bat: function(){
-	    this.diagonalDescend = mixins.diagonalDescend;
-	    this.die = mixins.die;
-	  },
-	  spider: function(){
-	    behaviours.walker.call(this);
-	  },
-	  native: function(){
-	    behaviours.walker.call(this);
-	  },
-	  insect: function(){
-	    behaviours.walker.call(this);
-	  },
-	  bug: function(){
-	    behaviours.walker.call(this);
-	  },
-	  frog: function(){
-	    behaviours.walker.call(this);
-	  },
-	  tiger: function(){
-	    behaviours.walker.call(this);
-	  },
-	  turtle: function(){
-	    behaviours.walker.call(this);
 	  }
 	};
+	behaviours.dino = behaviours.walker;
+	behaviours.ptero = behaviours.flier;
+	behaviours.parrot = behaviours.flier;
+	behaviours.bear = behaviours.walker;
+	behaviours.dragonfly = behaviours.flier;
+	behaviours.bat = behaviours.flier;
+	behaviours.spider = behaviours.crawler;
+	behaviours.native = behaviours.walker;
+	behaviours.insect = behaviours.walker;
+	behaviours.bug = behaviours.walker;
+	behaviours.frog = behaviours.walker;
+	behaviours.tiger = behaviours.walker;
+	behaviours.turtle = behaviours.walker;
 
 	// specific updates of a creature
 	var updates = {
+	  
 	  dino: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
 	      this.turnIfBlocked();
 	      this.move();
 	      this.sentinel();
-	      this.x <= 0 ? this.x = this.game.world.width : this.x;
 	      if(Math.random() < 0.005){ 
 	        this.facingRight = !this.facingRight;
 	      }
@@ -1032,7 +1049,6 @@
 	    if(this.state !== 'dead'){
 	      this.move();
 	      this.state = 'moving';
-	      //this.x = this.x <= this.width * 0.5 ? this.game.world.width - 5 : this.x;
 	      this.turnIfBlocked();
 	      if(Math.random() < 0.01){
 	        this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
@@ -1079,7 +1095,8 @@
 	  spider: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
-	      this.hurry();
+	      this.crawl();
+	      //this.hurry();
 	      this.sentinel();
 	    }
 	  },
@@ -1347,6 +1364,7 @@
 	    
 	    for(var i = 1, max = groupConfig.number; i <= max; i++){
 	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+	      creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
 	      group.add(creature);
 	    }
 	    //group.setAll('props.boundTo', groupConfig.boundTo); 
@@ -2409,8 +2427,8 @@
 	    deathLayer: 'death-layer',
 	    objectsLayer: null, 
 	    entryPoint: {
-	      x: 311, 
-	      y: 291
+	      x: 743, //311, 
+	      y: 606 //291
 	    },
 	    portals: [
 	      {
@@ -2466,8 +2484,8 @@
 	      {
 	        type: 'spider', 
 	        number: 1,
-	        lifespan: 10000,
-	        revive: 10000,
+	        lifespan: 40000,
+	        revive: 5000,
 	        move: true,
 	        origin: {
 	          x: 513,
@@ -2481,12 +2499,12 @@
 	      {
 	        type: 'spider', 
 	        number: 1,
-	        lifespan: 10000,
+	        lifespan: 40000,
 	        revive: 10000,
 	        move: true,
 	        origin: {
-	          x: 0,
-	          y: 0
+	          x: 1,
+	          y: 1
 	        },
 	        boundTo: {
 	          x1: 0,

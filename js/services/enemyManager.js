@@ -17,6 +17,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
     
     for(var i = 1, max = groupConfig.number; i <= max; i++){
       var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+      creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
       group.add(creature);
     }
     //group.setAll('props.boundTo', groupConfig.boundTo); 

@@ -347,8 +347,8 @@ var levelConfigs = [
     deathLayer: 'death-layer',
     objectsLayer: null, 
     entryPoint: {
-      x: 311, 
-      y: 291
+      x: 743, //311, 
+      y: 606 //291
     },
     portals: [
       {
@@ -404,8 +404,8 @@ var levelConfigs = [
       {
         type: 'spider', 
         number: 1,
-        lifespan: 10000,
-        revive: 10000,
+        lifespan: 40000,
+        revive: 5000,
         move: true,
         origin: {
           x: 513,
@@ -419,12 +419,12 @@ var levelConfigs = [
       {
         type: 'spider', 
         number: 1,
-        lifespan: 10000,
+        lifespan: 40000,
         revive: 10000,
         move: true,
         origin: {
-          x: 0,
-          y: 0
+          x: 1,
+          y: 1
         },
         boundTo: {
           x1: 0,

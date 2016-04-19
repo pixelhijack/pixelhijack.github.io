@@ -5,6 +5,8 @@ var Creature = function(game, creatureType, x, y){
   Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.creatureType = creatureType;
+  // @creatureId: creatureType-x-y-enemyGroupIterator
+  this.creatureId = creatureType;
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this.state = '';
   this.body.collideWorldBounds = true;
