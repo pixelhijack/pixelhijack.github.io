@@ -24,13 +24,15 @@ var Menu = function(game, man){
       subject.noise.add(onEventCallback, this);
     },
     update: function(evt){
-      console.info('[EVENT][Menu]: updating', evt);
-      var actualHeart = evt.args.livesLeft % 4 - 1;
-      hearts.children.forEach(function(heart, i){
-        if(i >= actualHeart){
-          heart.visible = false;
-        }
-      });
+      if(evt.event === 'hurt'){
+        console.info('[EVENT][Menu]: updating', evt);
+        var actualHeart = evt.args.livesLeft % 4 - 1;
+        hearts.children.forEach(function(heart, i){
+          if(i >= actualHeart){
+            heart.visible = false;
+          }
+        });
+      }
     }
   };
 };

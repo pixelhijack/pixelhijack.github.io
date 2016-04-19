@@ -112,8 +112,8 @@ Creature.prototype.listen = function listen(subject, reaction){
   subject.noise.add(reaction, this);
 }
 
-Creature.prototype.shout = function shout(eventType, args){
-  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x, y: this.y, args: args });
+Creature.prototype.shout = function shout(eventType){
+  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
 }
 
 Creature.prototype.revive = function revive(x, y){

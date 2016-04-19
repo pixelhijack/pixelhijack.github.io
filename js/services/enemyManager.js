@@ -1,5 +1,6 @@
 var Creature = require('../classes/creature.js');
 var Group = require('../classes/group.js');
+var movements = require('../classes/movements.js');
 var util = require('./util.js');
 
 
@@ -18,6 +19,10 @@ var enemyManager = function(game, levelEnemies, levelZones){
     for(var i = 1, max = groupConfig.number; i <= max; i++){
       var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
       creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
+      // override general creature-specific updates
+      if(groupConfig.movement){
+         creature.update = movements.updates[groupConfig.movement];
+      }
       group.add(creature);
     }
     //group.setAll('props.boundTo', groupConfig.boundTo); 

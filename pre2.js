@@ -221,6 +221,10 @@
 	    keys = game.input.keyboard.createCursorKeys();
 	    keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	    
+	    game.input.keyboard.onDownCallback = function(e){
+	      man.shout('near');
+	    };
+	    
 	    game.input.addPointer();
 	  
 	    window.addEventListener("deviceorientation", function orientation(event){
@@ -363,7 +367,6 @@
 	  /*=============
 	  *   UPDATE
 	  =============*/
-	  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
 	  function update(){
 	    
 	    // show FPS on bottom left corner
@@ -547,8 +550,8 @@
 	  subject.noise.add(reaction, this);
 	}
 
-	Creature.prototype.shout = function shout(eventType, args){
-	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x, y: this.y, args: args });
+	Creature.prototype.shout = function shout(eventType){
+	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
 	}
 
 	Creature.prototype.revive = function revive(x, y){
@@ -1028,7 +1031,28 @@
 
 	// specific updates of a creature
 	var updates = {
-	  
+	  waitStill: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.state = 'moving';
+	      this.body.velocity.x = 0;
+	      this.body.velocity.y = 0;
+	    }
+	  },
+	  jumpAttack: function(){
+	    this.render();
+	    if(this.state !== 'dead'){
+	      this.turnIfBlocked();
+	      this.move();
+	      if(Math.random() < 0.005){ 
+	        this.facingRight = !this.facingRight;
+	      }
+	      if(Math.random() < 0.05){ 
+	        this.jump(); 
+	        this.state = 'jumping';
+	      }
+	    }
+	  },
 	  dino: function(){
 	    this.render();
 	    if(this.state !== 'dead'){
@@ -1109,18 +1133,7 @@
 	    }
 	  },
 	  insect: function(){
-	    this.render();
-	    if(this.state !== 'dead'){
-	      this.turnIfBlocked();
-	      this.move();
-	      if(Math.random() < 0.005){ 
-	        this.facingRight = !this.facingRight;
-	      }
-	      if(Math.random() < 0.05){ 
-	        this.jump(); 
-	        this.state = 'jumping';
-	      }
-	    }
+	    updates.jumpAttack.call(this);
 	  },
 	  bug: function(){
 	    this.render();
@@ -1182,9 +1195,12 @@
 	      console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.creatureType, evt);  
 	    }
 	  }, 
-	  spider: {
-	    'man:hurt': function(evt){
-	      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.creatureType, evt);  
+	  frog: {
+	    'man:near': function(evt){
+	      console.info('[EVENT][%s:%s][%s:] Man is near!', evt.who, evt.event, this.creatureType, evt);  
+	      if(Math.abs(this.x - evt.x) < 200){
+	        this.update = updates.jumpAttack;
+	      }
 	    }
 	  }
 	};
@@ -1347,6 +1363,7 @@
 
 	var Creature = __webpack_require__(3);
 	var Group = __webpack_require__(9);
+	var movements = __webpack_require__(5);
 	var util = __webpack_require__(10);
 
 
@@ -1365,6 +1382,10 @@
 	    for(var i = 1, max = groupConfig.number; i <= max; i++){
 	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
 	      creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
+	      // override general creature-specific updates
+	      if(groupConfig.movement){
+	         creature.update = movements.updates[groupConfig.movement];
+	      }
 	      group.add(creature);
 	    }
 	    //group.setAll('props.boundTo', groupConfig.boundTo); 
@@ -2061,13 +2082,15 @@
 	      subject.noise.add(onEventCallback, this);
 	    },
 	    update: function(evt){
-	      console.info('[EVENT][Menu]: updating', evt);
-	      var actualHeart = evt.args.livesLeft % 4 - 1;
-	      hearts.children.forEach(function(heart, i){
-	        if(i >= actualHeart){
-	          heart.visible = false;
-	        }
-	      });
+	      if(evt.event === 'hurt'){
+	        console.info('[EVENT][Menu]: updating', evt);
+	        var actualHeart = evt.args.livesLeft % 4 - 1;
+	        hearts.children.forEach(function(heart, i){
+	          if(i >= actualHeart){
+	            heart.visible = false;
+	          }
+	        });
+	      }
 	    }
 	  };
 	};
@@ -2636,7 +2659,7 @@
 	        number: 1,
 	        lifespan: 20000,
 	        revive: 1000,
-	        move: true,
+	        movement: 'waitStill',
 	        origin: {
 	          x: 55,
 	          y: 663

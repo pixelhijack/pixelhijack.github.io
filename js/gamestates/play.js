@@ -121,6 +121,10 @@ function Play(game, globalSettings){
     keys = game.input.keyboard.createCursorKeys();
     keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     
+    game.input.keyboard.onDownCallback = function(e){
+      man.shout('near');
+    };
+    
     game.input.addPointer();
   
     window.addEventListener("deviceorientation", function orientation(event){
@@ -263,7 +267,6 @@ function Play(game, globalSettings){
   /*=============
   *   UPDATE
   =============*/
-  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
   function update(){
     
     // show FPS on bottom left corner

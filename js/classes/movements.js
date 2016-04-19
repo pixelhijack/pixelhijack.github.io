@@ -225,7 +225,28 @@ behaviours.turtle = behaviours.walker;
 
 // specific updates of a creature
 var updates = {
-  
+  waitStill: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.state = 'moving';
+      this.body.velocity.x = 0;
+      this.body.velocity.y = 0;
+    }
+  },
+  jumpAttack: function(){
+    this.render();
+    if(this.state !== 'dead'){
+      this.turnIfBlocked();
+      this.move();
+      if(Math.random() < 0.005){ 
+        this.facingRight = !this.facingRight;
+      }
+      if(Math.random() < 0.05){ 
+        this.jump(); 
+        this.state = 'jumping';
+      }
+    }
+  },
   dino: function(){
     this.render();
     if(this.state !== 'dead'){
@@ -306,18 +327,7 @@ var updates = {
     }
   },
   insect: function(){
-    this.render();
-    if(this.state !== 'dead'){
-      this.turnIfBlocked();
-      this.move();
-      if(Math.random() < 0.005){ 
-        this.facingRight = !this.facingRight;
-      }
-      if(Math.random() < 0.05){ 
-        this.jump(); 
-        this.state = 'jumping';
-      }
-    }
+    updates.jumpAttack.call(this);
   },
   bug: function(){
     this.render();
@@ -379,9 +389,12 @@ var reactions = {
       console.info('[EVENT][%s:%s][%s:] heard some noise!', evt.who, evt.event, this.creatureType, evt);  
     }
   }, 
-  spider: {
-    'man:hurt': function(evt){
-      console.info('[EVENT][%s:%s][%s:] I killed the pray?', evt.who, evt.event, this.creatureType, evt);  
+  frog: {
+    'man:near': function(evt){
+      console.info('[EVENT][%s:%s][%s:] Man is near!', evt.who, evt.event, this.creatureType, evt);  
+      if(Math.abs(this.x - evt.x) < 200){
+        this.update = updates.jumpAttack;
+      }
     }
   }
 };

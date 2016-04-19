@@ -556,7 +556,7 @@ var levelConfigs = [
         number: 1,
         lifespan: 20000,
         revive: 1000,
-        move: true,
+        movement: 'waitStill',
         origin: {
           x: 55,
           y: 663
