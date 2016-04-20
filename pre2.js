@@ -2808,6 +2808,66 @@
 	  ],
 	  bonus: [
 	    {
+	      img: atlas.ALPHABET_W,
+	      x: 60,
+	      y: 290
+	    },
+	    {
+	      img: atlas.ALPHABET_E,
+	      x: 80,
+	      y: 293
+	    },
+	    {
+	      img: atlas.ALPHABET_L,
+	      x: 100,
+	      y: 291
+	    },
+	    {
+	      img: atlas.ALPHABET_C,
+	      x: 120,
+	      y: 288
+	    },
+	    {
+	      img: atlas.ALPHABET_O,
+	      x: 140,
+	      y: 290
+	    },
+	    {
+	      img: atlas.ALPHABET_M,
+	      x: 160,
+	      y: 292
+	    },
+	    {
+	      img: atlas.ALPHABET_E,
+	      x: 180,
+	      y: 294
+	    },
+	    {
+	      img: atlas.ALPHABET_T,
+	      x: 60,
+	      y: 315
+	    },
+	    {
+	      img: atlas.ALPHABET_O,
+	      x: 80,
+	      y: 313
+	    },
+	    {
+	      img: atlas.ALPHABET_T,
+	      x: 120,
+	      y: 316
+	    },
+	    {
+	      img: atlas.ALPHABET_H,
+	      x: 140,
+	      y: 317
+	    },
+	    {
+	      img: atlas.ALPHABET_E,
+	      x: 160,
+	      y: 315
+	    },
+	    {
 	      img: atlas.ALPHABET_A,
 	      x: 60,
 	      y: 335
@@ -2884,8 +2944,8 @@
 	    },
 	    {
 	      img: atlas.BONUS_SKULL_BIG,
-	      x: 113,
-	      y: 280
+	      x: 277,
+	      y: 34
 	    },
 	    {
 	      img: atlas.WEAPON_AXE,
