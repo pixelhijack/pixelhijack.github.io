@@ -107,8 +107,8 @@ function Play(game, globalSettings){
     });
     
     game.camera.follow(man);
-    //game.add.existing(man);
-    game.world.addAt(man, 2);
+    game.add.existing(man);
+    //game.world.addAt(man, 2);
   }
   
   function renderMenu(){
