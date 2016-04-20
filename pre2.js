@@ -2785,7 +2785,7 @@
 	  tilemap: 'tilemap-level-5',
 	  tiledJson: 'L1v4', 
 	  tilesetImage: 'L1',
-	  backgroundImage: 'bg3seamless',
+	  backgroundImage: 'bg1seamless',
 	  width: 100 * 16,
 	  height: 100 * 16,
 	  backgroundLayer: 'background-2',
