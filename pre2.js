@@ -448,6 +448,8 @@
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this.state = '';
 	  this.body.collideWorldBounds = true;
+	  this.checkWorldBounds = true,
+	  this.outOfBoundsKill = true;
 	  this.body.gravity.y = creatureConfigs[creatureType].gravity;
 	  this.body.mass = creatureConfigs[creatureType].mass;
 	  this.anchor.setTo(creatureConfigs[creatureType].correctedAnchor.x, creatureConfigs[creatureType].correctedAnchor.y);
@@ -1301,7 +1303,7 @@
 	    if(levelToLoad.deathLayer){
 	      level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
 	      level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.deathLayer);
-	      level.deathLayer.visible = true;
+	      level.deathLayer.visible = false;
 	    }
 	    if(levelToLoad.foregroundLayer){
 	      level.foregroundLayer = level.tilemap.createLayer(levelToLoad.foregroundLayer);
@@ -1696,7 +1698,7 @@
 	  key99: "99",
 	  key100: "100",
 	  BONUS_BIG_ICECREAM: "101",
-	  key102: "102",
+	  WEAPON_AXE: "102",
 	  BONUS_BIG_BANANA: "103",
 	  key104: "104",
 	  key105: "105",
@@ -1830,7 +1832,7 @@
 	  key233: "233",
 	  key234: "234",
 	  key235: "235",
-	  key236: "236",
+	  BONUS_SKULL_BIG: "236",
 	  key237: "237",
 	  key238: "238",
 	  key239: "239",
@@ -1875,8 +1877,8 @@
 	  key278: "278",
 	  key279: "279",
 	  key280: "280",
-	  PORTAL_SMALL_STOP: "281",
-	  PORTAL_SMALL_GO: "282",
+	  PORTAL_SMALL_GO: "281",
+	  PORTAL_SMALL_STOP: "282",
 	  TEXT_PASS: "283",
 	  PLATFORM_ICE: "284",
 	  NUMBER_1: "285",
@@ -1909,7 +1911,7 @@
 	  key312: "312",
 	  key313: "313",
 	  key314: "314",
-	  key315: "315",
+	  PORTAL_LEVEL_GENERAL: "315",
 	  key316: "316",
 	  key317: "317",
 	  key318: "318",
@@ -2118,11 +2120,11 @@
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var level1 = __webpack_require__(17);
-	var level2 = __webpack_require__(20);
-	var level3 = __webpack_require__(21);
-	var level4 = __webpack_require__(22);
-	var level5 = __webpack_require__(23);
+	var level1 = __webpack_require__(16);
+	var level2 = __webpack_require__(17);
+	var level3 = __webpack_require__(18);
+	var level4 = __webpack_require__(19);
+	var level5 = __webpack_require__(20);
 
 	var levelConfigs = [
 	  level1,
@@ -2135,11 +2137,10 @@
 	module.exports = levelConfigs;
 
 /***/ },
-/* 16 */,
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./assetMap.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var atlas = __webpack_require__(13);
 
 	var level1 = {
 	  id: 1,
@@ -2266,12 +2267,10 @@
 	module.exports = level1;
 
 /***/ },
-/* 18 */,
-/* 19 */,
-/* 20 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./assetMap.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var atlas = __webpack_require__(13);
 
 	var level2 = {
 	  id: 2,
@@ -2383,10 +2382,10 @@
 	module.exports = level2;
 
 /***/ },
-/* 21 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./assetMap.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var atlas = __webpack_require__(13);
 
 	var level3 = {
 	  id: 3,
@@ -2477,10 +2476,10 @@
 	module.exports = level3;
 
 /***/ },
-/* 22 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./assetMap.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var atlas = __webpack_require__(13);
 
 	var level4 = {
 	  id: 4,
@@ -2767,7 +2766,7 @@
 	      },
 	      boundTo: {
 	        
-	      },
+	      }
 	    }
 	  ]
 	};
@@ -2775,10 +2774,10 @@
 	module.exports = level4;
 
 /***/ },
-/* 23 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./assetMap.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var atlas = __webpack_require__(13);
 
 	var level5 = {
 	  id: 5,
@@ -2803,9 +2802,96 @@
 	  portals: [
 	    {
 	      jumpTo: 4,
-	      x: 534,
-	      y: 130
+	      x: 470,
+	      y: 60
 	    }  
+	  ],
+	  bonus: [
+	    {
+	      img: atlas.ALPHABET_A,
+	      x: 60,
+	      y: 335
+	    },
+	    {
+	      img: atlas.ALPHABET_B,
+	      x: 80,
+	      y: 340
+	    },
+	    {
+	      img: atlas.ALPHABET_Y,
+	      x: 100,
+	      y: 340
+	    },
+	    {
+	      img: atlas.ALPHABET_S,
+	      x: 120,
+	      y: 345
+	    },
+	    {
+	      img: atlas.ALPHABET_S,
+	      x: 140,
+	      y: 340
+	    },
+	    {
+	      img: atlas.ALPHABET_DOT,
+	      x: 160,
+	      y: 345
+	    },
+	    {
+	      img: atlas.ALPHABET_DOT,
+	      x: 170,
+	      y: 346
+	    },
+	    {
+	      img: atlas.ALPHABET_DOT,
+	      x: 180,
+	      y: 345
+	    },
+	    {
+	      img: atlas.PORTAL_SMALL_STOP,
+	      x: 1531,
+	      y: 990
+	    },
+	    {
+	      img: atlas.ALPHABET_U,
+	      x: 1531,
+	      y: 1015
+	    },
+	    {
+	      img: atlas.ALPHABET_P,
+	      x: 1545,
+	      y: 1016
+	    },
+	    {
+	      img: atlas.ALPHABET_EXCLAMATION_MARK,
+	      x: 1560,
+	      y: 1017
+	    },
+	    {
+	      img: atlas.ALPHABET_U,
+	      x: 1531,
+	      y: 1035
+	    },
+	    {
+	      img: atlas.ALPHABET_P,
+	      x: 1545,
+	      y: 1036
+	    },
+	    {
+	      img: atlas.ALPHABET_EXCLAMATION_MARK,
+	      x: 1560,
+	      y: 1037
+	    },
+	    {
+	      img: atlas.BONUS_SKULL_BIG,
+	      x: 113,
+	      y: 280
+	    },
+	    {
+	      img: atlas.WEAPON_AXE,
+	      x: 533,
+	      y: 1278
+	    }
 	  ],
 	  enemies: [
 	    {
@@ -2846,11 +2932,289 @@
 	      movement: 'waitStill',
 	      reaction: 'attackIfAwakened',
 	      origin: {
-	        x: 428,
-	        y: 1431
+	        x: 402,
+	        y: 1377
 	      },
 	      boundTo: {
 	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 472,
+	        y: 222
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 767,
+	        y: 1300
+	      },
+	      boundTo: {
+	        x1: 767,
+	        x2: 882
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 1000,
+	        y: 1263
+	      },
+	      boundTo: {
+	        x1: 1000,
+	        x2: 1060
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 1173,
+	        y: 1212
+	      },
+	      boundTo: {
+	        x1: 1173,
+	        x2: 1240
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 1398,
+	        y: 1181
+	      },
+	      boundTo: {
+	        x1: 1398,
+	        x2: 1455
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 842,
+	        y: 970
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 816,
+	        y: 967
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'frog',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 228,
+	        y: 853
+	      },
+	      boundTo: {
+	        
+	      },
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: 15000,
+	      revive: 1000,
+	      origin: {
+	        x: 1460,
+	        y: 632
+	      },
+	      boundTo: {
+	        x: 995,
+	        y: 1055
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 5000,
+	      origin: {
+	        x: 937,
+	        y: 632
+	      },
+	      boundTo: {
+	        x: 995,
+	        y: 1055
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 1000,
+	      origin: {
+	        x: 913,
+	        y: 632
+	      },
+	      boundTo: {
+	        x: 995,
+	        y: 1055
+	      }
+	    },
+	    {
+	      type: 'dragonfly',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 253,
+	        y: 927
+	      },
+	      boundTo: {
+	        x1: 253,
+	        x2: 750
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 786,
+	        y: 462
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 891,
+	        y: 432
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 1088,
+	        y: 478
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 1200,
+	        y: 490
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 993,
+	        y: 488
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'bug',
+	      number: 3,
+	      lifespan: Infinity,
+	      revive: 1000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 860,
+	        y: 166
+	      },
+	      boundTo: {
+	        
+	      }
+	    },
+	    {
+	      type: 'ptero',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 513,
+	        y: 93
+	      },
+	      boundTo: {
+	        x1: 513,
+	        y1: 93,
+	        x2: 860,
+	        y2: 100
 	      }
 	    }
 	  ]

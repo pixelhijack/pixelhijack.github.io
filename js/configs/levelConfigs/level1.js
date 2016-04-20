@@ -1,4 +1,4 @@
-var atlas = require('./assetMap.js');
+var atlas = require('../assetMap.js');
 
 var level1 = {
   id: 1,

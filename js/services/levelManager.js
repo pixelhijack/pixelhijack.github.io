@@ -45,7 +45,7 @@ var levelManager = function(game, levelList){
     if(levelToLoad.deathLayer){
       level.deathLayer = level.tilemap.createLayer(levelToLoad.deathLayer);
       level.tilemap.setCollisionBetween(0, 3000, true, levelToLoad.deathLayer);
-      level.deathLayer.visible = true;
+      level.deathLayer.visible = false;
     }
     if(levelToLoad.foregroundLayer){
       level.foregroundLayer = level.tilemap.createLayer(levelToLoad.foregroundLayer);

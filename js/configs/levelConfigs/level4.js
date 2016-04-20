@@ -1,4 +1,4 @@
-var atlas = require('./assetMap.js');
+var atlas = require('../assetMap.js');
 
 var level4 = {
   id: 4,
@@ -285,7 +285,7 @@ var level4 = {
       },
       boundTo: {
         
-      },
+      }
     }
   ]
 };

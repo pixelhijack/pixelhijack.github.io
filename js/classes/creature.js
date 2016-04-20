@@ -10,6 +10,8 @@ var Creature = function(game, creatureType, x, y){
   this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
   this.state = '';
   this.body.collideWorldBounds = true;
+  this.checkWorldBounds = true,
+  this.outOfBoundsKill = true;
   this.body.gravity.y = creatureConfigs[creatureType].gravity;
   this.body.mass = creatureConfigs[creatureType].mass;
   this.anchor.setTo(creatureConfigs[creatureType].correctedAnchor.x, creatureConfigs[creatureType].correctedAnchor.y);
