@@ -154,11 +154,6 @@ function Play(game, globalSettings){
     events.somethingHappened = new Phaser.Signal();
     events.somethingHappened.add(onSomethingHappened, this);
     
-    var aTimer = utils.onEvery(10000, function(){
-      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-      console.info('[play][Timers] Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
-    });
-    
     console.info('[play] PHASER created');
   }
   
@@ -193,6 +188,21 @@ function Play(game, globalSettings){
     things.portals.forEach(function(portal){
       game.physics.arcade.collide(man, portal, function(){
         game.state.start('Play', true, false, { levelNumber: portal.jumpTo });
+      }, null, this);
+    });
+    
+    things.platforms.forEach(function(platform){
+      if(Phaser.Rectangle.intersects(platform.getBounds(), man.getBounds()) && platform.body.wasTouching.up){
+        platform.stepped.prev = platform.stepped.on;
+        platform.stepped.on = true; 
+      } else {
+        platform.stepped.prev = platform.stepped.on;
+        platform.stepped.on = false; 
+      }
+      game.physics.arcade.collide(man, platform, function(stander, platform){
+        if(platform.onStand){
+          platform.onStand(stander, platform);
+        }
       }, null, this);
     });
     
@@ -289,7 +299,7 @@ function Play(game, globalSettings){
       console.info('[play][Events] clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
     }
     
-    console.info('[play] PHASER updated');
+    //console.info('[play] PHASER updated');
   }
   
   function onEnemyCollision(hero, enemy){

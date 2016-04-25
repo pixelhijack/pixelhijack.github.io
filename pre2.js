@@ -1,52 +1,55 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/*!*********************!*\
+  !*** ./js/index.js ***!
+  \*********************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Menu = __webpack_require__(1);
-	var Play = __webpack_require__(2);
-
+	var Menu = __webpack_require__(/*! ./gamestates/menu.js */ 1);
+	var Play = __webpack_require__(/*! ./gamestates/play.js */ 2);
+	
 	var globalSettings = {
 	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
 	  dimensions: {
@@ -62,18 +65,21 @@
 	    accelerationMultiplier: 3 // for mobile. 5 = speed up for slower device, 1 = same speed as desktop
 	  }
 	};
-
+	
 	var game = new Phaser.Game(globalSettings.dimensions.WIDTH, globalSettings.dimensions.HEIGHT, Phaser.AUTO, '', null, false, false);
 	var PRE2 = { 
 	  Play: Play.bind(this, game, globalSettings)
 	};
 	game.state.add('Play', PRE2.Play);
 	game.state.start('Play', true, true, { levelNumber: globalSettings.level });
-
+	
 
 
 /***/ },
 /* 1 */
+/*!*******************************!*\
+  !*** ./js/gamestates/menu.js ***!
+  \*******************************/
 /***/ function(module, exports) {
 
 	function Menu(){
@@ -91,23 +97,26 @@
 	    
 	  }
 	}
-
+	
 	module.exports = Menu;
 
 /***/ },
 /* 2 */
+/*!*******************************!*\
+  !*** ./js/gamestates/play.js ***!
+  \*******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(3);
-	var Thing = __webpack_require__(6);
-	var levelManager = __webpack_require__(7);
-	var enemyManager = __webpack_require__(8);
-	var thingManager = __webpack_require__(11);
-	var menuManager = __webpack_require__(14);
-	var levelConfigs = __webpack_require__(15);
-	var util = __webpack_require__(10);
-
-
+	var Creature = __webpack_require__(/*! ../classes/creature.js */ 3);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 6);
+	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 7);
+	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 8);
+	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 11);
+	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 15);
+	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 16);
+	var util = __webpack_require__(/*! ../services/util.js */ 10);
+	
+	
 	window.addEventListener('error', function(e){
 	  var stack = e && e.error && e.error.stack;
 	  var message = e && e.error && e.error.toString();
@@ -116,10 +125,10 @@
 	  }
 	  console.error('[PRE2-ERROR]', message);
 	});
-
+	
 	// Play game state
 	function Play(game, globalSettings){
-
+	
 	  var man;
 	  
 	  var keys; 
@@ -131,7 +140,7 @@
 	  };
 	  var menu;
 	  var level = levelManager(game, levelConfigs);
-
+	
 	  var levelNo;
 	  
 	  var enemies;
@@ -141,7 +150,7 @@
 	  var utils = util(game);
 	  
 	  var events = { };
-
+	
 	  // public methods for Phaser
 	  this.init = function init(initConfigs){
 	    console.info('INIT:', initConfigs);
@@ -254,11 +263,6 @@
 	    events.somethingHappened = new Phaser.Signal();
 	    events.somethingHappened.add(onSomethingHappened, this);
 	    
-	    var aTimer = utils.onEvery(10000, function(){
-	      //game.debug.text('Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()), 32, 64);
-	      console.info('[play][Timers] Elapsed: ' + Math.floor(game.time.totalElapsedSeconds()));
-	    });
-	    
 	    console.info('[play] PHASER created');
 	  }
 	  
@@ -296,6 +300,21 @@
 	      }, null, this);
 	    });
 	    
+	    things.platforms.forEach(function(platform){
+	      if(Phaser.Rectangle.intersects(platform.getBounds(), man.getBounds()) && platform.body.wasTouching.up){
+	        platform.stepped.prev = platform.stepped.on;
+	        platform.stepped.on = true; 
+	      } else {
+	        platform.stepped.prev = platform.stepped.on;
+	        platform.stepped.on = false; 
+	      }
+	      game.physics.arcade.collide(man, platform, function(stander, platform){
+	        if(platform.onStand){
+	          platform.onStand(stander, platform);
+	        }
+	      }, null, this);
+	    });
+	    
 	    /* hit'n kill enemy: collision should calculated on weapon sprite
 	    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
 	      if(man.state === 'hitting'){
@@ -309,7 +328,7 @@
 	    // weapon sprite should be always in sync with the man sprite
 	    weapon.sprite.x = man.x;
 	    weapon.sprite.y = man.y;
-
+	
 	    if(man.stunnedUntil > game.time.now){
 	      keys.enabled = false;
 	      man.state = 'hurt';
@@ -389,7 +408,7 @@
 	      console.info('[play][Events] clicked at', game.input.activePointer.worldX | 0, game.input.activePointer.worldY | 0);
 	    }
 	    
-	    console.info('[play] PHASER updated');
+	    //console.info('[play] PHASER updated');
 	  }
 	  
 	  function onEnemyCollision(hero, enemy){
@@ -427,18 +446,21 @@
 	    sprite.visible = !sprite.visible;
 	  }
 	}
-
+	
 	module.exports = Play;
-
+	
 
 
 /***/ },
 /* 3 */
+/*!********************************!*\
+  !*** ./js/classes/creature.js ***!
+  \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var creatureConfigs = __webpack_require__(4);
-	var movements = __webpack_require__(5);
-
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 4);
+	var movements = __webpack_require__(/*! ./movements.js */ 5);
+	
 	var Creature = function(game, creatureType, x, y){
 	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -456,7 +478,7 @@
 	  
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
-
+	
 	  /*
 	    @this.lifespan: the actual, used by Phaser
 	    @this.props.lifespan: the abstract from creature & level configs
@@ -482,10 +504,10 @@
 	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
 	  this.reaction = null;
 	};
-
+	
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
 	Creature.prototype.constructor = Creature;
-
+	
 	  /*  @boundTo
 	    {x, y}            - a point
 	    {x1, x2}          - a section
@@ -518,57 +540,60 @@
 	      }
 	    }
 	});
-
+	
 	Creature.prototype.render = function render(){
 	  this.play(this.state); 
 	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
 	};
-
-
+	
+	
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
 	};
-
+	
 	Creature.prototype.isGrounded = function isGrounded(){
 	  return this.body.touching.down || this.body.blocked.down;
 	};
-
+	
 	// use in update()
 	Creature.prototype.debug = function debug(toDebug){
 	  this._debugText.visible = true;
 	  this._debugText.setText(toDebug);
 	};
-
+	
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
 	  if(this.reaction && movements.reactions[this.reaction]){
 	    movements.reactions[this.reaction].call(this, evt);
 	  }
 	}
-
+	
 	Creature.prototype.listen = function listen(subject, reaction){
 	  // subscribe a creature to man's noises: man.noise.add(creature.onEnemyMovements, creature);
 	  subject.noise.add(reaction, this);
 	}
-
+	
 	Creature.prototype.shout = function shout(eventType){
 	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
 	}
-
+	
 	Creature.prototype.revive = function revive(x, y){
 	  this.lifespan = this.props.lifespan;
 	  this.state = 'moving';
 	  this.reset(x, y);
 	};
-
+	
 	module.exports = Creature;
 	  
 
 /***/ },
 /* 4 */
+/*!***************************************!*\
+  !*** ./js/configs/creatureConfigs.js ***!
+  \***************************************/
 /***/ function(module, exports) {
 
 	//var _ = require('lodash');
-
+	
 	var creatureConfigs = {
 	  creatureDefaults: {
 	    gravity: 500,
@@ -801,7 +826,7 @@
 	    animations: []
 	  }
 	};
-
+	
 	for(var creature in creatureConfigs){
 	  //creatureConfigs[creature] = _.merge({}, configs.creatureDefaults, configs[creature]);  
 	  var defaults = creatureConfigs['creatureDefaults'];
@@ -811,11 +836,14 @@
 	    }
 	  }  
 	}
-
+	
 	module.exports = creatureConfigs;
 
 /***/ },
 /* 5 */
+/*!*********************************!*\
+  !*** ./js/classes/movements.js ***!
+  \*********************************/
 /***/ function(module, exports) {
 
 	// general behaviour reducers any entity can use
@@ -982,7 +1010,7 @@
 	    }
 	  }
 	};
-
+	
 	// creature class mixins implementing behaviours should be added here
 	var behaviours = {
 	  walker: function(){
@@ -1044,7 +1072,7 @@
 	behaviours.frog = behaviours.walker;
 	behaviours.tiger = behaviours.walker;
 	behaviours.turtle = behaviours.walker;
-
+	
 	// specific updates of a creature
 	var updates = {
 	  waitStill: function(){
@@ -1198,11 +1226,11 @@
 	    }
 	  }
 	};
-
+	
 	var reactions = {
 	  attackIfClose: function(evt){
 	    if(Math.abs(this.x - evt.x) < this.props.sense){
-	      console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
+	      //console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
 	      this.update = updates[this.creatureType];
 	    } else {
 	      this.update = updates.waitStill;
@@ -1210,7 +1238,7 @@
 	  },
 	  attackIfAwakened: function(evt){
 	    if(Math.abs(this.x - evt.x) < this.props.sense){
-	      console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
+	      //console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
 	      this.update = updates[this.creatureType];
 	    }
 	  },
@@ -1220,18 +1248,21 @@
 	    }
 	  }
 	};
-
+	
 	module.exports = {
 	  mixins: mixins,
 	  behaviours: behaviours,
 	  updates: updates, 
 	  reactions: reactions
 	};
-
+	
 
 
 /***/ },
 /* 6 */
+/*!******************************!*\
+  !*** ./js/classes/things.js ***!
+  \******************************/
 /***/ function(module, exports) {
 
 	var Thing = function(game, frameName, x, y, configs){
@@ -1243,17 +1274,20 @@
 	  
 	  
 	  this.update = function(){
-
-	  }
+	  
+	  };
 	};
-
+	
 	Thing.prototype = Object.create(Phaser.Sprite.prototype);
 	Thing.prototype.constructor = Thing;
-
+	
 	module.exports = Thing;
 
 /***/ },
 /* 7 */
+/*!*************************************!*\
+  !*** ./js/services/levelManager.js ***!
+  \*************************************/
 /***/ function(module, exports) {
 
 	var levelManager = function(game, levelList){
@@ -1346,7 +1380,7 @@
 	  };
 	  return level;
 	};
-
+	
 	// find polyfill...
 	if (!Array.prototype.find) {
 	  Array.prototype.find = function(predicate) {
@@ -1360,7 +1394,7 @@
 	    var length = list.length >>> 0;
 	    var thisArg = arguments[1];
 	    var value;
-
+	
 	    for (var i = 0; i < length; i++) {
 	      value = list[i];
 	      if (predicate.call(thisArg, value, i, list)) {
@@ -1370,25 +1404,28 @@
 	    return undefined;
 	  };
 	}
-
+	
 	module.exports = levelManager;
 
 /***/ },
 /* 8 */
+/*!*************************************!*\
+  !*** ./js/services/enemyManager.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(3);
-	var Group = __webpack_require__(9);
-	var movements = __webpack_require__(5);
-	var util = __webpack_require__(10);
-
-
+	var Creature = __webpack_require__(/*! ../classes/creature.js */ 3);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 9);
+	var movements = __webpack_require__(/*! ../classes/movements.js */ 5);
+	var util = __webpack_require__(/*! ./util.js */ 10);
+	
+	
 	var enemyManager = function(game, levelEnemies, levelZones){
 	  var utils = util(game);
 	  
 	  var groups = [];
 	  var reviveTimers = [];
-
+	
 	  // populate enemy groups
 	  groups = levelEnemies.map(function(groupConfig){
 	    
@@ -1428,7 +1465,7 @@
 	  function revive(group){
 	    var enemyToRevive = group.getFirstDead();
 	    if(enemyToRevive){
-	      console.info('[enemyManager] reviving a %s', enemyToRevive.creatureType, enemyToRevive);
+	      //console.info('[enemyManager] reviving a %s', enemyToRevive.creatureType, enemyToRevive);
 	      enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
 	    }
 	  }
@@ -1454,27 +1491,33 @@
 	    }
 	  };
 	};
-
+	
 	module.exports = enemyManager;
 
 /***/ },
 /* 9 */
+/*!*****************************!*\
+  !*** ./js/classes/group.js ***!
+  \*****************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(3);
-
+	var Creature = __webpack_require__(/*! ./creature.js */ 3);
+	
 	var Group = function(game, props){
 	  Phaser.Group.call(this, game);
 	  this.props = props || {};
 	};
-
+	
 	Group.prototype = Object.create(Phaser.Group.prototype);
 	Group.prototype.constructor = Group;
-
+	
 	module.exports = Group;
 
 /***/ },
 /* 10 */
+/*!*****************************!*\
+  !*** ./js/services/util.js ***!
+  \*****************************/
 /***/ function(module, exports) {
 
 	var util = function(game){
@@ -1530,17 +1573,21 @@
 	  }
 	  };
 	};
-
+	
 	module.exports = util;
 
 /***/ },
 /* 11 */
+/*!*************************************!*\
+  !*** ./js/services/thingManager.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Thing = __webpack_require__(6);
-	var Portal = __webpack_require__(12);
-	var Group = __webpack_require__(9);
-
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 6);
+	var Portal = __webpack_require__(/*! ../classes/portal.js */ 12);
+	var Platform = __webpack_require__(/*! ../classes/platform.js */ 14);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 9);
+	
 	var thingManager = function(game, thingsToLoad){
 	  
 	  var things = {
@@ -1559,17 +1606,25 @@
 	    things.portals.add(portal);
 	  });
 	  
+	  thingsToLoad.platforms.forEach(function(platformConfig){
+	    var platform = new Platform(game, platformConfig.img, platformConfig.x, platformConfig.y, platformConfig);
+	    things.platforms.add(platform);
+	  });
+	  
 	  return things;
 	};
-
+	
 	module.exports = thingManager;
 
 /***/ },
 /* 12 */
+/*!******************************!*\
+  !*** ./js/classes/portal.js ***!
+  \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 13);
+	
 	var Portal = function(game, jumpTo, x, y){
 	  
 	  this.jumpTo = jumpTo;
@@ -1582,17 +1637,20 @@
 	  
 	  
 	  this.update = function(){
-
+	
 	  }
 	};
-
+	
 	Portal.prototype = Object.create(Phaser.Sprite.prototype);
 	Portal.prototype.constructor = Portal;
-
+	
 	module.exports = Portal;
 
 /***/ },
 /* 13 */
+/*!********************************!*\
+  !*** ./js/configs/assetMap.js ***!
+  \********************************/
 /***/ function(module, exports) {
 
 	var assetMap = {
@@ -2068,11 +2126,132 @@
 	  ALPHABET_X: "469",
 	  key470: "470"
 	};
-
+	
 	module.exports = assetMap;
 
 /***/ },
 /* 14 */
+/*!********************************!*\
+  !*** ./js/classes/platform.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	var Platform = function(game, platformImage, x, y, props){
+	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
+	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  
+	  this.frameName = platformImage;
+	  this.props = props;
+	  
+	  this.stepped = {
+	    on: false,
+	    prev: false
+	  };
+	
+	  this.props.prevPosition = {
+	    x: this.x,
+	    y: this.y,
+	    dx: 0,
+	    dy: 0
+	  };
+	  
+	  this.body.gravity.y = 500;
+	  this.body.immovable = true;
+	  this.body.moves = false;
+	  this.anchor.setTo(0.5, 0.5);
+	  game.add.existing(this);
+	  
+	  if(this.props.behaviour === 'shuttle'){
+	    this.shuttle({ x: this.props.moveTo.x, 
+	                   y: this.props.moveTo.y },
+	                 { x: this.props.x, 
+	                   y: this.props.y }, 
+	                 this.props.moveTo.timeout, 
+	                 Phaser.Easing[this.props.moveTo.easing].InOut);
+	  }
+	  
+	  this.update = function(){
+	    // tweening object doesnt have body.velocity so we have to manually calculate:
+	    this.props.prevPosition.dx = this.x - this.props.prevPosition.x;
+	    this.props.prevPosition.dy = this.y - this.props.prevPosition.y;
+	    this.props.prevPosition.x = this.x;
+	    this.props.prevPosition.y = this.y;
+	    
+	    // one-off step-on step-off 'events' !== onStand
+	    if(this.stepped.on && !this.stepped.prev){
+	      this.onSteppedOn();
+	    }
+	    if(!this.stepped.on && this.stepped.prev){
+	      this.onSteppedOff();
+	    }
+	  };
+	};
+	
+	Platform.prototype = Object.create(Phaser.Sprite.prototype);
+	Platform.prototype.constructor = Platform;
+	
+	Platform.prototype.onSteppedOn = function onSteppedOn(stander, platform){
+	  if(this.props.behaviour === 'moveTo'){
+	    this.props.tween1 = this.moveTo({ x: (this.props.moveTo.x || this.x), 
+	                                      y: (this.props.moveTo.y || this.y) }, 
+	                                      this.props.moveTo.timeout, 
+	                                      Phaser.Easing[this.props.moveTo.easing].InOut);
+	  }
+	  
+	  if(this.props.behaviour === 'fall'){
+	    this.game.time.events.add(Phaser.Timer.SECOND * this.props.fallTimeout * 0.001, function(){
+	      this.fall();
+	    }, this);
+	    this.game.time.events.add(Phaser.Timer.SECOND * this.props.restoreTimeout * 0.001, function(){
+	      this.restore();
+	    }, this);
+	  }
+	};
+	
+	Platform.prototype.onSteppedOff = function onSteppedOff(stander, platform){
+	
+	};
+	
+	Platform.prototype.onStand = function onStand(stander, platform){
+	  // corrigation of standing sprite: if not, the platform move out of his feet
+	  // stander.x = platform.x is not good enough, creates sticky platform
+	  stander.x += platform.props.prevPosition.dx;
+	  stander.y += platform.props.prevPosition.dy;
+	};
+	
+	Platform.prototype.fall = function fall(){
+	  this.immovable = false;
+	  this.body.moves = true;
+	  this.allowGravity = true;
+	};
+	
+	Platform.prototype.restore = function restore(){
+	  this.immovable = true;
+	  this.body.moves = false;
+	  this.allowGravity = false;
+	  this.game.add.tween(this).to({ x: this.props.x, y: this.props.y }, 1000, Phaser.Easing.Linear.In);
+	};
+	
+	Platform.prototype.moveTo = function moveTo(tweenTo, timeout, easing){
+	  this.game.add.tween(this).to(tweenTo, timeout, easing);
+	};
+	
+	Platform.prototype.shuttle = function shuttle(tween1, tween2, timeout, easing){
+	  this.props.tween1 = this.game.add.tween(this).to(tween1, timeout, easing);
+	  this.props.tween2 = this.game.add.tween(this).to(tween2, timeout, easing);
+	  
+	  this.props.tween1.chain(this.props.tween2);
+	  this.props.tween2.chain(this.props.tween1);
+	  this.props.tween1.start();
+	};
+	
+	module.exports = Platform;
+
+/***/ },
+/* 15 */
+/*!************************************!*\
+  !*** ./js/services/menuManager.js ***!
+  \************************************/
 /***/ function(module, exports) {
 
 	var Menu = function(game, man){
@@ -2095,7 +2274,7 @@
 	    heart.frame = 1;
 	    hearts.add(heart);
 	  }
-
+	
 	  return {
 	    listen: function(subject, onEventCallback){
 	      subject.noise.add(onEventCallback, this);
@@ -2113,19 +2292,22 @@
 	    }
 	  };
 	};
-
+	
 	module.exports = Menu;
 
 /***/ },
-/* 15 */
+/* 16 */
+/*!************************************!*\
+  !*** ./js/configs/levelConfigs.js ***!
+  \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var level1 = __webpack_require__(16);
-	var level2 = __webpack_require__(17);
-	var level3 = __webpack_require__(18);
-	var level4 = __webpack_require__(19);
-	var level5 = __webpack_require__(20);
-
+	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 17);
+	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 18);
+	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 19);
+	var level4 = __webpack_require__(/*! ./levelConfigs/level4.js */ 20);
+	var level5 = __webpack_require__(/*! ./levelConfigs/level5.js */ 21);
+	
 	var levelConfigs = [
 	  level1,
 	  level2,
@@ -2133,15 +2315,18 @@
 	  level4,
 	  level5
 	];
-
+	
 	module.exports = levelConfigs;
 
 /***/ },
-/* 16 */
+/* 17 */
+/*!*******************************************!*\
+  !*** ./js/configs/levelConfigs/level1.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
 	var level1 = {
 	  id: 1,
 	  tileset: 'tileset-level-1',
@@ -2263,15 +2448,18 @@
 	    }
 	  ]
 	};
-
+	
 	module.exports = level1;
 
 /***/ },
-/* 17 */
+/* 18 */
+/*!*******************************************!*\
+  !*** ./js/configs/levelConfigs/level2.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
 	var level2 = {
 	  id: 2,
 	  tileset: 'tileset-level-2',
@@ -2378,15 +2566,18 @@
 	    }
 	  ]
 	};
-
+	
 	module.exports = level2;
 
 /***/ },
-/* 18 */
+/* 19 */
+/*!*******************************************!*\
+  !*** ./js/configs/levelConfigs/level3.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
 	var level3 = {
 	  id: 3,
 	  tileset: 'tileset-level-3',
@@ -2472,15 +2663,18 @@
 	    }
 	  ]
 	};
-
+	
 	module.exports = level3;
 
 /***/ },
-/* 19 */
+/* 20 */
+/*!*******************************************!*\
+  !*** ./js/configs/levelConfigs/level4.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
 	var level4 = {
 	  id: 4,
 	  tileset: 'tileset-level-4',
@@ -2770,15 +2964,18 @@
 	    }
 	  ]
 	};
-
+	
 	module.exports = level4;
 
 /***/ },
-/* 20 */
+/* 21 */
+/*!*******************************************!*\
+  !*** ./js/configs/levelConfigs/level5.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(13);
-
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
 	var level5 = {
 	  id: 5,
 	  tileset: 'tileset-level-5',
@@ -2804,6 +3001,22 @@
 	      jumpTo: 4,
 	      x: 470,
 	      y: 60
+	    }  
+	  ],
+	  platforms: [
+	    {
+	      img: atlas.PLATFORM_BRIDGE,
+	      behaviour: 'shuttle', // null, fall, moveTo, shuttle
+	      x: 260,
+	      y: 1445,
+	      fallTimeout: 1000,
+	      restoreTimeout: 2000,
+	      moveTo: {
+	        x: 260,
+	        y: 572,
+	        timeout: 10000,
+	        easing: 'Cubic'
+	      }
 	    }  
 	  ],
 	  bonus: [
@@ -3133,7 +3346,7 @@
 	      type: 'native',
 	      number: 1,
 	      lifespan: 20000,
-	      revive: 5000,
+	      revive: 3000,
 	      origin: {
 	        x: 937,
 	        y: 632
@@ -3146,7 +3359,7 @@
 	    {
 	      type: 'native',
 	      number: 1,
-	      lifespan: 10000,
+	      lifespan: 20000,
 	      revive: 1000,
 	      origin: {
 	        x: 913,
@@ -3279,8 +3492,9 @@
 	    }
 	  ]
 	};
-
+	
 	module.exports = level5;
 
 /***/ }
 /******/ ]);
+//# sourceMappingURL=pre2.js.map

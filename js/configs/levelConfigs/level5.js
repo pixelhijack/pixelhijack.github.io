@@ -27,6 +27,22 @@ var level5 = {
       y: 60
     }  
   ],
+  platforms: [
+    {
+      img: atlas.PLATFORM_BRIDGE,
+      behaviour: 'shuttle', // null, fall, moveTo, shuttle
+      x: 260,
+      y: 1445,
+      fallTimeout: 1000,
+      restoreTimeout: 2000,
+      moveTo: {
+        x: 260,
+        y: 572,
+        timeout: 10000,
+        easing: 'Cubic'
+      }
+    }  
+  ],
   bonus: [
     {
       img: atlas.ALPHABET_W,
@@ -354,7 +370,7 @@ var level5 = {
       type: 'native',
       number: 1,
       lifespan: 20000,
-      revive: 5000,
+      revive: 3000,
       origin: {
         x: 937,
         y: 632
@@ -367,7 +383,7 @@ var level5 = {
     {
       type: 'native',
       number: 1,
-      lifespan: 10000,
+      lifespan: 20000,
       revive: 1000,
       origin: {
         x: 913,

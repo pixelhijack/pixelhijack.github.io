@@ -382,7 +382,7 @@ var updates = {
 var reactions = {
   attackIfClose: function(evt){
     if(Math.abs(this.x - evt.x) < this.props.sense){
-      console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
+      //console.info('[EVENT][%s:%s][%s:] Attack if enemy close', evt.who, evt.event, this.creatureType, evt);
       this.update = updates[this.creatureType];
     } else {
       this.update = updates.waitStill;
@@ -390,7 +390,7 @@ var reactions = {
   },
   attackIfAwakened: function(evt){
     if(Math.abs(this.x - evt.x) < this.props.sense){
-      console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
+      //console.info('[EVENT][%s:%s][%s:] Attack if awakened', evt.who, evt.event, this.creatureType, evt);
       this.update = updates[this.creatureType];
     }
   },

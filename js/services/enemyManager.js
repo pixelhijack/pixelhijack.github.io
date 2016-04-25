@@ -49,7 +49,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
   function revive(group){
     var enemyToRevive = group.getFirstDead();
     if(enemyToRevive){
-      console.info('[enemyManager] reviving a %s', enemyToRevive.creatureType, enemyToRevive);
+      //console.info('[enemyManager] reviving a %s', enemyToRevive.creatureType, enemyToRevive);
       enemyToRevive.revive(group.props.origin.x, group.props.origin.y);
     }
   }

@@ -1,5 +1,6 @@
 var Thing = require('../classes/things.js');
 var Portal = require('../classes/portal.js');
+var Platform = require('../classes/platform.js');
 var Group = require('../classes/group.js');
 
 var thingManager = function(game, thingsToLoad){
@@ -18,6 +19,11 @@ var thingManager = function(game, thingsToLoad){
   thingsToLoad.portals.forEach(function(portalConfig){
     var portal = new Portal(game, portalConfig.jumpTo, portalConfig.x, portalConfig.y);
     things.portals.add(portal);
+  });
+  
+  thingsToLoad.platforms.forEach(function(platformConfig){
+    var platform = new Platform(game, platformConfig.img, platformConfig.x, platformConfig.y, platformConfig);
+    things.platforms.add(platform);
   });
   
   return things;

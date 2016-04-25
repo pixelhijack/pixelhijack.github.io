@@ -7,8 +7,8 @@ var Thing = function(game, frameName, x, y, configs){
   
   
   this.update = function(){
-
-  }
+  
+  };
 };
 
 Thing.prototype = Object.create(Phaser.Sprite.prototype);
