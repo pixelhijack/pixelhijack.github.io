@@ -51,7 +51,7 @@
 	var Play = __webpack_require__(/*! ./gamestates/play.js */ 2);
 	
 	var globalSettings = {
-	  level: window.location.hash && window.location.hash.split('#')[1] || 1,
+	  level: window.location.hash && window.location.hash.split('#')[1] || 'hall-of-ages',
 	  dimensions: {
 	    WIDTH: 546,
 	    HEIGHT: 368, //372,
@@ -470,7 +470,7 @@
 	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
 	  this.state = '';
 	  this.body.collideWorldBounds = true;
-	  this.checkWorldBounds = true,
+	  this.checkWorldBounds = true;
 	  this.outOfBoundsKill = true;
 	  this.body.gravity.y = creatureConfigs[creatureType].gravity;
 	  this.body.mass = creatureConfigs[creatureType].mass;
@@ -1312,10 +1312,14 @@
 	  
 	  level.preloadAssets = function(id){
 	    levelToLoad = levelList.find(function(level){
-	      return level.id === +id;
+	      return level.id === id;
 	    });
 	    if(!levelToLoad){
-	      throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
+	      console.error('PRE2: Couldn\'t find level "%s". Sorry, pal.', id);
+	      window.location = window.location.href.split('#')[0] + '#hall-of-ages';
+	      levelToLoad = levelList.find(function(level){
+	        return level.id === 'hall-of-ages';
+	      });
 	    }
 	    // load background
 	    game.load.image(levelToLoad.backgroundLayer, 'assets/backgrounds/' + levelToLoad.backgroundImage + '.png');
@@ -1326,7 +1330,6 @@
 	  };
 	  
 	  level.setLevel = function(){
-	    
 	    level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
 	    level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
 	    level.tilemap = game.add.tilemap(levelToLoad.tilemap);
@@ -2305,15 +2308,17 @@
 	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 17);
 	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 18);
 	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 19);
-	var level4 = __webpack_require__(/*! ./levelConfigs/level4.js */ 20);
-	var level5 = __webpack_require__(/*! ./levelConfigs/level5.js */ 21);
+	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 24);
+	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 23);
+	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 22);
 	
 	var levelConfigs = [
 	  level1,
 	  level2,
 	  level3, 
 	  level4,
-	  level5
+	  level5,
+	  level8
 	];
 	
 	module.exports = levelConfigs;
@@ -2579,9 +2584,9 @@
 	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
 	
 	var level3 = {
-	  id: 3,
-	  tileset: 'tileset-level-3',
-	  tilemap: 'tilemap-level-3',
+	  id: 'heights',
+	  tileset: 'tileset-level-heights',
+	  tilemap: 'tilemap-level-heights',
 	  tiledJson: '49x100', 
 	  tilesetImage: 'tileset1_2',
 	  backgroundImage: 'bg3seamless',
@@ -2667,319 +2672,78 @@
 	module.exports = level3;
 
 /***/ },
-/* 20 */
-/*!*******************************************!*\
-  !*** ./js/configs/levelConfigs/level4.js ***!
-  \*******************************************/
+/* 20 */,
+/* 21 */,
+/* 22 */
+/*!*******************************************************!*\
+  !*** ./js/configs/levelConfigs/level-hall-of-ages.js ***!
+  \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
 	
-	var level4 = {
-	  id: 4,
-	  tileset: 'tileset-level-4',
-	  tilemap: 'tilemap-level-4',
-	  tiledJson: 'L2v1', 
-	  tilesetImage: 'L2_bank',
-	  backgroundImage: 'bg3seamless',
-	  width: 100 * 16,
-	  height: 50 * 16,
+	var level = {
+	  id: 'hall-of-ages',
+	  tileset: 'tileset-level-hall-of-ages',
+	  tilemap: 'tilemap-level-hall-of-ages',
+	  tiledJson: 'L8v1', 
+	  tilesetImage: 'L8',
+	  backgroundImage: 'cave',
+	  width: 300 * 16,
+	  height: 20 * 16,
 	  backgroundLayer: 'background-2',
-	  fixedBackground: true, 
+	  fixedBackground: true,
 	  groundLayer: 'ground-layer',
-	  foregroundLayer: 'foreground-layer',
+	  foregroundLayer: null,
 	  collisionLayer: 'collision-layer',
 	  deathLayer: 'death-layer',
 	  objectsLayer: null, 
 	  entryPoint: {
-	    x: 743, //311, 
-	    y: 606 //291
+	    x: 147, 
+	    y: 187
 	  },
 	  portals: [
 	    {
-	      jumpTo: 1,
-	      x: 1569,
-	      y: 139
-	    }  
+	      jumpTo: 'great-abyss',
+	      x: 817,
+	      y: 268
+	    },
+	    {
+	      jumpTo: 'downfall-rifts',
+	      x: 1371,
+	      y: 270
+	    }
 	  ],
-	  platforms: [],
+	  platforms: [
+	     
+	  ],
 	  bonus: [
 	    {
-	      img: atlas.ALPHABET_Z,
-	      x: 448,
-	      y: 196
-	    },
-	    {
-	      img: atlas.ALPHABET_O,
-	      x: 458,
-	      y: 193
-	    },
-	    {
-	      img: atlas.ALPHABET_O,
-	      x: 468,
-	      y: 195
-	    },
-	    {
-	      img: atlas.ALPHABET_EXCLAMATION_MARK,
-	      x: 478,
-	      y: 196
-	    },
-	    {
-	      img: atlas.BONUS_BIG_MCDONALDS,
-	      x: 86,
-	      y: 250
-	    },
-	    {
-	      img: atlas.BONUS_BIG_BANANA,
-	      x: 147,
-	      y: 216
-	    },
-	    {
-	      img: atlas.BONUS_BIG_ICECREAM,
-	      x: 209,
-	      y: 250
-	    },
-	    {
-	      img: atlas.BONUS_CHICKEN,
-	      x: 984,
-	      y: 237
+	      img: atlas.ALPHABET_W,
+	      x: 60,
+	      y: 290
 	    }
 	  ],
 	  enemies: [
-	    {
-	      type: 'spider', 
-	      number: 1,
-	      lifespan: 40000,
-	      revive: 5000,
-	      origin: {
-	        x: 513,
-	        y: 225
-	      },
-	      boundTo: {
-	        x1: 0,
-	        x2: 0
-	      }
-	    },
-	    {
-	      type: 'spider', 
-	      number: 1,
-	      lifespan: 40000,
-	      revive: 10000,
-	      origin: {
-	        x: 1,
-	        y: 1
-	      },
-	      boundTo: {
-	        x1: 0,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'spider', 
-	      number: 1,
-	      lifespan: 10000,
-	      revive: 10000,
-	      origin: {
-	        x: 436,
-	        y: 555
-	      },
-	      boundTo: {
-	        x1: 0,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'spider', 
-	      number: 1,
-	      lifespan: 10000,
-	      revive: 10000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
-	      origin: {
-	        x: 611,
-	        y: 496
-	      },
-	      boundTo: {
-	        x1: 0,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'dino', 
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 925,
-	        y: 300
-	      },
-	      boundTo: {
-	        x1: 0,  
-	        x2: 925
-	      }
-	    }, 
-	    {
-	      type: 'native',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 1400,
-	        y: 178
-	      },
-	      boundTo: {
-	        x1: 1400,
-	        x2: 1535
-	      }
-	    },
-	    {
-	      type: 'ptero',
-	      number: 2,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 1130,
-	        y: 216
-	      },
-	      boundTo: {
-	        x: Infinity,
-	        y: Infinity
-	      }
-	    },
-	    {
-	      type: 'dragonfly',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 56,
-	        y: 364
-	      },
-	      boundTo: {
-	        x1: 56,
-	        x2: 1200
-	      }
-	    },
-	    {
-	      type: 'bear',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 1037,
-	        y: 532
-	      },
-	      boundTo: {
-	        x1: 1037,
-	        x2: 1358
-	      }
-	    },
-	    {
-	      type: 'parrot',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 1204,
-	        y: 216
-	      },
-	      boundTo: {
-	        x1: 1204,
-	        x2: 1532
-	      }
-	    },
-	    {
-	      type: 'frog',
-	      number: 1,
-	      lifespan: 20000,
-	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
-	      origin: {
-	        x: 55,
-	        y: 663
-	      },
-	      boundTo: {
-	        
-	      },
-	    },
-	    {
-	      type: 'bat',
-	      number: 1,
-	      lifespan: 4000,
-	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
-	      origin: {
-	        x: 307,
-	        y: 541
-	      },
-	      boundTo: {
-	    
-	      }
-	    },
-	    {
-	      type: 'turtle',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 764,
-	        y: 301
-	      },
-	      boundTo: {
-	        x1: 764,
-	        x2: 1003
-	      }
-	    },
-	    {
-	      type: 'insect',
-	      number: 1,
-	      lifespan: 20000,
-	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
-	      origin: {
-	        x: 533,
-	        y: 311
-	      },
-	      boundTo: {
-	        
-	      },
-	    },
-	    {
-	      type: 'bug',
-	      number: 1,
-	      lifespan: 20000,
-	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
-	      origin: {
-	        x: 533,
-	        y: 311
-	      },
-	      boundTo: {
-	        
-	      }
-	    }
+	
 	  ]
 	};
 	
-	module.exports = level4;
+	module.exports = level;
 
 /***/ },
-/* 21 */
-/*!*******************************************!*\
-  !*** ./js/configs/levelConfigs/level5.js ***!
-  \*******************************************/
+/* 23 */
+/*!******************************************************!*\
+  !*** ./js/configs/levelConfigs/level-great-abyss.js ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
 	
-	var level5 = {
-	  id: 5,
-	  tileset: 'tileset-level-5',
-	  tilemap: 'tilemap-level-5',
+	var level = {
+	  id: 'great-abyss',
+	  tileset: 'tileset-level-great-abyss',
+	  tilemap: 'tilemap-level-great-abyss',
 	  tiledJson: 'L1v4', 
 	  tilesetImage: 'L1',
 	  backgroundImage: 'bg1seamless',
@@ -2998,7 +2762,7 @@
 	  },
 	  portals: [
 	    {
-	      jumpTo: 4,
+	      jumpTo: 'downfall-rifts',
 	      x: 470,
 	      y: 60
 	    }  
@@ -3493,7 +3257,308 @@
 	  ]
 	};
 	
-	module.exports = level5;
+	module.exports = level;
+
+/***/ },
+/* 24 */
+/*!*********************************************************!*\
+  !*** ./js/configs/levelConfigs/level-downfall-rifts.js ***!
+  \*********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	
+	var level = {
+	  id: 'downfall-rifts',
+	  tileset: 'tileset-level-downfall-rifts',
+	  tilemap: 'tilemap-level-downfall-rifts',
+	  tiledJson: 'L2v1', 
+	  tilesetImage: 'L2_bank',
+	  backgroundImage: 'bg3seamless',
+	  width: 100 * 16,
+	  height: 50 * 16,
+	  backgroundLayer: 'background-2',
+	  fixedBackground: true, 
+	  groundLayer: 'ground-layer',
+	  foregroundLayer: 'foreground-layer',
+	  collisionLayer: 'collision-layer',
+	  deathLayer: 'death-layer',
+	  objectsLayer: null, 
+	  entryPoint: {
+	    x: 312, 
+	    y: 272
+	  },
+	  portals: [
+	    {
+	      jumpTo: 1,
+	      x: 1569,
+	      y: 139
+	    }  
+	  ],
+	  platforms: [],
+	  bonus: [
+	    {
+	      img: atlas.ALPHABET_Z,
+	      x: 448,
+	      y: 196
+	    },
+	    {
+	      img: atlas.ALPHABET_O,
+	      x: 458,
+	      y: 193
+	    },
+	    {
+	      img: atlas.ALPHABET_O,
+	      x: 468,
+	      y: 195
+	    },
+	    {
+	      img: atlas.ALPHABET_EXCLAMATION_MARK,
+	      x: 478,
+	      y: 196
+	    },
+	    {
+	      img: atlas.BONUS_BIG_MCDONALDS,
+	      x: 86,
+	      y: 250
+	    },
+	    {
+	      img: atlas.BONUS_BIG_BANANA,
+	      x: 147,
+	      y: 216
+	    },
+	    {
+	      img: atlas.BONUS_BIG_ICECREAM,
+	      x: 209,
+	      y: 250
+	    },
+	    {
+	      img: atlas.BONUS_CHICKEN,
+	      x: 984,
+	      y: 237
+	    }
+	  ],
+	  enemies: [
+	    {
+	      type: 'spider', 
+	      number: 1,
+	      lifespan: 40000,
+	      revive: 5000,
+	      origin: {
+	        x: 513,
+	        y: 225
+	      },
+	      boundTo: {
+	        x1: 0,
+	        x2: 0
+	      }
+	    },
+	    {
+	      type: 'spider', 
+	      number: 1,
+	      lifespan: 40000,
+	      revive: 10000,
+	      origin: {
+	        x: 1,
+	        y: 1
+	      },
+	      boundTo: {
+	        x1: 0,
+	        x2: Infinity
+	      }
+	    },
+	    {
+	      type: 'spider', 
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 10000,
+	      origin: {
+	        x: 436,
+	        y: 555
+	      },
+	      boundTo: {
+	        x1: 0,
+	        x2: Infinity
+	      }
+	    },
+	    {
+	      type: 'spider', 
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 10000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 611,
+	        y: 496
+	      },
+	      boundTo: {
+	        x1: 0,
+	        x2: Infinity
+	      }
+	    },
+	    {
+	      type: 'dino', 
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 925,
+	        y: 300
+	      },
+	      boundTo: {
+	        x1: 0,  
+	        x2: 925
+	      }
+	    }, 
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 1400,
+	        y: 178
+	      },
+	      boundTo: {
+	        x1: 1400,
+	        x2: 1535
+	      }
+	    },
+	    {
+	      type: 'ptero',
+	      number: 2,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 1130,
+	        y: 216
+	      },
+	      boundTo: {
+	        x: Infinity,
+	        y: Infinity
+	      }
+	    },
+	    {
+	      type: 'dragonfly',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 56,
+	        y: 364
+	      },
+	      boundTo: {
+	        x1: 56,
+	        x2: 1200
+	      }
+	    },
+	    {
+	      type: 'bear',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 1037,
+	        y: 532
+	      },
+	      boundTo: {
+	        x1: 1037,
+	        x2: 1358
+	      }
+	    },
+	    {
+	      type: 'parrot',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 1204,
+	        y: 216
+	      },
+	      boundTo: {
+	        x1: 1204,
+	        x2: 1532
+	      }
+	    },
+	    {
+	      type: 'frog',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 55,
+	        y: 663
+	      },
+	      boundTo: {
+	        
+	      },
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: 4000,
+	      revive: 5000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfAwakened',
+	      origin: {
+	        x: 307,
+	        y: 541
+	      },
+	      boundTo: {
+	    
+	      }
+	    },
+	    {
+	      type: 'turtle',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 764,
+	        y: 301
+	      },
+	      boundTo: {
+	        x1: 764,
+	        x2: 1003
+	      }
+	    },
+	    {
+	      type: 'insect',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 533,
+	        y: 311
+	      },
+	      boundTo: {
+	        
+	      },
+	    },
+	    {
+	      type: 'bug',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      movement: 'waitStill',
+	      reaction: 'attackIfClose',
+	      origin: {
+	        x: 533,
+	        y: 311
+	      },
+	      boundTo: {
+	        
+	      }
+	    }
+	  ]
+	};
+	
+	module.exports = level;
 
 /***/ }
 /******/ ]);

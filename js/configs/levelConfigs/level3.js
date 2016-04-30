@@ -1,9 +1,9 @@
 var atlas = require('../assetMap.js');
 
 var level3 = {
-  id: 3,
-  tileset: 'tileset-level-3',
-  tilemap: 'tilemap-level-3',
+  id: 'heights',
+  tileset: 'tileset-level-heights',
+  tilemap: 'tilemap-level-heights',
   tiledJson: '49x100', 
   tilesetImage: 'tileset1_2',
   backgroundImage: 'bg3seamless',

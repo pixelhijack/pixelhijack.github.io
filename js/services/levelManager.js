@@ -20,10 +20,14 @@ var levelManager = function(game, levelList){
   
   level.preloadAssets = function(id){
     levelToLoad = levelList.find(function(level){
-      return level.id === +id;
+      return level.id === id;
     });
     if(!levelToLoad){
-      throw new TypeError('PRE2: Couldn\'t find this level. Sorry, pal.');
+      console.error('PRE2: Couldn\'t find level "%s". Sorry, pal.', id);
+      window.location = window.location.href.split('#')[0] + '#hall-of-ages';
+      levelToLoad = levelList.find(function(level){
+        return level.id === 'hall-of-ages';
+      });
     }
     // load background
     game.load.image(levelToLoad.backgroundLayer, 'assets/backgrounds/' + levelToLoad.backgroundImage + '.png');
@@ -34,7 +38,6 @@ var levelManager = function(game, levelList){
   };
   
   level.setLevel = function(){
-    
     level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
     level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
     level.tilemap = game.add.tilemap(levelToLoad.tilemap);

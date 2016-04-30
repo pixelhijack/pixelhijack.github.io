@@ -1,9 +1,9 @@
 var atlas = require('../assetMap.js');
 
-var level5 = {
-  id: 5,
-  tileset: 'tileset-level-5',
-  tilemap: 'tilemap-level-5',
+var level = {
+  id: 'great-abyss',
+  tileset: 'tileset-level-great-abyss',
+  tilemap: 'tilemap-level-great-abyss',
   tiledJson: 'L1v4', 
   tilesetImage: 'L1',
   backgroundImage: 'bg1seamless',
@@ -22,7 +22,7 @@ var level5 = {
   },
   portals: [
     {
-      jumpTo: 4,
+      jumpTo: 'downfall-rifts',
       x: 470,
       y: 60
     }  
@@ -517,4 +517,4 @@ var level5 = {
   ]
 };
 
-module.exports = level5;
+module.exports = level;

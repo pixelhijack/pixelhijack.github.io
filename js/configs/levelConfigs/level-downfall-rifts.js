@@ -1,9 +1,9 @@
 var atlas = require('../assetMap.js');
 
-var level4 = {
-  id: 4,
-  tileset: 'tileset-level-4',
-  tilemap: 'tilemap-level-4',
+var level = {
+  id: 'downfall-rifts',
+  tileset: 'tileset-level-downfall-rifts',
+  tilemap: 'tilemap-level-downfall-rifts',
   tiledJson: 'L2v1', 
   tilesetImage: 'L2_bank',
   backgroundImage: 'bg3seamless',
@@ -17,8 +17,8 @@ var level4 = {
   deathLayer: 'death-layer',
   objectsLayer: null, 
   entryPoint: {
-    x: 743, //311, 
-    y: 606 //291
+    x: 312, 
+    y: 272
   },
   portals: [
     {
@@ -290,4 +290,4 @@ var level4 = {
   ]
 };
 
-module.exports = level4;
+module.exports = level;
