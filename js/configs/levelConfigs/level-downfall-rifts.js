@@ -17,8 +17,8 @@ var level = {
   deathLayer: 'death-layer',
   objectsLayer: null, 
   entryPoint: {
-    x: 312, 
-    y: 272
+    x: 23, 
+    y: 364
   },
   portals: [
     {

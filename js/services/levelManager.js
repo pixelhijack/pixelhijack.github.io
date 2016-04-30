@@ -38,6 +38,12 @@ var levelManager = function(game, levelList){
   };
   
   level.setLevel = function(){
+    if(levelToLoad.overrideHeight){
+      game.scale.setGameSize(game.width, levelToLoad.overrideHeight);
+    }
+    if(levelToLoad.overrideWidth){
+      game.scale.setGameSize(game.height, levelToLoad.overrideWidth);
+    }
     level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
     level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
     level.tilemap = game.add.tilemap(levelToLoad.tilemap);

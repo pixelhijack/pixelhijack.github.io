@@ -181,7 +181,7 @@ function Play(game, globalSettings){
       game.physics.arcade.collide(man, level.deathLayer, function(){
         weapon.sprite.kill();
         man.kill();
-        game.state.start('Play', true, false, { levelNumber: globalSettings.level });
+        game.state.start('Play', true, false, { levelNumber: levelNo });
       });
     }
     
@@ -323,7 +323,7 @@ function Play(game, globalSettings){
         weapon.sprite.kill();
         game.time.events.add(Phaser.Timer.SECOND * 3, function(){
           // restart while keep caches: 
-          game.state.start('Play', true, false, { levelNumber: globalSettings.level });
+          game.state.start('Play', true, false, { levelNumber: levelNo });
         }, this);
       }
     }

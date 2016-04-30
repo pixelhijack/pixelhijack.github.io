@@ -197,6 +197,7 @@ var behaviours = {
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.descend = mixins.descend;
     this.ascend = mixins.ascend;
+    this.sentinel = mixins.sentinel;
     this.diagonalDescend = mixins.diagonalDescend;
     this.die = mixins.die;
     return this;
@@ -297,6 +298,7 @@ var updates = {
     this.render();
     if(this.state !== 'dead'){
      this.hurry();
+     this.sentinel();
     }
   },
   parrot: function(){
