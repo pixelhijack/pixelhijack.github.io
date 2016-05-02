@@ -22,7 +22,7 @@ var level = {
   },
   portals: [
     {
-      jumpTo: 1,
+      jumpTo: 'into-the-woods',
       x: 1569,
       y: 139
     }  

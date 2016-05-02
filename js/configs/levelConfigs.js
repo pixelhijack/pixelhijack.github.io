@@ -3,6 +3,7 @@ var level2 = require('./levelConfigs/level2.js');
 var level3 = require('./levelConfigs/level3.js');
 var level4 = require('./levelConfigs/level-downfall-rifts.js');
 var level5 = require('./levelConfigs/level-great-abyss.js');
+var level7 = require('./levelConfigs/level-into-the-woods.js');
 var level8 = require('./levelConfigs/level-hall-of-ages.js');
 
 var levelConfigs = [
@@ -11,6 +12,7 @@ var levelConfigs = [
   level3, 
   level4,
   level5,
+  level7,
   level8
 ];
 
