@@ -50,9 +50,6 @@ var mixins = {
   turn: function(){
     
   },
-  lives: function(){
-    return this.props.lives;
-  },
   stop: function(slippery){
     this.body.velocity.x /= (slippery || 1.1);
   },
@@ -208,7 +205,6 @@ var behaviours = {
     this.jump = mixins.jump;
     this.hurt = mixins.hurt;
     this.stop = mixins.stop;
-    this.lives = mixins.lives;
     return this;
   }
 };

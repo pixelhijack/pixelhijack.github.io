@@ -122,5 +122,9 @@ Creature.prototype.revive = function revive(x, y){
   this.reset(x, y);
 };
 
+Creature.prototype.lives = function lives(eventType){
+  return this.props.lives;
+}
+
 module.exports = Creature;
   

@@ -288,7 +288,7 @@ function Play(game, globalSettings){
       //creature.debug((creature.lifespan / 1000 | 0));
       //creature.debug(creature.creatureId);
     });
-    //man.debug(man.props.lives +' '+ man.state);
+    man.debug(man.props.lives +' '+ man.state);
     
     setParallax();
     collisions();
@@ -316,11 +316,19 @@ function Play(game, globalSettings){
       enemy.die(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{
-      var shouldReload = man.lives() % 4 - 1 === 0;
       man.hurt(enemyMomentum);
-      man.shout('hurt', { livesLeft: man.lives() });
+      man.shout('hurt', { 
+        livesLeft: man.lives(),
+        time: game.time.now
+      });
+      if(man.lives() <= 0){
+        man.props.lives = 8;
+        game.state.start('Play', true, false, { levelNumber: 'hall-of-ages' });
+      }
+      var shouldReload = man.lives() % 4 - 1 === 0;
       if(shouldReload){
         weapon.sprite.kill();
+        man.props.lives = Math.floor(man.lives() / 3);
         game.time.events.add(Phaser.Timer.SECOND * 3, function(){
           // restart while keep caches: 
           game.state.start('Play', true, false, { levelNumber: levelNo });

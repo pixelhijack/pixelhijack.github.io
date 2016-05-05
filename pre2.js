@@ -397,7 +397,7 @@
 	      //creature.debug((creature.lifespan / 1000 | 0));
 	      //creature.debug(creature.creatureId);
 	    });
-	    //man.debug(man.props.lives +' '+ man.state);
+	    man.debug(man.props.lives +' '+ man.state);
 	    
 	    setParallax();
 	    collisions();
@@ -425,11 +425,19 @@
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
-	      var shouldReload = man.lives() % 4 - 1 === 0;
 	      man.hurt(enemyMomentum);
-	      man.shout('hurt', { livesLeft: man.lives() });
+	      man.shout('hurt', { 
+	        livesLeft: man.lives(),
+	        time: game.time.now
+	      });
+	      if(man.lives() <= 0){
+	        man.props.lives = 8;
+	        game.state.start('Play', true, false, { levelNumber: 'hall-of-ages' });
+	      }
+	      var shouldReload = man.lives() % 4 - 1 === 0;
 	      if(shouldReload){
 	        weapon.sprite.kill();
+	        man.props.lives = Math.floor(man.lives() / 3);
 	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 	          // restart while keep caches: 
 	          game.state.start('Play', true, false, { levelNumber: levelNo });
@@ -581,6 +589,10 @@
 	  this.state = 'moving';
 	  this.reset(x, y);
 	};
+	
+	Creature.prototype.lives = function lives(eventType){
+	  return this.props.lives;
+	}
 	
 	module.exports = Creature;
 	  
@@ -898,9 +910,6 @@
 	  turn: function(){
 	    
 	  },
-	  lives: function(){
-	    return this.props.lives;
-	  },
 	  stop: function(slippery){
 	    this.body.velocity.x /= (slippery || 1.1);
 	  },
@@ -1056,7 +1065,6 @@
 	    this.jump = mixins.jump;
 	    this.hurt = mixins.hurt;
 	    this.stop = mixins.stop;
-	    this.lives = mixins.lives;
 	    return this;
 	  }
 	};
@@ -2288,7 +2296,9 @@
 	  var lives, 
 	      livesCount,
 	      hearts, 
-	      score;
+	      score, 
+	      hurtDelay = 2000,
+	      lastHurt = -hurtDelay;
 	      
 	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" })
 	      
@@ -2309,9 +2319,9 @@
 	      subject.noise.add(onEventCallback, this);
 	    },
 	    update: function(evt){
-	      if(evt.event === 'hurt'){
-	        console.info('[EVENT][Menu]: updating', evt);
-	        var actualHeart = evt.args.livesLeft % 4 - 1;
+	      if(evt.event === 'hurt' && lastHurt + hurtDelay < evt.args[1].time){
+	        lastHurt = evt.args[1].time;
+	        var actualHeart = evt.args[1].livesLeft % 4 - 1;
 	        hearts.children.forEach(function(heart, i){
 	          if(i >= actualHeart){
 	            heart.visible = false;
