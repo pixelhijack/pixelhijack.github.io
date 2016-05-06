@@ -1358,11 +1358,11 @@
 	  };
 	  
 	  level.setLevel = function(){
-	    if(levelToLoad.overrideHeight){
-	      game.scale.setGameSize(game.width, levelToLoad.overrideHeight);
+	    if(levelToLoad.maxHeight){
+	      game.scale.setGameSize(game.width, levelToLoad.maxHeight);
 	    }
-	    if(levelToLoad.overrideWidth){
-	      game.scale.setGameSize(game.height, levelToLoad.overrideWidth);
+	    if(levelToLoad.maxWidth){
+	      game.scale.setGameSize(game.height, levelToLoad.maxWidth);
 	    }
 	    level.backgroundLayer = game.add.tileSprite(0, 0, levelToLoad.width, levelToLoad.height, levelToLoad.backgroundLayer);
 	    level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
@@ -3553,9 +3553,10 @@
 	  tilemap: 'tilemap-level-into-the-woods',
 	  tiledJson: 'L5v1', 
 	  tilesetImage: 'L5',
-	  backgroundImage: 'forest-orange',
+	  backgroundImage: 'forest-pink',
 	  width: 55 * 16,
 	  height: 33 * 16,
+	  maxHeight: 350,
 	  backgroundLayer: 'background-2',
 	  fixedBackground: true,
 	  groundLayer: 'ground-layer',
@@ -3714,8 +3715,7 @@
 	  backgroundImage: 'cave',
 	  width: 300 * 16,
 	  height: 20 * 16,
-	  overrideWidth: null,
-	  overrideHeight: 20 * 16,
+	  maxHeight: 20 * 16,
 	  backgroundLayer: 'background-2',
 	  fixedBackground: true,
 	  groundLayer: 'ground-layer',
