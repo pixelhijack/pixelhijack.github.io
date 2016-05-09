@@ -437,7 +437,6 @@
 	      var shouldReload = man.lives() % 4 - 1 === 0;
 	      if(shouldReload){
 	        weapon.sprite.kill();
-	        man.props.lives = Math.floor(man.lives() / 3);
 	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
 	          // restart while keep caches: 
 	          game.state.start('Play', true, false, { levelNumber: levelNo });
