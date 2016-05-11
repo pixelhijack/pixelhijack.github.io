@@ -1,26 +1,24 @@
-var creatureConfigs = require('../configs/creatureConfigs.js');
-var movements = require('./movements.js');
+var creatureConfigs = require('../../configs/creatureConfigs.js');
 var Creature = require('./Creature.js');
 
-function Dino(game, x, y){
-  Creature.call(this, game, 'dino', x, y);
+function Insect(game, x, y){
+  Creature.call(this, game, 'insect', x, y);
 
   this.setProps();
   this.setAnimations();
   this.update = this.defaultUpdate;
 }
 
-Dino.prototype = Object.create(Creature.prototype);
-Dino.prototype.constructor = Dino;
+Insect.prototype = Object.create(Creature.prototype);
+Insect.prototype.constructor = Insect;
 
-Dino.prototype.defaultUpdate = function defaultUpdate(){
+Insect.prototype.defaultUpdate = function defaultUpdate(){
   this.render();
   if(this.state === 'dead'){
     return;
   }
   this.turnIfBlocked();
   this.move();
-  this.sentinel();
   if(Math.random() < 0.005){ 
     this.facingRight = !this.facingRight;
   }
@@ -30,5 +28,5 @@ Dino.prototype.defaultUpdate = function defaultUpdate(){
   }
 };
 
-module.exports = Dino;
+module.exports = Insect;
   

@@ -1,5 +1,4 @@
-var creatureConfigs = require('../configs/creatureConfigs.js');
-var movements = require('./movements.js');
+var creatureConfigs = require('../../configs/creatureConfigs.js');
 var Creature = require('./Creature.js');
 
 function Tiger(game, x, y){

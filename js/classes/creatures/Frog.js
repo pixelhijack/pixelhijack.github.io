@@ -1,19 +1,18 @@
-var creatureConfigs = require('../configs/creatureConfigs.js');
-var movements = require('./movements.js');
+var creatureConfigs = require('../../configs/creatureConfigs.js');
 var Creature = require('./Creature.js');
 
-function Insect(game, x, y){
-  Creature.call(this, game, 'insect', x, y);
+function Frog(game, x, y){
+  Creature.call(this, game, 'frog', x, y);
 
   this.setProps();
   this.setAnimations();
   this.update = this.defaultUpdate;
 }
 
-Insect.prototype = Object.create(Creature.prototype);
-Insect.prototype.constructor = Insect;
+Frog.prototype = Object.create(Creature.prototype);
+Frog.prototype.constructor = Frog;
 
-Insect.prototype.defaultUpdate = function defaultUpdate(){
+Frog.prototype.defaultUpdate = function defaultUpdate(){
   this.render();
   if(this.state === 'dead'){
     return;
@@ -29,5 +28,5 @@ Insect.prototype.defaultUpdate = function defaultUpdate(){
   }
 };
 
-module.exports = Insect;
+module.exports = Frog;
   

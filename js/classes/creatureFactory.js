@@ -1,18 +1,18 @@
 var creature = {
-  dino: require('./Dino.js'),
-  bear: require('./Bear.js'),
-  native: require('./Native.js'),
-  turtle: require('./Turtle.js'),
-  insect: require('./Insect.js'),
-  bug: require('./Bug.js'),
-  frog: require('./Frog.js'),
-  tiger: require('./Tiger.js'),
-  spider: require('./Spider.js'),
-  ptero: require('./Ptero.js'),
-  parrot: require('./Parrot.js'),
-  dragonfly: require('./Dragonfly.js'),
-  bat: require('./Bat.js'),
-  man: require('./Man.js')
+  dino: require('./creatures/Dino.js'),
+  bear: require('./creatures/Bear.js'),
+  native: require('./creatures/Native.js'),
+  turtle: require('./creatures/Turtle.js'),
+  insect: require('./creatures/Insect.js'),
+  bug: require('./creatures/Bug.js'),
+  frog: require('./creatures/Frog.js'),
+  tiger: require('./creatures/Tiger.js'),
+  spider: require('./creatures/Spider.js'),
+  ptero: require('./creatures/Ptero.js'),
+  parrot: require('./creatures/Parrot.js'),
+  dragonfly: require('./creatures/Dragonfly.js'),
+  bat: require('./creatures/Bat.js'),
+  man: require('./creatures/Man.js')
 };
 
 function creatureFactory(){

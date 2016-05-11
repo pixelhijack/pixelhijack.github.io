@@ -1,5 +1,4 @@
-var creatureConfigs = require('../configs/creatureConfigs.js');
-var movements = require('./movements.js');
+var creatureConfigs = require('../../configs/creatureConfigs.js');
 
 var Creature = function(game, creatureType, x, y){
   Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
