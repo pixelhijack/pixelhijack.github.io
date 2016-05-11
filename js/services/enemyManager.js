@@ -1,6 +1,5 @@
 var creatureFactory = require('../classes/creatureFactory.js')();
 var Group = require('../classes/group.js');
-var movements = require('../classes/movements.js');
 var util = require('./util.js');
 
 
