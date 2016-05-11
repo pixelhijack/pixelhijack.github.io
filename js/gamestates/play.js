@@ -1,4 +1,4 @@
-var Creature = require('../classes/creature.js');
+var creatureFactory = require('../classes/creatureFactory.js')();
 var Thing = require('../classes/things.js');
 var levelManager = require('../services/levelManager.js');
 var enemyManager = require('../services/enemyManager.js');
@@ -85,7 +85,7 @@ function Play(game, globalSettings){
   }
   
   function addHero(){
-    man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
+    man = creatureFactory.create(game, 'man', level.entryPoint.x, level.entryPoint.y);
     
     weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
     weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);

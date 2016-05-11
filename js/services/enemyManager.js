@@ -1,4 +1,4 @@
-var Creature = require('../classes/creature.js');
+var creatureFactory = require('../classes/creatureFactory.js')();
 var Group = require('../classes/group.js');
 var movements = require('../classes/movements.js');
 var util = require('./util.js');
@@ -17,11 +17,11 @@ var enemyManager = function(game, levelEnemies, levelZones){
     var group = new Group(game, groupConfig);
     
     for(var i = 1, max = groupConfig.number; i <= max; i++){
-      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
-      creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
+      var creature = creatureFactory.create(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+      creature.setId(groupConfig.type, groupConfig.origin.x, groupConfig.origin.y, i);
       // override general creature-specific updates
-      if(groupConfig.movement){
-         creature.update = movements.updates[groupConfig.movement];
+      if(groupConfig.movement && creature.setBehaviour){
+         creature.setBehaviour(groupConfig.movement);
       }
       if(groupConfig.reaction){
         creature.reaction = groupConfig.reaction;

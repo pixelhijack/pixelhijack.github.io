@@ -107,14 +107,14 @@
   \*******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(/*! ../classes/creature.js */ 3);
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 6);
-	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 7);
-	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 8);
-	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 11);
-	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 15);
-	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 16);
-	var util = __webpack_require__(/*! ../services/util.js */ 10);
+	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
+	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 22);
+	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 23);
+	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 26);
+	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 30);
+	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 31);
+	var util = __webpack_require__(/*! ../services/util.js */ 25);
 	
 	
 	window.addEventListener('error', function(e){
@@ -194,7 +194,7 @@
 	  }
 	  
 	  function addHero(){
-	    man = new Creature(game, 'man', level.entryPoint.x, level.entryPoint.y);
+	    man = creatureFactory.create(game, 'man', level.entryPoint.x, level.entryPoint.y);
 	    
 	    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
 	    weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);
@@ -460,144 +460,86 @@
 
 /***/ },
 /* 3 */
-/*!********************************!*\
-  !*** ./js/classes/creature.js ***!
-  \********************************/
+/*!***************************************!*\
+  !*** ./js/classes/creatureFactory.js ***!
+  \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 4);
-	var movements = __webpack_require__(/*! ./movements.js */ 5);
-	
-	var Creature = function(game, creatureType, x, y){
-	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
-	  game.physics.enable(this, Phaser.Physics.ARCADE);
-	  this.creatureType = creatureType;
-	  // @creatureId: creatureType-x-y-enemyGroupIterator
-	  this.creatureId = creatureType;
-	  this.props = creatureConfigs[creatureType] || creatureConfigs['creatureDefaults'];
-	  this.state = '';
-	  this.body.collideWorldBounds = true;
-	  this.checkWorldBounds = true;
-	  this.outOfBoundsKill = true;
-	  this.body.gravity.y = creatureConfigs[creatureType].gravity;
-	  this.body.mass = creatureConfigs[creatureType].mass;
-	  this.anchor.setTo(creatureConfigs[creatureType].correctedAnchor.x, creatureConfigs[creatureType].correctedAnchor.y);
-	  
-	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
-	  this._debugText.visible = false;
-	
-	  /*
-	    @this.lifespan: the actual, used by Phaser
-	    @this.props.lifespan: the abstract from creature & level configs
-	  */
-	  this.lifespan = this.props.lifespan;
-	  this.stunnedUntil = 0;
-	  
-	  this.facingRight = Math.random() < 0.5 ? true : false;
-	  
-	  creatureConfigs[creatureType].animations.forEach(function(anim){
-	    anim.frames = anim.frames.map(function(frameNumber){
-	      return frameNumber.toString();
-	    });
-	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
-	  }.bind(this));
-	  
-	  // apply creature 'class' by extend the object with behavioural mixins
-	  movements.behaviours[creatureType].call(Creature.prototype);
-	  // apply the creature's own update to be called
-	  this.update = movements.updates[creatureType].bind(this);
-	  // every creature makes noises: an observable phaser channel to subscribe for:
-	  this.noise = new Phaser.Signal();
-	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
-	  this.reaction = null;
+	var creature = {
+	  dino: __webpack_require__(/*! ./Dino.js */ 4),
+	  bear: __webpack_require__(/*! ./Bear.js */ 8),
+	  native: __webpack_require__(/*! ./Native.js */ 9),
+	  turtle: __webpack_require__(/*! ./Turtle.js */ 10),
+	  insect: __webpack_require__(/*! ./Insect.js */ 11),
+	  bug: __webpack_require__(/*! ./Bug.js */ 12),
+	  frog: __webpack_require__(/*! ./Frog.js */ 13),
+	  tiger: __webpack_require__(/*! ./Tiger.js */ 14),
+	  spider: __webpack_require__(/*! ./Spider.js */ 15),
+	  ptero: __webpack_require__(/*! ./Ptero.js */ 16),
+	  parrot: __webpack_require__(/*! ./Parrot.js */ 17),
+	  dragonfly: __webpack_require__(/*! ./Dragonfly.js */ 18),
+	  bat: __webpack_require__(/*! ./Bat.js */ 19),
+	  man: __webpack_require__(/*! ./Man.js */ 20)
 	};
 	
-	Creature.prototype = Object.create(Phaser.Sprite.prototype);
-	Creature.prototype.constructor = Creature;
-	
-	  /*  @boundTo
-	    {x, y}            - a point
-	    {x1, x2}          - a section
-	    {x1, y1, x2, y2}  - an exact zone
-	  */
-	Object.defineProperty(Creature.prototype, 'boundTo', {
-	    get: function() { return this._boundTo; }, 
-	    set: function(bounds) {
-	      // {x, y}
-	      if(bounds.hasOwnProperty('x') && 
-	        bounds.hasOwnProperty('y')){
-	          this._boundTo = new Phaser.Point(bounds.x, bounds.y);
+	function creatureFactory(){
+	  return {
+	    create: function(game, creatureType, x, y){
+	      if(!creature[creatureType]){
+	        console.error('We don\'t have this animal in the zoo: ', creatureType);
+	        return;
 	      }
-	      // {x1, x2}
-	      else if(bounds.hasOwnProperty('x1') && 
-	              bounds.hasOwnProperty('x2') &&
-	              !bounds.hasOwnProperty('y1') &&
-	              !bounds.hasOwnProperty('y2')){
-	          this._boundTo = new Phaser.Rectangle(bounds.x1, 0, bounds.x2 - bounds.x1, this.game.height);
-	      }
-	      // {x1, y1, x2, y2}
-	      else if(bounds.hasOwnProperty('x1') && 
-	              bounds.hasOwnProperty('x2') &&
-	              bounds.hasOwnProperty('y1') &&
-	              bounds.hasOwnProperty('y2')){
-	          this._boundTo = new Phaser.Rectangle(bounds.x1, bounds.y1, bounds.x2 - bounds.x1, bounds.y2 - bounds.y1);
-	      // default: bound to the whole world
-	      } else {
-	        this._boundTo = new Phaser.Point(0, 0, this.game.width, this.game.height);
-	      }
+	      return new creature[creatureType](game, x, y);
 	    }
-	});
-	
-	Creature.prototype.render = function render(){
-	  this.play(this.state); 
-	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
-	};
-	
-	
-	Creature.prototype.direction = function direction(){
-	  return this.facingRight ? 'right' : 'left';
-	};
-	
-	Creature.prototype.isGrounded = function isGrounded(){
-	  return this.body.touching.down || this.body.blocked.down;
-	};
-	
-	// use in update()
-	Creature.prototype.debug = function debug(toDebug){
-	  this._debugText.visible = true;
-	  this._debugText.setText(toDebug);
-	};
-	
-	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
-	  if(this.reaction && movements.reactions[this.reaction]){
-	    movements.reactions[this.reaction].call(this, evt);
-	  }
+	  };
 	}
 	
-	Creature.prototype.listen = function listen(subject, reaction){
-	  // subscribe a creature to man's noises: man.noise.add(creature.onEnemyMovements, creature);
-	  subject.noise.add(reaction, this);
-	}
-	
-	Creature.prototype.shout = function shout(eventType){
-	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
-	}
-	
-	Creature.prototype.revive = function revive(x, y){
-	  this.lifespan = this.props.lifespan;
-	  this.state = 'moving';
-	  this.reset(x, y);
-	};
-	
-	Creature.prototype.lives = function lives(eventType){
-	  return this.props.lives;
-	}
-	
-	module.exports = Creature;
-	  
+	module.exports = creatureFactory;
 
 /***/ },
 /* 4 */
+/*!****************************!*\
+  !*** ./js/classes/Dino.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Dino(game, x, y){
+	  Creature.call(this, game, 'dino', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Dino.prototype = Object.create(Creature.prototype);
+	Dino.prototype.constructor = Dino;
+	
+	Dino.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.turnIfBlocked();
+	  this.move();
+	  this.sentinel();
+	  if(Math.random() < 0.005){ 
+	    this.facingRight = !this.facingRight;
+	  }
+	  if(Math.random() < 0.05){ 
+	    this.jump(); 
+	    this.state = 'jumping';
+	  }
+	};
+	
+	module.exports = Dino;
+	  
+
+/***/ },
+/* 5 */
 /*!***************************************!*\
   !*** ./js/configs/creatureConfigs.js ***!
   \***************************************/
@@ -851,7 +793,7 @@
 	module.exports = creatureConfigs;
 
 /***/ },
-/* 5 */
+/* 6 */
 /*!*********************************!*\
   !*** ./js/classes/movements.js ***!
   \*********************************/
@@ -1053,6 +995,7 @@
 	    this.turnIfBlocked = mixins.turnIfBlocked;
 	    this.descend = mixins.descend;
 	    this.ascend = mixins.ascend;
+	    this.hurry = mixins.hurry;
 	    this.sentinel = mixins.sentinel;
 	    this.diagonalDescend = mixins.diagonalDescend;
 	    this.die = mixins.die;
@@ -1105,19 +1048,7 @@
 	    }
 	  },
 	  dino: function(){
-	    this.render();
-	    if(this.state !== 'dead'){
-	      this.turnIfBlocked();
-	      this.move();
-	      this.sentinel();
-	      if(Math.random() < 0.005){ 
-	        this.facingRight = !this.facingRight;
-	      }
-	      if(Math.random() < 0.05){ 
-	        this.jump(); 
-	        this.state = 'jumping';
-	      }
-	    }
+	    
 	  },
 	  ptero: function(){
 	    this.render();
@@ -1268,7 +1199,813 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
+/*!********************************!*\
+  !*** ./js/classes/Creature.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	
+	var Creature = function(game, creatureType, x, y){
+	  Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
+	  game.physics.enable(this, Phaser.Physics.ARCADE);
+	  this.creatureType = creatureType;
+	
+	  this.state = '';
+	  this.body.collideWorldBounds = true;
+	  this.checkWorldBounds = true;
+	  this.outOfBoundsKill = true;
+	  
+	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
+	  this._debugText.visible = false;
+	
+	  this.stunnedUntil = 0;
+	  
+	  this.facingRight = Math.random() < 0.5 ? true : false;
+	  
+	  // apply creature 'class' by extend the object with behavioural mixins
+	  //movements.behaviours[creatureType].call(Creature.prototype);
+	  // apply the creature's own update to be called
+	  //this.update = movements.updates[creatureType].bind(this);
+	  
+	  // every creature makes noises: an observable phaser channel to subscribe for:
+	  this.noise = new Phaser.Signal();
+	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
+	  this.reaction = null;
+	};
+	
+	Creature.prototype = Object.create(Phaser.Sprite.prototype);
+	Creature.prototype.constructor = Creature;
+	
+	Creature.prototype.setAnimations = function setAnimations(){
+	  creatureConfigs[this.creatureType].animations.forEach(function(anim){
+	    anim.frames = anim.frames.map(function(frameNumber){
+	      return frameNumber.toString();
+	    });
+	    this.animations.add(anim.name, anim.frames, anim.fps, anim.loop);
+	  }.bind(this));
+	};
+	
+	Creature.prototype.setId = function setId(creatureType, x, y, enemyGroupIterator){
+	  // @creatureId: creatureType-x-y-enemyGroupIterator
+	  this.creatureId = creatureType + '-' + x + '-' + y + '-' + enemyGroupIterator;
+	};
+	
+	Creature.prototype.setProps = function setProps(){
+	  this.props = creatureConfigs[this.creatureType] || creatureConfigs.creatureDefaults;
+	  
+	  this.body.gravity.y = creatureConfigs[this.creatureType].gravity;
+	  this.body.mass = creatureConfigs[this.creatureType].mass;
+	  this.anchor.setTo(creatureConfigs[this.creatureType].correctedAnchor.x, creatureConfigs[this.creatureType].correctedAnchor.y);
+	
+	  /*
+	    @this.lifespan: the actual, used by Phaser
+	    @this.props.lifespan: the abstract from creature & level configs
+	  */
+	  this.lifespan = this.props.lifespan;
+	};
+	
+	Creature.prototype.setBehaviour = function setBehaviour(behaviour){
+	  if(this[behaviour] && typeof this[behaviour] === 'function'){
+	    this.update = this[behaviour];
+	  }
+	};
+	
+	Creature.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'idle';
+	};
+	
+	  /*  @boundTo
+	    {x, y}            - a point
+	    {x1, x2}          - a section
+	    {x1, y1, x2, y2}  - an exact zone
+	  */
+	Object.defineProperty(Creature.prototype, 'boundTo', {
+	    get: function() { return this._boundTo; }, 
+	    set: function(bounds) {
+	      // {x, y}
+	      if(bounds.hasOwnProperty('x') && 
+	        bounds.hasOwnProperty('y')){
+	          this._boundTo = new Phaser.Point(bounds.x, bounds.y);
+	      }
+	      // {x1, x2}
+	      else if(bounds.hasOwnProperty('x1') && 
+	              bounds.hasOwnProperty('x2') &&
+	              !bounds.hasOwnProperty('y1') &&
+	              !bounds.hasOwnProperty('y2')){
+	          this._boundTo = new Phaser.Rectangle(bounds.x1, 0, bounds.x2 - bounds.x1, this.game.height);
+	      }
+	      // {x1, y1, x2, y2}
+	      else if(bounds.hasOwnProperty('x1') && 
+	              bounds.hasOwnProperty('x2') &&
+	              bounds.hasOwnProperty('y1') &&
+	              bounds.hasOwnProperty('y2')){
+	          this._boundTo = new Phaser.Rectangle(bounds.x1, bounds.y1, bounds.x2 - bounds.x1, bounds.y2 - bounds.y1);
+	      // default: bound to the whole world
+	      } else {
+	        this._boundTo = new Phaser.Point(0, 0, this.game.width, this.game.height);
+	      }
+	    }
+	});
+	
+	Creature.prototype.render = function render(){
+	  this.play(this.state); 
+	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
+	};
+	
+	
+	Creature.prototype.direction = function direction(){
+	  return this.facingRight ? 'right' : 'left';
+	};
+	
+	Creature.prototype.isGrounded = function isGrounded(){
+	  return this.body.touching.down || this.body.blocked.down;
+	};
+	
+	// use in update()
+	Creature.prototype.debug = function debug(toDebug){
+	  this._debugText.visible = true;
+	  this._debugText.setText(toDebug);
+	};
+	
+	Creature.prototype.listen = function listen(subject, reaction){
+	  // subscribe a creature to man's noises: man.noise.add(creature.onEnemyMovements, creature);
+	  subject.noise.add(reaction, this);
+	};
+	
+	Creature.prototype.shout = function shout(eventType){
+	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
+	};
+	
+	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
+	  if(this.reaction && this[this.reaction]){
+	    this[this.reaction].call(this, evt);
+	  }
+	};
+	
+	Creature.prototype.revive = function revive(x, y){
+	  this.lifespan = this.props.lifespan;
+	  this.state = 'moving';
+	  this.reset(x, y);
+	};
+	
+	Creature.prototype.lives = function lives(eventType){
+	  return this.props.lives;
+	};
+	
+	
+	Creature.prototype.move = function move(){
+	  this.facingRight ? 
+	      this.moveRight() : 
+	      this.moveLeft();
+	};
+	
+	Creature.prototype.moveLeft = function moveLeft(overrideAcc){
+	  this.body.moves = true;
+	  this.facingRight = false;
+	  if(overrideAcc === 0){
+	    this.body.velocity.x = 0;
+	    this.body.velocity.y = 0;
+	  }
+	  if(this.body.velocity.x > -this.props.maxSpeed){
+	    this.body.velocity.x -= overrideAcc || this.props.acceleration;
+	  }
+	};
+	
+	Creature.prototype.moveRight = function moveRight(overrideAcc){
+	  this.body.moves = true;
+	  this.facingRight = true;
+	  if(overrideAcc === 0){
+	    this.body.velocity.x = 0;
+	    this.body.velocity.y = 0;
+	  }
+	  if(this.body.velocity.x < this.props.maxSpeed){
+	    this.body.velocity.x += overrideAcc || this.props.acceleration;
+	  }
+	};
+	
+	Creature.prototype.turnIfBlocked = function turnIfBlocked(){
+	  if(this.body.blocked.left){ 
+	    this.moveRight(); 
+	    this.state = 'moving';
+	  }
+	  if(this.body.blocked.right){ 
+	    this.moveLeft(); 
+	    this.state = 'moving';
+	  }
+	};
+	
+	Creature.prototype.waitStill = function waitStill(){
+	  this.render();
+	  if(this.state !== 'dead'){
+	    this.state = 'idle';
+	    this.body.moves = false;
+	  }
+	};
+	
+	Creature.prototype.jump = function jump(){
+	  if(this.props.jumping && (this.body.touching.down || this.body.blocked.down)){
+	    this.body.velocity.y -= this.props.jumping;
+	  }
+	};
+	
+	Creature.prototype.stop = function stop(slippery){
+	  this.body.velocity.x /= (slippery || 1.1);
+	};
+	
+	Creature.prototype.hurt = function hurt(force){
+	  this.props.lives -= 1;
+	  this.body.velocity.x += force * 3;
+	  this.body.velocity.y += force * 3;
+	  this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
+	};
+	
+	Creature.prototype.die = function die(force){
+	  this.state = 'dead';
+	  //this.props.collide = false;
+	  this.body.velocity.x -= force * 3;
+	  this.body.velocity.y -= force * 3;
+	  // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
+	  this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
+	};
+	
+	Creature.prototype.sentinel = function sentinel(){
+	  // @boundTo: {x1, x2} or {x1, y1, x2, y2} Rectangle
+	  // @behaviour 'sentinel back & forth': if bound to a zone, stay there
+	  if(this.boundTo.hasOwnProperty('width')){
+	    if(this.x < this.boundTo.x){
+	      this.facingRight = true;
+	      this.move();
+	    }
+	    if(this.x > this.boundTo.x + this.boundTo.width){
+	      this.facingRight = false;
+	      this.move();
+	    }
+	  }
+	  // @boundTo: {x, y} Point
+	  // @behaviour 'hurry somewhere': if bound to a point, head there
+	  // @behaviour 'wait at': if reached the point, wait there
+	  if(!this.boundTo.hasOwnProperty('width')){
+	    if(Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
+	      //console.info('[movements] %s reached boundTo point', this.key);
+	      this.wait();
+	      return false;
+	    }
+	  }  
+	};
+	
+	Creature.prototype.attackIfClose = function attackIfClose(evt){
+	  if(Math.abs(this.x - evt.x) < this.props.sense){
+	    this.update = this.defaultUpdate;
+	  } else {
+	    this.update = this.waitStill;
+	  }
+	};
+	
+	Creature.prototype.attackIfAwakened = function attackIfAwakened(evt){
+	  if(Math.abs(this.x - evt.x) < this.props.sense){
+	    this.update = this.defaultUpdate;
+	  }
+	};
+	
+	module.exports = Creature;
+	  
+
+/***/ },
+/* 8 */
+/*!****************************!*\
+  !*** ./js/classes/Bear.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Bear(game, x, y){
+	  Creature.call(this, game, 'bear', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Bear.prototype = Object.create(Creature.prototype);
+	Bear.prototype.constructor = Bear;
+	
+	Bear.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.turnIfBlocked();
+	  this.move();
+	  this.sentinel();
+	};
+	
+	module.exports = Bear;
+	  
+
+/***/ },
+/* 9 */
+/*!******************************!*\
+  !*** ./js/classes/Native.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Native(game, x, y){
+	  Creature.call(this, game, 'native', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Native.prototype = Object.create(Creature.prototype);
+	Native.prototype.constructor = Native;
+	
+	Native.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.turnIfBlocked();
+	  this.move();
+	  this.sentinel();
+	};
+	
+	module.exports = Native;
+	  
+
+/***/ },
+/* 10 */
+/*!******************************!*\
+  !*** ./js/classes/Turtle.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Turtle(game, x, y){
+	  Creature.call(this, game, 'turtle', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Turtle.prototype = Object.create(Creature.prototype);
+	Turtle.prototype.constructor = Turtle;
+	
+	Turtle.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.turnIfBlocked();
+	  this.move();
+	  this.sentinel();
+	};
+	
+	module.exports = Turtle;
+	  
+
+/***/ },
+/* 11 */
+/*!******************************!*\
+  !*** ./js/classes/Insect.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Insect(game, x, y){
+	  Creature.call(this, game, 'insect', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Insect.prototype = Object.create(Creature.prototype);
+	Insect.prototype.constructor = Insect;
+	
+	Insect.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.turnIfBlocked();
+	  this.move();
+	  if(Math.random() < 0.005){ 
+	    this.facingRight = !this.facingRight;
+	  }
+	  if(Math.random() < 0.05){ 
+	    this.jump(); 
+	    this.state = 'jumping';
+	  }
+	};
+	
+	module.exports = Insect;
+	  
+
+/***/ },
+/* 12 */
+/*!***************************!*\
+  !*** ./js/classes/Bug.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Bug(game, x, y){
+	  Creature.call(this, game, 'bug', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Bug.prototype = Object.create(Creature.prototype);
+	Bug.prototype.constructor = Bug;
+	
+	Bug.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.turnIfBlocked();
+	  this.move();
+	  if(Math.random() < 0.005){ 
+	    this.facingRight = !this.facingRight;
+	  }
+	  if(Math.random() < 0.05){ 
+	    this.jump(); 
+	    this.state = 'jumping';
+	  }
+	};
+	
+	module.exports = Bug;
+	  
+
+/***/ },
+/* 13 */
+/*!****************************!*\
+  !*** ./js/classes/Frog.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Frog(game, x, y){
+	  Creature.call(this, game, 'frog', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Frog.prototype = Object.create(Creature.prototype);
+	Frog.prototype.constructor = Frog;
+	
+	Frog.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.turnIfBlocked();
+	  this.move();
+	  if(Math.random() < 0.005){ 
+	    this.facingRight = !this.facingRight;
+	  }
+	  if(Math.random() < 0.05){ 
+	    this.jump(); 
+	    this.state = 'jumping';
+	  }
+	};
+	
+	module.exports = Frog;
+	  
+
+/***/ },
+/* 14 */
+/*!*****************************!*\
+  !*** ./js/classes/Tiger.js ***!
+  \*****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Tiger(game, x, y){
+	  Creature.call(this, game, 'tiger', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Tiger.prototype = Object.create(Creature.prototype);
+	Tiger.prototype.constructor = Tiger;
+	
+	Tiger.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  if(Math.random() < 0.005){ 
+	    this.jump(); 
+	    this.state = 'jumping';
+	  }else{
+	    this.turnIfBlocked();
+	    this.move();
+	  }
+	};
+	
+	module.exports = Tiger;
+	  
+
+/***/ },
+/* 15 */
+/*!******************************!*\
+  !*** ./js/classes/Spider.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Spider(game, x, y){
+	  Creature.call(this, game, 'spider', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Spider.prototype = Object.create(Creature.prototype);
+	Spider.prototype.constructor = Spider;
+	
+	Spider.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.crawl();
+	  this.sentinel();
+	};
+	
+	Spider.prototype.crawl = function crawl(){
+	  if(this.body.velocity.y > 0){
+	    this.scale.y = -1;
+	  } else {
+	    this.scale.y = 1;
+	  }
+	  if(this.body.blocked.left || this.body.blocked.right){
+	    this.body.gravity.y = 0;
+	    this.state = 'climbing';
+	    this.move();
+	    //this.scale.y = this.body.velocity.y > 0 && this.isGrounded() ? -1 : 1;
+	    
+	    // crawling up:
+	    if(this.body.blocked.down){
+	      this.body.velocity.y -= this.props.acceleration;
+	    }
+	    //crawling down:
+	    if(this.body.blocked.up){
+	      this.body.velocity.y += this.props.acceleration;
+	    }
+	  } else {
+	    this.body.gravity.y = this.props.gravity;
+	    this.move();
+	    this.state = 'moving';
+	  }
+	};
+	
+	module.exports = Spider;
+	  
+
+/***/ },
+/* 16 */
+/*!*****************************!*\
+  !*** ./js/classes/Ptero.js ***!
+  \*****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Ptero(game, x, y){
+	  Creature.call(this, game, 'ptero', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Ptero.prototype = Object.create(Creature.prototype);
+	Ptero.prototype.constructor = Ptero;
+	
+	Ptero.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.move();
+	  this.state = 'moving';
+	  this.turnIfBlocked();
+	  if(Math.random() < 0.01){
+	    this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
+	      this.state = 'descend';
+	      this.descend();
+	    }, this);
+	  }
+	  if(Math.random() < 0.01){
+	    this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
+	      this.state = 'ascend';
+	      this.ascend();
+	    }, this);
+	  }
+	};
+	
+	Ptero.prototype.ascend = function ascend(){
+	  this.body.velocity.y -= this.props.acceleration;
+	};
+	
+	Ptero.prototype.descend = function descend(){
+	  this.body.velocity.y += this.props.acceleration;
+	};
+	
+	module.exports = Ptero;
+	  
+
+/***/ },
+/* 17 */
+/*!******************************!*\
+  !*** ./js/classes/Parrot.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Parrot(game, x, y){
+	  Creature.call(this, game, 'parrot', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Parrot.prototype = Object.create(Creature.prototype);
+	Parrot.prototype.constructor = Parrot;
+	
+	Parrot.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.move();
+	  this.sentinel();
+	};
+	
+	module.exports = Parrot;
+	  
+
+/***/ },
+/* 18 */
+/*!*********************************!*\
+  !*** ./js/classes/Dragonfly.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Dragonfly(game, x, y){
+	  Creature.call(this, game, 'dragonfly', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Dragonfly.prototype = Object.create(Creature.prototype);
+	Dragonfly.prototype.constructor = Dragonfly;
+	
+	Dragonfly.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.move();
+	  this.sentinel();
+	};
+	
+	module.exports = Dragonfly;
+	  
+
+/***/ },
+/* 19 */
+/*!***************************!*\
+  !*** ./js/classes/Bat.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Bat(game, x, y){
+	  Creature.call(this, game, 'bat', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Bat.prototype = Object.create(Creature.prototype);
+	Bat.prototype.constructor = Bat;
+	
+	Bat.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	  this.state = 'moving';
+	  this.diagonalDescend(0.5, 1);
+	};
+	
+	Bat.prototype.diagonalDescend = function diagonalDescend(dx, dy){
+	  this.y += dy;
+	  this.x += dx;
+	};
+	
+	module.exports = Bat;
+	  
+
+/***/ },
+/* 20 */
+/*!***************************!*\
+  !*** ./js/classes/Man.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../configs/creatureConfigs.js */ 5);
+	var movements = __webpack_require__(/*! ./movements.js */ 6);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 7);
+	
+	function Man(game, x, y){
+	  Creature.call(this, game, 'man', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  this.update = this.defaultUpdate;
+	}
+	
+	Man.prototype = Object.create(Creature.prototype);
+	Man.prototype.constructor = Man;
+	
+	Man.prototype.defaultUpdate = function defaultUpdate(){
+	  this.render();
+	  if(this.state === 'dead'){
+	    return;
+	  }
+	};
+	
+	module.exports = Man;
+	  
+
+/***/ },
+/* 21 */
 /*!******************************!*\
   !*** ./js/classes/things.js ***!
   \******************************/
@@ -1311,7 +2048,7 @@
 	module.exports = Thing;
 
 /***/ },
-/* 7 */
+/* 22 */
 /*!*************************************!*\
   !*** ./js/services/levelManager.js ***!
   \*************************************/
@@ -1444,16 +2181,16 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 8 */
+/* 23 */
 /*!*************************************!*\
   !*** ./js/services/enemyManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Creature = __webpack_require__(/*! ../classes/creature.js */ 3);
-	var Group = __webpack_require__(/*! ../classes/group.js */ 9);
-	var movements = __webpack_require__(/*! ../classes/movements.js */ 5);
-	var util = __webpack_require__(/*! ./util.js */ 10);
+	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
+	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
+	var movements = __webpack_require__(/*! ../classes/movements.js */ 6);
+	var util = __webpack_require__(/*! ./util.js */ 25);
 	
 	
 	var enemyManager = function(game, levelEnemies, levelZones){
@@ -1469,11 +2206,11 @@
 	    var group = new Group(game, groupConfig);
 	    
 	    for(var i = 1, max = groupConfig.number; i <= max; i++){
-	      var creature = new Creature(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
-	      creature.creatureId = groupConfig.type + '-' + groupConfig.origin.x + '-' + groupConfig.origin.y + '-' + i;
+	      var creature = creatureFactory.create(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
+	      creature.setId(groupConfig.type, groupConfig.origin.x, groupConfig.origin.y, i);
 	      // override general creature-specific updates
-	      if(groupConfig.movement){
-	         creature.update = movements.updates[groupConfig.movement];
+	      if(groupConfig.movement && creature.setBehaviour){
+	         creature.setBehaviour(groupConfig.movement);
 	      }
 	      if(groupConfig.reaction){
 	        creature.reaction = groupConfig.reaction;
@@ -1531,18 +2268,16 @@
 	module.exports = enemyManager;
 
 /***/ },
-/* 9 */
+/* 24 */
 /*!*****************************!*\
   !*** ./js/classes/group.js ***!
   \*****************************/
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var Creature = __webpack_require__(/*! ./creature.js */ 3);
-	
-	var Group = function(game, props){
+	function Group(game, props){
 	  Phaser.Group.call(this, game);
 	  this.props = props || {};
-	};
+	}
 	
 	Group.prototype = Object.create(Phaser.Group.prototype);
 	Group.prototype.constructor = Group;
@@ -1550,7 +2285,7 @@
 	module.exports = Group;
 
 /***/ },
-/* 10 */
+/* 25 */
 /*!*****************************!*\
   !*** ./js/services/util.js ***!
   \*****************************/
@@ -1613,16 +2348,16 @@
 	module.exports = util;
 
 /***/ },
-/* 11 */
+/* 26 */
 /*!*************************************!*\
   !*** ./js/services/thingManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 6);
-	var Portal = __webpack_require__(/*! ../classes/portal.js */ 12);
-	var Platform = __webpack_require__(/*! ../classes/platform.js */ 14);
-	var Group = __webpack_require__(/*! ../classes/group.js */ 9);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
+	var Portal = __webpack_require__(/*! ../classes/portal.js */ 27);
+	var Platform = __webpack_require__(/*! ../classes/platform.js */ 29);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
 	
 	var thingManager = function(game, thingsToLoad){
 	  
@@ -1653,13 +2388,13 @@
 	module.exports = thingManager;
 
 /***/ },
-/* 12 */
+/* 27 */
 /*!******************************!*\
   !*** ./js/classes/portal.js ***!
   \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 28);
 	
 	var Portal = function(game, jumpTo, x, y){
 	  
@@ -1683,7 +2418,7 @@
 	module.exports = Portal;
 
 /***/ },
-/* 13 */
+/* 28 */
 /*!********************************!*\
   !*** ./js/configs/assetMap.js ***!
   \********************************/
@@ -2166,7 +2901,7 @@
 	module.exports = assetMap;
 
 /***/ },
-/* 14 */
+/* 29 */
 /*!********************************!*\
   !*** ./js/classes/platform.js ***!
   \********************************/
@@ -2284,7 +3019,7 @@
 	module.exports = Platform;
 
 /***/ },
-/* 15 */
+/* 30 */
 /*!************************************!*\
   !*** ./js/services/menuManager.js ***!
   \************************************/
@@ -2334,19 +3069,19 @@
 	module.exports = Menu;
 
 /***/ },
-/* 16 */
+/* 31 */
 /*!************************************!*\
   !*** ./js/configs/levelConfigs.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 17);
-	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 18);
-	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 19);
-	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 20);
-	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 21);
-	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 22);
-	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 23);
+	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 32);
+	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 33);
+	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 34);
+	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 35);
+	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 36);
+	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 37);
+	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 38);
 	
 	var levelConfigs = [
 	  level1,
@@ -2361,13 +3096,13 @@
 	module.exports = levelConfigs;
 
 /***/ },
-/* 17 */
+/* 32 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level1.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level1 = {
 	  id: 1,
@@ -2494,13 +3229,13 @@
 	module.exports = level1;
 
 /***/ },
-/* 18 */
+/* 33 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level2.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level2 = {
 	  id: 2,
@@ -2612,13 +3347,13 @@
 	module.exports = level2;
 
 /***/ },
-/* 19 */
+/* 34 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level3.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level3 = {
 	  id: 'heights',
@@ -2709,13 +3444,13 @@
 	module.exports = level3;
 
 /***/ },
-/* 20 */
+/* 35 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-downfall-rifts.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'downfall-rifts',
@@ -3010,13 +3745,13 @@
 	module.exports = level;
 
 /***/ },
-/* 21 */
+/* 36 */
 /*!******************************************************!*\
   !*** ./js/configs/levelConfigs/level-great-abyss.js ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'great-abyss',
@@ -3538,13 +4273,13 @@
 	module.exports = level;
 
 /***/ },
-/* 22 */
+/* 37 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-into-the-woods.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'into-the-woods',
@@ -3697,13 +4432,13 @@
 	module.exports = level;
 
 /***/ },
-/* 23 */
+/* 38 */
 /*!*******************************************************!*\
   !*** ./js/configs/levelConfigs/level-hall-of-ages.js ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 13);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'hall-of-ages',

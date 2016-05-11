@@ -194,6 +194,7 @@ var behaviours = {
     this.turnIfBlocked = mixins.turnIfBlocked;
     this.descend = mixins.descend;
     this.ascend = mixins.ascend;
+    this.hurry = mixins.hurry;
     this.sentinel = mixins.sentinel;
     this.diagonalDescend = mixins.diagonalDescend;
     this.die = mixins.die;
@@ -246,19 +247,7 @@ var updates = {
     }
   },
   dino: function(){
-    this.render();
-    if(this.state !== 'dead'){
-      this.turnIfBlocked();
-      this.move();
-      this.sentinel();
-      if(Math.random() < 0.005){ 
-        this.facingRight = !this.facingRight;
-      }
-      if(Math.random() < 0.05){ 
-        this.jump(); 
-        this.state = 'jumping';
-      }
-    }
+    
   },
   ptero: function(){
     this.render();
