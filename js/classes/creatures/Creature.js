@@ -68,29 +68,26 @@ Creature.prototype.setBehaviour = function setBehaviour(behaviour){
 Creature.prototype.nextAction = function nextAction(){
   if(this.state === 'die'){
     return 'die';
-  } else {
-    if(this.boundTo.hasOwnProperty('width')){
-      if(this.x < this.boundTo.x){
-        this.facingRight = true;
-      }
-      if(this.x > this.boundTo.x + this.boundTo.width){
-        this.facingRight = false;
-      }
-      return 'move';
-    } else {
-      if(this.body.blocked.left || this.body.blocked.right){
-        return 'turn';
-      } else {
-        if(this.props.jumping && Math.random() < 0.05){
-          return 'jump';
-        }
-        if(Math.random() < 0.005){
-          return 'turn';
-        }
-        return 'move';
-      }
-    }
   }
+  if(this.boundTo.hasOwnProperty('width')){
+    if(this.x < this.boundTo.x){
+      this.facingRight = true;
+    }
+    if(this.x > this.boundTo.x + this.boundTo.width){
+      this.facingRight = false;
+    }
+    return 'move';
+  }
+  if(this.body.blocked.left || this.body.blocked.right){
+    return 'turn';
+  }
+  if(this.props.jumping && Math.random() < 0.05){
+    return 'jump';
+  }
+  if(Math.random() < 0.005){
+    return 'turn';
+  }
+  return 'move';
 };
 
 Creature.prototype.react = function react(){
