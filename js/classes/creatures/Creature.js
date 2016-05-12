@@ -65,12 +65,46 @@ Creature.prototype.setBehaviour = function setBehaviour(behaviour){
   }
 };
 
-Creature.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
+Creature.prototype.nextAction = function nextAction(){
+  if(this.state === 'die'){
+    return 'die';
+  } else {
+    if(this.boundTo.hasOwnProperty('width')){
+      if(this.x < this.boundTo.x){
+        this.facingRight = true;
+      }
+      if(this.x > this.boundTo.x + this.boundTo.width){
+        this.facingRight = false;
+      }
+      return 'move';
+    } else {
+      if(this.body.blocked.left || this.body.blocked.right){
+        return 'turn';
+      } else {
+        if(this.props.jumping && Math.random() < 0.05){
+          return 'jump';
+        }
+        if(Math.random() < 0.005){
+          return 'turn';
+        }
+        return 'move';
+      }
+    }
   }
-  this.state = 'idle';
+};
+
+Creature.prototype.react = function react(){
+  this.play(this.state); 
+  this.scale.x = this.facingRight ? 1 : -1;
+  if(this.state && this[this.state]){
+    this[this.state]();
+  }
+};
+
+
+Creature.prototype.update = function update(){
+  this.react();
+  this.state = this.nextAction();
 };
 
   /*  @boundTo
@@ -108,7 +142,7 @@ Object.defineProperty(Creature.prototype, 'boundTo', {
 
 Creature.prototype.render = function render(){
   this.play(this.state); 
-  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
+  this.scale.x = this.facingRight ? 1 : -1;
 };
 
 
@@ -143,7 +177,7 @@ Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
 
 Creature.prototype.revive = function revive(x, y){
   this.lifespan = this.props.lifespan;
-  this.state = 'moving';
+  this.state = 'spawn';
   this.reset(x, y);
 };
 
@@ -159,38 +193,20 @@ Creature.prototype.move = function move(){
 };
 
 Creature.prototype.moveLeft = function moveLeft(overrideAcc){
-  this.body.moves = true;
-  this.facingRight = false;
-  if(overrideAcc === 0){
-    this.body.velocity.x = 0;
-    this.body.velocity.y = 0;
-  }
   if(this.body.velocity.x > -this.props.maxSpeed){
     this.body.velocity.x -= overrideAcc || this.props.acceleration;
   }
 };
 
 Creature.prototype.moveRight = function moveRight(overrideAcc){
-  this.body.moves = true;
-  this.facingRight = true;
-  if(overrideAcc === 0){
-    this.body.velocity.x = 0;
-    this.body.velocity.y = 0;
-  }
   if(this.body.velocity.x < this.props.maxSpeed){
     this.body.velocity.x += overrideAcc || this.props.acceleration;
   }
 };
 
-Creature.prototype.turnIfBlocked = function turnIfBlocked(){
-  if(this.body.blocked.left){ 
-    this.moveRight(); 
-    this.state = 'moving';
-  }
-  if(this.body.blocked.right){ 
-    this.moveLeft(); 
-    this.state = 'moving';
-  }
+Creature.prototype.turn = function turn(){
+  this.facingRight = !this.facingRight;
+  this.move();
 };
 
 Creature.prototype.waitStill = function waitStill(){
@@ -199,6 +215,12 @@ Creature.prototype.waitStill = function waitStill(){
     this.state = 'idle';
     this.body.moves = false;
   }
+};
+
+Creature.prototype.idle = function idle(){
+  this.body.velocity.y = 0;
+  this.body.velocity.x = 0;
+  this.body.moves = false;
 };
 
 Creature.prototype.jump = function jump(){
@@ -219,7 +241,7 @@ Creature.prototype.hurt = function hurt(force){
 };
 
 Creature.prototype.die = function die(force){
-  this.state = 'dead';
+  this.state = 'die';
   //this.props.collide = false;
   this.body.velocity.x -= force * 3;
   this.body.velocity.y -= force * 3;
@@ -254,9 +276,9 @@ Creature.prototype.sentinel = function sentinel(){
 
 Creature.prototype.attackIfClose = function attackIfClose(evt){
   if(Math.abs(this.x - evt.x) < this.props.sense){
-    this.update = this.defaultUpdate;
+    //this.update = this.defaultUpdate;
   } else {
-    this.update = this.waitStill;
+    //this.update = this.waitStill;
   }
 };
 

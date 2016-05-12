@@ -46,8 +46,6 @@ var level = {
       number: 1,
       lifespan: Infinity,
       revive: false,
-      movement: 'waitStill',
-      reaction: 'attackIfClose',
       origin: {
         x: 520,
         y: 199
@@ -85,7 +83,7 @@ var level = {
       }
     },
     {
-      type: 'dragonfly',
+      type: 'ptero',
       number: 1,
       lifespan: Infinity,
       revive: 5000,
@@ -101,10 +99,8 @@ var level = {
     {
       type: 'bat',
       number: 1,
-      lifespan: Infinity,
+      lifespan: 7000,
       revive: 5000,
-      movement: 'waitStill',
-      reaction: 'attackIfAwakened',
       origin: {
         x: 116,
         y: 49

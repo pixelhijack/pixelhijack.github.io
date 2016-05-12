@@ -238,7 +238,7 @@
 	  
 	    window.addEventListener("deviceorientation", function orientation(event){
 	      var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
-	      man.state = 'moving';
+	      man.state = 'move';
 	      tilt >= 0 ? 
 	        man.moveRight(tilt * globalSettings.physics.accelerationMultiplier) :
 	        man.moveLeft(-tilt * globalSettings.physics.accelerationMultiplier);
@@ -278,10 +278,10 @@
 	    game.physics.arcade.collide(man, level.collisionLayer);
 	    
 	    enemies.forEachAlive(function(enemy){
-	      if(enemy.props.collide && enemy.state !== 'dead'){
+	      if(enemy.props.collide && enemy.state !== 'die'){
 	        game.physics.arcade.collide(enemy, level.collisionLayer);
 	      }
-	      if(enemy.inCamera && enemy.state !== 'dead' && man.state !== 'hurt'){
+	      if(enemy.inCamera && enemy.state !== 'die' && man.state !== 'hurt'){
 	        game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
 	      }
 	    });
@@ -346,12 +346,14 @@
 	        man.state = 'idle';
 	    }
 	    if(keys.left.isDown) {
+	      man.facingRight = false;
 	      man.moveLeft();
-	      man.state = man.isGrounded() ? 'moving' : 'jumping';
+	      man.state = man.isGrounded() ? 'move' : 'jump';
 	    }
 	    else if(keys.right.isDown) {
+	      man.facingRight = true;
 	      man.moveRight();
-	      man.state = man.isGrounded() ? 'moving' : 'jumping';
+	      man.state = man.isGrounded() ? 'move' : 'jump';
 	    }
 	    else{
 	      // slowing down / slippery rate: 10% after stopped moving
@@ -361,7 +363,7 @@
 	    if(keys.up.isDown || game.input.pointer1.isDown) {
 	        man.jump();
 	        if(!man.isGrounded()){
-	          man.state = 'jumping';
+	          man.state = 'jump';
 	        }
 	    }
 	    else if(keys.down.isDown) {
@@ -369,7 +371,7 @@
 	        events.somethingHappened.dispatch(this, man.x);
 	    }
 	    if(keys.space.isDown) {
-	      man.state = 'hitting';
+	      man.state = 'hit';
 	      man.stop(globalSettings.physics.slippery);
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
@@ -389,15 +391,15 @@
 	  function update(){
 	    
 	    // show FPS on bottom left corner
-	    game.debug.text(game.time.fps, 5, game.height - 5);
-	    game.debug.text(enemies.population(), 5, game.height - 15);
+	    game.debug.text(game.time.fps, 5, game.height - 20);
+	    game.debug.text(enemies.population(), 5, game.height - 35);
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
 	      //creature.debug((creature.lifespan / 1000 | 0));
 	      //creature.debug(creature.creatureId);
 	    });
-	    man.debug(man.props.lives +' '+ man.state);
+	    //man.debug(man.props.lives +' '+ man.state);
 	    
 	    setParallax();
 	    collisions();
@@ -416,12 +418,12 @@
 	        heroMomentum = man.body.velocity.x * man.body.mass;
 	    // jumping on top of the enemies!
 	    if(man.body.touching.down && enemy.body.touching.up){
-	      if(man.state === 'hitting'){
+	      if(man.state === 'hit'){
 	        enemy.die(heroMomentum);
 	      }
 	      return;
 	    }
-	    if(man.state === 'hitting'){
+	    if(man.state === 'hit'){
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
@@ -511,11 +513,12 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Dino.prototype = Object.create(Creature.prototype);
 	Dino.prototype.constructor = Dino;
+	
 	
 	Dino.prototype.defaultUpdate = function defaultUpdate(){
 	  this.render();
@@ -544,8 +547,6 @@
   \***************************************/
 /***/ function(module, exports) {
 
-	//var _ = require('lodash');
-	
 	var creatureConfigs = {
 	  creatureDefaults: {
 	    gravity: 500,
@@ -573,13 +574,14 @@
 	    lives: 8, 
 	    lifespan: Infinity,
 	    animations: [
-	      { name: 'moving', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
-	      { name: 'hitting', frames: [22,24,28,31,34], fps: 10, loop: false }, 
-	      { name: 'stopping', frames: [42,45,49,52], fps: 10, loop: false }, 
-	      { name: 'jumping', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
+	      { name: 'move', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
+	      { name: 'hit', frames: [22,24,28,31,34], fps: 10, loop: false }, 
+	      { name: 'stop', frames: [42,45,49,52], fps: 10, loop: false }, 
+	      { name: 'jump', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
 	      { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
 	      { name: 'hurt', frames: [19], fps: 10, loop: true },
-	      { name: 'dead', frames: [19], fps: 10, loop: false }
+	      { name: 'die', frames: [19], fps: 10, loop: false },
+	      { name: 'spawn', frames: [11,'03','05',14,20], fps: 10, loop: false }
 	    ],
 	    correctedAnchor: {
 	      x: 0.5,
@@ -593,9 +595,10 @@
 	    acceleration: 5, 
 	    animations: [
 	      { name: 'idle', frames: [360,360,360,360,360,360,360,367], fps: 5, loop: true },
-	      { name: 'moving', frames: [360,361,364,367], fps: 10, loop: true },
-	      { name: 'jumping', frames: [360,361,364,367,369], fps: 10, loop: true },
-	      { name: 'dead', frames: [371], fps: 10, loop: true }
+	      { name: 'move', frames: [360,361,364,367,369], fps: 10, loop: true },
+	      { name: 'jump', frames: [360,361,364,367,369], fps: 10, loop: true },
+	      { name: 'die', frames: [371], fps: 10, loop: true },
+	      { name: 'spawn', frames: [360,361,364,367], fps: 10, loop: true }
 	    ]
 	  },
 	  bear: {
@@ -604,9 +607,9 @@
 	    acceleration: 15, 
 	    animations: [
 	      { name: 'idle', frames: [321], fps: 10, loop: false },
-	      { name: 'moving', frames: [320,321,324], fps: 10, loop: true },
+	      { name: 'move', frames: [320,321,324], fps: 10, loop: true },
 	      { name: 'spawn', frames: [366,363,358,317], fps: 10, loop: false },
-	      { name: 'dead', frames: [328], fps: 10, loop: true }
+	      { name: 'die', frames: [328], fps: 10, loop: true }
 	    ] 
 	  },
 	  'super-bear': {
@@ -622,9 +625,10 @@
 	    acceleration: 20, 
 	    animations: [
 	      { name: 'idle', frames: [393,395], fps: 10, loop: true },
-	      { name: 'moving', frames: [393,395], fps: 10, loop: true },
-	      { name: 'jumping', frames: [399,401], fps: 10, loop: false },
-	      { name: 'dead', frames: [402], fps: 10, loop: true }
+	      { name: 'move', frames: [393,395], fps: 10, loop: true },
+	      { name: 'jump', frames: [399,401], fps: 10, loop: false },
+	      { name: 'die', frames: [402], fps: 10, loop: true },
+	      { name: 'spawn', frames: [393,395], fps: 10, loop: true }
 	    ]
 	  },
 	  ptero: {
@@ -637,10 +641,11 @@
 	    acceleration: 50, 
 	    animations: [
 	      { name: 'idle', frames: [405,403,404], fps: 15, loop: true },
-	      { name: 'moving', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
+	      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
 	      { name: 'descend', frames: [405], fps: 12, loop: true },
 	      { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
-	      { name: 'dead', frames: [471], fps: 10, loop: true },
+	      { name: 'die', frames: [471], fps: 10, loop: true },
+	      { name: 'spawn', frames: [405,403,404], fps: 15, loop: true }
 	    ]
 	  }, 
 	  dragonfly: {
@@ -652,10 +657,11 @@
 	    maxSpeed: 50,
 	    acceleration: 10, 
 	    animations: [
-	      { name: 'moving', frames: [337,338], fps: 12, loop: true },
-	      { name: 'moving', frames: [337,338], fps: 12, loop: true },
+	      { name: 'idle', frames: [337,338], fps: 12, loop: true },
+	      { name: 'move', frames: [337,338], fps: 12, loop: true },
 	      { name: 'turn', frames: [339,340], fps: 12, loop: true },
-	      { name: 'dead', frames: [342], fps: 12, loop: true }
+	      { name: 'die', frames: [342], fps: 12, loop: true },
+	      { name: 'spawn', frames: [337,338], fps: 12, loop: true }
 	    ]
 	  },
 	  bat: {
@@ -668,8 +674,9 @@
 	    acceleration: 10, 
 	    animations: [
 	      { name: 'idle', frames: [351,352,351,351,351,351], fps: 10, loop: true },
-	      { name: 'moving', frames: [357,359], fps: 10, loop: true },
-	      { name: 'dead', frames: [362], fps: 10, loop: true }
+	      { name: 'move', frames: [357,359], fps: 10, loop: true },
+	      { name: 'die', frames: [362], fps: 10, loop: true },
+	      { name: 'spawn', frames: [357,359], fps: 10, loop: true }
 	    ]
 	  },
 	  spider: {
@@ -682,20 +689,22 @@
 	    animations: [
 	      { name: 'idle', frames: [335], fps: 10, loop: true },
 	      { name: 'spawn', frames: [365,368,370,372], fps: 10, loop: false },
-	      { name: 'moving', frames: [299,302,305,309], fps: 10, loop: true },
+	      { name: 'move', frames: [299,302,305,309], fps: 10, loop: true },
 	      { name: 'turn', frames: [319], fps: 10, loop: true },
-	      { name: 'climbing', frames: [341,343,345,347], fps: 10, loop: true },
-	      { name: 'waiting', frames: [332,335,372], fps: 10, loop: true },
-	      { name: 'dead', frames: [322], fps: 10, loop: false }
+	      { name: 'climb', frames: [341,343,345,347], fps: 10, loop: true },
+	      { name: 'wait', frames: [332,335,372], fps: 10, loop: true },
+	      { name: 'die', frames: [322], fps: 10, loop: false }
 	    ]
 	  },
 	  native: {
 	    maxSpeed: 100,
 	    acceleration: 20,
+	    jumping: 0,
 	    animations: [
 	      { name: 'idle', frames: [373], fps: 10, loop: true },
-	      { name: 'moving', frames: [373,376,378], fps: 10, loop: true },
-	      { name: 'dead', frames: [380], fps: 10, loop: false }
+	      { name: 'move', frames: [373,376,378], fps: 10, loop: true },
+	      { name: 'die', frames: [380], fps: 10, loop: false },
+	      { name: 'spawn', frames: [373,376,378], fps: 10, loop: true }
 	    ]
 	  },
 	  parrot: {
@@ -707,9 +716,10 @@
 	    maxSpeed: 100,
 	    acceleration: 10,
 	    animations: [
-	      { name: 'moving', frames: [394,397,398], fps: 12, loop: true },
-	      { name: 'moving', frames: [394,397,398], fps: 10, loop: true },
-	      { name: 'dead', frames: [400], fps: 10, loop: false }
+	      { name: 'idle', frames: [394,397,398], fps: 12, loop: true },
+	      { name: 'move', frames: [394,397,398], fps: 10, loop: true },
+	      { name: 'die', frames: [400], fps: 10, loop: false },
+	      { name: 'spawn', frames: [394,397,398], fps: 10, loop: true }
 	    ]
 	  },
 	  insect: {
@@ -721,9 +731,10 @@
 	    acceleration: 25, 
 	    animations: [
 	      { name: 'idle', frames: [348,348,348,348,348,348,349], fps: 10, loop: true },
-	      { name: 'moving', frames: [323,348,349], fps: 10, loop: true },
-	      { name: 'jumping', frames: [323,348,349], fps: 10, loop: true },
-	      { name: 'dead', frames: [348], fps: 10, loop: true }
+	      { name: 'move', frames: [323,348,349], fps: 10, loop: true },
+	      { name: 'jump', frames: [323,348,349], fps: 10, loop: true },
+	      { name: 'die', frames: [348], fps: 10, loop: true },
+	      { name: 'spawn', frames: [323,348,349], fps: 10, loop: true }
 	    ]
 	  },
 	  bug: {
@@ -735,9 +746,10 @@
 	    acceleration: 25, 
 	    animations: [
 	      { name: 'idle', frames: [344,344,344,344,344,344,344,344,346], fps: 10, loop: true },
-	      { name: 'moving', frames: [344,346], fps: 10, loop: true },
-	      { name: 'jumping', frames: [344,346], fps: 10, loop: true },
-	      { name: 'dead', frames: [344], fps: 10, loop: true }
+	      { name: 'move', frames: [344,346], fps: 10, loop: true },
+	      { name: 'jump', frames: [344,346], fps: 10, loop: true },
+	      { name: 'die', frames: [344], fps: 10, loop: true },
+	      { name: 'spawn', frames: [344,346], fps: 10, loop: true }
 	    ]
 	  },
 	  frog: {
@@ -749,9 +761,10 @@
 	    acceleration: 40, 
 	    animations: [
 	      { name: 'idle', frames: [325], fps: 10, loop: true },
-	      { name: 'moving', frames: [325,327,331,325], fps: 10, loop: false },
-	      { name: 'jumping', frames: [325,327,331,325], fps: 10, loop: false },
-	      { name: 'dead', frames: [334], fps: 10, loop: true }
+	      { name: 'move', frames: [325,327,331,325], fps: 10, loop: false },
+	      { name: 'jump', frames: [325,327,331,325], fps: 10, loop: false },
+	      { name: 'die', frames: [334], fps: 10, loop: true },
+	      { name: 'spawn', frames: [325,327,331,325], fps: 10, loop: false }
 	    ]
 	  },
 	  turtle: {
@@ -764,17 +777,13 @@
 	    animations: [
 	      { name: 'idle', frames: [390], fps: 10, loop: true },
 	      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: true },
-	      { name: 'moving', frames: [387,389,390,391], fps: 10, loop: true },
-	      { name: 'dead', frames: [392], fps: 10, loop: true }
+	      { name: 'move', frames: [387,389,390,391], fps: 10, loop: true },
+	      { name: 'die', frames: [392], fps: 10, loop: true }
 	    ]
 	  },
 	  gorilla: {
 	    // grim level bosses with lots of lifes!!
 	    lives: 10, 
-	    animations: []
-	  },
-	  lollipop: {
-	    // objects also...? 
 	    animations: []
 	  }
 	};
@@ -865,12 +874,46 @@
 	  }
 	};
 	
-	Creature.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
+	Creature.prototype.nextAction = function nextAction(){
+	  if(this.state === 'die'){
+	    return 'die';
+	  } else {
+	    if(this.boundTo.hasOwnProperty('width')){
+	      if(this.x < this.boundTo.x){
+	        this.facingRight = true;
+	      }
+	      if(this.x > this.boundTo.x + this.boundTo.width){
+	        this.facingRight = false;
+	      }
+	      return 'move';
+	    } else {
+	      if(this.body.blocked.left || this.body.blocked.right){
+	        return 'turn';
+	      } else {
+	        if(this.props.jumping && Math.random() < 0.05){
+	          return 'jump';
+	        }
+	        if(Math.random() < 0.005){
+	          return 'turn';
+	        }
+	        return 'move';
+	      }
+	    }
 	  }
-	  this.state = 'idle';
+	};
+	
+	Creature.prototype.react = function react(){
+	  this.play(this.state); 
+	  this.scale.x = this.facingRight ? 1 : -1;
+	  if(this.state && this[this.state]){
+	    this[this.state]();
+	  }
+	};
+	
+	
+	Creature.prototype.update = function update(){
+	  this.react();
+	  this.state = this.nextAction();
 	};
 	
 	  /*  @boundTo
@@ -908,7 +951,7 @@
 	
 	Creature.prototype.render = function render(){
 	  this.play(this.state); 
-	  this.facingRight ? this.scale.x = 1 : this.scale.x = -1;
+	  this.scale.x = this.facingRight ? 1 : -1;
 	};
 	
 	
@@ -943,7 +986,7 @@
 	
 	Creature.prototype.revive = function revive(x, y){
 	  this.lifespan = this.props.lifespan;
-	  this.state = 'moving';
+	  this.state = 'spawn';
 	  this.reset(x, y);
 	};
 	
@@ -959,38 +1002,20 @@
 	};
 	
 	Creature.prototype.moveLeft = function moveLeft(overrideAcc){
-	  this.body.moves = true;
-	  this.facingRight = false;
-	  if(overrideAcc === 0){
-	    this.body.velocity.x = 0;
-	    this.body.velocity.y = 0;
-	  }
 	  if(this.body.velocity.x > -this.props.maxSpeed){
 	    this.body.velocity.x -= overrideAcc || this.props.acceleration;
 	  }
 	};
 	
 	Creature.prototype.moveRight = function moveRight(overrideAcc){
-	  this.body.moves = true;
-	  this.facingRight = true;
-	  if(overrideAcc === 0){
-	    this.body.velocity.x = 0;
-	    this.body.velocity.y = 0;
-	  }
 	  if(this.body.velocity.x < this.props.maxSpeed){
 	    this.body.velocity.x += overrideAcc || this.props.acceleration;
 	  }
 	};
 	
-	Creature.prototype.turnIfBlocked = function turnIfBlocked(){
-	  if(this.body.blocked.left){ 
-	    this.moveRight(); 
-	    this.state = 'moving';
-	  }
-	  if(this.body.blocked.right){ 
-	    this.moveLeft(); 
-	    this.state = 'moving';
-	  }
+	Creature.prototype.turn = function turn(){
+	  this.facingRight = !this.facingRight;
+	  this.move();
 	};
 	
 	Creature.prototype.waitStill = function waitStill(){
@@ -999,6 +1024,12 @@
 	    this.state = 'idle';
 	    this.body.moves = false;
 	  }
+	};
+	
+	Creature.prototype.idle = function idle(){
+	  this.body.velocity.y = 0;
+	  this.body.velocity.x = 0;
+	  this.body.moves = false;
 	};
 	
 	Creature.prototype.jump = function jump(){
@@ -1019,7 +1050,7 @@
 	};
 	
 	Creature.prototype.die = function die(force){
-	  this.state = 'dead';
+	  this.state = 'die';
 	  //this.props.collide = false;
 	  this.body.velocity.x -= force * 3;
 	  this.body.velocity.y -= force * 3;
@@ -1054,9 +1085,9 @@
 	
 	Creature.prototype.attackIfClose = function attackIfClose(evt){
 	  if(Math.abs(this.x - evt.x) < this.props.sense){
-	    this.update = this.defaultUpdate;
+	    //this.update = this.defaultUpdate;
 	  } else {
-	    this.update = this.waitStill;
+	    //this.update = this.waitStill;
 	  }
 	};
 	
@@ -1084,7 +1115,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Bear.prototype = Object.create(Creature.prototype);
@@ -1119,7 +1150,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Native.prototype = Object.create(Creature.prototype);
@@ -1154,7 +1185,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Turtle.prototype = Object.create(Creature.prototype);
@@ -1189,7 +1220,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Insect.prototype = Object.create(Creature.prototype);
@@ -1229,7 +1260,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Bug.prototype = Object.create(Creature.prototype);
@@ -1269,7 +1300,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Frog.prototype = Object.create(Creature.prototype);
@@ -1309,7 +1340,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Tiger.prototype = Object.create(Creature.prototype);
@@ -1347,7 +1378,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Spider.prototype = Object.create(Creature.prototype);
@@ -1413,14 +1444,52 @@
 	Ptero.prototype = Object.create(Creature.prototype);
 	Ptero.prototype.constructor = Ptero;
 	
+	Creature.prototype.update = function update(){
+	  this.react();
+	  this.state = this.nextAction();
+	};
+	
+	Ptero.prototype.nextAction = function nextAction(){
+	  if(this.state === 'die'){
+	    return 'die';
+	  } else {
+	    if(this.boundTo.hasOwnProperty('width')){
+	      if(this.x < this.boundTo.x){
+	        this.facingRight = true;
+	      }
+	      if(this.x > this.boundTo.x + this.boundTo.width){
+	        this.facingRight = false;
+	      }
+	      return 'move';
+	    } else {
+	      if(this.body.blocked.left || this.body.blocked.right){
+	        return 'turn';
+	      } else {
+	        if(Math.random() < 0.005){
+	          return 'turn';
+	        }
+	        if(Math.random() < 0.05){
+	          return 'descend';
+	        }
+	        if(Math.random() < 0.05){
+	          return 'ascend';
+	        }
+	        return 'move';
+	      }
+	    }
+	  }
+	};
+	
 	Ptero.prototype.defaultUpdate = function defaultUpdate(){
 	  this.render();
-	  if(this.state === 'dead'){
+	  if(this.state === 'die'){
 	    return;
 	  }
 	  this.move();
-	  this.state = 'moving';
-	  this.turnIfBlocked();
+	  this.state = 'move';
+	  if(this.body.blocked.left || this.body.blocked.right){
+	    this.turn();
+	  }
 	  if(Math.random() < 0.01){
 	    this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
 	      this.state = 'descend';
@@ -1461,7 +1530,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Parrot.prototype = Object.create(Creature.prototype);
@@ -1495,7 +1564,7 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Dragonfly.prototype = Object.create(Creature.prototype);
@@ -1529,11 +1598,16 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
+	  this.state = 'spawn';
 	}
 	
 	Bat.prototype = Object.create(Creature.prototype);
 	Bat.prototype.constructor = Bat;
+	
+	Bat.prototype.move = function move(){
+	  this.y += 1;
+	  this.x = this.facingRight ? this.x + 0.5 : this.x - 0.5;
+	};
 	
 	Bat.prototype.defaultUpdate = function defaultUpdate(){
 	  this.render();
@@ -1575,7 +1649,7 @@
 	
 	Man.prototype.defaultUpdate = function defaultUpdate(){
 	  this.render();
-	  if(this.state === 'dead'){
+	  if(this.state === 'die'){
 	    return;
 	  }
 	};
@@ -2658,9 +2732,9 @@
 	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 33);
 	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 34);
 	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 35);
-	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 38);
-	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 36);
-	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 37);
+	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 36);
+	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 37);
+	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 38);
 	
 	var levelConfigs = [
 	  level1,
@@ -3854,6 +3928,129 @@
 
 /***/ },
 /* 36 */
+/*!*****************************************************!*\
+  !*** ./js/configs/levelConfigs/level-green-hell.js ***!
+  \*****************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	
+	var level = {
+	  id: 'green-hell',
+	  tileset: 'tileset-level-green-hell',
+	  tilemap: 'tilemap-level-green-hell',
+	  tiledJson: 'L5greenv1', 
+	  tilesetImage: 'L5_green',
+	  backgroundImage: 'forest-green',
+	  width: 48 * 16,
+	  height: 26 * 16,
+	  backgroundLayer: 'background-2',
+	  fixedBackground: true,
+	  groundLayer: 'ground-layer',
+	  foregroundLayer: null,
+	  collisionLayer: 'collision-layer',
+	  deathLayer: 'death-layer',
+	  objectsLayer: null, 
+	  entryPoint: {
+	    x: 749, 
+	    y: 87
+	  },
+	  portals: [
+	    
+	  ],
+	  bonus: [
+	    {
+	      img: atlas.WEAPON_AXE,
+	      x: 675,
+	      y: 99
+	    },
+	    {
+	      img: atlas.BONUS_PINEAPPLE,
+	      x: 573,
+	      y: 52
+	    },
+	    {
+	      img: atlas.BONUS_SOITCASE,
+	      x: 397,
+	      y: 116
+	    }
+	  ],
+	  enemies: [
+	    {
+	      type: 'dino', 
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 520,
+	        y: 199
+	      },
+	      boundTo: {
+	        
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 1000,
+	      origin: {
+	        x: 328,
+	        y: 69
+	      },
+	      boundTo: {
+	        x1: Infinity,
+	        x2: Infinity
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: 8000,
+	      revive: 1200,
+	      origin: {
+	        x: 536,
+	        y: 88
+	      },
+	      boundTo: {
+	        x1: Infinity,
+	        x2: Infinity
+	      }
+	    },
+	    {
+	      type: 'ptero',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 161,
+	        y: 221
+	      },
+	      boundTo: {
+	        x1: 161,
+	        x2: 750
+	      }
+	    },
+	    {
+	      type: 'bat',
+	      number: 1,
+	      lifespan: 7000,
+	      revive: 5000,
+	      origin: {
+	        x: 116,
+	        y: 49
+	      },
+	      boundTo: {
+	    
+	      }
+	    }
+	  ]
+	};
+	
+	module.exports = level;
+
+/***/ },
+/* 37 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-into-the-woods.js ***!
   \*********************************************************/
@@ -4012,7 +4209,7 @@
 	module.exports = level;
 
 /***/ },
-/* 37 */
+/* 38 */
 /*!*******************************************************!*\
   !*** ./js/configs/levelConfigs/level-hall-of-ages.js ***!
   \*******************************************************/
@@ -4172,7 +4369,7 @@
 	      },
 	      boundTo: {
 	        x1: 438,
-	        x2: 571
+	        x2: 558
 	      }
 	    },
 	    {
@@ -4421,133 +4618,6 @@
 	      boundTo: {
 	        x1: 4410,
 	        x2: 4783
-	      }
-	    }
-	  ]
-	};
-	
-	module.exports = level;
-
-/***/ },
-/* 38 */
-/*!*****************************************************!*\
-  !*** ./js/configs/levelConfigs/level-green-hell.js ***!
-  \*****************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
-	
-	var level = {
-	  id: 'green-hell',
-	  tileset: 'tileset-level-green-hell',
-	  tilemap: 'tilemap-level-green-hell',
-	  tiledJson: 'L5greenv1', 
-	  tilesetImage: 'L5_green',
-	  backgroundImage: 'forest-green',
-	  width: 48 * 16,
-	  height: 26 * 16,
-	  backgroundLayer: 'background-2',
-	  fixedBackground: true,
-	  groundLayer: 'ground-layer',
-	  foregroundLayer: null,
-	  collisionLayer: 'collision-layer',
-	  deathLayer: 'death-layer',
-	  objectsLayer: null, 
-	  entryPoint: {
-	    x: 749, 
-	    y: 87
-	  },
-	  portals: [
-	    
-	  ],
-	  bonus: [
-	    {
-	      img: atlas.WEAPON_AXE,
-	      x: 675,
-	      y: 99
-	    },
-	    {
-	      img: atlas.BONUS_PINEAPPLE,
-	      x: 573,
-	      y: 52
-	    },
-	    {
-	      img: atlas.BONUS_SOITCASE,
-	      x: 397,
-	      y: 116
-	    }
-	  ],
-	  enemies: [
-	    {
-	      type: 'dino', 
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
-	      origin: {
-	        x: 520,
-	        y: 199
-	      },
-	      boundTo: {
-	        
-	      }
-	    },
-	    {
-	      type: 'native',
-	      number: 1,
-	      lifespan: 10000,
-	      revive: 1000,
-	      origin: {
-	        x: 328,
-	        y: 69
-	      },
-	      boundTo: {
-	        x1: Infinity,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'native',
-	      number: 1,
-	      lifespan: 8000,
-	      revive: 1200,
-	      origin: {
-	        x: 536,
-	        y: 88
-	      },
-	      boundTo: {
-	        x1: Infinity,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'dragonfly',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      origin: {
-	        x: 161,
-	        y: 221
-	      },
-	      boundTo: {
-	        x1: 161,
-	        x2: 750
-	      }
-	    },
-	    {
-	      type: 'bat',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
-	      origin: {
-	        x: 116,
-	        y: 49
-	      },
-	      boundTo: {
-	    
 	      }
 	    }
 	  ]

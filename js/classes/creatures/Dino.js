@@ -6,11 +6,12 @@ function Dino(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.update = this.defaultUpdate;
+  this.state = 'spawn';
 }
 
 Dino.prototype = Object.create(Creature.prototype);
 Dino.prototype.constructor = Dino;
+
 
 Dino.prototype.defaultUpdate = function defaultUpdate(){
   this.render();

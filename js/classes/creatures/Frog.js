@@ -6,7 +6,7 @@ function Frog(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.update = this.defaultUpdate;
+  this.state = 'spawn';
 }
 
 Frog.prototype = Object.create(Creature.prototype);

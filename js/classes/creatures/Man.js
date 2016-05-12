@@ -14,7 +14,7 @@ Man.prototype.constructor = Man;
 
 Man.prototype.defaultUpdate = function defaultUpdate(){
   this.render();
-  if(this.state === 'dead'){
+  if(this.state === 'die'){
     return;
   }
 };

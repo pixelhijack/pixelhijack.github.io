@@ -129,7 +129,7 @@ function Play(game, globalSettings){
   
     window.addEventListener("deviceorientation", function orientation(event){
       var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
-      man.state = 'moving';
+      man.state = 'move';
       tilt >= 0 ? 
         man.moveRight(tilt * globalSettings.physics.accelerationMultiplier) :
         man.moveLeft(-tilt * globalSettings.physics.accelerationMultiplier);
@@ -169,10 +169,10 @@ function Play(game, globalSettings){
     game.physics.arcade.collide(man, level.collisionLayer);
     
     enemies.forEachAlive(function(enemy){
-      if(enemy.props.collide && enemy.state !== 'dead'){
+      if(enemy.props.collide && enemy.state !== 'die'){
         game.physics.arcade.collide(enemy, level.collisionLayer);
       }
-      if(enemy.inCamera && enemy.state !== 'dead' && man.state !== 'hurt'){
+      if(enemy.inCamera && enemy.state !== 'die' && man.state !== 'hurt'){
         game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
       }
     });
@@ -237,12 +237,14 @@ function Play(game, globalSettings){
         man.state = 'idle';
     }
     if(keys.left.isDown) {
+      man.facingRight = false;
       man.moveLeft();
-      man.state = man.isGrounded() ? 'moving' : 'jumping';
+      man.state = man.isGrounded() ? 'move' : 'jump';
     }
     else if(keys.right.isDown) {
+      man.facingRight = true;
       man.moveRight();
-      man.state = man.isGrounded() ? 'moving' : 'jumping';
+      man.state = man.isGrounded() ? 'move' : 'jump';
     }
     else{
       // slowing down / slippery rate: 10% after stopped moving
@@ -252,7 +254,7 @@ function Play(game, globalSettings){
     if(keys.up.isDown || game.input.pointer1.isDown) {
         man.jump();
         if(!man.isGrounded()){
-          man.state = 'jumping';
+          man.state = 'jump';
         }
     }
     else if(keys.down.isDown) {
@@ -260,7 +262,7 @@ function Play(game, globalSettings){
         events.somethingHappened.dispatch(this, man.x);
     }
     if(keys.space.isDown) {
-      man.state = 'hitting';
+      man.state = 'hit';
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
       weapon.sprite.animations.play('club-hit-' + man.direction());
@@ -280,15 +282,15 @@ function Play(game, globalSettings){
   function update(){
     
     // show FPS on bottom left corner
-    game.debug.text(game.time.fps, 5, game.height - 5);
-    game.debug.text(enemies.population(), 5, game.height - 15);
+    game.debug.text(game.time.fps, 5, game.height - 20);
+    game.debug.text(enemies.population(), 5, game.height - 35);
     
     // debug sprites
     enemies.forEachAlive(function(creature){
       //creature.debug((creature.lifespan / 1000 | 0));
       //creature.debug(creature.creatureId);
     });
-    man.debug(man.props.lives +' '+ man.state);
+    //man.debug(man.props.lives +' '+ man.state);
     
     setParallax();
     collisions();
@@ -307,12 +309,12 @@ function Play(game, globalSettings){
         heroMomentum = man.body.velocity.x * man.body.mass;
     // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
-      if(man.state === 'hitting'){
+      if(man.state === 'hit'){
         enemy.die(heroMomentum);
       }
       return;
     }
-    if(man.state === 'hitting'){
+    if(man.state === 'hit'){
       enemy.die(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{

@@ -6,11 +6,16 @@ function Bat(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.update = this.defaultUpdate;
+  this.state = 'spawn';
 }
 
 Bat.prototype = Object.create(Creature.prototype);
 Bat.prototype.constructor = Bat;
+
+Bat.prototype.move = function move(){
+  this.y += 1;
+  this.x = this.facingRight ? this.x + 0.5 : this.x - 0.5;
+};
 
 Bat.prototype.defaultUpdate = function defaultUpdate(){
   this.render();
