@@ -547,6 +547,7 @@
 
 	var creatureConfigs = {
 	  creatureDefaults: {
+	    active: true,
 	    gravity: 500,
 	    bounce: 0.2,
 	    mass: 1,
@@ -888,6 +889,9 @@
 	  }
 	  if(this.state.until > this.game.time.now){
 	    return this.state.name;
+	  }
+	  if(!this.props.active){
+	    return 'idle';
 	  }
 	  if(this.boundTo.hasOwnProperty('width')){
 	    if(this.x < this.boundTo.x){
@@ -1869,6 +1873,9 @@
 	      var creature = creatureFactory.create(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
 	      creature.setId(groupConfig.type, groupConfig.origin.x, groupConfig.origin.y, i);
 	      // override general creature-specific updates
+	      if(groupConfig.active !== undefined){
+	        creature.props.active = groupConfig.active;
+	      }
 	      if(groupConfig.movement && creature.setBehaviour){
 	         creature.setBehaviour(groupConfig.movement);
 	      }
@@ -3986,6 +3993,7 @@
 	  enemies: [
 	    {
 	      type: 'dino', 
+	      active: false,
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,

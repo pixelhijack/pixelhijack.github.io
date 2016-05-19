@@ -81,6 +81,9 @@ Creature.prototype.nextAction = function nextAction(){
   if(this.state.until > this.game.time.now){
     return this.state.name;
   }
+  if(!this.props.active){
+    return 'idle';
+  }
   if(this.boundTo.hasOwnProperty('width')){
     if(this.x < this.boundTo.x){
       this.facingRight = true;

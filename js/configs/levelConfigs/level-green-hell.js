@@ -43,6 +43,7 @@ var level = {
   enemies: [
     {
       type: 'dino', 
+      active: false,
       number: 1,
       lifespan: Infinity,
       revive: false,

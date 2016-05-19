@@ -1,5 +1,6 @@
 var creatureConfigs = {
   creatureDefaults: {
+    active: true,
     gravity: 500,
     bounce: 0.2,
     mass: 1,

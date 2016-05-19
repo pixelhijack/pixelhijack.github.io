@@ -19,6 +19,9 @@ var enemyManager = function(game, levelEnemies, levelZones){
       var creature = creatureFactory.create(game, groupConfig.type, groupConfig.origin.x, groupConfig.origin.y);
       creature.setId(groupConfig.type, groupConfig.origin.x, groupConfig.origin.y, i);
       // override general creature-specific updates
+      if(groupConfig.active !== undefined){
+        creature.props.active = groupConfig.active;
+      }
       if(groupConfig.movement && creature.setBehaviour){
          creature.setBehaviour(groupConfig.movement);
       }
