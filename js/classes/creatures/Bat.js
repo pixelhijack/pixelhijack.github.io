@@ -6,7 +6,6 @@ function Bat(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Bat.prototype = Object.create(Creature.prototype);

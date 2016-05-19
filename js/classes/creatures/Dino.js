@@ -6,7 +6,6 @@ function Dino(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Dino.prototype = Object.create(Creature.prototype);

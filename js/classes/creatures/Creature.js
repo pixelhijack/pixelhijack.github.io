@@ -5,7 +5,11 @@ var Creature = function(game, creatureType, x, y){
   game.physics.enable(this, Phaser.Physics.ARCADE);
   this.creatureType = creatureType;
 
-  this.state = '';
+  this.state = {
+    name: 'spawn', 
+    until: this.game.time.now
+  };
+  
   this.body.collideWorldBounds = true;
   this.checkWorldBounds = true;
   this.outOfBoundsKill = true;
@@ -13,8 +17,6 @@ var Creature = function(game, creatureType, x, y){
   this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
   this._debugText.visible = false;
 
-  this.stunnedUntil = 0;
-  
   this.facingRight = Math.random() < 0.5 ? true : false;
   
   // apply creature 'class' by extend the object with behavioural mixins
@@ -65,9 +67,19 @@ Creature.prototype.setBehaviour = function setBehaviour(behaviour){
   }
 };
 
+Creature.prototype.setState = function setState(state, until){
+  this.state = {
+    name: state,
+    until: this.game.time.now + (until || 0)
+  };
+};
+
 Creature.prototype.nextAction = function nextAction(){
-  if(this.state === 'die'){
+  if(this.state.name === 'die'){
     return 'die';
+  }
+  if(this.state.until > this.game.time.now){
+    return this.state.name;
   }
   if(this.boundTo.hasOwnProperty('width')){
     if(this.x < this.boundTo.x){
@@ -91,17 +103,17 @@ Creature.prototype.nextAction = function nextAction(){
 };
 
 Creature.prototype.react = function react(){
-  this.play(this.state); 
+  this.play(this.state.name); 
   this.scale.x = this.facingRight ? 1 : -1;
-  if(this.state && this[this.state]){
-    this[this.state]();
+  if(this.state.name && this[this.state.name]){
+    this[this.state.name]();
   }
 };
 
 
 Creature.prototype.update = function update(){
   this.react();
-  this.state = this.nextAction();
+  this.state.name = this.nextAction();
 };
 
   /*  @boundTo
@@ -138,7 +150,7 @@ Object.defineProperty(Creature.prototype, 'boundTo', {
 });
 
 Creature.prototype.render = function render(){
-  this.play(this.state); 
+  this.play(this.state.name); 
   this.scale.x = this.facingRight ? 1 : -1;
 };
 
@@ -174,7 +186,7 @@ Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
 
 Creature.prototype.revive = function revive(x, y){
   this.lifespan = this.props.lifespan;
-  this.state = 'spawn';
+  this.state.name = 'spawn';
   this.reset(x, y);
 };
 
@@ -208,8 +220,8 @@ Creature.prototype.turn = function turn(){
 
 Creature.prototype.waitStill = function waitStill(){
   this.render();
-  if(this.state !== 'dead'){
-    this.state = 'idle';
+  if(this.state.name !== 'dead'){
+    this.state.name = 'idle';
     this.body.moves = false;
   }
 };
@@ -231,14 +243,14 @@ Creature.prototype.stop = function stop(slippery){
 };
 
 Creature.prototype.hurt = function hurt(force){
+  this.setState('stun', 1500);
   this.props.lives -= 1;
   this.body.velocity.x += force * 3;
   this.body.velocity.y += force * 3;
-  this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
 };
 
 Creature.prototype.die = function die(force){
-  this.state = 'die';
+  this.state.name = 'die';
   //this.props.collide = false;
   this.body.velocity.x -= force * 3;
   this.body.velocity.y -= force * 3;

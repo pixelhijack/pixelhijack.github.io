@@ -108,6 +108,20 @@ var level = {
       boundTo: {
     
       }
+    },
+    {
+      type: 'dragonfly',
+      number: 1,
+      lifespan: Infinity,
+      revive: 1000,
+      origin: {
+        x: 143,
+        y: 226
+      },
+      boundTo: {
+        x1: 183,
+        x2: 484
+      }
     }
   ]
 };

@@ -6,7 +6,6 @@ function Native(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Native.prototype = Object.create(Creature.prototype);

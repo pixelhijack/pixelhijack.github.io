@@ -12,7 +12,7 @@ function Ptero(game, x, y){
 Ptero.prototype = Object.create(Creature.prototype);
 Ptero.prototype.constructor = Ptero;
 
-Creature.prototype.update = function update(){
+Ptero.prototype.update = function update(){
   this.react();
   this.state = this.nextAction();
 };

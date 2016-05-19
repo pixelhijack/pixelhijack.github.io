@@ -31,6 +31,7 @@ var creatureConfigs = {
       { name: 'jump', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
       { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
       { name: 'hurt', frames: [19], fps: 10, loop: true },
+      { name: 'stun', frames: [19], fps: 10, loop: true },
       { name: 'die', frames: [19], fps: 10, loop: false },
       { name: 'spawn', frames: [11,'03','05',14,20], fps: 10, loop: false }
     ],

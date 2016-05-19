@@ -238,7 +238,7 @@
 	  
 	    window.addEventListener("deviceorientation", function orientation(event){
 	      var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
-	      man.state = 'move';
+	      man.state.name = 'move';
 	      tilt >= 0 ? 
 	        man.moveRight(tilt * globalSettings.physics.accelerationMultiplier) :
 	        man.moveLeft(-tilt * globalSettings.physics.accelerationMultiplier);
@@ -278,10 +278,10 @@
 	    game.physics.arcade.collide(man, level.collisionLayer);
 	    
 	    enemies.forEachAlive(function(enemy){
-	      if(enemy.props.collide && enemy.state !== 'die'){
+	      if(enemy.props.collide && enemy.state.name !== 'die'){
 	        game.physics.arcade.collide(enemy, level.collisionLayer);
 	      }
-	      if(enemy.inCamera && enemy.state !== 'die' && man.state !== 'hurt'){
+	      if(enemy.inCamera && enemy.state.name !== 'die' && man.state.name !== 'stun'){
 	        game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
 	      }
 	    });
@@ -329,9 +329,8 @@
 	    weapon.sprite.x = man.x;
 	    weapon.sprite.y = man.y;
 	
-	    if(man.stunnedUntil > game.time.now){
+	    if(man.state.name === 'stun' && game.time.now < man.state.until){
 	      keys.enabled = false;
-	      man.state = 'hurt';
 	      return;
 	    } else {
 	      keys.enabled = true;
@@ -343,17 +342,17 @@
 	      !keys.down.isDown && 
 	      !keys.space.isDown &&
 	      man.isGrounded()){
-	        man.state = 'idle';
+	        man.state.name = 'idle';
 	    }
 	    if(keys.left.isDown) {
 	      man.facingRight = false;
 	      man.moveLeft();
-	      man.state = man.isGrounded() ? 'move' : 'jump';
+	      man.state.name = man.isGrounded() ? 'move' : 'jump';
 	    }
 	    else if(keys.right.isDown) {
 	      man.facingRight = true;
 	      man.moveRight();
-	      man.state = man.isGrounded() ? 'move' : 'jump';
+	      man.state.name = man.isGrounded() ? 'move' : 'jump';
 	    }
 	    else{
 	      // slowing down / slippery rate: 10% after stopped moving
@@ -363,7 +362,7 @@
 	    if(keys.up.isDown || game.input.pointer1.isDown) {
 	        man.jump();
 	        if(!man.isGrounded()){
-	          man.state = 'jump';
+	          man.state.name = 'jump';
 	        }
 	    }
 	    else if(keys.down.isDown) {
@@ -371,7 +370,7 @@
 	        events.somethingHappened.dispatch(this, man.x);
 	    }
 	    if(keys.space.isDown) {
-	      man.state = 'hit';
+	      man.state.name = 'hit';
 	      man.stop(globalSettings.physics.slippery);
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
@@ -399,7 +398,7 @@
 	      //creature.debug((creature.lifespan / 1000 | 0));
 	      //creature.debug(creature.creatureId);
 	    });
-	    //man.debug(man.props.lives +' '+ man.state);
+	    man.debug(man.props.lives +' '+ man.state.name);
 	    
 	    setParallax();
 	    collisions();
@@ -418,12 +417,12 @@
 	        heroMomentum = man.body.velocity.x * man.body.mass;
 	    // jumping on top of the enemies!
 	    if(man.body.touching.down && enemy.body.touching.up){
-	      if(man.state === 'hit'){
+	      if(man.state.name === 'hit'){
 	        enemy.die(heroMomentum);
 	      }
 	      return;
 	    }
-	    if(man.state === 'hit'){
+	    if(man.state.name === 'hit'){
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
@@ -513,7 +512,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Dino.prototype = Object.create(Creature.prototype);
@@ -580,6 +578,7 @@
 	      { name: 'jump', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
 	      { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
 	      { name: 'hurt', frames: [19], fps: 10, loop: true },
+	      { name: 'stun', frames: [19], fps: 10, loop: true },
 	      { name: 'die', frames: [19], fps: 10, loop: false },
 	      { name: 'spawn', frames: [11,'03','05',14,20], fps: 10, loop: false }
 	    ],
@@ -814,7 +813,11 @@
 	  game.physics.enable(this, Phaser.Physics.ARCADE);
 	  this.creatureType = creatureType;
 	
-	  this.state = '';
+	  this.state = {
+	    name: 'spawn', 
+	    until: this.game.time.now
+	  };
+	  
 	  this.body.collideWorldBounds = true;
 	  this.checkWorldBounds = true;
 	  this.outOfBoundsKill = true;
@@ -822,8 +825,6 @@
 	  this._debugText = this.addChild(this.game.add.text(20, -20, 'debug', { font: "12px Arial", fill: "#ffffff" }));
 	  this._debugText.visible = false;
 	
-	  this.stunnedUntil = 0;
-	  
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
 	  // apply creature 'class' by extend the object with behavioural mixins
@@ -874,9 +875,19 @@
 	  }
 	};
 	
+	Creature.prototype.setState = function setState(state, until){
+	  this.state = {
+	    name: state,
+	    until: this.game.time.now + (until || 0)
+	  };
+	};
+	
 	Creature.prototype.nextAction = function nextAction(){
-	  if(this.state === 'die'){
+	  if(this.state.name === 'die'){
 	    return 'die';
+	  }
+	  if(this.state.until > this.game.time.now){
+	    return this.state.name;
 	  }
 	  if(this.boundTo.hasOwnProperty('width')){
 	    if(this.x < this.boundTo.x){
@@ -900,17 +911,17 @@
 	};
 	
 	Creature.prototype.react = function react(){
-	  this.play(this.state); 
+	  this.play(this.state.name); 
 	  this.scale.x = this.facingRight ? 1 : -1;
-	  if(this.state && this[this.state]){
-	    this[this.state]();
+	  if(this.state.name && this[this.state.name]){
+	    this[this.state.name]();
 	  }
 	};
 	
 	
 	Creature.prototype.update = function update(){
 	  this.react();
-	  this.state = this.nextAction();
+	  this.state.name = this.nextAction();
 	};
 	
 	  /*  @boundTo
@@ -947,7 +958,7 @@
 	});
 	
 	Creature.prototype.render = function render(){
-	  this.play(this.state); 
+	  this.play(this.state.name); 
 	  this.scale.x = this.facingRight ? 1 : -1;
 	};
 	
@@ -983,7 +994,7 @@
 	
 	Creature.prototype.revive = function revive(x, y){
 	  this.lifespan = this.props.lifespan;
-	  this.state = 'spawn';
+	  this.state.name = 'spawn';
 	  this.reset(x, y);
 	};
 	
@@ -1017,8 +1028,8 @@
 	
 	Creature.prototype.waitStill = function waitStill(){
 	  this.render();
-	  if(this.state !== 'dead'){
-	    this.state = 'idle';
+	  if(this.state.name !== 'dead'){
+	    this.state.name = 'idle';
 	    this.body.moves = false;
 	  }
 	};
@@ -1040,14 +1051,14 @@
 	};
 	
 	Creature.prototype.hurt = function hurt(force){
+	  this.setState('stun', 1500);
 	  this.props.lives -= 1;
 	  this.body.velocity.x += force * 3;
 	  this.body.velocity.y += force * 3;
-	  this.stunnedUntil = this.game.time.now + Math.max(force * 5, 1000);
 	};
 	
 	Creature.prototype.die = function die(force){
-	  this.state = 'die';
+	  this.state.name = 'die';
 	  //this.props.collide = false;
 	  this.body.velocity.x -= force * 3;
 	  this.body.velocity.y -= force * 3;
@@ -1147,7 +1158,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Native.prototype = Object.create(Creature.prototype);
@@ -1441,7 +1451,7 @@
 	Ptero.prototype = Object.create(Creature.prototype);
 	Ptero.prototype.constructor = Ptero;
 	
-	Creature.prototype.update = function update(){
+	Ptero.prototype.update = function update(){
 	  this.react();
 	  this.state = this.nextAction();
 	};
@@ -1561,7 +1571,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Dragonfly.prototype = Object.create(Creature.prototype);
@@ -1595,7 +1604,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Bat.prototype = Object.create(Creature.prototype);
@@ -1645,8 +1653,11 @@
 	Man.prototype.constructor = Man;
 	
 	Man.prototype.defaultUpdate = function defaultUpdate(){
+	  if(this.game.time.now < this.state.until){
+	    this.state.name = this.state.name;
+	  }
 	  this.render();
-	  if(this.state === 'die'){
+	  if(this.state.name === 'die'){
 	    return;
 	  }
 	};
@@ -4039,6 +4050,20 @@
 	      },
 	      boundTo: {
 	    
+	      }
+	    },
+	    {
+	      type: 'dragonfly',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 1000,
+	      origin: {
+	        x: 143,
+	        y: 226
+	      },
+	      boundTo: {
+	        x1: 183,
+	        x2: 484
 	      }
 	    }
 	  ]
