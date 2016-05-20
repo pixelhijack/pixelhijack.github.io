@@ -6,7 +6,6 @@ function Insect(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Insect.prototype = Object.create(Creature.prototype);

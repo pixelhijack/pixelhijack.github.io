@@ -6,7 +6,6 @@ function Spider(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Spider.prototype = Object.create(Creature.prototype);

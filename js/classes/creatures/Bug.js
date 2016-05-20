@@ -6,7 +6,6 @@ function Bug(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Bug.prototype = Object.create(Creature.prototype);

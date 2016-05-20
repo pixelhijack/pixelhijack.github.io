@@ -6,7 +6,6 @@ function Bear(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Bear.prototype = Object.create(Creature.prototype);

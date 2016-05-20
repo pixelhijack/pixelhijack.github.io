@@ -1140,7 +1140,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Bear.prototype = Object.create(Creature.prototype);
@@ -1209,7 +1208,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Turtle.prototype = Object.create(Creature.prototype);
@@ -1244,7 +1242,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Insect.prototype = Object.create(Creature.prototype);
@@ -1284,7 +1281,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Bug.prototype = Object.create(Creature.prototype);
@@ -1324,7 +1320,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Frog.prototype = Object.create(Creature.prototype);
@@ -1364,7 +1359,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Tiger.prototype = Object.create(Creature.prototype);
@@ -1402,7 +1396,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Spider.prototype = Object.create(Creature.prototype);
@@ -1554,7 +1547,6 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.state = 'spawn';
 	}
 	
 	Parrot.prototype = Object.create(Creature.prototype);

@@ -6,7 +6,6 @@ function Parrot(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Parrot.prototype = Object.create(Creature.prototype);

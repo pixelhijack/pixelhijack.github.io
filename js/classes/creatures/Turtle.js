@@ -6,7 +6,6 @@ function Turtle(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Turtle.prototype = Object.create(Creature.prototype);

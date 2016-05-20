@@ -6,7 +6,6 @@ function Tiger(game, x, y){
 
   this.setProps();
   this.setAnimations();
-  this.state = 'spawn';
 }
 
 Tiger.prototype = Object.create(Creature.prototype);
