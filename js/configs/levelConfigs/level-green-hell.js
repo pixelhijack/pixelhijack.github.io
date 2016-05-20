@@ -48,12 +48,11 @@ var level = {
       lifespan: Infinity,
       revive: false,
       origin: {
-        x: 520,
-        y: 199
+        x: 282,
+        y: 219
       },
-      boundTo: {
-        
-      }
+      onClose: 'wakeUp',
+      onLeave: 'sleepWell'
     },
     {
       type: 'native',
@@ -99,6 +98,7 @@ var level = {
     },
     {
       type: 'bat',
+      active: false,
       number: 1,
       lifespan: 7000,
       revive: 5000,
@@ -106,9 +106,8 @@ var level = {
         x: 116,
         y: 49
       },
-      boundTo: {
-    
-      }
+      onClose: 'wakeUp',
+      onLeave: 'sleepWell'
     },
     {
       type: 'dragonfly',

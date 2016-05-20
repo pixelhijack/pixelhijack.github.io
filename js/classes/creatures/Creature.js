@@ -108,6 +108,7 @@ Creature.prototype.nextAction = function nextAction(){
 Creature.prototype.react = function react(){
   this.play(this.state.name); 
   this.scale.x = this.facingRight ? 1 : -1;
+  this.body.moves = this.props.active;
   if(this.state.name && this[this.state.name]){
     this[this.state.name]();
   }
@@ -182,8 +183,14 @@ Creature.prototype.shout = function shout(eventType){
 };
 
 Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
-  if(this.reaction && this[this.reaction]){
-    this[this.reaction].call(this, evt);
+  if(!(this.onMove || this.onClose || this.onLeave)){
+    return;
+  }
+  this.onMove && this.onMove.call(this, evt);
+  if(Math.abs(this.x - evt.x) < this.props.sense || Math.abs(this.y - evt.y) < this.props.sense){
+    this.onClose && this.onClose.call(this, evt);
+  } else {
+    this.onLeave && this.onLeave.call(this, evt);
   }
 };
 
@@ -221,6 +228,13 @@ Creature.prototype.turn = function turn(){
   this.move();
 };
 
+Creature.prototype.wakeUp = function wakeUp(){
+  this.props.active = true;
+};
+Creature.prototype.sleepWell = function sleepWell(){
+  this.props.active = false;
+};
+
 Creature.prototype.waitStill = function waitStill(){
   this.render();
   if(this.state.name !== 'dead'){
@@ -232,7 +246,6 @@ Creature.prototype.waitStill = function waitStill(){
 Creature.prototype.idle = function idle(){
   this.body.velocity.y = 0;
   this.body.velocity.x = 0;
-  this.body.moves = false;
 };
 
 Creature.prototype.jump = function jump(){

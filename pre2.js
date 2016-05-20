@@ -557,7 +557,7 @@
 	    collide: true,
 	    lives: 1, 
 	    lifespan: Infinity,
-	    sense: 150,
+	    sense: 50,
 	    animations: [], 
 	    boundTo : {
 	      x1: 1000,
@@ -917,6 +917,7 @@
 	Creature.prototype.react = function react(){
 	  this.play(this.state.name); 
 	  this.scale.x = this.facingRight ? 1 : -1;
+	  this.body.moves = this.props.active;
 	  if(this.state.name && this[this.state.name]){
 	    this[this.state.name]();
 	  }
@@ -991,8 +992,14 @@
 	};
 	
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
-	  if(this.reaction && this[this.reaction]){
-	    this[this.reaction].call(this, evt);
+	  if(!(this.onMove || this.onClose || this.onLeave)){
+	    return;
+	  }
+	  this.onMove && this.onMove.call(this, evt);
+	  if(Math.abs(this.x - evt.x) < this.props.sense || Math.abs(this.y - evt.y) < this.props.sense){
+	    this.onClose && this.onClose.call(this, evt);
+	  } else {
+	    this.onLeave && this.onLeave.call(this, evt);
 	  }
 	};
 	
@@ -1030,6 +1037,13 @@
 	  this.move();
 	};
 	
+	Creature.prototype.wakeUp = function wakeUp(){
+	  this.props.active = true;
+	};
+	Creature.prototype.sleepWell = function sleepWell(){
+	  this.props.active = false;
+	};
+	
 	Creature.prototype.waitStill = function waitStill(){
 	  this.render();
 	  if(this.state.name !== 'dead'){
@@ -1041,7 +1055,6 @@
 	Creature.prototype.idle = function idle(){
 	  this.body.velocity.y = 0;
 	  this.body.velocity.x = 0;
-	  this.body.moves = false;
 	};
 	
 	Creature.prototype.jump = function jump(){
@@ -1876,6 +1889,12 @@
 	      if(groupConfig.active !== undefined){
 	        creature.props.active = groupConfig.active;
 	      }
+	      if(groupConfig.onClose && creature[groupConfig.onClose] && typeof creature[groupConfig.onClose] === 'function'){
+	        creature.onClose = creature[groupConfig.onClose];
+	      }
+	      if(groupConfig.onLeave && creature[groupConfig.onLeave] && typeof creature[groupConfig.onLeave] === 'function'){
+	        creature.onLeave = creature[groupConfig.onLeave];
+	      }
 	      if(groupConfig.movement && creature.setBehaviour){
 	         creature.setBehaviour(groupConfig.movement);
 	      }
@@ -1885,8 +1904,7 @@
 	      group.add(creature);
 	    }
 	    //group.setAll('props.boundTo', groupConfig.boundTo); 
-	    group.setAll('boundTo', groupConfig.boundTo);
-	    group.setAll('props.move', groupConfig.move);
+	    group.setAll('boundTo', groupConfig.boundTo || {});
 	    group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
 	    group.setAll('lifespan', groupConfig.lifespan);
 	    return group;
@@ -3998,12 +4016,11 @@
 	      lifespan: Infinity,
 	      revive: false,
 	      origin: {
-	        x: 520,
-	        y: 199
+	        x: 282,
+	        y: 219
 	      },
-	      boundTo: {
-	        
-	      }
+	      onClose: 'wakeUp',
+	      onLeave: 'sleepWell'
 	    },
 	    {
 	      type: 'native',
@@ -4049,6 +4066,7 @@
 	    },
 	    {
 	      type: 'bat',
+	      active: false,
 	      number: 1,
 	      lifespan: 7000,
 	      revive: 5000,
@@ -4056,9 +4074,8 @@
 	        x: 116,
 	        y: 49
 	      },
-	      boundTo: {
-	    
-	      }
+	      onClose: 'wakeUp',
+	      onLeave: 'sleepWell'
 	    },
 	    {
 	      type: 'dragonfly',

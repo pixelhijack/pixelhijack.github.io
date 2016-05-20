@@ -22,6 +22,12 @@ var enemyManager = function(game, levelEnemies, levelZones){
       if(groupConfig.active !== undefined){
         creature.props.active = groupConfig.active;
       }
+      if(groupConfig.onClose && creature[groupConfig.onClose] && typeof creature[groupConfig.onClose] === 'function'){
+        creature.onClose = creature[groupConfig.onClose];
+      }
+      if(groupConfig.onLeave && creature[groupConfig.onLeave] && typeof creature[groupConfig.onLeave] === 'function'){
+        creature.onLeave = creature[groupConfig.onLeave];
+      }
       if(groupConfig.movement && creature.setBehaviour){
          creature.setBehaviour(groupConfig.movement);
       }
@@ -31,8 +37,7 @@ var enemyManager = function(game, levelEnemies, levelZones){
       group.add(creature);
     }
     //group.setAll('props.boundTo', groupConfig.boundTo); 
-    group.setAll('boundTo', groupConfig.boundTo);
-    group.setAll('props.move', groupConfig.move);
+    group.setAll('boundTo', groupConfig.boundTo || {});
     group.setAll('props.lifespan', groupConfig.lifespan); // gotta override the abstract class & instance lifespan too!!
     group.setAll('lifespan', groupConfig.lifespan);
     return group;
