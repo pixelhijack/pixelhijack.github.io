@@ -19,11 +19,6 @@ var Creature = function(game, creatureType, x, y){
 
   this.facingRight = Math.random() < 0.5 ? true : false;
   
-  // apply creature 'class' by extend the object with behavioural mixins
-  //movements.behaviours[creatureType].call(Creature.prototype);
-  // apply the creature's own update to be called
-  //this.update = movements.updates[creatureType].bind(this);
-  
   // every creature makes noises: an observable phaser channel to subscribe for:
   this.noise = new Phaser.Signal();
   // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
@@ -190,7 +185,7 @@ Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
     return;
   }
   this.onMove && this.onMove.call(this, evt);
-  if(Math.abs(this.x - evt.x) < this.props.sense || Math.abs(this.y - evt.y) < this.props.sense){
+  if(Math.abs(this.x - evt.x) < this.props.sense){
     this.onClose && this.onClose.call(this, evt);
   } else {
     this.onLeave && this.onLeave.call(this, evt);

@@ -830,11 +830,6 @@
 	
 	  this.facingRight = Math.random() < 0.5 ? true : false;
 	  
-	  // apply creature 'class' by extend the object with behavioural mixins
-	  //movements.behaviours[creatureType].call(Creature.prototype);
-	  // apply the creature's own update to be called
-	  //this.update = movements.updates[creatureType].bind(this);
-	  
 	  // every creature makes noises: an observable phaser channel to subscribe for:
 	  this.noise = new Phaser.Signal();
 	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
@@ -1001,7 +996,7 @@
 	    return;
 	  }
 	  this.onMove && this.onMove.call(this, evt);
-	  if(Math.abs(this.x - evt.x) < this.props.sense || Math.abs(this.y - evt.y) < this.props.sense){
+	  if(Math.abs(this.x - evt.x) < this.props.sense){
 	    this.onClose && this.onClose.call(this, evt);
 	  } else {
 	    this.onLeave && this.onLeave.call(this, evt);
@@ -3253,8 +3248,8 @@
 	      number: 1,
 	      lifespan: 10000,
 	      revive: 10000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 611,
 	        y: 496
@@ -3353,8 +3348,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 55,
 	        y: 663
@@ -3368,8 +3363,8 @@
 	      number: 1,
 	      lifespan: 4000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 307,
 	        y: 541
@@ -3397,8 +3392,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 533,
 	        y: 311
@@ -3412,8 +3407,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 533,
 	        y: 311
@@ -3632,8 +3627,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 13,
 	        y: 179
@@ -3647,8 +3642,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 248,
 	        y: 1533
@@ -3662,8 +3657,8 @@
 	      number: 1,
 	      lifespan: 4000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 402,
 	        y: 1377
@@ -3677,8 +3672,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 472,
 	        y: 222
@@ -3748,8 +3743,8 @@
 	      number: 1,
 	      lifespan: 10000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 842,
 	        y: 970
@@ -3763,8 +3758,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 816,
 	        y: 967
@@ -3778,8 +3773,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 228,
 	        y: 853
@@ -3849,8 +3844,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 786,
 	        y: 462
@@ -3864,8 +3859,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 891,
 	        y: 432
@@ -3879,8 +3874,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 1088,
 	        y: 478
@@ -3894,8 +3889,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 1200,
 	        y: 490
@@ -3909,8 +3904,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 993,
 	        y: 488
@@ -3924,8 +3919,8 @@
 	      number: 3,
 	      lifespan: Infinity,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 860,
 	        y: 166
@@ -4404,8 +4399,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 321,
 	        y: 220
@@ -4433,8 +4428,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 711,
 	        y: 138
@@ -4448,8 +4443,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 861,
 	        y: 3
@@ -4463,8 +4458,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 1172,
 	        y: 99
@@ -4534,8 +4529,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3083,
 	        y: 105
@@ -4549,8 +4544,8 @@
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3090,
 	        y: 105
@@ -4564,8 +4559,8 @@
 	      number: 1,
 	      lifespan: 5000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3221,
 	        y: 3
@@ -4579,8 +4574,8 @@
 	      number: 1,
 	      lifespan: 5000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3321,
 	        y: 3
@@ -4594,8 +4589,8 @@
 	      number: 1,
 	      lifespan: 5000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3451,
 	        y: 3
@@ -4609,8 +4604,8 @@
 	      number: 1,
 	      lifespan: 5000,
 	      revive: 5000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfAwakened',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3612,
 	        y: 3
@@ -4624,8 +4619,8 @@
 	      number: 1,
 	      lifespan: 20000,
 	      revive: 1000,
-	      movement: 'waitStill',
-	      reaction: 'attackIfClose',
+	      active: false,
+	      onClose: 'wakeUp',
 	      origin: {
 	        x: 3838,
 	        y: 253

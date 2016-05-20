@@ -118,8 +118,8 @@ var level = {
       number: 1,
       lifespan: 10000,
       revive: 10000,
-      movement: 'waitStill',
-      reaction: 'attackIfClose',
+      active: false,
+      onClose: 'wakeUp',
       origin: {
         x: 611,
         y: 496
@@ -218,8 +218,8 @@ var level = {
       number: 1,
       lifespan: 20000,
       revive: 1000,
-      movement: 'waitStill',
-      reaction: 'attackIfClose',
+      active: false,
+      onClose: 'wakeUp',
       origin: {
         x: 55,
         y: 663
@@ -233,8 +233,8 @@ var level = {
       number: 1,
       lifespan: 4000,
       revive: 5000,
-      movement: 'waitStill',
-      reaction: 'attackIfAwakened',
+      active: false,
+      onClose: 'wakeUp',
       origin: {
         x: 307,
         y: 541
@@ -262,8 +262,8 @@ var level = {
       number: 1,
       lifespan: 20000,
       revive: 1000,
-      movement: 'waitStill',
-      reaction: 'attackIfClose',
+      active: false,
+      onClose: 'wakeUp',
       origin: {
         x: 533,
         y: 311
@@ -277,8 +277,8 @@ var level = {
       number: 1,
       lifespan: 20000,
       revive: 1000,
-      movement: 'waitStill',
-      reaction: 'attackIfClose',
+      active: false,
+      onClose: 'wakeUp',
       origin: {
         x: 533,
         y: 311
