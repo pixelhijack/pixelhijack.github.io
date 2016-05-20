@@ -10,7 +10,7 @@ var creatureConfigs = {
     collide: true,
     lives: 1, 
     lifespan: Infinity,
-    sense: 50,
+    sense: 150,
     animations: [], 
     boundTo : {
       x1: 1000,
@@ -50,6 +50,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [360,360,360,360,360,360,360,367], fps: 5, loop: true },
       { name: 'move', frames: [360,361,364,367,369], fps: 10, loop: true },
       { name: 'jump', frames: [360,361,364,367,369], fps: 10, loop: true },
+      { name: 'fall', frames: [369], fps: 10, loop: true },
       { name: 'die', frames: [371], fps: 10, loop: true },
       { name: 'spawn', frames: [360,361,364,367], fps: 10, loop: true }
     ]
@@ -80,6 +81,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [393,395], fps: 10, loop: true },
       { name: 'move', frames: [393,395], fps: 10, loop: true },
       { name: 'jump', frames: [399,401], fps: 10, loop: false },
+      { name: 'fall', frames: [399], fps: 10, loop: false },
       { name: 'die', frames: [402], fps: 10, loop: true },
       { name: 'spawn', frames: [393,395], fps: 10, loop: true }
     ]

@@ -81,6 +81,9 @@ Creature.prototype.nextAction = function nextAction(){
   if(this.state.until > this.game.time.now){
     return this.state.name;
   }
+  if(this.props.jumping && !this.isGrounded() && this.body.velocity.y > 0){
+    return 'fall';
+  }
   if(!this.props.active){
     return 'idle';
   }
@@ -108,7 +111,7 @@ Creature.prototype.nextAction = function nextAction(){
 Creature.prototype.react = function react(){
   this.play(this.state.name); 
   this.scale.x = this.facingRight ? 1 : -1;
-  this.body.moves = this.props.active;
+  //this.body.moves = this.props.active;
   if(this.state.name && this[this.state.name]){
     this[this.state.name]();
   }
@@ -244,7 +247,6 @@ Creature.prototype.waitStill = function waitStill(){
 };
 
 Creature.prototype.idle = function idle(){
-  this.body.velocity.y = 0;
   this.body.velocity.x = 0;
 };
 

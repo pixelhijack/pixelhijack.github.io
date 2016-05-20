@@ -557,7 +557,7 @@
 	    collide: true,
 	    lives: 1, 
 	    lifespan: Infinity,
-	    sense: 50,
+	    sense: 150,
 	    animations: [], 
 	    boundTo : {
 	      x1: 1000,
@@ -597,6 +597,7 @@
 	      { name: 'idle', frames: [360,360,360,360,360,360,360,367], fps: 5, loop: true },
 	      { name: 'move', frames: [360,361,364,367,369], fps: 10, loop: true },
 	      { name: 'jump', frames: [360,361,364,367,369], fps: 10, loop: true },
+	      { name: 'fall', frames: [369], fps: 10, loop: true },
 	      { name: 'die', frames: [371], fps: 10, loop: true },
 	      { name: 'spawn', frames: [360,361,364,367], fps: 10, loop: true }
 	    ]
@@ -627,6 +628,7 @@
 	      { name: 'idle', frames: [393,395], fps: 10, loop: true },
 	      { name: 'move', frames: [393,395], fps: 10, loop: true },
 	      { name: 'jump', frames: [399,401], fps: 10, loop: false },
+	      { name: 'fall', frames: [399], fps: 10, loop: false },
 	      { name: 'die', frames: [402], fps: 10, loop: true },
 	      { name: 'spawn', frames: [393,395], fps: 10, loop: true }
 	    ]
@@ -890,6 +892,9 @@
 	  if(this.state.until > this.game.time.now){
 	    return this.state.name;
 	  }
+	  if(this.props.jumping && !this.isGrounded() && this.body.velocity.y > 0){
+	    return 'fall';
+	  }
 	  if(!this.props.active){
 	    return 'idle';
 	  }
@@ -917,7 +922,7 @@
 	Creature.prototype.react = function react(){
 	  this.play(this.state.name); 
 	  this.scale.x = this.facingRight ? 1 : -1;
-	  this.body.moves = this.props.active;
+	  //this.body.moves = this.props.active;
 	  if(this.state.name && this[this.state.name]){
 	    this[this.state.name]();
 	  }
@@ -1053,7 +1058,6 @@
 	};
 	
 	Creature.prototype.idle = function idle(){
-	  this.body.velocity.y = 0;
 	  this.body.velocity.x = 0;
 	};
 	
@@ -4002,7 +4006,7 @@
 	  ],
 	  enemies: [
 	    {
-	      type: 'dino', 
+	      type: 'tiger', 
 	      active: false,
 	      number: 1,
 	      lifespan: Infinity,
@@ -4010,6 +4014,19 @@
 	      origin: {
 	        x: 282,
 	        y: 219
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'sleepWell'
+	    },
+	    {
+	      type: 'dino', 
+	      active: false,
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 536,
+	        y: 178
 	      },
 	      onClose: 'wakeUp',
 	      onLeave: 'sleepWell'

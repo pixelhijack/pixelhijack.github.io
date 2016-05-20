@@ -42,7 +42,7 @@ var level = {
   ],
   enemies: [
     {
-      type: 'dino', 
+      type: 'tiger', 
       active: false,
       number: 1,
       lifespan: Infinity,
@@ -50,6 +50,19 @@ var level = {
       origin: {
         x: 282,
         y: 219
+      },
+      onClose: 'wakeUp',
+      onLeave: 'sleepWell'
+    },
+    {
+      type: 'dino', 
+      active: false,
+      number: 1,
+      lifespan: Infinity,
+      revive: false,
+      origin: {
+        x: 536,
+        y: 178
       },
       onClose: 'wakeUp',
       onLeave: 'sleepWell'
