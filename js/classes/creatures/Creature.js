@@ -168,7 +168,7 @@ Creature.prototype.isGrounded = function isGrounded(){
 // use in update()
 Creature.prototype.debug = function debug(toDebug){
   this._debugText.visible = true;
-  this._debugText.setText(toDebug);
+  this._debugText.setText(toDebug || '');
 };
 
 Creature.prototype.listen = function listen(subject, reaction){
