@@ -286,10 +286,10 @@ function Play(game, globalSettings){
     
     // debug sprites
     enemies.forEachAlive(function(creature){
-      //creature.debug((creature.lifespan / 1000 | 0));
+      //creature.debug(creature.state.name);
       //creature.debug(creature.creatureId);
     });
-    man.debug(man.props.lives +' '+ man.state.name);
+    //man.debug(man.props.lives +' '+ man.state.name);
     
     setParallax();
     collisions();

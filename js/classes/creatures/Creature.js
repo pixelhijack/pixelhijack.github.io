@@ -232,6 +232,13 @@ Creature.prototype.wakeUp = function wakeUp(){
 Creature.prototype.sleepWell = function sleepWell(){
   this.props.active = false;
 };
+Creature.prototype.follow = function follow(evt){
+  this.props.active = true;
+  this.boundTo = {
+    x: evt.x,
+    y: evt.y
+  };
+};
 
 Creature.prototype.waitStill = function waitStill(){
   this.render();

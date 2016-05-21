@@ -132,7 +132,7 @@ var level = {
       lifespan: Infinity,
       revive: 1000,
       active: false,
-      onClose: 'wakeUp',
+      onClose: 'follow',
       origin: {
         x: 321,
         y: 220

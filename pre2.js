@@ -395,10 +395,10 @@
 	    
 	    // debug sprites
 	    enemies.forEachAlive(function(creature){
-	      //creature.debug((creature.lifespan / 1000 | 0));
+	      //creature.debug(creature.state.name);
 	      //creature.debug(creature.creatureId);
 	    });
-	    man.debug(man.props.lives +' '+ man.state.name);
+	    //man.debug(man.props.lives +' '+ man.state.name);
 	    
 	    setParallax();
 	    collisions();
@@ -1042,6 +1042,13 @@
 	};
 	Creature.prototype.sleepWell = function sleepWell(){
 	  this.props.active = false;
+	};
+	Creature.prototype.follow = function follow(evt){
+	  this.props.active = true;
+	  this.boundTo = {
+	    x: evt.x,
+	    y: evt.y
+	  };
 	};
 	
 	Creature.prototype.waitStill = function waitStill(){
@@ -4400,7 +4407,7 @@
 	      lifespan: Infinity,
 	      revive: 1000,
 	      active: false,
-	      onClose: 'wakeUp',
+	      onClose: 'follow',
 	      origin: {
 	        x: 321,
 	        y: 220
