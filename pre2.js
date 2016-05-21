@@ -2717,8 +2717,9 @@
 	      hurtDelay = 2000,
 	      lastHurt = -hurtDelay;
 	      
-	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" })
-	      
+	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" });
+	  livesCount.fixedToCamera = true;
+	  
 	  lives = game.add.sprite(30, 20, 'lives');
 	  lives.fixedToCamera = true;
 	  lives.frame = 0;
