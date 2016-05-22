@@ -21,8 +21,6 @@ var Creature = function(game, creatureType, x, y){
   
   // every creature makes noises: an observable phaser channel to subscribe for:
   this.noise = new Phaser.Signal();
-  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
-  this.reaction = null;
 };
 
 Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -56,12 +54,6 @@ Creature.prototype.setProps = function setProps(){
   this.lifespan = this.props.lifespan;
 };
 
-Creature.prototype.setBehaviour = function setBehaviour(behaviour){
-  if(this[behaviour] && typeof this[behaviour] === 'function'){
-    this.update = this[behaviour];
-  }
-};
-
 Creature.prototype.setState = function setState(state, until){
   this.state = {
     name: state,
@@ -70,18 +62,23 @@ Creature.prototype.setState = function setState(state, until){
 };
 
 Creature.prototype.nextAction = function nextAction(){
+  // if dead can't do anything else :)
   if(this.state.name === 'die'){
     return 'die';
   }
+  // lock states for a time like stunned for 2 sec
   if(this.state.until > this.game.time.now){
     return this.state.name;
   }
+  // fall state to prevent active:false idles stop in the middle of air
   if(this.props.jumping && !this.isGrounded() && this.body.velocity.y > 0){
     return 'fall';
   }
+  // bored guys...
   if(!this.props.active){
     return 'idle';
   }
+  // boundTo {x1, x2} or {x1, y1, x2, y2} Rectangle
   if(this.boundTo.hasOwnProperty('width')){
     if(this.x < this.boundTo.x){
       this.facingRight = true;
@@ -91,9 +88,20 @@ Creature.prototype.nextAction = function nextAction(){
     }
     return 'move';
   }
+  // boundTo {x, y} Point
+  if(!this.boundTo.hasOwnProperty('width') && 
+      Object.keys(this.boundTo).length &&
+      !Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
+    if((this.x < this.boundTo.x && !this.facingRight) || 
+       (this.x > this.boundTo.x && this.facingRight)){
+      return 'turn';
+    }
+  }
+  // prevent stick to some wall or edge
   if(this.body.blocked.left || this.body.blocked.right){
     return 'turn';
   }
+  // sometimes do other things like jump or turn
   if(this.props.jumping && Math.random() < 0.05){
     return 'jump';
   }
@@ -103,19 +111,25 @@ Creature.prototype.nextAction = function nextAction(){
   return 'move';
 };
 
-Creature.prototype.react = function react(){
+Creature.prototype.render = function render(){
   this.play(this.state.name); 
   this.scale.x = this.facingRight ? 1 : -1;
-  //this.body.moves = this.props.active;
+};
+
+Creature.prototype.react = function react(){
   if(this.state.name && this[this.state.name]){
     this[this.state.name]();
   }
 };
 
+Creature.prototype.decide = function decide(){
+  this.state.name = this.nextAction();
+};
 
 Creature.prototype.update = function update(){
+  this.render();
   this.react();
-  this.state.name = this.nextAction();
+  this.decide();
 };
 
   /*  @boundTo
@@ -151,12 +165,6 @@ Object.defineProperty(Creature.prototype, 'boundTo', {
     }
 });
 
-Creature.prototype.render = function render(){
-  this.play(this.state.name); 
-  this.scale.x = this.facingRight ? 1 : -1;
-};
-
-
 Creature.prototype.direction = function direction(){
   return this.facingRight ? 'right' : 'left';
 };
@@ -177,7 +185,12 @@ Creature.prototype.listen = function listen(subject, reaction){
 };
 
 Creature.prototype.shout = function shout(eventType){
-  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
+  this.noise.dispatch({ 
+    who: this.creatureType, 
+    event: eventType, 
+    x: this.x | 0, 
+    y: this.y | 0, 
+    args: Array.prototype.slice.call(arguments, 1)[0] });
 };
 
 Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
@@ -198,10 +211,9 @@ Creature.prototype.revive = function revive(x, y){
   this.reset(x, y);
 };
 
-Creature.prototype.lives = function lives(eventType){
+Creature.prototype.health = function health(eventType){
   return this.props.lives;
 };
-
 
 Creature.prototype.move = function move(){
   this.facingRight ? 
@@ -229,7 +241,7 @@ Creature.prototype.turn = function turn(){
 Creature.prototype.wakeUp = function wakeUp(){
   this.props.active = true;
 };
-Creature.prototype.sleepWell = function sleepWell(){
+Creature.prototype.wait = function wait(){
   this.props.active = false;
 };
 Creature.prototype.follow = function follow(evt){
@@ -238,14 +250,6 @@ Creature.prototype.follow = function follow(evt){
     x: evt.x,
     y: evt.y
   };
-};
-
-Creature.prototype.waitStill = function waitStill(){
-  this.render();
-  if(this.state.name !== 'dead'){
-    this.state.name = 'idle';
-    this.body.moves = false;
-  }
 };
 
 Creature.prototype.idle = function idle(){
@@ -270,7 +274,7 @@ Creature.prototype.hurt = function hurt(force){
 };
 
 Creature.prototype.die = function die(force){
-  this.state.name = 'die';
+  this.setState('die', 2000);
   //this.props.collide = false;
   this.body.velocity.x -= force * 3;
   this.body.velocity.y -= force * 3;

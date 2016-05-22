@@ -3,11 +3,9 @@ var Menu = function(game, man){
   var lives, 
       livesCount,
       hearts, 
-      score, 
-      hurtDelay = 2000,
-      lastHurt = -hurtDelay;
+      score;
       
-  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" });
+  livesCount = game.add.text(20, 20, Math.floor(man.health() / 4), { font: "16px Arial", fill: "#ffffff" });
   livesCount.fixedToCamera = true;
   
   lives = game.add.sprite(30, 20, 'lives');
@@ -27,9 +25,8 @@ var Menu = function(game, man){
       subject.noise.add(onEventCallback, this);
     },
     update: function(evt){
-      if(evt.event === 'hurt' && lastHurt + hurtDelay < evt.args[1].time){
-        lastHurt = evt.args[1].time;
-        var actualHeart = evt.args[1].livesLeft % 4 - 1;
+      if(evt.event === 'hurt'){
+        var actualHeart = evt.args.livesLeft % 4 - 1;
         hearts.children.forEach(function(heart, i){
           if(i >= actualHeart){
             heart.visible = false;

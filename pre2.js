@@ -378,7 +378,7 @@
 	  }
 	  
 	  function debug(){
-	    game.debug.text('LIVES: ' + man.lives(), 32, 96);
+	    game.debug.text('LIVES: ' + man.health(), 32, 96);
 	    game.debug.pointer(game.input.pointer1);
 	    game.debug.body(weapon.sprite);
 	    game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
@@ -423,19 +423,19 @@
 	      return;
 	    }
 	    if(man.state.name === 'hit'){
+	      //game.camera.shake(0.003, 500, true, Phaser.Camera.VEERTICAL, true);
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
 	      man.hurt(enemyMomentum);
 	      man.shout('hurt', { 
-	        livesLeft: man.lives(),
-	        time: game.time.now
+	        livesLeft: man.health()
 	      });
-	      if(man.lives() <= 0){
+	      if(man.health() <= 0){
 	        man.props.lives = 8;
 	        game.state.start('Play', true, false, { levelNumber: 'hall-of-ages' });
 	      }
-	      var shouldReload = man.lives() % 4 - 1 === 0;
+	      var shouldReload = man.health() % 4 - 1 === 0;
 	      if(shouldReload){
 	        weapon.sprite.kill();
 	        game.time.events.add(Phaser.Timer.SECOND * 3, function(){
@@ -832,8 +832,6 @@
 	  
 	  // every creature makes noises: an observable phaser channel to subscribe for:
 	  this.noise = new Phaser.Signal();
-	  // creature can smart or dumb, listening or ignorant to enemy noises (dumb by default):
-	  this.reaction = null;
 	};
 	
 	Creature.prototype = Object.create(Phaser.Sprite.prototype);
@@ -867,12 +865,6 @@
 	  this.lifespan = this.props.lifespan;
 	};
 	
-	Creature.prototype.setBehaviour = function setBehaviour(behaviour){
-	  if(this[behaviour] && typeof this[behaviour] === 'function'){
-	    this.update = this[behaviour];
-	  }
-	};
-	
 	Creature.prototype.setState = function setState(state, until){
 	  this.state = {
 	    name: state,
@@ -881,18 +873,23 @@
 	};
 	
 	Creature.prototype.nextAction = function nextAction(){
+	  // if dead can't do anything else :)
 	  if(this.state.name === 'die'){
 	    return 'die';
 	  }
+	  // lock states for a time like stunned for 2 sec
 	  if(this.state.until > this.game.time.now){
 	    return this.state.name;
 	  }
+	  // fall state to prevent active:false idles stop in the middle of air
 	  if(this.props.jumping && !this.isGrounded() && this.body.velocity.y > 0){
 	    return 'fall';
 	  }
+	  // bored guys...
 	  if(!this.props.active){
 	    return 'idle';
 	  }
+	  // boundTo {x1, x2} or {x1, y1, x2, y2} Rectangle
 	  if(this.boundTo.hasOwnProperty('width')){
 	    if(this.x < this.boundTo.x){
 	      this.facingRight = true;
@@ -902,9 +899,20 @@
 	    }
 	    return 'move';
 	  }
+	  // boundTo {x, y} Point
+	  if(!this.boundTo.hasOwnProperty('width') && 
+	      Object.keys(this.boundTo).length &&
+	      !Phaser.Rectangle.containsPoint(this.getBounds(), this.boundTo)){
+	    if((this.x < this.boundTo.x && !this.facingRight) || 
+	       (this.x > this.boundTo.x && this.facingRight)){
+	      return 'turn';
+	    }
+	  }
+	  // prevent stick to some wall or edge
 	  if(this.body.blocked.left || this.body.blocked.right){
 	    return 'turn';
 	  }
+	  // sometimes do other things like jump or turn
 	  if(this.props.jumping && Math.random() < 0.05){
 	    return 'jump';
 	  }
@@ -914,19 +922,25 @@
 	  return 'move';
 	};
 	
-	Creature.prototype.react = function react(){
+	Creature.prototype.render = function render(){
 	  this.play(this.state.name); 
 	  this.scale.x = this.facingRight ? 1 : -1;
-	  //this.body.moves = this.props.active;
+	};
+	
+	Creature.prototype.react = function react(){
 	  if(this.state.name && this[this.state.name]){
 	    this[this.state.name]();
 	  }
 	};
 	
+	Creature.prototype.decide = function decide(){
+	  this.state.name = this.nextAction();
+	};
 	
 	Creature.prototype.update = function update(){
+	  this.render();
 	  this.react();
-	  this.state.name = this.nextAction();
+	  this.decide();
 	};
 	
 	  /*  @boundTo
@@ -962,12 +976,6 @@
 	    }
 	});
 	
-	Creature.prototype.render = function render(){
-	  this.play(this.state.name); 
-	  this.scale.x = this.facingRight ? 1 : -1;
-	};
-	
-	
 	Creature.prototype.direction = function direction(){
 	  return this.facingRight ? 'right' : 'left';
 	};
@@ -988,7 +996,12 @@
 	};
 	
 	Creature.prototype.shout = function shout(eventType){
-	  this.noise.dispatch({ who: this.creatureType, event: eventType, x: this.x | 0, y: this.y | 0, args: arguments });
+	  this.noise.dispatch({ 
+	    who: this.creatureType, 
+	    event: eventType, 
+	    x: this.x | 0, 
+	    y: this.y | 0, 
+	    args: Array.prototype.slice.call(arguments, 1)[0] });
 	};
 	
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
@@ -1009,10 +1022,9 @@
 	  this.reset(x, y);
 	};
 	
-	Creature.prototype.lives = function lives(eventType){
+	Creature.prototype.health = function health(eventType){
 	  return this.props.lives;
 	};
-	
 	
 	Creature.prototype.move = function move(){
 	  this.facingRight ? 
@@ -1040,7 +1052,7 @@
 	Creature.prototype.wakeUp = function wakeUp(){
 	  this.props.active = true;
 	};
-	Creature.prototype.sleepWell = function sleepWell(){
+	Creature.prototype.wait = function wait(){
 	  this.props.active = false;
 	};
 	Creature.prototype.follow = function follow(evt){
@@ -1049,14 +1061,6 @@
 	    x: evt.x,
 	    y: evt.y
 	  };
-	};
-	
-	Creature.prototype.waitStill = function waitStill(){
-	  this.render();
-	  if(this.state.name !== 'dead'){
-	    this.state.name = 'idle';
-	    this.body.moves = false;
-	  }
 	};
 	
 	Creature.prototype.idle = function idle(){
@@ -1081,7 +1085,7 @@
 	};
 	
 	Creature.prototype.die = function die(force){
-	  this.state.name = 'die';
+	  this.setState('die', 2000);
 	  //this.props.collide = false;
 	  this.body.velocity.x -= force * 3;
 	  this.body.velocity.y -= force * 3;
@@ -1892,12 +1896,6 @@
 	      }
 	      if(groupConfig.onLeave && creature[groupConfig.onLeave] && typeof creature[groupConfig.onLeave] === 'function'){
 	        creature.onLeave = creature[groupConfig.onLeave];
-	      }
-	      if(groupConfig.movement && creature.setBehaviour){
-	         creature.setBehaviour(groupConfig.movement);
-	      }
-	      if(groupConfig.reaction){
-	        creature.reaction = groupConfig.reaction;
 	      }
 	      group.add(creature);
 	    }
@@ -2713,11 +2711,9 @@
 	  var lives, 
 	      livesCount,
 	      hearts, 
-	      score, 
-	      hurtDelay = 2000,
-	      lastHurt = -hurtDelay;
+	      score;
 	      
-	  livesCount = game.add.text(20, 20, Math.floor(man.lives() / 4), { font: "16px Arial", fill: "#ffffff" });
+	  livesCount = game.add.text(20, 20, Math.floor(man.health() / 4), { font: "16px Arial", fill: "#ffffff" });
 	  livesCount.fixedToCamera = true;
 	  
 	  lives = game.add.sprite(30, 20, 'lives');
@@ -2737,9 +2733,8 @@
 	      subject.noise.add(onEventCallback, this);
 	    },
 	    update: function(evt){
-	      if(evt.event === 'hurt' && lastHurt + hurtDelay < evt.args[1].time){
-	        lastHurt = evt.args[1].time;
-	        var actualHeart = evt.args[1].livesLeft % 4 - 1;
+	      if(evt.event === 'hurt'){
+	        var actualHeart = evt.args.livesLeft % 4 - 1;
 	        hearts.children.forEach(function(heart, i){
 	          if(i >= actualHeart){
 	            heart.visible = false;
@@ -4019,7 +4014,7 @@
 	        y: 219
 	      },
 	      onClose: 'wakeUp',
-	      onLeave: 'sleepWell'
+	      onLeave: 'wait'
 	    },
 	    {
 	      type: 'dino', 
@@ -4032,7 +4027,7 @@
 	        y: 178
 	      },
 	      onClose: 'wakeUp',
-	      onLeave: 'sleepWell'
+	      onLeave: 'wait'
 	    },
 	    {
 	      type: 'native',
@@ -4087,7 +4082,7 @@
 	        y: 49
 	      },
 	      onClose: 'wakeUp',
-	      onLeave: 'sleepWell'
+	      onLeave: 'wait'
 	    },
 	    {
 	      type: 'dragonfly',
@@ -4566,7 +4561,7 @@
 	      type: 'bat',
 	      number: 1,
 	      lifespan: 5000,
-	      revive: 5000,
+	      revive: 4000,
 	      active: false,
 	      onClose: 'wakeUp',
 	      origin: {
@@ -4596,7 +4591,7 @@
 	      type: 'bat',
 	      number: 1,
 	      lifespan: 5000,
-	      revive: 5000,
+	      revive: 3000,
 	      active: false,
 	      onClose: 'wakeUp',
 	      origin: {
@@ -4611,7 +4606,7 @@
 	      type: 'bat',
 	      number: 1,
 	      lifespan: 5000,
-	      revive: 5000,
+	      revive: 2500,
 	      active: false,
 	      onClose: 'wakeUp',
 	      origin: {

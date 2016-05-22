@@ -269,7 +269,7 @@ function Play(game, globalSettings){
   }
   
   function debug(){
-    game.debug.text('LIVES: ' + man.lives(), 32, 96);
+    game.debug.text('LIVES: ' + man.health(), 32, 96);
     game.debug.pointer(game.input.pointer1);
     game.debug.body(weapon.sprite);
     game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
@@ -314,19 +314,19 @@ function Play(game, globalSettings){
       return;
     }
     if(man.state.name === 'hit'){
+      //game.camera.shake(0.003, 500, true, Phaser.Camera.VEERTICAL, true);
       enemy.die(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{
       man.hurt(enemyMomentum);
       man.shout('hurt', { 
-        livesLeft: man.lives(),
-        time: game.time.now
+        livesLeft: man.health()
       });
-      if(man.lives() <= 0){
+      if(man.health() <= 0){
         man.props.lives = 8;
         game.state.start('Play', true, false, { levelNumber: 'hall-of-ages' });
       }
-      var shouldReload = man.lives() % 4 - 1 === 0;
+      var shouldReload = man.health() % 4 - 1 === 0;
       if(shouldReload){
         weapon.sprite.kill();
         game.time.events.add(Phaser.Timer.SECOND * 3, function(){

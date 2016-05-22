@@ -28,12 +28,6 @@ var enemyManager = function(game, levelEnemies, levelZones){
       if(groupConfig.onLeave && creature[groupConfig.onLeave] && typeof creature[groupConfig.onLeave] === 'function'){
         creature.onLeave = creature[groupConfig.onLeave];
       }
-      if(groupConfig.movement && creature.setBehaviour){
-         creature.setBehaviour(groupConfig.movement);
-      }
-      if(groupConfig.reaction){
-        creature.reaction = groupConfig.reaction;
-      }
       group.add(creature);
     }
     //group.setAll('props.boundTo', groupConfig.boundTo); 

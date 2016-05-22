@@ -52,7 +52,7 @@ var level = {
         y: 219
       },
       onClose: 'wakeUp',
-      onLeave: 'sleepWell'
+      onLeave: 'wait'
     },
     {
       type: 'dino', 
@@ -65,7 +65,7 @@ var level = {
         y: 178
       },
       onClose: 'wakeUp',
-      onLeave: 'sleepWell'
+      onLeave: 'wait'
     },
     {
       type: 'native',
@@ -120,7 +120,7 @@ var level = {
         y: 49
       },
       onClose: 'wakeUp',
-      onLeave: 'sleepWell'
+      onLeave: 'wait'
     },
     {
       type: 'dragonfly',

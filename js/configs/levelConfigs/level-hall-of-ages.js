@@ -290,7 +290,7 @@ var level = {
       type: 'bat',
       number: 1,
       lifespan: 5000,
-      revive: 5000,
+      revive: 4000,
       active: false,
       onClose: 'wakeUp',
       origin: {
@@ -320,7 +320,7 @@ var level = {
       type: 'bat',
       number: 1,
       lifespan: 5000,
-      revive: 5000,
+      revive: 3000,
       active: false,
       onClose: 'wakeUp',
       origin: {
@@ -335,7 +335,7 @@ var level = {
       type: 'bat',
       number: 1,
       lifespan: 5000,
-      revive: 5000,
+      revive: 2500,
       active: false,
       onClose: 'wakeUp',
       origin: {
