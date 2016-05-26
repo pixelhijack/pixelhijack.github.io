@@ -314,10 +314,10 @@ function Play(game, globalSettings){
       return;
     }
     if(man.state.name === 'hit'){
-      //game.camera.shake(0.003, 500, true, Phaser.Camera.VEERTICAL, true);
       enemy.die(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{
+      game.camera.shake(0.003, 500, true, Phaser.Camera.VERTICAL, true);
       man.hurt(enemyMomentum);
       man.shout('hurt', { 
         livesLeft: man.health()

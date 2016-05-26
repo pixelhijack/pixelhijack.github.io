@@ -92,13 +92,13 @@ var creatureConfigs = {
     bounce: 0.1,
     jumping: 0,
     collide: false,
-    maxSpeed: 50,
-    acceleration: 50, 
+    maxSpeed: 10,
+    acceleration: 10, 
     animations: [
-      { name: 'idle', frames: [405,403,404], fps: 15, loop: true },
-      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
-      { name: 'descend', frames: [405], fps: 12, loop: true },
-      { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
+      { name: 'idle', frames: [405,403,404], fps: 10, loop: true },
+      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 10, loop: true },
+      { name: 'descend', frames: [405], fps: 15, loop: true },
+      { name: 'ascend', frames: [403,404,405], fps: 15, loop: true },
       { name: 'die', frames: [471], fps: 10, loop: true },
       { name: 'spawn', frames: [405,403,404], fps: 15, loop: true }
     ]

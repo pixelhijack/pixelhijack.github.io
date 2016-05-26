@@ -423,10 +423,10 @@
 	      return;
 	    }
 	    if(man.state.name === 'hit'){
-	      //game.camera.shake(0.003, 500, true, Phaser.Camera.VEERTICAL, true);
 	      enemy.die(heroMomentum);
 	      man.shout('hunting', { killed: enemy });
 	    }else{
+	      game.camera.shake(0.003, 500, true, Phaser.Camera.VERTICAL, true);
 	      man.hurt(enemyMomentum);
 	      man.shout('hurt', { 
 	        livesLeft: man.health()
@@ -518,21 +518,14 @@
 	Dino.prototype.constructor = Dino;
 	
 	
-	Dino.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
+	Dino.prototype.specialMoves = function specialMoves(){
+	  if(this.props.jumping && Math.random() < 0.05){
+	    return 'jump';
 	  }
-	  this.turnIfBlocked();
-	  this.move();
-	  this.sentinel();
-	  if(Math.random() < 0.005){ 
-	    this.facingRight = !this.facingRight;
+	  if(Math.random() < 0.005){
+	    return 'turn';
 	  }
-	  if(Math.random() < 0.05){ 
-	    this.jump(); 
-	    this.state = 'jumping';
-	  }
+	  return 'move';
 	};
 	
 	module.exports = Dino;
@@ -639,13 +632,13 @@
 	    bounce: 0.1,
 	    jumping: 0,
 	    collide: false,
-	    maxSpeed: 50,
-	    acceleration: 50, 
+	    maxSpeed: 10,
+	    acceleration: 10, 
 	    animations: [
-	      { name: 'idle', frames: [405,403,404], fps: 15, loop: true },
-	      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 12, loop: true },
-	      { name: 'descend', frames: [405], fps: 12, loop: true },
-	      { name: 'ascend', frames: [403,404,405], fps: 20, loop: true },
+	      { name: 'idle', frames: [405,403,404], fps: 10, loop: true },
+	      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 10, loop: true },
+	      { name: 'descend', frames: [405], fps: 15, loop: true },
+	      { name: 'ascend', frames: [403,404,405], fps: 15, loop: true },
 	      { name: 'die', frames: [471], fps: 10, loop: true },
 	      { name: 'spawn', frames: [405,403,404], fps: 15, loop: true }
 	    ]
@@ -890,14 +883,10 @@
 	    return 'idle';
 	  }
 	  // boundTo {x1, x2} or {x1, y1, x2, y2} Rectangle
-	  if(this.boundTo.hasOwnProperty('width')){
-	    if(this.x < this.boundTo.x){
-	      this.facingRight = true;
-	    }
-	    if(this.x > this.boundTo.x + this.boundTo.width){
-	      this.facingRight = false;
-	    }
-	    return 'move';
+	  if(this.boundTo.hasOwnProperty('width') && 
+	    (this.x < this.boundTo.x && !this.facingRight || 
+	     this.x > this.boundTo.x + this.boundTo.width && this.facingRight)){
+	    return 'turn';
 	  }
 	  // boundTo {x, y} Point
 	  if(!this.boundTo.hasOwnProperty('width') && 
@@ -912,14 +901,7 @@
 	  if(this.body.blocked.left || this.body.blocked.right){
 	    return 'turn';
 	  }
-	  // sometimes do other things like jump or turn
-	  if(this.props.jumping && Math.random() < 0.05){
-	    return 'jump';
-	  }
-	  if(Math.random() < 0.005){
-	    return 'turn';
-	  }
-	  return 'move';
+	  return this.specialMoves() || 'move';
 	};
 	
 	Creature.prototype.render = function render(){
@@ -941,6 +923,10 @@
 	  this.render();
 	  this.react();
 	  this.decide();
+	};
+	
+	Creature.prototype.specialMoves = function specialMoves(){
+	  return 'move';
 	};
 	
 	  /*  @boundTo
@@ -987,6 +973,7 @@
 	// use in update()
 	Creature.prototype.debug = function debug(toDebug){
 	  this._debugText.visible = true;
+	  this._debugText.scale.x = this.facingRight ? 1 : -1;
 	  this._debugText.setText(toDebug || '');
 	};
 	
@@ -1465,70 +1452,28 @@
 	
 	  this.setProps();
 	  this.setAnimations();
-	  this.update = this.defaultUpdate;
 	}
 	
 	Ptero.prototype = Object.create(Creature.prototype);
 	Ptero.prototype.constructor = Ptero;
 	
-	Ptero.prototype.update = function update(){
-	  this.react();
-	  this.state = this.nextAction();
-	};
-	
-	Ptero.prototype.nextAction = function nextAction(){
-	  if(this.state === 'die'){
-	    return 'die';
-	  } else {
-	    if(this.boundTo.hasOwnProperty('width')){
-	      if(this.x < this.boundTo.x){
-	        this.facingRight = true;
-	      }
-	      if(this.x > this.boundTo.x + this.boundTo.width){
-	        this.facingRight = false;
-	      }
-	      return 'move';
-	    } else {
-	      if(this.body.blocked.left || this.body.blocked.right){
-	        return 'turn';
-	      } else {
-	        if(Math.random() < 0.005){
-	          return 'turn';
-	        }
-	        if(Math.random() < 0.05){
-	          return 'descend';
-	        }
-	        if(Math.random() < 0.05){
-	          return 'ascend';
-	        }
-	        return 'move';
-	      }
-	    }
+	Ptero.prototype.specialMoves = function specialMoves(){
+	  if(Math.random() < 0.005){
+	    return 'turn';
 	  }
-	};
-	
-	Ptero.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'die'){
-	    return;
+	  if(Math.random() < 0.05){
+	    this.setState('descend', 50);
+	    return 'descend';
 	  }
-	  this.move();
-	  this.state = 'move';
-	  if(this.body.blocked.left || this.body.blocked.right){
-	    this.turn();
+	  if(Math.random() < 0.05){
+	    this.setState('ascend', 100);
+	    return 'ascend';
 	  }
-	  if(Math.random() < 0.01){
-	    this.game.time.events.add(Phaser.Timer.SECOND * 1, function(){
-	      this.state = 'descend';
-	      this.descend();
-	    }, this);
+	  if(Math.random() < 0.05){
+	    this.setState('move', 500);
+	    return 'move';
 	  }
-	  if(Math.random() < 0.01){
-	    this.game.time.events.add(Phaser.Timer.SECOND * 2, function(){
-	      this.state = 'ascend';
-	      this.ascend();
-	    }, this);
-	  }
+	  return 'move';
 	};
 	
 	Ptero.prototype.ascend = function ascend(){
@@ -4039,7 +3984,7 @@
 	        y: 69
 	      },
 	      boundTo: {
-	        x1: Infinity,
+	        x1: 0,
 	        x2: Infinity
 	      }
 	    },
@@ -4053,7 +3998,7 @@
 	        y: 88
 	      },
 	      boundTo: {
-	        x1: Infinity,
+	        x1: 0,
 	        x2: Infinity
 	      }
 	    },

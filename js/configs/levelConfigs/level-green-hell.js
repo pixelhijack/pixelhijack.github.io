@@ -77,7 +77,7 @@ var level = {
         y: 69
       },
       boundTo: {
-        x1: Infinity,
+        x1: 0,
         x2: Infinity
       }
     },
@@ -91,7 +91,7 @@ var level = {
         y: 88
       },
       boundTo: {
-        x1: Infinity,
+        x1: 0,
         x2: Infinity
       }
     },

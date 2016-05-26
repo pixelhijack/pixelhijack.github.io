@@ -79,14 +79,10 @@ Creature.prototype.nextAction = function nextAction(){
     return 'idle';
   }
   // boundTo {x1, x2} or {x1, y1, x2, y2} Rectangle
-  if(this.boundTo.hasOwnProperty('width')){
-    if(this.x < this.boundTo.x){
-      this.facingRight = true;
-    }
-    if(this.x > this.boundTo.x + this.boundTo.width){
-      this.facingRight = false;
-    }
-    return 'move';
+  if(this.boundTo.hasOwnProperty('width') && 
+    (this.x < this.boundTo.x && !this.facingRight || 
+     this.x > this.boundTo.x + this.boundTo.width && this.facingRight)){
+    return 'turn';
   }
   // boundTo {x, y} Point
   if(!this.boundTo.hasOwnProperty('width') && 
@@ -101,14 +97,7 @@ Creature.prototype.nextAction = function nextAction(){
   if(this.body.blocked.left || this.body.blocked.right){
     return 'turn';
   }
-  // sometimes do other things like jump or turn
-  if(this.props.jumping && Math.random() < 0.05){
-    return 'jump';
-  }
-  if(Math.random() < 0.005){
-    return 'turn';
-  }
-  return 'move';
+  return this.specialMoves() || 'move';
 };
 
 Creature.prototype.render = function render(){
@@ -130,6 +119,10 @@ Creature.prototype.update = function update(){
   this.render();
   this.react();
   this.decide();
+};
+
+Creature.prototype.specialMoves = function specialMoves(){
+  return 'move';
 };
 
   /*  @boundTo
@@ -176,6 +169,7 @@ Creature.prototype.isGrounded = function isGrounded(){
 // use in update()
 Creature.prototype.debug = function debug(toDebug){
   this._debugText.visible = true;
+  this._debugText.scale.x = this.facingRight ? 1 : -1;
   this._debugText.setText(toDebug || '');
 };
 
