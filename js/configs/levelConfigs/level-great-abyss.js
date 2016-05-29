@@ -361,10 +361,7 @@ var level = {
         x: 1460,
         y: 632
       },
-      boundTo: {
-        x: 995,
-        y: 1055
-      }
+      boundTo: {}
     },
     {
       type: 'native',
@@ -375,10 +372,7 @@ var level = {
         x: 937,
         y: 632
       },
-      boundTo: {
-        x: 995,
-        y: 1055
-      }
+      boundTo: {}
     },
     {
       type: 'native',
@@ -389,10 +383,7 @@ var level = {
         x: 913,
         y: 632
       },
-      boundTo: {
-        x: 995,
-        y: 1055
-      }
+      boundTo: {}
     },
     {
       type: 'dragonfly',

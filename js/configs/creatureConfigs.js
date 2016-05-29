@@ -58,6 +58,7 @@ var creatureConfigs = {
   bear: {
     mass: 1.2,
     maxSpeed: 75,
+    jumping: 0,
     acceleration: 15, 
     animations: [
       { name: 'idle', frames: [321], fps: 10, loop: false },

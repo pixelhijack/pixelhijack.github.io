@@ -598,6 +598,7 @@
 	  bear: {
 	    mass: 1.2,
 	    maxSpeed: 75,
+	    jumping: 0,
 	    acceleration: 15, 
 	    animations: [
 	      { name: 'idle', frames: [321], fps: 10, loop: false },
@@ -926,6 +927,12 @@
 	};
 	
 	Creature.prototype.specialMoves = function specialMoves(){
+	  if(this.props.jumping && Math.random() < 0.05){
+	    return 'jump';
+	  }
+	  if(!Object.keys(this.boundTo).length && Math.random() < 0.005){
+	    return 'turn';
+	  }
 	  return 'move';
 	};
 	
@@ -957,7 +964,7 @@
 	          this._boundTo = new Phaser.Rectangle(bounds.x1, bounds.y1, bounds.x2 - bounds.x1, bounds.y2 - bounds.y1);
 	      // default: bound to the whole world
 	      } else {
-	        this._boundTo = new Phaser.Point(0, 0, this.game.width, this.game.height);
+	        this._boundTo = { };
 	      }
 	    }
 	});
@@ -988,7 +995,8 @@
 	    event: eventType, 
 	    x: this.x | 0, 
 	    y: this.y | 0, 
-	    args: Array.prototype.slice.call(arguments, 1)[0] });
+	    args: Array.prototype.slice.call(arguments, 1)[0]
+	  });
 	};
 	
 	Creature.prototype.onEnemyMovements = function onEnemyMovements(evt){
@@ -1033,7 +1041,8 @@
 	
 	Creature.prototype.turn = function turn(){
 	  this.facingRight = !this.facingRight;
-	  this.move();
+	  // ensure dont get stuck:
+	  this.setState('move', 50);
 	};
 	
 	Creature.prototype.wakeUp = function wakeUp(){
@@ -3740,10 +3749,7 @@
 	        x: 1460,
 	        y: 632
 	      },
-	      boundTo: {
-	        x: 995,
-	        y: 1055
-	      }
+	      boundTo: {}
 	    },
 	    {
 	      type: 'native',
@@ -3754,10 +3760,7 @@
 	        x: 937,
 	        y: 632
 	      },
-	      boundTo: {
-	        x: 995,
-	        y: 1055
-	      }
+	      boundTo: {}
 	    },
 	    {
 	      type: 'native',
@@ -3768,10 +3771,7 @@
 	        x: 913,
 	        y: 632
 	      },
-	      boundTo: {
-	        x: 995,
-	        y: 1055
-	      }
+	      boundTo: {}
 	    },
 	    {
 	      type: 'dragonfly',
