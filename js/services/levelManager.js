@@ -48,6 +48,9 @@ var levelManager = function(game, levelList){
     level.backgroundLayer.fixedToCamera = levelToLoad.fixedBackground;
     level.tilemap = game.add.tilemap(levelToLoad.tilemap);
     level.tilemap.addTilesetImage(levelToLoad.tilesetImage, levelToLoad.tileset);
+    if(levelToLoad.parallaxLayer){
+      level.parallaxLayer = level.tilemap.createLayer(levelToLoad.parallaxLayer);
+    }
     level.groundLayer = level.tilemap.createLayer(levelToLoad.groundLayer);
     level.collisionLayer = level.tilemap.createLayer(levelToLoad.collisionLayer);
     level.collisionLayer.visible = false;
