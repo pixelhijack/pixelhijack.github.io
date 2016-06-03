@@ -30,7 +30,7 @@ var level = {
   ],
   platforms: [
     {
-      img: atlas.PLATFORM_BRIDGE,
+      img: atlas.PLATFORM_DEATH,
       behaviour: 'fall', // null, fall, moveTo, shuttle
       x: 514,
       y: 435,
@@ -41,7 +41,7 @@ var level = {
       }
     },
     {
-      img: atlas.PLATFORM_BRIDGE,
+      img: atlas.PLATFORM_DEATH,
       behaviour: 'fall', // null, fall, moveTo, shuttle
       x: 1183,
       y: 388,
@@ -52,7 +52,7 @@ var level = {
       }
     },
     {
-      img: atlas.PLATFORM_BRIDGE,
+      img: atlas.PLATFORM_DEATH,
       behaviour: 'fall', // null, fall, moveTo, shuttle
       x: 1454,
       y: 310,
@@ -63,7 +63,7 @@ var level = {
       }
     },
     {
-      img: atlas.PLATFORM_BRIDGE,
+      img: atlas.PLATFORM_DEATH,
       behaviour: 'fall', // null, fall, moveTo, shuttle
       x: 1539,
       y: 255,
