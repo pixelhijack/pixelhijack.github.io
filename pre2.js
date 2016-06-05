@@ -4701,8 +4701,8 @@
 	  portals: [
 	    {
 	      jumpTo: 'downfall-rifts',
-	      x: 1742,
-	      y: 745
+	      x: 3030,
+	      y: 434
 	    }
 	  ],
 	  platforms: [
