@@ -96,7 +96,7 @@ var creatureConfigs = {
     maxSpeed: 10,
     acceleration: 10, 
     animations: [
-      { name: 'idle', frames: [405,403,404], fps: 10, loop: true },
+      { name: 'idle', frames: [478,478,478,478,478,478,478,478,477,478,478,478,478,478,477,477], fps: 3, loop: true },
       { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 10, loop: true },
       { name: 'descend', frames: [405], fps: 15, loop: true },
       { name: 'ascend', frames: [403,404,405], fps: 15, loop: true },

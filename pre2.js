@@ -637,7 +637,7 @@
 	    maxSpeed: 10,
 	    acceleration: 10, 
 	    animations: [
-	      { name: 'idle', frames: [405,403,404], fps: 10, loop: true },
+	      { name: 'idle', frames: [478,478,478,478,478,478,478,478,477,478,478,478,478,478,477,477], fps: 3, loop: true },
 	      { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 10, loop: true },
 	      { name: 'descend', frames: [405], fps: 15, loop: true },
 	      { name: 'ascend', frames: [403,404,405], fps: 15, loop: true },
@@ -1076,6 +1076,7 @@
 	
 	Creature.prototype.idle = function idle(){
 	  this.body.velocity.x = 0;
+	  this.body.velocity.y = 0;
 	};
 	
 	Creature.prototype.jump = function jump(){
@@ -4694,8 +4695,8 @@
 	  parallaxLayer: 'parallax-layer',
 	  objectsLayer: null, 
 	  entryPoint: {
-	    x: 10, 
-	    y: 10
+	    x: 28, 
+	    y: 206
 	  },
 	  portals: [
 	    {
@@ -4715,8 +4716,8 @@
 	      moveTo: {
 	        x: 1200,
 	        y: 243,
-	        timeout: 10000,
-	        easing: 'Cubic'
+	        timeout: 20000,
+	        easing: 'Linear'
 	      }
 	    },
 	    {
@@ -4844,6 +4845,10 @@
 	        x: 2175,
 	        y: 400
 	      },
+	      boundTo: {
+	        x1: 2068,
+	        x2: 2214
+	      },
 	      onClose: 'wakeUp',
 	      onLeave: 'wait'
 	    },
@@ -4871,8 +4876,8 @@
 	        y: 283
 	      },
 	      boundTo: {
-	        x1: 0,
-	        x2: Infinity
+	        x1: 494,
+	        x2: 645
 	      }
 	    },
 	    {
@@ -4881,13 +4886,15 @@
 	      lifespan: Infinity,
 	      revive: 5000,
 	      origin: {
-	        x: 161,
-	        y: 221
+	        x: 400,
+	        y: 67
 	      },
 	      boundTo: {
 	        x1: 161,
 	        x2: 750
-	      }
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'wait'
 	    },
 	    {
 	      type: 'bat',

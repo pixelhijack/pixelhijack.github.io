@@ -18,8 +18,8 @@ var level = {
   parallaxLayer: 'parallax-layer',
   objectsLayer: null, 
   entryPoint: {
-    x: 10, 
-    y: 10
+    x: 28, 
+    y: 206
   },
   portals: [
     {
@@ -39,8 +39,8 @@ var level = {
       moveTo: {
         x: 1200,
         y: 243,
-        timeout: 10000,
-        easing: 'Cubic'
+        timeout: 20000,
+        easing: 'Linear'
       }
     },
     {
@@ -168,6 +168,10 @@ var level = {
         x: 2175,
         y: 400
       },
+      boundTo: {
+        x1: 2068,
+        x2: 2214
+      },
       onClose: 'wakeUp',
       onLeave: 'wait'
     },
@@ -195,8 +199,8 @@ var level = {
         y: 283
       },
       boundTo: {
-        x1: 0,
-        x2: Infinity
+        x1: 494,
+        x2: 645
       }
     },
     {
@@ -205,13 +209,15 @@ var level = {
       lifespan: Infinity,
       revive: 5000,
       origin: {
-        x: 161,
-        y: 221
+        x: 400,
+        y: 67
       },
       boundTo: {
         x1: 161,
         x2: 750
-      }
+      },
+      onClose: 'wakeUp',
+      onLeave: 'wait'
     },
     {
       type: 'bat',

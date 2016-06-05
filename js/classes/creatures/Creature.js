@@ -256,6 +256,7 @@ Creature.prototype.follow = function follow(evt){
 
 Creature.prototype.idle = function idle(){
   this.body.velocity.x = 0;
+  this.body.velocity.y = 0;
 };
 
 Creature.prototype.jump = function jump(){
