@@ -177,7 +177,7 @@ var assetMap = {
   key175: "175",
   key176: "176",
   key177: "177",
-  BONUS_SOITCASE: "178",
+  BONUS_SUITCASE: "178",
   key179: "179",
   key180: "180",
   key181: "181",

@@ -90,6 +90,96 @@ var level = {
   ],
   bonus: [
     {
+      img: atlas.ALPHABET_L,
+      x: 230,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_E,
+      x: 240,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_T,
+      x: 250,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_T,
+      x: 270,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_H,
+      x: 280,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_E,
+      x: 280,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_J,
+      x: 300,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_U,
+      x: 310,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_N,
+      x: 320,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_G,
+      x: 330,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_L,
+      x: 340,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_E,
+      x: 350,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_S,
+      x: 370,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_L,
+      x: 380,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_E,
+      x: 390,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_E,
+      x: 400,
+      y: 135
+    },
+    {
+      img: atlas.ALPHABET_P,
+      x: 410,
+      y: 135
+    },
+    {
+      img: atlas.BONUS_BIG_BANANA,
+      x: 138,
+      y: 278
+    },
+    {
       img: atlas.WEAPON_AXE,
       x: 675,
       y: 99
@@ -100,9 +190,9 @@ var level = {
       y: 52
     },
     {
-      img: atlas.BONUS_SOITCASE,
-      x: 397,
-      y: 116
+      img: atlas.BONUS_SUITCASE,
+      x: 442,
+      y: 272
     }
   ],
   enemies: [

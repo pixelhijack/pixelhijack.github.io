@@ -35,7 +35,7 @@ var level = {
       y: 52
     },
     {
-      img: atlas.BONUS_SOITCASE,
+      img: atlas.BONUS_SUITCASE,
       x: 397,
       y: 116
     }
