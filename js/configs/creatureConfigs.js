@@ -237,6 +237,20 @@ var creatureConfigs = {
       { name: 'die', frames: [392], fps: 10, loop: true }
     ]
   },
+  jelly: {
+    mass: 2,
+    jumping: 0,
+    collide: true,
+    bounce: 1,
+    maxSpeed: 5,
+    acceleration: 1,
+    animations: [
+      { name: 'idle', frames: [420,433,434], fps: 3, loop: true },
+      { name: 'spawn', frames: [420,433,434], fps: 3, loop: true },
+      { name: 'move', frames: [420,433,434], fps: 3, loop: true },
+      { name: 'die', frames: [420,433,434], fps: 3, loop: true }
+    ]
+  },
   gorilla: {
     // grim level bosses with lots of lifes!!
     lives: 10, 

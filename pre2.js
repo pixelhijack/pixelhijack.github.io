@@ -108,13 +108,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 20);
-	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 21);
-	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 22);
-	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 25);
-	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 29);
-	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 30);
-	var util = __webpack_require__(/*! ../services/util.js */ 24);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
+	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 22);
+	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 23);
+	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 26);
+	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 30);
+	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 31);
+	var util = __webpack_require__(/*! ../services/util.js */ 25);
 	
 	
 	window.addEventListener('error', function(e){
@@ -480,7 +480,8 @@
 	  parrot: __webpack_require__(/*! ./creatures/Parrot.js */ 16),
 	  dragonfly: __webpack_require__(/*! ./creatures/Dragonfly.js */ 17),
 	  bat: __webpack_require__(/*! ./creatures/Bat.js */ 18),
-	  man: __webpack_require__(/*! ./creatures/Man.js */ 19)
+	  jelly: __webpack_require__(/*! ./creatures/Jelly.js */ 19),
+	  man: __webpack_require__(/*! ./creatures/Man.js */ 20)
 	};
 	
 	function creatureFactory(){
@@ -775,6 +776,20 @@
 	      { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: true },
 	      { name: 'move', frames: [387,389,390,391], fps: 10, loop: true },
 	      { name: 'die', frames: [392], fps: 10, loop: true }
+	    ]
+	  },
+	  jelly: {
+	    mass: 2,
+	    jumping: 0,
+	    collide: true,
+	    bounce: 1,
+	    maxSpeed: 5,
+	    acceleration: 1,
+	    animations: [
+	      { name: 'idle', frames: [420,433,434], fps: 3, loop: true },
+	      { name: 'spawn', frames: [420,433,434], fps: 3, loop: true },
+	      { name: 'move', frames: [420,433,434], fps: 3, loop: true },
+	      { name: 'die', frames: [420,433,434], fps: 3, loop: true }
 	    ]
 	  },
 	  gorilla: {
@@ -1606,6 +1621,29 @@
 
 /***/ },
 /* 19 */
+/*!***************************************!*\
+  !*** ./js/classes/creatures/Jelly.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../../configs/creatureConfigs.js */ 5);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 6);
+	
+	function Jelly(game, x, y){
+	  Creature.call(this, game, 'jelly', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	}
+	
+	Jelly.prototype = Object.create(Creature.prototype);
+	Jelly.prototype.constructor = Jelly;
+	
+	module.exports = Jelly;
+	  
+
+/***/ },
+/* 20 */
 /*!*************************************!*\
   !*** ./js/classes/creatures/Man.js ***!
   \*************************************/
@@ -1639,7 +1677,7 @@
 	  
 
 /***/ },
-/* 20 */
+/* 21 */
 /*!******************************!*\
   !*** ./js/classes/things.js ***!
   \******************************/
@@ -1682,7 +1720,7 @@
 	module.exports = Thing;
 
 /***/ },
-/* 21 */
+/* 22 */
 /*!*************************************!*\
   !*** ./js/services/levelManager.js ***!
   \*************************************/
@@ -1818,15 +1856,15 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 22 */
+/* 23 */
 /*!*************************************!*\
   !*** ./js/services/enemyManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
-	var Group = __webpack_require__(/*! ../classes/group.js */ 23);
-	var util = __webpack_require__(/*! ./util.js */ 24);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
+	var util = __webpack_require__(/*! ./util.js */ 25);
 	
 	
 	var enemyManager = function(game, levelEnemies, levelZones){
@@ -1906,7 +1944,7 @@
 	module.exports = enemyManager;
 
 /***/ },
-/* 23 */
+/* 24 */
 /*!*****************************!*\
   !*** ./js/classes/group.js ***!
   \*****************************/
@@ -1923,7 +1961,7 @@
 	module.exports = Group;
 
 /***/ },
-/* 24 */
+/* 25 */
 /*!*****************************!*\
   !*** ./js/services/util.js ***!
   \*****************************/
@@ -1986,16 +2024,16 @@
 	module.exports = util;
 
 /***/ },
-/* 25 */
+/* 26 */
 /*!*************************************!*\
   !*** ./js/services/thingManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 20);
-	var Portal = __webpack_require__(/*! ../classes/portal.js */ 26);
-	var Platform = __webpack_require__(/*! ../classes/platform.js */ 28);
-	var Group = __webpack_require__(/*! ../classes/group.js */ 23);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
+	var Portal = __webpack_require__(/*! ../classes/portal.js */ 27);
+	var Platform = __webpack_require__(/*! ../classes/platform.js */ 29);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
 	
 	var thingManager = function(game, thingsToLoad){
 	  
@@ -2026,13 +2064,13 @@
 	module.exports = thingManager;
 
 /***/ },
-/* 26 */
+/* 27 */
 /*!******************************!*\
   !*** ./js/classes/portal.js ***!
   \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 28);
 	
 	var Portal = function(game, jumpTo, x, y){
 	  
@@ -2056,7 +2094,7 @@
 	module.exports = Portal;
 
 /***/ },
-/* 27 */
+/* 28 */
 /*!********************************!*\
   !*** ./js/configs/assetMap.js ***!
   \********************************/
@@ -2539,7 +2577,7 @@
 	module.exports = assetMap;
 
 /***/ },
-/* 28 */
+/* 29 */
 /*!********************************!*\
   !*** ./js/classes/platform.js ***!
   \********************************/
@@ -2657,7 +2695,7 @@
 	module.exports = Platform;
 
 /***/ },
-/* 29 */
+/* 30 */
 /*!************************************!*\
   !*** ./js/services/menuManager.js ***!
   \************************************/
@@ -2705,21 +2743,21 @@
 	module.exports = Menu;
 
 /***/ },
-/* 30 */
+/* 31 */
 /*!************************************!*\
   !*** ./js/configs/levelConfigs.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 31);
-	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 32);
-	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 33);
-	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 34);
-	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 35);
-	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 36);
-	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 37);
-	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 38);
-	var level9 = __webpack_require__(/*! ./levelConfigs/level-mosquito-falls.js */ 39);
+	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 32);
+	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 33);
+	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 34);
+	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 35);
+	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 36);
+	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 37);
+	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 38);
+	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 39);
+	var level9 = __webpack_require__(/*! ./levelConfigs/level-mosquito-falls.js */ 40);
 	
 	var levelConfigs = [
 	  level1,
@@ -2736,13 +2774,13 @@
 	module.exports = levelConfigs;
 
 /***/ },
-/* 31 */
+/* 32 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level1.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level1 = {
 	  id: 1,
@@ -2869,13 +2907,13 @@
 	module.exports = level1;
 
 /***/ },
-/* 32 */
+/* 33 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level2.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level2 = {
 	  id: 2,
@@ -2987,13 +3025,13 @@
 	module.exports = level2;
 
 /***/ },
-/* 33 */
+/* 34 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level3.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level3 = {
 	  id: 'heights',
@@ -3084,13 +3122,13 @@
 	module.exports = level3;
 
 /***/ },
-/* 34 */
+/* 35 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-downfall-rifts.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'downfall-rifts',
@@ -3385,13 +3423,13 @@
 	module.exports = level;
 
 /***/ },
-/* 35 */
+/* 36 */
 /*!******************************************************!*\
   !*** ./js/configs/levelConfigs/level-great-abyss.js ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'great-abyss',
@@ -3904,13 +3942,13 @@
 	module.exports = level;
 
 /***/ },
-/* 36 */
+/* 37 */
 /*!*****************************************************!*\
   !*** ./js/configs/levelConfigs/level-green-hell.js ***!
   \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'green-hell',
@@ -4054,13 +4092,13 @@
 	module.exports = level;
 
 /***/ },
-/* 37 */
+/* 38 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-into-the-woods.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'into-the-woods',
@@ -4213,13 +4251,13 @@
 	module.exports = level;
 
 /***/ },
-/* 38 */
+/* 39 */
 /*!*******************************************************!*\
   !*** ./js/configs/levelConfigs/level-hall-of-ages.js ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'hall-of-ages',
@@ -4630,13 +4668,13 @@
 	module.exports = level;
 
 /***/ },
-/* 39 */
+/* 40 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-mosquito-falls.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 27);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
 	
 	var level = {
 	  id: 'mosquito-falls',
@@ -4667,6 +4705,20 @@
 	    }
 	  ],
 	  platforms: [
+	    {
+	      img: atlas.PLATFORM_WOOD,
+	      behaviour: 'shuttle', // null, fall, moveTo, shuttle
+	      x: 75,
+	      y: 243,
+	      fallTimeout: 1000,
+	      restoreTimeout: 2000,
+	      moveTo: {
+	        x: 1200,
+	        y: 243,
+	        timeout: 10000,
+	        easing: 'Cubic'
+	      }
+	    },
 	    {
 	      img: atlas.PLATFORM_DEATH,
 	      behaviour: 'fall', // null, fall, moveTo, shuttle
@@ -4731,14 +4783,53 @@
 	  ],
 	  enemies: [
 	    {
+	      type: 'jelly',
+	      active: false,
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: 5000,
+	      origin: {
+	        x: 357,
+	        y: 419
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'wait'
+	    },
+	    {
+	      type: 'bat',
+	      active: false,
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 5000,
+	      origin: {
+	        x: 211,
+	        y: 90
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'wait'
+	    },
+	    {
+	      type: 'bat',
+	      active: false,
+	      number: 1,
+	      lifespan: 10000,
+	      revive: 6000,
+	      origin: {
+	        x: 314,
+	        y: 113
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'wait'
+	    },
+	    {
 	      type: 'tiger', 
 	      active: false,
 	      number: 1,
 	      lifespan: Infinity,
 	      revive: false,
 	      origin: {
-	        x: 282,
-	        y: 219
+	        x: 848,
+	        y: 391
 	      },
 	      onClose: 'wakeUp',
 	      onLeave: 'wait'
@@ -4750,8 +4841,8 @@
 	      lifespan: Infinity,
 	      revive: false,
 	      origin: {
-	        x: 536,
-	        y: 178
+	        x: 2175,
+	        y: 400
 	      },
 	      onClose: 'wakeUp',
 	      onLeave: 'wait'
@@ -4762,8 +4853,8 @@
 	      lifespan: 10000,
 	      revive: 1000,
 	      origin: {
-	        x: 328,
-	        y: 69
+	        x: 185,
+	        y: 135
 	      },
 	      boundTo: {
 	        x1: 0,
@@ -4776,8 +4867,8 @@
 	      lifespan: 8000,
 	      revive: 1200,
 	      origin: {
-	        x: 536,
-	        y: 88
+	        x: 504,
+	        y: 283
 	      },
 	      boundTo: {
 	        x1: 0,
@@ -4824,6 +4915,19 @@
 	        x1: 183,
 	        x2: 484
 	      }
+	    },
+	    {
+	      type: 'frog', 
+	      active: false,
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 1530,
+	        y: 233
+	      },
+	      onClose: 'wakeUp',
+	      onLeave: 'wait'
 	    }
 	  ]
 	};

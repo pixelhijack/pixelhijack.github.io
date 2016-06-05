@@ -30,6 +30,20 @@ var level = {
   ],
   platforms: [
     {
+      img: atlas.PLATFORM_WOOD,
+      behaviour: 'shuttle', // null, fall, moveTo, shuttle
+      x: 75,
+      y: 243,
+      fallTimeout: 1000,
+      restoreTimeout: 2000,
+      moveTo: {
+        x: 1200,
+        y: 243,
+        timeout: 10000,
+        easing: 'Cubic'
+      }
+    },
+    {
       img: atlas.PLATFORM_DEATH,
       behaviour: 'fall', // null, fall, moveTo, shuttle
       x: 514,
@@ -93,14 +107,53 @@ var level = {
   ],
   enemies: [
     {
+      type: 'jelly',
+      active: false,
+      number: 1,
+      lifespan: Infinity,
+      revive: 5000,
+      origin: {
+        x: 357,
+        y: 419
+      },
+      onClose: 'wakeUp',
+      onLeave: 'wait'
+    },
+    {
+      type: 'bat',
+      active: false,
+      number: 1,
+      lifespan: 10000,
+      revive: 5000,
+      origin: {
+        x: 211,
+        y: 90
+      },
+      onClose: 'wakeUp',
+      onLeave: 'wait'
+    },
+    {
+      type: 'bat',
+      active: false,
+      number: 1,
+      lifespan: 10000,
+      revive: 6000,
+      origin: {
+        x: 314,
+        y: 113
+      },
+      onClose: 'wakeUp',
+      onLeave: 'wait'
+    },
+    {
       type: 'tiger', 
       active: false,
       number: 1,
       lifespan: Infinity,
       revive: false,
       origin: {
-        x: 282,
-        y: 219
+        x: 848,
+        y: 391
       },
       onClose: 'wakeUp',
       onLeave: 'wait'
@@ -112,8 +165,8 @@ var level = {
       lifespan: Infinity,
       revive: false,
       origin: {
-        x: 536,
-        y: 178
+        x: 2175,
+        y: 400
       },
       onClose: 'wakeUp',
       onLeave: 'wait'
@@ -124,8 +177,8 @@ var level = {
       lifespan: 10000,
       revive: 1000,
       origin: {
-        x: 328,
-        y: 69
+        x: 185,
+        y: 135
       },
       boundTo: {
         x1: 0,
@@ -138,8 +191,8 @@ var level = {
       lifespan: 8000,
       revive: 1200,
       origin: {
-        x: 536,
-        y: 88
+        x: 504,
+        y: 283
       },
       boundTo: {
         x1: 0,
@@ -186,6 +239,19 @@ var level = {
         x1: 183,
         x2: 484
       }
+    },
+    {
+      type: 'frog', 
+      active: false,
+      number: 1,
+      lifespan: Infinity,
+      revive: false,
+      origin: {
+        x: 1530,
+        y: 233
+      },
+      onClose: 'wakeUp',
+      onLeave: 'wait'
     }
   ]
 };
