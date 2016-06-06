@@ -4887,7 +4887,7 @@
 	      onLeave: 'wait'
 	    },
 	    {
-	      type: 'bat',
+	      type: 'ptero',
 	      active: false,
 	      number: 1,
 	      lifespan: 10000,
@@ -4896,11 +4896,11 @@
 	        x: 211,
 	        y: 90
 	      },
-	      onClose: 'wakeUp',
+	      onClose: 'follow',
 	      onLeave: 'wait'
 	    },
 	    {
-	      type: 'bat',
+	      type: 'ptero',
 	      active: false,
 	      number: 1,
 	      lifespan: 10000,
@@ -4909,7 +4909,7 @@
 	        x: 314,
 	        y: 113
 	      },
-	      onClose: 'wakeUp',
+	      onClose: 'follow',
 	      onLeave: 'wait'
 	    },
 	    {
@@ -4983,11 +4983,11 @@
 	        x1: 161,
 	        x2: 750
 	      },
-	      onClose: 'wakeUp',
+	      onClose: 'follow',
 	      onLeave: 'wait'
 	    },
 	    {
-	      type: 'bat',
+	      type: 'ptero',
 	      active: false,
 	      number: 1,
 	      lifespan: 7000,
@@ -4996,7 +4996,7 @@
 	        x: 116,
 	        y: 49
 	      },
-	      onClose: 'wakeUp',
+	      onClose: 'follow',
 	      onLeave: 'wait'
 	    },
 	    {

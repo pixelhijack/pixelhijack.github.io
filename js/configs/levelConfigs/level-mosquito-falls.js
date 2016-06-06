@@ -210,7 +210,7 @@ var level = {
       onLeave: 'wait'
     },
     {
-      type: 'bat',
+      type: 'ptero',
       active: false,
       number: 1,
       lifespan: 10000,
@@ -219,11 +219,11 @@ var level = {
         x: 211,
         y: 90
       },
-      onClose: 'wakeUp',
+      onClose: 'follow',
       onLeave: 'wait'
     },
     {
-      type: 'bat',
+      type: 'ptero',
       active: false,
       number: 1,
       lifespan: 10000,
@@ -232,7 +232,7 @@ var level = {
         x: 314,
         y: 113
       },
-      onClose: 'wakeUp',
+      onClose: 'follow',
       onLeave: 'wait'
     },
     {
@@ -306,11 +306,11 @@ var level = {
         x1: 161,
         x2: 750
       },
-      onClose: 'wakeUp',
+      onClose: 'follow',
       onLeave: 'wait'
     },
     {
-      type: 'bat',
+      type: 'ptero',
       active: false,
       number: 1,
       lifespan: 7000,
@@ -319,7 +319,7 @@ var level = {
         x: 116,
         y: 49
       },
-      onClose: 'wakeUp',
+      onClose: 'follow',
       onLeave: 'wait'
     },
     {
