@@ -11,16 +11,5 @@ function Native(game, x, y){
 Native.prototype = Object.create(Creature.prototype);
 Native.prototype.constructor = Native;
 
-Native.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
-  }
-  this.state = 'moving';
-  this.turnIfBlocked();
-  this.move();
-  this.sentinel();
-};
-
 module.exports = Native;
   

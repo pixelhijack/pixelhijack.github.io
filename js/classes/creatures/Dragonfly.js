@@ -11,15 +11,5 @@ function Dragonfly(game, x, y){
 Dragonfly.prototype = Object.create(Creature.prototype);
 Dragonfly.prototype.constructor = Dragonfly;
 
-Dragonfly.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
-  }
-  this.state = 'moving';
-  this.move();
-  this.sentinel();
-};
-
 module.exports = Dragonfly;
   

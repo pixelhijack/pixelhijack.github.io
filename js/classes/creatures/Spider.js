@@ -11,15 +11,6 @@ function Spider(game, x, y){
 Spider.prototype = Object.create(Creature.prototype);
 Spider.prototype.constructor = Spider;
 
-Spider.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
-  }
-  this.crawl();
-  this.sentinel();
-};
-
 Spider.prototype.crawl = function crawl(){
   if(this.body.velocity.y > 0){
     this.scale.y = -1;

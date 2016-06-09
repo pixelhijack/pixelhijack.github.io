@@ -1168,17 +1168,6 @@
 	Bear.prototype = Object.create(Creature.prototype);
 	Bear.prototype.constructor = Bear;
 	
-	Bear.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.turnIfBlocked();
-	  this.move();
-	  this.sentinel();
-	};
-	
 	module.exports = Bear;
 	  
 
@@ -1201,17 +1190,6 @@
 	
 	Native.prototype = Object.create(Creature.prototype);
 	Native.prototype.constructor = Native;
-	
-	Native.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.turnIfBlocked();
-	  this.move();
-	  this.sentinel();
-	};
 	
 	module.exports = Native;
 	  
@@ -1236,17 +1214,6 @@
 	Turtle.prototype = Object.create(Creature.prototype);
 	Turtle.prototype.constructor = Turtle;
 	
-	Turtle.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.turnIfBlocked();
-	  this.move();
-	  this.sentinel();
-	};
-	
 	module.exports = Turtle;
 	  
 
@@ -1269,22 +1236,6 @@
 	
 	Insect.prototype = Object.create(Creature.prototype);
 	Insect.prototype.constructor = Insect;
-	
-	Insect.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.turnIfBlocked();
-	  this.move();
-	  if(Math.random() < 0.005){ 
-	    this.facingRight = !this.facingRight;
-	  }
-	  if(Math.random() < 0.05){ 
-	    this.jump(); 
-	    this.state = 'jumping';
-	  }
-	};
 	
 	module.exports = Insect;
 	  
@@ -1309,22 +1260,6 @@
 	Bug.prototype = Object.create(Creature.prototype);
 	Bug.prototype.constructor = Bug;
 	
-	Bug.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.turnIfBlocked();
-	  this.move();
-	  if(Math.random() < 0.005){ 
-	    this.facingRight = !this.facingRight;
-	  }
-	  if(Math.random() < 0.05){ 
-	    this.jump(); 
-	    this.state = 'jumping';
-	  }
-	};
-	
 	module.exports = Bug;
 	  
 
@@ -1347,22 +1282,6 @@
 	
 	Frog.prototype = Object.create(Creature.prototype);
 	Frog.prototype.constructor = Frog;
-	
-	Frog.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.turnIfBlocked();
-	  this.move();
-	  if(Math.random() < 0.005){ 
-	    this.facingRight = !this.facingRight;
-	  }
-	  if(Math.random() < 0.05){ 
-	    this.jump(); 
-	    this.state = 'jumping';
-	  }
-	};
 	
 	module.exports = Frog;
 	  
@@ -1387,20 +1306,6 @@
 	Tiger.prototype = Object.create(Creature.prototype);
 	Tiger.prototype.constructor = Tiger;
 	
-	Tiger.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  if(Math.random() < 0.005){ 
-	    this.jump(); 
-	    this.state = 'jumping';
-	  }else{
-	    this.turnIfBlocked();
-	    this.move();
-	  }
-	};
-	
 	module.exports = Tiger;
 	  
 
@@ -1423,15 +1328,6 @@
 	
 	Spider.prototype = Object.create(Creature.prototype);
 	Spider.prototype.constructor = Spider;
-	
-	Spider.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.crawl();
-	  this.sentinel();
-	};
 	
 	Spider.prototype.crawl = function crawl(){
 	  if(this.body.velocity.y > 0){
@@ -1533,16 +1429,6 @@
 	Parrot.prototype = Object.create(Creature.prototype);
 	Parrot.prototype.constructor = Parrot;
 	
-	Parrot.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.move();
-	  this.sentinel();
-	};
-	
 	module.exports = Parrot;
 	  
 
@@ -1565,16 +1451,6 @@
 	
 	Dragonfly.prototype = Object.create(Creature.prototype);
 	Dragonfly.prototype.constructor = Dragonfly;
-	
-	Dragonfly.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.move();
-	  this.sentinel();
-	};
 	
 	module.exports = Dragonfly;
 	  
@@ -1602,15 +1478,6 @@
 	Bat.prototype.move = function move(){
 	  this.y += 1;
 	  this.x = this.facingRight ? this.x + 0.5 : this.x - 0.5;
-	};
-	
-	Bat.prototype.defaultUpdate = function defaultUpdate(){
-	  this.render();
-	  if(this.state === 'dead'){
-	    return;
-	  }
-	  this.state = 'moving';
-	  this.diagonalDescend(0.5, 1);
 	};
 	
 	Bat.prototype.diagonalDescend = function diagonalDescend(dx, dy){

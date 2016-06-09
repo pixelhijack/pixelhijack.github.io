@@ -11,16 +11,5 @@ function Bear(game, x, y){
 Bear.prototype = Object.create(Creature.prototype);
 Bear.prototype.constructor = Bear;
 
-Bear.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
-  }
-  this.state = 'moving';
-  this.turnIfBlocked();
-  this.move();
-  this.sentinel();
-};
-
 module.exports = Bear;
   

@@ -16,15 +16,6 @@ Bat.prototype.move = function move(){
   this.x = this.facingRight ? this.x + 0.5 : this.x - 0.5;
 };
 
-Bat.prototype.defaultUpdate = function defaultUpdate(){
-  this.render();
-  if(this.state === 'dead'){
-    return;
-  }
-  this.state = 'moving';
-  this.diagonalDescend(0.5, 1);
-};
-
 Bat.prototype.diagonalDescend = function diagonalDescend(dx, dy){
   this.y += dy;
   this.x += dx;
