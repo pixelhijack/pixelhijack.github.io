@@ -213,7 +213,7 @@ var level = {
       type: 'ptero',
       active: false,
       number: 1,
-      lifespan: 10000,
+      lifespan: Infinity,
       revive: 5000,
       origin: {
         x: 211,
@@ -226,7 +226,7 @@ var level = {
       type: 'ptero',
       active: false,
       number: 1,
-      lifespan: 10000,
+      lifespan: Infinity,
       revive: 6000,
       origin: {
         x: 314,
@@ -313,7 +313,7 @@ var level = {
       type: 'ptero',
       active: false,
       number: 1,
-      lifespan: 7000,
+      lifespan: Infinity,
       revive: 5000,
       origin: {
         x: 116,

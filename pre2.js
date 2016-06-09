@@ -341,7 +341,8 @@
 	      !keys.up.isDown && 
 	      !keys.down.isDown && 
 	      !keys.space.isDown &&
-	      man.isGrounded()){
+	      man.isGrounded() &&
+	      game.time.now > man.state.until){
 	        man.state.name = 'idle';
 	    }
 	    if(keys.left.isDown) {
@@ -370,7 +371,7 @@
 	        events.somethingHappened.dispatch(this, man.x);
 	    }
 	    if(keys.space.isDown) {
-	      man.state.name = 'hit';
+	      man.setState('hit', 400);
 	      man.stop(globalSettings.physics.slippery);
 	      weapon.sprite.visible = true;
 	      weapon.sprite.animations.play('club-hit-' + man.direction());
@@ -398,7 +399,7 @@
 	      //creature.debug(creature.state.name);
 	      //creature.debug(creature.creatureId);
 	    });
-	    //man.debug(man.props.lives +' '+ man.state.name);
+	    man.debug(man.state.name);
 	    
 	    setParallax();
 	    collisions();
@@ -568,7 +569,7 @@
 	    lifespan: Infinity,
 	    animations: [
 	      { name: 'move', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
-	      { name: 'hit', frames: [22,24,28,31,34], fps: 10, loop: false }, 
+	      { name: 'hit', frames: [22,24,28,31,34,22,24,28,31,34], fps: 10, loop: true }, 
 	      { name: 'stop', frames: [42,45,49,52], fps: 10, loop: false }, 
 	      { name: 'jump', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
 	      { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
@@ -4890,7 +4891,7 @@
 	      type: 'ptero',
 	      active: false,
 	      number: 1,
-	      lifespan: 10000,
+	      lifespan: Infinity,
 	      revive: 5000,
 	      origin: {
 	        x: 211,
@@ -4903,7 +4904,7 @@
 	      type: 'ptero',
 	      active: false,
 	      number: 1,
-	      lifespan: 10000,
+	      lifespan: Infinity,
 	      revive: 6000,
 	      origin: {
 	        x: 314,
@@ -4990,7 +4991,7 @@
 	      type: 'ptero',
 	      active: false,
 	      number: 1,
-	      lifespan: 7000,
+	      lifespan: Infinity,
 	      revive: 5000,
 	      origin: {
 	        x: 116,

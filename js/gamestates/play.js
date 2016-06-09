@@ -232,7 +232,8 @@ function Play(game, globalSettings){
       !keys.up.isDown && 
       !keys.down.isDown && 
       !keys.space.isDown &&
-      man.isGrounded()){
+      man.isGrounded() &&
+      game.time.now > man.state.until){
         man.state.name = 'idle';
     }
     if(keys.left.isDown) {
@@ -261,7 +262,7 @@ function Play(game, globalSettings){
         events.somethingHappened.dispatch(this, man.x);
     }
     if(keys.space.isDown) {
-      man.state.name = 'hit';
+      man.setState('hit', 400);
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
       weapon.sprite.animations.play('club-hit-' + man.direction());
@@ -289,7 +290,7 @@ function Play(game, globalSettings){
       //creature.debug(creature.state.name);
       //creature.debug(creature.creatureId);
     });
-    //man.debug(man.props.lives +' '+ man.state.name);
+    man.debug(man.state.name);
     
     setParallax();
     collisions();

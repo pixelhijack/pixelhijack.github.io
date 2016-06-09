@@ -27,7 +27,7 @@ var creatureConfigs = {
     lifespan: Infinity,
     animations: [
       { name: 'move', frames: [11,'03','05',14,20], fps: 10, loop: false }, 
-      { name: 'hit', frames: [22,24,28,31,34], fps: 10, loop: false }, 
+      { name: 'hit', frames: [22,24,28,31,34,22,24,28,31,34], fps: 10, loop: true }, 
       { name: 'stop', frames: [42,45,49,52], fps: 10, loop: false }, 
       { name: 'jump', frames: [16,41,47,50,50,50,50,50,50,50,50,13,50,13,50,13], fps: 10, loop: false }, 
       { name: 'idle', frames: [25,25,25,25,25,25,25,25,27,27,27,27,25,25,25,25,25,25,25,25,30,25,25,25,25,25,25,25,25,27,30,27,30,35,36,25,25,25,25,25,25,25,25,'07','07','07','07','02','02'], fps: 5, loop: true }, 
