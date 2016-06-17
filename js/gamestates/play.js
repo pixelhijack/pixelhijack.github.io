@@ -87,7 +87,8 @@ function Play(game, globalSettings){
   function addHero(){
     man = creatureFactory.create(game, 'man', level.entryPoint.x, level.entryPoint.y);
     
-    weapon.sprite = game.add.sprite(man.body.x, man.body.y, 'club');
+    weapon.sprite = man.addChild(game.make.sprite(0, 0, 'club'));
+    
     weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);
     weapon.sprite.visible = false;
     weapon.animRight = weapon.sprite.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
@@ -217,8 +218,8 @@ function Play(game, globalSettings){
   
   function moveHero(){
     // weapon sprite should be always in sync with the man sprite
-    weapon.sprite.x = man.x;
-    weapon.sprite.y = man.y;
+    //weapon.sprite.x = man.x;
+    //weapon.sprite.y = man.y;
 
     if(man.state.name === 'stun' && game.time.now < man.state.until){
       keys.enabled = false;
@@ -272,8 +273,8 @@ function Play(game, globalSettings){
   function debug(){
     game.debug.text('LIVES: ' + man.health(), 32, 96);
     game.debug.pointer(game.input.pointer1);
-    game.debug.body(weapon.sprite);
-    game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
+    //game.debug.body(weapon.sprite);
+    //game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
   }
   
   /*=============
