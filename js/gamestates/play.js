@@ -291,7 +291,7 @@ function Play(game, globalSettings){
       //creature.debug(creature.state.name);
       //creature.debug(creature.creatureId);
     });
-    man.debug(man.state.name);
+    //man.debug(man.state.name);
     
     setParallax();
     collisions();
