@@ -252,9 +252,18 @@ var creatureConfigs = {
     ]
   },
   gorilla: {
-    // grim level bosses with lots of lifes!!
-    lives: 10, 
-    animations: []
+    mass: 5,
+    jumping: 300,
+    maxSpeed: 0,
+    acceleration: 0, 
+    animations: [
+      { name: 'idle', frames: [411], fps: 5, loop: true },
+      { name: 'move', frames: [411], fps: 10, loop: true },
+      { name: 'jump', frames: [411], fps: 10, loop: true },
+      { name: 'fall', frames: [411], fps: 10, loop: true },
+      { name: 'die', frames: [411], fps: 10, loop: true },
+      { name: 'spawn', frames: [411], fps: 10, loop: true }
+    ]
   }
 };
 

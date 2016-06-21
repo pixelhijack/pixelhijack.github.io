@@ -13,6 +13,7 @@ var creature = {
   dragonfly: require('./creatures/Dragonfly.js'),
   bat: require('./creatures/Bat.js'),
   jelly: require('./creatures/Jelly.js'),
+  gorilla: require('./creatures/Gorilla.js'),
   man: require('./creatures/Man.js')
 };
 

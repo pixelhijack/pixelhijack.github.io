@@ -483,6 +483,7 @@
 	  dragonfly: __webpack_require__(/*! ./creatures/Dragonfly.js */ 17),
 	  bat: __webpack_require__(/*! ./creatures/Bat.js */ 18),
 	  jelly: __webpack_require__(/*! ./creatures/Jelly.js */ 19),
+	  gorilla: __webpack_require__(/*! ./creatures/Gorilla.js */ 42),
 	  man: __webpack_require__(/*! ./creatures/Man.js */ 20)
 	};
 	
@@ -795,9 +796,18 @@
 	    ]
 	  },
 	  gorilla: {
-	    // grim level bosses with lots of lifes!!
-	    lives: 10, 
-	    animations: []
+	    mass: 5,
+	    jumping: 300,
+	    maxSpeed: 0,
+	    acceleration: 0, 
+	    animations: [
+	      { name: 'idle', frames: [411], fps: 5, loop: true },
+	      { name: 'move', frames: [411], fps: 10, loop: true },
+	      { name: 'jump', frames: [411], fps: 10, loop: true },
+	      { name: 'fall', frames: [411], fps: 10, loop: true },
+	      { name: 'die', frames: [411], fps: 10, loop: true },
+	      { name: 'spawn', frames: [411], fps: 10, loop: true }
+	    ]
 	  }
 	};
 	
@@ -5189,6 +5199,49 @@
 	};
 	
 	module.exports = level;
+
+/***/ },
+/* 42 */
+/*!*****************************************!*\
+  !*** ./js/classes/creatures/Gorilla.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../../configs/creatureConfigs.js */ 5);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 6);
+	
+	function Gorilla(game, x, y){
+	  Creature.call(this, game, 'gorilla', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  
+	  this.head = this.addChild(this.game.make.sprite(0, 20, 'pre2atlas'));
+	  this.legs = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  this.leftArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  this.rightArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  
+	  this.head.animations.add('idle', [406, 407, 408], 10, true);
+	}
+	
+	Gorilla.prototype.update = function update(){
+	  this.render();
+	  this.react();
+	  this.decide();
+	};
+	
+	Gorilla.prototype.render = function render(){
+	  this.state.name = 'idle';
+	  this.play(this.state.name); 
+	  this.head.animations.play(this.state.name);
+	  this.scale.x = this.facingRight ? 1 : -1;
+	};
+	
+	Gorilla.prototype = Object.create(Creature.prototype);
+	Gorilla.prototype.constructor = Gorilla;
+	
+	module.exports = Gorilla;
+	  
 
 /***/ }
 /******/ ]);
