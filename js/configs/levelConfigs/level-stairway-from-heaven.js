@@ -15,7 +15,7 @@ var level = {
   foregroundLayer: null,
   collisionLayer: 'collision-layer',
   deathLayer: 'death-layer',
-  parallaxLayer: 'parallax-layer',
+  parallaxLayer: null,
   objectsLayer: null, 
   entryPoint: {
     x: 55, 

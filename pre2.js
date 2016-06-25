@@ -108,13 +108,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
-	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 22);
-	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 23);
-	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 26);
-	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 30);
-	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 31);
-	var util = __webpack_require__(/*! ../services/util.js */ 25);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 22);
+	var levelManager = __webpack_require__(/*! ../services/levelManager.js */ 23);
+	var enemyManager = __webpack_require__(/*! ../services/enemyManager.js */ 24);
+	var thingManager = __webpack_require__(/*! ../services/thingManager.js */ 27);
+	var menuManager = __webpack_require__(/*! ../services/menuManager.js */ 31);
+	var levelConfigs = __webpack_require__(/*! ../configs/levelConfigs.js */ 32);
+	var util = __webpack_require__(/*! ../services/util.js */ 26);
 	
 	
 	window.addEventListener('error', function(e){
@@ -483,8 +483,8 @@
 	  dragonfly: __webpack_require__(/*! ./creatures/Dragonfly.js */ 17),
 	  bat: __webpack_require__(/*! ./creatures/Bat.js */ 18),
 	  jelly: __webpack_require__(/*! ./creatures/Jelly.js */ 19),
-	  gorilla: __webpack_require__(/*! ./creatures/Gorilla.js */ 42),
-	  man: __webpack_require__(/*! ./creatures/Man.js */ 20)
+	  gorilla: __webpack_require__(/*! ./creatures/Gorilla.js */ 20),
+	  man: __webpack_require__(/*! ./creatures/Man.js */ 21)
 	};
 	
 	function creatureFactory(){
@@ -1524,6 +1524,49 @@
 
 /***/ },
 /* 20 */
+/*!*****************************************!*\
+  !*** ./js/classes/creatures/Gorilla.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var creatureConfigs = __webpack_require__(/*! ../../configs/creatureConfigs.js */ 5);
+	var Creature = __webpack_require__(/*! ./Creature.js */ 6);
+	
+	function Gorilla(game, x, y){
+	  Creature.call(this, game, 'gorilla', x, y);
+	
+	  this.setProps();
+	  this.setAnimations();
+	  
+	  this.head = this.addChild(this.game.make.sprite(0, 20, 'pre2atlas'));
+	  this.legs = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  this.leftArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  this.rightArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
+	  
+	  this.head.animations.add('idle', [406, 407, 408], 10, true);
+	}
+	
+	Gorilla.prototype.update = function update(){
+	  this.render();
+	  this.react();
+	  this.decide();
+	};
+	
+	Gorilla.prototype.render = function render(){
+	  this.state.name = 'idle';
+	  this.play(this.state.name); 
+	  this.head.animations.play(this.state.name);
+	  this.scale.x = this.facingRight ? 1 : -1;
+	};
+	
+	Gorilla.prototype = Object.create(Creature.prototype);
+	Gorilla.prototype.constructor = Gorilla;
+	
+	module.exports = Gorilla;
+	  
+
+/***/ },
+/* 21 */
 /*!*************************************!*\
   !*** ./js/classes/creatures/Man.js ***!
   \*************************************/
@@ -1557,7 +1600,7 @@
 	  
 
 /***/ },
-/* 21 */
+/* 22 */
 /*!******************************!*\
   !*** ./js/classes/things.js ***!
   \******************************/
@@ -1600,7 +1643,7 @@
 	module.exports = Thing;
 
 /***/ },
-/* 22 */
+/* 23 */
 /*!*************************************!*\
   !*** ./js/services/levelManager.js ***!
   \*************************************/
@@ -1736,15 +1779,15 @@
 	module.exports = levelManager;
 
 /***/ },
-/* 23 */
+/* 24 */
 /*!*************************************!*\
   !*** ./js/services/enemyManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var creatureFactory = __webpack_require__(/*! ../classes/creatureFactory.js */ 3)();
-	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
-	var util = __webpack_require__(/*! ./util.js */ 25);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 25);
+	var util = __webpack_require__(/*! ./util.js */ 26);
 	
 	
 	var enemyManager = function(game, levelEnemies, levelZones){
@@ -1824,7 +1867,7 @@
 	module.exports = enemyManager;
 
 /***/ },
-/* 24 */
+/* 25 */
 /*!*****************************!*\
   !*** ./js/classes/group.js ***!
   \*****************************/
@@ -1841,7 +1884,7 @@
 	module.exports = Group;
 
 /***/ },
-/* 25 */
+/* 26 */
 /*!*****************************!*\
   !*** ./js/services/util.js ***!
   \*****************************/
@@ -1904,16 +1947,16 @@
 	module.exports = util;
 
 /***/ },
-/* 26 */
+/* 27 */
 /*!*************************************!*\
   !*** ./js/services/thingManager.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var Thing = __webpack_require__(/*! ../classes/things.js */ 21);
-	var Portal = __webpack_require__(/*! ../classes/portal.js */ 27);
-	var Platform = __webpack_require__(/*! ../classes/platform.js */ 29);
-	var Group = __webpack_require__(/*! ../classes/group.js */ 24);
+	var Thing = __webpack_require__(/*! ../classes/things.js */ 22);
+	var Portal = __webpack_require__(/*! ../classes/portal.js */ 28);
+	var Platform = __webpack_require__(/*! ../classes/platform.js */ 30);
+	var Group = __webpack_require__(/*! ../classes/group.js */ 25);
 	
 	var thingManager = function(game, thingsToLoad){
 	  
@@ -1944,13 +1987,13 @@
 	module.exports = thingManager;
 
 /***/ },
-/* 27 */
+/* 28 */
 /*!******************************!*\
   !*** ./js/classes/portal.js ***!
   \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../configs/assetMap.js */ 29);
 	
 	var Portal = function(game, jumpTo, x, y){
 	  
@@ -1974,7 +2017,7 @@
 	module.exports = Portal;
 
 /***/ },
-/* 28 */
+/* 29 */
 /*!********************************!*\
   !*** ./js/configs/assetMap.js ***!
   \********************************/
@@ -2457,7 +2500,7 @@
 	module.exports = assetMap;
 
 /***/ },
-/* 29 */
+/* 30 */
 /*!********************************!*\
   !*** ./js/classes/platform.js ***!
   \********************************/
@@ -2575,7 +2618,7 @@
 	module.exports = Platform;
 
 /***/ },
-/* 30 */
+/* 31 */
 /*!************************************!*\
   !*** ./js/services/menuManager.js ***!
   \************************************/
@@ -2623,22 +2666,22 @@
 	module.exports = Menu;
 
 /***/ },
-/* 31 */
+/* 32 */
 /*!************************************!*\
   !*** ./js/configs/levelConfigs.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 32);
-	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 33);
-	var level3 = __webpack_require__(/*! ./levelConfigs/level3.js */ 34);
-	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 35);
-	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 36);
-	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 37);
-	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 38);
-	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 39);
-	var level9 = __webpack_require__(/*! ./levelConfigs/level-mosquito-falls.js */ 40);
-	var level10 = __webpack_require__(/*! ./levelConfigs/level-stairway-from-heaven.js */ 41);
+	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 33);
+	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 34);
+	var level3 = __webpack_require__(/*! ./levelConfigs/level-rise-of-the-tide.js */ 43);
+	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 36);
+	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 37);
+	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 38);
+	var level7 = __webpack_require__(/*! ./levelConfigs/level-into-the-woods.js */ 39);
+	var level8 = __webpack_require__(/*! ./levelConfigs/level-hall-of-ages.js */ 40);
+	var level9 = __webpack_require__(/*! ./levelConfigs/level-mosquito-falls.js */ 41);
+	var level10 = __webpack_require__(/*! ./levelConfigs/level-stairway-from-heaven.js */ 42);
 	
 	var levelConfigs = [
 	  level1,
@@ -2656,13 +2699,13 @@
 	module.exports = levelConfigs;
 
 /***/ },
-/* 32 */
+/* 33 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level1.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level1 = {
 	  id: 1,
@@ -2789,13 +2832,13 @@
 	module.exports = level1;
 
 /***/ },
-/* 33 */
+/* 34 */
 /*!*******************************************!*\
   !*** ./js/configs/levelConfigs/level2.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level2 = {
 	  id: 2,
@@ -2907,110 +2950,14 @@
 	module.exports = level2;
 
 /***/ },
-/* 34 */
-/*!*******************************************!*\
-  !*** ./js/configs/levelConfigs/level3.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
-	
-	var level3 = {
-	  id: 'heights',
-	  tileset: 'tileset-level-heights',
-	  tilemap: 'tilemap-level-heights',
-	  tiledJson: '49x100', 
-	  tilesetImage: 'tileset1_2',
-	  backgroundImage: 'bg3seamless',
-	  width: 49 * 16,
-	  height: 100 * 16,
-	  backgroundLayer: 'background-2',
-	  fixedBackground: true,
-	  groundLayer: 'ground-layer',
-	  collisionLayer: 'collision-layer',
-	  deathLayer: 'death-layer',
-	  objectsLayer: 'objects-layer', 
-	  entryPoint: {
-	    x: 285, 
-	    y: 206
-	  },
-	  portals: [
-	    {
-	      jumpTo: 4,
-	      x: 761,
-	      y: 1290
-	    }  
-	  ],
-	  enemies: [
-	    {
-	      type: 'bear', // 1-2 bears constantly run through the view
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 344,
-	        y: 277
-	      },
-	      boundTo: {
-	        x1: 344,
-	        x2: 404
-	      }
-	    },
-	    {
-	      type: 'native',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 10,
-	        y: 10
-	      },
-	      boundTo: {
-	        x: 101,
-	        y: 158
-	      }
-	    },
-	    {
-	      type: 'spider', // spiders coming from a cave frequently
-	      number: 1,
-	      lifespan: 10000,
-	      revive: 10000,
-	      origin: {
-	        x: 10,
-	        y: 10
-	      },
-	      boundTo: {
-	        x1: Infinity,
-	        x2: Infinity
-	      }
-	    },
-	    {
-	      type: 'dino', // a guard dino standing waiting
-	      number: 1,
-	      lifespan: 8000,
-	      revive: 5000,
-	      origin: {
-	        x: 94,
-	        y: 156
-	      },
-	      boundTo: {
-	        x1: 8,  // stays between x1 x2 zone
-	        x2: 94
-	      }
-	    }
-	  ]
-	};
-	
-	module.exports = level3;
-
-/***/ },
-/* 35 */
+/* 35 */,
+/* 36 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-downfall-rifts.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'downfall-rifts',
@@ -3305,13 +3252,13 @@
 	module.exports = level;
 
 /***/ },
-/* 36 */
+/* 37 */
 /*!******************************************************!*\
   !*** ./js/configs/levelConfigs/level-great-abyss.js ***!
   \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'great-abyss',
@@ -3824,13 +3771,13 @@
 	module.exports = level;
 
 /***/ },
-/* 37 */
+/* 38 */
 /*!*****************************************************!*\
   !*** ./js/configs/levelConfigs/level-green-hell.js ***!
   \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'green-hell',
@@ -3974,13 +3921,13 @@
 	module.exports = level;
 
 /***/ },
-/* 38 */
+/* 39 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-into-the-woods.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'into-the-woods',
@@ -4133,13 +4080,13 @@
 	module.exports = level;
 
 /***/ },
-/* 39 */
+/* 40 */
 /*!*******************************************************!*\
   !*** ./js/configs/levelConfigs/level-hall-of-ages.js ***!
   \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'hall-of-ages',
@@ -4550,13 +4497,13 @@
 	module.exports = level;
 
 /***/ },
-/* 40 */
+/* 41 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-mosquito-falls.js ***!
   \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'mosquito-falls',
@@ -4913,13 +4860,13 @@
 	module.exports = level;
 
 /***/ },
-/* 41 */
+/* 42 */
 /*!***************************************************************!*\
   !*** ./js/configs/levelConfigs/level-stairway-from-heaven.js ***!
   \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 28);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
 	var level = {
 	  id: 'stairway-from-heaven',
@@ -4936,7 +4883,7 @@
 	  foregroundLayer: null,
 	  collisionLayer: 'collision-layer',
 	  deathLayer: 'death-layer',
-	  parallaxLayer: 'parallax-layer',
+	  parallaxLayer: null,
 	  objectsLayer: null, 
 	  entryPoint: {
 	    x: 55, 
@@ -5201,47 +5148,107 @@
 	module.exports = level;
 
 /***/ },
-/* 42 */
-/*!*****************************************!*\
-  !*** ./js/classes/creatures/Gorilla.js ***!
-  \*****************************************/
+/* 43 */
+/*!***********************************************************!*\
+  !*** ./js/configs/levelConfigs/level-rise-of-the-tide.js ***!
+  \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var creatureConfigs = __webpack_require__(/*! ../../configs/creatureConfigs.js */ 5);
-	var Creature = __webpack_require__(/*! ./Creature.js */ 6);
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
 	
-	function Gorilla(game, x, y){
-	  Creature.call(this, game, 'gorilla', x, y);
-	
-	  this.setProps();
-	  this.setAnimations();
-	  
-	  this.head = this.addChild(this.game.make.sprite(0, 20, 'pre2atlas'));
-	  this.legs = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
-	  this.leftArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
-	  this.rightArm = this.addChild(this.game.make.sprite(0, 0, 'pre2atlas'));
-	  
-	  this.head.animations.add('idle', [406, 407, 408], 10, true);
-	}
-	
-	Gorilla.prototype.update = function update(){
-	  this.render();
-	  this.react();
-	  this.decide();
+	var level = {
+	  id: 'rise-of-the-tide',
+	  tileset: 'tileset-level-rise-of-the-tide',
+	  tilemap: 'tilemap-level-rise-of-the-tide',
+	  tiledJson: 'L3v1', 
+	  tilesetImage: 'L3_map_bank',
+	  backgroundImage: 'bg3seamless',
+	  width: 70 * 16,
+	  height: 300 * 16,
+	  backgroundLayer: 'background-2',
+	  fixedBackground: true,
+	  groundLayer: 'ground-layer',
+	  foregroundLayer: null,
+	  collisionLayer: 'collision-layer',
+	  deathLayer: 'death-layer',
+	  parallaxLayer: null,
+	  objectsLayer: null, 
+	  entryPoint: {
+	    x: 20, 
+	    y: 4677
+	  },
+	  portals: [
+	    {
+	      jumpTo: 'stairway-from-heaven',
+	      x: 347,
+	      y: 4009
+	    }
+	  ],
+	  platforms: [
+	    
+	  ],
+	  bonus: [
+	    
+	  ],
+	  enemies: [
+	    {
+	      type: 'bear',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      origin: {
+	        x: 440,
+	        y: 4630
+	      },
+	      boundTo: {
+	        x1: 20,
+	        x2: 246
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 421,
+	        y: 4469
+	      },
+	      boundTo: {
+	        x1: 421,
+	        x2: 521
+	      }
+	    },
+	    {
+	      type: 'tiger',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 675,
+	        y: 4469
+	      },
+	      boundTo: { },
+	      onClose: 'follow',
+	      onLeave: 'wait'
+	    },
+	    {
+	      type: 'ptero',
+	      active: false,
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 896,
+	        y: 4393
+	      },
+	      onClose: 'follow',
+	      onLeave: 'wait'
+	    }
+	  ]
 	};
 	
-	Gorilla.prototype.render = function render(){
-	  this.state.name = 'idle';
-	  this.play(this.state.name); 
-	  this.head.animations.play(this.state.name);
-	  this.scale.x = this.facingRight ? 1 : -1;
-	};
-	
-	Gorilla.prototype = Object.create(Creature.prototype);
-	Gorilla.prototype.constructor = Gorilla;
-	
-	module.exports = Gorilla;
-	  
+	module.exports = level;
 
 /***/ }
 /******/ ]);

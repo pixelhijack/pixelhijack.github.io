@@ -1,6 +1,6 @@
 var level1 = require('./levelConfigs/level1.js');
 var level2 = require('./levelConfigs/level2.js');
-var level3 = require('./levelConfigs/level3.js');
+var level3 = require('./levelConfigs/level-rise-of-the-tide.js');
 var level4 = require('./levelConfigs/level-downfall-rifts.js');
 var level5 = require('./levelConfigs/level-great-abyss.js');
 var level6 = require('./levelConfigs/level-green-hell.js');
