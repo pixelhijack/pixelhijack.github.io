@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'hall-of-ages',
+  name: 'Hall of Ages',
   tileset: 'tileset-level-hall-of-ages',
   tilemap: 'tilemap-level-hall-of-ages',
   tiledJson: 'L8v1', 

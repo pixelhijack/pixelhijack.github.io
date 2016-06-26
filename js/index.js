@@ -19,8 +19,11 @@ var globalSettings = {
 
 var game = new Phaser.Game(globalSettings.dimensions.WIDTH, globalSettings.dimensions.HEIGHT, Phaser.AUTO, '', null, false, false);
 var PRE2 = { 
+  Menu: Menu,
   Play: Play.bind(this, game, globalSettings)
 };
+game.state.add('Menu', PRE2.Menu);
 game.state.add('Play', PRE2.Play);
-game.state.start('Play', true, true, { levelNumber: globalSettings.level });
+game.state.start('Menu');
+//game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 

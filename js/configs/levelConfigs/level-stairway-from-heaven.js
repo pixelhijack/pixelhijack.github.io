@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'stairway-from-heaven',
+  name: 'Stairway From Heaven',
   tileset: 'tileset-level-stairway-from-heaven',
   tilemap: 'tilemap-level-stairway-from-heaven',
   tiledJson: 'L5L14L9v1', 

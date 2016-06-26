@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'downfall-rifts',
+  name: 'Downfall Rifts', 
   tileset: 'tileset-level-downfall-rifts',
   tilemap: 'tilemap-level-downfall-rifts',
   tiledJson: 'L2v1', 

@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'rise-of-the-tide',
+  name: 'Rise of the Tide',
   tileset: 'tileset-level-rise-of-the-tide',
   tilemap: 'tilemap-level-rise-of-the-tide',
   tiledJson: 'L3v1', 

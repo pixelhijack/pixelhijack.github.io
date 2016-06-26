@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'great-abyss',
+  name: 'The Great Abyss', 
   tileset: 'tileset-level-great-abyss',
   tilemap: 'tilemap-level-great-abyss',
   tiledJson: 'L1v4', 

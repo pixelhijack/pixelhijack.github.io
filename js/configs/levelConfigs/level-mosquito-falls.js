@@ -2,6 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'mosquito-falls',
+  name: 'Mosquito Falls',
   tileset: 'tileset-level-mosquito-falls',
   tilemap: 'tilemap-level-mosquito-falls',
   tiledJson: 'L5greenv2', 

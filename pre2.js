@@ -68,10 +68,13 @@
 	
 	var game = new Phaser.Game(globalSettings.dimensions.WIDTH, globalSettings.dimensions.HEIGHT, Phaser.AUTO, '', null, false, false);
 	var PRE2 = { 
+	  Menu: Menu,
 	  Play: Play.bind(this, game, globalSettings)
 	};
+	game.state.add('Menu', PRE2.Menu);
 	game.state.add('Play', PRE2.Play);
-	game.state.start('Play', true, true, { levelNumber: globalSettings.level });
+	game.state.start('Menu');
+	//game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 	
 
 
@@ -82,20 +85,93 @@
   \*******************************/
 /***/ function(module, exports) {
 
+	//var levels = require('../configs/levelConfigs.js');
+	
 	function Menu(){
 	  
+	  var dimensions = {
+	    width: 546, 
+	    height: 372
+	  };
+	  
+	  var texts = [
+	    {
+	      key: 1,
+	      text: 'The Great Abyss', 
+	      id: 'great-abyss'
+	    },
+	    {
+	      key: 2,
+	      text: 'Downfall Rifts', 
+	      id: 'downfall-rifts'
+	    }, 
+	    {
+	      key: 3,
+	      text: 'Green Hell', 
+	      id: 'green-hell'
+	    },
+	    {
+	      key: 4,
+	      text: 'Hall of Ages', 
+	      id: 'hall-of-ages'
+	    },
+	    {
+	      key: 5,
+	      text: 'Into the Woods', 
+	      id: 'into-the-woods'
+	    },
+	    {
+	      key: 6,
+	      text: 'Mosquito Falls', 
+	      id: 'mosquito-falls'
+	    },
+	    {
+	      key: 7,
+	      text: 'Rise of the Tide', 
+	      id: 'rise-of-the-tide'
+	    },
+	    {
+	      key: 8,
+	      text: 'Stairway from Heaven', 
+	      id: 'stairway-from-heaven'
+	    }
+	  ];
+	  
+	  var textStyle = { 
+	    font: "18px Courier", 
+	    fill: "#ffffff" 
+	  };
+	  var backgroundLayer = null;
 	  /*
 	    press a key for a level: 1, 2, 3...
 	  */
 	  this.preload = function preload(){
-	    
-	  }
+	    this.game.scale.pageAlignHorizontally = true;
+	    this.game.scale.pageAlignVertically = true;
+	    this.game.load.image('menu-background', 'assets/backgrounds/bg1seamless.png');
+	  };
+	  
 	  this.create = function create(){
+	    this.game.world.setBounds(0, 0, dimensions.width, dimensions.height);
+	    backgroundLayer = this.game.add.tileSprite(0, 0, dimensions.width, dimensions.height, 'menu-background');
 	    
-	  }
+	    var heading = this.game.add.text(20, 20, 'Press a key to start a level', textStyle);
+	    texts = texts.map(function(line, i){
+	      line.textRef = this.game.add.text(20, 60 + i * 20, line.key +' - '+ line.text, textStyle);
+	      return line;
+	    }.bind(this));
+	  };
+	  
 	  this.update = function update(){
-	    
-	  }
+	    this.game.input.keyboard.onDownCallback = function(e){
+	      var levelToLoad = texts.find(function(text){
+	        return text.key.toString() === e.key;
+	      });
+	      if(levelToLoad){
+	        this.game.state.start('Play', true, true, { levelNumber: levelToLoad.id }); 
+	      }
+	    };
+	  };
 	}
 	
 	module.exports = Menu;
@@ -2674,7 +2750,7 @@
 
 	var level1 = __webpack_require__(/*! ./levelConfigs/level1.js */ 33);
 	var level2 = __webpack_require__(/*! ./levelConfigs/level2.js */ 34);
-	var level3 = __webpack_require__(/*! ./levelConfigs/level-rise-of-the-tide.js */ 43);
+	var level3 = __webpack_require__(/*! ./levelConfigs/level-rise-of-the-tide.js */ 35);
 	var level4 = __webpack_require__(/*! ./levelConfigs/level-downfall-rifts.js */ 36);
 	var level5 = __webpack_require__(/*! ./levelConfigs/level-great-abyss.js */ 37);
 	var level6 = __webpack_require__(/*! ./levelConfigs/level-green-hell.js */ 38);
@@ -2950,7 +3026,110 @@
 	module.exports = level2;
 
 /***/ },
-/* 35 */,
+/* 35 */
+/*!***********************************************************!*\
+  !*** ./js/configs/levelConfigs/level-rise-of-the-tide.js ***!
+  \***********************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
+	
+	var level = {
+	  id: 'rise-of-the-tide',
+	  name: 'Rise of the Tide',
+	  tileset: 'tileset-level-rise-of-the-tide',
+	  tilemap: 'tilemap-level-rise-of-the-tide',
+	  tiledJson: 'L3v1', 
+	  tilesetImage: 'L3_map_bank',
+	  backgroundImage: 'bg3seamless',
+	  width: 70 * 16,
+	  height: 300 * 16,
+	  backgroundLayer: 'background-2',
+	  fixedBackground: true,
+	  groundLayer: 'ground-layer',
+	  foregroundLayer: null,
+	  collisionLayer: 'collision-layer',
+	  deathLayer: 'death-layer',
+	  parallaxLayer: null,
+	  objectsLayer: null, 
+	  entryPoint: {
+	    x: 20, 
+	    y: 4677
+	  },
+	  portals: [
+	    {
+	      jumpTo: 'stairway-from-heaven',
+	      x: 347,
+	      y: 4009
+	    }
+	  ],
+	  platforms: [
+	    
+	  ],
+	  bonus: [
+	    
+	  ],
+	  enemies: [
+	    {
+	      type: 'bear',
+	      number: 1,
+	      lifespan: 20000,
+	      revive: 1000,
+	      origin: {
+	        x: 440,
+	        y: 4630
+	      },
+	      boundTo: {
+	        x1: 20,
+	        x2: 246
+	      }
+	    },
+	    {
+	      type: 'native',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 421,
+	        y: 4469
+	      },
+	      boundTo: {
+	        x1: 421,
+	        x2: 521
+	      }
+	    },
+	    {
+	      type: 'tiger',
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 675,
+	        y: 4469
+	      },
+	      boundTo: { },
+	      onClose: 'follow',
+	      onLeave: 'wait'
+	    },
+	    {
+	      type: 'ptero',
+	      active: false,
+	      number: 1,
+	      lifespan: Infinity,
+	      revive: false,
+	      origin: {
+	        x: 896,
+	        y: 4393
+	      },
+	      onClose: 'follow',
+	      onLeave: 'wait'
+	    }
+	  ]
+	};
+	
+	module.exports = level;
+
+/***/ },
 /* 36 */
 /*!*********************************************************!*\
   !*** ./js/configs/levelConfigs/level-downfall-rifts.js ***!
@@ -2961,6 +3140,7 @@
 	
 	var level = {
 	  id: 'downfall-rifts',
+	  name: 'Downfall Rifts', 
 	  tileset: 'tileset-level-downfall-rifts',
 	  tilemap: 'tilemap-level-downfall-rifts',
 	  tiledJson: 'L2v1', 
@@ -3262,6 +3442,7 @@
 	
 	var level = {
 	  id: 'great-abyss',
+	  name: 'The Great Abyss', 
 	  tileset: 'tileset-level-great-abyss',
 	  tilemap: 'tilemap-level-great-abyss',
 	  tiledJson: 'L1v4', 
@@ -3781,6 +3962,7 @@
 	
 	var level = {
 	  id: 'green-hell',
+	  name: 'Green Hell',
 	  tileset: 'tileset-level-green-hell',
 	  tilemap: 'tilemap-level-green-hell',
 	  tiledJson: 'L5greenv1', 
@@ -3931,6 +4113,7 @@
 	
 	var level = {
 	  id: 'into-the-woods',
+	  name: 'Into the Woods',
 	  tileset: 'tileset-level-into-the-woods',
 	  tilemap: 'tilemap-level-into-the-woods',
 	  tiledJson: 'L5v1', 
@@ -4090,6 +4273,7 @@
 	
 	var level = {
 	  id: 'hall-of-ages',
+	  name: 'Hall of Ages',
 	  tileset: 'tileset-level-hall-of-ages',
 	  tilemap: 'tilemap-level-hall-of-ages',
 	  tiledJson: 'L8v1', 
@@ -4507,6 +4691,7 @@
 	
 	var level = {
 	  id: 'mosquito-falls',
+	  name: 'Mosquito Falls',
 	  tileset: 'tileset-level-mosquito-falls',
 	  tilemap: 'tilemap-level-mosquito-falls',
 	  tiledJson: 'L5greenv2', 
@@ -4870,6 +5055,7 @@
 	
 	var level = {
 	  id: 'stairway-from-heaven',
+	  name: 'Stairway From Heaven',
 	  tileset: 'tileset-level-stairway-from-heaven',
 	  tilemap: 'tilemap-level-stairway-from-heaven',
 	  tiledJson: 'L5L14L9v1', 
@@ -5139,109 +5325,6 @@
 	        y: 1572
 	      },
 	      boundTo: { },
-	      onClose: 'follow',
-	      onLeave: 'wait'
-	    }
-	  ]
-	};
-	
-	module.exports = level;
-
-/***/ },
-/* 43 */
-/*!***********************************************************!*\
-  !*** ./js/configs/levelConfigs/level-rise-of-the-tide.js ***!
-  \***********************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var atlas = __webpack_require__(/*! ../assetMap.js */ 29);
-	
-	var level = {
-	  id: 'rise-of-the-tide',
-	  tileset: 'tileset-level-rise-of-the-tide',
-	  tilemap: 'tilemap-level-rise-of-the-tide',
-	  tiledJson: 'L3v1', 
-	  tilesetImage: 'L3_map_bank',
-	  backgroundImage: 'bg3seamless',
-	  width: 70 * 16,
-	  height: 300 * 16,
-	  backgroundLayer: 'background-2',
-	  fixedBackground: true,
-	  groundLayer: 'ground-layer',
-	  foregroundLayer: null,
-	  collisionLayer: 'collision-layer',
-	  deathLayer: 'death-layer',
-	  parallaxLayer: null,
-	  objectsLayer: null, 
-	  entryPoint: {
-	    x: 20, 
-	    y: 4677
-	  },
-	  portals: [
-	    {
-	      jumpTo: 'stairway-from-heaven',
-	      x: 347,
-	      y: 4009
-	    }
-	  ],
-	  platforms: [
-	    
-	  ],
-	  bonus: [
-	    
-	  ],
-	  enemies: [
-	    {
-	      type: 'bear',
-	      number: 1,
-	      lifespan: 20000,
-	      revive: 1000,
-	      origin: {
-	        x: 440,
-	        y: 4630
-	      },
-	      boundTo: {
-	        x1: 20,
-	        x2: 246
-	      }
-	    },
-	    {
-	      type: 'native',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 421,
-	        y: 4469
-	      },
-	      boundTo: {
-	        x1: 421,
-	        x2: 521
-	      }
-	    },
-	    {
-	      type: 'tiger',
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 675,
-	        y: 4469
-	      },
-	      boundTo: { },
-	      onClose: 'follow',
-	      onLeave: 'wait'
-	    },
-	    {
-	      type: 'ptero',
-	      active: false,
-	      number: 1,
-	      lifespan: Infinity,
-	      revive: false,
-	      origin: {
-	        x: 896,
-	        y: 4393
-	      },
 	      onClose: 'follow',
 	      onLeave: 'wait'
 	    }
