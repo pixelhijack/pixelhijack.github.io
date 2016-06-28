@@ -165,7 +165,7 @@
 	  this.update = function update(){
 	    this.game.input.keyboard.onDownCallback = function(e){
 	      var levelToLoad = texts.find(function(text){
-	        return text.key.toString() === e.key;
+	        return text.key === (e.which - 48);
 	      });
 	      if(levelToLoad){
 	        this.game.state.start('Play', true, true, { levelNumber: levelToLoad.id }); 
@@ -225,8 +225,6 @@
 	  
 	  var utils = util(game);
 	  
-	  var events = { };
-	
 	  // public methods for Phaser
 	  this.init = function init(initConfigs){
 	    console.info('INIT:', initConfigs);
@@ -337,14 +335,9 @@
 	    renderMenu();
 	    setInputs();
 	    
-	    events.somethingHappened = new Phaser.Signal();
-	    events.somethingHappened.add(onSomethingHappened, this);
+	    var flood = new Phaser.Rectangle(0, 550, 800, 50);
 	    
 	    console.info('[play] PHASER created');
-	  }
-	  
-	  function onSomethingHappened(evt, whereItHappn){
-	    console.info('[play][Events] something just happened in Pre2 World!', whereItHappn);
 	  }
 	  
 	  function setParallax(){
@@ -445,7 +438,6 @@
 	    }
 	    else if(keys.down.isDown) {
 	        // man.duck();
-	        events.somethingHappened.dispatch(this, man.x);
 	    }
 	    if(keys.space.isDown) {
 	      man.setState('hit', 400);

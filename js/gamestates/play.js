@@ -40,8 +40,6 @@ function Play(game, globalSettings){
   
   var utils = util(game);
   
-  var events = { };
-
   // public methods for Phaser
   this.init = function init(initConfigs){
     console.info('INIT:', initConfigs);
@@ -152,14 +150,9 @@ function Play(game, globalSettings){
     renderMenu();
     setInputs();
     
-    events.somethingHappened = new Phaser.Signal();
-    events.somethingHappened.add(onSomethingHappened, this);
+    var flood = new Phaser.Rectangle(0, 550, 800, 50);
     
     console.info('[play] PHASER created');
-  }
-  
-  function onSomethingHappened(evt, whereItHappn){
-    console.info('[play][Events] something just happened in Pre2 World!', whereItHappn);
   }
   
   function setParallax(){
@@ -260,7 +253,6 @@ function Play(game, globalSettings){
     }
     else if(keys.down.isDown) {
         // man.duck();
-        events.somethingHappened.dispatch(this, man.x);
     }
     if(keys.space.isDown) {
       man.setState('hit', 400);

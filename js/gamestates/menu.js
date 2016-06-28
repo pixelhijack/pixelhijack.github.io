@@ -78,7 +78,7 @@ function Menu(){
   this.update = function update(){
     this.game.input.keyboard.onDownCallback = function(e){
       var levelToLoad = texts.find(function(text){
-        return text.key.toString() === e.key;
+        return text.key === (e.which - 48);
       });
       if(levelToLoad){
         this.game.state.start('Play', true, true, { levelNumber: levelToLoad.id }); 
