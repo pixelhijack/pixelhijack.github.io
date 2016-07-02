@@ -51,7 +51,7 @@
 	var Play = __webpack_require__(/*! ./gamestates/play.js */ 2);
 	
 	var globalSettings = {
-	  level: window.location.hash && window.location.hash.split('#')[1] || 'hall-of-ages',
+	  level: window.location.hash && window.location.hash.split('#')[1],
 	  dimensions: {
 	    WIDTH: 546,
 	    HEIGHT: 368, //372,
@@ -73,7 +73,9 @@
 	};
 	game.state.add('Menu', PRE2.Menu);
 	game.state.add('Play', PRE2.Play);
-	game.state.start('Menu');
+	globalSettings.level ? 
+	  game.state.start('Play', true, true, { levelNumber: globalSettings.level }) : 
+	  game.state.start('Menu');
 	//game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 	
 
@@ -1743,7 +1745,7 @@
 	    });
 	    if(!levelToLoad){
 	      console.error('PRE2: Couldn\'t find level "%s". Sorry, pal.', id);
-	      window.location = window.location.href.split('#')[0] + '#hall-of-ages';
+	      window.location = window.location.href.split('#')[0];
 	      levelToLoad = levelList.find(function(level){
 	        return level.id === 'hall-of-ages';
 	      });

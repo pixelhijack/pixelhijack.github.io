@@ -24,7 +24,7 @@ var levelManager = function(game, levelList){
     });
     if(!levelToLoad){
       console.error('PRE2: Couldn\'t find level "%s". Sorry, pal.', id);
-      window.location = window.location.href.split('#')[0] + '#hall-of-ages';
+      window.location = window.location.href.split('#')[0];
       levelToLoad = levelList.find(function(level){
         return level.id === 'hall-of-ages';
       });

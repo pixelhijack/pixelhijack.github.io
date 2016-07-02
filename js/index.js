@@ -2,7 +2,7 @@ var Menu = require('./gamestates/menu.js');
 var Play = require('./gamestates/play.js');
 
 var globalSettings = {
-  level: window.location.hash && window.location.hash.split('#')[1] || 'hall-of-ages',
+  level: window.location.hash && window.location.hash.split('#')[1],
   dimensions: {
     WIDTH: 546,
     HEIGHT: 368, //372,
@@ -24,6 +24,8 @@ var PRE2 = {
 };
 game.state.add('Menu', PRE2.Menu);
 game.state.add('Play', PRE2.Play);
-game.state.start('Menu');
+globalSettings.level ? 
+  game.state.start('Play', true, true, { levelNumber: globalSettings.level }) : 
+  game.state.start('Menu');
 //game.state.start('Play', true, true, { levelNumber: globalSettings.level });
 
