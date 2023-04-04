@@ -1,15 +1,15 @@
 var atlas = require('../assetMap.js');
 
 var level = {
-  id: 'level-11',
-  name: 'Level 11', 
+  id: 'level-1',
+  name: 'Level 1', 
   tileset: 'tileset-level',
   tilemap: 'tilemap-level',
-  tiledJson: 'level-11', 
-  tilesetImage: 'L1_bank',
+  tiledJson: 'level-1', 
+  tilesetImage: 'L3_map_bank',
   backgroundImage: 'bg3seamless',
-  width: 100 * 16,
-  height: 50 * 16,
+  width: 1120,
+  height: 4800,
   backgroundLayer: 'background-2',
   fixedBackground: true, 
   groundLayer: 'ground-layer',
@@ -17,8 +17,8 @@ var level = {
   deathLayer: 'death-layer',
   objectsLayer: null, 
   entryPoint: {
-    x: 78,
-    y: 650
+    x: 20,
+    y: 4677
   },
   portals: [],
   platforms: [],

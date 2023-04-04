@@ -9,11 +9,10 @@ var level = {
   tilesetImage: 'L5_green',
   backgroundImage: 'forest',
   width: 100 * 16,
-  height: 50 * 16,
+  height: 100 * 16,
   backgroundLayer: 'background-2',
   fixedBackground: true, 
   groundLayer: 'ground-layer',
-  foregroundLayer: 'foreground-layer',
   collisionLayer: 'collision-layer',
   deathLayer: 'death-layer',
   objectsLayer: null, 
@@ -21,13 +20,7 @@ var level = {
     x: 48, 
     y: 1690
   },
-  portals: [
-    {
-      jumpTo: 'into-the-woods',
-      x: 1569,
-      y: 139
-    }  
-  ],
+  portals: [],
   platforms: [],
   bonus: [],
   enemies: []

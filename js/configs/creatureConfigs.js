@@ -18,7 +18,7 @@ var creatureConfigs = {
     },
     correctedAnchor: {
       x: 0.5,
-      y: 0.5
+      y: 1
     }
   },
   man: {
@@ -38,7 +38,7 @@ var creatureConfigs = {
     ],
     correctedAnchor: {
       x: 0.5,
-      y: 0.8
+      y: 1
     }
   },
   dino: {
