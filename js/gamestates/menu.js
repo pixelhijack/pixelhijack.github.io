@@ -55,6 +55,12 @@ function Menu(){
     fill: "#ffffff" 
   };
   var backgroundLayer = null;
+
+  this.randomLevel = function(){
+    const level = texts[Math.floor(Math.random() * texts.length)];
+    this.game.state.start('Play', true, true, { levelNumber: level.id });
+  };
+
   /*
     press a key for a level: 1, 2, 3...
   */
@@ -65,6 +71,11 @@ function Menu(){
   };
   
   this.create = function create(){
+
+    var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    spaceKey.onDown.addOnce(this.randomLevel, this);
+    
+    this.game.input.addPointer();
     
     this.game.world.setBounds(0, 0, dimensions.width, dimensions.height);
     backgroundLayer = this.game.add.tileSprite(0, 0, dimensions.width, dimensions.height, 'menu-background');
@@ -84,6 +95,9 @@ function Menu(){
       if(levelToLoad){
         this.game.state.start('Play', true, true, { levelNumber: levelToLoad.id }); 
       }
+    };
+    if(this.game.input.pointer1.isDown) {
+      this.randomLevel();
     };
   };
 }

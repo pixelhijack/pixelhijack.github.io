@@ -58,6 +58,7 @@ function Play(game, globalSettings){
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
+    game.scale.refresh();
     
     game.load.spritesheet('lives', './assets/lives.png', 38, 24);
     game.load.spritesheet('club', './assets/clubs-96x72.png', 96, 36);
@@ -149,9 +150,7 @@ function Play(game, globalSettings){
     addHero();
     renderMenu();
     setInputs();
-    
-    var flood = new Phaser.Rectangle(0, 550, 800, 50);
-    
+        
     console.info('[play] PHASER created');
   }
   
@@ -253,8 +252,9 @@ function Play(game, globalSettings){
     }
     else if(keys.down.isDown) {
         // man.duck();
+        console.log(`x: ${man.body.center.x} y: ${man.body.center.y}`);
     }
-    if(keys.space.isDown) {
+    if(keys.space.isDown || game.input.pointer2.isDown) {
       man.setState('hit', 400);
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
