@@ -9,6 +9,10 @@ var level8 = require('./levelConfigs/level-hall-of-ages.js');
 var level9 = require('./levelConfigs/level-mosquito-falls.js');
 var level10 = require('./levelConfigs/level-stairway-from-heaven.js');
 
+var level10new = require('./levelConfigs/level-10.js');
+var level11 = require('./levelConfigs/level-11.js');
+
+
 var levelConfigs = [
   level1,
   level2,
@@ -19,7 +23,9 @@ var levelConfigs = [
   level7,
   level8,
   level9,
-  level10
+  level10,
+  level10new,
+  level11
 ];
 
 module.exports = levelConfigs;

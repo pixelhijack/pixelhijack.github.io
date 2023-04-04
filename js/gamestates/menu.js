@@ -65,6 +65,7 @@ function Menu(){
   };
   
   this.create = function create(){
+    
     this.game.world.setBounds(0, 0, dimensions.width, dimensions.height);
     backgroundLayer = this.game.add.tileSprite(0, 0, dimensions.width, dimensions.height, 'menu-background');
     
