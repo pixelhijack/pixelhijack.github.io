@@ -229,12 +229,12 @@ function Play(game, globalSettings){
       game.time.now > man.state.until){
         man.state.name = 'idle';
     }
-    if(keys.left.isDown) {
+    if(keys.left.isDown || game.input.pointer2.isDown) {
       man.facingRight = false;
       man.moveLeft();
       man.state.name = man.isGrounded() ? 'move' : 'jump';
     }
-    else if(keys.right.isDown) {
+    else if(keys.right.isDown || game.input.pointer1.isDown) {
       man.facingRight = true;
       man.moveRight();
       man.state.name = man.isGrounded() ? 'move' : 'jump';
@@ -244,7 +244,7 @@ function Play(game, globalSettings){
       man.stop(globalSettings.physics.slippery);
       //man.animations.play('man-stop-left');
     }
-    if(keys.up.isDown || game.input.pointer1.isDown) {
+    if(keys.up.isDown || (game.input.pointer1.isDown && game.input.pointer2.isDown)) {
         man.jump();
         if(!man.isGrounded()){
           man.state.name = 'jump';
@@ -254,7 +254,7 @@ function Play(game, globalSettings){
         // man.duck();
         console.log(`x: ${man.body.center.x} y: ${man.body.center.y}`);
     }
-    if(keys.space.isDown || game.input.pointer2.isDown) {
+    if(keys.space.isDown) {
       man.setState('hit', 400);
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
