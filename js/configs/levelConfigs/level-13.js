@@ -2,7 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'level-13',
-  name: 'Level 13', 
+  name: 'The Demon Dungeons', 
   tileset: 'tileset-level',
   tilemap: 'tilemap-level',
   tiledJson: 'level-13', 

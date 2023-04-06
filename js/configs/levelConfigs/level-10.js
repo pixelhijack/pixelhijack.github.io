@@ -2,7 +2,7 @@ var atlas = require('../assetMap.js');
 
 var level = {
   id: 'level-10',
-  name: 'Level 10', 
+  name: 'The Original Woods', 
   tileset: 'tileset-level',
   tilemap: 'tilemap-level',
   tiledJson: 'level-10', 

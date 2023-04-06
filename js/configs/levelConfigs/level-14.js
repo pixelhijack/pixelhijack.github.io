@@ -20,24 +20,57 @@ var level = {
     x: 960,
     y: 2250
   },
-  portals: [],
+  portals: [
+    {
+      jumpTo: 'level-11',
+      x: 1941,
+      y: 1899
+    }
+  ],
   platforms: [],
   bonus: [],
   enemies: [
     {
-        "type": "dragonfly",
-        "number": 1,
-        "lifespan": null,
-        "revive": false,
-        "origin": {
-            "x": 306,
-            "y": 858
+        type: 'dragonfly',
+        number: 1,
+        lifespan: Infinity,
+        revive: 5000,
+        origin: {
+          x: 1083,
+          y: 2128
         },
-        "boundTo": {
-            "x1": 24,
-            "x2": 461
+        boundTo: {
+          x1: 966,
+          x2: 1210
         }
-    }
+    },
+    {
+        type: 'insect',
+        number: 1,
+        lifespan: Infinity,
+        revive: 1000,
+        active: false,
+        onClose: 'follow',
+        origin: {
+          x: 1570,
+          y: 2186
+        },
+        boundTo: {},
+    },
+    {
+        type: 'ptero',
+        number: 2,
+        lifespan: Infinity,
+        revive: 5000,
+        origin: {
+          x: 1488,
+          y: 2010
+        },
+        boundTo: {
+          x: Infinity,
+          y: Infinity
+        }
+      }
   ]
 };
 
