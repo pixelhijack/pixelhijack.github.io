@@ -22,7 +22,7 @@ var creatureConfigs = {
     }
   },
   man: {
-    maxSpeed: 200,
+    maxSpeed: 180,
     lives: 8, 
     lifespan: Infinity,
     animations: [

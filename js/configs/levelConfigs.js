@@ -23,6 +23,7 @@ const newLevel10 = require('./levelConfigs/level-10.js');
 const newLevel11 = require('./levelConfigs/level-11.js');
 const newLevel12 = require('./levelConfigs/level-12.js');
 const newLevel13 = require('./levelConfigs/level-13.js');
+const newLevel14 = require('./levelConfigs/level-14.js');
 
 const levelConfigs = [
   level1,
@@ -47,7 +48,8 @@ const levelConfigs = [
   newLevel10,
   newLevel11,
   newLevel12,
-  newLevel13
+  newLevel13,
+  newLevel14
 ];
 
 module.exports = levelConfigs;
