@@ -16,8 +16,10 @@ var thingManager = function(game, thingsToLoad){
     things.bonus.add(bonus);
   });
   
-  thingsToLoad.portals.forEach(function(portalConfig){
-    var portal = new Portal(game, portalConfig.jumpTo, portalConfig.x, portalConfig.y);
+  thingsToLoad.portals.forEach(function({ jumpTo , x, y }){
+    var portal = new Portal({ 
+      game, jumpTo, x, y
+    });
     things.portals.add(portal);
   });
   

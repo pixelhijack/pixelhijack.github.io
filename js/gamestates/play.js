@@ -179,8 +179,16 @@ function Play(game, globalSettings){
     }
     
     things.portals.forEach(function(portal){
-      game.physics.arcade.collide(man, portal, function(){
-        game.state.start('Play', true, false, { levelNumber: portal.jumpTo });
+      game.physics.arcade.overlap(man, portal, function(){
+        // level named portal: jump to another level
+        if(typeof portal.jumpTo === 'string') {
+          game.state.start('Play', true, false, { levelNumber: portal.jumpTo });
+        }
+        // x,y portal: jump within same level (x,y)
+        if(portal.jumpTo.x && portal.jumpTo.y && man.state === 'duck'){
+          man.x = portal.jumpTo.x;
+          man.y = portal.jumpTo.y;
+        }
       }, null, this);
     });
     
@@ -251,7 +259,7 @@ function Play(game, globalSettings){
         }
     }
     else if(keys.down.isDown) {
-        // man.duck();
+        man.duck();
         console.log(`x: ${man.body.center.x} y: ${man.body.center.y}`);
     }
     if(keys.space.isDown) {

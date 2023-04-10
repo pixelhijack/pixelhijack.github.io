@@ -1,6 +1,6 @@
 var atlas = require('../configs/assetMap.js');
 
-var Portal = function(game, jumpTo, x, y){
+var Portal = function({ game, jumpTo, x, y }){
   
   this.jumpTo = jumpTo;
   

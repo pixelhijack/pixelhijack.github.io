@@ -25,7 +25,16 @@ var level = {
       jumpTo: 'level-11',
       x: 1941,
       y: 1899
-    }
+    },
+    /*
+    {
+      jumpTo: {
+        x: 1124,
+        y: 1962
+      },
+      x: 1670,
+      y: 2250
+    }*/
   ],
   platforms: [],
   bonus: [],

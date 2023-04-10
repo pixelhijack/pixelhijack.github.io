@@ -269,6 +269,10 @@ Creature.prototype.stop = function stop(slippery){
   this.body.velocity.x /= (slippery || 1.1);
 };
 
+Creature.prototype.duck = function duck(){
+  this.setState('duck', 50);
+};
+
 Creature.prototype.hurt = function hurt(force){
   this.setState('stun', 1500);
   this.props.lives -= 1;

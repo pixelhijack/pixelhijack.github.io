@@ -47,6 +47,26 @@ function Menu(){
       key: 8,
       text: 'Stairway from Heaven', 
       id: 'stairway-from-heaven'
+    },
+    {
+      key: 'a',
+      text: 'Sleeping Jungle (work in progress)', 
+      id: 'level-10'
+    },
+    {
+      key: 'b',
+      text: 'Forest in Fire (work in progress)', 
+      id: 'level-12'
+    },
+    {
+      key: 'c',
+      text: 'Demon Dungeons (work in progress)', 
+      id: 'level-13'
+    },
+    {
+      key: 'd',
+      text: 'Pillars of Hercules (work in progress)', 
+      id: 'level-14'
     }
   ];
   
@@ -90,7 +110,7 @@ function Menu(){
   this.update = function update(){
     this.game.input.keyboard.onDownCallback = function(e){
       var levelToLoad = texts.find(function(text){
-        return text.key === (e.which - 48);
+        return text.key.toString() === e.key;
       });
       if(levelToLoad){
         this.game.state.start('Play', true, true, { levelNumber: levelToLoad.id }); 
