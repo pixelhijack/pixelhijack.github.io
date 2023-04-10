@@ -90,10 +90,9 @@ function Play(game, globalSettings){
     
     weapon.sprite.anchor.setTo(man.props.correctedAnchor.x, man.props.correctedAnchor.y);
     weapon.sprite.visible = false;
-    weapon.animRight = weapon.sprite.animations.add('club-hit-right', [0,1,2,3,4], 10, false);
-    weapon.animLeft = weapon.sprite.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
-    weapon.animRight.onComplete.add(toggleVivibility, this);
-    weapon.animLeft.onComplete.add(toggleVivibility, this);
+    weapon.anim = weapon.sprite.animations.add('club-hit', [0,1,2,3,4], 10, false);
+    //weapon.animLeft = weapon.sprite.animations.add('club-hit-left', [9,8,7,6,5], 10, false);
+    weapon.anim.onComplete.add(toggleVivibility, this);
     
     // subscribe enemies on man's actions:
     enemies.forEachAlive(function(creature){
@@ -267,7 +266,7 @@ function Play(game, globalSettings){
       man.setState('hit', 400);
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
-      weapon.sprite.animations.play('club-hit-' + man.direction());
+      weapon.sprite.animations.play('club-hit');
     }
     if(keys.escape.isDown) {
       game.state.start('Menu', true, true);
