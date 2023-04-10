@@ -281,10 +281,16 @@ Creature.prototype.hurt = function hurt(force){
 };
 
 Creature.prototype.die = function die(force){
+  if(this.state.name === 'die'){
+    return;
+  }
   this.setState('die', 2000);
   //this.props.collide = false;
-  this.body.velocity.x -= force * 3;
-  this.body.velocity.y -= force * 3;
+  this.body.velocity.x = 100;
+  this.body.velocity.y -= 300;
+  this.body.gravity.y = 500;
+  this.body.collideWorldBounds = false;
+  this.checkWorldBounds = false;
   // http://www.html5gamedevs.com/topic/6429-use-phasertime-like-settimeout/
   this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
 };
