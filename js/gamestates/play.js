@@ -5,8 +5,6 @@ var enemyManager = require('../services/enemyManager.js');
 var thingManager = require('../services/thingManager.js');
 var menuManager = require('../services/menuManager.js');
 var levelConfigs = require('../configs/levelConfigs.js');
-var util = require('../services/util.js');
-
 
 window.addEventListener('error', function(e){
   var stack = e && e.error && e.error.stack;
@@ -38,23 +36,19 @@ function Play(game, globalSettings){
   
   var things;
   
-  var utils = util(game);
-  
-  // public methods for Phaser
+  /*=============
+  *   INIT
+  =============*/
   this.init = function init(initConfigs){
     console.info('INIT:', initConfigs);
     levelNo = initConfigs.levelNumber;
     window.location.hash = '#' + initConfigs.levelNumber;
   };
-  this.preload = preload;
-  this.create = create;
-  this.update = update;
-  
+
   /*=============
   *   PRELOAD
   =============*/
-  function preload(){
-  
+  this.preload = function preload() {
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
@@ -68,22 +62,34 @@ function Play(game, globalSettings){
     level.preloadAssets(levelNo);
   
     console.info('[play] PHASER preloaded');
-  }
+  };
   
-  function initWorld(){
+  /*=============
+  *   CREATE
+  =============*/
+  this.create = function create() {
+    // for fps debugging:
+    game.time.advancedTiming = true;
+    
+    /*=============
+    *   Init world
+    =============*/
     game.world.setBounds(0, 0, globalSettings.dimensions.WIDTH * globalSettings.dimensions.blocks, globalSettings.dimensions.HEIGHT);
     game.physics.startSystem(Phaser.Physics.ARCADE);
-  }
-  
-  function loadLevel(){
+
+    /*=============
+    *   Load level
+    =============*/
     level.setLevel();
-  }
-  
-  function loadEnemies(){
+
+    /*=============
+    *   Load enemies
+    =============*/
     enemies = enemyManager(game, level.enemies, level.objects.zone);
-  }
-  
-  function addHero(){
+
+    /*=============
+    *   Add hero
+    =============*/
     man = creatureFactory.create(game, 'man', level.entryPoint.x, level.entryPoint.y);
     
     weapon.sprite = man.addChild(game.make.sprite(0, 0, 'club'));
@@ -108,15 +114,17 @@ function Play(game, globalSettings){
     game.camera.follow(man);
     game.add.existing(man);
     //game.world.addAt(man, 2);
-  }
-  
-  function renderMenu(){
+
+    /*=============
+    *   Render menu
+    =============*/
     menu = menuManager(game, man);
     // subscribe menu modul on man's actions:
     menu.listen(man, menu.update);
-  }
-  
-  function setInputs(){
+
+    /*=============
+    *   Set inputs
+    =============*/
     keys = game.input.keyboard.createCursorKeys();
     keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     keys.escape = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -134,31 +142,33 @@ function Play(game, globalSettings){
         man.moveRight(tilt * globalSettings.physics.accelerationMultiplier) :
         man.moveLeft(-tilt * globalSettings.physics.accelerationMultiplier);
     }, false);
-  }
-  
-  /*=============
-  *   CREATE
-  =============*/
-  // disclaimer: worst shameful imperative style antipattern, should be replaced with reducers, mediators, events etc:
-  function create(){
-    // for fps debugging:
-    game.time.advancedTiming = true;
-    
-    initWorld();
-    loadLevel();
-    loadEnemies();
-    addHero();
-    renderMenu();
-    setInputs();
         
     console.info('[play] PHASER created');
-  }
-  
-  function setParallax(){
+  };
+
+  /*=============
+  *   UPDATE
+  =============*/
+  this.update = function update() {
+    // show FPS on bottom left corner
+    game.debug.text(game.time.fps, 5, game.height - 20);
+    game.debug.text(enemies.population(), 5, game.height - 35);
+    
+    // debug sprites
+    enemies.forEachAlive(function(creature){
+      //creature.debug(creature.state.name);
+      //creature.debug(creature.creatureId);
+    });
+    //man.debug(man.state.name);
+    
+    /**============
+     * Set parallax
+     ============*/
     level.backgroundLayer.x = -(game.camera.x * globalSettings.physics.parallax);
-  }
-  
-  function collisions(){
+    
+    /**============
+     * Set collisions
+     ============*/
     game.physics.arcade.collide(man, level.collisionLayer);
     
     enemies.forEachAlive(function(enemy){
@@ -206,20 +216,10 @@ function Play(game, globalSettings){
         }
       }, null, this);
     });
-    
-    /* hit'n kill enemy: collision should calculated on weapon sprite
-    game.physics.arcade.collide(weapon.sprite, enemies.global.spawn.dino, function(weaponSprite, enemy){
-      if(man.state === 'hitting'){
-        enemy.kill();
-      }
-    }, null, this);
-    */
-  }
-  
-  function moveHero(){
-    // weapon sprite should be always in sync with the man sprite
-    //weapon.sprite.x = man.x;
-    //weapon.sprite.y = man.y;
+
+  /**============
+   * Move hero
+   ============*/
 
     if(man.state.name === 'stun' && game.time.now < man.state.until){
       keys.enabled = false;
@@ -271,34 +271,6 @@ function Play(game, globalSettings){
     if(keys.escape.isDown) {
       game.state.start('Menu', true, true);
     }
-  }
-  
-  function debug(){
-    game.debug.text('LIVES: ' + man.health(), 32, 96);
-    game.debug.pointer(game.input.pointer1);
-    //game.debug.body(weapon.sprite);
-    //game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
-  }
-  
-  /*=============
-  *   UPDATE
-  =============*/
-  function update(){
-    
-    // show FPS on bottom left corner
-    game.debug.text(game.time.fps, 5, game.height - 20);
-    game.debug.text(enemies.population(), 5, game.height - 35);
-    
-    // debug sprites
-    enemies.forEachAlive(function(creature){
-      //creature.debug(creature.state.name);
-      //creature.debug(creature.creatureId);
-    });
-    //man.debug(man.state.name);
-    
-    setParallax();
-    collisions();
-    moveHero();
     
     if(game.input.activePointer.leftButton.isDown){
       game.debug.pointer(game.input.activePointer);
@@ -306,6 +278,13 @@ function Play(game, globalSettings){
     }
     
     //console.info('[play] PHASER updated');
+  };
+  
+  function debug(){
+    game.debug.text('LIVES: ' + man.health(), 32, 96);
+    game.debug.pointer(game.input.pointer1);
+    //game.debug.body(weapon.sprite);
+    //game.physics.enable(weapon.sprite, Phaser.Physics.ARCADE);
   }
   
   function onEnemyCollision(hero, enemy){
@@ -342,9 +321,7 @@ function Play(game, globalSettings){
     }
   }
   
-  function onProcess(){
-    
-  }
+  function onProcess(){}
   
   function toggleVivibility(sprite){
     sprite.visible = !sprite.visible;

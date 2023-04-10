@@ -48,7 +48,7 @@ var util = function(game){
       var ticker = game.time.events.loop(Phaser.Timer.SECOND * 0.001 * tickerIntervalMillisec, callback, this);
       ticker.timer.start();
       return ticker;
-  }
+    }
   };
 };
 
