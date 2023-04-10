@@ -120,6 +120,7 @@ function Play(game, globalSettings){
   function setInputs(){
     keys = game.input.keyboard.createCursorKeys();
     keys.space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    keys.escape = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
     
     game.input.keyboard.onDownCallback = function(e){
       man.shout('near');
@@ -267,6 +268,9 @@ function Play(game, globalSettings){
       man.stop(globalSettings.physics.slippery);
       weapon.sprite.visible = true;
       weapon.sprite.animations.play('club-hit-' + man.direction());
+    }
+    if(keys.escape.isDown) {
+      game.state.start('Menu', true, true);
     }
   }
   
