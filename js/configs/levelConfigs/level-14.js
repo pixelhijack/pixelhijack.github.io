@@ -67,19 +67,78 @@ var level = {
         boundTo: {},
     },
     {
-        type: 'ptero',
-        number: 2,
-        lifespan: Infinity,
-        revive: 5000,
-        origin: {
-          x: 1488,
-          y: 2010
-        },
-        boundTo: {
-          x: Infinity,
-          y: Infinity
-        }
+      type: 'ptero',
+      number: 2,
+      lifespan: Infinity,
+      revive: 5000,
+      origin: {
+        x: 1488,
+        y: 2010
+      },
+      boundTo: {
+        x: Infinity,
+        y: Infinity
       }
+    },
+    {
+      type: 'dino', 
+      number: 1,
+      lifespan: Infinity,
+      revive: false,
+      active: false,
+      onClose: 'wakeUp',
+      origin: {
+        x: 1762,
+        y: 1930
+      },
+      boundTo: {
+        x1: 1719,
+        x2: 1847
+      }
+    },
+    {
+      type: 'dino', 
+      number: 1,
+      lifespan: Infinity,
+      revive: false,
+      active: false,
+      onClose: 'wakeUp',
+      origin: {
+        x: 1636,
+        y: 1658
+      },
+      boundTo: {
+        
+      }
+    },
+    {
+      type: 'bear',
+      number: 1,
+      lifespan: Infinity,
+      revive: 5000,
+      origin: {
+        x: 1115,
+        y: 1770
+      },
+      boundTo: {
+        x1: 1068,
+        x2: 1221
+      }
+    },
+    {
+      type: 'bear',
+      number: 1,
+      lifespan: Infinity,
+      revive: 5000,
+      origin: {
+        x: 1310,
+        y: 1770
+      },
+      boundTo: {
+        x1: 1280,
+        x2: 1408
+      }
+    },
   ]
 };
 

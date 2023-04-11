@@ -260,7 +260,7 @@ function Play(game, globalSettings){
     }
     else if(keys.down.isDown) {
         man.duck();
-        console.log(`x: ${man.body.center.x} y: ${man.body.center.y}`);
+        console.log(`x: ${Math.floor(man.body.center.x)} y: ${Math.floor(man.body.center.y)}`);
     }
     if(keys.space.isDown) {
       man.setState('hit', 400);
