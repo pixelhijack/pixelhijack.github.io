@@ -175,7 +175,12 @@ function Play(game, globalSettings){
       if(enemy.props.collide && enemy.state.name !== 'die'){
         game.physics.arcade.collide(enemy, level.collisionLayer);
       }
-      if(enemy.inCamera && enemy.state.name !== 'die' && man.state.name !== 'stun'){
+      if(
+        enemy.inCamera && 
+        enemy.state.name !== 'die' &&
+        enemy.state.name !== 'stun' && 
+        man.state.name !== 'stun'
+      ){
         game.physics.arcade.collide(man, enemy, onEnemyCollision, onProcess, this);
       }
     });
@@ -290,6 +295,7 @@ function Play(game, globalSettings){
   function onEnemyCollision(hero, enemy){
     var enemyMomentum = enemy.body.velocity.x * enemy.body.mass,
         heroMomentum = man.body.velocity.x * man.body.mass;
+    console.log(heroMomentum)
     // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state.name === 'hit'){
@@ -299,6 +305,7 @@ function Play(game, globalSettings){
     }
     if(man.state.name === 'hit'){
       enemy.hurt(heroMomentum);
+      game.camera.shake(0.0001 * heroMomentum, 500, true, Phaser.Camera.VERTICAL, true);
       man.shout('hunting', { killed: enemy });
     }else{
       game.camera.shake(0.003, 500, true, Phaser.Camera.VERTICAL, true);

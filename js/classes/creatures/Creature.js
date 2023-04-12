@@ -285,7 +285,7 @@ Creature.prototype.hurt = function hurt(force){
     this.die(force);
     return;
   }
-  this.setState('stun', 1500);
+  this.setState('stun', force * 100);
   this.props.lives -= 1;
   this.body.velocity.x = 100;
   this.body.velocity.y = 200;
