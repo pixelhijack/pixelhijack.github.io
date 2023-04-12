@@ -45,12 +45,14 @@ var creatureConfigs = {
     mass: 1.5,
     jumping: 300,
     maxSpeed: 50,
+    lives: [3, 5],
     acceleration: 5, 
     animations: [
       { name: 'idle', frames: [360,360,360,360,360,360,360,367], fps: 5, loop: true },
       { name: 'move', frames: [360,361,364,367,369], fps: 10, loop: true },
       { name: 'jump', frames: [360,361,364,367,369], fps: 10, loop: true },
       { name: 'fall', frames: [369], fps: 10, loop: true },
+      { name: 'stun', frames: [371], fps: 10, loop: true },
       { name: 'die', frames: [371], fps: 10, loop: true },
       { name: 'spawn', frames: [360,361,364,367], fps: 10, loop: true }
     ]
@@ -64,6 +66,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [321], fps: 10, loop: false },
       { name: 'move', frames: [320,321,324], fps: 10, loop: true },
       { name: 'spawn', frames: [366,363,358,317], fps: 10, loop: false },
+      { name: 'stun', frames: [328], fps: 10, loop: true },
       { name: 'die', frames: [328], fps: 10, loop: true }
     ] 
   },
@@ -100,6 +103,7 @@ var creatureConfigs = {
       { name: 'move', frames: [403,404,405,403,404,405,405,405,405,405,405,403,404,405,403,404,405,405,405,405,405,405,405], fps: 10, loop: true },
       { name: 'descend', frames: [405], fps: 15, loop: true },
       { name: 'ascend', frames: [403,404,405], fps: 15, loop: true },
+      { name: 'stun', frames: [471], fps: 10, loop: true },,
       { name: 'die', frames: [471], fps: 10, loop: true },
       { name: 'spawn', frames: [405,403,404], fps: 15, loop: true }
     ]

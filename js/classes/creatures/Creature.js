@@ -1,5 +1,9 @@
 var creatureConfigs = require('../../configs/creatureConfigs.js');
 
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 var Creature = function(game, creatureType, x, y){
   Phaser.Sprite.call(this, game, x, y, 'pre2atlas');
   game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -43,6 +47,9 @@ Creature.prototype.setId = function setId(creatureType, x, y, enemyGroupIterator
 Creature.prototype.setProps = function setProps(){
   this.props = creatureConfigs[this.creatureType] || creatureConfigs.creatureDefaults;
   
+  this.props.lives = Array.isArray(this.props.lives) 
+    ? randomIntFromInterval(this.props.lives[0], this.props.lives[1]) 
+    : this.props.lives;
   this.body.gravity.y = creatureConfigs[this.creatureType].gravity;
   this.body.mass = creatureConfigs[this.creatureType].mass;
   this.anchor.setTo(creatureConfigs[this.creatureType].correctedAnchor.x, creatureConfigs[this.creatureType].correctedAnchor.y);
@@ -274,10 +281,14 @@ Creature.prototype.duck = function duck(){
 };
 
 Creature.prototype.hurt = function hurt(force){
+  if(this.props.lives < 1) {
+    this.die(force);
+    return;
+  }
   this.setState('stun', 1500);
   this.props.lives -= 1;
-  this.body.velocity.x += force * 3;
-  this.body.velocity.y += force * 3;
+  this.body.velocity.x = 100;
+  this.body.velocity.y = 200;
 };
 
 Creature.prototype.die = function die(force){

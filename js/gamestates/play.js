@@ -260,7 +260,7 @@ function Play(game, globalSettings){
     }
     else if(keys.down.isDown) {
         man.duck();
-        console.log(`x: ${Math.floor(man.body.center.x)} y: ${Math.floor(man.body.center.y)}`);
+        console.log(`x: ${Math.floor(man.body.center.x)}, \ny: ${Math.floor(man.body.center.y)}`);
     }
     if(keys.space.isDown) {
       man.setState('hit', 400);
@@ -293,12 +293,12 @@ function Play(game, globalSettings){
     // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state.name === 'hit'){
-        enemy.die(heroMomentum);
+        enemy.hurt(heroMomentum);
       }
       return;
     }
     if(man.state.name === 'hit'){
-      enemy.die(heroMomentum);
+      enemy.hurt(heroMomentum);
       man.shout('hunting', { killed: enemy });
     }else{
       game.camera.shake(0.003, 500, true, Phaser.Camera.VERTICAL, true);

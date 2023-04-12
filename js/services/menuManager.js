@@ -5,7 +5,7 @@ var Menu = function(game, man){
       hearts, 
       score;
       
-  livesCount = game.add.text(20, 20, Math.floor(man.health() / 4), { font: "16px Arial", fill: "#ffffff" });
+  livesCount = game.add.text(20, 20, `${Math.floor(man.health() / 4)}x`, { font: "16px Arial", fill: "#ffffff" });
   livesCount.fixedToCamera = true;
   
   lives = game.add.sprite(30, 20, 'lives');

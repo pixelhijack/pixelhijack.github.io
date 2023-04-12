@@ -37,7 +37,38 @@ var level = {
     }*/
   ],
   platforms: [],
-  bonus: [],
+  bonus: [
+    {
+      img: atlas.NUMBER_1,
+      x: 1382, 
+      y: 2060
+    },
+    {
+      img: atlas.NUMBER_2,
+      x: 1727, 
+      y: 1910
+    },
+    {
+      img: atlas.NUMBER_3,
+      x: 1630, 
+      y: 1638
+    },
+    {
+      img: atlas.NUMBER_4,
+      x: 958, 
+      y: 1560
+    },
+    {
+      img: atlas.NUMBER_5,
+      x: 1458, 
+      y: 1402
+    },
+    {
+      img: atlas.NUMBER_6,
+      x: 1395, 
+      y: 1210
+    }
+  ],
   enemies: [
     {
         type: 'dragonfly',
