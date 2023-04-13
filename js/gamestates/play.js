@@ -188,8 +188,11 @@ function Play(game, globalSettings){
     if(level.deathLayer){
       game.physics.arcade.collide(man, level.deathLayer, function(){
         weapon.sprite.kill();
-        man.kill();
-        game.state.start('Play', true, false, { levelNumber: levelNo });
+        man.die();
+        level.collisionLayer.active = false;
+        game.time.events.add(Phaser.Timer.SECOND * 2, function(){ 
+          game.state.start('Play', true, false, { levelNumber: levelNo });
+        }, this);
       });
     }
     
@@ -295,7 +298,7 @@ function Play(game, globalSettings){
   function onEnemyCollision(hero, enemy){
     var enemyMomentum = enemy.body.velocity.x * enemy.body.mass,
         heroMomentum = man.body.velocity.x * man.body.mass;
-    console.log(heroMomentum)
+
     // jumping on top of the enemies!
     if(man.body.touching.down && enemy.body.touching.up){
       if(man.state.name === 'hit'){
@@ -307,7 +310,7 @@ function Play(game, globalSettings){
       enemy.hurt(heroMomentum);
       game.camera.shake(0.0001 * heroMomentum, 500, true, Phaser.Camera.VERTICAL, true);
       man.shout('hunting', { killed: enemy });
-    }else{
+    } else {
       game.camera.shake(0.003, 500, true, Phaser.Camera.VERTICAL, true);
       man.hurt(enemyMomentum);
       man.shout('hurt', { 
@@ -315,6 +318,7 @@ function Play(game, globalSettings){
       });
       if(man.health() <= 0){
         man.props.lives = 8;
+        // replace: game over screen
         game.state.start('Play', true, false, { levelNumber: 'hall-of-ages' });
       }
       var shouldReload = man.health() % 4 - 1 === 0;

@@ -43,7 +43,7 @@ var creatureConfigs = {
   },
   dino: {
     mass: 1.5,
-    jumping: 300,
+    jumping: 200,
     maxSpeed: 50,
     lives: [3, 5],
     acceleration: 5, 
@@ -80,6 +80,7 @@ var creatureConfigs = {
     mass: 1.5,
     jumping: 300,
     maxSpeed: 50,
+    lives: [5, 10],
     acceleration: 20, 
     animations: [
       { name: 'idle', frames: [393,395], fps: 10, loop: true },
@@ -95,6 +96,7 @@ var creatureConfigs = {
     gravity: 0,
     bounce: 0.1,
     jumping: 0,
+    lives: [2, 3],
     collide: false,
     maxSpeed: 10,
     acceleration: 10, 
@@ -159,6 +161,7 @@ var creatureConfigs = {
   native: {
     maxSpeed: 100,
     acceleration: 20,
+    lives: [1, 2],
     jumping: 0,
     animations: [
       { name: 'idle', frames: [373], fps: 10, loop: true },

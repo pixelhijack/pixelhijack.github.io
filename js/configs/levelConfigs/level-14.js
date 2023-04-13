@@ -39,6 +39,31 @@ var level = {
   platforms: [],
   bonus: [
     {
+      img: atlas.ALPHABET_U,
+      x: 1030, 
+      y: 2066
+    },
+    {
+      img: atlas.ALPHABET_P,
+      x: 1045, 
+      y: 2066
+    },
+    {
+      img: atlas.ALPHABET_U,
+      x: 1030, 
+      y: 2086
+    },
+    {
+      img: atlas.ALPHABET_P,
+      x: 1045, 
+      y: 2086
+    },
+    {
+      img: atlas.ALPHABET_EXCLAMATION_MARK,
+      x: 1060, 
+      y: 2086
+    },
+    {
       img: atlas.NUMBER_1,
       x: 1382, 
       y: 2060
@@ -66,7 +91,12 @@ var level = {
     {
       img: atlas.NUMBER_6,
       x: 1395, 
-      y: 1210
+      y: 1180
+    }, 
+    {
+      img: atlas.WEAPON_AXE_SMALL,
+      x: 1129, 
+      y: 1942
     }
   ],
   enemies: [
@@ -170,6 +200,20 @@ var level = {
         x2: 1408
       }
     },
+    {
+      type: 'bear',
+      number: 1,
+      lifespan: Infinity,
+      revive: false,
+      origin: {
+        x: 1710, 
+        y: 1370
+      },
+      boundTo: {
+        x1: 1280,
+        x2: 1408
+      }
+    }
   ]
 };
 
