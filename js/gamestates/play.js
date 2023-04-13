@@ -243,7 +243,11 @@ function Play(game, globalSettings){
       !keys.space.isDown &&
       man.isGrounded() &&
       game.time.now > man.state.until){
-        man.state.name = 'idle';
+        if(Math.abs(man.body.velocity.x) > 5) {
+          man.state.name = 'stop';
+        } else {
+          man.state.name = 'idle';
+        }
     }
     if(keys.left.isDown || game.input.pointer2.isDown) {
       man.facingRight = false;
@@ -258,7 +262,6 @@ function Play(game, globalSettings){
     else{
       // slowing down / slippery rate: 10% after stopped moving
       man.stop(globalSettings.physics.slippery);
-      //man.animations.play('man-stop-left');
     }
     if(keys.up.isDown || (game.input.pointer1.isDown && game.input.pointer2.isDown)) {
         man.jump();
