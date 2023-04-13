@@ -61,6 +61,7 @@ var creatureConfigs = {
     mass: 1.2,
     maxSpeed: 75,
     jumping: 0,
+    lives: [1, 2],
     acceleration: 15, 
     animations: [
       { name: 'idle', frames: [321], fps: 10, loop: false },
@@ -87,6 +88,7 @@ var creatureConfigs = {
       { name: 'move', frames: [393,395], fps: 10, loop: true },
       { name: 'jump', frames: [399,401], fps: 10, loop: false },
       { name: 'fall', frames: [399], fps: 10, loop: false },
+      { name: 'stun', frames: [402], fps: 10, loop: true },
       { name: 'die', frames: [402], fps: 10, loop: true },
       { name: 'spawn', frames: [393,395], fps: 10, loop: true }
     ]
@@ -122,6 +124,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [337,338], fps: 12, loop: true },
       { name: 'move', frames: [337,338], fps: 12, loop: true },
       { name: 'turn', frames: [339,340], fps: 12, loop: true },
+      { name: 'stun', frames: [342], fps: 12, loop: true },
       { name: 'die', frames: [342], fps: 12, loop: true },
       { name: 'spawn', frames: [337,338], fps: 12, loop: true }
     ]
@@ -137,6 +140,7 @@ var creatureConfigs = {
     animations: [
       { name: 'idle', frames: [351,352,351,351,351,351], fps: 10, loop: true },
       { name: 'move', frames: [357,359], fps: 10, loop: true },
+      { name: 'stun', frames: [362], fps: 10, loop: true },
       { name: 'die', frames: [362], fps: 10, loop: true },
       { name: 'spawn', frames: [357,359], fps: 10, loop: true }
     ]
@@ -155,6 +159,7 @@ var creatureConfigs = {
       { name: 'turn', frames: [319], fps: 10, loop: true },
       { name: 'climb', frames: [341,343,345,347], fps: 10, loop: true },
       { name: 'wait', frames: [332,335,372], fps: 10, loop: true },
+      { name: 'stun', frames: [322], fps: 10, loop: false },
       { name: 'die', frames: [322], fps: 10, loop: false }
     ]
   },
@@ -166,6 +171,7 @@ var creatureConfigs = {
     animations: [
       { name: 'idle', frames: [373], fps: 10, loop: true },
       { name: 'move', frames: [373,376,378], fps: 10, loop: true },
+      { name: 'stun', frames: [380], fps: 10, loop: false },
       { name: 'die', frames: [380], fps: 10, loop: false },
       { name: 'spawn', frames: [373,376,378], fps: 10, loop: true }
     ]
@@ -181,6 +187,7 @@ var creatureConfigs = {
     animations: [
       { name: 'idle', frames: [394,397,398], fps: 12, loop: true },
       { name: 'move', frames: [394,397,398], fps: 10, loop: true },
+      { name: 'stun', frames: [400], fps: 10, loop: false },
       { name: 'die', frames: [400], fps: 10, loop: false },
       { name: 'spawn', frames: [394,397,398], fps: 10, loop: true }
     ]
@@ -196,6 +203,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [348,348,348,348,348,348,349], fps: 10, loop: true },
       { name: 'move', frames: [323,348,349], fps: 10, loop: true },
       { name: 'jump', frames: [323,348,349], fps: 10, loop: true },
+      { name: 'stun', frames: [348], fps: 10, loop: true },
       { name: 'die', frames: [348], fps: 10, loop: true },
       { name: 'spawn', frames: [323,348,349], fps: 10, loop: true }
     ]
@@ -226,6 +234,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [325], fps: 10, loop: true },
       { name: 'move', frames: [325,327,331,325], fps: 10, loop: false },
       { name: 'jump', frames: [325,327,331,325], fps: 10, loop: false },
+      { name: 'stun', frames: [334], fps: 10, loop: true },
       { name: 'die', frames: [334], fps: 10, loop: true },
       { name: 'spawn', frames: [325,327,331,325], fps: 10, loop: false }
     ]
@@ -241,6 +250,7 @@ var creatureConfigs = {
       { name: 'idle', frames: [390], fps: 10, loop: true },
       { name: 'spawn', frames: [377,381,384,385], fps: 10, loop: true },
       { name: 'move', frames: [387,389,390,391], fps: 10, loop: true },
+      { name: 'stun', frames: [392], fps: 10, loop: true },
       { name: 'die', frames: [392], fps: 10, loop: true }
     ]
   },
