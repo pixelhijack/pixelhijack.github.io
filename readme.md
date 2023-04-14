@@ -90,3 +90,9 @@ Baby pterosaurs sleeping hanging
 Bonus class, sprite atlas
 Bonus up-down tween animations
 Platform fall if stand on
+
+### Ideas
+
+Weapon vs man z-index
+Animation while game loading
+Score rise after enemy killed

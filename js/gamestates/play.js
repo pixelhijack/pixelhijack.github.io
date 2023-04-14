@@ -35,6 +35,8 @@ function Play(game, globalSettings){
   var enemies;
   
   var things;
+
+  var loadingText;
   
   /*=============
   *   INIT
@@ -49,6 +51,22 @@ function Play(game, globalSettings){
   *   PRELOAD
   =============*/
   this.preload = function preload() {
+    loadingText = game.add.text(game.world.width / 4 + 20, game.world.height / 2, '', { fill: '#fff' });
+    function loadStart() { 
+      console.log('[PRELOAD] loadStart');
+      loadingText.text = 'Loading...';
+    }
+    function fileComplete(progress) { 
+      console.log('[PRELOAD] fileComplete', progress);
+      loadingText.text = `Loading ${progress}%`;
+    }
+    function loadComplete() { 
+      console.log('[PRELOAD] loadComplete');
+    }
+    game.load.onLoadStart.add(loadStart, this);
+    game.load.onFileComplete.add(fileComplete, this);
+    game.load.onLoadComplete.add(loadComplete, this);
+
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
