@@ -28,7 +28,50 @@ var level = {
     y: 620,
     debug: `${i}:${key}`
   })),
-  enemies: []
+  enemies: [
+    {
+        type: 'penguin',
+        number: 1,
+        lifespan: Infinity,
+        revive: 10000,
+        origin: {
+          x: 150,
+          y: 650
+        },
+        boundTo: {
+          x1: 200,
+          x2: 300
+        }
+    },
+    {
+        type: 'gargoyle',
+        number: 1,
+        lifespan: Infinity,
+        revive: 10000,
+        origin: {
+          x: 250,
+          y: 400
+        },
+        boundTo: {
+          x1: 300,
+          x2: 400
+        }
+    },
+    {
+        type: 'worm',
+        number: 1,
+        lifespan: Infinity,
+        revive: 10000,
+        origin: {
+          x: 350,
+          y: 650
+        },
+        boundTo: {
+          x1: 300,
+          x2: 500
+        }
+      }
+  ]
 };
 
 module.exports = level;

@@ -147,6 +147,22 @@ var creatureConfigs = {
       { name: 'spawn', frames: [357,359], fps: 10, loop: true }
     ]
   },
+  gargoyle: {
+    mass: 0.5,
+    gravity: 0,
+    bounce: 0.1,
+    jumping: 0,
+    collide: true,
+    maxSpeed: 100,
+    acceleration: 20, 
+    animations: [
+      { name: 'idle', frames: [457,458,459], fps: 10, loop: true },
+      { name: 'move', frames: [457,458,459], fps: 10, loop: true },
+      { name: 'stun', frames: [460], fps: 10, loop: true },
+      { name: 'die', frames: [460], fps: 10, loop: true },
+      { name: 'spawn', frames: [457,458,459], fps: 10, loop: true }
+    ]
+  },
   spider: {
     mass: 0.3,
     jumping: 0,
@@ -176,6 +192,32 @@ var creatureConfigs = {
       { name: 'stun', frames: [380], fps: 10, loop: false },
       { name: 'die', frames: [380], fps: 10, loop: false },
       { name: 'spawn', frames: [373,376,378], fps: 10, loop: true }
+    ]
+  },
+  penguin: {
+    maxSpeed: 100,
+    acceleration: 50,
+    lives: 1,
+    jumping: 0,
+    animations: [
+      { name: 'idle', frames: [440], fps: 10, loop: true },
+      { name: 'move', frames: [440,441,443,444,450,453], fps: 10, loop: true },
+      { name: 'stun', frames: [445,446,448,449,454,455], fps: 10, loop: false },
+      { name: 'die', frames: [446], fps: 10, loop: false },
+      { name: 'spawn', frames: [440], fps: 10, loop: true }
+    ]
+  },
+  worm: {
+    maxSpeed: 100,
+    acceleration: 20,
+    lives: 1,
+    jumping: 0,
+    animations: [
+      { name: 'idle', frames: [383], fps: 10, loop: true },
+      { name: 'move', frames: [355,356,379,383,386,388,383,386,383,386,383,386], fps: 10, loop: true },
+      { name: 'stun', frames: [383], fps: 10, loop: false },
+      { name: 'die', frames: [383], fps: 10, loop: false },
+      { name: 'spawn', frames: [355,356,379,382,383,386,388], fps: 10, loop: true }
     ]
   },
   parrot: {

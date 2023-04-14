@@ -51,14 +51,14 @@ function Play(game, globalSettings){
   *   PRELOAD
   =============*/
   this.preload = function preload() {
-    loadingText = game.add.text(game.world.width / 4 + 20, game.world.height / 2, '', { fill: '#fff' });
+    loadingText = game.add.text(game.world.width / 4 + 20, game.world.height / 2, '', { font: "32px Courier", fill: '#fff' });
     function loadStart() { 
       console.log('[PRELOAD] loadStart');
       loadingText.text = 'Loading...';
     }
     function fileComplete(progress) { 
       console.log('[PRELOAD] fileComplete', progress);
-      loadingText.text = `Loading ${progress}%`;
+      loadingText.text = `Loading: ${progress}%`;
     }
     function loadComplete() { 
       console.log('[PRELOAD] loadComplete');
