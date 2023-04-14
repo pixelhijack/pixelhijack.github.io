@@ -134,6 +134,7 @@ function Play(game, globalSettings){
     };
     
     game.input.addPointer();
+    game.input.onTap.add(onTap, this);
   
     window.addEventListener("deviceorientation", function orientation(event){
       var tilt = window.innerHeight > window.innerWidth ? event.gamma : event.beta;
@@ -263,7 +264,7 @@ function Play(game, globalSettings){
       // slowing down / slippery rate: 10% after stopped moving
       man.stop(globalSettings.physics.slippery);
     }
-    if(keys.up.isDown || (game.input.pointer1.isDown && game.input.pointer2.isDown)) {
+    if(keys.up.isDown) {
         man.jump();
         if(!man.isGrounded()){
           man.state.name = 'jump';
@@ -289,6 +290,22 @@ function Play(game, globalSettings){
     }
     
     //console.info('[play] PHASER updated');
+  };
+
+  function onTap(pointer, doubleTap) {
+    // jump on mobile double tap
+    if (doubleTap) {
+      man.jump();
+      if(!man.isGrounded()){
+        man.state.name = 'jump';
+      }
+    // hit on mobile single tap
+    } else {
+      man.setState('hit', 400);
+      man.stop(globalSettings.physics.slippery);
+      weapon.sprite.visible = true;
+      weapon.sprite.animations.play('club-hit');
+    }
   };
   
   function debug(){
