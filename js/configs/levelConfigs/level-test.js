@@ -22,10 +22,11 @@ var level = {
   portals: [],
   platforms: [],
   bonus: Object.keys(atlas).map((key, i) => ({
-    // '01', '02', '09'...10,11,12...
-    img: i > 10 ? atlas[key] : atlas['0' + key],
-    x: 78 + i * 30, 
-    y: 620
+    // '01', '02', '09'...10,11,12...?
+    img: atlas[key],
+    x: 78 + i * 50, 
+    y: 620,
+    debug: `${i}:${key}`
   })),
   enemies: []
 };

@@ -11,9 +11,15 @@ var thingManager = function(game, thingsToLoad){
     platforms: new Group(game)
   };
   
-  thingsToLoad.bonus.forEach(function(bonusConfig){
+  thingsToLoad.bonus.forEach(function(bonusConfig, i){
     var bonus = new Thing(game, bonusConfig.img, bonusConfig.x, bonusConfig.y);
     things.bonus.add(bonus);
+    // level-test.js: 
+    if(bonusConfig.debug){
+      game.add.text(bonusConfig.x, bonusConfig.y - 20 - (i % 2) * 10, bonusConfig.debug, { 
+        font: "9px Courier" 
+      });
+    }
   });
   
   thingsToLoad.portals.forEach(function({ jumpTo , x, y }){
