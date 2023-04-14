@@ -11,14 +11,31 @@ function Gargoyle(game, x, y){
 Gargoyle.prototype = Object.create(Creature.prototype);
 Gargoyle.prototype.constructor = Gargoyle;
 
-Gargoyle.prototype.move = function move(){
-  this.y += 1;
-  this.x = this.facingRight ? this.x + 0.5 : this.x - 0.5;
+Gargoyle.prototype.specialMoves = function specialMoves(){
+  if(Math.random() < 0.005){
+    return 'turn';
+  }
+  if(Math.random() < 0.05){
+    this.setState('descend', 50);
+    return 'descend';
+  }
+  if(Math.random() < 0.05){
+    this.setState('ascend', 100);
+    return 'ascend';
+  }
+  if(Math.random() < 0.05){
+    this.setState('move', 500);
+    return 'move';
+  }
+  return 'move';
 };
 
-Gargoyle.prototype.diagonalDescend = function diagonalDescend(dx, dy){
-  this.y += dy;
-  this.x += dx;
+Gargoyle.prototype.ascend = function ascend(){
+  this.body.velocity.y -= this.props.acceleration;
+};
+
+Gargoyle.prototype.descend = function descend(){
+  this.body.velocity.y += this.props.acceleration;
 };
 
 module.exports = Gargoyle;

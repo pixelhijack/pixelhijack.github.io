@@ -152,9 +152,9 @@ var creatureConfigs = {
     gravity: 0,
     bounce: 0.1,
     jumping: 0,
-    collide: true,
-    maxSpeed: 100,
-    acceleration: 20, 
+    collide: false,
+    maxSpeed: 30,
+    acceleration: 10, 
     animations: [
       { name: 'idle', frames: [457,458,459], fps: 10, loop: true },
       { name: 'move', frames: [457,458,459], fps: 10, loop: true },

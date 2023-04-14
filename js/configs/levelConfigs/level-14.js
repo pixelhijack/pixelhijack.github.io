@@ -128,18 +128,16 @@ var level = {
         boundTo: {},
     },
     {
-      type: 'ptero',
+      type: 'gargoyle',
       number: 2,
       lifespan: Infinity,
-      revive: 5000,
+      revive: 20000,
+      onClose: 'wakeUp',
       origin: {
-        x: 1488,
-        y: 2010
+        x: 1375,
+        y: 2106
       },
-      boundTo: {
-        x: Infinity,
-        y: Infinity
-      }
+      boundTo: {}
     },
     {
       type: 'dino', 
