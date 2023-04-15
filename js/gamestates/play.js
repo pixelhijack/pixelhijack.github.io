@@ -36,7 +36,10 @@ function Play(game, globalSettings){
   
   var things;
 
-  var loadingText;
+  const loading = {
+    text: null,
+    animation: null
+  };
   
   /*=============
   *   INIT
@@ -51,14 +54,15 @@ function Play(game, globalSettings){
   *   PRELOAD
   =============*/
   this.preload = function preload() {
-    loadingText = game.add.text(game.world.width / 4 + 20, game.world.height / 2, '', { font: "32px Courier", fill: '#fff' });
+    loading.text = game.add.text(game.world.width / 4 + 20, game.world.height / 2, '', { font: "12px Courier", fill: '#fff' });
+    
     function loadStart() { 
       console.log('[PRELOAD] loadStart');
-      loadingText.text = 'Loading...';
+      loading.text.text = 'Loading...';
     }
-    function fileComplete(progress) { 
-      console.log('[PRELOAD] fileComplete', progress);
-      loadingText.text = `Loading: ${progress}%`;
+    function fileComplete(progress, file) { 
+      console.log('[PRELOAD] fileComplete', progress, file);
+      loading.text.text = `Loading: ${progress}% ${file}`;
     }
     function loadComplete() { 
       console.log('[PRELOAD] loadComplete');
@@ -170,8 +174,8 @@ function Play(game, globalSettings){
   =============*/
   this.update = function update() {
     // show FPS on bottom left corner
-    game.debug.text(game.time.fps, 5, game.height - 20);
-    game.debug.text(enemies.population(), 5, game.height - 35);
+    game.debug.text(`fps: ${game.time.fps}`, 5, game.height - 5, '#fff', "8px Courier");
+    game.debug.text(`enemies: ${enemies.population()}`, 5, game.height - 15, '#fff', "8px Courier");
     
     // debug sprites
     enemies.forEachAlive(function(creature){
