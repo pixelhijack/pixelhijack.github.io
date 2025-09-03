@@ -16,8 +16,9 @@
             letter-spacing: -0.05em;
             font-weight: 700;
             font-style: normal;
-            background-color: #1a1a1a;
+            background-color: white;
             color: #f5f5f5;
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -40,86 +41,175 @@
     </nav>
     
     <!-- Main content container -->
-    <main id="content-container" class="relative w-full h-screen overflow-hidden">
+    <main id="content-container" class="relative w-full h-screen">
         <!-- Content will be dynamically injected here -->
     </main>
 
     <script>
         // The manifest object with page and section data
-        const manifest = {
-    pages: [
-        {
-            slug: "",
-            background: "masthead.jpg",
-            sections: [
+       const manifest = {
+            pages: [
                 {
-                    type: "text",
-                    content: "Welcome to the Homepage",
-                    style: {
-                        desktop: { top: "40%", left: "10%", position: "absolute" },
-                        mobile: { top: "20%", left: "5%", position: "relative" }
+                    slug: "",
+                    background: "masthead.jpg",
+                    tree: {
+                        type: "div",
+                        class: "flex flex-col items-center justify-center h-full",
+                        children: [
+                            {
+                                type: "div",
+                                class: "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                                style: {
+                                    desktop: { top: "40%", left: "10%", position: "absolute" },
+                                    mobile: { top: "20%", left: "5%", position: "relative" }
+                                },
+                                content: "Welcome to the Homepage"
+                            },
+                            {
+                                type: "div",
+                                class: "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                                style: {
+                                    desktop: { top: "50%", left: "10%", position: "absolute" },
+                                    mobile: { top: "30%", left: "5%", position: "relative" }
+                                },
+                                content: "Photography by Your Name"
+                            }
+                        ]
                     }
                 },
                 {
-                    type: "text",
-                    content: "Photography by Your Name",
-                    style: {
-                        desktop: { top: "50%", left: "10%", position: "absolute" },
-                        mobile: { top: "30%", left: "5%", position: "relative" }
-                    }
-                }
-            ]
-        },
-        {
-            slug: "art",
-            background: "DSC08556.jpg",
-            sections: [
-                {
-                    type: "text",
-                    content: "Welcome to the Manifest Desktop",
-                    style: {
-                        desktop: { position: "relative" },
-                        mobile: { top: "10%", left: "5%", position: "relative" }
-                    }
-                }
-            ]
-        },
-        {
-            slug: "about",
-            background: null,
-            sections: [
-                {
-                    type: "text",
-                    content: "About the Photographer manifest",
-                    style: {
-                        desktop: { left: "15%", position: "relative" },
-                        mobile: { top: "15%", left: "10%", position: "relative" }
+                    slug: "art",
+                    background: "DSC08556.jpg",
+                    tree: {
+                        type: "div",
+                        class: "flex flex-col items-center justify-center h-full",
+                        children: [
+                            {
+                                type: "div",
+                                class: "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                                style: {
+                                    desktop: { position: "relative" },
+                                    mobile: { top: "10%", left: "5%", position: "relative" }
+                                },
+                                content: "Welcome to the Manifest Desktop"
+                            }
+                        ]
                     }
                 },
                 {
-                    type: "image",
-                    src: "me-rounded.png",
-                    style: {
-                        desktop: { position: "relative", margin: "30px auto 0" },
-                        mobile: { bottom: "5%", right: "5%", position: "relative" }
+                    slug: "about",
+                    background: null,
+                    tree: {
+                        type: "div",
+                        class: "flex flex-col items-center justify-center h-full",
+                        children: [
+                            {
+                                type: "div",
+                                class: "mt-[1520px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                                style: {
+                                    desktop: { left: "15%", position: "relative" },
+                                    mobile: { top: "15%", left: "10%", position: "relative" }
+                                },
+                                content: "Hello, I am a photographer"
+                            },
+                            {
+                                type: "img",
+                                class: "mt-[64px] max-w-full md:max-w-[50%] h-auto rounded-lg shadow-2xl",
+                                style: {
+                                    desktop: { position: "relative" },
+                                    mobile: { bottom: "5%", right: "5%", position: "relative" }
+                                },
+                                props: { src: "img/me-rounded.png", alt: "Me" }
+                            },
+                            {
+                                type: "div",
+                                class: "mt-[20px] text-4xl md:text-sm font-bold text-white p-4 rounded-md max-w-[80%]",
+                                style: {
+                                    desktop: { left: "15%", position: "relative" },
+                                    mobile: { top: "15%", left: "10%", position: "relative" }
+                                },
+                                content: "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                            },
+                            {
+                                type: "img",
+                                props: { src: "img/0180.jpg", alt: "Me" }
+                            },
+                        ]
                     }
-                }
+                },
+                { slug: "fashion", background: "DSC07947-3.jpg", navColor: "gold", tree: { type: "div", children: [] } },
+                { slug: "conceptual", background: null, tree: { type: "div", children: [] } },
+                { slug: "collabs", background: null, tree: { type: "div", children: [] } },
+                { slug: "analog", background: "", navColor: "gold", tree: { type: "div", children: [
+                    {
+                        type: "img",
+                        props: { src: "img/DSC06875.jpg", alt: "Me" }
+                    },
+                    {
+                        type: "img",
+                        props: { src: "img/0180.jpg", alt: "Me" }
+                    },
+                    {
+                        type: "div",
+                        class: "mt-[20px]"
+                    },
+                    {
+                        type: "img",
+                        class: "max-w-[80%] flex justify-center items-center",
+                        props: { src: "img/DSC08211.jpg", alt: "Me" }
+                    }
+                ] } },
+                { slug: "models", background: null, tree: { type: "div", children: [] } },
+                { slug: "lookbook", background: null, tree: { type: "div", children: [] } },
+                { slug: "backstage", background: "DSC05237.jpg", tree: { type: "div", children: [] } },
+                { slug: "dance", background: null, tree: { type: "div", children: [] } },
+                { slug: "theater", background: null, tree: { type: "div", children: [] } }
             ]
-        },
-        { slug: "fashion", background: "DSC07947-3.jpg", navColor: "gold", sections: [] },
-        { slug: "conceptual", background: null, sections: [] },
-        { slug: "collabs", background: null, sections: [] },
-        { slug: "analog", background: "DSC06875.jpg", navColor: "gold", sections: [] },
-        { slug: "models", background: null, sections: [] },
-        { slug: "lookbook", background: null, sections: [] },
-        { slug: "backstage", background: "DSC05237.jpg", sections: [] },
-        { slug: "dance", background: null, sections: [] },
-        { slug: "theater", background: null, sections: [] }
-    ]
-};
+        };
 
         const contentContainer = document.getElementById('content-container');
         const desktopMediaQuery = window.matchMedia('(min-width: 768px)');
+
+        function renderTree(node) {
+            if (!node) return '';
+
+            // Handle text nodes
+            if (node.type === 'text') {
+                return node.content || '';
+            }
+
+            // Build props string
+            let propsStr = '';
+            if (node.props) {
+                propsStr = Object.entries(node.props)
+                    .map(([key, value]) => `${key}="${value}"`)
+                    .join(' ');
+            }
+
+            // Handle class and style
+            if (node.class) propsStr += ` class="${node.class}"`;
+            if (node.style) {
+                const styleStr = Object.entries(node.style)
+                    .map(([k, v]) => `${k}:${v}`)
+                    .join(';');
+                propsStr += ` style="${styleStr}"`;
+            }
+
+            // Children
+            let childrenStr = '';
+            if (node.children && Array.isArray(node.children)) {
+                childrenStr = node.children.map(renderTree).join('');
+            }
+
+            // Self-closing tags
+            const selfClosing = ['img', 'br', 'hr', 'input', 'meta', 'link'];
+            if (selfClosing.includes(node.type)) {
+                return `<${node.type}${propsStr ? ' ' + propsStr : ''}/>`;
+            }
+
+            // Normal tags
+            return `<${node.type}${propsStr ? ' ' + propsStr : ''}>${node.content || ''}${childrenStr}</${node.type}>`;
+        }
         
         /**
          * Generates the HTML string for a given section object.
@@ -152,10 +242,7 @@
          * Renders the page content based on the current URL hash.
          */
         function renderPage() {
-            // Get the slug from the URL hash, default to empty string for home page
             const currentSlug = window.location.hash.substring(1);
-            
-            // Find the corresponding page in the manifest
             const currentPage = manifest.pages.find(page => page.slug === currentSlug);
 
             if (!currentPage) {
@@ -163,11 +250,9 @@
                 return;
             }
 
-            // Clear existing content and reset styles
             contentContainer.innerHTML = '';
-            contentContainer.className = 'relative w-full h-screen overflow-hidden';
-            
-            // Set background if specified
+            contentContainer.className = 'relative w-full h-screen';
+
             if (currentPage.background) {
                 contentContainer.style.backgroundImage = `url(img/${currentPage.background})`;
                 contentContainer.style.backgroundSize = 'cover';
@@ -176,21 +261,10 @@
                 contentContainer.style.backgroundImage = '';
             }
 
-             // Set nav color if specified
-            const navLinks = document.querySelectorAll('nav a');
-            if (currentPage.navColor) {
-                navLinks.forEach(link => {
-                    link.style.color = currentPage.navColor;
-                });
-            } else {
-                navLinks.forEach(link => {
-                    link.style.color = ''; // Reset to default
-                });
-            }
+            // Nav color logic unchanged...
 
-            // Generate and inject HTML from all sections
-            const sectionsHtml = currentPage.sections.map(section => getSectionHtml(section)).join('');
-            contentContainer.innerHTML = sectionsHtml;
+            // Render the tree recursively
+            contentContainer.innerHTML = renderTree(currentPage.tree);
         }
 
         // Add a listener for hash changes to enable routing
