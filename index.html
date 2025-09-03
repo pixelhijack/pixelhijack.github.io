@@ -45,6 +45,7 @@
     <!-- Navigation Menu -->
     <nav class="fixed top-0 left-0 w-full z-10 p-4 bg-transparent">
       <div
+        id="logo"
         class="container mx-auto flex justify-between items-center px-4 md:px-0"
       >
         <a
@@ -230,7 +231,8 @@
         }
 
         // Nav color logic
-        const navLinks = document.querySelectorAll("nav a");
+        const navLinks = document.querySelectorAll("#nav-links a");
+        const logo = document.querySelectorAll("#logo a")[0];
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const closeMobileNav = document.getElementById("close-mobile-nav");
 
@@ -243,10 +245,12 @@
           // If navColor is set, apply it
           if (currentPage.navColor) {
             link.style.color = currentPage.navColor;
+            logo.style.color = currentPage.navColor;
             hamburgerBtn.style.color = currentPage.navColor;
             closeMobileNav.style.color = currentPage.navColor;
           } else {
             link.style.color = "";
+            logo.style.color = "";
             hamburgerBtn.style.color = "";
             closeMobileNav.style.color = "";
           }
