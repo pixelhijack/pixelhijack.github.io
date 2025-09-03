@@ -25,18 +25,34 @@
 <body class="relative min-h-screen">
 
     <!-- Navigation Menu -->
-    <nav class="fixed top-0 left-0 w-full z-10 p-4">
+    <nav class="fixed top-0 left-0 w-full z-10 p-4 bg-transparent">
         <div class="container mx-auto flex justify-between items-center px-4 md:px-0">
             <a href="#" class="text-2xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors">
                 Póth Attila
             </a>
-            <div class="space-x-4">
+            <!-- Hamburger button (shown on mobile) -->
+            <button id="hamburger-btn" class="md:hidden text-white text-5xl focus:outline-none" aria-label="Open menu">
+                &equiv;
+            </button>
+            <!-- Desktop nav links -->
+            <div class="space-x-4 hidden md:block" id="nav-links">
                 <a href="#art" class="text-white">Art</a>
                 <a href="#fashion" class="text-white">Fashion</a>
                 <a href="#analog" class="text-white">Analog</a>
                 <a href="#backstage" class="text-white">Backstage</a>
                 <a href="#about" class="text-white">About</a>
             </div>
+        </div>
+        <!-- Mobile overlay menu -->
+        <div id="mobile-nav-overlay" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col justify-center items-center z-50 hidden">
+            <button id="close-mobile-nav" class="absolute top-6 right-8 text-white text-4xl">&#10005;</button>
+            <nav class="flex flex-col space-y-8 text-center">
+                <a href="#art" class="text-white text-3xl font-bold">Art</a>
+                <a href="#fashion" class="text-white text-3xl font-bold">Fashion</a>
+                <a href="#analog" class="text-white text-3xl font-bold">Analog</a>
+                <a href="#backstage" class="text-white text-3xl font-bold">Backstage</a>
+                <a href="#about" class="text-white text-3xl font-bold">About</a>
+            </nav>
         </div>
     </nav>
     
@@ -60,10 +76,10 @@
                                 type: "div",
                                 class: "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
                                 style: {
-                                    desktop: { top: "40%", left: "10%", position: "absolute" },
+                                    desktop: { top: "43%", left: "10%", position: "absolute" },
                                     mobile: { top: "20%", left: "5%", position: "relative" }
                                 },
-                                content: "Welcome to the Homepage"
+                                content: "Everyone has a story to tell."
                             },
                             {
                                 type: "div",
@@ -72,13 +88,14 @@
                                     desktop: { top: "50%", left: "10%", position: "absolute" },
                                     mobile: { top: "30%", left: "5%", position: "relative" }
                                 },
-                                content: "Photography by Your Name"
+                                content: "What’s yours?​​​​​​​"
                             }
                         ]
                     }
                 },
                 {
                     slug: "art",
+                    navColor: "#dd7529",
                     background: "DSC08556.jpg",
                     tree: {
                         type: "div",
@@ -99,22 +116,24 @@
                 {
                     slug: "about",
                     background: null,
+                    navColor: "black",
+                    textColor: "black",
                     tree: {
                         type: "div",
                         class: "flex flex-col items-center justify-center h-full",
                         children: [
                             {
                                 type: "div",
-                                class: "mt-[1520px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                                class: "mt-[1300px] text-4xl md:text-6xl font-bold text-black p-4 rounded-md max-w-[80%]",
                                 style: {
-                                    desktop: { left: "15%", position: "relative" },
+                                    desktop: { },
                                     mobile: { top: "15%", left: "10%", position: "relative" }
                                 },
                                 content: "Hello, I am a photographer"
                             },
                             {
                                 type: "img",
-                                class: "mt-[64px] max-w-full md:max-w-[50%] h-auto rounded-lg shadow-2xl",
+                                class: "mt-[64px] max-w-full md:max-w-[50%] h-auto rounded-lg",
                                 style: {
                                     desktop: { position: "relative" },
                                     mobile: { bottom: "5%", right: "5%", position: "relative" }
@@ -123,9 +142,9 @@
                             },
                             {
                                 type: "div",
-                                class: "mt-[20px] text-4xl md:text-sm font-bold text-white p-4 rounded-md max-w-[80%]",
+                                class: "mt-[20px] text-4xl md:text-sm font-bold text-black p-4 rounded-md max-w-[80%]",
                                 style: {
-                                    desktop: { left: "15%", position: "relative" },
+                                    desktop: { position: "relative" },
                                     mobile: { top: "15%", left: "10%", position: "relative" }
                                 },
                                 content: "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
@@ -170,6 +189,29 @@
         const contentContainer = document.getElementById('content-container');
         const desktopMediaQuery = window.matchMedia('(min-width: 768px)');
 
+        // Hamburger menu logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+            const closeMobileNav = document.getElementById('close-mobile-nav');
+            const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+
+            hamburgerBtn.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('hidden');
+            });
+
+            closeMobileNav.addEventListener('click', () => {
+                mobileNavOverlay.classList.add('hidden');
+            });
+
+            // Close overlay when a link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavOverlay.classList.add('hidden');
+                });
+            });
+        });
+
         function renderTree(node) {
             if (!node) return '';
 
@@ -198,14 +240,25 @@
                 propsArr.push(`class="${node.class}"`);
             }
 
-            // Handle style
+            // Handle style (choose desktop or mobile)
+            let styleObj = {};
             if (node.style) {
-                const styleStr = Object.entries(node.style)
-                    .map(([k, v]) => `${k}:${v}`)
-                    .join(';');
-                if (styleStr) {
-                    propsArr.push(`style="${styleStr}"`);
+                const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+                if (node.style.desktop || node.style.mobile) {
+                    styleObj = isDesktop ? node.style.desktop || {} : node.style.mobile || {};
+                } else {
+                    styleObj = node.style;
                 }
+            }
+            // If textColor is present, add it to style
+            if (node.textColor) {
+                styleObj = { ...styleObj, color: node.textColor };
+            }
+            const styleStr = Object.entries(styleObj)
+                .map(([k, v]) => `${k}:${v}`)
+                .join(';');
+            if (styleStr) {
+                propsArr.push(`style="${styleStr}"`);
             }
 
             const propsStr = propsArr.length ? ' ' + propsArr.join(' ') : '';
@@ -249,7 +302,32 @@
                 contentContainer.style.backgroundImage = '';
             }
 
-            // Nav color logic unchanged...
+             // Nav color logic
+            const navLinks = document.querySelectorAll('nav a');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const closeMobileNav = document.getElementById('close-mobile-nav');
+    
+            navLinks.forEach(link => {
+                // Reset color and underline
+                link.style.color = '';
+                link.style.textDecoration = '';
+                // Get slug from href (after #)
+                const linkSlug = link.getAttribute('href').replace('#', '');
+                // If navColor is set, apply it
+                if (currentPage.navColor) {
+                    link.style.color = currentPage.navColor;
+                    hamburgerBtn.style.color = currentPage.navColor;
+                    closeMobileNav.style.color = currentPage.navColor;
+                } else {
+                    link.style.color = '';
+                    hamburgerBtn.style.color = '';
+                    closeMobileNav.style.color = '';
+                }
+                // Underline active link
+                if (linkSlug === currentSlug) {
+                    link.style.textDecoration = 'underline';
+                }
+            });
 
             // Render the tree recursively
             contentContainer.innerHTML = renderTree(currentPage.tree);
