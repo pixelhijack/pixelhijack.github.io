@@ -1,0 +1,240 @@
+{
+    "pages": [
+        {
+            "slug": "",
+            "background": "masthead.jpg",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                        "style": {
+                            "desktop": {
+                                "top": "43%",
+                                "left": "10%",
+                                "position": "absolute"
+                            },
+                            "mobile": {
+                                "top": "20%",
+                                "left": "5%",
+                                "position": "relative"
+                            }
+                        },
+                        "content": "Everyone has a story to tell."
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                        "style": {
+                            "desktop": {
+                                "top": "50%",
+                                "left": "10%",
+                                "position": "absolute"
+                            },
+                            "mobile": {
+                                "top": "30%",
+                                "left": "5%",
+                                "position": "relative"
+                            }
+                        },
+                        "content": "What's yours?'"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "art",
+            "navColor": "#dd7529",
+            "background": "DSC08556.jpg",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                        "style": {
+                            "desktop": {
+                                "position": "relative"
+                            },
+                            "mobile": {
+                                "top": "10%",
+                                "left": "5%",
+                                "position": "relative"
+                            }
+                        },
+                        "content": "Welcome to the Manifest Desktop"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "about",
+            "background": null,
+            "navColor": "black",
+            "textColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "mt-[1300px] text-4xl md:text-6xl font-bold text-black p-4 rounded-md max-w-[80%]",
+                        "style": {
+                            "desktop": {},
+                            "mobile": {
+                                "top": "15%",
+                                "left": "10%",
+                                "position": "relative"
+                            }
+                        },
+                        "content": "Hello, I am a photographer"
+                    },
+                    {
+                        "type": "img",
+                        "class": "mt-[64px] max-w-full md:max-w-[50%] h-auto rounded-lg",
+                        "style": {
+                            "desktop": {
+                                "position": "relative"
+                            },
+                            "mobile": {
+                                "bottom": "5%",
+                                "right": "5%",
+                                "position": "relative"
+                            }
+                        },
+                        "props": {
+                            "src": "me-rounded.png",
+                            "alt": "Me"
+                        }
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-[20px] text-4xl md:text-sm font-bold text-black p-4 rounded-md max-w-[80%]",
+                        "style": {
+                            "desktop": {
+                                "position": "relative"
+                            },
+                            "mobile": {
+                                "top": "15%",
+                                "left": "10%",
+                                "position": "relative"
+                            }
+                        },
+                        "content": "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "0180.jpg",
+                            "alt": "Me"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion",
+            "background": "DSC07947-3.jpg",
+            "navColor": "gold",
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "conceptual",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "collabs",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "analog",
+            "background": "",
+            "navColor": "gold",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC06875.jpg",
+                            "alt": "Me"
+                        }
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "0180.jpg",
+                            "alt": "Me"
+                        }
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-[20px]"
+                    },
+                    {
+                        "type": "img",
+                        "class": "max-w-[80%] flex justify-center items-center",
+                        "props": {
+                            "src": "DSC08211.jpg",
+                            "alt": "Me"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "models",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "lookbook",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "backstage",
+            "background": "DSC05237.jpg",
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "dance",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        },
+        {
+            "slug": "theater",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": []
+            }
+        }
+    ]
+}
