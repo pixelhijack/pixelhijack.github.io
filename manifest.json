@@ -190,7 +190,7 @@
                         "class": "max-w-[80%] flex justify-center items-center",
                         "props": {
                             "src": "DSC08211.jpg",
-                            "alt": "Me"
+                            "alt": ""
                         }
                     }
                 ]
@@ -234,6 +234,47 @@
             "tree": {
                 "type": "div",
                 "children": []
+            }
+        },
+        {
+            "slug": "layout-masonry",
+            "background": null,
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "masonry-container",
+                "children": [
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC06979.jpg"
+                        }
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC00725.jpg"
+                        }
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC08211.jpg"
+                        }
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC07346.jpg"
+                        }
+                    },
+                    {
+                        "type": "img",
+                        "props": {
+                            "src": "DSC08556.jpg"
+                        }
+                    }
+                ]
             }
         }
     ]

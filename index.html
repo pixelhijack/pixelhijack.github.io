@@ -1,231 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photography Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: "Josefin Sans", sans-serif;
-            font-optical-sizing: auto;
-            letter-spacing: -0.05em;
-            font-weight: 700;
-            font-style: normal;
-            background-color: white;
-            color: #f5f5f5;
-            overflow-y: auto;
+      body {
+        font-family: "Josefin Sans", sans-serif;
+        font-optical-sizing: auto;
+        letter-spacing: -0.05em;
+        font-weight: 700;
+        font-style: normal;
+        background-color: white;
+        color: #f5f5f5;
+        overflow-y: auto;
+      }
+      .masonry-container {
+        margin: 80px 0 0 0;
+        column-count: 2;
+        column-gap: 1rem;
+      }
+      @media (min-width: 768px) {
+        .masonry-container {
+          column-count: 4;
         }
+      }
+      .masonry-container img {
+        width: 100%;
+        display: block;
+        margin-bottom: 1rem;
+        break-inside: avoid;
+      }
     </style>
-</head>
-<body class="relative min-h-screen">
-
+  </head>
+  <body class="relative min-h-screen">
     <!-- Navigation Menu -->
     <nav class="fixed top-0 left-0 w-full z-10 p-4 bg-transparent">
-        <div class="container mx-auto flex justify-between items-center px-4 md:px-0">
-            <a href="#" class="text-2xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors">
-                Póth Attila
-            </a>
-            <!-- Hamburger button (shown on mobile) -->
-            <button id="hamburger-btn" class="md:hidden text-white text-5xl focus:outline-none" aria-label="Open menu">
-                &equiv;
-            </button>
-            <!-- Desktop nav links -->
-            <div class="space-x-4 hidden md:block" id="nav-links">
-                <a href="#art" class="text-white">Art</a>
-                <a href="#fashion" class="text-white">Fashion</a>
-                <a href="#analog" class="text-white">Analog</a>
-                <a href="#backstage" class="text-white">Backstage</a>
-                <a href="#about" class="text-white">About</a>
-            </div>
+      <div
+        class="container mx-auto flex justify-between items-center px-4 md:px-0"
+      >
+        <a
+          href="#"
+          class="text-2xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
+        >
+          Póth Attila
+        </a>
+        <!-- Hamburger button (shown on mobile) -->
+        <button
+          id="hamburger-btn"
+          class="md:hidden text-white text-5xl focus:outline-none"
+          aria-label="Open menu"
+        >
+          &equiv;
+        </button>
+        <!-- Desktop nav links -->
+        <div class="space-x-4 hidden md:block" id="nav-links">
+          <a href="#art" class="text-white">Art</a>
+          <a href="#fashion" class="text-white">Fashion</a>
+          <a href="#analog" class="text-white">Analog</a>
+          <a href="#backstage" class="text-white">Backstage</a>
+          <a href="#about" class="text-white">About</a>
         </div>
-        <!-- Mobile overlay menu -->
-        <div id="mobile-nav-overlay" class="fixed inset-0 bg-black bg-opacity-90 flex flex-col justify-center items-center z-50 hidden">
-            <button id="close-mobile-nav" class="absolute top-6 right-8 text-white text-4xl">&#10005;</button>
-            <nav class="flex flex-col space-y-8 text-center">
-                <a href="#art" class="text-white text-3xl font-bold">Art</a>
-                <a href="#fashion" class="text-white text-3xl font-bold">Fashion</a>
-                <a href="#analog" class="text-white text-3xl font-bold">Analog</a>
-                <a href="#backstage" class="text-white text-3xl font-bold">Backstage</a>
-                <a href="#about" class="text-white text-3xl font-bold">About</a>
-            </nav>
-        </div>
+      </div>
+      <!-- Mobile overlay menu -->
+      <div
+        id="mobile-nav-overlay"
+        class="fixed inset-0 bg-black bg-opacity-90 flex flex-col justify-center items-center z-50 hidden"
+      >
+        <button
+          id="close-mobile-nav"
+          class="absolute top-6 right-8 text-white text-4xl"
+        >
+          &#10005;
+        </button>
+        <nav class="flex flex-col space-y-8 text-center">
+          <a href="#art" class="text-white text-3xl font-bold">Art</a>
+          <a href="#fashion" class="text-white text-3xl font-bold">Fashion</a>
+          <a href="#analog" class="text-white text-3xl font-bold">Analog</a>
+          <a href="#backstage" class="text-white text-3xl font-bold"
+            >Backstage</a
+          >
+          <a href="#about" class="text-white text-3xl font-bold">About</a>
+        </nav>
+      </div>
     </nav>
-    
+
     <!-- Main content container -->
     <main id="content-container" class="relative w-full h-screen">
-        <!-- Content will be dynamically injected here -->
+      <!-- Content will be dynamically injected here -->
     </main>
 
     <script>
-        // The manifest object with page and section data
-       fetch('manifest.json')
-        .then(response => response.json())
-        .then(data => {
-            window.manifest = data;
-            renderPage();
+      // The manifest object with page and section data
+      fetch("manifest.json")
+        .then((response) => response.json())
+        .then((data) => {
+          window.manifest = data;
+          renderPage();
         });
 
-        const contentContainer = document.getElementById('content-container');
-        const desktopMediaQuery = window.matchMedia('(min-width: 768px)');
+      const contentContainer = document.getElementById("content-container");
+      const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
 
-        // Hamburger menu logic
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-            const closeMobileNav = document.getElementById('close-mobile-nav');
-            const mobileNavLinks = mobileNavOverlay.querySelectorAll('a');
+      // Hamburger menu logic
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
+        const closeMobileNav = document.getElementById("close-mobile-nav");
+        const mobileNavLinks = mobileNavOverlay.querySelectorAll("a");
 
-            hamburgerBtn.addEventListener('click', () => {
-                mobileNavOverlay.classList.remove('hidden');
-            });
-
-            closeMobileNav.addEventListener('click', () => {
-                mobileNavOverlay.classList.add('hidden');
-            });
-
-            // Close overlay when a link is clicked
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNavOverlay.classList.add('hidden');
-                });
-            });
+        hamburgerBtn.addEventListener("click", () => {
+          mobileNavOverlay.classList.remove("hidden");
         });
 
-        function renderTree(node) {
-            if (!node) return '';
+        closeMobileNav.addEventListener("click", () => {
+          mobileNavOverlay.classList.add("hidden");
+        });
 
-            // Handle text nodes
-            if (node.type === 'text') {
-                return node.content || '';
-            }
+        // Close overlay when a link is clicked
+        mobileNavLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileNavOverlay.classList.add("hidden");
+          });
+        });
+      });
 
-            // Build props string
-            let propsArr = [];
+      function renderTree(node) {
+        if (!node) return "";
 
-            // Handle props
-            if (node.props) {
-                for (const [key, value] of Object.entries(node.props)) {
-                    // Add img/ prefix for img src
-                    if (node.type === 'img' && key === 'src') {
-                        propsArr.push(`src="img/${value}"`);
-                    } else {
-                        propsArr.push(`${key}="${value}"`);
-                    }
-                }
-            }
-
-            // Handle class
-            if (node.class) {
-                propsArr.push(`class="${node.class}"`);
-            }
-
-            // Handle style (choose desktop or mobile)
-            let styleObj = {};
-            if (node.style) {
-                const isDesktop = window.matchMedia('(min-width: 768px)').matches;
-                if (node.style.desktop || node.style.mobile) {
-                    styleObj = isDesktop ? node.style.desktop || {} : node.style.mobile || {};
-                } else {
-                    styleObj = node.style;
-                }
-            }
-            // If textColor is present, add it to style
-            if (node.textColor) {
-                styleObj = { ...styleObj, color: node.textColor };
-            }
-            const styleStr = Object.entries(styleObj)
-                .map(([k, v]) => `${k}:${v}`)
-                .join(';');
-            if (styleStr) {
-                propsArr.push(`style="${styleStr}"`);
-            }
-
-            const propsStr = propsArr.length ? ' ' + propsArr.join(' ') : '';
-
-            // Children
-            let childrenStr = '';
-            if (node.children && Array.isArray(node.children)) {
-                childrenStr = node.children.map(renderTree).join('');
-            }
-
-            // Self-closing tags
-            const selfClosing = ['img', 'br', 'hr', 'input', 'meta', 'link'];
-            if (selfClosing.includes(node.type)) {
-                return `<${node.type}${propsStr}/>`;
-            }
-
-            // Normal tags
-            return `<${node.type}${propsStr}>${node.content || ''}${childrenStr}</${node.type}>`;
+        // Handle text nodes
+        if (node.type === "text") {
+          return node.content || "";
         }
 
-        /**
-         * Renders the page content based on the current URL hash.
-         */
-        function renderPage() {
-            const currentSlug = window.location.hash.substring(1);
-            const currentPage = manifest.pages.find(page => page.slug === currentSlug);
+        // Build props string
+        let propsArr = [];
 
-            if (!currentPage) {
-                console.error("Page not found in manifest.");
-                return;
-            }
-
-            contentContainer.innerHTML = '';
-            contentContainer.className = 'relative w-full h-screen';
-
-            if (currentPage.background) {
-                contentContainer.style.backgroundImage = `url(img/${currentPage.background})`;
-                contentContainer.style.backgroundSize = 'cover';
-                contentContainer.style.backgroundPosition = 'center';
+        // Handle props
+        if (node.props) {
+          for (const [key, value] of Object.entries(node.props)) {
+            // Add img/ prefix for img src
+            if (node.type === "img" && key === "src") {
+              propsArr.push(`src="img/${value}"`);
             } else {
-                contentContainer.style.backgroundImage = '';
+              propsArr.push(`${key}="${value}"`);
             }
-
-             // Nav color logic
-            const navLinks = document.querySelectorAll('nav a');
-            const hamburgerBtn = document.getElementById('hamburger-btn');
-            const closeMobileNav = document.getElementById('close-mobile-nav');
-    
-            navLinks.forEach(link => {
-                // Reset color and underline
-                link.style.color = '';
-                link.style.textDecoration = '';
-                // Get slug from href (after #)
-                const linkSlug = link.getAttribute('href').replace('#', '');
-                // If navColor is set, apply it
-                if (currentPage.navColor) {
-                    link.style.color = currentPage.navColor;
-                    hamburgerBtn.style.color = currentPage.navColor;
-                    closeMobileNav.style.color = currentPage.navColor;
-                } else {
-                    link.style.color = '';
-                    hamburgerBtn.style.color = '';
-                    closeMobileNav.style.color = '';
-                }
-                // Underline active link
-                if (linkSlug === currentSlug) {
-                    link.style.textDecoration = 'underline';
-                }
-            });
-
-            // Render the tree recursively
-            contentContainer.innerHTML = renderTree(currentPage.tree);
+          }
         }
 
-        // Add a listener for hash changes to enable routing
-        window.addEventListener('hashchange', renderPage);
+        // Handle class
+        if (node.class) {
+          propsArr.push(`class="${node.class}"`);
+        }
 
-        // Initial render on page load
-        //document.addEventListener('DOMContentLoaded', renderPage);
+        // Handle style (choose desktop or mobile)
+        let styleObj = {};
+        if (node.style) {
+          const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+          if (node.style.desktop || node.style.mobile) {
+            styleObj = isDesktop
+              ? node.style.desktop || {}
+              : node.style.mobile || {};
+          } else {
+            styleObj = node.style;
+          }
+        }
+        // If textColor is present, add it to style
+        if (node.textColor) {
+          styleObj = { ...styleObj, color: node.textColor };
+        }
+        const styleStr = Object.entries(styleObj)
+          .map(([k, v]) => `${k}:${v}`)
+          .join(";");
+        if (styleStr) {
+          propsArr.push(`style="${styleStr}"`);
+        }
 
-        // Re-render on media query change
-        desktopMediaQuery.addListener(renderPage);
+        const propsStr = propsArr.length ? " " + propsArr.join(" ") : "";
 
+        // Children
+        let childrenStr = "";
+        if (node.children && Array.isArray(node.children)) {
+          childrenStr = node.children.map(renderTree).join("");
+        }
+
+        // Self-closing tags
+        const selfClosing = ["img", "br", "hr", "input", "meta", "link"];
+        if (selfClosing.includes(node.type)) {
+          return `<${node.type}${propsStr}/>`;
+        }
+
+        // Normal tags
+        return `<${node.type}${propsStr}>${node.content || ""}${childrenStr}</${
+          node.type
+        }>`;
+      }
+
+      /**
+       * Renders the page content based on the current URL hash.
+       */
+      function renderPage() {
+        const currentSlug = window.location.hash.substring(1);
+        const currentPage = manifest.pages.find(
+          (page) => page.slug === currentSlug
+        );
+
+        if (!currentPage) {
+          console.error("Page not found in manifest.");
+          return;
+        }
+
+        contentContainer.innerHTML = "";
+        contentContainer.className = "relative w-full h-screen";
+
+        if (currentPage.background) {
+          contentContainer.style.backgroundImage = `url(img/${currentPage.background})`;
+          contentContainer.style.backgroundSize = "cover";
+          contentContainer.style.backgroundPosition = "center";
+        } else {
+          contentContainer.style.backgroundImage = "";
+        }
+
+        // Nav color logic
+        const navLinks = document.querySelectorAll("nav a");
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const closeMobileNav = document.getElementById("close-mobile-nav");
+
+        navLinks.forEach((link) => {
+          // Reset color and underline
+          link.style.color = "";
+          link.style.textDecoration = "";
+          // Get slug from href (after #)
+          const linkSlug = link.getAttribute("href").replace("#", "");
+          // If navColor is set, apply it
+          if (currentPage.navColor) {
+            link.style.color = currentPage.navColor;
+            hamburgerBtn.style.color = currentPage.navColor;
+            closeMobileNav.style.color = currentPage.navColor;
+          } else {
+            link.style.color = "";
+            hamburgerBtn.style.color = "";
+            closeMobileNav.style.color = "";
+          }
+          // Underline active link
+          if (linkSlug === currentSlug) {
+            link.style.textDecoration = "underline";
+          }
+        });
+
+        // Render the tree recursively
+        contentContainer.innerHTML = renderTree(currentPage.tree);
+      }
+
+      // Add a listener for hash changes to enable routing
+      window.addEventListener("hashchange", renderPage);
+
+      // Initial render on page load
+      //document.addEventListener('DOMContentLoaded', renderPage);
+
+      // Re-render on media query change
+      desktopMediaQuery.addListener(renderPage);
     </script>
-</body>
+  </body>
 </html>
