@@ -9,11 +9,11 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "ambroise mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                        "class": "ambroise mt-[64px] text-8xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
                         "style": {
                             "desktop": {
-                                "top": "43%",
-                                "left": "10%",
+                                "top": "33%",
+                                "right": "4%",
                                 "position": "absolute"
                             },
                             "mobile": {
@@ -26,11 +26,11 @@
                     },
                     {
                         "type": "div",
-                        "class": "ambroise mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
+                        "class": "ambroise mt-[64px] text-8xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
                         "style": {
                             "desktop": {
-                                "top": "50%",
-                                "left": "10%",
+                                "top": "40%",
+                                "right": "4%",
                                 "position": "absolute"
                             },
                             "mobile": {
