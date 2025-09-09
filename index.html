@@ -23,6 +23,11 @@
         color: #f5f5f5;
         overflow-y: auto;
       }
+      .ambroise {
+        font-family: ambroise-std, serif;
+        font-style: normal;
+        font-weight: 400;
+      }
       .masonry-container {
         margin: 80px 0 0 0;
         column-count: 2;
@@ -50,7 +55,7 @@
       >
         <a
           href="#"
-          class="text-2xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
+          class="ambroise text-2xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
         >
           Póth Attila
         </a>
@@ -64,11 +69,13 @@
         </button>
         <!-- Desktop nav links -->
         <div class="space-x-4 hidden md:block" id="nav-links">
-          <a href="#art" class="text-white">Art</a>
-          <a href="#fashion" class="text-white">Fashion</a>
-          <a href="#analog" class="text-white">Analog</a>
-          <a href="#backstage" class="text-white">Backstage</a>
-          <a href="#about" class="text-white">About</a>
+          <a href="#fashion">Fashion</a>
+          <a href="#analog">Analog</a>
+          <a href="#collabs">Collabs</a>
+          <a href="#backstage">Backstage</a>
+          <a href="#dancers">Dancers</a>
+          <a href="#theater">Theater</a>
+          <a href="#about">About</a>
         </div>
       </div>
       <!-- Mobile overlay menu -->
@@ -82,14 +89,14 @@
         >
           &#10005;
         </button>
-        <nav class="flex flex-col space-y-8 text-center">
-          <a href="#art" class="text-white text-3xl font-bold">Art</a>
-          <a href="#fashion" class="text-white text-3xl font-bold">Fashion</a>
-          <a href="#analog" class="text-white text-3xl font-bold">Analog</a>
-          <a href="#backstage" class="text-white text-3xl font-bold"
-            >Backstage</a
-          >
-          <a href="#about" class="text-white text-3xl font-bold">About</a>
+        <nav class="flex flex-col space-y-8 text-center text-3xl font-bold">
+          <a href="#fashion">Fashion</a>
+          <a href="#analog">Analog</a>
+          <a href="#collabs">Collabs</a>
+          <a href="#backstage">Backstage</a>
+          <a href="#dancers">Dancers</a>
+          <a href="#theater">Theater</a>
+          <a href="#about">About</a>
         </nav>
       </div>
     </nav>
@@ -134,6 +141,16 @@
         });
       });
 
+    function getImageSrc(filename) {
+        // Use window.location.hostname to detect environment
+        const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+        if (isDev) {
+            return `/img/${filename}`;
+        } else {
+            return `https://res.cloudinary.com/dg7vg50i9/image/upload/v1756910837/${filename}`;
+        }
+    }
+
       function renderTree(node) {
         if (!node) return "";
 
@@ -148,9 +165,14 @@
         // Handle props
         if (node.props) {
           for (const [key, value] of Object.entries(node.props)) {
-            // Add img/ prefix for img src
+            // img/ if local, cloudinary url if hosted env:
             if (node.type === "img" && key === "src") {
-              propsArr.push(`src="img/${value}"`);
+              propsArr.push(`src="${getImageSrc(value)}"`);
+              if (node.props.alt) {
+                    propsArr.push(`alt="${node.props.alt}"`);
+                } else {
+                    propsArr.push(`alt="${value}"`);
+                }
             } else {
               propsArr.push(`${key}="${value}"`);
             }
@@ -216,6 +238,7 @@
 
         if (!currentPage) {
           console.error("Page not found in manifest.");
+          window.location.hash = "";
           return;
         }
 
@@ -223,9 +246,10 @@
         contentContainer.className = "relative w-full h-screen";
 
         if (currentPage.background) {
-          contentContainer.style.backgroundImage = `url(img/${currentPage.background})`;
+          contentContainer.style.backgroundImage = `url(${getImageSrc(currentPage.background)})`;
           contentContainer.style.backgroundSize = "cover";
           contentContainer.style.backgroundPosition = "center";
+          contentContainer.style.backgroundAttachment = "fixed";
         } else {
           contentContainer.style.backgroundImage = "";
         }
