@@ -135,10 +135,8 @@
                                 "position": "relative"
                             }
                         },
-                        "props": {
-                            "src": "me-rounded.png",
-                            "alt": "Me"
-                        }
+                        "src": "me-rounded.png",
+                        "alt": "Póth Attila"
                     },
                     {
                         "type": "div",
@@ -157,10 +155,8 @@
                     },
                     {
                         "type": "img",
-                        "props": {
-                            "src": "0180.jpg",
-                            "alt": "Me"
-                        }
+                        "src": "0180.jpg",
+                        "alt": "Me"
                     }
                 ]
             }
@@ -191,29 +187,27 @@
                 "children": [
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC06875.jpg",
-                            "alt": "Me"
-                        }
+                        "src": "DSC06875.jpg",
+                        "alt": "Me"
                     },
-                    { "type": "img", "props": { "src": "DSC01519-2.jpg" } },
+                    { "type": "img", "src": "DSC01519-2.jpg" },
                     { "type": "div", "class": "img-caption-relative eb-garamond", "content": "Not all who wander are lost." },
-                    { "type": "div", "class": "img-wrapper", "children": [{ "type": "img", "props": { "src": "DSC01445.jpg" } }, { "type": "div", "class": "img-caption", "content": "Tatry IV." }] },
-                    { "type": "img", "props": { "src": "231018-orwo-00403-3.jpg" } },
-                    { "type": "img", "props": { "src": "231018-orwo-00433-2.jpg" } },
-                    { "type": "img", "props": { "src": "DSC00860-1x1.jpg" } },
-                    { "type": "img", "props": { "src": "DSC01439.jpg" } },
-                    { "type": "img", "props": { "src": "DSC01445.jpg" } },
-                    { "type": "img", "props": { "src": "DSC01602-2.jpg" } },
-                    { "type": "img", "props": { "src": "HP5-240120-01826-3.jpg" } },
-                    { "type": "img", "props": { "src": "DSC01642.jpg" } },
-                    { "type": "img", "props": { "src": "DSC01746.jpg" } },
-                    { "type": "img", "props": { "src": "DSC02627-3.jpg" } },
-                    { "type": "img", "props": { "src": "DSC03020-crop.jpg" } },
-                    { "type": "img", "props": { "src": "DSC02890.jpg" } },
-                    { "type": "img", "props": { "src": "DSC06979.jpg" } },
-                    { "type": "img", "props": { "src": "DSC07020-crop.jpg" } },
-                    { "type": "img", "props": { "src": "orwo-np15-02454.jpg" } }
+                    { "type": "div", "class": "img-wrapper", "children": [{ "type": "img", "src": "DSC01445.jpg" }, { "type": "div", "class": "img-caption", "content": "Tatry IV." }] },
+                    { "type": "img", "src": "231018-orwo-00403-3.jpg" },
+                    { "type": "img", "src": "231018-orwo-00433-2.jpg" },
+                    { "type": "img", "src": "DSC00860-1x1.jpg" },
+                    { "type": "img", "src": "DSC01439.jpg" },
+                    { "type": "img", "src": "DSC01445.jpg" },
+                    { "type": "img", "src": "DSC01602-2.jpg" },
+                    { "type": "img", "src": "HP5-240120-01826-3.jpg" },
+                    { "type": "img", "src": "DSC01642.jpg" },
+                    { "type": "img", "src": "DSC01746.jpg" },
+                    { "type": "img", "src": "DSC02627-3.jpg" },
+                    { "type": "img", "src": "DSC03020-crop.jpg" },
+                    { "type": "img", "src": "DSC02890.jpg" },
+                    { "type": "img", "src": "DSC06979.jpg" },
+                    { "type": "img", "src": "DSC07020-crop.jpg" },
+                    { "type": "img", "src": "orwo-np15-02454.jpg" }
                 ]
             }
         },
@@ -313,33 +307,23 @@
                 "children": [
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC06979.jpg"
-                        }
+                        "src": "DSC06979.jpg"
                     },
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC00725.jpg"
-                        }
+                        "src": "DSC00725.jpg"
                     },
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC08211.jpg"
-                        }
+                        "src": "DSC08211.jpg"
                     },
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC07346.jpg"
-                        }
+                        "src": "DSC07346.jpg"
                     },
                     {
                         "type": "img",
-                        "props": {
-                            "src": "DSC08556.jpg"
-                        }
+                        "src": "DSC08556.jpg"
                     }
                 ]
             }

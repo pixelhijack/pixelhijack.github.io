@@ -211,15 +211,11 @@
           "slug": "sitemap",
           "tree": {
             "type": "div",
-            "props": {
-              "class": "min-h-screen flex flex-col items-center justify-center space-y-4 p-8"
-            },
+            "class": "min-h-screen flex flex-col items-center justify-center space-y-4 p-8",
             "children": Object.keys(folderData.flat).map(route => ({
               type: "a",
-              props: {
-                href: `#${route}`,
-                class: "text-2xl md:text-4xl font-bold text-black p-4 rounded-md"
-              },
+              href: `#${route}`,
+              class: "text-2xl md:text-4xl font-bold text-black p-4 rounded-md",
               content: route
             }))
           }
@@ -273,10 +269,8 @@
         if(node.source){
           node.children = window.folder.flat[node.source]?.map(img => ({
             type: "img",
-            props: {
-              src: `${node.source}/${img}`,
-              alt: img
-            }
+            src: `${node.source}/${img}`,
+            alt: img,
           })) || [];
         }
 
@@ -293,20 +287,17 @@
         // Build props string
         let propsArr = [];
 
-        // Handle props
-        if (node.props) {
-          for (const [key, value] of Object.entries(node.props)) {
-            // img/ if local, cloudinary url if hosted env:
-            if (node.type === "img" && key === "src") {
-              propsArr.push(`src="${getImageSrc(value)}"`);
-              if (node.props.alt) {
-                    propsArr.push(`alt="${node.props.alt}"`);
-                } else {
-                    propsArr.push(`alt="${value}"`);
-                }
-            } else {
-              propsArr.push(`${key}="${value}"`);
-            }
+        // Handle images
+        if (node.type === "img") {
+          if (node.src) {
+            propsArr.push(`src="${getImageSrc(node.src)}"`);
+          } else {
+            console.warn("Image node missing 'src' property:", node);
+          }
+          if (node.alt) {
+            propsArr.push(`alt="${node.alt}"`);
+          } else {
+            propsArr.push(`alt="${node?.src}"`);
           }
         }
 
