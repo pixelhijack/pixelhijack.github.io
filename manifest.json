@@ -274,13 +274,79 @@
             }
         },
         {
-            "slug": "collabs",
-            "background": "masthead.jpg",
+            "slug": "layout/grid",
+            "navColor": "black",
             "tree": {
                 "type": "div",
-                "children": []
+                "class": "pt-[88px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8",
+                "children": [
+                {
+                    "type": "div",
+                    "class": "flex flex-col items-center",
+                    "children": [
+                    {
+                        "type": "img",
+                        "src": "DSC05237.jpg",
+                        "class": "w-full aspect-square object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-2 text-center text-sm text-black",
+                        "content": "Collab 1"
+                    }
+                    ]
+                },
+                {
+                    "type": "div",
+                    "class": "flex flex-col items-center",
+                    "children": [
+                    {
+                        "type": "img",
+                        "src": "DSC05237.jpg",
+                        "class": "w-full aspect-square object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-2 text-center text-sm text-black",
+                        "content": "Collab 2"
+                    }
+                    ]
+                },
+                {
+                    "type": "div",
+                    "class": "flex flex-col items-center",
+                    "children": [
+                    {
+                        "type": "img",
+                        "src": "DSC05237.jpg",
+                        "class": "w-full aspect-square object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-2 text-center text-sm text-black",
+                        "content": "Collab 3"
+                    }
+                    ]
+                },
+                {
+                    "type": "div",
+                    "class": "flex flex-col items-center",
+                    "children": [
+                    {
+                        "type": "img",
+                        "src": "DSC05237.jpg",
+                        "class": "w-full aspect-square object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "mt-2 text-center text-sm text-black",
+                        "content": "Collab 4"
+                    }
+                    ]
+                }
+                ]
             }
-        },
+            },
         {
             "slug": "dancers",
             "background": "masthead.jpg",
@@ -298,7 +364,7 @@
             }
         },
         {
-            "slug": "layout-masonry",
+            "slug": "layout/masonry",
             "background": null,
             "navColor": "black",
             "tree": {

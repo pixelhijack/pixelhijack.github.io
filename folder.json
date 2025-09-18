@@ -140,6 +140,14 @@
                 "type": "file"
               },
               {
+                "name": "DSC02541-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02634.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC09005.jpg",
                 "type": "file"
               },
@@ -206,6 +214,14 @@
                 "type": "file"
               },
               {
+                "name": "DSC02601.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02609.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC05367.jpg",
                 "type": "file"
               },
@@ -257,6 +273,22 @@
               },
               {
                 "name": "DSC01724.jpeg",
+                "type": "file"
+              },
+              {
+                "name": "DSC01750.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02582-3.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02583.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02640.jpg",
                 "type": "file"
               },
               {
@@ -370,6 +402,22 @@
                 "type": "file"
               },
               {
+                "name": "DSC02533-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC03358.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC04251-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC04288-2-2.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC04365-crop-enlarged.jpg",
                 "type": "file"
               },
@@ -447,6 +495,34 @@
             "name": "portraits",
             "type": "folder",
             "children": [
+              {
+                "name": "DSC01629-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02543.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02554.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02561-3.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02576-5.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02586-3.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02593.jpg",
+                "type": "file"
+              },
               {
                 "name": "DSC02810-m.jpg",
                 "type": "file"
@@ -668,6 +744,8 @@
       "231018-orwo-00424-2.jpg",
       "231018-orwo-00426-2.jpg",
       "231018-orwo-00431-2.jpg",
+      "DSC02541-2.jpg",
+      "DSC02634.jpg",
       "DSC09005.jpg",
       "fp4-malta-200-02021.jpg"
     ],
@@ -685,6 +763,8 @@
       "231018-orwo-00396-5.jpg",
       "231018-orwo-00400-2.jpg",
       "231018-orwo-00401-2.jpg",
+      "DSC02601.jpg",
+      "DSC02609.jpg",
       "DSC05367.jpg",
       "DSC05371.jpg",
       "DSC05375.jpg",
@@ -699,6 +779,10 @@
       "DSC00860-1x1.jpg",
       "DSC01439.jpg",
       "DSC01724.jpeg",
+      "DSC01750.jpg",
+      "DSC02582-3.jpg",
+      "DSC02583.jpg",
+      "DSC02640.jpg",
       "DSC03011-crop.jpg",
       "DSC04844-3.jpg",
       "DSC04849.jpg",
@@ -728,6 +812,10 @@
       "DSC01445-2x3.jpg",
       "DSC01445.jpg",
       "DSC02432-crop-4x6.jpg",
+      "DSC02533-2.jpg",
+      "DSC03358.jpg",
+      "DSC04251-2.jpg",
+      "DSC04288-2-2.jpg",
       "DSC04365-crop-enlarged.jpg",
       "DSC04368.jpg",
       "DSC04843.jpg",
@@ -748,6 +836,13 @@
       "tatry-01447.jpg"
     ],
     "analog/portraits": [
+      "DSC01629-2.jpg",
+      "DSC02543.jpg",
+      "DSC02554.jpg",
+      "DSC02561-3.jpg",
+      "DSC02576-5.jpg",
+      "DSC02586-3.jpg",
+      "DSC02593.jpg",
       "DSC02810-m.jpg",
       "DSC02990-3-clarityforhighlights-crop2.jpg",
       "DSC02992-3-crop2.jpg",
@@ -792,97 +887,17 @@
       "fp4-zoo-02049.jpg",
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
-    ],
-    "": [
-      "0180.jpg",
-      "230807-HP5-03442-2.jpg",
-      "DSC00725.jpg",
-      "DSC01445.jpg",
-      "DSC01519-2.jpg",
-      "DSC01532.jpg",
-      "DSC01602-2.jpg",
-      "DSC01642.jpg",
-      "DSC01746.jpg",
-      "DSC01747.jpg",
-      "DSC02627-3.jpg",
-      "DSC02890.jpg",
-      "DSC02895-2.jpg",
-      "DSC02902.jpg",
-      "DSC03020-crop.jpg",
-      "DSC05237.jpg",
-      "DSC06850.jpg",
-      "DSC06874.jpg",
-      "DSC06875.jpg",
-      "DSC06979.jpg",
-      "DSC07020-crop.jpg",
-      "DSC07346.jpg",
-      "DSC07947-3.jpg",
-      "DSC08211.jpg",
-      "DSC08556.jpg",
-      "HP5-240120-01826-3.jpg",
-      "fp4-malta-200-02024.jpg",
-      "halfframe-foma-02082.jpg",
-      "masthead.jpg",
-      "me-rounded.png",
-      "orwo-np15-02454.jpg",
-      "trix400-230726-01701.jpg",
-      "trix400-230726-01723-2.jpg"
     ]
   },
   "path": {
-    "0180.jpg": ".",
-    "230807-HP5-03442-2.jpg": ".",
-    "DSC00725.jpg": ".",
-    "DSC01445.jpg": [
-      ".",
-      "analog/north"
-    ],
-    "DSC01519-2.jpg": ".",
-    "DSC01532.jpg": ".",
-    "DSC01602-2.jpg": ".",
-    "DSC01642.jpg": ".",
-    "DSC01746.jpg": ".",
-    "DSC01747.jpg": ".",
-    "DSC02627-3.jpg": ".",
-    "DSC02890.jpg": ".",
-    "DSC02895-2.jpg": ".",
-    "DSC02902.jpg": ".",
-    "DSC03020-crop.jpg": [
-      ".",
-      "analog/portraits"
-    ],
-    "DSC05237.jpg": ".",
-    "DSC06850.jpg": [
-      ".",
-      "analog/north"
-    ],
-    "DSC06874.jpg": ".",
-    "DSC06875.jpg": [
-      ".",
-      "analog/hypnagogia"
-    ],
-    "DSC06979.jpg": [
-      ".",
-      "analog/north"
-    ],
-    "DSC07020-crop.jpg": [
-      ".",
-      "analog/south"
-    ],
-    "DSC07346.jpg": ".",
-    "DSC07947-3.jpg": ".",
-    "DSC08211.jpg": ".",
-    "DSC08556.jpg": ".",
-    "HP5-240120-01826-3.jpg": [
-      ".",
-      "analog/gaia"
-    ],
     "231018-orwo-00415-2.jpg": "analog/floral",
     "231018-orwo-00419-2.jpg": "analog/floral",
     "231018-orwo-00423-3.jpg": "analog/floral",
     "231018-orwo-00424-2.jpg": "analog/floral",
     "231018-orwo-00426-2.jpg": "analog/floral",
     "231018-orwo-00431-2.jpg": "analog/floral",
+    "DSC02541-2.jpg": "analog/floral",
+    "DSC02634.jpg": "analog/floral",
     "DSC09005.jpg": "analog/floral",
     "fp4-malta-200-02021.jpg": "analog/floral",
     "20230824_162416541.jpeg": "analog/gaia",
@@ -898,10 +913,13 @@
     "231018-orwo-00396-5.jpg": "analog/gaia",
     "231018-orwo-00400-2.jpg": "analog/gaia",
     "231018-orwo-00401-2.jpg": "analog/gaia",
+    "DSC02601.jpg": "analog/gaia",
+    "DSC02609.jpg": "analog/gaia",
     "DSC05367.jpg": "analog/gaia",
     "DSC05371.jpg": "analog/gaia",
     "DSC05375.jpg": "analog/gaia",
     "HP5-240120-01820.jpg": "analog/gaia",
+    "HP5-240120-01826-3.jpg": "analog/gaia",
     "pan400-230724-01676-2.jpg": "analog/gaia",
     "pan400-230724-01682.jpg": "analog/gaia",
     "231018-orwo-00403-3.jpg": "analog/hypnagogia",
@@ -909,19 +927,21 @@
     "DSC00860-1x1.jpg": "analog/hypnagogia",
     "DSC01439.jpg": "analog/hypnagogia",
     "DSC01724.jpeg": "analog/hypnagogia",
+    "DSC01750.jpg": "analog/hypnagogia",
+    "DSC02582-3.jpg": "analog/hypnagogia",
+    "DSC02583.jpg": "analog/hypnagogia",
+    "DSC02640.jpg": "analog/hypnagogia",
     "DSC03011-crop.jpg": "analog/hypnagogia",
     "DSC04844-3.jpg": "analog/hypnagogia",
     "DSC04849.jpg": "analog/hypnagogia",
     "DSC06015-4.jpg": "analog/hypnagogia",
     "DSC06873.jpg": "analog/hypnagogia",
     "DSC06874-2.jpg": "analog/hypnagogia",
+    "DSC06875.jpg": "analog/hypnagogia",
     "DSC06998.jpg": "analog/hypnagogia",
     "DSC08985.jpg": "analog/hypnagogia",
     "trix400-230726-01716.jpg": "analog/hypnagogia",
-    "trix400-230726-01723-2.jpg": [
-      "analog/hypnagogia",
-      "."
-    ],
+    "trix400-230726-01723-2.jpg": "analog/hypnagogia",
     "trix400-230726-01726.jpg": "analog/hypnagogia",
     "DSC00739.jpg": "analog/icarus",
     "DSC00742.jpg": "analog/icarus",
@@ -932,14 +952,21 @@
     "200T-tatry-00459.jpg": "analog/north",
     "DSC01444-50x70.jpg": "analog/north",
     "DSC01445-2x3.jpg": "analog/north",
+    "DSC01445.jpg": "analog/north",
     "DSC02432-crop-4x6.jpg": "analog/north",
+    "DSC02533-2.jpg": "analog/north",
+    "DSC03358.jpg": "analog/north",
+    "DSC04251-2.jpg": "analog/north",
+    "DSC04288-2-2.jpg": "analog/north",
     "DSC04365-crop-enlarged.jpg": "analog/north",
     "DSC04368.jpg": "analog/north",
     "DSC04843.jpg": "analog/north",
     "DSC04846.jpg": "analog/north",
+    "DSC06850.jpg": "analog/north",
     "DSC06859.jpg": "analog/north",
     "DSC06864.jpg": "analog/north",
     "DSC06885.jpg": "analog/north",
+    "DSC06979.jpg": "analog/north",
     "HP5-240120-01839.jpg": "analog/north",
     "HP5-heviz-01540.jpg": "analog/north",
     "HP5-heviz-01541.jpg": "analog/north",
@@ -949,9 +976,17 @@
     "tatry-00440.jpg": "analog/north",
     "tatry-00448.jpg": "analog/north",
     "tatry-01447.jpg": "analog/north",
+    "DSC01629-2.jpg": "analog/portraits",
+    "DSC02543.jpg": "analog/portraits",
+    "DSC02554.jpg": "analog/portraits",
+    "DSC02561-3.jpg": "analog/portraits",
+    "DSC02576-5.jpg": "analog/portraits",
+    "DSC02586-3.jpg": "analog/portraits",
+    "DSC02593.jpg": "analog/portraits",
     "DSC02810-m.jpg": "analog/portraits",
     "DSC02990-3-clarityforhighlights-crop2.jpg": "analog/portraits",
     "DSC02992-3-crop2.jpg": "analog/portraits",
+    "DSC03020-crop.jpg": "analog/portraits",
     "DSC04375-6.jpg": "analog/portraits",
     "DSC05363.jpg": "analog/portraits",
     "DSC05364.jpg": "analog/portraits",
@@ -965,19 +1000,14 @@
     "DSC09781.jpg": "analog/portraits",
     "DSC09782.jpg": "analog/portraits",
     "HP5-240120-01804.jpg": "analog/portraits",
-    "fp4-malta-200-02024.jpg": [
-      "analog/portraits",
-      "."
-    ],
+    "fp4-malta-200-02024.jpg": "analog/portraits",
     "fp4-zoo-02042.jpg": "analog/portraits",
     "fp4-zoo-02050.jpg": "analog/portraits",
     "fp4-zoo-02051.jpg": "analog/portraits",
     "lubitel-kentmere-02812.jpg": "analog/portraits",
-    "trix400-230726-01701.jpg": [
-      "analog/portraits",
-      "."
-    ],
+    "trix400-230726-01701.jpg": "analog/portraits",
     "DSC06997.jpg": "analog/south",
+    "DSC07020-crop.jpg": "analog/south",
     "DSC08971-2.jpg": "analog/south",
     "DSC08976.jpg": "analog/south",
     "DSC08979.jpg": "analog/south",
@@ -994,10 +1024,6 @@
     "fp4-zoo-02043.jpg": "analog/south",
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
-    "gold-malta-01995.jpg": "analog/south",
-    "halfframe-foma-02082.jpg": ".",
-    "masthead.jpg": ".",
-    "me-rounded.png": ".",
-    "orwo-np15-02454.jpg": "."
+    "gold-malta-01995.jpg": "analog/south"
   }
 }

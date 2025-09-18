@@ -258,7 +258,7 @@
         if (isDev) {
             return `/img/${filename}`;
         } else {
-            return `https://res.cloudinary.com/dg7vg50i9/image/upload/v1756910837/${filename}`;
+            return `https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/v1756910837/${filename}`;
         }
     }
 
@@ -286,6 +286,15 @@
 
         // Build props string
         let propsArr = [];
+
+        // For non-image nodes, add common attributes like href
+        // (Assuming properties not in a reserved list belong as attributes)
+        const reserved = ["type", "children", "content", "class", "style", "src", "alt"];
+        Object.keys(node).forEach((key) => {
+          if (!reserved.includes(key) && typeof node[key] === "string") {
+            propsArr.push(`${key}="${node[key]}"`);
+          }
+        });
 
         // Handle images
         if (node.type === "img") {
