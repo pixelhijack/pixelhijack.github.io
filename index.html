@@ -62,29 +62,29 @@
         color: #f5f5f5;
         overflow-y: auto;
       }
-      .eb-garamond {
+      .font-eb-garamond {
         font-family: "EB Garamond", serif;
         font-optical-sizing: auto;
         font-weight: 400;
         font-style: normal;
       }
-      .josefin-sans {
+      .font-josefin-sans {
         font-family: "Josefin Sans", sans-serif;
         font-optical-sizing: auto;
         font-weight: 100;
         font-style: normal;
       }
-      .ambroise {
+      .font-ambroise {
         font-family: "ambroise-firmin-std", serif;
         font-style: normal;
         font-weight: 400;
       }
-      .modernline {
+      .font-modernline {
         font-family: 'modernline - Personal Use', sans-serif;
         font-style: normal;
         font-weight: 100;
       }
-      .reenie {
+      .font-reenie {
         font-family: 'Reenie Beanie', sans-serif;
         font-style: normal;
         font-weight: 100;
@@ -105,29 +105,22 @@
         margin-bottom: 1rem;
         break-inside: avoid;
       }
-      .img-wrapper {
+      figure {
         position: relative;
-        display: inline-block;
-        width: 100%;
-        margin-bottom: 1rem;
-        break-inside: avoid;
       }
-      .img-caption {
+      figure figcaption {
         position: absolute;
         bottom: 15px;
         right: 15px;
-        color: white;
-        font-size: 1.875rem;
-        font-family: 'modernline - Personal Use', sans-serif;
-      }
-      .img-caption-relative {
-        position: relative;
-        bottom: 50px;
-        margin: 0 auto;
-        text-align: center;
-        height: 0;
-        color: white;
+        margin: 0;
         font-size: 1.5rem;
+        text-align: center;
+        color: white;
+      }
+      @media (max-width: 767px) {
+        figure figcaption {
+          font-size: 1rem; 
+        }
       }
     </style>
   </head>
@@ -298,19 +291,45 @@
         });
 
         // Handle images
-        if (node.type === "img") {
-          if (typeof node.src === "string") {
-            propsArr.push(`src="${getImageSrc(node.src)}"`);
-          } else if (Array.isArray(node.src)) {
-            let randomSrc = node.src[Math.floor(Math.random() * node.src.length)];
-            propsArr.push(`src="${getImageSrc(randomSrc)}"`);
+        if(node.type === "img") {
+          // Build the image props
+          let imgProps = [];
+          if(node.src){
+            if(typeof node.src === "string"){
+              imgProps.push(`src="${getImageSrc(node.src)}"`);
+            } else if(Array.isArray(node.src)){
+              let randomSrc = node.src[Math.floor(Math.random() * node.src.length)];
+              imgProps.push(`src="${getImageSrc(randomSrc)}"`);
+            }
           } else {
             console.warn("Image node missing 'src' property:", node);
           }
-          if (node.alt) {
-            propsArr.push(`alt="${node.alt}"`);
+          if(node.alt){
+            imgProps.push(`alt="${node.alt}"`);
           } else {
-            propsArr.push(`alt="${node?.src}"`);
+            imgProps.push(`alt="${node.src}"`);
+          }
+          if(node.class) {
+            imgProps.push(`class="${node.class}"`);
+          }
+          // Build common attributes from node
+          const reserved = ["type", "children", "content", "class", "style", "src", "alt", "caption", "captionStyle"];
+          Object.keys(node).forEach(key => {
+            if(!reserved.includes(key) && typeof node[key] === "string"){
+              imgProps.push(`${key}="${node[key]}"`);
+            }
+          });
+          
+          // If a caption is provided, wrap the image in a <figure>
+          if(node.caption) {
+            let figCaptionProps = node.captionStyle ? ` class="${node.captionStyle}"` : "";
+            return `<figure>
+              <img ${imgProps.join(" ")}/>
+              <figcaption${figCaptionProps}>${node.caption}</figcaption>
+            </figure>`;
+          } else {
+            // No caption? Render just the image as self-closing
+            return `<img ${imgProps.join(" ")}/>`;
           }
         }
 

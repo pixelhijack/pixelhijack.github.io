@@ -1,19 +1,4 @@
 {
-    "captions": {
-        "analog/south/DSC08976.jpg": {
-            "content": "Caption for 231018-orwo-00403-3.jpg",
-            "class": "text-white"
-        },
-        "231018-orwo-00433-2.jpg": {
-            "content": "Caption for 231018-orwo-00433-2.jpg"
-        },
-        "DSC00860-1x1.jpg": {
-            "content": "Caption for DSC00860-1x1.jpg"
-        },
-        "DSC01439.jpg": {
-            "content": "Caption for DSC01439.jpg"
-        }
-    },
     "pages": [
         {
             "slug": "",
@@ -45,7 +30,7 @@
                                 "children": [
                                     {
                                         "type": "div",
-                                        "class": "eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "Everyone has a story to tell.<br>What's yours?"
                                     }
                                 ]
@@ -174,47 +159,37 @@
                     {
                         "type": "img",
                         "src": "analog/hypnagogia/DSC06875.jpg",
+                        "caption": "Yeah, dolls of voodoo all stuck with pins One for each of us and our sins",
+                        "captionStyle": "font-modernline",
                         "alt": "Me"
                     },
                     {
                         "type": "img",
-                        "src": "analog/day/DSC01519-2.jpg"
-                    },
-                    {
-                        "type": "div",
-                        "class": "img-caption-relative eb-garamond",
-                        "content": "Not all who wander are lost."
-                    },
-                    {
-                        "type": "div",
-                        "class": "img-wrapper",
-                        "children": [
-                            {
-                                "type": "img",
-                                "src": "analog/north/DSC01445.jpg"
-                            },
-                            {
-                                "type": "div",
-                                "class": "img-caption",
-                                "content": "Tatry IV."
-                            }
-                        ]
+                        "src": "analog/day/DSC01519-2.jpg",
+                        "caption": "Not all who wander are lost.",
+                        "captionStyle": "font-eb-garamond"
                     },
                     {
                         "type": "img",
-                        "src": "231018-orwo-00403-3.jpg"
+                        "src": "analog/north/DSC01445.jpg",
+                        "caption": "Tatry IV.",
+                        "captionStyle": "font-modernline"
                     },
                     {
                         "type": "img",
-                        "src": "231018-orwo-00433-2.jpg"
+                        "src": "analog/hypnagogia/231018-orwo-00403-3.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC00860-1x1.jpg"
+                        "src": "analog/hypnagogia/231018-orwo-00433-2.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC01439.jpg"
+                        "src": "analog/hypnagogia/DSC00860-1x1.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC01439.jpg"
                     },
                     {
                         "type": "img",
