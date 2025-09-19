@@ -111,7 +111,7 @@
       figure figcaption {
         position: absolute;
         bottom: 15px;
-        right: 15px;
+        width: 100%;
         margin: 0;
         font-size: 1.5rem;
         text-align: center;
@@ -119,7 +119,7 @@
       }
       @media (max-width: 767px) {
         figure figcaption {
-          font-size: 1rem; 
+          font-size: 0.8rem; 
         }
       }
     </style>
@@ -133,7 +133,7 @@
       >
         <a
           href="#"
-          class="ambroise text-4xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
+          class="font-ambroise text-4xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
         >
           Póth Attila
         </a>
@@ -320,17 +320,24 @@
             }
           });
           
+          let imageHTML = "";
           // If a caption is provided, wrap the image in a <figure>
           if(node.caption) {
             let figCaptionProps = node.captionStyle ? ` class="${node.captionStyle}"` : "";
-            return `<figure>
+            imageHTML = `<figure>
               <img ${imgProps.join(" ")}/>
               <figcaption${figCaptionProps}>${node.caption}</figcaption>
             </figure>`;
           } else {
             // No caption? Render just the image as self-closing
-            return `<img ${imgProps.join(" ")}/>`;
+            imageHTML = `<img ${imgProps.join(" ")}/>`;
           }
+          // If linkTo is provided, wrap the whole structure in an anchor.
+          if (node.linkTo) {
+            imageHTML = `<a href="#${node.linkTo}">${imageHTML}</a>`;
+          }
+
+          return imageHTML;
         }
 
         // Handle class
@@ -453,7 +460,7 @@
     </script>
 
 
-    <footer class="text-center p-4 bg-white text-black">
+    <footer class="text-center p-4 bg-white text-black text-opacity-10">
       <a href="#sitemap" class="underline">Sitemap</a> |
       &copy; 2025 Póth Attila. All rights reserved.
     </footer>

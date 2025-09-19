@@ -20,6 +20,7 @@
                                     "stories/hypnagogia/DSC08556.jpg",
                                     "stories/hypnagogia/DSC05055.jpg",
                                     "stories/hypnagogia/DSC09638.jpg",
+                                    "analog/north/orwo-np15-02454.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
@@ -40,7 +41,7 @@
                     {
                         "type": "div",
                         "class": "p-8 text-sm md:text-base text-gray-700",
-                        "content": "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks. Scroll down for more."
+                        "content": "Hey, I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks. Scroll down for more."
                     }
                 ]
             }
@@ -249,7 +250,32 @@
             "background": null,
             "tree": {
                 "type": "div",
-                "children": []
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC02583.jpg",
+                        "caption": "HYPNAGOGIA / hyp·na·go·gi·a /<br>Transitional state of consciousness between wakefulness and sleep",
+                        "captionStyle": "font-eb-garamond"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC04849.jpg",
+                        "caption": "JAMAIS VU /ʒæmei vu:/[french, borrowing meaning 'never seen'] <br>The phenomenon of experiencing often described as the opposite of déjà vu, the observer's impression of experiencing something for the first time, despite rationally knowing that they have experienced it before.",
+                        "captionStyle": "font-eb-garamond"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC02640.jpg",
+                        "caption": "APOPHENIA /ap·o·phe·nia/<br>The tendency to perceive a connection or meaningful pattern between unrelated or random things",
+                        "captionStyle": "font-eb-garamond"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC01572-ps.jpg",
+                        "caption": "ANEMOIA /ænə'mɔiə/ <br>nostalgia for a time or a place one has never known",
+                        "captionStyle": "font-eb-garamond"
+                    }
+                ]
             }
         },
         {
@@ -416,23 +442,35 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "analog/north/DSC06979.jpg"
+                        "src": "analog/north/DSC06979.jpg",
+                        "caption": "Masonry Layout",
+                        "captionStyle": "font-modernline",
+                        "linkTo": "analog"
                     },
                     {
                         "type": "img",
-                        "src": "fashion/designers/shokoya/DSC00725.jpg"
+                        "src": "fashion/designers/shokoya/DSC00725.jpg",
+                        "caption": "Masonry Layout",
+                        "captionStyle": "font-eb-garamond",
+                        "linkTo": "analog/hypnagogia"
                     },
                     {
                         "type": "img",
-                        "src": "fashion/designers/gillichbetti/DSC08211.jpg"
+                        "src": "fashion/designers/gillichbetti/DSC08211.jpg",
+                        "caption": "Masonry Layout",
+                        "captionStyle": "font-ambroise"
                     },
                     {
                         "type": "img",
-                        "src": "stories/cruise/DSC07346.jpg"
+                        "src": "stories/cruise/DSC07346.jpg",
+                        "caption": "Masonry Layout",
+                        "captionStyle": "font-reenie"
                     },
                     {
                         "type": "img",
-                        "src": "stories/hypnagogia/DSC08556.jpg"
+                        "src": "stories/hypnagogia/DSC08556.jpg",
+                        "caption": "Masonry Layout",
+                        "captionStyle": "font-josefin-sans"
                     }
                 ]
             }
