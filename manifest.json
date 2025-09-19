@@ -17,59 +17,45 @@
     "pages": [
         {
             "slug": "",
-            "background": "masthead.jpg",
             "tree": {
                 "type": "div",
-                "class": "flex flex-col items-center justify-center h-full",
                 "children": [
                     {
                         "type": "div",
-                        "class": "eb-garamond mt-[64px] text-8xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
-                        "style": {
-                            "desktop": {
-                                "top": "33%",
-                                "right": "4%",
-                                "position": "absolute"
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/hypnagogia/masthead.jpg", 
+                                    "analog/hypnagogia/DSC01439.jpg",
+                                    "analog/south/DSC09008-2.jpg",
+                                    "analog/floral/231018-orwo-00426-2.jpg",
+                                    "conceptual/konyvudvar/DSC08779.jpg",
+                                    "stories/hypnagogia/DSC08556.jpg",
+                                    "stories/hypnagogia/DSC05055.jpg",
+                                    "stories/hypnagogia/DSC09638.jpg",
+                                    "fashion/mood/59532b451f9b_rw_1920.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
                             },
-                            "mobile": {
-                                "top": "43%",
-                                "left": "5%",
-                                "position": "absolute"
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "Everyone has a story to tell.<br>What's yours?"
+                                    }
+                                ]
                             }
-                        },
-                        "content": "Everyone has a story to tell."
+                        ]
                     },
                     {
                         "type": "div",
-                        "class": "eb-garamond mt-[64px] text-8xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
-                        "style": {
-                            "desktop": {
-                                "top": "40%",
-                                "right": "4%",
-                                "position": "absolute"
-                            },
-                            "mobile": {
-                                "top": "55%",
-                                "left": "5%",
-                                "position": "absolute"
-                            }
-                        },
-                        "content": "What's yours?"
-                    },
-                    {
-                        "type": "div",
-                        "class": "mt-[64px] text-m md:text-m text-white p-4 rounded-md max-w-[80%]",
-                        "style": {
-                            "desktop": {
-                                "top": "40%",
-                                "position": "relative"
-                            },
-                            "mobile": {
-                                "top": "90%",
-                                "position": "relative"
-                            }
-                        },
-                        "content": "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                        "class": "p-8 text-sm md:text-base text-gray-700",
+                        "content": "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks. Scroll down for more."
                     }
                 ]
             }
@@ -77,7 +63,7 @@
         {
             "slug": "art",
             "navColor": "#dd7529",
-            "background": "DSC08556.jpg",
+            "background": "stories/hypnagogia/DSC08556.jpg",
             "tree": {
                 "type": "div",
                 "class": "flex flex-col items-center justify-center h-full",
@@ -135,7 +121,7 @@
                                 "position": "relative"
                             }
                         },
-                        "src": "me-rounded.png",
+                        "src": "about/me-rounded.png",
                         "alt": "Póth Attila"
                     },
                     {
@@ -155,7 +141,7 @@
                     },
                     {
                         "type": "img",
-                        "src": "0180.jpg",
+                        "src": "analog/nostalgia/0180.jpg",
                         "alt": "Me"
                     }
                 ]
@@ -163,7 +149,7 @@
         },
         {
             "slug": "fashion",
-            "background": "DSC07947-3.jpg",
+            "background": "fashion/designers/gillichbetti/DSC07947-3.jpg",
             "navColor": "gold",
             "tree": {
                 "type": "div",
@@ -187,34 +173,100 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "DSC06875.jpg",
+                        "src": "analog/hypnagogia/DSC06875.jpg",
                         "alt": "Me"
                     },
-                    { "type": "img", "src": "DSC01519-2.jpg" },
-                    { "type": "div", "class": "img-caption-relative eb-garamond", "content": "Not all who wander are lost." },
-                    { "type": "div", "class": "img-wrapper", "children": [{ "type": "img", "src": "DSC01445.jpg" }, { "type": "div", "class": "img-caption", "content": "Tatry IV." }] },
-                    { "type": "img", "src": "231018-orwo-00403-3.jpg" },
-                    { "type": "img", "src": "231018-orwo-00433-2.jpg" },
-                    { "type": "img", "src": "DSC00860-1x1.jpg" },
-                    { "type": "img", "src": "DSC01439.jpg" },
-                    { "type": "img", "src": "DSC01445.jpg" },
-                    { "type": "img", "src": "DSC01602-2.jpg" },
-                    { "type": "img", "src": "HP5-240120-01826-3.jpg" },
-                    { "type": "img", "src": "DSC01642.jpg" },
-                    { "type": "img", "src": "DSC01746.jpg" },
-                    { "type": "img", "src": "DSC02627-3.jpg" },
-                    { "type": "img", "src": "DSC03020-crop.jpg" },
-                    { "type": "img", "src": "DSC02890.jpg" },
-                    { "type": "img", "src": "DSC06979.jpg" },
-                    { "type": "img", "src": "DSC07020-crop.jpg" },
-                    { "type": "img", "src": "orwo-np15-02454.jpg" }
+                    {
+                        "type": "img",
+                        "src": "analog/day/DSC01519-2.jpg"
+                    },
+                    {
+                        "type": "div",
+                        "class": "img-caption-relative eb-garamond",
+                        "content": "Not all who wander are lost."
+                    },
+                    {
+                        "type": "div",
+                        "class": "img-wrapper",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/north/DSC01445.jpg"
+                            },
+                            {
+                                "type": "div",
+                                "class": "img-caption",
+                                "content": "Tatry IV."
+                            }
+                        ]
+                    },
+                    {
+                        "type": "img",
+                        "src": "231018-orwo-00403-3.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "231018-orwo-00433-2.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "DSC00860-1x1.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "DSC01439.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/north/DSC01445.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC01602-2.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/gaia/HP5-240120-01826-3.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/north/DSC01642.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/floral/DSC01746.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/day/DSC02627-3.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/day/DSC03020-crop.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/gaia/DSC02890.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/north/DSC06979.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC07020-crop.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/north/orwo-np15-02454.jpg"
+                    }
                 ]
             }
         },
         {
             "slug": "analog/hypnagogia",
             "tree": {
-              "source": "analog/hypnagogia"
+                "source": "analog/hypnagogia"
             }
         },
         {
@@ -267,7 +319,7 @@
         },
         {
             "slug": "backstage",
-            "background": "DSC05237.jpg",
+            "background": "analog/nostalgia/DSC05237.jpg",
             "tree": {
                 "type": "div",
                 "children": []
@@ -280,76 +332,76 @@
                 "type": "div",
                 "class": "pt-[88px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8",
                 "children": [
-                {
-                    "type": "div",
-                    "class": "flex flex-col items-center",
-                    "children": [
                     {
-                        "type": "img",
-                        "src": "DSC05237.jpg",
-                        "class": "w-full aspect-square object-cover"
+                        "type": "div",
+                        "class": "flex flex-col items-center",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/DSC05237.jpg",
+                                "class": "w-full aspect-square object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mt-2 text-center text-sm text-black",
+                                "content": "Collab 1"
+                            }
+                        ]
                     },
                     {
                         "type": "div",
-                        "class": "mt-2 text-center text-sm text-black",
-                        "content": "Collab 1"
-                    }
-                    ]
-                },
-                {
-                    "type": "div",
-                    "class": "flex flex-col items-center",
-                    "children": [
-                    {
-                        "type": "img",
-                        "src": "DSC05237.jpg",
-                        "class": "w-full aspect-square object-cover"
+                        "class": "flex flex-col items-center",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/DSC05237.jpg",
+                                "class": "w-full aspect-square object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mt-2 text-center text-sm text-black",
+                                "content": "Collab 2"
+                            }
+                        ]
                     },
                     {
                         "type": "div",
-                        "class": "mt-2 text-center text-sm text-black",
-                        "content": "Collab 2"
-                    }
-                    ]
-                },
-                {
-                    "type": "div",
-                    "class": "flex flex-col items-center",
-                    "children": [
-                    {
-                        "type": "img",
-                        "src": "DSC05237.jpg",
-                        "class": "w-full aspect-square object-cover"
+                        "class": "flex flex-col items-center",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/DSC05237.jpg",
+                                "class": "w-full aspect-square object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mt-2 text-center text-sm text-black",
+                                "content": "Collab 3"
+                            }
+                        ]
                     },
                     {
                         "type": "div",
-                        "class": "mt-2 text-center text-sm text-black",
-                        "content": "Collab 3"
+                        "class": "flex flex-col items-center",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/DSC05237.jpg",
+                                "class": "w-full aspect-square object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mt-2 text-center text-sm text-black",
+                                "content": "Collab 4"
+                            }
+                        ]
                     }
-                    ]
-                },
-                {
-                    "type": "div",
-                    "class": "flex flex-col items-center",
-                    "children": [
-                    {
-                        "type": "img",
-                        "src": "DSC05237.jpg",
-                        "class": "w-full aspect-square object-cover"
-                    },
-                    {
-                        "type": "div",
-                        "class": "mt-2 text-center text-sm text-black",
-                        "content": "Collab 4"
-                    }
-                    ]
-                }
                 ]
             }
-            },
+        },
         {
             "slug": "dancers",
-            "background": "masthead.jpg",
+            "background": "fashion/werk/DSC01899.jpg",
             "tree": {
                 "type": "div",
                 "children": []
@@ -357,10 +409,26 @@
         },
         {
             "slug": "theater",
-            "background": "masthead.jpg",
+            "background": "fashion/mood/59532b451f9b_rw_1920.jpg",
             "tree": {
                 "type": "div",
                 "children": []
+            }
+        },
+        {
+            "slug": "fashion/lookbook",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook-fav.jpg"
+                    }
+                ]
             }
         },
         {
@@ -373,23 +441,23 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "DSC06979.jpg"
+                        "src": "analog/north/DSC06979.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC00725.jpg"
+                        "src": "fashion/designers/shokoya/DSC00725.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC08211.jpg"
+                        "src": "fashion/designers/gillichbetti/DSC08211.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC07346.jpg"
+                        "src": "stories/cruise/DSC07346.jpg"
                     },
                     {
                         "type": "img",
-                        "src": "DSC08556.jpg"
+                        "src": "stories/hypnagogia/DSC08556.jpg"
                     }
                 ]
             }

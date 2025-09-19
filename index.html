@@ -209,6 +209,7 @@
         });
         manifestData.pages.push({
           "slug": "sitemap",
+          "navColor": "black",
           "tree": {
             "type": "div",
             "class": "min-h-screen flex flex-col items-center justify-center space-y-4 p-8",
@@ -298,8 +299,11 @@
 
         // Handle images
         if (node.type === "img") {
-          if (node.src) {
+          if (typeof node.src === "string") {
             propsArr.push(`src="${getImageSrc(node.src)}"`);
+          } else if (Array.isArray(node.src)) {
+            let randomSrc = node.src[Math.floor(Math.random() * node.src.length)];
+            propsArr.push(`src="${getImageSrc(randomSrc)}"`);
           } else {
             console.warn("Image node missing 'src' property:", node);
           }
@@ -374,7 +378,7 @@
         }
 
         contentContainer.innerHTML = "";
-        contentContainer.className = "relative w-full h-screen";
+        contentContainer.className = "relative w-full min-h-screen";
 
         if (currentPage.background) {
           contentContainer.style.backgroundImage = `url(${getImageSrc(currentPage.background)})`;
