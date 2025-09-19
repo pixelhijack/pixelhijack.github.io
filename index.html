@@ -306,12 +306,12 @@
           }
           if(node.alt){
             imgProps.push(`alt="${node.alt}"`);
-          } else {
-            imgProps.push(`alt="${node.src}"`);
           }
           if(node.class) {
             imgProps.push(`class="${node.class}"`);
           }
+          // Add native lazy-loading to load images only when close to viewport:
+          imgProps.push(`loading="lazy"`);
           // Build common attributes from node
           const reserved = ["type", "children", "content", "class", "style", "src", "alt", "caption", "captionStyle"];
           Object.keys(node).forEach(key => {
