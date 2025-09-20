@@ -1,4 +1,3 @@
-// upload_photos.js
 require('dotenv').config(); // Load environment variables from .env file
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
@@ -11,63 +10,91 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-if(!process.env.CLOUDINARY_API_KEY){
-    console.log("Cloudinary API Key is not set");
-    return;
+if (!process.env.CLOUDINARY_API_KEY) {
+  console.log("Cloudinary API Key is not set");
+  return;
 }
 
-// The local path to your photos folder
-const photoFolderPath = './img';
+// The root folder for your images
+const photoFolderPath = './uploadtest';
+// The output JSON file for uploaded records
+const uploadedFilePath = './uploaded.json';
 
-// Function to upload a single image
-async function uploadImage(imagePath) {
-    const filename = path.basename(imagePath).split('.')[0]; // Get filename without extension
-    const extension = path.extname(imagePath).substring(1); // Get file extension
-
-    try {
-        const result = await cloudinary.uploader.upload(imagePath, {
-            // Set the public_id to be the filename
-            public_id: filename,
-            // Optionally, add a folder to keep things organized
-            //folder: 'portfolio',
-            // Optional: Automatically convert to best format and quality
-            quality: 'auto',
-            fetch_format: 'auto'
-        });
-
-        console.log(`Successfully uploaded: ${result.public_id}.${extension}`);
-        console.log(`Access at URL: ${result.secure_url}`);
-    } catch (error) {
-        console.error(`Failed to upload ${imagePath}:`, error.message);
-    }
+// Load existing uploaded records if available
+let uploadedRecords = {};
+if (fs.existsSync(uploadedFilePath)) {
+  try {
+    uploadedRecords = JSON.parse(fs.readFileSync(uploadedFilePath, 'utf8'));
+  } catch (error) {
+    console.error("Error reading uploaded.json:", error.message);
+  }
 }
 
-// Function to iterate through all images in the folder and upload them
-async function bulkUpload() {
-    try {
-        const files = fs.readdirSync(photoFolderPath);
-        const imageFiles = files.filter(file => {
-            const ext = path.extname(file).toLowerCase();
-            return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext);
-        });
-
-        if (imageFiles.length === 0) {
-            console.log('No image files found in the specified folder.');
-            return;
+/**
+ * Recursively process a folder.
+ * @param {string} dir - Absolute path of the folder.
+ * @param {string} relPath - Relative path from the root photo folder.
+ */
+async function processFolder(dir, relPath = '') {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const currentRelPath = relPath ? path.join(relPath, entry.name) : entry.name;
+    if (entry.isDirectory()) {
+      await processFolder(fullPath, relPath ? path.join(relPath, entry.name) : entry.name);
+    } else if (entry.isFile()) {
+      const ext = path.extname(entry.name).toLowerCase();
+      if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
+        // Determine cloudinary folder:
+        // If relPath is empty, cloudinary folder is empty string, else use the relPath without the filename.
+        const folderName = relPath; // This is the subfolder relative path (e.g. "analog/floral")
+        // Use the file name as public_id, preserving extension.
+        const fileNameWithExtension = entry.name;
+        // Cloudinary automatically appends a file format extension when you upload an image. If you pass a filename that already includes an extension (like "DSC01746.jpg"), Cloudinary ends up appending the extension again (resulting in "DSC01746.jpg.jpg").
+        // To fix this, remove the file extension when setting the public_id. For example, replace:
+        const publicId = path.parse(entry.name).name; // This is the filename without extension (e.g. "DSC01746")
+        // Skip already uploaded images (if desired)
+        const recordKey = folderName ? path.join(folderName, fileNameWithExtension) : fileNameWithExtension;
+        if (uploadedRecords[recordKey]) {
+          console.log(`⛔ Already uploaded: ${recordKey}`);
+          continue;
         }
-
-        console.log(`Found ${imageFiles.length} images to upload...`);
-
-        for (const file of imageFiles) {
-            const imagePath = path.join(photoFolderPath, file);
-            await uploadImage(imagePath);
-        }
-
-        console.log('Bulk upload complete!');
-
-    } catch (error) {
-        console.error('Error reading the photo folder:', error.message);
+        await uploadImage(fullPath, publicId, folderName, recordKey);
+      }
     }
+  }
 }
 
-bulkUpload();
+/**
+ * Upload a single image to Cloudinary.
+ * @param {string} imagePath - The local image path.
+ * @param {string} publicId - The public id to use.
+ * @param {string} folder - The folder name for Cloudinary.
+ * @param {string} recordKey - The key to store in uploadedRecords.
+ */
+async function uploadImage(imagePath, publicId, folder, recordKey) {
+  try {
+    const result = await cloudinary.uploader.upload(imagePath, {
+      public_id: publicId,
+      folder: folder
+    });
+    console.log(`Successfully uploaded: ${recordKey}`);
+    console.log(`Access at URL: ${result.secure_url}`);
+    // Record the timestamp of upload
+    uploadedRecords[recordKey] = new Date().toISOString();
+    // Write the updated records to uploaded.json
+    fs.writeFileSync(uploadedFilePath, JSON.stringify(uploadedRecords, null, 2));
+  } catch (error) {
+    console.error(`Failed to upload ${imagePath}:`, error.message);
+  }
+}
+
+// Start processing from the root photo folder
+(async function bulkUpload() {
+  try {
+    await processFolder(photoFolderPath);
+    console.log('Bulk upload complete!');
+  } catch (error) {
+    console.error('Error during bulk upload:', error.message);
+  }
+})();
