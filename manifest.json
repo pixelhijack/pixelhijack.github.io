@@ -21,18 +21,24 @@
                                     "stories/hypnagogia/DSC05055.jpg",
                                     "stories/hypnagogia/DSC09638.jpg",
                                     "analog/north/orwo-np15-02454.jpg",
+                                    "conceptual/botanic/DSC09848.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
                             },
                             {
                                 "type": "div",
-                                "class": "absolute inset-0 flex items-center justify-center",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
                                 "children": [
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "Everyone has a story to tell.<br>What's yours?"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "Vintage lens & analog film photography <br>by Póth Attila"
                                     }
                                 ]
                             }

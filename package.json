@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "upload": "node cloudinary-upload.js",
-    "folders": "node img-folder-to-json.js"
+    "folders": "node img-folder-to-json.js",
+    "cld-upload": "cld upload_dir about -e -f about -p blackmac_preset -o overwrite true"
   }
 }

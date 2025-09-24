@@ -12,6 +12,10 @@
             "type": "file"
           },
           {
+            "name": "DIA09400-bw.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC02091.jpg",
             "type": "file"
           },
@@ -696,11 +700,93 @@
         "type": "folder",
         "children": [
           {
-            "name": "bogi",
+            "name": "botanic",
             "type": "folder",
             "children": [
               {
-                "name": "DSC00407.jpg",
+                "name": "DSC09732.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09759.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09848.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09917.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09953.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "coffee-and-cigarettes",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC09552-raw.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "doppelganger",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "forest-lace",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "journeys-to-self-acceptance",
+            "type": "folder",
+            "children": [
+              {
+                "name": "1789-32.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-33.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-34.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-35.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-36.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-37.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-38.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-39.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1789-40.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC01461+text.jpg",
                 "type": "file"
               }
             ]
@@ -724,8 +810,80 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "proud-mary",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC00039.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00108.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00273.jpg",
+                "type": "file"
+              },
+              {
+                "name": "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "saruul",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "skater",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "the-ascending",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "the-descending",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "the-mad-king",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "the-pier",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "the-statue",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "vigado",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC00407.jpg",
+                "type": "file"
+              }
+            ]
           }
         ]
+      },
+      {
+        "name": "dancers",
+        "type": "folder",
+        "children": []
       },
       {
         "name": "fashion",
@@ -735,6 +893,21 @@
             "name": "designers",
             "type": "folder",
             "children": [
+              {
+                "name": "anna-and-the-barbies",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "bibi-by-bianka",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "danielle",
+                "type": "folder",
+                "children": []
+              },
               {
                 "name": "gillichbetti",
                 "type": "folder",
@@ -758,6 +931,35 @@
                 ]
               },
               {
+                "name": "kovacs-dani-bevlo",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "kun-anna-emilia",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "laura-hoover",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "laura-kokai",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DIA04928.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DIA05192.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "shokoya",
                 "type": "folder",
                 "children": [
@@ -766,6 +968,16 @@
                     "type": "file"
                   }
                 ]
+              },
+              {
+                "name": "tringer-bea-ozoroczky-diana",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "viktoriavarga",
+                "type": "folder",
+                "children": []
               }
             ]
           },
@@ -828,6 +1040,57 @@
             ]
           },
           {
+            "name": "models",
+            "type": "folder",
+            "children": [
+              {
+                "name": "alex",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "anna",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "daniel-I",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "daniel-II",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "gyuszi",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "joy",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "kalman",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "nike",
+                "type": "folder",
+                "children": []
+              },
+              {
+                "name": "peter",
+                "type": "folder",
+                "children": []
+              }
+            ]
+          },
+          {
             "name": "mood",
             "type": "folder",
             "children": [
@@ -858,6 +1121,20 @@
         ]
       },
       {
+        "name": "portraits",
+        "type": "folder",
+        "children": [
+          {
+            "name": "DIA05360.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DIA05363.jpg",
+            "type": "file"
+          }
+        ]
+      },
+      {
         "name": "stories",
         "type": "folder",
         "children": [
@@ -870,6 +1147,11 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "call-me-unique",
+            "type": "folder",
+            "children": []
           },
           {
             "name": "cruise",
@@ -918,6 +1200,71 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "inked",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "kranicz-dodo",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "mini-cooper",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "mobster-bulleit",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "pato",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "poth-rebeka",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "pride",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "sipos-andrea",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "tatoocon",
+            "type": "folder",
+            "children": []
+          },
+          {
+            "name": "vikings-flokken",
+            "type": "folder",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "theater",
+        "type": "folder",
+        "children": []
+      },
+      {
+        "name": "werk",
+        "type": "folder",
+        "children": [
+          {
+            "name": "DIA05337.jpg",
+            "type": "file"
           }
         ]
       }
@@ -926,6 +1273,7 @@
   "flat": {
     "about": [
       "1734626801051.jpg",
+      "DIA09400-bw.jpg",
       "DSC02091.jpg",
       "me-rounded.png"
     ],
@@ -1100,8 +1448,27 @@
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
     ],
-    "conceptual/bogi": [
-      "DSC00407.jpg"
+    "conceptual/botanic": [
+      "DSC09732.jpg",
+      "DSC09759.jpg",
+      "DSC09848.jpg",
+      "DSC09917.jpg",
+      "DSC09953.jpg"
+    ],
+    "conceptual/coffee-and-cigarettes": [
+      "DSC09552-raw.jpg"
+    ],
+    "conceptual/journeys-to-self-acceptance": [
+      "1789-32.jpg",
+      "1789-33.jpg",
+      "1789-34.jpg",
+      "1789-35.jpg",
+      "1789-36.jpg",
+      "1789-37.jpg",
+      "1789-38.jpg",
+      "1789-39.jpg",
+      "1789-40.jpg",
+      "DSC01461+text.jpg"
     ],
     "conceptual/konyvudvar": [
       "DSC08779.jpg"
@@ -1109,11 +1476,24 @@
     "conceptual/margitkrt": [
       "kinga-2-7.jpg"
     ],
+    "conceptual/proud-mary": [
+      "DSC00039.jpg",
+      "DSC00108.jpg",
+      "DSC00273.jpg",
+      "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg"
+    ],
+    "conceptual/vigado": [
+      "DSC00407.jpg"
+    ],
     "fashion/designers/gillichbetti": [
       "DSC07947-3.jpg",
       "DSC07960.jpg",
       "DSC08083.jpg",
       "DSC08211.jpg"
+    ],
+    "fashion/designers/laura-kokai": [
+      "DIA04928.jpg",
+      "DIA05192.jpg"
     ],
     "fashion/designers/shokoya": [
       "DSC00725.jpg"
@@ -1140,6 +1520,10 @@
       "DSC02902.jpg",
       "DSC07550.jpg"
     ],
+    "portraits": [
+      "DIA05360.jpg",
+      "DIA05363.jpg"
+    ],
     "stories/balaton": [
       "DSC08465-2.jpg"
     ],
@@ -1155,10 +1539,14 @@
       "DSC09638.jpg",
       "DSC09831.jpg",
       "masthead.jpg"
+    ],
+    "werk": [
+      "DIA05337.jpg"
     ]
   },
   "path": {
     "1734626801051.jpg": "about",
+    "DIA09400-bw.jpg": "about",
     "DSC02091.jpg": "about",
     "me-rounded.png": "about",
     "DSC01519-2.jpg": "analog/day",
@@ -1312,13 +1700,35 @@
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
-    "DSC00407.jpg": "conceptual/bogi",
+    "DSC09732.jpg": "conceptual/botanic",
+    "DSC09759.jpg": "conceptual/botanic",
+    "DSC09848.jpg": "conceptual/botanic",
+    "DSC09917.jpg": "conceptual/botanic",
+    "DSC09953.jpg": "conceptual/botanic",
+    "DSC09552-raw.jpg": "conceptual/coffee-and-cigarettes",
+    "1789-32.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-33.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-34.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-35.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-36.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-37.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-38.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-39.jpg": "conceptual/journeys-to-self-acceptance",
+    "1789-40.jpg": "conceptual/journeys-to-self-acceptance",
+    "DSC01461+text.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC08779.jpg": "conceptual/konyvudvar",
     "kinga-2-7.jpg": "conceptual/margitkrt",
+    "DSC00039.jpg": "conceptual/proud-mary",
+    "DSC00108.jpg": "conceptual/proud-mary",
+    "DSC00273.jpg": "conceptual/proud-mary",
+    "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg": "conceptual/proud-mary",
+    "DSC00407.jpg": "conceptual/vigado",
     "DSC07947-3.jpg": "fashion/designers/gillichbetti",
     "DSC07960.jpg": "fashion/designers/gillichbetti",
     "DSC08083.jpg": "fashion/designers/gillichbetti",
     "DSC08211.jpg": "fashion/designers/gillichbetti",
+    "DIA04928.jpg": "fashion/designers/laura-kokai",
+    "DIA05192.jpg": "fashion/designers/laura-kokai",
     "DSC00725.jpg": "fashion/designers/shokoya",
     "DSC03289-bw.jpg": "fashion/lookbook/forrai-2024",
     "DSC03520-bw.jpg": "fashion/lookbook/forrai-2024",
@@ -1334,6 +1744,8 @@
     "DSC01899.jpg": "fashion/werk",
     "DSC02902.jpg": "fashion/werk",
     "DSC07550.jpg": "fashion/werk",
+    "DIA05360.jpg": "portraits",
+    "DIA05363.jpg": "portraits",
     "DSC08465-2.jpg": "stories/balaton",
     "DSC07346.jpg": "stories/cruise",
     "DSC01286-2.jpg": "stories/hypnagogia",
@@ -1343,6 +1755,7 @@
     "DSC08556.jpg": "stories/hypnagogia",
     "DSC09638.jpg": "stories/hypnagogia",
     "DSC09831.jpg": "stories/hypnagogia",
-    "masthead.jpg": "stories/hypnagogia"
+    "masthead.jpg": "stories/hypnagogia",
+    "DIA05337.jpg": "werk"
   }
 }

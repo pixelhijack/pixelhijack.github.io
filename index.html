@@ -122,6 +122,9 @@
           font-size: 0.8rem; 
         }
       }
+      main img {
+        margin-bottom: 0.5rem;
+      }
     </style>
   </head>
   <body class="relative min-h-screen">
@@ -133,7 +136,7 @@
       >
         <a
           href="#"
-          class="font-ambroise text-4xl font-bold text-white rounded-md p-2 hover:bg-white/10 transition-colors"
+          class="font-ambroise text-4xl font-bold text-white rounded-md p-2"
         >
           Póth Attila
         </a>
@@ -203,16 +206,23 @@
         });
         manifestData.pages.push({
           "slug": "sitemap",
-          "navColor": "black",
+          "navColor": "white",
+          "background": "conceptual/botanic/DSC09953.jpg",
           "tree": {
             "type": "div",
-            "class": "min-h-screen flex flex-col items-center justify-center space-y-4 p-8",
-            "children": Object.keys(folderData.flat).map(route => ({
+            "class": "pt-[100px] pl-[75px] min-h-screen flex flex-col items-left justify-center space-y-4 p-8",
+            "children": [
+              {
+                "type": "h1",
+                "class": "text-4xl md:text-6xl font-ambroise mb-8",
+                "content": "Congrats hacker, you found all the pages"
+              },
+              ...Object.keys(folderData.flat).map(route => ({
               type: "a",
               href: `#${route}`,
-              class: "text-2xl md:text-4xl font-bold text-black p-4 rounded-md",
+              class: "text-1xl md:text-2xl font-bold text-white rounded-md",
               content: route
-            }))
+            }))]
           }
         });
 
@@ -461,9 +471,8 @@
     </script>
 
 
-    <footer class="text-center p-4 bg-white text-black text-opacity-10">
-      <a href="#sitemap" class="underline">Sitemap</a> |
-      &copy; 2025 Póth Attila. All rights reserved.
+    <footer class="text-center p-4 bg-transparent text-black text-opacity-10">
+      &copy; 2025 Póth Attila. <a href="#sitemap">♠</a>
     </footer>
 
   </body>
