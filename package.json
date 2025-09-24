@@ -1,10 +1,13 @@
 {
   "dependencies": {
     "cloudinary": "^2.7.0",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "path": "^0.12.7"
   },
   "scripts": {
-    "dev": "python3 -m http.server 8000",
+    "dev2": "python3 -m http.server 8000",
+    "dev": "node server.js NODE_DEBUG=express",
     "upload": "node cloudinary-upload.js",
     "folders": "node img-folder-to-json.js",
     "cld-upload": "cld upload_dir about -e -f about -p blackmac_preset -o overwrite true"

@@ -135,7 +135,7 @@
         class="container mx-auto flex justify-between items-center px-4 md:px-0"
       >
         <a
-          href="#"
+          href="/"
           class="font-ambroise text-4xl font-bold text-white rounded-md p-2"
         >
           Póth Attila
@@ -150,13 +150,13 @@
         </button>
         <!-- Desktop nav links -->
         <div class="space-x-4 hidden md:block" id="nav-links">
-          <a href="#fashion">Fashion</a>
-          <a href="#analog">Analog</a>
-          <a href="#collabs">Collabs</a>
-          <a href="#backstage">Backstage</a>
-          <a href="#projects">Projects</a>
-          <a href="#arcanums">Arcanums</a>
-          <a href="#about">About</a>
+          <a href="/fashion">Fashion</a>
+          <a href="/analog">Analog</a>
+          <a href="/collabs">Collabs</a>
+          <a href="/backstage">Backstage</a>
+          <a href="/projects">Projects</a>
+          <a href="/arcanums">Arcanums</a>
+          <a href="/about">About</a>
         </div>
       </div>
       <!-- Mobile overlay menu -->
@@ -171,12 +171,12 @@
           &#10005;
         </button>
         <nav class="flex flex-col space-y-8 text-center text-3xl font-bold">
-          <a href="#fashion">Fashion</a>
-          <a href="#analog">Analog</a>
-          <a href="#collabs">Collabs</a>
-          <a href="#backstage">Backstage</a>
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
+          <a href="/fashion">Fashion</a>
+          <a href="/analog">Analog</a>
+          <a href="/collabs">Collabs</a>
+          <a href="/backstage">Backstage</a>
+          <a href="/projects">Projects</a>
+          <a href="/about">About</a>
         </nav>
       </div>
     </nav>
@@ -188,8 +188,8 @@
 
     <script>
       const apis = Promise.all([
-        fetch("manifest.json"),
-        fetch("folder.json"),
+        fetch("/manifest.json"),
+        fetch("/folder.json"),
       ]).then(([manifestRes, folderRes]) =>
         Promise.all([manifestRes.json(), folderRes.json()])
       ).then(([manifestData, folderData]) => {
@@ -219,7 +219,7 @@
               },
               ...Object.keys(folderData.flat).map(route => ({
               type: "a",
-              href: `#${route}`,
+              href: `/${route}`,
               class: "text-1xl md:text-2xl font-bold text-white rounded-md",
               content: route
             }))]
@@ -345,7 +345,7 @@
           }
           // If linkTo is provided, wrap the whole structure in an anchor.
           if (node.linkTo) {
-            imageHTML = `<a href="#${node.linkTo}">${imageHTML}</a>`;
+            imageHTML = `<a href="/${node.linkTo}">${imageHTML}</a>`;
           }
 
           return imageHTML;
@@ -403,16 +403,35 @@
        * Renders the page content based on the current URL hash.
        */
       function renderPage() {
-        const currentSlug = window.location.hash.substring(1);
-        const currentPage = manifest.pages.find(
-          (page) => page.slug === currentSlug
-        );
 
-        if (!currentPage) {
-          console.error("Page not found in manifest.");
-          window.location.hash = "";
+        if(!window.manifest) {
+          console.warn("Manifest not loaded yet.");
           return;
         }
+
+          const fullPath = window.location.pathname;
+          let currentSlug = fullPath === "/" ? "" : fullPath.slice(1);
+
+          // Try to find an exact match first.
+          let currentPage = manifest.pages.find(page => page.slug === currentSlug);
+
+          // If not found and there are subroutes, try to fall back to a parent route.
+          if (!currentPage && currentSlug.includes("/")) {
+            const segments = currentSlug.split("/");
+            while (segments.length > 0 && !currentPage) {
+              const routeToCheck = segments.join("/");
+              currentPage = manifest.pages.find(page => page.slug === routeToCheck);
+              segments.pop();
+            }
+          }
+
+          // If still not found, redirect to home.
+          if (!currentPage) {
+            history.replaceState({}, "", "/");
+            renderPage();
+            return;
+          }
+
 
         contentContainer.innerHTML = "";
         contentContainer.className = "relative w-full min-h-screen";
@@ -436,8 +455,8 @@
           // Reset color and underline
           link.style.color = "";
           link.style.textDecoration = "";
-          // Get slug from href (after #)
-          const linkSlug = link.getAttribute("href").replace("#", "");
+          // Get slug from href
+          const linkSlug = link.getAttribute("href").slice(1); 
           // If navColor is set, apply it
           if (currentPage.navColor) {
             link.style.color = currentPage.navColor;
@@ -460,19 +479,28 @@
         contentContainer.innerHTML = renderTree(currentPage.tree);
       }
 
-      // Add a listener for hash changes to enable routing
-      window.addEventListener("hashchange", renderPage);
+      // Hook into History API for navigation:
+      document.addEventListener("click", function(e) {
+        const target = e.target.closest("a");
+        if (!target) return;
+        const href = target.getAttribute("href");
+        if (href && href.startsWith("/")) { // internal link
+          e.preventDefault();
+          history.pushState({}, "", href);
+          renderPage();
+        }
+      });
 
-      // Initial render on page load
-      //document.addEventListener('DOMContentLoaded', renderPage);
+      // Listen for browser back/forward events:
+      window.addEventListener("popstate", renderPage);
 
-      // Re-render on media query change
-      desktopMediaQuery.addListener(renderPage);
+      // Initial rendering:
+      document.addEventListener("DOMContentLoaded", renderPage);
     </script>
 
 
     <footer class="text-center p-4 bg-transparent text-black text-opacity-10">
-      &copy; 2025 Póth Attila. <a href="#sitemap">♠</a>
+      &copy; 2025 Póth Attila. <a href="/sitemap">♠</a>
     </footer>
 
   </body>
