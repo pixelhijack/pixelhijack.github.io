@@ -792,7 +792,7 @@
             ]
           },
           {
-            "name": "konyvudvar",
+            "name": "doppelganger",
             "type": "folder",
             "children": [
               {
@@ -1470,7 +1470,7 @@
       "1789-40.jpg",
       "DSC01461+text.jpg"
     ],
-    "conceptual/konyvudvar": [
+    "conceptual/doppelganger": [
       "DSC08779.jpg"
     ],
     "conceptual/margitkrt": [
@@ -1716,7 +1716,7 @@
     "1789-39.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-40.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC01461+text.jpg": "conceptual/journeys-to-self-acceptance",
-    "DSC08779.jpg": "conceptual/konyvudvar",
+    "DSC08779.jpg": "conceptual/doppelganger",
     "kinga-2-7.jpg": "conceptual/margitkrt",
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",

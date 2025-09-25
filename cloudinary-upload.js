@@ -15,8 +15,11 @@ if (!process.env.CLOUDINARY_API_KEY) {
   return;
 }
 
-// The root folder for your images
-const photoFolderPath = './uploadtest';
+// Define the base folder for local images (must be inside public)
+const baseFolderPath = './public/img';
+// Choose which subfolder to process
+const photoFolderPath = path.join(baseFolderPath, 'analog/day'); 
+
 // The output JSON file for uploaded records
 const uploadedFilePath = './uploaded.json';
 
@@ -26,34 +29,32 @@ if (fs.existsSync(uploadedFilePath)) {
   try {
     uploadedRecords = JSON.parse(fs.readFileSync(uploadedFilePath, 'utf8'));
   } catch (error) {
-    console.error("Error reading uploaded.json:", error.message);
+    console.error("⚠️ Error reading uploaded.json:", error.message);
   }
 }
 
 /**
  * Recursively process a folder.
  * @param {string} dir - Absolute path of the folder.
- * @param {string} relPath - Relative path from the root photo folder.
+ * @param {string} relPath - Relative path from the baseFolderPath.
  */
 async function processFolder(dir, relPath = '') {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    const currentRelPath = relPath ? path.join(relPath, entry.name) : entry.name;
+    // Build the new relative path from baseFolderPath
+    const newRelPath = relPath ? path.join(relPath, entry.name) : entry.name;
     if (entry.isDirectory()) {
-      await processFolder(fullPath, relPath ? path.join(relPath, entry.name) : entry.name);
+      await processFolder(fullPath, newRelPath);
     } else if (entry.isFile()) {
       const ext = path.extname(entry.name).toLowerCase();
       if (['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(ext)) {
-        // Determine cloudinary folder:
-        // If relPath is empty, cloudinary folder is empty string, else use the relPath without the filename.
-        const folderName = relPath; // This is the subfolder relative path (e.g. "analog/floral")
-        // Use the file name as public_id, preserving extension.
+        // folderName should be the full relative path (e.g., "analog/day" or "analog/day/subfolder")
+        const folderName = relPath;
         const fileNameWithExtension = entry.name;
-        // Cloudinary automatically appends a file format extension when you upload an image. If you pass a filename that already includes an extension (like "DSC01746.jpg"), Cloudinary ends up appending the extension again (resulting in "DSC01746.jpg.jpg").
-        // To fix this, remove the file extension when setting the public_id. For example, replace:
-        const publicId = path.parse(entry.name).name; // This is the filename without extension (e.g. "DSC01746")
-        // Skip already uploaded images (if desired)
+        // Use the file name without extension for Cloudinary public_id (Cloudinary adds the extension automatically)
+        const publicId = path.parse(entry.name).name;
+        // Build record key using the full relative path from baseFolderPath
         const recordKey = folderName ? path.join(folderName, fileNameWithExtension) : fileNameWithExtension;
         if (uploadedRecords[recordKey]) {
           console.log(`⛔ Already uploaded: ${recordKey}`);
@@ -78,23 +79,29 @@ async function uploadImage(imagePath, publicId, folder, recordKey) {
       public_id: publicId,
       folder: folder
     });
-    console.log(`Successfully uploaded: ${recordKey}`);
-    console.log(`Access at URL: ${result.secure_url}`);
+    console.log(`✅ Successfully uploaded: ${recordKey}`);
+    console.log(`    👉 Access at URL: ${result.secure_url}`);
     // Record the timestamp of upload
     uploadedRecords[recordKey] = new Date().toISOString();
     // Write the updated records to uploaded.json
     fs.writeFileSync(uploadedFilePath, JSON.stringify(uploadedRecords, null, 2));
   } catch (error) {
-    console.error(`Failed to upload ${imagePath}:`, error.message);
+    console.error(`⚠️ Failed to upload ${imagePath}:`, error.message);
   }
 }
 
-// Start processing from the root photo folder
+// Start processing from the photoFolderPath but compute the relative path from baseFolderPath.
+// This way, if photoFolderPath is './public/img/analog/day', then:
+const initialRelPath = path.relative(baseFolderPath, photoFolderPath);
 (async function bulkUpload() {
   try {
-    await processFolder(photoFolderPath);
-    console.log('Bulk upload complete!');
+    await processFolder(photoFolderPath, initialRelPath);
+    console.log('==================');
+    console.log('🚀 Bulk upload complete!');
+    console.log('==================');
   } catch (error) {
-    console.error('Error during bulk upload:', error.message);
+    console.log('==================');
+    console.error('⚠️ Error during bulk upload:', error.message);
+    console.log('==================');
   }
 })();
