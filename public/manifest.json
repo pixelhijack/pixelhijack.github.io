@@ -43,11 +43,6 @@
                                 ]
                             }
                         ]
-                    },
-                    {
-                        "type": "div",
-                        "class": "p-8 text-sm md:text-base text-gray-700",
-                        "content": "Hey, I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks. Scroll down for more."
                     }
                 ]
             }
@@ -79,6 +74,34 @@
             }
         },
         {
+            "slug": "prints",
+            "navColor": "black",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "mt-[128px] font-eb-garamond text-2xl md:text-4xl font-bold text-black p-4 rounded-md max-w-[80%]",
+                        "content": "Photos on the site available as high-quality prints. <br>Contact me for details."
+                    },
+                    {
+                        "type": "img",
+                        "src": "prints/231018-orwo-00426-a4-side.jpeg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "prints/DSC01445.wall-side.jpeg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "prints/DSC08971-wall-side.jpeg"
+                    }
+                ]
+            }
+        },
+        {
             "slug": "about",
             "background": null,
             "navColor": "black",
@@ -88,31 +111,8 @@
                 "class": "flex flex-col items-center justify-center h-full",
                 "children": [
                     {
-                        "type": "div",
-                        "class": "mt-[1300px] text-4xl md:text-6xl font-bold text-black p-4 rounded-md max-w-[80%]",
-                        "style": {
-                            "desktop": {},
-                            "mobile": {
-                                "top": "15%",
-                                "left": "10%",
-                                "position": "relative"
-                            }
-                        },
-                        "content": "Hello, I am a photographer"
-                    },
-                    {
                         "type": "img",
-                        "class": "mt-[64px] max-w-full md:max-w-[50%] h-auto rounded-lg",
-                        "style": {
-                            "desktop": {
-                                "position": "relative"
-                            },
-                            "mobile": {
-                                "bottom": "5%",
-                                "right": "5%",
-                                "position": "relative"
-                            }
-                        },
+                        "class": "mt-[120px] max-w-full md:max-w-[50%] h-auto rounded-lg",
                         "src": "about/me-rounded.png",
                         "alt": "Póth Attila"
                     },
@@ -129,7 +129,7 @@
                                 "position": "relative"
                             }
                         },
-                        "content": "Hey, I'm a professional photographer, based at Lake Balaton & Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                        "content": "Hey, I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
                     },
                     {
                         "type": "img",
@@ -141,11 +141,18 @@
         },
         {
             "slug": "fashion",
-            "background": "fashion/designers/gillichbetti/DSC07947-3.jpg",
+            "background": null,
             "navColor": "gold",
             "tree": {
                 "type": "div",
-                "children": []
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2024/DSC03521-bw.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl font-bold text-white",
+                        "caption": "Coming soon..."
+                    }
+                ]
             }
         },
         {
@@ -326,10 +333,17 @@
         },
         {
             "slug": "backstage",
-            "background": "analog/nostalgia/DSC05237.jpg",
+            "background": null,
             "tree": {
                 "type": "div",
-                "children": []
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "analog/nostalgia/DSC05237.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl font-bold text-white",
+                        "caption": "Coming soon..."
+                    }
+                ]
             }
         },
         {

@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const rootDir = './img'; // The root folder for your images
-const outputFilePath = './folder.json'; // The output JSON file
+const rootDir = './public/img'; // The root folder for your images
+const outputFilePath = './public/folder.json'; // The output JSON file
 
 /**
  * Recursively reads a directory and builds the file structure, excluding .DS_Store.

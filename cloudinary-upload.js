@@ -18,7 +18,7 @@ if (!process.env.CLOUDINARY_API_KEY) {
 // Define the base folder for local images (must be inside public)
 const baseFolderPath = './public/img';
 // Choose which subfolder to process
-const photoFolderPath = path.join(baseFolderPath, 'analog/day'); 
+const photoFolderPath = path.join(baseFolderPath, 'prints'); 
 
 // The output JSON file for uploaded records
 const uploadedFilePath = './uploaded.json';

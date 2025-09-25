@@ -738,7 +738,12 @@
           {
             "name": "doppelganger",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC08779.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "forest-lace",
@@ -787,16 +792,6 @@
               },
               {
                 "name": "DSC01461+text.jpg",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "doppelganger",
-            "type": "folder",
-            "children": [
-              {
-                "name": "DSC08779.jpg",
                 "type": "file"
               }
             ]
@@ -938,7 +933,48 @@
               {
                 "name": "kun-anna-emilia",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "230719-00413-down.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00413.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00420.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00467.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00487.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00506.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00531.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00544.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00547.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "230719-00588.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "laura-hoover",
@@ -977,7 +1013,32 @@
               {
                 "name": "viktoriavarga",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC08246.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08293.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08305-bw-darkerfilter.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08309.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08347.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08415-bw-greenfilter.jpg",
+                    "type": "file"
+                  }
+                ]
               }
             ]
           },
@@ -1130,6 +1191,24 @@
           },
           {
             "name": "DIA05363.jpg",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "prints",
+        "type": "folder",
+        "children": [
+          {
+            "name": "231018-orwo-00426-a4-side.jpeg",
+            "type": "file"
+          },
+          {
+            "name": "DSC01445.wall-side.jpeg",
+            "type": "file"
+          },
+          {
+            "name": "DSC08971-wall-side.jpeg",
             "type": "file"
           }
         ]
@@ -1458,6 +1537,9 @@
     "conceptual/coffee-and-cigarettes": [
       "DSC09552-raw.jpg"
     ],
+    "conceptual/doppelganger": [
+      "DSC08779.jpg"
+    ],
     "conceptual/journeys-to-self-acceptance": [
       "1789-32.jpg",
       "1789-33.jpg",
@@ -1469,9 +1551,6 @@
       "1789-39.jpg",
       "1789-40.jpg",
       "DSC01461+text.jpg"
-    ],
-    "conceptual/doppelganger": [
-      "DSC08779.jpg"
     ],
     "conceptual/margitkrt": [
       "kinga-2-7.jpg"
@@ -1491,12 +1570,32 @@
       "DSC08083.jpg",
       "DSC08211.jpg"
     ],
+    "fashion/designers/kun-anna-emilia": [
+      "230719-00413-down.jpg",
+      "230719-00413.jpg",
+      "230719-00420.jpg",
+      "230719-00467.jpg",
+      "230719-00487.jpg",
+      "230719-00506.jpg",
+      "230719-00531.jpg",
+      "230719-00544.jpg",
+      "230719-00547.jpg",
+      "230719-00588.jpg"
+    ],
     "fashion/designers/laura-kokai": [
       "DIA04928.jpg",
       "DIA05192.jpg"
     ],
     "fashion/designers/shokoya": [
       "DSC00725.jpg"
+    ],
+    "fashion/designers/viktoriavarga": [
+      "DSC08246.jpg",
+      "DSC08293.jpg",
+      "DSC08305-bw-darkerfilter.jpg",
+      "DSC08309.jpg",
+      "DSC08347.jpg",
+      "DSC08415-bw-greenfilter.jpg"
     ],
     "fashion/lookbook/forrai-2024": [
       "DSC03289-bw.jpg",
@@ -1523,6 +1622,11 @@
     "portraits": [
       "DIA05360.jpg",
       "DIA05363.jpg"
+    ],
+    "prints": [
+      "231018-orwo-00426-a4-side.jpeg",
+      "DSC01445.wall-side.jpeg",
+      "DSC08971-wall-side.jpeg"
     ],
     "stories/balaton": [
       "DSC08465-2.jpg"
@@ -1706,6 +1810,7 @@
     "DSC09917.jpg": "conceptual/botanic",
     "DSC09953.jpg": "conceptual/botanic",
     "DSC09552-raw.jpg": "conceptual/coffee-and-cigarettes",
+    "DSC08779.jpg": "conceptual/doppelganger",
     "1789-32.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-33.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-34.jpg": "conceptual/journeys-to-self-acceptance",
@@ -1716,7 +1821,6 @@
     "1789-39.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-40.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC01461+text.jpg": "conceptual/journeys-to-self-acceptance",
-    "DSC08779.jpg": "conceptual/doppelganger",
     "kinga-2-7.jpg": "conceptual/margitkrt",
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",
@@ -1727,9 +1831,25 @@
     "DSC07960.jpg": "fashion/designers/gillichbetti",
     "DSC08083.jpg": "fashion/designers/gillichbetti",
     "DSC08211.jpg": "fashion/designers/gillichbetti",
+    "230719-00413-down.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00413.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00420.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00467.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00487.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00506.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00531.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00544.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00547.jpg": "fashion/designers/kun-anna-emilia",
+    "230719-00588.jpg": "fashion/designers/kun-anna-emilia",
     "DIA04928.jpg": "fashion/designers/laura-kokai",
     "DIA05192.jpg": "fashion/designers/laura-kokai",
     "DSC00725.jpg": "fashion/designers/shokoya",
+    "DSC08246.jpg": "fashion/designers/viktoriavarga",
+    "DSC08293.jpg": "fashion/designers/viktoriavarga",
+    "DSC08305-bw-darkerfilter.jpg": "fashion/designers/viktoriavarga",
+    "DSC08309.jpg": "fashion/designers/viktoriavarga",
+    "DSC08347.jpg": "fashion/designers/viktoriavarga",
+    "DSC08415-bw-greenfilter.jpg": "fashion/designers/viktoriavarga",
     "DSC03289-bw.jpg": "fashion/lookbook/forrai-2024",
     "DSC03520-bw.jpg": "fashion/lookbook/forrai-2024",
     "DSC03521-bw.jpg": "fashion/lookbook/forrai-2024",
@@ -1746,6 +1866,9 @@
     "DSC07550.jpg": "fashion/werk",
     "DIA05360.jpg": "portraits",
     "DIA05363.jpg": "portraits",
+    "231018-orwo-00426-a4-side.jpeg": "prints",
+    "DSC01445.wall-side.jpeg": "prints",
+    "DSC08971-wall-side.jpeg": "prints",
     "DSC08465-2.jpg": "stories/balaton",
     "DSC07346.jpg": "stories/cruise",
     "DSC01286-2.jpg": "stories/hypnagogia",
