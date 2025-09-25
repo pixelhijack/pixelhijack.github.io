@@ -149,7 +149,7 @@
                     {
                         "type": "img",
                         "src": "fashion/lookbook/forrai-2024/DSC03521-bw.jpg",
-                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl font-bold text-white",
+                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
                         "caption": "Coming soon..."
                     }
                 ]
@@ -339,8 +339,23 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "analog/nostalgia/DSC05237.jpg",
-                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl font-bold text-white",
+                        "src": "werk/DIA05337.jpg",
+                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
+                        "caption": "Coming soon..."
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "stories",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "stories/balaton/DSC08465-2.jpg",
+                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
                         "caption": "Coming soon..."
                     }
                 ]
@@ -436,7 +451,7 @@
         },
         {
             "slug": "dancers",
-            "background": "fashion/werk/DSC01899.jpg",
+            "background": "werk/DSC01899.jpg",
             "tree": {
                 "type": "div",
                 "children": []

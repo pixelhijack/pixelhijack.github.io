@@ -1160,24 +1160,6 @@
                 "type": "file"
               }
             ]
-          },
-          {
-            "name": "werk",
-            "type": "folder",
-            "children": [
-              {
-                "name": "DSC01899.jpg",
-                "type": "file"
-              },
-              {
-                "name": "DSC02902.jpg",
-                "type": "file"
-              },
-              {
-                "name": "DSC07550.jpg",
-                "type": "file"
-              }
-            ]
           }
         ]
       },
@@ -1343,6 +1325,18 @@
         "children": [
           {
             "name": "DIA05337.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC01899.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC02902.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC07550.jpg",
             "type": "file"
           }
         ]
@@ -1614,11 +1608,6 @@
     "fashion/mood": [
       "59532b451f9b_rw_1920.jpg"
     ],
-    "fashion/werk": [
-      "DSC01899.jpg",
-      "DSC02902.jpg",
-      "DSC07550.jpg"
-    ],
     "portraits": [
       "DIA05360.jpg",
       "DIA05363.jpg"
@@ -1645,7 +1634,10 @@
       "masthead.jpg"
     ],
     "werk": [
-      "DIA05337.jpg"
+      "DIA05337.jpg",
+      "DSC01899.jpg",
+      "DSC02902.jpg",
+      "DSC07550.jpg"
     ]
   },
   "path": {
@@ -1861,9 +1853,6 @@
     "tiles-lookbook-fav.jpg": "fashion/lookbook/forrai-2025",
     "tiles-lookbook.jpg": "fashion/lookbook/forrai-2025",
     "59532b451f9b_rw_1920.jpg": "fashion/mood",
-    "DSC01899.jpg": "fashion/werk",
-    "DSC02902.jpg": "fashion/werk",
-    "DSC07550.jpg": "fashion/werk",
     "DIA05360.jpg": "portraits",
     "DIA05363.jpg": "portraits",
     "231018-orwo-00426-a4-side.jpeg": "prints",
@@ -1879,6 +1868,9 @@
     "DSC09638.jpg": "stories/hypnagogia",
     "DSC09831.jpg": "stories/hypnagogia",
     "masthead.jpg": "stories/hypnagogia",
-    "DIA05337.jpg": "werk"
+    "DIA05337.jpg": "werk",
+    "DSC01899.jpg": "werk",
+    "DSC02902.jpg": "werk",
+    "DSC07550.jpg": "werk"
   }
 }
