@@ -37,7 +37,7 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "italic font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "Vintage lens & analog film photography <br>by Póth Attila"
                                     }
                                 ]
@@ -164,8 +164,8 @@
             }
         },
         {
-            "slug": "analog",
-            "background": "",
+            "slug": "analog2",
+            "background": null,
             "navColor": "gold",
             "tree": {
                 "type": "div",
@@ -477,6 +477,73 @@
                     {
                         "type": "img",
                         "src": "fashion/lookbook/forrai-2025/tiles-lookbook-fav.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "analog",
+            "background": null,
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "masonry-container",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/trix400-230726-01716.jpg",
+                        "caption": "Hypnagogia",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/hypnagogia"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/south/DSC08971-2.jpg",
+                        "caption": "South",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/south"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/portraits/DSC02576-5.jpg",
+                        "caption": "Portraits",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/portraits"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/day/DSC03020-crop.jpg",
+                        "caption": "Day",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/day"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/floral/231018-orwo-00426-2.jpg",
+                        "caption": "Floral",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/floral"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/north/DSC06979.jpg",
+                        "caption": "North",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/north"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/gaia/231018-orwo-00396-5.jpg",
+                        "caption": "Gaia",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/gaia"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/icarus/DSC00744-2.jpg",
+                        "caption": "Icarus",
+                        "captionStyle": "caption-center font-eb-garamond",
+                        "linkTo": "analog/icarus"
                     }
                 ]
             }
