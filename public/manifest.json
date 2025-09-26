@@ -232,16 +232,15 @@
         },
         {
             "slug": "fashion",
-            "background": null,
+            "background": "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
             "navColor": "gold",
             "tree": {
                 "type": "div",
                 "children": [
                     {
-                        "type": "img",
-                        "src": "fashion/lookbook/forrai-2024/DSC03521-bw.jpg",
-                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
-                        "caption": "Coming soon..."
+                        "type": "div",
+                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "content": "Coming soon..."
                     }
                 ]
             }
@@ -424,30 +423,28 @@
         },
         {
             "slug": "backstage",
-            "background": null,
+            "background": "werk/DIA05337.jpg",
             "tree": {
                 "type": "div",
                 "children": [
                     {
-                        "type": "img",
-                        "src": "werk/DIA05337.jpg",
-                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
-                        "caption": "Coming soon..."
+                        "type": "div",
+                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "content": "Coming soon..."
                     }
                 ]
             }
         },
         {
             "slug": "stories",
-            "background": null,
+            "background": "stories/balaton/DSC08465-2.jpg",
             "tree": {
                 "type": "div",
                 "children": [
                     {
-                        "type": "img",
-                        "src": "stories/balaton/DSC08465-2.jpg",
-                        "captionStyle": "caption-center font-eb-garamond text-4xl md:text-6xl font-bold text-white",
-                        "caption": "Coming soon..."
+                        "type": "div",
+                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "content": "Coming soon..."
                     }
                 ]
             }
