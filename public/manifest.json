@@ -43,6 +43,97 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container m-[20px]",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "conceptual/b72/DSC00894.jpg",
+                                "linkTo": "conceptual/b72"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/journeys-to-self-acceptance/DSC01206.jpg",
+                                "linkTo": "conceptual/journeys-to-self-acceptance"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/alex/DSC05580-bw.jpg",
+                                "linkTo": "fashion/models/alex"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/portraits/DSC02593.jpg",
+                                "linkTo": "analog/portraits"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/b72/DSC00060-gold.jpg",
+                                "linkTo": "conceptual/b72"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/proud-mary/f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg",
+                                "linkTo": "conceptual/proud-mary"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/vigado/DSC00351.jpg",
+                                "linkTo": "conceptual/vigado"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/gaia/DSC02602.jpg",
+                                "linkTo": "analog/gaia"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/shows/marie-claire/DSC03444.jpg",
+                                "linkTo": "fashion/shows/marie-claire"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/designers/viktoriavarga/DSC08246.jpg",
+                                "linkTo": "fashion/designers/viktoriavarga"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/daniel-II/DSC05914-bw.jpg",
+                                "linkTo": "fashion/models/daniel-II"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-pier/DSC09454.jpg",
+                                "linkTo": "conceptual/the-pier"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/kalman/DSC09322.jpg",
+                                "linkTo": "fashion/models"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/botanic/DSC09732.jpg",
+                                "linkTo": "conceptual/botanic"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/peter/DSC06534-bw-dark.jpg",
+                                "linkTo": "fashion/models/peter"
+                            },
+                            {
+                                "type": "img",
+                                "src": "portraits/DSC01375.jpg",
+                                "linkTo": "portraits"
+                            },
+                            {
+                                "type": "img",
+                                "src": "portraits/DSC09231-bw.jpg",
+                                "linkTo": "portraits"
+                            }
+                        ]
                     }
                 ]
             }

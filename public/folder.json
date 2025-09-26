@@ -162,6 +162,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC02602.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC02609.jpg",
                 "type": "file"
               },
@@ -700,6 +704,44 @@
         "type": "folder",
         "children": [
           {
+            "name": "b72",
+            "type": "folder",
+            "children": [
+              {
+                "name": "20200404_082431265.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00060-gold.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00653.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00679-BW.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00741.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00894.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00900.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00922.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
             "name": "botanic",
             "type": "folder",
             "children": [
@@ -791,6 +833,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC01206.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC01461+text.jpg",
                 "type": "file"
               }
@@ -856,7 +902,20 @@
           {
             "name": "the-pier",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC09454.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09471.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09495.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "the-statue",
@@ -868,7 +927,19 @@
             "type": "folder",
             "children": [
               {
+                "name": "DSC00351.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC00407.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00409.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00411-2.jpg",
                 "type": "file"
               }
             ]
@@ -1107,7 +1178,20 @@
               {
                 "name": "alex",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC05526.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC05573-2.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC05580-bw.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "anna",
@@ -1122,7 +1206,12 @@
               {
                 "name": "daniel-II",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC05914-bw.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "gyuszi",
@@ -1132,12 +1221,22 @@
               {
                 "name": "joy",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC06194-8.5x11.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "kalman",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC09322.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "nike",
@@ -1147,7 +1246,24 @@
               {
                 "name": "peter",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC06534-bw-dark.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC06610-2.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC06636-red+98c+14y.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC06674-red+98c+14y.jpg",
+                    "type": "file"
+                  }
+                ]
               }
             ]
           },
@@ -1158,6 +1274,54 @@
               {
                 "name": "59532b451f9b_rw_1920.jpg",
                 "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "shows",
+            "type": "folder",
+            "children": [
+              {
+                "name": "marie-claire",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC03444.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03546.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03558.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03593.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03645.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03748.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03840.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03890.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03891.jpg",
+                    "type": "file"
+                  }
+                ]
               }
             ]
           }
@@ -1173,6 +1337,26 @@
           },
           {
             "name": "DIA05363.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC00509-bw-2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC01375.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC08650-2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09221-hell.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09231-bw.jpg",
             "type": "file"
           }
         ]
@@ -1230,6 +1414,10 @@
             "children": [
               {
                 "name": "DSC01286-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC01590.jpg",
                 "type": "file"
               },
               {
@@ -1338,6 +1526,10 @@
           {
             "name": "DSC07550.jpg",
             "type": "file"
+          },
+          {
+            "name": "DSC07607.jpg",
+            "type": "file"
           }
         ]
       }
@@ -1384,6 +1576,7 @@
       "231018-orwo-00400-2.jpg",
       "231018-orwo-00401-2.jpg",
       "DSC02601.jpg",
+      "DSC02602.jpg",
       "DSC02609.jpg",
       "DSC02890.jpg",
       "DSC05367.jpg",
@@ -1521,6 +1714,16 @@
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
     ],
+    "conceptual/b72": [
+      "20200404_082431265.jpg",
+      "DSC00060-gold.jpg",
+      "DSC00653.jpg",
+      "DSC00679-BW.jpg",
+      "DSC00741.jpg",
+      "DSC00894.jpg",
+      "DSC00900.jpg",
+      "DSC00922.jpg"
+    ],
     "conceptual/botanic": [
       "DSC09732.jpg",
       "DSC09759.jpg",
@@ -1544,6 +1747,7 @@
       "1789-38.jpg",
       "1789-39.jpg",
       "1789-40.jpg",
+      "DSC01206.jpg",
       "DSC01461+text.jpg"
     ],
     "conceptual/margitkrt": [
@@ -1555,8 +1759,16 @@
       "DSC00273.jpg",
       "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg"
     ],
+    "conceptual/the-pier": [
+      "DSC09454.jpg",
+      "DSC09471.jpg",
+      "DSC09495.jpg"
+    ],
     "conceptual/vigado": [
-      "DSC00407.jpg"
+      "DSC00351.jpg",
+      "DSC00407.jpg",
+      "DSC00409.jpg",
+      "DSC00411-2.jpg"
     ],
     "fashion/designers/gillichbetti": [
       "DSC07947-3.jpg",
@@ -1605,12 +1817,48 @@
       "tiles-lookbook-fav.jpg",
       "tiles-lookbook.jpg"
     ],
+    "fashion/models/alex": [
+      "DSC05526.jpg",
+      "DSC05573-2.jpg",
+      "DSC05580-bw.jpg"
+    ],
+    "fashion/models/daniel-II": [
+      "DSC05914-bw.jpg"
+    ],
+    "fashion/models/joy": [
+      "DSC06194-8.5x11.jpg"
+    ],
+    "fashion/models/kalman": [
+      "DSC09322.jpg"
+    ],
+    "fashion/models/peter": [
+      "DSC06534-bw-dark.jpg",
+      "DSC06610-2.jpg",
+      "DSC06636-red+98c+14y.jpg",
+      "DSC06674-red+98c+14y.jpg"
+    ],
     "fashion/mood": [
       "59532b451f9b_rw_1920.jpg"
     ],
+    "fashion/shows/marie-claire": [
+      "DSC03444.jpg",
+      "DSC03546.jpg",
+      "DSC03558.jpg",
+      "DSC03593.jpg",
+      "DSC03645.jpg",
+      "DSC03748.jpg",
+      "DSC03840.jpg",
+      "DSC03890.jpg",
+      "DSC03891.jpg"
+    ],
     "portraits": [
       "DIA05360.jpg",
-      "DIA05363.jpg"
+      "DIA05363.jpg",
+      "DSC00509-bw-2.jpg",
+      "DSC01375.jpg",
+      "DSC08650-2.jpg",
+      "DSC09221-hell.jpg",
+      "DSC09231-bw.jpg"
     ],
     "prints": [
       "231018-orwo-00426-a4-side.jpeg",
@@ -1625,6 +1873,7 @@
     ],
     "stories/hypnagogia": [
       "DSC01286-2.jpg",
+      "DSC01590.jpg",
       "DSC02471.jpg",
       "DSC05055.jpg",
       "DSC08447.jpg",
@@ -1637,7 +1886,8 @@
       "DIA05337.jpg",
       "DSC01899.jpg",
       "DSC02902.jpg",
-      "DSC07550.jpg"
+      "DSC07550.jpg",
+      "DSC07607.jpg"
     ]
   },
   "path": {
@@ -1674,6 +1924,7 @@
     "231018-orwo-00400-2.jpg": "analog/gaia",
     "231018-orwo-00401-2.jpg": "analog/gaia",
     "DSC02601.jpg": "analog/gaia",
+    "DSC02602.jpg": "analog/gaia",
     "DSC02609.jpg": "analog/gaia",
     "DSC02890.jpg": "analog/gaia",
     "DSC05367.jpg": "analog/gaia",
@@ -1796,6 +2047,14 @@
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
+    "20200404_082431265.jpg": "conceptual/b72",
+    "DSC00060-gold.jpg": "conceptual/b72",
+    "DSC00653.jpg": "conceptual/b72",
+    "DSC00679-BW.jpg": "conceptual/b72",
+    "DSC00741.jpg": "conceptual/b72",
+    "DSC00894.jpg": "conceptual/b72",
+    "DSC00900.jpg": "conceptual/b72",
+    "DSC00922.jpg": "conceptual/b72",
     "DSC09732.jpg": "conceptual/botanic",
     "DSC09759.jpg": "conceptual/botanic",
     "DSC09848.jpg": "conceptual/botanic",
@@ -1812,13 +2071,20 @@
     "1789-38.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-39.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-40.jpg": "conceptual/journeys-to-self-acceptance",
+    "DSC01206.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC01461+text.jpg": "conceptual/journeys-to-self-acceptance",
     "kinga-2-7.jpg": "conceptual/margitkrt",
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",
     "DSC00273.jpg": "conceptual/proud-mary",
     "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg": "conceptual/proud-mary",
+    "DSC09454.jpg": "conceptual/the-pier",
+    "DSC09471.jpg": "conceptual/the-pier",
+    "DSC09495.jpg": "conceptual/the-pier",
+    "DSC00351.jpg": "conceptual/vigado",
     "DSC00407.jpg": "conceptual/vigado",
+    "DSC00409.jpg": "conceptual/vigado",
+    "DSC00411-2.jpg": "conceptual/vigado",
     "DSC07947-3.jpg": "fashion/designers/gillichbetti",
     "DSC07960.jpg": "fashion/designers/gillichbetti",
     "DSC08083.jpg": "fashion/designers/gillichbetti",
@@ -1852,15 +2118,40 @@
     "DSC04574-cold-crop.jpg": "fashion/lookbook/forrai-2024",
     "tiles-lookbook-fav.jpg": "fashion/lookbook/forrai-2025",
     "tiles-lookbook.jpg": "fashion/lookbook/forrai-2025",
+    "DSC05526.jpg": "fashion/models/alex",
+    "DSC05573-2.jpg": "fashion/models/alex",
+    "DSC05580-bw.jpg": "fashion/models/alex",
+    "DSC05914-bw.jpg": "fashion/models/daniel-II",
+    "DSC06194-8.5x11.jpg": "fashion/models/joy",
+    "DSC09322.jpg": "fashion/models/kalman",
+    "DSC06534-bw-dark.jpg": "fashion/models/peter",
+    "DSC06610-2.jpg": "fashion/models/peter",
+    "DSC06636-red+98c+14y.jpg": "fashion/models/peter",
+    "DSC06674-red+98c+14y.jpg": "fashion/models/peter",
     "59532b451f9b_rw_1920.jpg": "fashion/mood",
+    "DSC03444.jpg": "fashion/shows/marie-claire",
+    "DSC03546.jpg": "fashion/shows/marie-claire",
+    "DSC03558.jpg": "fashion/shows/marie-claire",
+    "DSC03593.jpg": "fashion/shows/marie-claire",
+    "DSC03645.jpg": "fashion/shows/marie-claire",
+    "DSC03748.jpg": "fashion/shows/marie-claire",
+    "DSC03840.jpg": "fashion/shows/marie-claire",
+    "DSC03890.jpg": "fashion/shows/marie-claire",
+    "DSC03891.jpg": "fashion/shows/marie-claire",
     "DIA05360.jpg": "portraits",
     "DIA05363.jpg": "portraits",
+    "DSC00509-bw-2.jpg": "portraits",
+    "DSC01375.jpg": "portraits",
+    "DSC08650-2.jpg": "portraits",
+    "DSC09221-hell.jpg": "portraits",
+    "DSC09231-bw.jpg": "portraits",
     "231018-orwo-00426-a4-side.jpeg": "prints",
     "DSC01445.wall-side.jpeg": "prints",
     "DSC08971-wall-side.jpeg": "prints",
     "DSC08465-2.jpg": "stories/balaton",
     "DSC07346.jpg": "stories/cruise",
     "DSC01286-2.jpg": "stories/hypnagogia",
+    "DSC01590.jpg": "stories/hypnagogia",
     "DSC02471.jpg": "stories/hypnagogia",
     "DSC05055.jpg": "stories/hypnagogia",
     "DSC08447.jpg": "stories/hypnagogia",
@@ -1871,6 +2162,7 @@
     "DIA05337.jpg": "werk",
     "DSC01899.jpg": "werk",
     "DSC02902.jpg": "werk",
-    "DSC07550.jpg": "werk"
+    "DSC07550.jpg": "werk",
+    "DSC07607.jpg": "werk"
   }
 }
