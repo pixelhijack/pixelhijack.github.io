@@ -354,6 +354,14 @@
                 "type": "file"
               },
               {
+                "name": "20250926-DSC09631.jpg",
+                "type": "file"
+              },
+              {
+                "name": "20250926-DSC09633.jpg",
+                "type": "file"
+              },
+              {
                 "name": "211213 Poth 2793 036.jpg",
                 "type": "file"
               },
@@ -427,6 +435,10 @@
               },
               {
                 "name": "DSC06979.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09663.jpg",
                 "type": "file"
               },
               {
@@ -1050,7 +1062,28 @@
               {
                 "name": "laura-hoover",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "20220608_092559.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00862.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00898.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01326.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01424.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "laura-kokai",
@@ -1626,6 +1659,8 @@
     "analog/north": [
       "200T-tatry-00459.jpg",
       "20250916-DSC08768.jpg",
+      "20250926-DSC09631.jpg",
+      "20250926-DSC09633.jpg",
       "211213 Poth 2793 036.jpg",
       "DSC01444-50x70.jpg",
       "DSC01445-2x3.jpg",
@@ -1645,6 +1680,7 @@
       "DSC06864.jpg",
       "DSC06885.jpg",
       "DSC06979.jpg",
+      "DSC09663.jpg",
       "HP5-240120-01839.jpg",
       "HP5-heviz-01540.jpg",
       "HP5-heviz-01541.jpg",
@@ -1787,6 +1823,13 @@
       "230719-00544.jpg",
       "230719-00547.jpg",
       "230719-00588.jpg"
+    ],
+    "fashion/designers/laura-hoover": [
+      "20220608_092559.jpg",
+      "DSC00862.jpg",
+      "DSC00898.jpg",
+      "DSC01326.jpg",
+      "DSC01424.jpg"
     ],
     "fashion/designers/laura-kokai": [
       "DIA04928.jpg",
@@ -1966,6 +2009,8 @@
     "DSC06968-2.jpg": "analog/night",
     "200T-tatry-00459.jpg": "analog/north",
     "20250916-DSC08768.jpg": "analog/north",
+    "20250926-DSC09631.jpg": "analog/north",
+    "20250926-DSC09633.jpg": "analog/north",
     "211213 Poth 2793 036.jpg": "analog/north",
     "DSC01444-50x70.jpg": "analog/north",
     "DSC01445-2x3.jpg": "analog/north",
@@ -1985,6 +2030,7 @@
     "DSC06864.jpg": "analog/north",
     "DSC06885.jpg": "analog/north",
     "DSC06979.jpg": "analog/north",
+    "DSC09663.jpg": "analog/north",
     "HP5-240120-01839.jpg": "analog/north",
     "HP5-heviz-01540.jpg": "analog/north",
     "HP5-heviz-01541.jpg": "analog/north",
@@ -2099,6 +2145,11 @@
     "230719-00544.jpg": "fashion/designers/kun-anna-emilia",
     "230719-00547.jpg": "fashion/designers/kun-anna-emilia",
     "230719-00588.jpg": "fashion/designers/kun-anna-emilia",
+    "20220608_092559.jpg": "fashion/designers/laura-hoover",
+    "DSC00862.jpg": "fashion/designers/laura-hoover",
+    "DSC00898.jpg": "fashion/designers/laura-hoover",
+    "DSC01326.jpg": "fashion/designers/laura-hoover",
+    "DSC01424.jpg": "fashion/designers/laura-hoover",
     "DIA04928.jpg": "fashion/designers/laura-kokai",
     "DIA05192.jpg": "fashion/designers/laura-kokai",
     "DSC00725.jpg": "fashion/designers/shokoya",

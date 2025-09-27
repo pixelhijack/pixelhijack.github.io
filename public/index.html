@@ -90,8 +90,16 @@
         font-weight: 100;
       }
       img {
+        margin: 0 auto;
         opacity: 0;
         animation: fadeIn 1s ease-in-out forwards;
+      }
+
+      .first-img-cover > img:first-of-type,
+      .first-img-cover > figure:first-of-type > img {
+        width: 100%;
+        min-height: 100vh;
+        object-fit: cover;
       }
 
       /* Define the fade-in keyframe animation */

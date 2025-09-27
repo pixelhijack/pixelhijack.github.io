@@ -22,6 +22,7 @@
                                     "stories/hypnagogia/DSC09638.jpg",
                                     "analog/north/orwo-np15-02454.jpg",
                                     "conceptual/botanic/DSC09848.jpg",
+                                    "analog/north/20250926-DSC09631.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
@@ -175,7 +176,7 @@
                     {
                         "type": "div",
                         "class": "mt-[128px] font-eb-garamond text-2xl md:text-4xl font-bold text-black p-4 rounded-md max-w-[80%]",
-                        "content": "Photos on the site available as high-quality prints. <br>Contact me for details."
+                        "content": "Photos on the site available as high-quality prints. <br><i>Contact me for details.</i>"
                     },
                     {
                         "type": "img",
@@ -232,15 +233,180 @@
         },
         {
             "slug": "fashion",
-            "background": "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
+            "background": null,
             "navColor": "gold",
             "tree": {
                 "type": "div",
+                "class": "first-img-cover",
                 "children": [
                     {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col text-center items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Coming soon...<br><br>▼"
+                    },
+                    {
                         "type": "div",
-                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "content": "Coming soon..."
+                        "class": "masonry-container",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "fashion/shows/marie-claire/DSC03444.jpg",
+                                "caption": "Fashion shows",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/shows"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/designers/shokoya/DSC00725.jpg",
+                                "caption": "Designers <br>Collabs & Editorials",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/designers"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/kalman/DSC09322.jpg",
+                                "caption": "Agency & freelance models",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/lookbook/forrai-2024/DSC03734.jpg",
+                                "caption": "Lookbook photoshoots",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/lookbook"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/designers/gillichbetti/DSC08083.jpg",
+                                "caption": "Fashion werk & backstage",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/werk"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
+                                "caption": "Catwalk mood",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/mood"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "first-img-cover",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "fashion/designers/gillichbetti/DSC07947-3.jpg",
+                                "caption": "WORKSHOPS<br>Stay tuned for upcoming fashion photography workshops in Budapest, Hungary.",
+                                "captionStyle": "caption-center font-eb-garamond font-black"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/designers",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/laura-kokai/DIA04928.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>DESIGNERS</b><i>Collabs & Editorials<br><small>Coming soon...</small></i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/designers/laura-hoover",
+            "navColor": "black",
+            "tree": {
+                "source": "fashion/designers/laura-hoover"
+            }
+        },
+        {
+            "slug": "fashion/models",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/models/alex/DSC05526.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>MODELS</b><i>Agency & freelance model works<br><small>Coming soon...</small></i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/lookbook",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2024/DSC04436-bw.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>Lookbook photoshoots</b><br><i><small>Coming soon...</small></i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/shows",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/marie-claire/DSC03890.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>FASHION SHOWS</b><i><br><small>Coming soon...</small></i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/werk",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/gillichbetti/DSC07947-3.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>FASHION WERK & BACKSTAGE</b><i><br><small>Coming soon...</small></i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "fashion/mood",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>Catwalk <i>mood</i></b><i><br><small>Coming soon...</small></i>"
                     }
                 ]
             }
@@ -254,95 +420,6 @@
             }
         },
         {
-            "slug": "analog2",
-            "background": null,
-            "navColor": "gold",
-            "tree": {
-                "type": "div",
-                "children": [
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC06875.jpg",
-                        "caption": "Yeah, dolls of voodoo all stuck with pins One for each of us and our sins",
-                        "captionStyle": "font-modernline",
-                        "alt": "Me"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/day/DSC01519-2.jpg",
-                        "caption": "Not all who wander are lost.",
-                        "captionStyle": "font-eb-garamond"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/DSC01445.jpg",
-                        "caption": "Tatry IV.",
-                        "captionStyle": "font-modernline"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/231018-orwo-00403-3.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/231018-orwo-00433-2.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC00860-1x1.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC01439.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/DSC01445.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC01602-2.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/gaia/HP5-240120-01826-3.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/DSC01642.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/floral/DSC01746.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/day/DSC02627-3.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/day/DSC03020-crop.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/gaia/DSC02890.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/DSC06979.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC07020-crop.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/orwo-np15-02454.jpg"
-                    }
-                ]
-            }
-        },
-        {
             "slug": "analog/hypnagogia",
             "tree": {
                 "source": "analog/hypnagogia"
@@ -353,6 +430,7 @@
             "background": null,
             "tree": {
                 "type": "div",
+                "class": "first-img-cover",
                 "children": [
                     {
                         "type": "img",
@@ -382,14 +460,6 @@
             }
         },
         {
-            "slug": "editorial",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
             "slug": "portraits",
             "background": null,
             "tree": {
@@ -406,31 +476,17 @@
             }
         },
         {
-            "slug": "models",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
-            "slug": "lookbook",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
             "slug": "backstage",
-            "background": "werk/DIA05337.jpg",
+            "background": null,
             "tree": {
                 "type": "div",
+                "class": "first-img-cover",
                 "children": [
                     {
-                        "type": "div",
-                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "content": "Coming soon..."
+                        "type": "img",
+                        "src": "werk/DIA05337.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Coming soon..."
                     }
                 ]
             }
@@ -440,6 +496,7 @@
             "background": "stories/balaton/DSC08465-2.jpg",
             "tree": {
                 "type": "div",
+                "class": "first-img-cover",
                 "children": [
                     {
                         "type": "div",
