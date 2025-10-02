@@ -961,7 +961,44 @@
       {
         "name": "dancers",
         "type": "folder",
-        "children": []
+        "children": [
+          {
+            "name": "DSC03401-warm.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC03439-side.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC04754-bw.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC04764.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC04919-bw.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-footnote-sawubona-04236.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-footnote-sawubona-04342.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-footnote-sawubona-04516.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-footnote-sawubona-04558.jpg",
+            "type": "file"
+          }
+        ]
       },
       {
         "name": "fashion",
@@ -984,7 +1021,12 @@
               {
                 "name": "danielle",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "20250828-DSC09494.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "gillichbetti",
@@ -1011,7 +1053,32 @@
               {
                 "name": "kovacs-dani-bevlo",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC01876.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01946.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02005-4x5.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02005.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02424.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02432.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "kun-anna-emilia",
@@ -1112,7 +1179,16 @@
               {
                 "name": "tringer-bea-ozoroczky-diana",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "231006-01294.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "231006-01648.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "viktoriavarga",
@@ -1229,12 +1305,30 @@
               {
                 "name": "anna",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC05637-bw.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC05643.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "daniel-I",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC05325.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC05328-bw-crop.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "daniel-II",
@@ -1249,7 +1343,16 @@
               {
                 "name": "gyuszi",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC02942.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09539.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "joy",
@@ -1274,7 +1377,24 @@
               {
                 "name": "nike",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC00271.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00299.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00309.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00343.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "peter",
@@ -1314,6 +1434,46 @@
             "name": "shows",
             "type": "folder",
             "children": [
+              {
+                "name": "bevlo",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC01905.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02077.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02124.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02130.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02140-4x5.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02425.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "forrai",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "20250531-DSC05612.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
               {
                 "name": "marie-claire",
                 "type": "folder",
@@ -1355,6 +1515,16 @@
                     "type": "file"
                   }
                 ]
+              },
+              {
+                "name": "mome",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC04491-side.jpg",
+                    "type": "file"
+                  }
+                ]
               }
             ]
           }
@@ -1365,11 +1535,19 @@
         "type": "folder",
         "children": [
           {
+            "name": "231006-01333.jpg",
+            "type": "file"
+          },
+          {
             "name": "DIA05360.jpg",
             "type": "file"
           },
           {
             "name": "DIA05363.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC00043.jpg",
             "type": "file"
           },
           {
@@ -1381,7 +1559,27 @@
             "type": "file"
           },
           {
+            "name": "DSC02270.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC03104-bw.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC05039-crop.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC08257.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC08650-2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC08671.jpg",
             "type": "file"
           },
           {
@@ -1390,6 +1588,10 @@
           },
           {
             "name": "DSC09231-bw.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09321-bw-grain.jpg",
             "type": "file"
           }
         ]
@@ -1429,7 +1631,20 @@
           {
             "name": "call-me-unique",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC07727.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC07857.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC07933.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "cruise",
@@ -1458,7 +1673,15 @@
                 "type": "file"
               },
               {
+                "name": "DSC05039-crop2.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC05055.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC07451.jpg",
                 "type": "file"
               },
               {
@@ -1478,6 +1701,14 @@
                 "type": "file"
               },
               {
+                "name": "DSC09850.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09978.jpg",
+                "type": "file"
+              },
+              {
                 "name": "masthead.jpg",
                 "type": "file"
               }
@@ -1486,17 +1717,32 @@
           {
             "name": "inked",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC05904-2.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "kranicz-dodo",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC03363.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "mini-cooper",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "pothattila-minicooper-07162.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "mobster-bulleit",
@@ -1526,24 +1772,47 @@
           {
             "name": "tatoocon",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC01250.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "vikings-flokken",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC02074.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02691.jpg",
+                "type": "file"
+              }
+            ]
           }
         ]
       },
       {
         "name": "theater",
         "type": "folder",
-        "children": []
+        "children": [
+          {
+            "name": "DSC08914.jpg",
+            "type": "file"
+          }
+        ]
       },
       {
         "name": "werk",
         "type": "folder",
         "children": [
+          {
+            "name": "20250531-DSC07961.jpg",
+            "type": "file"
+          },
           {
             "name": "DIA05337.jpg",
             "type": "file"
@@ -1806,11 +2075,33 @@
       "DSC00409.jpg",
       "DSC00411-2.jpg"
     ],
+    "dancers": [
+      "DSC03401-warm.jpg",
+      "DSC03439-side.jpg",
+      "DSC04754-bw.jpg",
+      "DSC04764.jpg",
+      "DSC04919-bw.jpg",
+      "pothattila-footnote-sawubona-04236.jpg",
+      "pothattila-footnote-sawubona-04342.jpg",
+      "pothattila-footnote-sawubona-04516.jpg",
+      "pothattila-footnote-sawubona-04558.jpg"
+    ],
+    "fashion/designers/danielle": [
+      "20250828-DSC09494.jpg"
+    ],
     "fashion/designers/gillichbetti": [
       "DSC07947-3.jpg",
       "DSC07960.jpg",
       "DSC08083.jpg",
       "DSC08211.jpg"
+    ],
+    "fashion/designers/kovacs-dani-bevlo": [
+      "DSC01876.jpg",
+      "DSC01946.jpg",
+      "DSC02005-4x5.jpg",
+      "DSC02005.jpg",
+      "DSC02424.jpg",
+      "DSC02432.jpg"
     ],
     "fashion/designers/kun-anna-emilia": [
       "230719-00413-down.jpg",
@@ -1837,6 +2128,10 @@
     ],
     "fashion/designers/shokoya": [
       "DSC00725.jpg"
+    ],
+    "fashion/designers/tringer-bea-ozoroczky-diana": [
+      "231006-01294.jpg",
+      "231006-01648.jpg"
     ],
     "fashion/designers/viktoriavarga": [
       "DSC08246.jpg",
@@ -1865,14 +2160,32 @@
       "DSC05573-2.jpg",
       "DSC05580-bw.jpg"
     ],
+    "fashion/models/anna": [
+      "DSC05637-bw.jpg",
+      "DSC05643.jpg"
+    ],
+    "fashion/models/daniel-I": [
+      "DSC05325.jpg",
+      "DSC05328-bw-crop.jpg"
+    ],
     "fashion/models/daniel-II": [
       "DSC05914-bw.jpg"
+    ],
+    "fashion/models/gyuszi": [
+      "DSC02942.jpg",
+      "DSC09539.jpg"
     ],
     "fashion/models/joy": [
       "DSC06194-8.5x11.jpg"
     ],
     "fashion/models/kalman": [
       "DSC09322.jpg"
+    ],
+    "fashion/models/nike": [
+      "DSC00271.jpg",
+      "DSC00299.jpg",
+      "DSC00309.jpg",
+      "DSC00343.jpg"
     ],
     "fashion/models/peter": [
       "DSC06534-bw-dark.jpg",
@@ -1882,6 +2195,17 @@
     ],
     "fashion/mood": [
       "59532b451f9b_rw_1920.jpg"
+    ],
+    "fashion/shows/bevlo": [
+      "DSC01905.jpg",
+      "DSC02077.jpg",
+      "DSC02124.jpg",
+      "DSC02130.jpg",
+      "DSC02140-4x5.jpg",
+      "DSC02425.jpg"
+    ],
+    "fashion/shows/forrai": [
+      "20250531-DSC05612.jpg"
     ],
     "fashion/shows/marie-claire": [
       "DSC03444.jpg",
@@ -1894,14 +2218,25 @@
       "DSC03890.jpg",
       "DSC03891.jpg"
     ],
+    "fashion/shows/mome": [
+      "DSC04491-side.jpg"
+    ],
     "portraits": [
+      "231006-01333.jpg",
       "DIA05360.jpg",
       "DIA05363.jpg",
+      "DSC00043.jpg",
       "DSC00509-bw-2.jpg",
       "DSC01375.jpg",
+      "DSC02270.jpg",
+      "DSC03104-bw.jpg",
+      "DSC05039-crop.jpg",
+      "DSC08257.jpg",
       "DSC08650-2.jpg",
+      "DSC08671.jpg",
       "DSC09221-hell.jpg",
-      "DSC09231-bw.jpg"
+      "DSC09231-bw.jpg",
+      "DSC09321-bw-grain.jpg"
     ],
     "prints": [
       "231018-orwo-00426-a4-side.jpeg",
@@ -1911,6 +2246,11 @@
     "stories/balaton": [
       "DSC08465-2.jpg"
     ],
+    "stories/call-me-unique": [
+      "DSC07727.jpg",
+      "DSC07857.jpg",
+      "DSC07933.jpg"
+    ],
     "stories/cruise": [
       "DSC07346.jpg"
     ],
@@ -1918,14 +2258,38 @@
       "DSC01286-2.jpg",
       "DSC01590.jpg",
       "DSC02471.jpg",
+      "DSC05039-crop2.jpg",
       "DSC05055.jpg",
+      "DSC07451.jpg",
       "DSC08447.jpg",
       "DSC08556.jpg",
       "DSC09638.jpg",
       "DSC09831.jpg",
+      "DSC09850.jpg",
+      "DSC09978.jpg",
       "masthead.jpg"
     ],
+    "stories/inked": [
+      "DSC05904-2.jpg"
+    ],
+    "stories/kranicz-dodo": [
+      "DSC03363.jpg"
+    ],
+    "stories/mini-cooper": [
+      "pothattila-minicooper-07162.jpg"
+    ],
+    "stories/tatoocon": [
+      "DSC01250.jpg"
+    ],
+    "stories/vikings-flokken": [
+      "DSC02074.jpg",
+      "DSC02691.jpg"
+    ],
+    "theater": [
+      "DSC08914.jpg"
+    ],
     "werk": [
+      "20250531-DSC07961.jpg",
       "DIA05337.jpg",
       "DSC01899.jpg",
       "DSC02902.jpg",
@@ -2131,10 +2495,26 @@
     "DSC00407.jpg": "conceptual/vigado",
     "DSC00409.jpg": "conceptual/vigado",
     "DSC00411-2.jpg": "conceptual/vigado",
+    "DSC03401-warm.jpg": "dancers",
+    "DSC03439-side.jpg": "dancers",
+    "DSC04754-bw.jpg": "dancers",
+    "DSC04764.jpg": "dancers",
+    "DSC04919-bw.jpg": "dancers",
+    "pothattila-footnote-sawubona-04236.jpg": "dancers",
+    "pothattila-footnote-sawubona-04342.jpg": "dancers",
+    "pothattila-footnote-sawubona-04516.jpg": "dancers",
+    "pothattila-footnote-sawubona-04558.jpg": "dancers",
+    "20250828-DSC09494.jpg": "fashion/designers/danielle",
     "DSC07947-3.jpg": "fashion/designers/gillichbetti",
     "DSC07960.jpg": "fashion/designers/gillichbetti",
     "DSC08083.jpg": "fashion/designers/gillichbetti",
     "DSC08211.jpg": "fashion/designers/gillichbetti",
+    "DSC01876.jpg": "fashion/designers/kovacs-dani-bevlo",
+    "DSC01946.jpg": "fashion/designers/kovacs-dani-bevlo",
+    "DSC02005-4x5.jpg": "fashion/designers/kovacs-dani-bevlo",
+    "DSC02005.jpg": "fashion/designers/kovacs-dani-bevlo",
+    "DSC02424.jpg": "fashion/designers/kovacs-dani-bevlo",
+    "DSC02432.jpg": "fashion/designers/kovacs-dani-bevlo",
     "230719-00413-down.jpg": "fashion/designers/kun-anna-emilia",
     "230719-00413.jpg": "fashion/designers/kun-anna-emilia",
     "230719-00420.jpg": "fashion/designers/kun-anna-emilia",
@@ -2153,6 +2533,8 @@
     "DIA04928.jpg": "fashion/designers/laura-kokai",
     "DIA05192.jpg": "fashion/designers/laura-kokai",
     "DSC00725.jpg": "fashion/designers/shokoya",
+    "231006-01294.jpg": "fashion/designers/tringer-bea-ozoroczky-diana",
+    "231006-01648.jpg": "fashion/designers/tringer-bea-ozoroczky-diana",
     "DSC08246.jpg": "fashion/designers/viktoriavarga",
     "DSC08293.jpg": "fashion/designers/viktoriavarga",
     "DSC08305-bw-darkerfilter.jpg": "fashion/designers/viktoriavarga",
@@ -2172,14 +2554,31 @@
     "DSC05526.jpg": "fashion/models/alex",
     "DSC05573-2.jpg": "fashion/models/alex",
     "DSC05580-bw.jpg": "fashion/models/alex",
+    "DSC05637-bw.jpg": "fashion/models/anna",
+    "DSC05643.jpg": "fashion/models/anna",
+    "DSC05325.jpg": "fashion/models/daniel-I",
+    "DSC05328-bw-crop.jpg": "fashion/models/daniel-I",
     "DSC05914-bw.jpg": "fashion/models/daniel-II",
+    "DSC02942.jpg": "fashion/models/gyuszi",
+    "DSC09539.jpg": "fashion/models/gyuszi",
     "DSC06194-8.5x11.jpg": "fashion/models/joy",
     "DSC09322.jpg": "fashion/models/kalman",
+    "DSC00271.jpg": "fashion/models/nike",
+    "DSC00299.jpg": "fashion/models/nike",
+    "DSC00309.jpg": "fashion/models/nike",
+    "DSC00343.jpg": "fashion/models/nike",
     "DSC06534-bw-dark.jpg": "fashion/models/peter",
     "DSC06610-2.jpg": "fashion/models/peter",
     "DSC06636-red+98c+14y.jpg": "fashion/models/peter",
     "DSC06674-red+98c+14y.jpg": "fashion/models/peter",
     "59532b451f9b_rw_1920.jpg": "fashion/mood",
+    "DSC01905.jpg": "fashion/shows/bevlo",
+    "DSC02077.jpg": "fashion/shows/bevlo",
+    "DSC02124.jpg": "fashion/shows/bevlo",
+    "DSC02130.jpg": "fashion/shows/bevlo",
+    "DSC02140-4x5.jpg": "fashion/shows/bevlo",
+    "DSC02425.jpg": "fashion/shows/bevlo",
+    "20250531-DSC05612.jpg": "fashion/shows/forrai",
     "DSC03444.jpg": "fashion/shows/marie-claire",
     "DSC03546.jpg": "fashion/shows/marie-claire",
     "DSC03558.jpg": "fashion/shows/marie-claire",
@@ -2189,27 +2588,51 @@
     "DSC03840.jpg": "fashion/shows/marie-claire",
     "DSC03890.jpg": "fashion/shows/marie-claire",
     "DSC03891.jpg": "fashion/shows/marie-claire",
+    "DSC04491-side.jpg": "fashion/shows/mome",
+    "231006-01333.jpg": "portraits",
     "DIA05360.jpg": "portraits",
     "DIA05363.jpg": "portraits",
+    "DSC00043.jpg": "portraits",
     "DSC00509-bw-2.jpg": "portraits",
     "DSC01375.jpg": "portraits",
+    "DSC02270.jpg": "portraits",
+    "DSC03104-bw.jpg": "portraits",
+    "DSC05039-crop.jpg": "portraits",
+    "DSC08257.jpg": "portraits",
     "DSC08650-2.jpg": "portraits",
+    "DSC08671.jpg": "portraits",
     "DSC09221-hell.jpg": "portraits",
     "DSC09231-bw.jpg": "portraits",
+    "DSC09321-bw-grain.jpg": "portraits",
     "231018-orwo-00426-a4-side.jpeg": "prints",
     "DSC01445.wall-side.jpeg": "prints",
     "DSC08971-wall-side.jpeg": "prints",
     "DSC08465-2.jpg": "stories/balaton",
+    "DSC07727.jpg": "stories/call-me-unique",
+    "DSC07857.jpg": "stories/call-me-unique",
+    "DSC07933.jpg": "stories/call-me-unique",
     "DSC07346.jpg": "stories/cruise",
     "DSC01286-2.jpg": "stories/hypnagogia",
     "DSC01590.jpg": "stories/hypnagogia",
     "DSC02471.jpg": "stories/hypnagogia",
+    "DSC05039-crop2.jpg": "stories/hypnagogia",
     "DSC05055.jpg": "stories/hypnagogia",
+    "DSC07451.jpg": "stories/hypnagogia",
     "DSC08447.jpg": "stories/hypnagogia",
     "DSC08556.jpg": "stories/hypnagogia",
     "DSC09638.jpg": "stories/hypnagogia",
     "DSC09831.jpg": "stories/hypnagogia",
+    "DSC09850.jpg": "stories/hypnagogia",
+    "DSC09978.jpg": "stories/hypnagogia",
     "masthead.jpg": "stories/hypnagogia",
+    "DSC05904-2.jpg": "stories/inked",
+    "DSC03363.jpg": "stories/kranicz-dodo",
+    "pothattila-minicooper-07162.jpg": "stories/mini-cooper",
+    "DSC01250.jpg": "stories/tatoocon",
+    "DSC02074.jpg": "stories/vikings-flokken",
+    "DSC02691.jpg": "stories/vikings-flokken",
+    "DSC08914.jpg": "theater",
+    "20250531-DSC07961.jpg": "werk",
     "DIA05337.jpg": "werk",
     "DSC01899.jpg": "werk",
     "DSC02902.jpg": "werk",

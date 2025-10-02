@@ -12,7 +12,7 @@
                             {
                                 "type": "img",
                                 "src": [
-                                    "stories/hypnagogia/masthead.jpg", 
+                                    "stories/hypnagogia/masthead.jpg",
                                     "analog/hypnagogia/DSC01439.jpg",
                                     "analog/south/DSC09008-2.jpg",
                                     "analog/floral/231018-orwo-00426-2.jpg",
@@ -20,9 +20,11 @@
                                     "stories/hypnagogia/DSC08556.jpg",
                                     "stories/hypnagogia/DSC05055.jpg",
                                     "stories/hypnagogia/DSC09638.jpg",
+                                    "analog/hypnagogia/DSC06875.jpg",
                                     "analog/north/orwo-np15-02454.jpg",
                                     "conceptual/botanic/DSC09848.jpg",
                                     "analog/north/20250926-DSC09631.jpg",
+                                    "werk/20250531-DSC07961.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
@@ -131,6 +133,11 @@
                             },
                             {
                                 "type": "img",
+                                "src": "portraits/231006-01333.jpg",
+                                "linkTo": "portraits"
+                            },
+                            {
+                                "type": "img",
                                 "src": "portraits/DSC09231-bw.jpg",
                                 "linkTo": "portraits"
                             }
@@ -206,28 +213,28 @@
                         "type": "div",
                         "class": "flex flex-col md:flex-row items-center justify-center min-h-screen p-4",
                         "children": [
-                        {
-                            "type": "img",
-                            "class": "mt-[120px] max-w-full md:max-w-[40%] h-auto rounded-lg",
-                            "src": "about/me-rounded.png",
-                            "alt": "Póth Attila"
-                        },
-                        {
-                            "type": "div",
-                            "class": "mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-sm font-bold text-black rounded-md max-w-[80%]",
-                            "children": [
-                                {
-                                    "type": "h1",
-                                    "class": "font-eb-garamond font-bold text-4xl md:text-5xl mb-4",
-                                    "content": "Hello!"
-                                },
-                                {
-                                    "type": "div",
-                                    "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                    "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
-                                }
-                            ]
-                        }
+                            {
+                                "type": "img",
+                                "class": "mt-[120px] max-w-full md:max-w-[40%] h-auto rounded-lg",
+                                "src": "about/me-rounded.png",
+                                "alt": "Póth Attila"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-sm font-bold text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond font-bold text-4xl md:text-5xl mb-4",
+                                        "content": "Hello!"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                                    }
+                                ]
+                            }
                         ]
                     },
                     {
@@ -299,9 +306,9 @@
                             {
                                 "type": "img",
                                 "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
-                                "caption": "Catwalk mood",
+                                "caption": "Visions",
                                 "captionStyle": "caption-center font-eb-garamond",
-                                "linkTo": "fashion/mood"
+                                "linkTo": "fashion/conceptual"
                             }
                         ]
                     },
@@ -354,7 +361,76 @@
                         "type": "img",
                         "src": "fashion/models/alex/DSC05526.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>MODELS</b><i>Agency & freelance model works<br><small>Coming soon...</small></i>"
+                        "caption": "<b>MODELS</b><i>Agency & freelance model works</i>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "fashion/models/alex/DSC05580-bw.jpg",
+                                "caption": "Alex",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/alex"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/anna/DSC05643.jpg",
+                                "caption": "Anna",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/anna"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/daniel-I/DSC05325.jpg",
+                                "caption": "Daniel I",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/daniel-I"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/joy/DSC06194-8.5x11.jpg",
+                                "caption": "Joy",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/joy"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/kalman/DSC09322.jpg",
+                                "caption": "Kalman",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/kalman"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/gyuszi/DSC09539.jpg",
+                                "caption": "Gyuszi",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/gyuszi"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/nike/DSC00271.jpg",
+                                "caption": "Niké",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/nike"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/peter/DSC06610-2.jpg",
+                                "caption": "Peter",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/peter"
+                            },
+                            {
+                                "type": "img",
+                                "src": "fashion/models/daniel-II/DSC05914-bw.jpg",
+                                "caption": "Daniel II",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "fashion/models/daniel-II"
+                            }
+                        ]
                     }
                 ]
             }
@@ -370,7 +446,20 @@
                         "type": "img",
                         "src": "fashion/lookbook/forrai-2024/DSC04436-bw.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>Lookbook photoshoots</b><br><i><small>Coming soon...</small></i>"
+                        "caption": "<b>Lookbook photoshoots</b><i><small>Forrai</small></i><br>▽"
+                    },
+                    {
+                        "type": "div",
+                        "class": "m-[20px] mx-auto flex flex-col items-center justify-center text-center font-eb-garamond text-2xl md:text-3xl text-black max-w-[400px]",
+                        "content": "Since 2022, I have been photographing the yearly fashion shows of <a href='https://www.forraiartschool.hu/divat' target='_blank' class='underline'>Forrai Methodic Art School's</a> designers, with also their exam works as lookbooks. <br><br>Here are some highlights from the 2024 and 2025 collections."
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook-fav.jpg"
                     }
                 ]
             }
@@ -623,84 +712,80 @@
             }
         },
         {
-            "slug": "fashion/lookbook",
-            "tree": {
-                "type": "div",
-                "children": [
-                    {
-                        "type": "img",
-                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook.jpg"
-                    },
-                    {
-                        "type": "img",
-                        "src": "fashion/lookbook/forrai-2025/tiles-lookbook-fav.jpg"
-                    }
-                ]
-            }
-        },
-        {
             "slug": "analog",
             "background": null,
-            "navColor": "black",
+            "navColor": "gold",
             "tree": {
                 "type": "div",
-                "class": "masonry-container",
+                "class": "first-img-cover",
                 "children": [
                     {
                         "type": "img",
-                        "src": "analog/hypnagogia/trix400-230726-01716.jpg",
-                        "caption": "Hypnagogia",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/hypnagogia"
+                        "src": "analog/hypnagogia/DSC06875.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "<b>Analog film photography</b><i><small>35mm & medium format</small></i><br>▽"
                     },
                     {
-                        "type": "img",
-                        "src": "analog/south/DSC08971-2.jpg",
-                        "caption": "South",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/south"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/portraits/DSC02576-5.jpg",
-                        "caption": "Portraits",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/portraits"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/day/DSC03020-crop.jpg",
-                        "caption": "Day",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/day"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/floral/231018-orwo-00426-2.jpg",
-                        "caption": "Floral",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/floral"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/north/DSC06979.jpg",
-                        "caption": "North",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/north"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/gaia/231018-orwo-00396-5.jpg",
-                        "caption": "Gaia",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/gaia"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/icarus/DSC00744-2.jpg",
-                        "caption": "Icarus",
-                        "captionStyle": "caption-center font-eb-garamond",
-                        "linkTo": "analog/icarus"
+                        "type": "div",
+                        "class": "masonry-container",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/hypnagogia/trix400-230726-01716.jpg",
+                                "caption": "Hypnagogia",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/hypnagogia"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/south/DSC08971-2.jpg",
+                                "caption": "South",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/south"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/portraits/DSC02576-5.jpg",
+                                "caption": "Portraits",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/portraits"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/day/DSC03020-crop.jpg",
+                                "caption": "Day",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/day"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/floral/231018-orwo-00426-2.jpg",
+                                "caption": "Floral",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/floral"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/north/DSC06979.jpg",
+                                "caption": "North",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/north"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/gaia/231018-orwo-00396-5.jpg",
+                                "caption": "Gaia",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/gaia"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/icarus/DSC00744-2.jpg",
+                                "caption": "Icarus",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "analog/icarus"
+                            }
+                        ]
                     }
                 ]
             }
