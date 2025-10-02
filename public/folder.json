@@ -1752,25 +1752,45 @@
           {
             "name": "pato",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "231128-pato-05803.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "poth-rebeka",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC02329.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "pride",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC01077.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "sipos-andrea",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "230922-00698.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
-            "name": "tatoocon",
+            "name": "tattoocon",
             "type": "folder",
             "children": [
               {
@@ -2278,7 +2298,19 @@
     "stories/mini-cooper": [
       "pothattila-minicooper-07162.jpg"
     ],
-    "stories/tatoocon": [
+    "stories/pato": [
+      "231128-pato-05803.jpg"
+    ],
+    "stories/poth-rebeka": [
+      "DSC02329.jpg"
+    ],
+    "stories/pride": [
+      "DSC01077.jpg"
+    ],
+    "stories/sipos-andrea": [
+      "230922-00698.jpg"
+    ],
+    "stories/tattoocon": [
       "DSC01250.jpg"
     ],
     "stories/vikings-flokken": [
@@ -2628,7 +2660,11 @@
     "DSC05904-2.jpg": "stories/inked",
     "DSC03363.jpg": "stories/kranicz-dodo",
     "pothattila-minicooper-07162.jpg": "stories/mini-cooper",
-    "DSC01250.jpg": "stories/tatoocon",
+    "231128-pato-05803.jpg": "stories/pato",
+    "DSC02329.jpg": "stories/poth-rebeka",
+    "DSC01077.jpg": "stories/pride",
+    "230922-00698.jpg": "stories/sipos-andrea",
+    "DSC01250.jpg": "stories/tattoocon",
     "DSC02074.jpg": "stories/vikings-flokken",
     "DSC02691.jpg": "stories/vikings-flokken",
     "DSC08914.jpg": "theater",

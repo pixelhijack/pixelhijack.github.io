@@ -594,15 +594,71 @@
         },
         {
             "slug": "stories",
-            "background": "stories/balaton/DSC08465-2.jpg",
+            "background": null,
             "tree": {
                 "type": "div",
                 "class": "first-img-cover",
                 "children": [
                     {
+                        "type": "img",
+                        "src": "stories/balaton/DSC08465-2.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Stories & collabs"
+                    },
+                    {
                         "type": "div",
-                        "class": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "content": "Coming soon..."
+                        "class": "masonry-container",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "stories/inked/DSC05904-2.jpg",
+                                "caption": "INKED",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/inked"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/tattoocon/DSC01250.jpg",
+                                "caption": "Tattoocon Budapest",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/tattoocon"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/poth-rebeka/DSC02329.jpg",
+                                "caption": "Póth Rebeka",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/poth-rebeka"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/pato/231128-pato-05803.jpg",
+                                "caption": "Pato",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/pato"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/pride/DSC01077.jpg",
+                                "caption": "Pride",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/pride"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/vikings-flokken/DSC02691.jpg",
+                                "caption": "Vikings - Flokken",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/vikings-flokken"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/sipos-andrea/230922-00698.jpg",
+                                "caption": "Sipos Andrea",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/sipos-andrea"
+                            }
+                        ]
                     }
                 ]
             }
