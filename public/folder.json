@@ -20,6 +20,10 @@
             "type": "file"
           },
           {
+            "name": "DSC06243.jpg",
+            "type": "file"
+          },
+          {
             "name": "me-rounded.png",
             "type": "file"
           }
@@ -337,6 +341,10 @@
               },
               {
                 "name": "DSC06968-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "lea-csenge-2x3.jpg",
                 "type": "file"
               }
             ]
@@ -724,7 +732,7 @@
                 "type": "file"
               },
               {
-                "name": "DSC00060-gold.jpg",
+                "name": "DSC00060.jpg",
                 "type": "file"
               },
               {
@@ -932,7 +940,12 @@
           {
             "name": "the-statue",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC07202-bw.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "vigado",
@@ -963,6 +976,14 @@
         "type": "folder",
         "children": [
           {
+            "name": "DSC02043.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC02197.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC03401-warm.jpg",
             "type": "file"
           },
@@ -980,6 +1001,26 @@
           },
           {
             "name": "DSC04919-bw.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09792-3.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09796-2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09866.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-00038.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-09992.jpg",
             "type": "file"
           },
           {
@@ -1011,7 +1052,34 @@
               {
                 "name": "anna-and-the-barbies",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC07240.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC07371.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "antuseka",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "241215-01919.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "241215-01926.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "241215-02008.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "bibi-by-bianka",
@@ -1029,6 +1097,28 @@
                 ]
               },
               {
+                "name": "ferencz-borbala",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC07752-bw.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC07795.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC07805-bw.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC07823.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "gillichbetti",
                 "type": "folder",
                 "children": [
@@ -1037,7 +1127,19 @@
                     "type": "file"
                   },
                   {
+                    "name": "DSC07958.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC07960.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC07974-2.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC08016.jpg",
                     "type": "file"
                   },
                   {
@@ -1045,7 +1147,29 @@
                     "type": "file"
                   },
                   {
+                    "name": "DSC08127.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC08211.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "kerenyi-virag",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC01118.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01135.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01136.jpg",
                     "type": "file"
                   }
                 ]
@@ -1469,6 +1593,10 @@
                 "type": "folder",
                 "children": [
                   {
+                    "name": "20230527-08536.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "20250531-DSC05612.jpg",
                     "type": "file"
                   }
@@ -1525,6 +1653,70 @@
                     "type": "file"
                   }
                 ]
+              },
+              {
+                "name": "paloma",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "241020-01523.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "241020-01542.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "241020-01568.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "241020-01593.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "the-balance",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC09102.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09155.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09177.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09179.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09197.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09289.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09293.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09343.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09378.jpg",
+                    "type": "file"
+                  }
+                ]
               }
             ]
           }
@@ -1551,6 +1743,10 @@
             "type": "file"
           },
           {
+            "name": "DSC00206.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC00509-bw-2.jpg",
             "type": "file"
           },
@@ -1563,11 +1759,19 @@
             "type": "file"
           },
           {
+            "name": "DSC02443.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC03104-bw.jpg",
             "type": "file"
           },
           {
             "name": "DSC05039-crop.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC07705-bw.jpg",
             "type": "file"
           },
           {
@@ -1592,6 +1796,14 @@
           },
           {
             "name": "DSC09321-bw-grain.jpg",
+            "type": "file"
+          },
+          {
+            "name": "baueragi-01681.jpg",
+            "type": "file"
+          },
+          {
+            "name": "pothattila-00043.jpg",
             "type": "file"
           }
         ]
@@ -1624,6 +1836,16 @@
             "children": [
               {
                 "name": "DSC08465-2.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "bendzsi",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC01182-2.jpg",
                 "type": "file"
               }
             ]
@@ -1669,6 +1891,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC01905-agi.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC02471.jpg",
                 "type": "file"
               },
@@ -1678,6 +1904,10 @@
               },
               {
                 "name": "DSC05055.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC06538.jpg",
                 "type": "file"
               },
               {
@@ -1710,6 +1940,10 @@
               },
               {
                 "name": "masthead.jpg",
+                "type": "file"
+              },
+              {
+                "name": "pothattila-09975.jpg",
                 "type": "file"
               }
             ]
@@ -1854,6 +2088,60 @@
             "type": "file"
           }
         ]
+      },
+      {
+        "name": "zine",
+        "type": "folder",
+        "children": [
+          {
+            "name": "DSC06263-landscape.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06264.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06265.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06266.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06271.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06276.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06278.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06279.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06282.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06283.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06289.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC06296.jpg",
+            "type": "file"
+          }
+        ]
       }
     ]
   },
@@ -1862,6 +2150,7 @@
       "1734626801051.jpg",
       "DIA09400-bw.jpg",
       "DSC02091.jpg",
+      "DSC06243.jpg",
       "me-rounded.png"
     ],
     "analog/day": [
@@ -1943,7 +2232,8 @@
     "analog/night": [
       "DSC01747.jpg",
       "DSC06940.jpg",
-      "DSC06968-2.jpg"
+      "DSC06968-2.jpg",
+      "lea-csenge-2x3.jpg"
     ],
     "analog/north": [
       "200T-tatry-00459.jpg",
@@ -2041,7 +2331,7 @@
     ],
     "conceptual/b72": [
       "20200404_082431265.jpg",
-      "DSC00060-gold.jpg",
+      "DSC00060.jpg",
       "DSC00653.jpg",
       "DSC00679-BW.jpg",
       "DSC00741.jpg",
@@ -2089,6 +2379,9 @@
       "DSC09471.jpg",
       "DSC09495.jpg"
     ],
+    "conceptual/the-statue": [
+      "DSC07202-bw.jpg"
+    ],
     "conceptual/vigado": [
       "DSC00351.jpg",
       "DSC00407.jpg",
@@ -2096,24 +2389,55 @@
       "DSC00411-2.jpg"
     ],
     "dancers": [
+      "DSC02043.jpg",
+      "DSC02197.jpg",
       "DSC03401-warm.jpg",
       "DSC03439-side.jpg",
       "DSC04754-bw.jpg",
       "DSC04764.jpg",
       "DSC04919-bw.jpg",
+      "DSC09792-3.jpg",
+      "DSC09796-2.jpg",
+      "DSC09866.jpg",
+      "pothattila-00038.jpg",
+      "pothattila-09992.jpg",
       "pothattila-footnote-sawubona-04236.jpg",
       "pothattila-footnote-sawubona-04342.jpg",
       "pothattila-footnote-sawubona-04516.jpg",
       "pothattila-footnote-sawubona-04558.jpg"
     ],
+    "fashion/designers/anna-and-the-barbies": [
+      "DSC07240.jpg",
+      "DSC07371.jpg"
+    ],
+    "fashion/designers/antuseka": [
+      "241215-01919.jpg",
+      "241215-01926.jpg",
+      "241215-02008.jpg"
+    ],
     "fashion/designers/danielle": [
       "20250828-DSC09494.jpg"
     ],
+    "fashion/designers/ferencz-borbala": [
+      "DSC07752-bw.jpg",
+      "DSC07795.jpg",
+      "DSC07805-bw.jpg",
+      "DSC07823.jpg"
+    ],
     "fashion/designers/gillichbetti": [
       "DSC07947-3.jpg",
+      "DSC07958.jpg",
       "DSC07960.jpg",
+      "DSC07974-2.jpg",
+      "DSC08016.jpg",
       "DSC08083.jpg",
+      "DSC08127.jpg",
       "DSC08211.jpg"
+    ],
+    "fashion/designers/kerenyi-virag": [
+      "DSC01118.jpg",
+      "DSC01135.jpg",
+      "DSC01136.jpg"
     ],
     "fashion/designers/kovacs-dani-bevlo": [
       "DSC01876.jpg",
@@ -2225,6 +2549,7 @@
       "DSC02425.jpg"
     ],
     "fashion/shows/forrai": [
+      "20230527-08536.jpg",
       "20250531-DSC05612.jpg"
     ],
     "fashion/shows/marie-claire": [
@@ -2241,22 +2566,44 @@
     "fashion/shows/mome": [
       "DSC04491-side.jpg"
     ],
+    "fashion/shows/paloma": [
+      "241020-01523.jpg",
+      "241020-01542.jpg",
+      "241020-01568.jpg",
+      "241020-01593.jpg"
+    ],
+    "fashion/shows/the-balance": [
+      "DSC09102.jpg",
+      "DSC09155.jpg",
+      "DSC09177.jpg",
+      "DSC09179.jpg",
+      "DSC09197.jpg",
+      "DSC09289.jpg",
+      "DSC09293.jpg",
+      "DSC09343.jpg",
+      "DSC09378.jpg"
+    ],
     "portraits": [
       "231006-01333.jpg",
       "DIA05360.jpg",
       "DIA05363.jpg",
       "DSC00043.jpg",
+      "DSC00206.jpg",
       "DSC00509-bw-2.jpg",
       "DSC01375.jpg",
       "DSC02270.jpg",
+      "DSC02443.jpg",
       "DSC03104-bw.jpg",
       "DSC05039-crop.jpg",
+      "DSC07705-bw.jpg",
       "DSC08257.jpg",
       "DSC08650-2.jpg",
       "DSC08671.jpg",
       "DSC09221-hell.jpg",
       "DSC09231-bw.jpg",
-      "DSC09321-bw-grain.jpg"
+      "DSC09321-bw-grain.jpg",
+      "baueragi-01681.jpg",
+      "pothattila-00043.jpg"
     ],
     "prints": [
       "231018-orwo-00426-a4-side.jpeg",
@@ -2265,6 +2612,9 @@
     ],
     "stories/balaton": [
       "DSC08465-2.jpg"
+    ],
+    "stories/bendzsi": [
+      "DSC01182-2.jpg"
     ],
     "stories/call-me-unique": [
       "DSC07727.jpg",
@@ -2277,9 +2627,11 @@
     "stories/hypnagogia": [
       "DSC01286-2.jpg",
       "DSC01590.jpg",
+      "DSC01905-agi.jpg",
       "DSC02471.jpg",
       "DSC05039-crop2.jpg",
       "DSC05055.jpg",
+      "DSC06538.jpg",
       "DSC07451.jpg",
       "DSC08447.jpg",
       "DSC08556.jpg",
@@ -2287,7 +2639,8 @@
       "DSC09831.jpg",
       "DSC09850.jpg",
       "DSC09978.jpg",
-      "masthead.jpg"
+      "masthead.jpg",
+      "pothattila-09975.jpg"
     ],
     "stories/inked": [
       "DSC05904-2.jpg"
@@ -2327,12 +2680,27 @@
       "DSC02902.jpg",
       "DSC07550.jpg",
       "DSC07607.jpg"
+    ],
+    "zine": [
+      "DSC06263-landscape.jpg",
+      "DSC06264.jpg",
+      "DSC06265.jpg",
+      "DSC06266.jpg",
+      "DSC06271.jpg",
+      "DSC06276.jpg",
+      "DSC06278.jpg",
+      "DSC06279.jpg",
+      "DSC06282.jpg",
+      "DSC06283.jpg",
+      "DSC06289.jpg",
+      "DSC06296.jpg"
     ]
   },
   "path": {
     "1734626801051.jpg": "about",
     "DIA09400-bw.jpg": "about",
     "DSC02091.jpg": "about",
+    "DSC06243.jpg": "about",
     "me-rounded.png": "about",
     "DSC01519-2.jpg": "analog/day",
     "DSC02627-3.jpg": "analog/day",
@@ -2403,6 +2771,7 @@
     "DSC01747.jpg": "analog/night",
     "DSC06940.jpg": "analog/night",
     "DSC06968-2.jpg": "analog/night",
+    "lea-csenge-2x3.jpg": "analog/night",
     "200T-tatry-00459.jpg": "analog/north",
     "20250916-DSC08768.jpg": "analog/north",
     "20250926-DSC09631.jpg": "analog/north",
@@ -2490,7 +2859,7 @@
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
     "20200404_082431265.jpg": "conceptual/b72",
-    "DSC00060-gold.jpg": "conceptual/b72",
+    "DSC00060.jpg": "conceptual/b72",
     "DSC00653.jpg": "conceptual/b72",
     "DSC00679-BW.jpg": "conceptual/b72",
     "DSC00741.jpg": "conceptual/b72",
@@ -2523,24 +2892,48 @@
     "DSC09454.jpg": "conceptual/the-pier",
     "DSC09471.jpg": "conceptual/the-pier",
     "DSC09495.jpg": "conceptual/the-pier",
+    "DSC07202-bw.jpg": "conceptual/the-statue",
     "DSC00351.jpg": "conceptual/vigado",
     "DSC00407.jpg": "conceptual/vigado",
     "DSC00409.jpg": "conceptual/vigado",
     "DSC00411-2.jpg": "conceptual/vigado",
+    "DSC02043.jpg": "dancers",
+    "DSC02197.jpg": "dancers",
     "DSC03401-warm.jpg": "dancers",
     "DSC03439-side.jpg": "dancers",
     "DSC04754-bw.jpg": "dancers",
     "DSC04764.jpg": "dancers",
     "DSC04919-bw.jpg": "dancers",
+    "DSC09792-3.jpg": "dancers",
+    "DSC09796-2.jpg": "dancers",
+    "DSC09866.jpg": "dancers",
+    "pothattila-00038.jpg": "dancers",
+    "pothattila-09992.jpg": "dancers",
     "pothattila-footnote-sawubona-04236.jpg": "dancers",
     "pothattila-footnote-sawubona-04342.jpg": "dancers",
     "pothattila-footnote-sawubona-04516.jpg": "dancers",
     "pothattila-footnote-sawubona-04558.jpg": "dancers",
+    "DSC07240.jpg": "fashion/designers/anna-and-the-barbies",
+    "DSC07371.jpg": "fashion/designers/anna-and-the-barbies",
+    "241215-01919.jpg": "fashion/designers/antuseka",
+    "241215-01926.jpg": "fashion/designers/antuseka",
+    "241215-02008.jpg": "fashion/designers/antuseka",
     "20250828-DSC09494.jpg": "fashion/designers/danielle",
+    "DSC07752-bw.jpg": "fashion/designers/ferencz-borbala",
+    "DSC07795.jpg": "fashion/designers/ferencz-borbala",
+    "DSC07805-bw.jpg": "fashion/designers/ferencz-borbala",
+    "DSC07823.jpg": "fashion/designers/ferencz-borbala",
     "DSC07947-3.jpg": "fashion/designers/gillichbetti",
+    "DSC07958.jpg": "fashion/designers/gillichbetti",
     "DSC07960.jpg": "fashion/designers/gillichbetti",
+    "DSC07974-2.jpg": "fashion/designers/gillichbetti",
+    "DSC08016.jpg": "fashion/designers/gillichbetti",
     "DSC08083.jpg": "fashion/designers/gillichbetti",
+    "DSC08127.jpg": "fashion/designers/gillichbetti",
     "DSC08211.jpg": "fashion/designers/gillichbetti",
+    "DSC01118.jpg": "fashion/designers/kerenyi-virag",
+    "DSC01135.jpg": "fashion/designers/kerenyi-virag",
+    "DSC01136.jpg": "fashion/designers/kerenyi-virag",
     "DSC01876.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC01946.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC02005-4x5.jpg": "fashion/designers/kovacs-dani-bevlo",
@@ -2610,6 +3003,7 @@
     "DSC02130.jpg": "fashion/shows/bevlo",
     "DSC02140-4x5.jpg": "fashion/shows/bevlo",
     "DSC02425.jpg": "fashion/shows/bevlo",
+    "20230527-08536.jpg": "fashion/shows/forrai",
     "20250531-DSC05612.jpg": "fashion/shows/forrai",
     "DSC03444.jpg": "fashion/shows/marie-claire",
     "DSC03546.jpg": "fashion/shows/marie-claire",
@@ -2621,34 +3015,55 @@
     "DSC03890.jpg": "fashion/shows/marie-claire",
     "DSC03891.jpg": "fashion/shows/marie-claire",
     "DSC04491-side.jpg": "fashion/shows/mome",
+    "241020-01523.jpg": "fashion/shows/paloma",
+    "241020-01542.jpg": "fashion/shows/paloma",
+    "241020-01568.jpg": "fashion/shows/paloma",
+    "241020-01593.jpg": "fashion/shows/paloma",
+    "DSC09102.jpg": "fashion/shows/the-balance",
+    "DSC09155.jpg": "fashion/shows/the-balance",
+    "DSC09177.jpg": "fashion/shows/the-balance",
+    "DSC09179.jpg": "fashion/shows/the-balance",
+    "DSC09197.jpg": "fashion/shows/the-balance",
+    "DSC09289.jpg": "fashion/shows/the-balance",
+    "DSC09293.jpg": "fashion/shows/the-balance",
+    "DSC09343.jpg": "fashion/shows/the-balance",
+    "DSC09378.jpg": "fashion/shows/the-balance",
     "231006-01333.jpg": "portraits",
     "DIA05360.jpg": "portraits",
     "DIA05363.jpg": "portraits",
     "DSC00043.jpg": "portraits",
+    "DSC00206.jpg": "portraits",
     "DSC00509-bw-2.jpg": "portraits",
     "DSC01375.jpg": "portraits",
     "DSC02270.jpg": "portraits",
+    "DSC02443.jpg": "portraits",
     "DSC03104-bw.jpg": "portraits",
     "DSC05039-crop.jpg": "portraits",
+    "DSC07705-bw.jpg": "portraits",
     "DSC08257.jpg": "portraits",
     "DSC08650-2.jpg": "portraits",
     "DSC08671.jpg": "portraits",
     "DSC09221-hell.jpg": "portraits",
     "DSC09231-bw.jpg": "portraits",
     "DSC09321-bw-grain.jpg": "portraits",
+    "baueragi-01681.jpg": "portraits",
+    "pothattila-00043.jpg": "portraits",
     "231018-orwo-00426-a4-side.jpeg": "prints",
     "DSC01445.wall-side.jpeg": "prints",
     "DSC08971-wall-side.jpeg": "prints",
     "DSC08465-2.jpg": "stories/balaton",
+    "DSC01182-2.jpg": "stories/bendzsi",
     "DSC07727.jpg": "stories/call-me-unique",
     "DSC07857.jpg": "stories/call-me-unique",
     "DSC07933.jpg": "stories/call-me-unique",
     "DSC07346.jpg": "stories/cruise",
     "DSC01286-2.jpg": "stories/hypnagogia",
     "DSC01590.jpg": "stories/hypnagogia",
+    "DSC01905-agi.jpg": "stories/hypnagogia",
     "DSC02471.jpg": "stories/hypnagogia",
     "DSC05039-crop2.jpg": "stories/hypnagogia",
     "DSC05055.jpg": "stories/hypnagogia",
+    "DSC06538.jpg": "stories/hypnagogia",
     "DSC07451.jpg": "stories/hypnagogia",
     "DSC08447.jpg": "stories/hypnagogia",
     "DSC08556.jpg": "stories/hypnagogia",
@@ -2657,6 +3072,7 @@
     "DSC09850.jpg": "stories/hypnagogia",
     "DSC09978.jpg": "stories/hypnagogia",
     "masthead.jpg": "stories/hypnagogia",
+    "pothattila-09975.jpg": "stories/hypnagogia",
     "DSC05904-2.jpg": "stories/inked",
     "DSC03363.jpg": "stories/kranicz-dodo",
     "pothattila-minicooper-07162.jpg": "stories/mini-cooper",
@@ -2673,6 +3089,18 @@
     "DSC01899.jpg": "werk",
     "DSC02902.jpg": "werk",
     "DSC07550.jpg": "werk",
-    "DSC07607.jpg": "werk"
+    "DSC07607.jpg": "werk",
+    "DSC06263-landscape.jpg": "zine",
+    "DSC06264.jpg": "zine",
+    "DSC06265.jpg": "zine",
+    "DSC06266.jpg": "zine",
+    "DSC06271.jpg": "zine",
+    "DSC06276.jpg": "zine",
+    "DSC06278.jpg": "zine",
+    "DSC06279.jpg": "zine",
+    "DSC06282.jpg": "zine",
+    "DSC06283.jpg": "zine",
+    "DSC06289.jpg": "zine",
+    "DSC06296.jpg": "zine"
   }
 }

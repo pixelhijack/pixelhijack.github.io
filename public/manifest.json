@@ -23,6 +23,7 @@
                                     "analog/hypnagogia/DSC06875.jpg",
                                     "analog/north/orwo-np15-02454.jpg",
                                     "conceptual/botanic/DSC09848.jpg",
+                                    "conceptual/the-statue/DSC07202-bw.jpg",
                                     "analog/north/20250926-DSC09631.jpg",
                                     "werk/20250531-DSC07961.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
@@ -73,8 +74,13 @@
                             },
                             {
                                 "type": "img",
-                                "src": "conceptual/b72/DSC00060-gold.jpg",
+                                "src": "conceptual/b72/DSC00060.jpg",
                                 "linkTo": "conceptual/b72"
+                            },
+                            {
+                                "type": "div",
+                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
                             },
                             {
                                 "type": "img",
@@ -474,8 +480,44 @@
                     {
                         "type": "img",
                         "src": "fashion/shows/marie-claire/DSC03890.jpg",
-                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>FASHION SHOWS</b><i><br><small>Coming soon...</small></i>"
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Marie Claire Fashion Days, 2019"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/bevlo/DSC02077.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Bevlo"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/forrai/20250531-DSC05612.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Forrai 2025"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/mome/DSC04491-side.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "MOME 2023"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/the-balance/DSC09293.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "The Balance Glasshouse 2024"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/paloma/241020-01523.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Paloma Artspace"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/forrai/20230527-08536.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Forrai 2023"
                     }
                 ]
             }
