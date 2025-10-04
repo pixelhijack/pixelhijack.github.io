@@ -79,8 +79,8 @@
                             },
                             {
                                 "type": "div",
-                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
+                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "content": "❝ I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
                             },
                             {
                                 "type": "img",
@@ -200,6 +200,11 @@
                         "src": "prints/DSC01445.wall-side.jpeg"
                     },
                     {
+                        "type": "div",
+                        "class": "font-eb-garamond p-[20px] md:mt-0 text-2xl md:text-3xl text-black rounded-md max-w-[80%] break-inside-avoid",
+                        "content": "Check out also my self-published <a href='/zine' class='underline'>zines</a>."
+                    },
+                    {
                         "type": "img",
                         "src": "prints/DSC08971-wall-side.jpeg"
                     }
@@ -227,17 +232,21 @@
                             },
                             {
                                 "type": "div",
-                                "class": "mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-sm font-bold text-black rounded-md max-w-[80%]",
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond font-bold text-4xl md:text-5xl mb-4",
+                                        "class": "font-eb-garamond text-black font-bold md:mt-0 md:ml-8 text-2xl md:text-5xl mb-4",
                                         "content": "Hello!"
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "<br><i>Drop me an email at <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a></i>"
                                     }
                                 ]
                             }
@@ -246,12 +255,34 @@
                     {
                         "type": "h2",
                         "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
-                        "content": "This was me before I picked up a camera"
+                        "content": "This was me before I picked up a camera:"
                     },
                     {
                         "type": "img",
                         "src": "analog/nostalgia/0180.jpg",
                         "alt": "Me"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "content": "This is what I really love to shoot with:"
+                    },
+                    {
+                        "type": "img",
+                        "src": "about/DSC06243.jpg",
+                        "captionStyle": "font-eb-garamond text-black",
+                        "caption": "<i>(Ok, ok, maybe not a Smena 8... but all my other 80+ vintage lenses and 15 cameras!)</i>"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "content": "And this is how I look like now:"
+                    },
+                    {
+                        "type": "img",
+                        "src": "about/1734626801051.jpg",
+                        "captionStyle": "font-eb-garamond text-white",
+                        "caption": "...deep in the jungle"
                     }
                 ]
             }
@@ -268,7 +299,7 @@
                         "type": "img",
                         "src": "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col text-center items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Coming soon...<br><br>▼"
+                        "caption": "Capturing the chronicles of <br>people from the fashion world<br><br>▼"
                     },
                     {
                         "type": "div",
@@ -294,6 +325,11 @@
                                 "caption": "Agency & freelance models",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/models"
+                            },
+                            {
+                                "type": "div",
+                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md break-inside-avoid",
+                                "content": "<i>❝ I was always more intrigued by the people doing fashion than fashion itself.</i>"
                             },
                             {
                                 "type": "img",
@@ -344,7 +380,28 @@
                         "type": "img",
                         "src": "fashion/designers/laura-kokai/DIA04928.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>DESIGNERS</b><i>Collabs & Editorials<br><small>Coming soon...</small></i>"
+                        "caption": "<b>FASHION DESIGNERS</b><i>Collabs & Editorials</i>"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/viktoriavarga/DSC08246.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "VIKTORIAVARGA",
+                        "linkTo": "fashion/designers/viktoriavarga"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/antuseka/241215-01919.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Antuseka",
+                        "linkTo": "fashion/designers/antuseka"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/heczendorfer-anna/DSC06523.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Heczendorfer Anna",
+                        "linkTo": "fashion/designers/heczendorfer-anna"
                     }
                 ]
             }
@@ -487,7 +544,7 @@
                         "type": "img",
                         "src": "fashion/shows/bevlo/DSC02077.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Bevlo"
+                        "caption": "Bevlo 25th Anniversary 2022"
                     },
                     {
                         "type": "img",
@@ -518,6 +575,18 @@
                         "src": "fashion/shows/forrai/20230527-08536.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Forrai 2023"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/fashion-diffusion/20230617-09509.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Fashion Diffusion IV. 2023"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/fashion-in-fire/DSC02934.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Fashion In Fire 2022"
                     }
                 ]
             }
@@ -629,7 +698,22 @@
                         "type": "img",
                         "src": "werk/DIA05337.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Coming soon..."
+                        "caption": "Werk",
+                        "linkTo": "werk"
+                    },
+                    {
+                        "type": "img",
+                        "src": "theater/DSC08914.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Theater",
+                        "linkTo": "theater"
+                    },
+                    {
+                        "type": "img",
+                        "src": "dancers/pothattila-footnote-sawubona-04236.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Dancers",
+                        "linkTo": "dancers"
                     }
                 ]
             }
@@ -667,13 +751,6 @@
                             },
                             {
                                 "type": "img",
-                                "src": "stories/poth-rebeka/DSC02329.jpg",
-                                "caption": "Póth Rebeka",
-                                "captionStyle": "caption-center font-eb-garamond",
-                                "linkTo": "stories/poth-rebeka"
-                            },
-                            {
-                                "type": "img",
                                 "src": "stories/pato/231128-pato-05803.jpg",
                                 "caption": "Pato",
                                 "captionStyle": "caption-center font-eb-garamond",
@@ -699,6 +776,25 @@
                                 "caption": "Sipos Andrea",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "stories/sipos-andrea"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/bendzsi/DSC01182-2.jpg",
+                                "caption": "Bendzsi",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/bendzsi"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/poth-rebeka/DSC02329.jpg",
+                                "caption": "Póth Rebeka",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "stories/poth-rebeka"
+                            },
+                            {
+                                "type": "div",
+                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "To read more stories and long-form content, head out to <a href='https://pothattila.substack.com/' target='_blank' class='underline'>my substack photo blog</a>"
                             }
                         ]
                     }
@@ -791,22 +887,6 @@
                         "linkTo": "analog/hypnagogia"
                     }
                 ]
-            }
-        },
-        {
-            "slug": "dancers",
-            "background": "werk/DSC01899.jpg",
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
-            "slug": "theater",
-            "background": "fashion/mood/59532b451f9b_rw_1920.jpg",
-            "tree": {
-                "type": "div",
-                "children": []
             }
         },
         {
