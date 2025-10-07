@@ -26,6 +26,9 @@
                                     "conceptual/the-statue/DSC07202-bw.jpg",
                                     "analog/north/20250926-DSC09631.jpg",
                                     "werk/20250531-DSC07961.jpg",
+                                    "stories/hypnagogia/pothattila-09975.jpg",
+                                    "stories/hypnagogia/DSC09831.jpg",
+                                    "stories/hypnagogia/DSC01905-agi.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
@@ -35,12 +38,12 @@
                                 "class": "absolute inset-0 flex flex-col items-center justify-center",
                                 "children": [
                                     {
-                                        "type": "div",
+                                        "type": "h1",
                                         "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "Everyone has a story to tell.<br>What's yours?"
                                     },
                                     {
-                                        "type": "div",
+                                        "type": "h2",
                                         "class": "italic font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "Vintage lens & analog film photography <br>by Póth Attila"
                                     }
@@ -80,7 +83,7 @@
                             {
                                 "type": "div",
                                 "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md max-w-[80%] break-inside-avoid",
-                                "content": "❝ I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
+                                "content": "❝ I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
                             },
                             {
                                 "type": "img",
@@ -153,32 +156,6 @@
             }
         },
         {
-            "slug": "art",
-            "navColor": "#dd7529",
-            "background": "stories/hypnagogia/DSC08556.jpg",
-            "tree": {
-                "type": "div",
-                "class": "flex flex-col items-center justify-center h-full",
-                "children": [
-                    {
-                        "type": "div",
-                        "class": "mt-[64px] text-4xl md:text-6xl font-bold text-white p-4 rounded-md max-w-[80%]",
-                        "style": {
-                            "desktop": {
-                                "position": "relative"
-                            },
-                            "mobile": {
-                                "top": "10%",
-                                "left": "5%",
-                                "position": "relative"
-                            }
-                        },
-                        "content": "Welcome to the Manifest Desktop"
-                    }
-                ]
-            }
-        },
-        {
             "slug": "prints",
             "navColor": "black",
             "background": null,
@@ -241,7 +218,7 @@
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                        "content": "I'm a professional photographer, based at Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                                        "content": "I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
                                     },
                                     {
                                         "type": "div",
@@ -303,33 +280,28 @@
                     },
                     {
                         "type": "div",
-                        "class": "masonry-container",
+                        "class": "masonry-container masonry-4",
                         "children": [
                             {
                                 "type": "img",
-                                "src": "fashion/shows/marie-claire/DSC03444.jpg",
+                                "src": "fashion/shows/marie-claire/DSC03593.jpg",
                                 "caption": "Fashion shows",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/shows"
                             },
                             {
                                 "type": "img",
-                                "src": "fashion/designers/shokoya/DSC00725.jpg",
-                                "caption": "Designers <br>Collabs & Editorials",
+                                "src": "fashion/designers/kerenyi-virag/DSC01118.jpg",
+                                "caption": "Fashion designers <br>& editorials",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/designers"
                             },
                             {
                                 "type": "img",
                                 "src": "fashion/models/kalman/DSC09322.jpg",
-                                "caption": "Agency & freelance models",
+                                "caption": "Agency & <br>freelance models",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/models"
-                            },
-                            {
-                                "type": "div",
-                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md break-inside-avoid",
-                                "content": "<i>❝ I was always more intrigued by the people doing fashion than fashion itself.</i>"
                             },
                             {
                                 "type": "img",
@@ -337,18 +309,29 @@
                                 "caption": "Lookbook photoshoots",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/lookbook"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md break-inside-avoid",
+                        "content": "<i>❝ I was always more intrigued by the people doing fashion than fashion itself.</i>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-2",
+                        "children": [
                             {
                                 "type": "img",
-                                "src": "fashion/designers/gillichbetti/DSC08083.jpg",
+                                "src": "werk/DSC07607.jpg",
                                 "caption": "Fashion werk & backstage",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/werk"
                             },
                             {
                                 "type": "img",
-                                "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
-                                "caption": "Visions",
+                                "src": "conceptual/b72/DSC00900.jpg",
+                                "caption": "Conceptual series",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "fashion/conceptual"
                             }
@@ -380,7 +363,7 @@
                         "type": "img",
                         "src": "fashion/designers/laura-kokai/DIA04928.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>FASHION DESIGNERS</b><i>Collabs & Editorials</i>"
+                        "caption": "<b>FASHION DESIGNERS</b><i>Editorials</i>"
                     },
                     {
                         "type": "img",
@@ -391,7 +374,14 @@
                     },
                     {
                         "type": "img",
-                        "src": "fashion/designers/antuseka/241215-01919.jpg",
+                        "src": "fashion/designers/gillichbetti/DSC07958.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Gillich Betti",
+                        "linkTo": "fashion/designers/gillichbetti"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/antuseka/DSC02795.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Antuseka",
                         "linkTo": "fashion/designers/antuseka"
@@ -402,6 +392,83 @@
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Heczendorfer Anna",
                         "linkTo": "fashion/designers/heczendorfer-anna"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/kerenyi-virag/DSC01136.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Kerényi Virág",
+                        "linkTo": "fashion/designers/kerenyi-virag"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/kun-anna-emilia/230719-00487.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Kun Anna Emilia",
+                        "linkTo": "fashion/designers/kun-anna-emilia"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/laura-hoover/DSC01209.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Laura Hoover",
+                        "linkTo": "fashion/designers/laura-hoover"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/shokoya/DSC00725.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Shokoya",
+                        "linkTo": "fashion/designers/shokoya"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/laura-kokai/DIA05192.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Laura Kokai",
+                        "linkTo": "fashion/designers/laura-kokai"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/ferencz-borbala/DSC07823.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Ferencz Borbála",
+                        "linkTo": "fashion/designers/ferencz-borbala"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/kovacs-dani-bevlo/DSC02424.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Kovács Dániel",
+                        "linkTo": "fashion/designers/kovacs-dani-bevlo"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/danielle/20250828-DSC09494.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "DAN!ELLE",
+                        "linkTo": "fashion/designers/danielle"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/bibi-by-bianka/DSC01551.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Bibi by Bianka",
+                        "linkTo": "fashion/designers/bibi-by-bianka"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/tringer-bea-ozoroczky-diana/231006-01648.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Tringer Bea & Ozoróczky Diána",
+                        "linkTo": "fashion/designers/tringer-bea-ozoroczky-diana"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/designers/anna-and-the-barbies/DSC07240.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Gillich Betti & Dominika Safranka",
+                        "linkTo": "fashion/designers/anna-and-the-barbies"
                     }
                 ]
             }
@@ -646,6 +713,70 @@
                 "children": [
                     {
                         "type": "img",
+                        "src": "analog/hypnagogia/DSC02640.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Long-form narrative <br>documentary,<br> visionary / mood, <br>& personal projects<br><br>∞"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-2",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "analog/hypnagogia/DSC02583.jpg",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "caption": "Mindstates",
+                                "linkTo": "projects/mindstates"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/0180.jpg",
+                                "caption": "Time capsules",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "linkTo": "projects"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/nostalgia/DSC05237.jpg",
+                                "caption": "Neurotypes",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "linkTo": "projects"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/portraits/fp4-malta-200-02024.jpg",
+                                "caption": "Searching for <br>genuine connection <br>in a digital wasteland",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "linkTo": "projects"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/portraits/DSC09780.jpg",
+                                "caption": "Generations",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "linkTo": "projects/generations"
+                            },
+                            {
+                                "type": "img",
+                                "src": "stories/hypnagogia/DSC09978.jpg",
+                                "caption": "Into the Maze",
+                                "captionStyle": "text-3xl md:text-5xl caption-center font-modernline",
+                                "linkTo": "projects"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "projects/mindstates",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
                         "src": "analog/hypnagogia/DSC02583.jpg",
                         "caption": "HYPNAGOGIA / hyp·na·go·gi·a /<br>Transitional state of consciousness between wakefulness and sleep",
                         "captionStyle": "font-eb-garamond"
@@ -667,6 +798,39 @@
                         "src": "analog/hypnagogia/DSC01572-ps.jpg",
                         "caption": "ANEMOIA /ænə'mɔiə/ <br>nostalgia for a time or a place one has never known",
                         "captionStyle": "font-eb-garamond"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "projects/generations",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "analog/portraits/DSC09782.jpg",
+                        "caption": "First cousins",
+                        "captionStyle": "text-3xl md:text-5xl font-modernline caption-center"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/portraits/DSC09780.jpg",
+                        "caption": "Second cousins",
+                        "captionStyle": "text-3xl md:text-5xl font-modernline caption-center"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/portraits/DSC09781.jpg",
+                        "caption": "Third cousins",
+                        "captionStyle": "text-3xl md:text-5xl font-modernline caption-center"
+                    },
+                    {
+                        "type": "div",
+                        "content": "(shot on 80s expired Ilford FP4)",
+                        "class": "m-[20px] font-eb-garamond text-black flex flex-col items-center justify-center text-2xl"
                     }
                 ]
             }
@@ -729,7 +893,7 @@
                         "type": "img",
                         "src": "stories/balaton/DSC08465-2.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Stories & collabs"
+                        "caption": "Stories &#9587; Collabs"
                     },
                     {
                         "type": "div",

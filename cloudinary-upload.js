@@ -35,6 +35,9 @@ if (fs.existsSync(uploadedFilePath)) {
   }
 }
 
+// Counter for new uploads during this run
+let newPhotos = 0;
+
 /**
  * Recursively process a folder.
  * @param {string} dir - Absolute path of the folder.
@@ -63,6 +66,8 @@ async function processFolder(dir, relPath = '') {
           continue;
         }
         await uploadImage(fullPath, publicId, folderName, recordKey);
+        // Increase counter for newly uploaded images
+        newPhotos++;
       }
     }
   }
@@ -98,12 +103,16 @@ const initialRelPath = path.relative(baseFolderPath, photoFolderPath);
 (async function bulkUpload() {
   try {
     await processFolder(photoFolderPath, initialRelPath);
-    console.log('==================');
+    const totalPhotos = Object.keys(uploadedRecords).length;
+    console.log('====================================');
     console.log('🚀 Bulk upload complete!');
-    console.log('==================');
+    console.log('____________________________________');
+    console.log('   ☁️  Number of all images in the cloud:', totalPhotos);
+    console.log('   👀 New uploaded:', newPhotos);
+    console.log('====================================');
   } catch (error) {
-    console.log('==================');
+    console.log('====================================');
     console.error('⚠️ Error during bulk upload:', error.message);
-    console.log('==================');
+    console.log('====================================');
   }
 })();

@@ -1078,13 +1078,50 @@
                   {
                     "name": "241215-02008.jpg",
                     "type": "file"
+                  },
+                  {
+                    "name": "241215-02018.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02795.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02812.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02832.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC02857-2.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "bw-02796.jpg",
+                    "type": "file"
                   }
                 ]
               },
               {
                 "name": "bibi-by-bianka",
                 "type": "folder",
-                "children": []
+                "children": [
+                  {
+                    "name": "DSC01307.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01423.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01551.jpg",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "danielle",
@@ -1157,6 +1194,16 @@
                 ]
               },
               {
+                "name": "heczendorfer-anna",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC06523.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "kerenyi-virag",
                 "type": "folder",
                 "children": [
@@ -1184,10 +1231,6 @@
                   },
                   {
                     "name": "DSC01946.jpg",
-                    "type": "file"
-                  },
-                  {
-                    "name": "DSC02005-4x5.jpg",
                     "type": "file"
                   },
                   {
@@ -1264,6 +1307,10 @@
                   },
                   {
                     "name": "DSC00898.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC01209.jpg",
                     "type": "file"
                   },
                   {
@@ -1589,6 +1636,34 @@
                 ]
               },
               {
+                "name": "fashion-diffusion",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "20230617-09509.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "fashion-in-fire",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "DSC02934.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03182.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03305-2.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "forrai",
                 "type": "folder",
                 "children": [
@@ -1751,6 +1826,10 @@
             "type": "file"
           },
           {
+            "name": "DSC01157.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC01375.jpg",
             "type": "file"
           },
@@ -1760,6 +1839,10 @@
           },
           {
             "name": "DSC02443.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC02741.jpg",
             "type": "file"
           },
           {
@@ -2085,6 +2168,10 @@
           },
           {
             "name": "DSC07607.jpg",
+            "type": "file"
+          },
+          {
+            "name": "bw-02815.jpg",
             "type": "file"
           }
         ]
@@ -2413,7 +2500,18 @@
     "fashion/designers/antuseka": [
       "241215-01919.jpg",
       "241215-01926.jpg",
-      "241215-02008.jpg"
+      "241215-02008.jpg",
+      "241215-02018.jpg",
+      "DSC02795.jpg",
+      "DSC02812.jpg",
+      "DSC02832.jpg",
+      "DSC02857-2.jpg",
+      "bw-02796.jpg"
+    ],
+    "fashion/designers/bibi-by-bianka": [
+      "DSC01307.jpg",
+      "DSC01423.jpg",
+      "DSC01551.jpg"
     ],
     "fashion/designers/danielle": [
       "20250828-DSC09494.jpg"
@@ -2434,6 +2532,9 @@
       "DSC08127.jpg",
       "DSC08211.jpg"
     ],
+    "fashion/designers/heczendorfer-anna": [
+      "DSC06523.jpg"
+    ],
     "fashion/designers/kerenyi-virag": [
       "DSC01118.jpg",
       "DSC01135.jpg",
@@ -2442,7 +2543,6 @@
     "fashion/designers/kovacs-dani-bevlo": [
       "DSC01876.jpg",
       "DSC01946.jpg",
-      "DSC02005-4x5.jpg",
       "DSC02005.jpg",
       "DSC02424.jpg",
       "DSC02432.jpg"
@@ -2463,6 +2563,7 @@
       "20220608_092559.jpg",
       "DSC00862.jpg",
       "DSC00898.jpg",
+      "DSC01209.jpg",
       "DSC01326.jpg",
       "DSC01424.jpg"
     ],
@@ -2548,6 +2649,14 @@
       "DSC02140-4x5.jpg",
       "DSC02425.jpg"
     ],
+    "fashion/shows/fashion-diffusion": [
+      "20230617-09509.jpg"
+    ],
+    "fashion/shows/fashion-in-fire": [
+      "DSC02934.jpg",
+      "DSC03182.jpg",
+      "DSC03305-2.jpg"
+    ],
     "fashion/shows/forrai": [
       "20230527-08536.jpg",
       "20250531-DSC05612.jpg"
@@ -2590,9 +2699,11 @@
       "DSC00043.jpg",
       "DSC00206.jpg",
       "DSC00509-bw-2.jpg",
+      "DSC01157.jpg",
       "DSC01375.jpg",
       "DSC02270.jpg",
       "DSC02443.jpg",
+      "DSC02741.jpg",
       "DSC03104-bw.jpg",
       "DSC05039-crop.jpg",
       "DSC07705-bw.jpg",
@@ -2679,7 +2790,8 @@
       "DSC01899.jpg",
       "DSC02902.jpg",
       "DSC07550.jpg",
-      "DSC07607.jpg"
+      "DSC07607.jpg",
+      "bw-02815.jpg"
     ],
     "zine": [
       "DSC06263-landscape.jpg",
@@ -2918,6 +3030,15 @@
     "241215-01919.jpg": "fashion/designers/antuseka",
     "241215-01926.jpg": "fashion/designers/antuseka",
     "241215-02008.jpg": "fashion/designers/antuseka",
+    "241215-02018.jpg": "fashion/designers/antuseka",
+    "DSC02795.jpg": "fashion/designers/antuseka",
+    "DSC02812.jpg": "fashion/designers/antuseka",
+    "DSC02832.jpg": "fashion/designers/antuseka",
+    "DSC02857-2.jpg": "fashion/designers/antuseka",
+    "bw-02796.jpg": "fashion/designers/antuseka",
+    "DSC01307.jpg": "fashion/designers/bibi-by-bianka",
+    "DSC01423.jpg": "fashion/designers/bibi-by-bianka",
+    "DSC01551.jpg": "fashion/designers/bibi-by-bianka",
     "20250828-DSC09494.jpg": "fashion/designers/danielle",
     "DSC07752-bw.jpg": "fashion/designers/ferencz-borbala",
     "DSC07795.jpg": "fashion/designers/ferencz-borbala",
@@ -2931,12 +3052,12 @@
     "DSC08083.jpg": "fashion/designers/gillichbetti",
     "DSC08127.jpg": "fashion/designers/gillichbetti",
     "DSC08211.jpg": "fashion/designers/gillichbetti",
+    "DSC06523.jpg": "fashion/designers/heczendorfer-anna",
     "DSC01118.jpg": "fashion/designers/kerenyi-virag",
     "DSC01135.jpg": "fashion/designers/kerenyi-virag",
     "DSC01136.jpg": "fashion/designers/kerenyi-virag",
     "DSC01876.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC01946.jpg": "fashion/designers/kovacs-dani-bevlo",
-    "DSC02005-4x5.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC02005.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC02424.jpg": "fashion/designers/kovacs-dani-bevlo",
     "DSC02432.jpg": "fashion/designers/kovacs-dani-bevlo",
@@ -2953,6 +3074,7 @@
     "20220608_092559.jpg": "fashion/designers/laura-hoover",
     "DSC00862.jpg": "fashion/designers/laura-hoover",
     "DSC00898.jpg": "fashion/designers/laura-hoover",
+    "DSC01209.jpg": "fashion/designers/laura-hoover",
     "DSC01326.jpg": "fashion/designers/laura-hoover",
     "DSC01424.jpg": "fashion/designers/laura-hoover",
     "DIA04928.jpg": "fashion/designers/laura-kokai",
@@ -3003,6 +3125,10 @@
     "DSC02130.jpg": "fashion/shows/bevlo",
     "DSC02140-4x5.jpg": "fashion/shows/bevlo",
     "DSC02425.jpg": "fashion/shows/bevlo",
+    "20230617-09509.jpg": "fashion/shows/fashion-diffusion",
+    "DSC02934.jpg": "fashion/shows/fashion-in-fire",
+    "DSC03182.jpg": "fashion/shows/fashion-in-fire",
+    "DSC03305-2.jpg": "fashion/shows/fashion-in-fire",
     "20230527-08536.jpg": "fashion/shows/forrai",
     "20250531-DSC05612.jpg": "fashion/shows/forrai",
     "DSC03444.jpg": "fashion/shows/marie-claire",
@@ -3034,9 +3160,11 @@
     "DSC00043.jpg": "portraits",
     "DSC00206.jpg": "portraits",
     "DSC00509-bw-2.jpg": "portraits",
+    "DSC01157.jpg": "portraits",
     "DSC01375.jpg": "portraits",
     "DSC02270.jpg": "portraits",
     "DSC02443.jpg": "portraits",
+    "DSC02741.jpg": "portraits",
     "DSC03104-bw.jpg": "portraits",
     "DSC05039-crop.jpg": "portraits",
     "DSC07705-bw.jpg": "portraits",
@@ -3090,6 +3218,7 @@
     "DSC02902.jpg": "werk",
     "DSC07550.jpg": "werk",
     "DSC07607.jpg": "werk",
+    "bw-02815.jpg": "werk",
     "DSC06263-landscape.jpg": "zine",
     "DSC06264.jpg": "zine",
     "DSC06265.jpg": "zine",
