@@ -1080,20 +1080,6 @@
             }
         },
         {
-            "slug": "arcanums",
-            "tree": {
-                "type": "div",
-                "children": [
-                    {
-                        "type": "img",
-                        "src": "analog/hypnagogia/DSC06874-2.jpg",
-                        "caption": "ENTER",
-                        "linkTo": "analog/hypnagogia"
-                    }
-                ]
-            }
-        },
-        {
             "slug": "analog",
             "background": null,
             "navColor": "gold",

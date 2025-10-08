@@ -261,10 +261,10 @@
                 "content": "Congrats hacker, you found all the pages"
               },
               ...Object.keys(folderData.flat).map(route => ({
-              type: "a",
-              href: `/${route}`,
-              class: "text-1xl md:text-2xl font-bold text-white rounded-md",
-              content: route
+                type: "a",
+                href: `/${route}`,
+                class: "text-1xl md:text-2xl font-bold text-white rounded-md",
+                content: route
             }))]
           }
         });
@@ -333,7 +333,7 @@
         }
         // If description is present, insert it as a styled div after the first child
         if(node.meta){
-          node.children.splice(1, 0, {
+          node?.children?.splice(1, 0, {
             type: "div",
             class: "m-[20px] text-2xl font-eb-garamond text-black mx-auto text-left max-w-[70%]",
             content: node.meta
@@ -345,7 +345,7 @@
 
         // For non-image nodes, add common attributes like href
         // (Assuming properties not in a reserved list belong as attributes)
-        const reserved = ["type", "children", "content", "class", "style", "src", "alt", "description"];
+        const reserved = ["type", "children", "content", "class", "style", "src", "alt", "meta", "caption", "captionStyle", "linkTo", "source"];
         Object.keys(node).forEach((key) => {
           if (!reserved.includes(key) && typeof node[key] === "string") {
             propsArr.push(`${key}="${node[key]}"`);
