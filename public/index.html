@@ -192,6 +192,7 @@
         <div class="space-x-4 hidden md:block" id="nav-links">
           <a href="/fashion">Fashion</a>
           <a href="/analog">Analog</a>
+          <a href="/people">People</a>
           <a href="/stories">Stories</a>
           <a href="/backstage">Backstage</a>
           <a href="/projects">Projects</a>
@@ -213,6 +214,7 @@
         <nav class="flex flex-col space-y-8 text-center text-3xl font-bold">
           <a href="/fashion">Fashion</a>
           <a href="/analog">Analog</a>
+          <a href="/people">People</a>
           <a href="/stories">Stories</a>
           <a href="/backstage">Backstage</a>
           <a href="/projects">Projects</a>
@@ -329,13 +331,21 @@
         if (node.type === "text") {
           return node.content || "";
         }
+        // If description is present, insert it as a styled div after the first child
+        if(node.meta){
+          node.children.splice(1, 0, {
+            type: "div",
+            class: "m-[20px] text-2xl font-eb-garamond text-black mx-auto text-left max-w-[70%]",
+            content: node.meta
+          });
+        }
 
         // Build props string
         let propsArr = [];
 
         // For non-image nodes, add common attributes like href
         // (Assuming properties not in a reserved list belong as attributes)
-        const reserved = ["type", "children", "content", "class", "style", "src", "alt"];
+        const reserved = ["type", "children", "content", "class", "style", "src", "alt", "description"];
         Object.keys(node).forEach((key) => {
           if (!reserved.includes(key) && typeof node[key] === "string") {
             propsArr.push(`${key}="${node[key]}"`);

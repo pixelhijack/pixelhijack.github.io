@@ -162,6 +162,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC02338-3.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC02601.jpg",
                 "type": "file"
               },
@@ -252,6 +256,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC02589.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC02640.jpg",
                 "type": "file"
               },
@@ -324,6 +332,10 @@
               {
                 "name": "DSC00744-2.jpg",
                 "type": "file"
+              },
+              {
+                "name": "DSC01463-2m.jpg",
+                "type": "file"
               }
             ]
           },
@@ -341,6 +353,22 @@
               },
               {
                 "name": "DSC06968-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08445-positive.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08455-positive.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08456-positive-4.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08464.jpg",
                 "type": "file"
               },
               {
@@ -518,6 +546,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC01638-2.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC02543.jpg",
                 "type": "file"
               },
@@ -527,6 +559,10 @@
               },
               {
                 "name": "DSC02561-3.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC02573-3.jpg",
                 "type": "file"
               },
               {
@@ -724,6 +760,28 @@
         "type": "folder",
         "children": [
           {
+            "name": "ada-leia",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC08748.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08778-crop-ort.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08829-light.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08840-side.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
             "name": "b72",
             "type": "folder",
             "children": [
@@ -863,6 +921,32 @@
             ]
           },
           {
+            "name": "lea",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC01694-2-side.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09511-2.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09527.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09574-crop.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09625-3-side.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
             "name": "margitkrt",
             "type": "folder",
             "children": [
@@ -917,7 +1001,20 @@
           {
             "name": "the-mad-king",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC09694-DSC09874.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09783-Pano.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09863.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "the-pier",
@@ -1682,11 +1779,23 @@
                 "type": "folder",
                 "children": [
                   {
+                    "name": "DSC03155.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC03444.jpg",
                     "type": "file"
                   },
                   {
+                    "name": "DSC03479-side.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC03546.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03555-side.jpg",
                     "type": "file"
                   },
                   {
@@ -1698,11 +1807,27 @@
                     "type": "file"
                   },
                   {
+                    "name": "DSC03603-side.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC03645.jpg",
                     "type": "file"
                   },
                   {
+                    "name": "DSC03686.jpg",
+                    "type": "file"
+                  },
+                  {
                     "name": "DSC03748.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03759.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC03829.jpg",
                     "type": "file"
                   },
                   {
@@ -1854,6 +1979,10 @@
             "type": "file"
           },
           {
+            "name": "DSC05062.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC07705-bw.jpg",
             "type": "file"
           },
@@ -1867,6 +1996,10 @@
           },
           {
             "name": "DSC08671.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC08831.jpg",
             "type": "file"
           },
           {
@@ -1928,6 +2061,10 @@
             "type": "folder",
             "children": [
               {
+                "name": "DSC00412-3.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC01182-2.jpg",
                 "type": "file"
               }
@@ -1982,6 +2119,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC03973.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC05039-crop2.jpg",
                 "type": "file"
               },
@@ -1999,6 +2140,10 @@
               },
               {
                 "name": "DSC08447.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC08473-positive-2.jpg",
                 "type": "file"
               },
               {
@@ -2137,6 +2282,34 @@
         "type": "folder",
         "children": [
           {
+            "name": "230831-03544.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03617.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03623.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03722-side.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03852.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03892.jpg",
+            "type": "file"
+          },
+          {
+            "name": "230831-03963.jpg",
+            "type": "file"
+          },
+          {
             "name": "DSC08914.jpg",
             "type": "file"
           }
@@ -2273,6 +2446,7 @@
       "231018-orwo-00396-5.jpg",
       "231018-orwo-00400-2.jpg",
       "231018-orwo-00401-2.jpg",
+      "DSC02338-3.jpg",
       "DSC02601.jpg",
       "DSC02602.jpg",
       "DSC02609.jpg",
@@ -2296,6 +2470,7 @@
       "DSC01750.jpg",
       "DSC02582-3.jpg",
       "DSC02583.jpg",
+      "DSC02589.jpg",
       "DSC02640.jpg",
       "DSC03011-crop.jpg",
       "DSC04844-3.jpg",
@@ -2314,12 +2489,17 @@
       "DSC00739.jpg",
       "DSC00742.jpg",
       "DSC00743.jpg",
-      "DSC00744-2.jpg"
+      "DSC00744-2.jpg",
+      "DSC01463-2m.jpg"
     ],
     "analog/night": [
       "DSC01747.jpg",
       "DSC06940.jpg",
       "DSC06968-2.jpg",
+      "DSC08445-positive.jpg",
+      "DSC08455-positive.jpg",
+      "DSC08456-positive-4.jpg",
+      "DSC08464.jpg",
       "lea-csenge-2x3.jpg"
     ],
     "analog/north": [
@@ -2365,9 +2545,11 @@
     "analog/portraits": [
       "DSC01532.jpg",
       "DSC01629-2.jpg",
+      "DSC01638-2.jpg",
       "DSC02543.jpg",
       "DSC02554.jpg",
       "DSC02561-3.jpg",
+      "DSC02573-3.jpg",
       "DSC02576-5.jpg",
       "DSC02586-3.jpg",
       "DSC02593.jpg",
@@ -2416,6 +2598,12 @@
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
     ],
+    "conceptual/ada-leia": [
+      "DSC08748.jpg",
+      "DSC08778-crop-ort.jpg",
+      "DSC08829-light.jpg",
+      "DSC08840-side.jpg"
+    ],
     "conceptual/b72": [
       "20200404_082431265.jpg",
       "DSC00060.jpg",
@@ -2452,6 +2640,13 @@
       "DSC01206.jpg",
       "DSC01461+text.jpg"
     ],
+    "conceptual/lea": [
+      "DSC01694-2-side.jpg",
+      "DSC09511-2.jpg",
+      "DSC09527.jpg",
+      "DSC09574-crop.jpg",
+      "DSC09625-3-side.jpg"
+    ],
     "conceptual/margitkrt": [
       "kinga-2-7.jpg"
     ],
@@ -2460,6 +2655,11 @@
       "DSC00108.jpg",
       "DSC00273.jpg",
       "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg"
+    ],
+    "conceptual/the-mad-king": [
+      "DSC09694-DSC09874.jpg",
+      "DSC09783-Pano.jpg",
+      "DSC09863.jpg"
     ],
     "conceptual/the-pier": [
       "DSC09454.jpg",
@@ -2662,12 +2862,19 @@
       "20250531-DSC05612.jpg"
     ],
     "fashion/shows/marie-claire": [
+      "DSC03155.jpg",
       "DSC03444.jpg",
+      "DSC03479-side.jpg",
       "DSC03546.jpg",
+      "DSC03555-side.jpg",
       "DSC03558.jpg",
       "DSC03593.jpg",
+      "DSC03603-side.jpg",
       "DSC03645.jpg",
+      "DSC03686.jpg",
       "DSC03748.jpg",
+      "DSC03759.jpg",
+      "DSC03829.jpg",
       "DSC03840.jpg",
       "DSC03890.jpg",
       "DSC03891.jpg"
@@ -2706,10 +2913,12 @@
       "DSC02741.jpg",
       "DSC03104-bw.jpg",
       "DSC05039-crop.jpg",
+      "DSC05062.jpg",
       "DSC07705-bw.jpg",
       "DSC08257.jpg",
       "DSC08650-2.jpg",
       "DSC08671.jpg",
+      "DSC08831.jpg",
       "DSC09221-hell.jpg",
       "DSC09231-bw.jpg",
       "DSC09321-bw-grain.jpg",
@@ -2725,6 +2934,7 @@
       "DSC08465-2.jpg"
     ],
     "stories/bendzsi": [
+      "DSC00412-3.jpg",
       "DSC01182-2.jpg"
     ],
     "stories/call-me-unique": [
@@ -2740,11 +2950,13 @@
       "DSC01590.jpg",
       "DSC01905-agi.jpg",
       "DSC02471.jpg",
+      "DSC03973.jpg",
       "DSC05039-crop2.jpg",
       "DSC05055.jpg",
       "DSC06538.jpg",
       "DSC07451.jpg",
       "DSC08447.jpg",
+      "DSC08473-positive-2.jpg",
       "DSC08556.jpg",
       "DSC09638.jpg",
       "DSC09831.jpg",
@@ -2782,6 +2994,13 @@
       "DSC02691.jpg"
     ],
     "theater": [
+      "230831-03544.jpg",
+      "230831-03617.jpg",
+      "230831-03623.jpg",
+      "230831-03722-side.jpg",
+      "230831-03852.jpg",
+      "230831-03892.jpg",
+      "230831-03963.jpg",
       "DSC08914.jpg"
     ],
     "werk": [
@@ -2842,6 +3061,7 @@
     "231018-orwo-00396-5.jpg": "analog/gaia",
     "231018-orwo-00400-2.jpg": "analog/gaia",
     "231018-orwo-00401-2.jpg": "analog/gaia",
+    "DSC02338-3.jpg": "analog/gaia",
     "DSC02601.jpg": "analog/gaia",
     "DSC02602.jpg": "analog/gaia",
     "DSC02609.jpg": "analog/gaia",
@@ -2863,6 +3083,7 @@
     "DSC01750.jpg": "analog/hypnagogia",
     "DSC02582-3.jpg": "analog/hypnagogia",
     "DSC02583.jpg": "analog/hypnagogia",
+    "DSC02589.jpg": "analog/hypnagogia",
     "DSC02640.jpg": "analog/hypnagogia",
     "DSC03011-crop.jpg": "analog/hypnagogia",
     "DSC04844-3.jpg": "analog/hypnagogia",
@@ -2880,9 +3101,14 @@
     "DSC00742.jpg": "analog/icarus",
     "DSC00743.jpg": "analog/icarus",
     "DSC00744-2.jpg": "analog/icarus",
+    "DSC01463-2m.jpg": "analog/icarus",
     "DSC01747.jpg": "analog/night",
     "DSC06940.jpg": "analog/night",
     "DSC06968-2.jpg": "analog/night",
+    "DSC08445-positive.jpg": "analog/night",
+    "DSC08455-positive.jpg": "analog/night",
+    "DSC08456-positive-4.jpg": "analog/night",
+    "DSC08464.jpg": "analog/night",
     "lea-csenge-2x3.jpg": "analog/night",
     "200T-tatry-00459.jpg": "analog/north",
     "20250916-DSC08768.jpg": "analog/north",
@@ -2922,9 +3148,11 @@
     "DSC05237.jpg": "analog/nostalgia",
     "DSC01532.jpg": "analog/portraits",
     "DSC01629-2.jpg": "analog/portraits",
+    "DSC01638-2.jpg": "analog/portraits",
     "DSC02543.jpg": "analog/portraits",
     "DSC02554.jpg": "analog/portraits",
     "DSC02561-3.jpg": "analog/portraits",
+    "DSC02573-3.jpg": "analog/portraits",
     "DSC02576-5.jpg": "analog/portraits",
     "DSC02586-3.jpg": "analog/portraits",
     "DSC02593.jpg": "analog/portraits",
@@ -2970,6 +3198,10 @@
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
+    "DSC08748.jpg": "conceptual/ada-leia",
+    "DSC08778-crop-ort.jpg": "conceptual/ada-leia",
+    "DSC08829-light.jpg": "conceptual/ada-leia",
+    "DSC08840-side.jpg": "conceptual/ada-leia",
     "20200404_082431265.jpg": "conceptual/b72",
     "DSC00060.jpg": "conceptual/b72",
     "DSC00653.jpg": "conceptual/b72",
@@ -2996,11 +3228,19 @@
     "1789-40.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC01206.jpg": "conceptual/journeys-to-self-acceptance",
     "DSC01461+text.jpg": "conceptual/journeys-to-self-acceptance",
+    "DSC01694-2-side.jpg": "conceptual/lea",
+    "DSC09511-2.jpg": "conceptual/lea",
+    "DSC09527.jpg": "conceptual/lea",
+    "DSC09574-crop.jpg": "conceptual/lea",
+    "DSC09625-3-side.jpg": "conceptual/lea",
     "kinga-2-7.jpg": "conceptual/margitkrt",
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",
     "DSC00273.jpg": "conceptual/proud-mary",
     "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg": "conceptual/proud-mary",
+    "DSC09694-DSC09874.jpg": "conceptual/the-mad-king",
+    "DSC09783-Pano.jpg": "conceptual/the-mad-king",
+    "DSC09863.jpg": "conceptual/the-mad-king",
     "DSC09454.jpg": "conceptual/the-pier",
     "DSC09471.jpg": "conceptual/the-pier",
     "DSC09495.jpg": "conceptual/the-pier",
@@ -3131,12 +3371,19 @@
     "DSC03305-2.jpg": "fashion/shows/fashion-in-fire",
     "20230527-08536.jpg": "fashion/shows/forrai",
     "20250531-DSC05612.jpg": "fashion/shows/forrai",
+    "DSC03155.jpg": "fashion/shows/marie-claire",
     "DSC03444.jpg": "fashion/shows/marie-claire",
+    "DSC03479-side.jpg": "fashion/shows/marie-claire",
     "DSC03546.jpg": "fashion/shows/marie-claire",
+    "DSC03555-side.jpg": "fashion/shows/marie-claire",
     "DSC03558.jpg": "fashion/shows/marie-claire",
     "DSC03593.jpg": "fashion/shows/marie-claire",
+    "DSC03603-side.jpg": "fashion/shows/marie-claire",
     "DSC03645.jpg": "fashion/shows/marie-claire",
+    "DSC03686.jpg": "fashion/shows/marie-claire",
     "DSC03748.jpg": "fashion/shows/marie-claire",
+    "DSC03759.jpg": "fashion/shows/marie-claire",
+    "DSC03829.jpg": "fashion/shows/marie-claire",
     "DSC03840.jpg": "fashion/shows/marie-claire",
     "DSC03890.jpg": "fashion/shows/marie-claire",
     "DSC03891.jpg": "fashion/shows/marie-claire",
@@ -3167,10 +3414,12 @@
     "DSC02741.jpg": "portraits",
     "DSC03104-bw.jpg": "portraits",
     "DSC05039-crop.jpg": "portraits",
+    "DSC05062.jpg": "portraits",
     "DSC07705-bw.jpg": "portraits",
     "DSC08257.jpg": "portraits",
     "DSC08650-2.jpg": "portraits",
     "DSC08671.jpg": "portraits",
+    "DSC08831.jpg": "portraits",
     "DSC09221-hell.jpg": "portraits",
     "DSC09231-bw.jpg": "portraits",
     "DSC09321-bw-grain.jpg": "portraits",
@@ -3180,6 +3429,7 @@
     "DSC01445.wall-side.jpeg": "prints",
     "DSC08971-wall-side.jpeg": "prints",
     "DSC08465-2.jpg": "stories/balaton",
+    "DSC00412-3.jpg": "stories/bendzsi",
     "DSC01182-2.jpg": "stories/bendzsi",
     "DSC07727.jpg": "stories/call-me-unique",
     "DSC07857.jpg": "stories/call-me-unique",
@@ -3189,11 +3439,13 @@
     "DSC01590.jpg": "stories/hypnagogia",
     "DSC01905-agi.jpg": "stories/hypnagogia",
     "DSC02471.jpg": "stories/hypnagogia",
+    "DSC03973.jpg": "stories/hypnagogia",
     "DSC05039-crop2.jpg": "stories/hypnagogia",
     "DSC05055.jpg": "stories/hypnagogia",
     "DSC06538.jpg": "stories/hypnagogia",
     "DSC07451.jpg": "stories/hypnagogia",
     "DSC08447.jpg": "stories/hypnagogia",
+    "DSC08473-positive-2.jpg": "stories/hypnagogia",
     "DSC08556.jpg": "stories/hypnagogia",
     "DSC09638.jpg": "stories/hypnagogia",
     "DSC09831.jpg": "stories/hypnagogia",
@@ -3211,6 +3463,13 @@
     "DSC01250.jpg": "stories/tattoocon",
     "DSC02074.jpg": "stories/vikings-flokken",
     "DSC02691.jpg": "stories/vikings-flokken",
+    "230831-03544.jpg": "theater",
+    "230831-03617.jpg": "theater",
+    "230831-03623.jpg": "theater",
+    "230831-03722-side.jpg": "theater",
+    "230831-03852.jpg": "theater",
+    "230831-03892.jpg": "theater",
+    "230831-03963.jpg": "theater",
     "DSC08914.jpg": "theater",
     "20250531-DSC07961.jpg": "werk",
     "DIA05337.jpg": "werk",

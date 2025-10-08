@@ -29,6 +29,7 @@
                                     "stories/hypnagogia/pothattila-09975.jpg",
                                     "stories/hypnagogia/DSC09831.jpg",
                                     "stories/hypnagogia/DSC01905-agi.jpg",
+                                    "theater/230831-03963.jpg",
                                     "fashion/mood/59532b451f9b_rw_1920.jpg"
                                 ],
                                 "class": "w-full h-full object-cover"
@@ -72,8 +73,8 @@
                             },
                             {
                                 "type": "img",
-                                "src": "analog/portraits/DSC02593.jpg",
-                                "linkTo": "analog/portraits"
+                                "src": "portraits/DSC09231-bw.jpg",
+                                "linkTo": "portraits"
                             },
                             {
                                 "type": "img",
@@ -147,7 +148,12 @@
                             },
                             {
                                 "type": "img",
-                                "src": "portraits/DSC09231-bw.jpg",
+                                "src": "analog/portraits/DSC02593.jpg",
+                                "linkTo": "analog/portraits"
+                            },
+                            {
+                                "type": "img",
+                                "src": "portraits/DSC05062.jpg",
                                 "linkTo": "portraits"
                             }
                         ]
@@ -274,7 +280,12 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
+                        "src": [
+                            "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
+                            "fashion/shows/forrai/20230527-08536.jpg",
+                            "fashion/shows/the-balance/DSC09177.jpg",
+                            "fashion/shows/the-balance/DSC09293.jpg"
+                        ],
                         "captionStyle": "absolute inset-0 flex flex-col text-center items-center justify-center font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Capturing the chronicles of <br>people from the fashion world<br><br>▼"
                     },
@@ -343,8 +354,8 @@
                         "children": [
                             {
                                 "type": "img",
-                                "src": "fashion/designers/gillichbetti/DSC07947-3.jpg",
-                                "caption": "WORKSHOPS<br>Stay tuned for upcoming fashion photography workshops in Budapest, Hungary.",
+                                "src": "fashion/designers/antuseka/DSC02795.jpg",
+                                "caption": "WORKSHOPS<br>Stay tuned for upcoming fashion photography workshops",
                                 "captionStyle": "caption-center font-eb-garamond font-black"
                             }
                         ]
@@ -477,7 +488,8 @@
             "slug": "fashion/designers/laura-hoover",
             "navColor": "black",
             "tree": {
-                "source": "fashion/designers/laura-hoover"
+                "source": "fashion/designers/laura-hoover",
+                "meta": "Laura Hoover jelmeztervezővel egy studióban készítettük a sorozatot, ahol a 'Jolene' című darabból játszottak színész barátai részleteket a fotózás során."
             }
         },
         {
@@ -715,7 +727,7 @@
                         "type": "img",
                         "src": "analog/hypnagogia/DSC02640.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Long-form narrative <br>documentary,<br> visionary / mood, <br>& personal projects<br><br>∞"
+                        "caption": "Narrative documentary <br>& personal projects<br><br>∞"
                     },
                     {
                         "type": "div",
@@ -852,6 +864,34 @@
             }
         },
         {
+            "slug": "people",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "first-img-cover",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "portraits/DSC03104-bw.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Love"
+                    },
+                    {
+                        "type": "img",
+                        "src": "portraits/DSC08831.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Life"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/gaia/DSC05375.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Femininity"
+                    }
+                ]
+            }
+        },
+        {
             "slug": "backstage",
             "background": null,
             "tree": {
@@ -860,10 +900,10 @@
                 "children": [
                     {
                         "type": "img",
-                        "src": "werk/DIA05337.jpg",
+                        "src": "dancers/pothattila-footnote-sawubona-04236.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Werk",
-                        "linkTo": "werk"
+                        "caption": "Dancers",
+                        "linkTo": "dancers"
                     },
                     {
                         "type": "img",
@@ -874,10 +914,10 @@
                     },
                     {
                         "type": "img",
-                        "src": "dancers/pothattila-footnote-sawubona-04236.jpg",
+                        "src": "werk/DIA05337.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Dancers",
-                        "linkTo": "dancers"
+                        "caption": "Werk",
+                        "linkTo": "werk"
                     }
                 ]
             }
