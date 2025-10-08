@@ -489,6 +489,7 @@
             "navColor": "black",
             "tree": {
                 "source": "fashion/designers/laura-hoover",
+                "class": "sidescroll-gallery",
                 "meta": "Laura Hoover jelmeztervezővel egy studióban készítettük a sorozatot, ahol a 'Jolene' című darabból játszottak színész barátai részleteket a fotózás során."
             }
         },
@@ -713,7 +714,15 @@
         {
             "slug": "analog/hypnagogia",
             "tree": {
-                "source": "analog/hypnagogia"
+                "source": "analog/hypnagogia",
+                "class": "sidescroll-gallery"
+            }
+        },
+        {
+            "slug": "analog/portraits",
+            "tree": {
+                "source": "analog/portraits",
+                "class": "sidescroll-gallery"
             }
         },
         {

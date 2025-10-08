@@ -159,11 +159,34 @@
           font-size: 1.5rem; 
         }
       }
-      .text-soft {
-        filter: blur(0.5px);
-      }
       main img {
         margin-bottom: 0.5rem;
+      }
+
+      div.sidescroll-gallery {
+        height: 100vh; 
+        display: flex; 
+        overflow-x: auto;
+        gap: 1rem;
+        scroll-snap-type: x mandatory;  /* Optional: enables snap scrolling */
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+        scrollbar-width: none;     /* For Firefox */
+      }
+      div.sidescroll-gallery img {
+        height: 100vh;
+        width: auto;        /* let width scale naturally (keeping aspect ratio) */
+        max-width: none;    /* prevent max-width skewing images */
+        flex-shrink: 0;     /* prevent images from shrinking */
+        scroll-snap-align: start; 
+      }
+      div.sidescroll-gallery div {
+        min-width: 300px;
+        height: 100vh;
+        padding-top: 88px;
+        box-sizing: border-box;
+      }
+      div.sidescroll-gallery::-webkit-scrollbar {
+        display: none;   /* For Chrome, Safari, Opera */
       }
     </style>
   </head>
@@ -547,6 +570,7 @@
 
       // Initial rendering:
       document.addEventListener("DOMContentLoaded", renderPage);
+      
     </script>
 
 
