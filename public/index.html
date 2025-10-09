@@ -66,7 +66,7 @@
       .font-josefin-sans, 
       .font-ambroise, 
       .font-modernline {
-        filter: blur(0.4px);
+        filter: blur(0.5px);
       }
       .font-eb-garamond {
         font-family: "EB Garamond", serif;
@@ -361,6 +361,27 @@
             class: "m-[20px] text-2xl font-eb-garamond text-black mx-auto text-left max-w-[70%]",
             content: node.meta
           });
+        }
+
+        if (node.type === "background") {
+          // Use getImageSrc on the source
+          const bgImage = getImageSrc(node.src);
+          // Allow inline styles to be overridden via the class if needed.
+          let extraStyle = `background-image: url(${bgImage}); background-size: cover; background-position: center;`;
+          // If desired, you can append default dimensions.
+          extraStyle += "width: 100%; height: 100vh;";
+          
+          // Build props from node.class and inline style
+          const classProp = node.class ? ` class="${node.class}"` : "";
+          const styleProp = ` style="${extraStyle}"`;
+          
+          // Render children as inner HTML
+          let childrenStr = "";
+          if (node.children && Array.isArray(node.children)) {
+            childrenStr = node.children.map(renderTree).join("");
+          }
+          
+          return `<div${classProp}${styleProp}>${node.content || ""}${childrenStr}</div>`;
         }
 
         // Build props string

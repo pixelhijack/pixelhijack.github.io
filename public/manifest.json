@@ -284,6 +284,7 @@
                             "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
                             "fashion/shows/forrai/20230527-08536.jpg",
                             "fashion/shows/the-balance/DSC09177.jpg",
+                            "fashion/shows/bcefw/240831-00268.jpg",
                             "fashion/shows/the-balance/DSC09293.jpg"
                         ],
                         "captionStyle": "absolute inset-0 flex flex-col text-center items-center justify-center font-eb-garamond text-4xl md:text-6xl",
@@ -622,6 +623,12 @@
                     },
                     {
                         "type": "img",
+                        "src": "fashion/shows/bcefw/PA-09981-side.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "BCEFW, 2023"
+                    },
+                    {
+                        "type": "img",
                         "src": "fashion/shows/bevlo/DSC02077.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Bevlo 25th Anniversary 2022"
@@ -655,6 +662,12 @@
                         "src": "fashion/shows/forrai/20230527-08536.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Forrai 2023"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/bcefw/PA-04314-side.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "BCEFW, 2023"
                     },
                     {
                         "type": "img",
@@ -692,13 +705,23 @@
             "background": null,
             "tree": {
                 "type": "div",
-                "class": "first-img-cover",
                 "children": [
                     {
-                        "type": "img",
-                        "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
-                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "<b>Catwalk <i>mood</i></b><i><br><small>Coming soon...</small></i>"
+                    "type": "background",
+                    "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
+                    "class": "w-full h-screen bg-cover bg-center bg-fixed",
+                    "children": [
+                            {
+                                "type": "div",
+                                "style": {
+                                    "mix-blend-mode": "soft-light",
+                                    "color": "white",
+                                    "background-color": "hsla(120deg, 75%, 25%, 0.6)"
+                                },
+                                "class": "font-ambroise p-8 absolute inset-0 flex flex-col items-center justify-center text-4xl md:text-7xl",
+                                "content": "Catwalk mood is a distinct genre of fashion photography that captures the atmosphere, energy, and essence of fashion shows and runway events. It goes beyond simply documenting the clothes being presented; it aims to convey the overall vibe and experience of the event."
+                            }
+                        ]
                     }
                 ]
             }
@@ -857,22 +880,6 @@
             }
         },
         {
-            "slug": "portraits",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
-            "slug": "weddings",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "children": []
-            }
-        },
-        {
             "slug": "people",
             "background": null,
             "tree": {
@@ -895,7 +902,7 @@
                         "type": "img",
                         "src": "analog/gaia/DSC05375.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Femininity"
+                        "caption": "Self-acceptance"
                     }
                 ]
             }

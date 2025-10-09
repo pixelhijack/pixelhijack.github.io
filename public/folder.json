@@ -606,6 +606,10 @@
                 "type": "file"
               },
               {
+                "name": "DSC05881.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC06012.jpg",
                 "type": "file"
               },
@@ -615,6 +619,10 @@
               },
               {
                 "name": "DSC06032.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC06138.jpg",
                 "type": "file"
               },
               {
@@ -1703,6 +1711,44 @@
             "type": "folder",
             "children": [
               {
+                "name": "bcefw",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "240831-00140-side.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "240831-00268.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC00012-side.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "DSC09964-side.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "PA-04314-side.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "PA-09981-side.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "PA-09990.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "pothattila-240831-00494.jpg",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "bevlo",
                 "type": "folder",
                 "children": [
@@ -1770,6 +1816,10 @@
                   },
                   {
                     "name": "20250531-DSC05612.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "fractal.jpg",
                     "type": "file"
                   }
                 ]
@@ -1932,10 +1982,6 @@
           },
           {
             "name": "DIA05360.jpg",
-            "type": "file"
-          },
-          {
-            "name": "DIA05363.jpg",
             "type": "file"
           },
           {
@@ -2560,9 +2606,11 @@
       "DSC05363.jpg",
       "DSC05394.jpg",
       "DSC05396.jpg",
+      "DSC05881.jpg",
       "DSC06012.jpg",
       "DSC06014-3.jpg",
       "DSC06032.jpg",
+      "DSC06138.jpg",
       "DSC07025.jpg",
       "DSC08994.jpg",
       "DSC09780.jpg",
@@ -2841,6 +2889,16 @@
     "fashion/mood": [
       "59532b451f9b_rw_1920.jpg"
     ],
+    "fashion/shows/bcefw": [
+      "240831-00140-side.jpg",
+      "240831-00268.jpg",
+      "DSC00012-side.jpg",
+      "DSC09964-side.jpg",
+      "PA-04314-side.jpg",
+      "PA-09981-side.jpg",
+      "PA-09990.jpg",
+      "pothattila-240831-00494.jpg"
+    ],
     "fashion/shows/bevlo": [
       "DSC01905.jpg",
       "DSC02077.jpg",
@@ -2859,7 +2917,8 @@
     ],
     "fashion/shows/forrai": [
       "20230527-08536.jpg",
-      "20250531-DSC05612.jpg"
+      "20250531-DSC05612.jpg",
+      "fractal.jpg"
     ],
     "fashion/shows/marie-claire": [
       "DSC03155.jpg",
@@ -2902,7 +2961,6 @@
     "portraits": [
       "231006-01333.jpg",
       "DIA05360.jpg",
-      "DIA05363.jpg",
       "DSC00043.jpg",
       "DSC00206.jpg",
       "DSC00509-bw-2.jpg",
@@ -3163,9 +3221,11 @@
     "DSC05363.jpg": "analog/portraits",
     "DSC05394.jpg": "analog/portraits",
     "DSC05396.jpg": "analog/portraits",
+    "DSC05881.jpg": "analog/portraits",
     "DSC06012.jpg": "analog/portraits",
     "DSC06014-3.jpg": "analog/portraits",
     "DSC06032.jpg": "analog/portraits",
+    "DSC06138.jpg": "analog/portraits",
     "DSC07025.jpg": "analog/portraits",
     "DSC08994.jpg": "analog/portraits",
     "DSC09780.jpg": "analog/portraits",
@@ -3359,6 +3419,14 @@
     "DSC06636-red+98c+14y.jpg": "fashion/models/peter",
     "DSC06674-red+98c+14y.jpg": "fashion/models/peter",
     "59532b451f9b_rw_1920.jpg": "fashion/mood",
+    "240831-00140-side.jpg": "fashion/shows/bcefw",
+    "240831-00268.jpg": "fashion/shows/bcefw",
+    "DSC00012-side.jpg": "fashion/shows/bcefw",
+    "DSC09964-side.jpg": "fashion/shows/bcefw",
+    "PA-04314-side.jpg": "fashion/shows/bcefw",
+    "PA-09981-side.jpg": "fashion/shows/bcefw",
+    "PA-09990.jpg": "fashion/shows/bcefw",
+    "pothattila-240831-00494.jpg": "fashion/shows/bcefw",
     "DSC01905.jpg": "fashion/shows/bevlo",
     "DSC02077.jpg": "fashion/shows/bevlo",
     "DSC02124.jpg": "fashion/shows/bevlo",
@@ -3371,6 +3439,7 @@
     "DSC03305-2.jpg": "fashion/shows/fashion-in-fire",
     "20230527-08536.jpg": "fashion/shows/forrai",
     "20250531-DSC05612.jpg": "fashion/shows/forrai",
+    "fractal.jpg": "fashion/shows/forrai",
     "DSC03155.jpg": "fashion/shows/marie-claire",
     "DSC03444.jpg": "fashion/shows/marie-claire",
     "DSC03479-side.jpg": "fashion/shows/marie-claire",
@@ -3403,7 +3472,6 @@
     "DSC09378.jpg": "fashion/shows/the-balance",
     "231006-01333.jpg": "portraits",
     "DIA05360.jpg": "portraits",
-    "DIA05363.jpg": "portraits",
     "DSC00043.jpg": "portraits",
     "DSC00206.jpg": "portraits",
     "DSC00509-bw-2.jpg": "portraits",
