@@ -265,7 +265,7 @@
                         "type": "img",
                         "src": "about/1734626801051.jpg",
                         "captionStyle": "font-eb-garamond text-white",
-                        "caption": "...deep in the jungle"
+                        "caption": "...exploring the jungle"
                     }
                 ]
             }
@@ -655,7 +655,7 @@
                         "type": "img",
                         "src": "fashion/shows/paloma/241020-01523.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Paloma Artspace"
+                        "caption": "Paloma Artspace, 2024"
                     },
                     {
                         "type": "img",
@@ -673,7 +673,7 @@
                         "type": "img",
                         "src": "fashion/shows/fashion-diffusion/20230617-09509.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Fashion Diffusion IV. 2023"
+                        "caption": "Fashion Diffusion IV 2023"
                     },
                     {
                         "type": "img",
@@ -880,34 +880,6 @@
             }
         },
         {
-            "slug": "people",
-            "background": null,
-            "tree": {
-                "type": "div",
-                "class": "first-img-cover",
-                "children": [
-                    {
-                        "type": "img",
-                        "src": "portraits/DSC03104-bw.jpg",
-                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Love"
-                    },
-                    {
-                        "type": "img",
-                        "src": "portraits/DSC08831.jpg",
-                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Life"
-                    },
-                    {
-                        "type": "img",
-                        "src": "analog/gaia/DSC05375.jpg",
-                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Self-acceptance"
-                    }
-                ]
-            }
-        },
-        {
             "slug": "backstage",
             "background": null,
             "tree": {
@@ -984,6 +956,11 @@
                                 "linkTo": "stories/pride"
                             },
                             {
+                                "type": "div",
+                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "To read these stories and other long-form content, head out to <a href='https://pothattila.substack.com/' target='_blank' class='underline'>my photo blog</a>"
+                            },
+                            {
                                 "type": "img",
                                 "src": "stories/vikings-flokken/DSC02691.jpg",
                                 "caption": "Vikings - Flokken",
@@ -1010,15 +987,84 @@
                                 "caption": "Póth Rebeka",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "stories/poth-rebeka"
-                            },
-                            {
-                                "type": "div",
-                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-4xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "To read more stories and long-form content, head out to <a href='https://pothattila.substack.com/' target='_blank' class='underline'>my substack photo blog</a>"
                             }
                         ]
+                    },
+                    {
+                        "type": "img",
+                        "src": "portraits/DSC03104-bw.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Love"
+                    },
+                    {
+                        "type": "img",
+                        "src": "portraits/DSC08831.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Life"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/gaia/DSC05375.jpg",
+                        "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Self-acceptance"
                     }
                 ]
+            }
+        },
+        {
+            "slug": "stories/inked",
+            "tree": {
+                "source": "stories/inked",
+                "meta": "<h1><b>Inked</b></h1><p>I spent a whole day in the tattoo studio Velvet Wolf Ink to capture their day-to-day operations.</p>"
+            }
+        },
+        {
+            "slug": "stories/tattoocon",
+            "tree": {
+                "source": "stories/tattoocon",
+                "meta": "<h1><b>Tattoocon</b></h1><p>I photographed TattooCon, a convention celebrating tattoo art and culture for years and got published in the Tattoo Magazine.</p>"
+            }
+        },
+        {
+            "slug": "stories/pato",
+            "tree": {
+                "source": "stories/pato",
+                "meta": "<h1><b>Pato</b></h1><p>Her great-grandfather emigrated from Hungary, so Pato returned to his roots and explored his family's history. Read the full story on <a href='https://pothattila.substack.com/p/tortenetmeselo-portrek-pato' target='_blank' class='underline'>my blog.</p>"
+            }
+        },
+        {
+            "slug": "stories/pride",
+            "tree": {
+                "source": "stories/pride",
+                "meta": "<h1><b>Pride</b></h1><p>I have been participating in the official photo team of the Budapest Pride festival for 5 years now as a volunteer..</p>"
+            }
+        },
+        {
+            "slug": "stories/vikings-flokken",
+            "tree": {
+                "source": "stories/vikings-flokken",
+                "meta": "<h1><b>Vikings: Flokken</b></h1><p>I spent two days with the Flokken crew who keep viking traditions alive.</p>"
+            }
+        },
+        {
+            "slug": "stories/sipos-andrea",
+            "tree": {
+                "source": "stories/sipos-andrea",
+                "meta": "<h1><b>Mandala</b></h1><p>Andi is my friend, a product manager, mother, and a super-talented hand-knitter.</p>"
+            }
+        },
+        {
+            "slug": "stories/bendzsi",
+            "tree": {
+                "source": "stories/bendzsi",
+                "meta": "<h1><b>Bendzsi</b></h1><p>Bendzsi is my hairdresser and friend, I meet him at their barbershop every month for 8 years now and capture his journey through portraits.</p>"
+            }
+        },
+        {
+            "slug": "stories/poth-rebeka",
+            "tree": {
+                "source": "stories/poth-rebeka",
+                "meta": "<h1><b>Póth Rebeka</b></h1><p>Rebeka is a Budapest-based hungarian illustrator and graphic designer.</p>"
             }
         },
         {
