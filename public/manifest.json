@@ -78,12 +78,17 @@
                             },
                             {
                                 "type": "img",
+                                "src": "portraits/pothattila-00043.jpg",
+                                "linkTo": "portraits"
+                            },
+                            {
+                                "type": "img",
                                 "src": "conceptual/b72/DSC00060.jpg",
                                 "linkTo": "conceptual/b72"
                             },
                             {
                                 "type": "div",
-                                "class": "font-eb-garamond p-[20px] md:mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "font-eb-garamond p-[20px] mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "content": "❝ I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
                             },
                             {
@@ -138,17 +143,22 @@
                             },
                             {
                                 "type": "img",
-                                "src": "portraits/DSC01375.jpg",
-                                "linkTo": "portraits"
-                            },
-                            {
-                                "type": "img",
                                 "src": "portraits/231006-01333.jpg",
                                 "linkTo": "portraits"
                             },
                             {
                                 "type": "img",
+                                "src": "portraits/DSC01375.jpg",
+                                "linkTo": "portraits"
+                            },
+                            {
+                                "type": "img",
                                 "src": "analog/portraits/DSC02593.jpg",
+                                "linkTo": "analog/portraits"
+                            },
+                            {
+                                "type": "img",
+                                "src": "analog/portraits/DSC04375-zone-crop.jpg",
                                 "linkTo": "analog/portraits"
                             },
                             {
@@ -230,6 +240,11 @@
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "content": "<br><i>Drop me an email at <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a></i>"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "<br>I collaborate with brands, entrepreneurs, artists, designers, model agencies, event organisers and venues, shooting narrative series, environmental portraiture and visual branding."
                                     }
                                 ]
                             }
@@ -263,9 +278,7 @@
                     },
                     {
                         "type": "img",
-                        "src": "about/1734626801051.jpg",
-                        "captionStyle": "font-eb-garamond text-white",
-                        "caption": "...exploring the jungle"
+                        "src": "about/1734626801051.jpg"
                     }
                 ]
             }

@@ -606,10 +606,6 @@
                 "type": "file"
               },
               {
-                "name": "DSC05881.jpg",
-                "type": "file"
-              },
-              {
                 "name": "DSC06012.jpg",
                 "type": "file"
               },
@@ -619,10 +615,6 @@
               },
               {
                 "name": "DSC06032.jpg",
-                "type": "file"
-              },
-              {
-                "name": "DSC06138.jpg",
                 "type": "file"
               },
               {
@@ -2243,6 +2235,20 @@
             ]
           },
           {
+            "name": "love",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DSC05881.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC06138.jpg",
+                "type": "file"
+              }
+            ]
+          },
+          {
             "name": "mini-cooper",
             "type": "folder",
             "children": [
@@ -2606,11 +2612,9 @@
       "DSC05363.jpg",
       "DSC05394.jpg",
       "DSC05396.jpg",
-      "DSC05881.jpg",
       "DSC06012.jpg",
       "DSC06014-3.jpg",
       "DSC06032.jpg",
-      "DSC06138.jpg",
       "DSC07025.jpg",
       "DSC08994.jpg",
       "DSC09780.jpg",
@@ -3029,6 +3033,10 @@
     "stories/kranicz-dodo": [
       "DSC03363.jpg"
     ],
+    "stories/love": [
+      "DSC05881.jpg",
+      "DSC06138.jpg"
+    ],
     "stories/mini-cooper": [
       "pothattila-minicooper-07162.jpg"
     ],
@@ -3221,11 +3229,9 @@
     "DSC05363.jpg": "analog/portraits",
     "DSC05394.jpg": "analog/portraits",
     "DSC05396.jpg": "analog/portraits",
-    "DSC05881.jpg": "analog/portraits",
     "DSC06012.jpg": "analog/portraits",
     "DSC06014-3.jpg": "analog/portraits",
     "DSC06032.jpg": "analog/portraits",
-    "DSC06138.jpg": "analog/portraits",
     "DSC07025.jpg": "analog/portraits",
     "DSC08994.jpg": "analog/portraits",
     "DSC09780.jpg": "analog/portraits",
@@ -3523,6 +3529,8 @@
     "pothattila-09975.jpg": "stories/hypnagogia",
     "DSC05904-2.jpg": "stories/inked",
     "DSC03363.jpg": "stories/kranicz-dodo",
+    "DSC05881.jpg": "stories/love",
+    "DSC06138.jpg": "stories/love",
     "pothattila-minicooper-07162.jpg": "stories/mini-cooper",
     "231128-pato-05803.jpg": "stories/pato",
     "DSC02329.jpg": "stories/poth-rebeka",
