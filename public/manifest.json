@@ -358,7 +358,7 @@
                                 "src": "conceptual/b72/DSC00900.jpg",
                                 "caption": "Conceptual series",
                                 "captionStyle": "caption-center font-eb-garamond",
-                                "linkTo": "fashion/conceptual"
+                                "linkTo": "conceptual"
                             }
                         ]
                     },
@@ -741,10 +741,141 @@
         },
         {
             "slug": "conceptual",
-            "background": null,
+            "navColor": "black",
             "tree": {
                 "type": "div",
-                "children": []
+                "children": [
+                    {
+                        "type": "h1",
+                        "class": "font-eb-garamond text-black text-2xl md:text-6xl text-center pt-[120px]",
+                        "content": "<b>CONCEPTUAL SERIES</b"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-3",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "conceptual/ada-leila/DSC08829-light.jpg",
+                                "caption": "Leila",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/ada-leila"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/b72/DSC00894.jpg",
+                                "caption": "B72",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/b72"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/botanic/DSC09732.jpg",
+                                "caption": "Botanic",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/botanic"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/coffee-and-cigarettes/DSC09552-raw.jpg",
+                                "caption": "Coffee and Cigarettes",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/coffee-and-cigarettes"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/doppelganger/DSC08779.jpg",
+                                "caption": "Doppelganger",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/doppelganger"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/forest-lace/DSC00654-2.jpg",
+                                "caption": "Lace",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/forest-lace"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/journeys-to-self-acceptance/DSC01206.jpg",
+                                "caption": "Journeys to Self-Acceptance",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/journeys-to-self-acceptance"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/lea/DSC09574-crop.jpg",
+                                "caption": "Lea",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/lea"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-ascending/kinga-2-7.jpg",
+                                "caption": "The Ascending",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/the-ascending"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/proud-mary/f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg",
+                                "caption": "Proud Mary",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/proud-mary"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/saruul/DSC01178.jpg",
+                                "caption": "Saruul",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/saruul"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/skater/DSC09386.jpg",
+                                "caption": "Skater",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/skater"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-descending/Single Page28.jpg",
+                                "caption": "The Descending",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/the-descending"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-mad-king/DSC09694-DSC09874.jpg",
+                                "caption": "The Mad King",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/the-mad-king"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-pier/DSC09454.jpg",
+                                "caption": "The Pier",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/the-pier"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/the-statue/DSC07202-bw.jpg",
+                                "caption": "The Statue",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/the-statue"
+                            },
+                            {
+                                "type": "img",
+                                "src": "conceptual/vigado/DSC00407.jpg",
+                                "caption": "Vigado",
+                                "captionStyle": "caption-center font-eb-garamond",
+                                "linkTo": "conceptual/vigado"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         {
@@ -943,7 +1074,7 @@
                             {
                                 "type": "img",
                                 "src": "stories/inked/DSC05904-2.jpg",
-                                "caption": "INKED",
+                                "caption": "Inked",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "stories/inked"
                             },
@@ -1019,7 +1150,7 @@
                         "type": "img",
                         "src": "analog/gaia/DSC05375.jpg",
                         "captionStyle": "absolute inset-0 flex flex-col items-center justify-center font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "Self-acceptance"
+                        "caption": "Womanhood"
                     }
                 ]
             }
@@ -1196,7 +1327,7 @@
                             {
                                 "type": "img",
                                 "src": "analog/day/DSC03020-crop.jpg",
-                                "caption": "Day",
+                                "caption": "Daytime",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "analog/day"
                             },
@@ -1217,14 +1348,14 @@
                             {
                                 "type": "img",
                                 "src": "analog/gaia/231018-orwo-00396-5.jpg",
-                                "caption": "Gaia",
+                                "caption": "Womanhood",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "analog/gaia"
                             },
                             {
                                 "type": "img",
                                 "src": "analog/icarus/DSC00744-2.jpg",
-                                "caption": "Icarus",
+                                "caption": "Flight of Icarus",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "analog/icarus"
                             }
