@@ -760,7 +760,7 @@
         "type": "folder",
         "children": [
           {
-            "name": "ada-leia",
+            "name": "ada-leila",
             "type": "folder",
             "children": [
               {
@@ -868,7 +868,16 @@
           {
             "name": "forest-lace",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC00602.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC00654-2.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "journeys-to-self-acceptance",
@@ -981,22 +990,54 @@
           {
             "name": "saruul",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC01040.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC01178.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC01216.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "skater",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "DSC09368.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC09386.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "the-ascending",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "kinga-2-7.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "the-descending",
             "type": "folder",
-            "children": []
+            "children": [
+              {
+                "name": "Single Page28.jpg",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "the-mad-king",
@@ -2650,7 +2691,7 @@
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
     ],
-    "conceptual/ada-leia": [
+    "conceptual/ada-leila": [
       "DSC08748.jpg",
       "DSC08778-crop-ort.jpg",
       "DSC08829-light.jpg",
@@ -2678,6 +2719,10 @@
     ],
     "conceptual/doppelganger": [
       "DSC08779.jpg"
+    ],
+    "conceptual/forest-lace": [
+      "DSC00602.jpg",
+      "DSC00654-2.jpg"
     ],
     "conceptual/journeys-to-self-acceptance": [
       "1789-32.jpg",
@@ -2707,6 +2752,21 @@
       "DSC00108.jpg",
       "DSC00273.jpg",
       "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg"
+    ],
+    "conceptual/saruul": [
+      "DSC01040.jpg",
+      "DSC01178.jpg",
+      "DSC01216.jpg"
+    ],
+    "conceptual/skater": [
+      "DSC09368.jpg",
+      "DSC09386.jpg"
+    ],
+    "conceptual/the-ascending": [
+      "kinga-2-7.jpg"
+    ],
+    "conceptual/the-descending": [
+      "Single Page28.jpg"
     ],
     "conceptual/the-mad-king": [
       "DSC09694-DSC09874.jpg",
@@ -3264,10 +3324,10 @@
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
-    "DSC08748.jpg": "conceptual/ada-leia",
-    "DSC08778-crop-ort.jpg": "conceptual/ada-leia",
-    "DSC08829-light.jpg": "conceptual/ada-leia",
-    "DSC08840-side.jpg": "conceptual/ada-leia",
+    "DSC08748.jpg": "conceptual/ada-leila",
+    "DSC08778-crop-ort.jpg": "conceptual/ada-leila",
+    "DSC08829-light.jpg": "conceptual/ada-leila",
+    "DSC08840-side.jpg": "conceptual/ada-leila",
     "20200404_082431265.jpg": "conceptual/b72",
     "DSC00060.jpg": "conceptual/b72",
     "DSC00653.jpg": "conceptual/b72",
@@ -3283,6 +3343,8 @@
     "DSC09953.jpg": "conceptual/botanic",
     "DSC09552-raw.jpg": "conceptual/coffee-and-cigarettes",
     "DSC08779.jpg": "conceptual/doppelganger",
+    "DSC00602.jpg": "conceptual/forest-lace",
+    "DSC00654-2.jpg": "conceptual/forest-lace",
     "1789-32.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-33.jpg": "conceptual/journeys-to-self-acceptance",
     "1789-34.jpg": "conceptual/journeys-to-self-acceptance",
@@ -3299,11 +3361,20 @@
     "DSC09527.jpg": "conceptual/lea",
     "DSC09574-crop.jpg": "conceptual/lea",
     "DSC09625-3-side.jpg": "conceptual/lea",
-    "kinga-2-7.jpg": "conceptual/margitkrt",
+    "kinga-2-7.jpg": [
+      "conceptual/margitkrt",
+      "conceptual/the-ascending"
+    ],
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",
     "DSC00273.jpg": "conceptual/proud-mary",
     "f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg": "conceptual/proud-mary",
+    "DSC01040.jpg": "conceptual/saruul",
+    "DSC01178.jpg": "conceptual/saruul",
+    "DSC01216.jpg": "conceptual/saruul",
+    "DSC09368.jpg": "conceptual/skater",
+    "DSC09386.jpg": "conceptual/skater",
+    "Single Page28.jpg": "conceptual/the-descending",
     "DSC09694-DSC09874.jpg": "conceptual/the-mad-king",
     "DSC09783-Pano.jpg": "conceptual/the-mad-king",
     "DSC09863.jpg": "conceptual/the-mad-king",
