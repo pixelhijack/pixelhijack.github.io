@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "cloudinary": "^2.7.0",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "path": "^0.12.7"
@@ -11,5 +10,8 @@
     "upload": "node cloudinary-upload.js",
     "folders": "node img-folder-to-json.js",
     "cld-upload": "cld upload_dir about -e -f about -p blackmac_preset -o overwrite true"
+  },
+  "devDependencies": {
+    "cloudinary": "^2.8.0"
   }
 }
