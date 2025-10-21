@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0W5E848GDX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0W5E848GDX');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photography Portfolio</title>
@@ -256,6 +265,22 @@
     </main>
 
     <script>
+
+      const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const GA_TRACKING_ID = 'G-0W5E848GDX';
+
+      // Function to track a pageview for the new route
+      function trackPageView(path, title) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'page_view', {
+            page_title: title,
+            page_path: path,
+            send_to: GA_TRACKING_ID
+          });
+          console.log(`GA: Path=${path}, Title=${title}`);
+        }
+      }
+
       const apis = Promise.all([
         fetch("/manifest.json"),
         fetch("/folder.json"),
@@ -328,7 +353,6 @@
 
     function getImageSrc(filename) {
         // Use window.location.hostname to detect environment
-        const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
         if (isDev) {
             return `/img/${filename}`;
         } else {
@@ -590,6 +614,9 @@
         if (href && href.startsWith("/")) { // internal link
           e.preventDefault();
           history.pushState({}, "", href);
+          if(!isDev) {
+            trackPageView(href, href);
+          }
           renderPage();
         }
       });
