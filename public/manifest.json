@@ -89,7 +89,7 @@
                             {
                                 "type": "div",
                                 "class": "font-eb-garamond p-[20px] mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md md:max-w-[80%] break-inside-avoid",
-                                "content": "❝ I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies."
+                                "content": "❝ I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. <a class=\"underline\" target=\"_blank\" href=\"/about\">Do you want to work with me?</a> "
                             },
                             {
                                 "type": "img",

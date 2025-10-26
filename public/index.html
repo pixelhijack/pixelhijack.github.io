@@ -18,13 +18,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/bne3zga.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!--link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    /-->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <!-- link href="https://fonts.cdnfonts.com/css/modernline-personal-use" rel="stylesheet" -->
-    <link href="https://fonts.cdnfonts.com/css/reenie-beanie" rel="stylesheet">
 
     <style>
       /*
@@ -70,6 +64,10 @@
         background-color: white;
         color: #f5f5f5;
         overflow-y: auto;
+      }
+      /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
+      #content-container {
+        overflow-anchor: none;
       }
       h1 {
         font-size: 3rem;
@@ -279,6 +277,22 @@
           });
           console.log(`GA: Path=${path}, Title=${title}`);
         }
+      }
+
+      /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      function scrollToTopNow() {
+        // reset scrolling on document and the main container
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        const container = document.getElementById('content-container');
+        if (container) container.scrollTop = 0;
+        // double rAF to ensure after paint/layout
+        requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, 0)));
       }
 
       const apis = Promise.all([
@@ -604,6 +618,8 @@
 
         // Render the tree recursively
         contentContainer.innerHTML = renderTree(currentPage.tree);
+        // force initial scroll to top immediately after injecting content
+        scrollToTopNow();
       }
 
       // Hook into History API for navigation:
