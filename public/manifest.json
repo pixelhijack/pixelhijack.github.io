@@ -239,7 +239,11 @@
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                        "content": "<br><i>Drop me an email at <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a></i>"
+                                        "content": "<br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Phone: +36309313580</i>"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "content": "<div class=\"ml-embedded\" data-form=\"UFCmeL\"></div>"
                                     },
                                     {
                                         "type": "div",
