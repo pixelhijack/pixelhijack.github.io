@@ -243,10 +243,6 @@
                                     },
                                     {
                                         "type": "div",
-                                        "content": "<div class=\"ml-embedded\" data-form=\"UFCmeL\"></div>"
-                                    },
-                                    {
-                                        "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "content": "<br>I collaborate with brands, entrepreneurs, artists, designers, model agencies, event organisers and venues, shooting narrative series, environmental portraiture and visual branding."
                                     }
@@ -670,6 +666,18 @@
                     },
                     {
                         "type": "img",
+                        "src": "fashion/shows/marie-claire/DSC03555-side.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": "Marie Claire Fashion Days, 2019"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/marie-claire/DSC03479-side.jpg",
+                        "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
+                        "caption": " "
+                    },
+                    {
+                        "type": "img",
                         "src": "fashion/shows/paloma/241020-01523.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Paloma Artspace, 2024"
@@ -684,7 +692,15 @@
                         "type": "img",
                         "src": "fashion/shows/bcefw/PA-04314-side.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
-                        "caption": "BCEFW, 2023"
+                        "caption": "BCEFW, 2024"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/bcefw/DSC00012-side.jpg"
+                    },
+                    {
+                        "type": "img",
+                        "src": "fashion/shows/bcefw/DSC09964-side.jpg"
                     },
                     {
                         "type": "img",
@@ -694,7 +710,7 @@
                     },
                     {
                         "type": "img",
-                        "src": "fashion/shows/fashion-in-fire/DSC02934.jpg",
+                        "src": "fashion/shows/fashion-in-fire/DSC03182.jpg",
                         "captionStyle": "font-eb-garamond text-4xl md:text-6xl",
                         "caption": "Fashion In Fire 2022"
                     }
@@ -724,10 +740,10 @@
                 "type": "div",
                 "children": [
                     {
-                    "type": "background",
-                    "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
-                    "class": "w-full h-screen bg-cover bg-center bg-fixed",
-                    "children": [
+                        "type": "background",
+                        "src": "fashion/mood/59532b451f9b_rw_1920.jpg",
+                        "class": "w-full h-screen bg-cover bg-center bg-fixed",
+                        "children": [
                             {
                                 "type": "div",
                                 "style": {
@@ -1407,6 +1423,90 @@
                         "src": "stories/hypnagogia/DSC08556.jpg",
                         "caption": "Masonry Layout",
                         "captionStyle": "font-josefin-sans"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "magazine/feature-2col",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "conceptual/b72/DSC00894.jpg",
+                                "class": "w-full h-full object-cover"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "font-eb-garamond text-3xl md:text-5xl mb-4",
+                                "content": "Feature Title — Two Column"
+                            },
+                            {
+                                "type": "p",
+                                "class": "text-lg md:text-xl text-black mb-6",
+                                "content": "A bold deck paragraph that introduces the section. Designed to sit beside the hero image for a magazine-like composition."
+                            },
+                            {
+                                "type": "div",
+                                "class": "text-base md:text-lg text-black",
+                                "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "magazine/essay",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "max-w-6xl mx-auto py-12 px-6 pt-[88px]",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative mb-8",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "stories/hypnagogia/DSC09978.jpg",
+                                "class": "w-full h-[60vh] object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute left-6 top-6 bg-white bg-opacity-80 text-black p-4 max-w-xs",
+                                "children": [
+                                    {
+                                        "type": "blockquote",
+                                        "class": "italic font-modernline text-xl",
+                                        "content": "“A short pull-quote that overlaps the image and adds editorial emphasis.”"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond text-black text-3xl md:text-4xl mb-4",
+                        "content": "Long-form essay title"
+                    },
+                    {
+                        "type": "div",
+                        "class": "prose max-w-none text-black",
+                        "content": "<p>Start of the essay. Use paragraphs, images, and pull-quotes to create a magazine reading experience. This area is intentionally text-focused to balance the large editorial images above.</p><p>Continue the story with careful microcopy and typographic scale for comfortable reading.</p>"
                     }
                 ]
             }
