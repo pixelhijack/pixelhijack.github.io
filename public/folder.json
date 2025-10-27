@@ -956,16 +956,6 @@
             ]
           },
           {
-            "name": "margitkrt",
-            "type": "folder",
-            "children": [
-              {
-                "name": "kinga-2-7.jpg",
-                "type": "file"
-              }
-            ]
-          },
-          {
             "name": "proud-mary",
             "type": "folder",
             "children": [
@@ -1845,6 +1835,14 @@
                 "children": [
                   {
                     "name": "20230527-08536.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "2025-show-all.jpg",
+                    "type": "file"
+                  },
+                  {
+                    "name": "2025-show-designers.jpg",
                     "type": "file"
                   },
                   {
@@ -2744,9 +2742,6 @@
       "DSC09574-crop.jpg",
       "DSC09625-3-side.jpg"
     ],
-    "conceptual/margitkrt": [
-      "kinga-2-7.jpg"
-    ],
     "conceptual/proud-mary": [
       "DSC00039.jpg",
       "DSC00108.jpg",
@@ -2981,6 +2976,8 @@
     ],
     "fashion/shows/forrai": [
       "20230527-08536.jpg",
+      "2025-show-all.jpg",
+      "2025-show-designers.jpg",
       "20250531-DSC05612.jpg",
       "fractal.jpg"
     ],
@@ -3361,10 +3358,6 @@
     "DSC09527.jpg": "conceptual/lea",
     "DSC09574-crop.jpg": "conceptual/lea",
     "DSC09625-3-side.jpg": "conceptual/lea",
-    "kinga-2-7.jpg": [
-      "conceptual/margitkrt",
-      "conceptual/the-ascending"
-    ],
     "DSC00039.jpg": "conceptual/proud-mary",
     "DSC00108.jpg": "conceptual/proud-mary",
     "DSC00273.jpg": "conceptual/proud-mary",
@@ -3374,6 +3367,7 @@
     "DSC01216.jpg": "conceptual/saruul",
     "DSC09368.jpg": "conceptual/skater",
     "DSC09386.jpg": "conceptual/skater",
+    "kinga-2-7.jpg": "conceptual/the-ascending",
     "Single Page28.jpg": "conceptual/the-descending",
     "DSC09694-DSC09874.jpg": "conceptual/the-mad-king",
     "DSC09783-Pano.jpg": "conceptual/the-mad-king",
@@ -3515,6 +3509,8 @@
     "DSC03182.jpg": "fashion/shows/fashion-in-fire",
     "DSC03305-2.jpg": "fashion/shows/fashion-in-fire",
     "20230527-08536.jpg": "fashion/shows/forrai",
+    "2025-show-all.jpg": "fashion/shows/forrai",
+    "2025-show-designers.jpg": "fashion/shows/forrai",
     "20250531-DSC05612.jpg": "fashion/shows/forrai",
     "fractal.jpg": "fashion/shows/forrai",
     "DSC03155.jpg": "fashion/shows/marie-claire",
