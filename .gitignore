@@ -4,3 +4,5 @@ uploadtest
 .env
 node_modules
 .DS_Store
+google-credentials.json
+escape-google-creds.js
