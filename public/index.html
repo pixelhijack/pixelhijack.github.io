@@ -279,6 +279,31 @@
         }
       }
 
+      function submitForm(formElem, intent) {
+        // formElem may be the <form> element passed from manifest action
+        try {
+          const fd = new FormData(formElem);
+          const payload = { intent };
+          fd.forEach((v, k) => { payload[k] = v; });
+
+          fetch('/form', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(res => {
+            if (res.ok) {
+              formElem.reset();
+            } else {
+              console.warn('Sorry, something went wrong at /', intent);
+            }
+          })
+          .catch(() => console.error('Network error — please try again.'));
+        } catch (err) {
+          console.error('submitForm error', err);
+        }
+      }
+
       /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
