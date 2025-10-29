@@ -321,12 +321,11 @@
       }
 
       const apis = Promise.all([
-        fetch("/manifest.json"),
+        fetch("/api/manifest"),
         fetch("/folder.json"),
       ]).then(([manifestRes, folderRes]) =>
         Promise.all([manifestRes.json(), folderRes.json()])
       ).then(([manifestData, folderData]) => {
-
         Object.keys(folderData.flat).forEach(route => {
           const existingPage = manifestData.pages.find(page => page.slug === route);
           if (existingPage) return; // Skip if page already exists

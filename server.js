@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { google } from "googleapis";
 import express from 'express'; 
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url'; 
 // --- Define ES Module Equivalents for CommonJS __dirname previously ---
 const __filename = fileURLToPath(import.meta.url);
@@ -75,7 +76,30 @@ app.post('/form', async (req, res) => {
     console.error('Error writing to Google Sheet:', error);
     res.status(500).json({ error: 'Failed to submit form.' });
   }
-  
+});
+
+
+// helper: load manifest for project
+function loadProjectManifest(projectName) {
+  const manifestPath = path.join(__dirname, 'projects', projectName, 'manifest.json');
+  if (fs.existsSync(manifestPath)) {
+    return JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  }
+  // fallback to root/public manifest.json
+  return JSON.parse(fs.readFileSync(path.join(__dirname, 'public', 'manifest.json'), 'utf8'));
+}
+
+// API: return manifest for current project or query param
+app.get('/api/manifest', (req, res) => {
+  const project = process.env.PROJECT_NAME || 'photographer';
+  try {
+    const manifest = loadProjectManifest(project);
+    // include a few computed hints if you want
+    res.json(manifest);
+  } catch (err) {
+    console.error('manifest load error', err);
+    res.status(500).json({ error: 'failed to load manifest' });
+  }
 });
 
 // For any route not matched by a static file, serve index.html.
