@@ -2,7 +2,8 @@
     "meta": {
         "ga": null,
         "title": "Overthinkers.club",
-        "logo": "Overthinkers'Club"
+        "logo": "Overthinkers'Club",
+        "robots": "noindex"
     },
     "nav": [ 
         { "href": "/diagnozis", "label": "Diagnózis előtt és után" },

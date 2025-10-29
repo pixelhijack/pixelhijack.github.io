@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./**/*.html", // Scan all HTML files in the current directory and subdirectories
-    "./projects/**/manifest.json" // Scan manifest.json files in projects subdirectories
+    // 1. Scan HTML files in the current directory and any subdirectory (excluding node_modules)
+    "./*.html", // Check HTML files in the root directory
+    "./**/*.html",
+    "!./node_modules", // Explicitly exclude node_modules
+    
+    // 2. Your secondary pattern for manifest.json
+    "./projects/**/manifest.json"
   ],
   theme: {
     extend: {},

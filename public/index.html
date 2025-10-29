@@ -236,6 +236,20 @@
           if (manifestData.meta && manifestData.meta.title) {
             document.title = manifestData.meta.title;
           }
+
+          if (manifestData.meta && manifestData.meta.robots){
+            // create or update <meta name="robots" content="...">
+            const existing = document.querySelector('meta[name="robots"]');
+            if (existing) {
+              existing.content = manifestData.meta.robots;
+            } else {
+              const m = document.createElement('meta');
+              m.name = 'robots';
+              m.content = manifestData.meta.robots;
+              document.head.appendChild(m);
+            }
+          }
+
           // set logo (text or simple HTML) from manifest.meta.logo
           const logoLink = document.getElementById('logo-link');
           if (logoLink) {
