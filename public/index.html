@@ -261,7 +261,15 @@
           };
           if (manifestData.nav) buildNav(manifestData.nav);
 
-          // attach mobile nav handlers again in case nav was built after DOMContentLoaded
+          // set footer from manifest.footer (if present)
+          if (manifestData.footer) {
+            const footerElem = document.querySelector('footer');
+            if (footerElem) {
+              footerElem.innerHTML = manifestData.footer;
+            }
+          }
+
+          // attach mobile nav handlers
           (function setupMobileHandlers(){
             const hamburgerBtn = document.getElementById("hamburger-btn");
             const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
@@ -604,10 +612,7 @@
 
 
     <footer class="text-center p-4 bg-black text-white text-opacity-30">
-      <a target="_blank" href="https://pothattila.substack.com/">Blog </a> ◦
-      <a target="_blank" href="https://pothattila.hu/">Travel </a> ◦
-      &copy; 2025 Póth Attila. 
-      <a href="/sitemap">♠ </a>
+      
     </footer>
 
   </body>
