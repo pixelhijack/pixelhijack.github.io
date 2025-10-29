@@ -20,6 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, 'public')));
+// serve project-specific static assets so /projects/* is reachable from the browser
+app.use('/projects', express.static(path.join(__dirname, 'projects')));
+
 
 // Define the ID of your Google Spreadsheet
 const SPREADSHEET_ID = '1k6-C1cuZjHBKAhlt6llf8vsdXPxrZdoI1-sgCDir3xg'; 

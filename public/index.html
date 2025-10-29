@@ -1,68 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0W5E848GDX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-0W5E848GDX');
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Póth Attila Photographer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://use.typekit.net/bne3zga.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
     <style>
-      /*
-        Ambroise Std Regular
-            font-family: "ambroise-std", serif;
-            font-weight: 400;
-            font-style: normal;
-        Ambroise Std Italic
-            font-family: "ambroise-std", serif;
-            font-weight: 400;
-            font-style: italic;
-        Ambroise Std Bold
-            font-family: "ambroise-std", serif;
-            font-weight: 700;
-            font-style: normal;
-        Ambroise Std Bold Italic
-            font-family: "ambroise-std", serif;
-            font-weight: 700;
-            font-style: italic;
-        Ambroise Std Firmin Regular
-            font-family: "ambroise-firmin-std", serif;
-            font-weight: 400;
-            font-style: normal;
-        Ambroise Std Firmin Bold
-            font-family: "ambroise-firmin-std", serif;
-            font-weight: 700;
-            font-style: normal;
-        Ambroise Std Francois Regular
-            font-family: "ambroise-francois-std", serif;
-            font-weight: 400;
-            font-style: normal;
-        Ambroise Std Francois Bold
-            font-family: "ambroise-francois-std", serif;
-            font-weight: 700;
-            font-style: normal;
-      */
       body {
-        font-family: "Josefin Sans", sans-serif;
         font-optical-sizing: auto;
-        letter-spacing: -0.05em;
-        font-weight: 700;
         font-style: normal;
         background-color: white;
-        color: #f5f5f5;
         overflow-y: auto;
       }
       /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
@@ -73,39 +24,6 @@
         font-size: 3rem;
         line-height: 1.1;
         margin-bottom: 1rem;
-      }
-      .font-eb-garamond, 
-      .font-josefin-sans, 
-      .font-ambroise, 
-      .font-modernline {
-        filter: blur(0.5px);
-      }
-      .font-eb-garamond {
-        font-family: "EB Garamond", serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-      .font-josefin-sans {
-        font-family: "Josefin Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 100;
-        font-style: normal;
-      }
-      .font-ambroise {
-        font-family: "ambroise-firmin-std", serif;
-        font-style: normal;
-        font-weight: 400;
-      }
-      .font-modernline {
-        font-family: 'modernline - Personal Use', sans-serif;
-        font-style: normal;
-        font-weight: 100;
-      }
-      .font-reenie {
-        font-family: 'Reenie Beanie', sans-serif;
-        font-style: normal;
-        font-weight: 100;
       }
       img {
         margin: 0 auto;
@@ -211,9 +129,10 @@
       >
         <a
           href="/"
+          id="logo-link"
           class="font-ambroise text-4xl font-bold text-white rounded-md p-2"
         >
-          Póth Attila
+          <!-- manifest.logo will be injected -->
         </a>
         <!-- Hamburger button (shown on mobile) -->
         <button
@@ -224,15 +143,7 @@
           &equiv;
         </button>
         <!-- Desktop nav links -->
-        <div class="space-x-4 hidden md:block" id="nav-links">
-          <a href="/fashion">Fashion</a>
-          <a href="/analog">Analog</a>
-          <a href="/stories">Stories</a>
-          <a href="/backstage">Backstage</a>
-          <a href="/projects">Projects</a>
-          <a href="/prints">Prints</a>
-          <a href="/about">About</a>
-        </div>
+        <div class="space-x-4 hidden md:block" id="nav-links"></div>
       </div>
       <!-- Mobile overlay menu -->
       <div
@@ -245,15 +156,7 @@
         >
           &#10005;
         </button>
-        <nav class="flex flex-col space-y-8 text-center text-3xl font-bold">
-          <a href="/fashion">Fashion</a>
-          <a href="/analog">Analog</a>
-          <a href="/stories">Stories</a>
-          <a href="/backstage">Backstage</a>
-          <a href="/projects">Projects</a>
-          <a href="/prints">Prints</a>
-          <a href="/about">About</a>
-        </nav>
+        <nav id="mobile-nav-list" class="flex flex-col space-y-8 text-center text-3xl font-bold"></nav>
       </div>
     </nav>
 
@@ -265,7 +168,7 @@
     <script>
 
       const isDev = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-      const GA_TRACKING_ID = 'G-0W5E848GDX';
+      let GA_TRACKING_ID = null; // will be set from manifest.meta.ga if present
 
       // Function to track a pageview for the new route
       function trackPageView(path, title) {
@@ -328,6 +231,87 @@
         .then(manifestData => {
           // server returned merged manifest and included raw folder as _folder
           window.manifest = manifestData;
+
+          // set document title from manifest.meta.title (if present)
+          if (manifestData.meta && manifestData.meta.title) {
+            document.title = manifestData.meta.title;
+          }
+          // set logo (text or simple HTML) from manifest.meta.logo
+          const logoLink = document.getElementById('logo-link');
+          if (logoLink) {
+            const logoContent = (manifestData.meta && manifestData.meta.logo) ? manifestData.meta.logo : '';
+            logoLink.innerHTML = logoContent;
+          }
+
+          // build nav links (desktop and mobile) from manifest.nav
+          const buildNav = (navArray) => {
+            const desktop = document.getElementById('nav-links');
+            const mobile = document.getElementById('mobile-nav-list');
+            if (desktop) desktop.innerHTML = '';
+            if (mobile) mobile.innerHTML = '';
+            (navArray || []).forEach(item => {
+              const a = document.createElement('a');
+              a.href = item.href || '/';
+              a.textContent = item.label || item.href;
+              a.className = 'px-2';
+              if (desktop) desktop.appendChild(a);
+              const am = a.cloneNode(true);
+              if (mobile) mobile.appendChild(am);
+            });
+          };
+          if (manifestData.nav) buildNav(manifestData.nav);
+
+          // attach mobile nav handlers again in case nav was built after DOMContentLoaded
+          (function setupMobileHandlers(){
+            const hamburgerBtn = document.getElementById("hamburger-btn");
+            const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
+            const closeMobileNav = document.getElementById("close-mobile-nav");
+            const mobileNavLinks = mobileNavOverlay.querySelectorAll("a");
+            if (hamburgerBtn && mobileNavOverlay) {
+              hamburgerBtn.addEventListener("click", () => mobileNavOverlay.classList.remove("hidden"));
+            }
+            if (closeMobileNav && mobileNavOverlay) {
+              closeMobileNav.addEventListener("click", () => mobileNavOverlay.classList.add("hidden"));
+            }
+            mobileNavLinks.forEach((link) => {
+              link.addEventListener("click", () => mobileNavOverlay.classList.add("hidden"));
+            });
+          })();
+
+          // dynamically load Google Analytics if provided
+          if (manifestData.meta && manifestData.meta.ga) {
+            GA_TRACKING_ID = manifestData.meta.ga;
+            // inject gtag script
+            const gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
+            document.head.appendChild(gtagScript);
+            // inject initialization
+            const inline = document.createElement('script');
+            inline.text = `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}');
+            `;
+            document.head.appendChild(inline);
+          }
+
+          // inject project-specific CSS files
+          (manifest.css || []).forEach(href => {
+            const l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = href;
+            document.head.appendChild(l);
+          });
+          // inject font stylesheet links (e.g. Google Fonts)
+          (manifest.fonts || []).forEach(href => {
+            const l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = href;
+            document.head.appendChild(l);
+          });
+          // render DOM
           renderPage();
         })
         .catch(err => {
@@ -337,28 +321,6 @@
       const contentContainer = document.getElementById("content-container");
       const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
 
-      // Hamburger menu logic
-      document.addEventListener("DOMContentLoaded", function () {
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-        const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
-        const closeMobileNav = document.getElementById("close-mobile-nav");
-        const mobileNavLinks = mobileNavOverlay.querySelectorAll("a");
-
-        hamburgerBtn.addEventListener("click", () => {
-          mobileNavOverlay.classList.remove("hidden");
-        });
-
-        closeMobileNav.addEventListener("click", () => {
-          mobileNavOverlay.classList.add("hidden");
-        });
-
-        // Close overlay when a link is clicked
-        mobileNavLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            mobileNavOverlay.classList.add("hidden");
-          });
-        });
-      });
 
     function getImageSrc(filename) {
         // Use window.location.hostname to detect environment

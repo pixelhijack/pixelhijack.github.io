@@ -1,9 +1,24 @@
 {
     "meta": {
-        "ga": "G-XXXXX",
-        "logo": "/img/logo.svg",
-        "nav": [ { "href": "/", "label": "Home" }, { "href": "/about", "label": "About" } ]
+        "ga": "G-0W5E848GDX",
+        "title": "Póth Attila Photographer",
+        "logo": "<b>Póth Attila</b>"
     },
+    "nav": [ 
+        { "href": "/fashion", "label": "Fashion" },
+        { "href": "/analog", "label": "Analog" },
+        { "href": "/stories", "label": "Stories" },
+        { "href": "/backstage", "label": "Backstage" },
+        { "href": "/projects", "label": "Projects" },
+        { "href": "/prints", "label": "Prints" },
+        { "href": "/about", "label": "About" }
+    ],
+    "fonts": [
+        "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    ],
+    "css": [
+        "/projects/photographer/styles.css"
+    ],
     "pages": [
         {
             "slug": "",
@@ -50,8 +65,8 @@
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "italic font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": "Vintage lens & analog film photography <br>by Póth Attila"
+                                        "class": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Vintage lens & analog film photography <br>by Póth Attila</i>"
                                     }
                                 ]
                             }
