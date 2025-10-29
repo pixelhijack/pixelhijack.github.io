@@ -320,48 +320,19 @@
         requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, 0)));
       }
 
-      const apis = Promise.all([
-        fetch("/api/manifest"),
-        fetch("/folder.json"),
-      ]).then(([manifestRes, folderRes]) =>
-        Promise.all([manifestRes.json(), folderRes.json()])
-      ).then(([manifestData, folderData]) => {
-        Object.keys(folderData.flat).forEach(route => {
-          const existingPage = manifestData.pages.find(page => page.slug === route);
-          if (existingPage) return; // Skip if page already exists
-          manifestData.pages.push({
-            slug: route,
-            tree: {
-              source: route
-            }
-          });
+      fetch('/api/manifest')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load manifest');
+          return res.json();
+        })
+        .then(manifestData => {
+          // server returned merged manifest and included raw folder as _folder
+          window.manifest = manifestData;
+          renderPage();
+        })
+        .catch(err => {
+          console.error('Error loading manifest:', err);
         });
-        manifestData.pages.push({
-          "slug": "sitemap",
-          "navColor": "white",
-          "background": "conceptual/botanic/DSC09953.jpg",
-          "tree": {
-            "type": "div",
-            "class": "pt-[100px] pl-[75px] min-h-screen flex flex-col items-left justify-center space-y-4 p-8",
-            "children": [
-              {
-                "type": "h1",
-                "class": "text-4xl md:text-6xl font-ambroise mb-8",
-                "content": "Congrats hacker, you found all the pages"
-              },
-              ...Object.keys(folderData.flat).map(route => ({
-                type: "a",
-                href: `/${route}`,
-                class: "text-1xl md:text-2xl font-bold text-white rounded-md",
-                content: route
-            }))]
-          }
-        });
-
-        window.manifest = manifestData;
-        window.folder = folderData;
-        renderPage();
-      });
 
       const contentContainer = document.getElementById("content-container");
       const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
@@ -403,7 +374,7 @@
 
         // cross-reference folder.json for source arrays
         if(node.source){
-          node.children = window.folder.flat[node.source]
+          node.children = window?.manifest?._folder?.flat[node.source]
           ?.map(img => ({
             type: "img",
             src: `${node.source}/${img}`,
