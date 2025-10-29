@@ -1,7 +1,7 @@
-require('dotenv').config(); // Load environment variables from .env file
-const cloudinary = require('cloudinary').v2;
-const path = require('path');
-const fs = require('fs');
+import 'dotenv/config'; 
+import { v2 as cloudinary } from 'cloudinary';
+import path from 'path';
+import fs from 'fs';
 
 // Cloudinary Configuration: Replace with your actual credentials
 cloudinary.config({
@@ -12,7 +12,8 @@ cloudinary.config({
 
 if (!process.env.CLOUDINARY_API_KEY) {
   console.log("Cloudinary API Key is not set");
-  return;
+  // Use process.exit() to stop the entire Node.js program
+  process.exit(1);
 }
 
 // Define the base folder for local images (must be inside public)

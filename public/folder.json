@@ -2004,6 +2004,40 @@
         ]
       },
       {
+        "name": "neurodiv",
+        "type": "folder",
+        "children": [
+          {
+            "name": "labyrinth.webp",
+            "type": "file"
+          },
+          {
+            "name": "me-rounded-c.png",
+            "type": "file"
+          },
+          {
+            "name": "neverending.webp",
+            "type": "file"
+          },
+          {
+            "name": "neverending2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "oz.jpg",
+            "type": "file"
+          },
+          {
+            "name": "oz2.webp",
+            "type": "file"
+          },
+          {
+            "name": "sw.jpg",
+            "type": "file"
+          }
+        ]
+      },
+      {
         "name": "portraits",
         "type": "folder",
         "children": [
@@ -3019,6 +3053,15 @@
       "DSC09343.jpg",
       "DSC09378.jpg"
     ],
+    "neurodiv": [
+      "labyrinth.webp",
+      "me-rounded-c.png",
+      "neverending.webp",
+      "neverending2.jpg",
+      "oz.jpg",
+      "oz2.webp",
+      "sw.jpg"
+    ],
     "portraits": [
       "231006-01333.jpg",
       "DIA05360.jpg",
@@ -3543,6 +3586,13 @@
     "DSC09293.jpg": "fashion/shows/the-balance",
     "DSC09343.jpg": "fashion/shows/the-balance",
     "DSC09378.jpg": "fashion/shows/the-balance",
+    "labyrinth.webp": "neurodiv",
+    "me-rounded-c.png": "neurodiv",
+    "neverending.webp": "neurodiv",
+    "neverending2.jpg": "neurodiv",
+    "oz.jpg": "neurodiv",
+    "oz2.webp": "neurodiv",
+    "sw.jpg": "neurodiv",
     "231006-01333.jpg": "portraits",
     "DIA05360.jpg": "portraits",
     "DSC00043.jpg": "portraits",

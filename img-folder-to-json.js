@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import path from 'path';
+import fs from 'fs';
 
 const rootDir = './public/img'; // The root folder for your images
 const outputFilePath = './public/folder.json'; // The output JSON file
