@@ -1,0 +1,445 @@
+{
+    "meta": {
+        "ga": null,
+        "title": "Overthinkers.club",
+        "logo": "Overthinkers'Club"
+    },
+    "nav": [ 
+        { "href": "/diagnozis", "label": "Diagnózis előtt és után" },
+        { "href": "/elet", "label": "Élet neurodivergenciával" },
+        { "href": "/tortenetek", "label": "Történetek" },
+        { "href": "/tesztek", "label": "Tesztek" },
+        { "href": "/about", "label": "Rólunk" }
+    ],
+    "footer": "*Disclaimer: az Overthinkers.club NEM terápia vagy coaching, és önmagában nem is váltja ki azt. <br>Amennyiben úgy érzed, sürgős segítségre van szükséged, haladéktalanul keress fel szakembert. <br>",
+    "fonts": [
+        "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap"
+    ],
+    "css": [
+        "/projects/neurodiv/styles.css"
+    ],
+    "pages": [
+        {
+            "slug": "",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "background": "neurodiv/oz2.webp",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz2.webp",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>Neurodivergens vagyok?!</b>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "Közösségi segítség, egyéni mentoring, társadalmi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                        "content": "Kinek szól ez az oldal?<br><br><hr>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container bg-white z-50 masonry-3",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Neurotipikusoknak, offline módra vágyó képernyő-függőknek, kiégett és elszigetelt modern embereknek<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Tényleg mindenki neurodivergens? Mi az, hogy mindenki ott van a spektrumon? Lehet az ADHD mindenre kifogás? Baj ha szkeptikus vagyok?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért töltünk napi 6-12 órát képernyők előtt? A social media és az online dating összeköthet bárkivel - miért érezzük magunkat mégis egyre elszigeteltebbnek? Miért nem élvezi a munkáját a legtöbb ember?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<hr><br><b>Ha csatlakozol, lehetőségünk lesz élő programokat, neurodivergens találkozókat, workshopokat, offline sétákat szervezni!</b>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Spektrum gyanús és diagnosztizált neurodivergenseknek, ADHD-soknak, autistáknak<br>...és szkeptikusoknak<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért lett hirtelen ennyi ADHD-s/autista, hogy több éves várólistákkal lehet diagnózisra eljutni? Miért nem kapunk felnőttként segítséget diagnózis után? Miért nem oldja meg a gyógyszer önmagában a nehézségeket?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "A világ akkor nyílik ki neurodivergensként, amikor rájössz, nagyon sok másnak is vannak hasonló érzései, élményei. Ezek jól körülírt jelenségek, és popkultúrában, mémekben sokszor jobban átjönnek, mint a hivatalos diagnosztikai kritériumokban."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<hr><br><b>Iratkozz fel, hogy mások hasonló élményeiről olvashass, vagy jelentkezz 1-1 peer support beszélgetés és mentoring lehetőségéért*</b>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Pszichológusoknak, coachoknak, terapeutáknak és segítő szakmában dolgozóknak<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Milyen a neurodivergensek megélése a saját életükben, terápián kívül? <br><br>Hogyan használhatsz AI-t pszichodiagnosztikában és terápiában jól, biztonságosan és etikusan?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Mi a diagnosztikai kritériumok mögötti valóság? Hogyan tudsz hatékonyan segíteni neurodivergenseknek a saját praxisodban? Mi a diagnosztika és a terápia határa, hol van a coaching szerepe?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<hr><br><b>Lépjünk kapcsolatba kollaborációs lehetőségekért, vendégposztokért, szakmai interjúkért!</b>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex items-center justify-center mt-8 mb-4",
+                        "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "diagnozis",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/labyrinth.webp",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<br>❝ ezer videó meg insta van már a témában, ahol elolvashatod mindenhol ugyanazokat, <br>de mi hiányzik mégis az egészből? - a személyesség <br><br>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "text-black pb-[2rem] pl-[10%] md:pl-[30%] max-w-[90%] justify-center",
+                        "content": "<br><br><b>1. Ha szkeptikus vagy</b> <br>Miért van ennyi ADHD oldal? <br>Tényleg ennyi az ADHD-s, vagy ez csak valami új divat? <br>Lehet ADHD a kifogás mindenre? <br>Minden személyiségjegyünk már valami pszichés betegség? <br>Miért diagnosztizálnak mindenkit? <br>Minek címkézzünk dolgokat? <br>Mi az hogy mindenki ott van a spektrumon? <br>Hány embert is érinthet ez az egész igazából? <br><br><b>2. Ha gyanítod, hogy neurodivergens lehetsz</b> <br>Látszik-e valakin, ha ADHD-s/autista? <br>Mi a helyzet az öndiagnózissal? <br>Szégyen, félelem, tagadás <br>Hol tudsz utánajárni, hol jelentkezhetsz diagnózisra? <br>Kell-e a diagnózis, miben lesz más a papírral? <br>Igazak-e a tiktok/insta mémek? <br><br><b>3. Ha már elhatároztad, hogy utánajársz, de nem tudod, hol</b> <br>Mi a baj a magyar ellátórendszerrel? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br><b>4. Ha diagnózis után vagy, de nem tudod mit kezdj az egésszel</b> <br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>A coaching akkor most bullshit vagy jó? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg létezik ilyen neurodivergens közösség? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br><b>5. Ha hozzátartozód ND</b> <br>Miben más egy neurotipikus-neurodivergens, neurodivergens-neurodivergens kapcsolat? <br>Mit tehetsz ha gyermeked más mint a többiek? <br>Mit tehetsz, ha párod neurodivergens lehet, de nem nyitott a témára? <br><br><b>6. Ha nem vagy érintett, de problémád van az offline léttel</b> <br>Az ADHD járványt nem csak környezet váltotta ki? Nem a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? <br><br><b>7. Ha csak érdekel a téma, és szeretnél részt venni valamiben</b> <br>Social kísérletek, challengek, játékok <br>Közösségtalálkozó <br>Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasnál az egészről"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "elet",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "neurodiv/neverending2.jpg",
+                        "class": "w-full h-full object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-3 bg-white",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Munka és karrier</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért olyan nagy kihívás neurodivergensként megtalálni a hozzád passzoló munkát?<br> Miért bizonytalanok pályaorientációnál bizonyos gyerekek? <br> Miért van az, hogy minden érdekli a fiatalt, de semmi iránt se tud elköteleződni?<br> Hogyan kommunikálhatjuk le igényeinket egy munkahelyen, hogy ne nézzenek hülyének / rúgjanak ki?<br> Miért merülünk le olyan gyorsan irodai munkákban pl videóhívásoktól?<br> Miért érződik néha személyes támadásnak a visszajelzés, még ha visszafogott is?<br> Miért vagy minden helyen szőrszálhasogató és kritikus?<br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Barátságok és szociális élet</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért gondolkodsz túl sokat a társas interakciókon jóval azután, hogy megtörténtek?<br> Miért érzed néha láthatatlannak magad csoportokban társaságban, egyedül meg túl soknak?<br> Miért nem tudsz válaszolni arra az egyszerű kérdésre, hogy \"Hogy vagy?\"<br> Miért olyan kimerítőek a társas események?<br> Miért nem megy csak úgy spontán cseverészni?<br> Miért halványulnak el barátságok, vagy fordulnak el tőled emberek?<br> Miért zsúfolod tele a napjaid programokkal, aztán utána tűnsz el hetekre mindenki elől?<br> Miért mindig ugyanazokkal az emberekkel találod meg a hangot, míg másokkal kínszenvedés két mondat is?<br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Ismerkedés és szexualitás</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért osztasz meg túl sokat és gyorsan magadból egy ismerkedésnél?<br> Miért érzed úgy bizonyos emberekkel, hogy mindig félreértitek egymást?<br> Miért ingadozhat az intimitásigényed a folyamatos közelség utáni vágy és a teljes magány szükségessége között?<br> Miért csak háromhetente van kedved szexelni, míg a partnered sokkal gyakrabban szeretné?<br> Vagy miért jár állandóan a fejedben a szex, pedig igazából nem is érdekel?<br> Miért akarsz megfelelni mindenki elvárásainak? Hogyan kapcsolódik mindez a neurodivergenciához?<br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Kapcsolatok és család</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért olyan nehéz néha megfogalmazni, hogy mire vágysz vagy beszélni az érzéseidről? <br> Miért érzed azt, hogy a párod semmit sem csinál jól, vagy idegesít minden aprósága?<br> Miért érzel menekülhetnéket minden párkapcsolatodban?<br> Miért érzed úgy, hogy a párod mindig kritizál? Vagy hogy te kritizálod őt folyton? Esetleg megsértődik mindenen?<br> Miért van szükséged fél nap egyedüllétre egy családi összejövetel után? Mi ez a furcsa fáradtság? <br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Szülőség és nevelés</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért tűnik másnak a gyermeked, mint a többi?<br> Miért érzed úgy, hogy a nevelési módszereid nem működnek?<br> Másnak is ennyire kimerítő a gyerekével? <br> Miért agresszív a gyereked néha? Mik ezek a földhözverős hisztik? <br> Ha az óvónő azt mondja, hogy a gyerekem \"túl érzékeny\", akkor az jó vagy rossz dolog?<br> Miért olyan nehéz néha a gyerekemmel kapcsolatot teremteni?<br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Mindennapi teendők</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért olyan nehéz néha elindulni otthonról? Miért tart végtelen ideig az elkészülés? <br> Miért halogatsz folyton fontos teendőket, mint a számlák befizetése vagy orvoshoz menés?<br> Miért érzed úgy, hogy sosem tudsz lépést tartani a háztartással, és csak elönt a káosz?<br> Miért olyan kimerítő autót vezetni?<br> Miért borulsz ki annyira, ha változnak a tervek?<br> Miért elviselhetetlenek a hirtelen zajok vagy fények, amikor mások alig veszik észre őket?<br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>Identitás, önismeret és kiégés</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért olyan nehéz megfogalmazni az érzéseid? Rossz lenne az önismereted? <br> Miért érzed néha, hogy nem tudod ki is vagy valójában? Miért ez a bizonytalanság?<br> Miért érzed magad másnak, vagy too much-nak?<br> Miért érzed úgy, hogy az életednek a szemlélője vagy, és nem a főszereplője? Más is látja magát kívülről?<br> Miért hallasz folyamatos belső monológot a fejedben? Mindenkinek van ilyen narrátor a fejében? <br> Miért ingadozol a túlteljesítés és a teljes leállás között?<br><br><br>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black text-2xl pb-[2rem] flex flex-col items-center justify-center max-w-[90%] justify-center",
+                        "content": "<b>...ÉS MI KÖZE VAN MINDEZEKNEK A NEURODIVERGENCIÁHOZ?</b>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex items-center justify-center mt-8 mb-4",
+                        "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "tortenetek",
+            "background": "neurodiv/oz.jpg",
+            "tree": {
+                "type": "div",
+                "class": "absolute inset-0 flex flex-col items-center justify-center text-4xl",
+                "content": "<i>Coming soon...</i>"
+            }
+        },
+        {
+            "slug": "tesztek",
+            "background": "neurodiv/sw.jpg",
+            "tree": {
+                "type": "div",
+                "class": "absolute inset-0 flex flex-col items-center justify-center text-4xl",
+                "content": "<i>Coming soon...</i>"
+            }
+        },
+        {
+            "slug": "about",
+            "background": null,
+            "navColor": "black",
+            "textColor": "black",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative pt-[6rem] flex flex-col md:flex-row items-center justify-center p-4",
+                        "children": [
+                            {
+                                "type": "img",
+                                "class": "max-w-full md:max-w-[30%] h-auto rounded-lg",
+                                "src": "neurodiv/me-rounded-c.png"
+                            },
+                            {
+                                "type": "div",
+                                "class": "pl-[2rem]",
+                                "children": [
+                                    {
+                                        "type": "hr",
+                                        "class": "max-w-[80%] mx-auto my-8"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond text-black font-bold md:mt-20 md:ml-8 text-2xl md:text-4xl mb-4",
+                                        "content": "\"Pedig nem is látszik rajtad...\""
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-xl md:text-xl text-black rounded-md max-w-[80%]",
+                                        "content": "<i> - literally everyone</i> <br><br>Ati vagyok, 39 évesen diagnosztizált autista és ADHD-s. <br>Azt mondják, high-functioning, én azt mondom, high-masking. <br>Egész jól elboldogulok, AI/szoftverfejlesztő és portré/fashion fotós vagyok, de az életem minden pillanatát áthatja a neurodivergencia, mint a Jediknek az Erő, vagy inkább mint egy természeti jelenség, amivel nem igazán lehet küzdeni, csak megtanulni meglovagolni a hullámait és átvészelni a viharait - és megérteni. <br><br>Ez az oldal azért jött létre, mert rengeteg kérdést kaptam az elmúlt évben. Sokszor olyanoktól, akik szkeptikusak a témában, vagy éppen csak most kezdenek el gondolkodni rajta, esetleg gyanítják, hogy ők is érintettek lehetnek. Máskor pedig olyanoktól, akik már diagnosztizáltak, de nem tudják, hogyan tovább. Ha ezek az emberek mind elmesélnék egymásnak csak a saját történetüket, ahogy nekem tették, máris mindenki előrébb lenne. <br><br><b>Az Overthinkers.club egy nyitott projekt, amihez bárki csatlakozhat.</b> Célja egy szélesebb körű társadalmi párbeszéd elindítása, kicsiben, az egyes emberek szintjén, és anélkül, hogy a világot neurotipikusokra és neurodivergensekre osztanánk.<br><br><br>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-3 pl-[2rem]",
+                        "children": [                            
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Mit képviselünk?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Például azt, hogy a neurodivergencia nem betegség, és nem is szimplán deficit, ezért nem gyógyítani vagy kezelni kell, hanem megérteni és megtanulni, hova illeszthető be jobban a mai társadalomba. Mert vajon mik voltak a történelem nagy feltalálói, nyughatatlan felfedezői, művészei, őrült zsenijei, akiknek a repülést, az elektromosságot, a kontinenseket, vagy az összes klasszikus művet köszönhetjük? <br><br>Vagy azt, hogy lehet mindenféle diagnosztikai kritériumokkal körvonalazni, ki autista, ki ADHD-s, de valójában minden neurodivergens egy kicsit ez is, az is, csak vannak jobban elfogadott típusok, másokhoz viszont még mindig rengeteg társadalmi tabu, szégyen, sztereotípia társul. De vajon miért?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Kikből áll a társaság?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Az Overthinkers.club egy közös érdeklődésen, hasonló problémákon és élethelyzeteken alapuló közösség, hálózat. Tagjai között vannak neurodivergens emberek (autisták, ADHD-sok, egyéb diagnosztizált vagy diagnózisra várók), neurotipikusok, pszichológusok, coachok, terapeuták, segítő szakmában dolgozók, valamint olyanok is, akik egyszerűen csak szeretnének kevesebb időt tölteni a képernyő előtt, és több minőségi időt a való életben."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Hogyan tudsz csatlakozni ehhez a közösséghez?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Ez az oldal csak a kivonata mindannak, amit az Overthinkers.club képvisel. Ha szeretnél rendszeres frissítéseket kapni a legújabb történetekről, eseményekről, közösségi programokról, vagy akár részt venni peer support beszélgetésekben, mentoringban, akkor iratkozz fel a hírlevelünkre, és csatlakozz a facebook csoporthoz is!"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex items-center justify-center mt-8 mb-4",
+                        "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                    }
+                ]
+            }
+        }
+    ]
+}

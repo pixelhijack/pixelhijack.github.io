@@ -1,0 +1,84 @@
+body {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    font-style: normal;
+    background-color: white;
+    color: #f5f5f5;
+    overflow-y: auto;
+}
+
+.font-eb-garamond {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-josefin-sans {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.font-ambroise {
+    font-family: "ambroise-firmin-std", serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.font-modernline {
+    font-family: 'modernline - Personal Use', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.font-reenie {
+    font-family: 'Reenie Beanie', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.font-eb-garamond,
+.font-josefin-sans,
+.font-ambroise,
+.font-modernline {
+    filter: blur(0.5px);
+}
+
+/*
+Ambroise Std Regular
+    font-family: "ambroise-std", serif;
+    font-weight: 400;
+    font-style: normal;
+Ambroise Std Italic
+    font-family: "ambroise-std", serif;
+    font-weight: 400;
+    font-style: italic;
+Ambroise Std Bold
+    font-family: "ambroise-std", serif;
+    font-weight: 700;
+    font-style: normal;
+Ambroise Std Bold Italic
+    font-family: "ambroise-std", serif;
+    font-weight: 700;
+    font-style: italic;
+Ambroise Std Firmin Regular
+    font-family: "ambroise-firmin-std", serif;
+    font-weight: 400;
+    font-style: normal;
+Ambroise Std Firmin Bold
+    font-family: "ambroise-firmin-std", serif;
+    font-weight: 700;
+    font-style: normal;
+Ambroise Std Francois Regular
+    font-family: "ambroise-francois-std", serif;
+    font-weight: 400;
+    font-style: normal;
+Ambroise Std Francois Bold
+    font-family: "ambroise-francois-std", serif;
+    font-weight: 700;
+    font-style: normal;
+*/
