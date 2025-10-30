@@ -670,6 +670,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mr-\[10px\] {
+  margin-right: 10px;
+}
+
 .mt-0 {
   margin-top: 0px;
 }
@@ -688,6 +692,10 @@ video {
 
 .mt-\[-95px\] {
   margin-top: -95px;
+}
+
+.mt-\[10px\] {
+  margin-top: 10px;
 }
 
 .mt-\[120px\] {

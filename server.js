@@ -59,6 +59,10 @@ app.post('/form', async (req, res) => {
       sheetName = 'pothattila.com: workshop';
       // Order must match the sheet's column order
       values = [timestamp, formData.name, formData.email];
+  } else if (intent === 'neurodiv: segment') {
+      sheetName = 'neurodiv: segment';
+      // Order must match the sheet's column order
+      values = [timestamp, formData.name, formData.email, formData.role, formData.message, JSON.stringify(formData.checkboxes)];
   } else {
       return res.status(400).send('Invalid form type provided.');
   }
