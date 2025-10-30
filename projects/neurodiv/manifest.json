@@ -1,7 +1,7 @@
 {
     "meta": {
         "ga": null,
-        "title": "Overthinkers.club",
+        "title": "Overthinkers'Club",
         "logo": "Overthinkers'Club",
         "robots": "noindex"
     },
@@ -23,7 +23,7 @@
             "label": "Rólunk"
         }
     ],
-    "footer": "*Disclaimer: az Overthinkers.club NEM terápia vagy coaching, és önmagában nem is váltja ki azt. <br>Amennyiben úgy érzed, sürgős segítségre van szükséged, haladéktalanul keress fel szakembert. <br>",
+    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM minősül pszichoterápiának, orvosi ellátásnak vagy pszichológiai tanácsadásnak. A tevékenység tapasztalati alapú sorstárs támogatáson és önismereti, edukatív beszélgetésen alapul. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. 🇬🇧 The services offered on this site do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap"
     ],
@@ -97,7 +97,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br><hr><br><b>Ha csatlakozol, lehetőségünk lesz élő programokat, neurodivergens találkozókat, workshopokat, offline sétákat szervezni!</b>"
+                                        "content": "<br><hr><br><b>Jelentkezz lentebb, ha érdekelne részvétel élő programokban, neurodivergens találkozókban, workshopokban, offline sétákban!</b>"
                                     }
                                 ]
                             },
@@ -135,11 +135,11 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Milyen a neurodivergensek megélése a saját életükben, terápián kívül? <br><br>Hogyan használhatsz AI-t pszichodiagnosztikában és terápiában jól, biztonságosan és etikusan?"
+                                        "content": "<br>Milyen a neurodivergensek megélése a saját életükben, terápián kívül? <br><br>Használhaó-e az AI mint eszköz pszichodiagnosztikában és terápiában jól, biztonságosan és etikusan?"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Mi a diagnosztikai kritériumok mögötti valóság? Hogyan tudsz hatékonyan segíteni neurodivergenseknek a saját praxisodban? Mi a diagnosztika és a terápia határa, hol van a coaching szerepe?"
+                                        "content": "<br>Mik a diagnosztikai folyamat és az ellátórendszer jelenlegi problémái? Hogyan tudnánk ezen együtt javítani?"
                                     },
                                     {
                                         "type": "p",
@@ -167,7 +167,7 @@
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-xl md:text-2xl text-black rounded-md",
-                                        "content": "<b>Hogyan tudsz velünk interakcionálni? </b><br><br>"
+                                        "content": "<b>Hogyan tudunk interakcionálni? </b><br><br>"
                                     },
                                     {
                                         "type": "input",
@@ -209,7 +209,7 @@
                                                     {
                                                         "type": "label",
                                                         "for": "checkbox: newsletter",
-                                                        "content": "Olvasgatnék, hírlevél formában"
+                                                        "content": "Olvasgatnék bővebben, hírlevél formában"
                                                     }
                                                 ]
                                             },
@@ -260,7 +260,7 @@
                                                     {
                                                         "type": "label",
                                                         "for": "checkbox: research",
-                                                        "content": "Kollaboráció, részvétel kutatásokban"
+                                                        "content": "Szakmai kollaboráció, kutatások, kísérletek"
                                                     }
                                                 ]
                                             },
@@ -671,7 +671,7 @@
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "<i> - literally everyone</i> <br><br>Ati vagyok, 39 évesen diagnosztizált autista és ADHD-s. <br>Azt mondják, high-functioning, én azt mondom, high-masking. <br>Egész jól elboldogulok, AI/szoftverfejlesztő és portré/fashion fotós vagyok, de az életem minden pillanatát áthatja a neurodivergencia, mint a Jediknek az Erő, vagy inkább mint egy természeti jelenség, amivel nem igazán lehet küzdeni, csak megtanulni meglovagolni a hullámait és átvészelni a viharait - és megérteni. <br><br>Ez az oldal azért jött létre, mert rengeteg kérdést kaptam az elmúlt évben. Sokszor olyanoktól, akik szkeptikusak a témában, vagy éppen csak most kezdenek el gondolkodni rajta, esetleg gyanítják, hogy ők is érintettek lehetnek. Máskor pedig olyanoktól, akik már diagnosztizáltak, de nem tudják, hogyan tovább. Ha ezek az emberek mind elmesélnék egymásnak csak a saját történetüket, ahogy nekem tették, máris mindenki előrébb lenne. <br><br><b>Az Overthinkers.club egy nyitott projekt, amihez bárki csatlakozhat.</b> Célja egy szélesebb körű társadalmi párbeszéd elindítása, kicsiben, az egyes emberek szintjén, és anélkül, hogy a világot neurotipikusokra és neurodivergensekre osztanánk.<br><br><br>"
+                                        "content": "<i> - literally everyone</i> <br><br>Ati vagyok, 39 évesen diagnosztizált autista és ADHD-s. <br>Azt mondják, high-functioning, én azt mondom, high-masking. <br>Egész jól elboldogulok, AI/szoftverfejlesztő és portré/fashion fotós vagyok, de az életem minden pillanatát áthatja a neurodivergencia, mint a Jediknek az Erő, vagy inkább mint egy természeti jelenség, amivel nem igazán lehet küzdeni, csak megtanulni meglovagolni a hullámait és átvészelni a viharait - és megérteni. <br><br>Ez az oldal azért jött létre, mert rengeteg kérdést kaptam az elmúlt évben. Sokszor olyanoktól, akik szkeptikusak a témában, vagy éppen csak most kezdenek el gondolkodni rajta, esetleg gyanítják, hogy ők is érintettek lehetnek. Máskor pedig olyanoktól, akik már diagnosztizáltak, de nem tudják, hogyan tovább. Ha ezek az emberek mind elmesélnék egymásnak csak a saját történetüket, ahogy nekem tették, máris mindenki előrébb lenne. <br><br><b>Az Overthinkers'Club egy nyitott projekt, amihez bárki csatlakozhat.</b> Célja egy szélesebb körű társadalmi párbeszéd elindítása, kicsiben, az egyes emberek szintjén, és anélkül, hogy a világot neurotipikusokra és neurodivergensekre osztanánk.<br><br><br>"
                                     }
                                 ]
                             }
@@ -711,7 +711,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Az Overthinkers.club egy közös érdeklődésen, hasonló problémákon és élethelyzeteken alapuló közösség, hálózat. Tagjai között vannak neurodivergens emberek (autisták, ADHD-sok, egyéb diagnosztizált vagy diagnózisra várók), neurotipikusok, pszichológusok, coachok, terapeuták, segítő szakmában dolgozók, valamint olyanok is, akik egyszerűen csak szeretnének kevesebb időt tölteni a képernyő előtt, és több minőségi időt a való életben."
+                                        "content": "Az Overthinkers'Club egy közös érdeklődésen, hasonló problémákon és élethelyzeteken alapuló közösség, hálózat. Tagjai között vannak neurodivergens emberek (autisták, ADHD-sok, egyéb diagnosztizált vagy diagnózisra várók), neurotipikusok, pszichológusok, coachok, terapeuták, segítő szakmában dolgozók, valamint olyanok is, akik egyszerűen csak szeretnének kevesebb időt tölteni a képernyő előtt, és több minőségi időt a való életben."
                                     }
                                 ]
                             },
@@ -726,7 +726,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Ez az oldal csak a kivonata mindannak, amit az Overthinkers.club képvisel. Ha szeretnél rendszeres frissítéseket kapni a legújabb történetekről, eseményekről, közösségi programokról, vagy akár részt venni peer support beszélgetésekben, mentoringban, akkor kezdőoldal alján görgess le és írj nekünk!"
+                                        "content": "Ez az oldal csak bevezetője az Overthinkers'Club projektnek. Ha szeretnél rendszeres frissítéseket kapni a legújabb történetekről, eseményekről, jövőbeli közösségi programokról, vagy akár részt venni peer support beszélgetésekben, mentoringban, akkor kezdőoldal alján görgess le és írj nekünk!"
                                     }
                                 ]
                             }
