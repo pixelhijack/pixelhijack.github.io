@@ -639,6 +639,37 @@
             }
         },
         {
+            "slug": "ethics",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pl-[2rem] pt-[120px] md:max-w-[80%] mx-auto text-neutral-700",
+                "children": [
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-2xl md:text-3xl mb-4",
+                        "content": "Etikai és Transzparencia Nyilatkozat"
+                    },
+                    {
+                        "type": "p",
+                        "content": "A munkám személyes tapasztalaton, önképzésen és a neurodiverzitás, pszichológia és emberi viselkedés hosszú távú tanulmányozásán alapul. Nem vagyok engedéllyel rendelkező pszichológus, pszichoterapeuta vagy orvosi szakember. Tapasztalati alapú támogatást, mentorálást és edukatív iránymutatást nyújtok neurodivergens személyeknek, valamint azoknak, akik önismeretükben és mindennapi életvezetésükben keresnek segítséget."
+                    },
+                    {
+                        "type": "p",
+                        "content": "<br>Tevékenységemet az alábbi alapelvek szerint végzem:"
+                    },
+                    {
+                        "type": "p",
+                        "content": "<br>1. Transzparencia: Mindig igyekszem egyértelművé tenni a tevékenységem jellegét és határait. Nem diagnosztizálok, nem kezelek, és nem végzek terápiát. <br>2. Tisztelet és autonómia: A résztvevő a saját életének szakértője, felelőse. A célom az önállóság erősítése, nem pedig bárki “megjavítása”. <br>3. Privacy: A személyes információkat és beszélgetéseket bizalmasan kezelem, semmilyen harmadik félnek nem adom át. <br>4. Határok: Nem vállalok krízisintervenciót vagy bármilyen súlyos mentális állapot kezelését. Minden bizonytalan esetben engedéllyel rendelkező szakember felkeresését javaslom. <br>5. Integritás: Folyamatosan bővítem tudásomat a pszichológia, idegtudomány és mentálhigiéné területén, hogy felelős, tájékozott módon tudjak erről beszélni másnak is. <br>6. Tapasztalati szemlélet: A munkám a kölcsönös megértésen és közösségen alapul - nem hierarchián vagy “javításon”."
+                    },
+                    {
+                        "type": "p",
+                        "content": "<br><br>Amennyiben bizonytalan vagy abban, hogy ez az együttműködési forma megfelelő-e számodra, beszéljünk róla, vagy keress fel mentálhigiénés szakembert. A célom hogy kiegészítsem, ne helyettesítsem a professzionális pszichoterápiás ellátást."
+                    }
+                ]
+            }
+        },
+        {
             "slug": "about",
             "background": null,
             "navColor": "black",
@@ -735,6 +766,11 @@
                     {
                         "type": "hr",
                         "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "p",
+                        "class": "max-w-[80%] text-sm text-neutral-500 mx-auto my-8",
+                        "content": "<a href='/ethics'>Ethical and Transparency Statement</a>"
                     }
                 ]
             }

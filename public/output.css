@@ -979,6 +979,10 @@ video {
   padding-top: 88px;
 }
 
+.pt-\[80px\] {
+  padding-top: 80px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1048,6 +1052,11 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity, 1));
 }
 
+.text-neutral-500 {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -1058,13 +1067,9 @@ video {
   color: rgb(212 212 212 / var(--tw-text-opacity, 1));
 }
 
-.text-neutral-500 {
+.text-neutral-700 {
   --tw-text-opacity: 1;
-  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
-}
-
-.text-opacity-30 {
-  --tw-text-opacity: 0.3;
+  color: rgb(64 64 64 / var(--tw-text-opacity, 1));
 }
 
 .underline {
