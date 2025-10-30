@@ -19,10 +19,6 @@
             "label": "Történetek"
         },
         {
-            "href": "/tesztek",
-            "label": "Tesztek"
-        },
-        {
             "href": "/about",
             "label": "Rólunk"
         }
@@ -63,6 +59,11 @@
                                         "type": "h2",
                                         "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "Közösségi segítség, egyéni mentoring, társadalmi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<br><br>↓"
                                     }
                                 ]
                             }
@@ -75,11 +76,11 @@
                     },
                     {
                         "type": "div",
-                        "class": "masonry-container bg-white z-50 masonry-3",
+                        "class": "masonry-container bg-white z-50 masonry-3 masonry-mobile-1",
                         "children": [
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -102,7 +103,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -125,7 +126,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -154,14 +155,14 @@
                     },
                     {
                         "type": "div",
-                        "class": "max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
+                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
                         "children": [
                             {
                                 "type": "form",
                                 "action": "javascript:;",
                                 "onsubmit": "return submitForm(this, 'neurodiv: segment');",
                                 "method": "POST",
-                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-xl text-black rounded-md max-w-[80%]",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
                                 "children": [
                                     {
                                         "type": "div",
@@ -374,8 +375,114 @@
                     },
                     {
                         "type": "div",
-                        "class": "text-black pb-[2rem] pl-[10%] md:pl-[30%] max-w-[90%] justify-center",
-                        "content": "<br><br><b>1. Ha szkeptikus vagy</b> <br>Miért van ennyi ADHD oldal? <br>Tényleg ennyi az ADHD-s, vagy ez csak valami új divat? <br>Lehet ADHD a kifogás mindenre? <br>Minden személyiségjegyünk már valami pszichés betegség? <br>Miért diagnosztizálnak mindenkit? <br>Minek címkézzünk dolgokat? <br>Mi az hogy mindenki ott van a spektrumon? <br>Hány embert is érinthet ez az egész igazából? <br><br><b>2. Ha gyanítod, hogy neurodivergens lehetsz</b> <br>Látszik-e valakin, ha ADHD-s/autista? <br>Mi a helyzet az öndiagnózissal? <br>Szégyen, félelem, tagadás <br>Hol tudsz utánajárni, hol jelentkezhetsz diagnózisra? <br>Kell-e a diagnózis, miben lesz más a papírral? <br>Igazak-e a tiktok/insta mémek? <br><br><b>3. Ha már elhatároztad, hogy utánajársz, de nem tudod, hol</b> <br>Mi a baj a magyar ellátórendszerrel? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br><b>4. Ha diagnózis után vagy, de nem tudod mit kezdj az egésszel</b> <br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>A coaching akkor most bullshit vagy jó? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg létezik ilyen neurodivergens közösség? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br><b>5. Ha hozzátartozód ND</b> <br>Miben más egy neurotipikus-neurodivergens, neurodivergens-neurodivergens kapcsolat? <br>Mit tehetsz ha gyermeked más mint a többiek? <br>Mit tehetsz, ha párod neurodivergens lehet, de nem nyitott a témára? <br><br><b>6. Ha nem vagy érintett, de problémád van az offline léttel</b> <br>Az ADHD járványt nem csak környezet váltotta ki? Nem a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? <br><br><b>7. Ha csak érdekel a téma, és szeretnél részt venni valamiben</b> <br>Social kísérletek, challengek, játékok <br>Közösségtalálkozó <br>Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasnál az egészről"
+                        "class": "masonry-container masonry-3 masonry-mobile-1 bg-white",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>1. Ha szkeptikus vagy</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Miért van ennyi ADHD oldal? <br>Tényleg ennyi az ADHD-s, vagy ez csak valami új divat? <br>Lehet ADHD a kifogás mindenre? <br>Minden személyiségjegyünk már valami pszichés betegség? <br>Miért diagnosztizálnak mindenkit? <br>Minek címkézzünk dolgokat? <br>Mi az hogy mindenki ott van a spektrumon? <br>Hány embert is érinthet ez az egész igazából? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>2. Ha gyanítod, hogy neurodivergens lehetsz</b><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Látszik-e valakin, ha ADHD-s/autista? <br>Mi a helyzet az öndiagnózissal? <br>Szégyen, félelem, tagadás <br>Hol tudsz utánajárni, hol jelentkezhetsz diagnózisra? <br>Kell-e a diagnózis, miben lesz más a papírral? <br>Igazak-e a tiktok/insta mémek? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>3. Ha már elhatároztad, hogy utánajársz, de nem tudod, hol</b>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Mi a baj a magyar ellátórendszerrel? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>4. Ha diagnózis után vagy, de nem tudod mit kezdj az egésszel</b>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>A coaching akkor most bullshit vagy jó? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg létezik ilyen neurodivergens közösség? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>5. Ha hozzátartozód ND</b>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Miben más egy neurotipikus-neurodivergens, neurodivergens-neurodivergens kapcsolat? <br>Mit tehetsz ha gyermeked más mint a többiek? <br>Mit tehetsz, ha párod neurodivergens lehet, de nem nyitott a témára? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>6. Ha nem vagy érintett, de problémád van az offline léttel</b>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Az ADHD járványt nem csak környezet váltotta ki? Nem a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? <br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "<b>7. Ha csak érdekel a téma, és szeretnél részt venni valamiben</b>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Social kísérletek, challengek, játékok <br>Közösségtalálkozó <br>Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasnál az egészről"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
@@ -392,7 +499,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "masonry-container masonry-3 bg-white",
+                        "class": "masonry-container masonry-3 masonry-mobile-1 bg-white",
                         "children": [
                             {
                                 "type": "div",
@@ -562,8 +669,8 @@
                                         "content": "\"Pedig nem is látszik rajtad...\""
                                     },
                                     {
-                                        "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-xl md:text-xl text-black rounded-md max-w-[80%]",
+                                        "type": "p",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
                                         "content": "<i> - literally everyone</i> <br><br>Ati vagyok, 39 évesen diagnosztizált autista és ADHD-s. <br>Azt mondják, high-functioning, én azt mondom, high-masking. <br>Egész jól elboldogulok, AI/szoftverfejlesztő és portré/fashion fotós vagyok, de az életem minden pillanatát áthatja a neurodivergencia, mint a Jediknek az Erő, vagy inkább mint egy természeti jelenség, amivel nem igazán lehet küzdeni, csak megtanulni meglovagolni a hullámait és átvészelni a viharait - és megérteni. <br><br>Ez az oldal azért jött létre, mert rengeteg kérdést kaptam az elmúlt évben. Sokszor olyanoktól, akik szkeptikusak a témában, vagy éppen csak most kezdenek el gondolkodni rajta, esetleg gyanítják, hogy ők is érintettek lehetnek. Máskor pedig olyanoktól, akik már diagnosztizáltak, de nem tudják, hogyan tovább. Ha ezek az emberek mind elmesélnék egymásnak csak a saját történetüket, ahogy nekem tették, máris mindenki előrébb lenne. <br><br><b>Az Overthinkers.club egy nyitott projekt, amihez bárki csatlakozhat.</b> Célja egy szélesebb körű társadalmi párbeszéd elindítása, kicsiben, az egyes emberek szintjén, és anélkül, hogy a világot neurotipikusokra és neurodivergensekre osztanánk.<br><br><br>"
                                     }
                                 ]
@@ -576,11 +683,11 @@
                     },
                     {
                         "type": "div",
-                        "class": "masonry-container masonry-3 pl-[2rem]",
+                        "class": "masonry-container masonry-3 masonry-mobile-1 md:pl-[2rem]",
                         "children": [
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -595,7 +702,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -610,7 +717,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%] break-inside-avoid",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
                                 "children": [
                                     {
                                         "type": "h3",
@@ -619,7 +726,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Ez az oldal csak a kivonata mindannak, amit az Overthinkers.club képvisel. Ha szeretnél rendszeres frissítéseket kapni a legújabb történetekről, eseményekről, közösségi programokról, vagy akár részt venni peer support beszélgetésekben, mentoringban, akkor iratkozz fel a hírlevelünkre, és csatlakozz a facebook csoporthoz is!"
+                                        "content": "Ez az oldal csak a kivonata mindannak, amit az Overthinkers.club képvisel. Ha szeretnél rendszeres frissítéseket kapni a legújabb történetekről, eseményekről, közösségi programokról, vagy akár részt venni peer support beszélgetésekben, mentoringban, akkor kezdőoldal alján görgess le és írj nekünk!"
                                     }
                                 ]
                             }
@@ -628,11 +735,6 @@
                     {
                         "type": "hr",
                         "class": "max-w-[80%] mx-auto my-8"
-                    },
-                    {
-                        "type": "div",
-                        "class": "flex items-center justify-center mt-8 mb-4",
-                        "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
                     }
                 ]
             }

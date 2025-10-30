@@ -890,6 +890,26 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.bg-neutral-300\/50 {
+  background-color: rgb(212 212 212 / 0.5);
+}
+
+.bg-neutral-500\/50 {
+  background-color: rgb(115 115 115 / 0.5);
+}
+
+.bg-amber-500\/50 {
+  background-color: rgb(245 158 11 / 0.5);
+}
+
+.bg-emerald-500\/50 {
+  background-color: rgb(16 185 129 / 0.5);
+}
+
+.bg-stone-500\/50 {
+  background-color: rgb(120 113 108 / 0.5);
+}
+
 .bg-opacity-80 {
   --tw-bg-opacity: 0.8;
 }
@@ -1149,6 +1169,10 @@ video {
 
   .md\:pl-\[30\%\] {
     padding-left: 30%;
+  }
+
+  .md\:pl-\[2rem\] {
+    padding-left: 2rem;
   }
 
   .md\:text-2xl {
