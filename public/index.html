@@ -397,6 +397,15 @@
     function renderTree(node) {
       if (!node) return "";
 
+      // class can be a style guide shorthand
+      if(
+        node.class && 
+        window?.manifest?.styleGuide &&
+        window?.manifest?.styleGuide[node.class]
+      ){
+        node.class = window?.manifest?.styleGuide[node.class];
+      }
+
       // cross-reference folder.json for source arrays
       if (node.source) {
         node.children = window?.manifest?._folder?.flat[node.source]

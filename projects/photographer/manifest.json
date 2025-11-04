@@ -20,6 +20,13 @@
     "css": [
         "/projects/photographer/styles.css"
     ],
+    "styleGuide": {
+        "hero-title": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+        "hero-subtitle": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+        "center-aligned": "",
+        "paragraph": "",
+        "mobile-bg-cover": ""
+    },
     "pages": [
         {
             "slug": "",
@@ -61,12 +68,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "hero-title",
                                         "content": "Everyone has a story to tell.<br>What's yours?"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "hero-subtitle",
                                         "content": "<i>Vintage lens & analog film photography <br>by Póth Attila</i>"
                                     }
                                 ]

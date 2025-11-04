@@ -1,0 +1,196 @@
+{
+    "meta": {
+        "ga": "G-XXXXX",
+        "title": "Póth Attila",
+        "logo": "Póth Attila"
+    },
+    "nav": [ 
+        { "href": "/prices", "label": "Love" },
+        { "href": "/prices", "label": "Family" },
+        { "href": "/prices", "label": "Prices" },
+        { "href": "/about", "label": "About" }
+    ],
+    "footer": "footer text here",
+    "fonts": [
+        "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    ],
+    "css": [
+        "/projects/skeleton/styles.css"
+    ],
+    "pages": [
+        {
+            "slug": "",
+            "navColor": "amber",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/love/20251029-DSC00473.jpg",
+                                    "stories/love/20251029-DSC00457-bw.jpg",
+                                    "stories/love/20251029-DSC00468-bw.jpg",
+                                    "stories/love/20251029-DSC00472-bw.jpg",
+                                    "stories/love/20251031-DSC00747.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>WEDDINGS</b> <i>by Póth Attila</i>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Vintage optikák & analóg film</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "about",
+            "background": null,
+            "navColor": "black",
+            "textColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-center justify-center min-h-screen p-4",
+                        "children": [
+                            {
+                                "type": "img",
+                                "class": "mt-[120px] max-w-full md:max-w-[40%] h-auto rounded-lg",
+                                "src": "about/me-rounded.png",
+                                "alt": "Póth Attila"
+                            },
+                            {
+                                "type": "div",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond text-black font-bold pt-[88px] md:ml-8 text-2xl md:text-5xl mb-4",
+                                        "content": "Hello!"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "<br>I collaborate with brands, entrepreneurs, artists, designers, model agencies, event organisers and venues, shooting narrative series, environmental portraiture and visual branding."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-start md:items-stretch w-full gap-6 p-[20px] md:max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "<b>Find me here: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Phone: +36309313580</i>"
+                            },
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'pothattila.com: contact');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Or reach out to me and I will get back to you: </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Your Name",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Message",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Send",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "content": "This was me before I picked up a camera:"
+                    },
+                    {
+                        "type": "img",
+                        "src": "analog/nostalgia/0180.jpg",
+                        "alt": "Me"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "content": "This is what I really love to shoot with:"
+                    },
+                    {
+                        "type": "img",
+                        "src": "about/DSC06243.jpg",
+                        "captionStyle": "font-eb-garamond text-black",
+                        "caption": "<i>(Ok, ok, maybe not a Smena 8... but all my other 80+ vintage lenses and 15 cameras!)</i>"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "content": "And this is how I look like now:"
+                    },
+                    {
+                        "type": "img",
+                        "src": "about/1734626801051.jpg"
+                    }
+                ]
+            }
+        }
+    ]
+}
