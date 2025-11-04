@@ -180,7 +180,7 @@
                                     {
                                         "type": "h2",
                                         "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                                        "content": "<b>Hogyan tudunk interakcionálni? </b><br><br>"
+                                        "content": "<b>Hogyan tudsz csatlakozni ehhez a nyitott projekthez? </b><br><br>"
                                     },
                                     {
                                         "type": "input",
