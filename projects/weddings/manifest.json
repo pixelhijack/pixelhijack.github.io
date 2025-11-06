@@ -4,23 +4,228 @@
         "title": "Póth Attila",
         "logo": "Póth Attila"
     },
-    "nav": [ 
-        { "href": "/prices", "label": "Love" },
-        { "href": "/prices", "label": "Family" },
-        { "href": "/prices", "label": "Prices" },
-        { "href": "/about", "label": "About" }
+    "nav": [
+        {
+            "href": "/weddings",
+            "label": "Weddings"
+        },
+        {
+            "href": "/family",
+            "label": "Family"
+        },
+        {
+            "href": "/people",
+            "label": "People"
+        },
+        {
+            "href": "/workflow",
+            "label": "Let's work together"
+        },
+        {
+            "href": "/about",
+            "label": "About"
+        }
     ],
-    "footer": "footer text here",
+    "footer": "<a href=\"www.pothattila.com\">Póth Attila</a> // +36 30 931 3580 // pothattila@gmail.com",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     ],
     "css": [
         "/projects/skeleton/styles.css"
     ],
+    "testimonials": [
+        "Kurvajok lettek! Ma kiis teszem oooket. Imadom oket nagyonjoook",
+        "Helooo uuuuristeeeen 😍😍😍😍😍 Dejooo",
+        "Huuuu nagyonjoook 😍😍😍😍 Tenyleg itt sajat onnmagunkat latom",
+        "Fucking helll az analogon kivagyok mennyire jooooo 😍😍😍😍😍 Mindig jon egy ujabb kedvenc",
+        "Ati én továbbra is el vagyok ájulva, olyan szépek 🥹🥹",
+        "Hát ezek nagyon nagyon jók!!! ZSENI vagy! de komolyan, elképesztően jók lettek! nagyon ügyes vagy",
+        "tényleg nagyon jó szemed van hozzá!",
+        "Es elképesztően koszonjuk Attila még millioszor! Iszonyat szuper volt, hogy te voltál ott, mint fotós 🥰",
+        "nekem is jó élmény volt a délelőtt, nagyon köszönöm én is a munkádat, szuper profi 💛",
+        "nagyon kosziii!! juuj, szuperek lettek 😍 epp csak átfutottam, de nagyon tetszenek:))",
+        "Jujjj nagyon jók!!!"
+    ],
     "pages": [
         {
             "slug": "",
-            "navColor": "amber",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/love/20251029-DSC00473.jpg",
+                                    "stories/love/20251029-DSC00457-bw.jpg",
+                                    "stories/love/20251029-DSC00468-bw.jpg",
+                                    "portraits/DSC03104-bw.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-5xl md:text-7xl p-4",
+                                        "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Imperfection of vintage optics & analog film</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "content": "<br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                                "content": "I. Mi a baj a mai fotókkal?"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
+                                                "content": "Az autofókusz, szemkövető AI, modern kamerák tényleg gyerekjátékká tették a mesterséget, amit múlt századfordulón egy inas még évekig tanult egy mester mellett a napfényműteremben, hogy ne vakuljon meg a vegyszerek rossz használatától. A technológia fejlődésével nem csak a gépeink változtak meg, hanem velük mi is. Az élesség, tökéletesség mítosza nem csak a nagy kameragyártó márkák szlogenje lett minden reklámban, hogy minden évben vedd meg a legújabb objektívet - a perfekcionizmus belénk is beépült. Vajon tényleg szükség van 30 gombnyomásra, hogy egyetlen jó szelfid legyen? És milyen hatással van az önelfogadásunkra, hogy mindez már alapból beauty filterrel jön minden telefonban?"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-base font-eb-garamond md:text-lg text-black",
+                                                "content": "Hol ment félre ez az egész? Az X, Y generáció fejében még élénken él az a kor, mikor a tömeggyártás még nem darálta be a fotózást: 80-as évek, a film, aminek az előhívására várni kellett, és nem is emlékeztél rá, mi volt rajta; 90-es évek, amikor még bénáztunk az első autofókusszal, de mégis bekerültek a családi albumokba, amiket olyan jó lapozgatni; korai 2000-s, a legelső kis kedves digitális kameráink nevetségesen alacsony felbontású vakus képei partikból, amiket még nem ezerszámra lőttünk.<br><br>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-base font-eb-garamond md:text-lg text-black",
+                                                "content": "Mi történik a millió képpel, amit készítünk? Visszanézi bárki is a régi telefonján vagy a fiókban porosodó winchesteren pihenő tízezer képet? Tényleg egy Facebookra van szükség, hogy feldobja ezeket a képeket egy, öt, tíz évvel ezelőttről? Miért sokkal értékesebb érzelmileg egy 24-36 kockás analóg filmre ellőtt homályos kép? Talán mert az emlékezetünk hasonlóan tárolja az életünk pillanatképeit magunkról, szeretteinkről: ködösen, tökéletlenül?"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                                        "children": [
+                                            {
+                                                "type": "img",
+                                                "src": "stories/love/DSC03016-2.jpg",
+                                                "class": "w-full h-full object-cover"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                                        "children": [
+                                            {
+                                                "type": "img",
+                                                "src": "analog/portraits/HP5-240120-01804.jpg",
+                                                "class": "w-full h-full object-cover"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                                "content": "II. Mitől más a narratív, történetmesélő stílus?"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
+                                                "content": "Slow, lelassulunk, offline, nem pózolt, nem staged, nem beállított, hétköznapi, dokumentarizmus. A technológiai automatizmus túl tökéletes lett mi is áldozatul estünk ennek, az emlékeink viszont nem ilyenek, tökéletlenek, 80s aranykor, hogy lehet az h a gyerekkori fotóink sokkal többet jelentenek. ma tömeggyártás: tényleg szükség van 30 gombnyomásra, h egy jó szelfid legyen? mi történik a millió képpel amit készítünk? visszanézi-e valaki, vagy külső winchestereken porosodik örökre. miért jobb az a pár kép, a várakozás, a print, a tökéletlenség. self-acceptance. önmagunk elfogadása"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "font-eb-garamond text-base md:text-lg text-black",
+                                                "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                                "content": "III. Hogyan illeszkedik erre az analóg film / vintage optikák, print?"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
+                                                "content": ""
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-base font-eb-garamond md:text-lg text-black",
+                                                "content": "<br><br>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-base font-eb-garamond md:text-lg text-black",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                                        "children": [
+                                            {
+                                                "type": "img",
+                                                "src": "family/DSC09495.jpg",
+                                                "class": "w-full h-full object-cover"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "weddings",
+            "navColor": "white",
             "tree": {
                 "type": "div",
                 "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
@@ -47,12 +252,263 @@
                                     {
                                         "type": "h1",
                                         "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
-                                        "content": "<b>WEDDINGS</b> <i>by Póth Attila</i>"
+                                        "content": "<b>WEDDINGS </b><i>by Póth Attila</i>"
                                     },
                                     {
                                         "type": "h2",
                                         "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": "<i>Vintage optikák & analóg film</i>"
+                                        "content": "<i>Imperfection of vintage optics & analog film</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "people",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "portraits/DSC03104-bw.jpg",
+                                    "analog/portraits/DSC08994.jpg",
+                                    "stories/balaton/DSC08465-2.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>PEOPLE</b><br><i>-portraits, couples</i>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Imperfection of vintage optics & analog film</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "family",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "analog/portraits/DSC09781.jpg",
+                                    "family/231018-orwo-00407-2.jpg",
+                                    "family/DSC09357.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Imperfection of vintage optics & analog film</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "workflow",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "stories/love/DSC03016-2.jpg",
+                                        "class": "w-full h-full object-cover"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                        "content": "Feature Title — Two Column"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "class": "text-lg md:text-xl text-black mb-6",
+                                        "content": "A bold deck paragraph that introduces the section. Designed to sit beside the hero image for a magazine-like composition."
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "text-base md:text-lg text-black",
+                                        "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-stretch min-h-screen",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                        "content": "Feature Title — Two Column"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "class": "text-lg md:text-xl text-black mb-6",
+                                        "content": "A bold deck paragraph that introduces the section. Designed to sit beside the hero image for a magazine-like composition."
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "text-base md:text-lg text-black",
+                                        "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "analog/portraits/HP5-240120-01804.jpg",
+                                        "class": "w-full h-full object-cover"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "img",
+                        "class": "p-20",
+                        "src": "bts/240428-02087.jpg"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "content": "I. Mi a baj azzal, ahogy ma fotózunk?<br><br><hr>"
+                    },
+                    {
+                        "type": "p",
+                        "class": "p-[25px] md:max-w-[80%]",
+                        "content": "Az autofókusz, szemkövető AI, modern kamerák tényleg gyerekjátékká tették a mesterséget, amit múlt századfordulón egy inas még évekig tanult egy mester mellett a napfényműteremben, hogy ne vakuljon meg a vegyszerek rossz használatától. A technológia fejlődésével nem csak a gépeink változtak meg, hanem velük mi is. Az élesség, tökéletesség mítosza nem csak a nagy kameragyártó márkák szlogenje lett minden reklámban, hogy minden évben vedd meg a legújabb objektívet - a perfekcionizmus belénk is beépült. Vajon tényleg szükség van 30 gombnyomásra, hogy egyetlen jó szelfid legyen? És milyen hatással van az önelfogadásunkra, hogy mindez már alapból beauty filterrel jön minden telefonban?"
+                    },
+                    {
+                        "type": "p",
+                        "class": "p-[25px] md:max-w-[80%]",
+                        "content": "Hol ment félre ez az egész? Az X, Y generáció fejében még élénken él az a kor, mikor a tömeggyártás még nem darálta be a fotózást: 80-as évek, a film, aminek az előhívására várni kellett, és nem is emlékeztél rá, mi volt rajta; 90-es évek, amikor még bénáztunk az első autofókusszal, de mégis bekerültek a családi albumokba, amiket olyan jó lapozgatni; korai 2000-s, a legelső kis kedves digitális kameráink nevetségesen alacsony felbontású vakus képei partikból, amiket még nem ezerszámra lőttünk."
+                    },
+                    {
+                        "type": "p",
+                        "class": "p-[25px] md:max-w-[80%]",
+                        "content": "Mi történik a millió képpel, amit készítünk? Visszanézi bárki is a régi telefonján vagy a fiókban porosodó winchesteren pihenő tízezer képet? Tényleg egy Facebookra van szükség, hogy feldobja ezeket a képeket egy, öt, tíz évvel ezelőttről? Miért sokkal értékesebb érzelmileg egy 24-36 kockás analóg filmre ellőtt homályos kép? Talán mert az emlékezetünk hasonlóan tárolja az életünk pillanatképeit magunkról, szeretteinkről: ködösen, tökéletlenül?"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "content": "II. Mitől más a narratív, történetmesélő stílus?<br><br><hr>"
+                    },
+                    {
+                        "type": "p",
+                        "class": "p-[25px] md:max-w-[80%]",
+                        "content": "Slow, lelassulunk, offline, nem pózolt, nem staged, nem beállított, hétköznapi, dokumentarizmus. A technológiai automatizmus túl tökéletes lett mi is áldozatul estünk ennek, az emlékeink viszont nem ilyenek, tökéletlenek, 80s aranykor, hogy lehet az h a gyerekkori fotóink sokkal többet jelentenek. ma tömeggyártás: tényleg szükség van 30 gombnyomásra, h egy jó szelfid legyen? mi történik a millió képpel amit készítünk? visszanézi-e valaki, vagy külső winchestereken porosodik örökre. miért jobb az a pár kép, a várakozás, a print, a tökéletlenség. self-acceptance. önmagunk elfogadása"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "content": "III. Hogyan illeszkedik erre az analóg film / vintage optikák, print?<br><br><hr>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "other",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/love/20251029-DSC00473.jpg",
+                                    "stories/love/20251029-DSC00457-bw.jpg",
+                                    "stories/love/20251029-DSC00468-bw.jpg",
+                                    "stories/love/20251029-DSC00472-bw.jpg",
+                                    "stories/love/20251031-DSC00747.jpg"
+                                ],
+                                "class": "w-full h-full object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
                             }
@@ -86,17 +542,12 @@
                                     {
                                         "type": "h1",
                                         "class": "font-eb-garamond text-black font-bold pt-[88px] md:ml-8 text-2xl md:text-5xl mb-4",
-                                        "content": "Hello!"
+                                        "content": "Szia, Ati vagyok!"
                                     },
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                        "content": "I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. I am intrigued by the human condition, seeking the personal narrative with anyone I photograph."
-                                    },
-                                    {
-                                        "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                        "content": "<br>I collaborate with brands, entrepreneurs, artists, designers, model agencies, event organisers and venues, shooting narrative series, environmental portraiture and visual branding."
+                                        "content": "Professzionális fotós vagyok Budapesten, Magyarországon. Főként analóg filmes és vintage objektívekkel dolgozom, mivel szeretem a nem mainstream, tökéletlen, nosztalgikus megjelenéseket: piktorialistákat, régi hollywoodi, technicolor és 1980-as évekbeli filmeket."
                                     }
                                 ]
                             }
@@ -109,7 +560,7 @@
                             {
                                 "type": "div",
                                 "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "<b>Find me here: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Phone: +36309313580</i>"
+                                "content": "<b>Itt megtalálsz: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36309313580</i>"
                             },
                             {
                                 "type": "form",
@@ -121,13 +572,13 @@
                                     {
                                         "type": "div",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md",
-                                        "content": "<b>Or reach out to me and I will get back to you: </b><br><br>"
+                                        "content": "<b>Vagy írj rám itt, és megkereslek: </b><br><br>"
                                     },
                                     {
                                         "type": "input",
                                         "name": "name",
                                         "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Your Name",
+                                        "placeholder": "Neved",
                                         "required": "true"
                                     },
                                     {
@@ -142,13 +593,13 @@
                                         "type": "textarea",
                                         "name": "message",
                                         "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Message",
+                                        "placeholder": "Üzenet",
                                         "required": "true"
                                     },
                                     {
                                         "type": "button",
                                         "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                        "content": "Send",
+                                        "content": "Küldés",
                                         "typeAttr": "submit"
                                     }
                                 ]
@@ -162,32 +613,12 @@
                     {
                         "type": "h2",
                         "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
-                        "content": "This was me before I picked up a camera:"
+                        "content": "Így néztem ki kamera nélkül:"
                     },
                     {
                         "type": "img",
                         "src": "analog/nostalgia/0180.jpg",
                         "alt": "Me"
-                    },
-                    {
-                        "type": "h2",
-                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
-                        "content": "This is what I really love to shoot with:"
-                    },
-                    {
-                        "type": "img",
-                        "src": "about/DSC06243.jpg",
-                        "captionStyle": "font-eb-garamond text-black",
-                        "caption": "<i>(Ok, ok, maybe not a Smena 8... but all my other 80+ vintage lenses and 15 cameras!)</i>"
-                    },
-                    {
-                        "type": "h2",
-                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
-                        "content": "And this is how I look like now:"
-                    },
-                    {
-                        "type": "img",
-                        "src": "about/1734626801051.jpg"
                     }
                 ]
             }
