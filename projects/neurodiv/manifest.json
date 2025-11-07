@@ -43,7 +43,13 @@
                                     {
                                         "type": "h2",
                                         "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": "Önsegítő kör, egyéni peer support, közösségi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Önsegítő kör, egyéni peer support, közösségi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                            }
+                                        ]
                                     },
                                     {
                                         "type": "p",
@@ -88,7 +94,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>A régi felfogás szerint a világ \"egészséges\", \"normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu, szégyen és félreértés, pedig az emberek nagy része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó-e ez így?"
+                                        "content": "<b>A régi felfogás szerint a világ \"egészséges / normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu, szégyen és félreértés, pedig az emberek nagy része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó-e ez így?"
                                     }
                                 ]
                             },
@@ -320,16 +326,16 @@
                     },
                     {
                         "type": "div",
-                        "class": "pt-[4rem] flex flex-col md:flex-row items-center justify-center p-4 max-w-[80%] mx-auto",
+                        "class": "pt-[4rem] flex flex-col md:flex-row items-center justify-center p-4 md:max-w-[80%] mx-auto",
                         "children": [
                             {
                                 "type": "img",
-                                "class": "max-w-full md:max-w-[25%] h-auto rounded-lg",
+                                "class": "max-w-full max-w-[65%] md:max-w-[25%] h-auto rounded-lg",
                                 "src": "neurodiv/me-rounded-c.png"
                             },
                             {
                                 "type": "div",
-                                "class": "pl-[2rem]",
+                                "class": "p-[2rem]",
                                 "children": [
                                     {
                                         "type": "h3",
