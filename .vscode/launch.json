@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "AtiLabs: Launch via npm",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "dev" // Change 'start' to your actual start script, e.g., 'dev' or 'debug'
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        }
+    ]
+}

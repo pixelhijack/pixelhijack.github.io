@@ -1,0 +1,128 @@
+{
+    "meta": {
+        "ga": "G-XXXXX",
+        "title": "🤖 AI.Presszó - Mesterséges intelligencia oktatás egy kávé mellett",
+        "logo": "🤖 AI.Presszó"
+    },
+    "nav": [],
+    "footer": "AI.Presszó &copy; 2025 Póth Attila.",
+    "fonts": [
+        "https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    ],
+    "css": [
+        "/projects/aipresszo/styles.css"
+    ],
+    "pages": [
+        {
+            "slug": "subpage",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "content": "☠️"
+            }
+        },
+        {
+            "slug": "",
+            "background": null,
+            "navColor": "black",
+            "textColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center h-full",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-center justify-center min-h-screen p-4",
+                        "children": [
+                            {
+                                "type": "img",
+                                "class": "mt-[100px] max-w-full md:max-w-[35%] h-auto rounded-lg",
+                                "src": "about/me-rounded.png",
+                                "alt": "Póth Attila"
+                            },
+                            {
+                                "type": "div",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title text-black font-bold pl-[20px] md:pt-[88px] md:ml-8 text-5xl md:text-5xl mb-4 max-w-[80%]",
+                                        "content": "AI-t szeretnél tanulni, személyre szabottan?"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-body pl-[20px] mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "content": "<br><b>Hétköznapi AI oktatás egy kávé mellett: anyukádnak, pszichológusodnak, <i>NEKED.</i><br><br> Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t az emberi oldalról közelítjük meg.</b><br><br>"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-body pl-[20px] mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
+                                        "content": "<i>Attila vagyok, 15 év szoftverfejlesztői tapasztalattal. 2024-ben egy  magyar csapat tagjaként részt vehettem nagy nyelvi modellek (ChatGPT, Gemini, Llama) finomhangolását, trénelését végző nemzetközi cég projektjében, aminek a CEO-ja ma Mark Zuckerberg egyik jobbkeze, a Meta AI vezetője. Ha 2024 nyáron használtál AI-t (pl ChatGPT-t), akkor a mi közreműködésünk is benne volt. 2010 óta dolgozom kóddal, és 2023 óta nem csak munkámban, hanem hétköznapjaimban is intenzíven támaszkodok AI-ra. Legidősebb tanítványom akit AI-ra taníthattam 85 éves :)</i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "max-w-[80%] mx-auto",
+                        "content": "<br><hr><br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col md:flex-row items-start md:items-stretch w-full gap-6 p-[20px] md:max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "<b>Írj nekem emailt, vagy hívj az alábbi számon: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i><br><br><b>Megtalálsz minket Facebookon is:</b><br><i><a target=\"_blank\" href=\"https://www.facebook.com/ai.presszo\">AI.Presszó Facebook oldal</a></i>"
+                            },
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'aipresszo.hu: contact');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "font-body mt-[20px] md:mt-0 text-2xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Vagy írd meg, ki vagy és milyen céllal szeretnél AI-t tanulni, és kidolgozunk együtt egy specifikusan rád szabott tananyagot:</b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Neved",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Email címed",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Üzenet",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Küldés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

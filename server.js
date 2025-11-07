@@ -63,6 +63,10 @@ app.post('/form', async (req, res) => {
       sheetName = 'neurodiv: segment';
       // Order must match the sheet's column order
       values = [timestamp, formData.name, formData.email, formData.role, formData.message, JSON.stringify(formData.checkboxes)];
+  } else if (intent === 'aipresszo.hu: contact') {
+      sheetName = 'aipresszo.hu: contact';
+      // Order must match the sheet's column order
+      values = [timestamp, formData.name, formData.email, formData.message];
   } else {
       return res.status(400).send('Invalid form type provided.');
   }

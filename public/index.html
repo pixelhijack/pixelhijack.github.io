@@ -164,7 +164,7 @@
   <!-- Navigation Menu -->
   <nav class="absolute top-0 left-0 w-full z-10 p-4 bg-transparent">
     <div id="logo" class="container mx-auto flex justify-between items-center px-4 md:px-0">
-      <a href="/" id="logo-link" class="font-ambroise text-4xl font-bold text-white rounded-md p-2">
+      <a href="/" id="logo-link" class="font-title text-4xl font-bold text-white rounded-md p-2">
         <!-- manifest.logo will be injected -->
       </a>
       <!-- Hamburger button (shown on mobile) -->
@@ -619,6 +619,9 @@
       const hamburgerBtn = document.getElementById("hamburger-btn");
       const closeMobileNav = document.getElementById("close-mobile-nav");
 
+      if (currentPage.navColor) {
+        logo.style.color = currentPage.navColor;
+      }
       navLinks.forEach((link) => {
         // Reset color and underline
         link.style.color = "";
@@ -628,7 +631,6 @@
         // If navColor is set, apply it
         if (currentPage.navColor) {
           link.style.color = currentPage.navColor;
-          logo.style.color = currentPage.navColor;
           hamburgerBtn.style.color = currentPage.navColor;
           closeMobileNav.style.color = currentPage.navColor;
         } else {
