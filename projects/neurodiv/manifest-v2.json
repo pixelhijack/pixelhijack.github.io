@@ -5,10 +5,8 @@
         "logo": "Overthinkers'Club",
         "robots": "noindex"
     },
-    "nav": [
-        
-    ],
-    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
+    "nav": [],
+    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM minősül pszichoterápiának, orvosi ellátásnak vagy pszichológiai tanácsadásnak. A tevékenység tapasztalati alapú sorstárs támogatáson és önismereti, edukatív beszélgetésen alapul. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. 🇬🇧 The services offered on this site do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap"
     ],
@@ -37,13 +35,13 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
-                                        "content": "<b>Neurodivergens vagyok?!</b>"
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-5xl p-4",
+                                        "content": "<b>Közösség túlgondolóknak, <br>neurodivergenseknek és kíváncsiaknak</b>"
                                     },
                                     {
                                         "type": "h2",
                                         "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": "Önsegítő kör, egyéni peer support, közösségi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                        "content": "Nem diagnózis. Nem terápia. Egy párbeszéd kezdete."
                                     },
                                     {
                                         "type": "p",
@@ -69,11 +67,15 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "❝ Vajon tényleg mindenki rajta van a spektrumon, vagy az ADHD csak egy jó kifogás bármire? Esetleg kordivat? Már senkinek sincs személyisége, csak diagnózisok? Tényleg triplázódott az ADHD-s tünetekkel küzdők száma, vagy a világ lett olyan, amiben nem érezzük jól magunkat? Napi 6-12 órát töltünk képernyők előtt, mégsem érdekel semmi; a social media és az online dating bárkivel összeköthet, mégis magányosak vagyunk?"
+                                        "content": "Egyre többen érzik úgy, hogy valami nem passzol a világ ritmusához. <br>Nehéz figyelni, nehéz kikapcsolni, nehéz kapcsolódni - online és offline is.<br><br>"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Hogyan lesznek éves várólisták diagnózishoz? Mi legyen a sok \"enyhe\" esettel, aki nem éri el a diagnosztizálható szintet, de egyértelműen gondjai vannak az életben? Miért nem kapunk felnőttként segítséget diagnózis után? Mi az amire jó, és amire nem a terápia, a gyógyszer, a coaching?"
+                                        "content": "Az Overthinkers'Club egy kísérleti közösség, ahol neurodivergens és neurotipikus emberek, szakemberek és szkeptikusok beszélgethetnek egymással tapasztalat- és élményalapon, ítélkezés nélkül.<br><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Célunk nem a címkézés, hanem a megértés és a párbeszéd."
                                     }
                                 ]
                             },
@@ -84,11 +86,19 @@
                                     {
                                         "type": "h3",
                                         "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "Miért van ennyi félreértés a témában?<br><br><hr>"
+                                        "content": "Mit találsz itt?<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>A régi felfogás szerint a világ \"egészséges\", \"normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu, szégyen és félreértés, pedig az emberek nagy része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó-e ez így?"
+                                        "content": "<ul> <li>- történetek valódi emberektől (névvel vagy anonim)</li> <li>- tapasztalati 1-1 beszélgetések (peer support)</li> <li>- közösségi események és séták - offline, telefon nélkül</li> <li>- írások a neurodivergencia, kiégés és figyelem koráról</li> </ul><br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Mindenki más fázisban van - diagnózis előtt, után, vagy épp teljesen kívül rajta.<br>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Itt mindegy. A lényeg: beszélgessünk arról, hogyan élünk."
                                     }
                                 ]
                             },
@@ -99,11 +109,11 @@
                                     {
                                         "type": "h3",
                                         "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "Mit találsz ezen az oldalon?<br><br><hr>"
+                                        "content": "Ha érdekel...<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>Az Overthinkers'Club egy nyitott projekt</b>, amihez bárki csatlakozhat. Nem diagnózis, nem terápia, hanem platform egy párbeszédre - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat. A cél a táborok összehozása: mindegy hogy ki \"egészséges\" vagy \"beteg\", szakember vagy civil, neurotipikus vagy neurodivergens, friss diagnózissal rendelkező, várólistán álló, vagy csak magát gyanító, esetleg teljesen szkeptikus. Ha mind kilépünk a saját kis buborékunkból és megosztjuk a személyes történeteinket (akár anonimen) az egészen más eredményt ad, mint pusztán a szakkifejezések hosszas boncolgatása."
+                                        "content": "Iratkozz fel, hogy értesülj a következő találkozókról vagy olvashass új történeteket. Szeretnél megosztani egy saját élményt, anonim módon? Vagy kipróbálnál egy 1-1 beszélgetést? Jelöld be a formban, amihez csatlakoznál."
                                     }
                                 ]
                             }
@@ -154,7 +164,7 @@
                                         "children": [
                                             {
                                                 "type": "legend",
-                                                "content": "<br><b>Mi érdekelne?</b><br><br>"
+                                                "content": "<br><b>Mi érdekelne?</b>"
                                             },
                                             {
                                                 "type": "div",
@@ -186,7 +196,7 @@
                                                     {
                                                         "type": "label",
                                                         "for": "checkbox: mentoring",
-                                                        "content": "Peer support, önismereti támogatás, 1-1 tapasztalati mentoring más neurodivergensektől"
+                                                        "content": "Peer support, önismereti támogatás, 1-1 tapasztalati mentoring"
                                                     }
                                                 ]
                                             },
@@ -254,7 +264,7 @@
                                                         "type": "label",
                                                         "for": "role",
                                                         "class": "semibold",
-                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b><br><br>"
+                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b>"
                                                     },
                                                     {
                                                         "type": "select",
@@ -293,22 +303,16 @@
                                         ]
                                     },
                                     {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Küldés",
+                                        "typeAttr": "submit"
+                                    },
+                                    {
                                         "type": "div",
-                                        "class": " flex flex-col md:flex-row items-center justify-center",
-                                        "children": [
-                                            {
-                                                "type": "button",
-                                                "id": "submit",
-                                                "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                                "content": "Küldés",
-                                                "typeAttr": "submit"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "class": "text-black p-5 text-xs",
-                                                "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
-                                            }
-                                        ]
+                                        "class": "text-black p-2 text-xs",
+                                        "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
                                     }
                                 ]
                             }
@@ -316,15 +320,15 @@
                     },
                     {
                         "type": "hr",
-                        "class": "max-w-[80%] mx-auto"
+                        "class": "max-w-[80%] mx-auto my-8"
                     },
                     {
                         "type": "div",
-                        "class": "pt-[4rem] flex flex-col md:flex-row items-center justify-center p-4 max-w-[80%] mx-auto",
+                        "class": "relative pt-[6rem] flex flex-col md:flex-row items-center justify-center p-4",
                         "children": [
                             {
                                 "type": "img",
-                                "class": "max-w-full md:max-w-[25%] h-auto rounded-lg",
+                                "class": "max-w-full md:max-w-[30%] h-auto rounded-lg",
                                 "src": "neurodiv/me-rounded-c.png"
                             },
                             {
@@ -333,18 +337,347 @@
                                 "children": [
                                     {
                                         "type": "h3",
-                                        "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Rólunk röviden<br><br>"
+                                        "class": "mb-4 font-semibold text-black text-2xl md:text-2xl",
+                                        "content": "Rólunk röviden<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Ati vagyok, későn diagnosztizált autista és ADHD-s. <br>Special interestjeim: AI fejlesztés, analóg/fashion fotózás, neuropszichológia. <br><br>"
+                                        "content": "Ati vagyok, későn diagnosztizált autista és ADHD-s, aki szeretne hidat építeni a különböző működésmódok között. <br><br>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Mióta megtudtam, hogy a nehézségeimnek neve is van, nagyon sok hasonló emberrel beszélgettem ezekről. Ha mindenki történetéből csak tizedannyit oszthatnánk meg, mint Donna Williams vagy Temple Grandin tette, más lenne a világ. <br><br><br>"
+                                        "content": "A mindennapi túlélésből, túlgondolásból és AI-fejlesztésből jött ez az ötlet: <i>ha már mind túlgondolunk, gondolkodjunk együtt.</i><br><br><br>"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "landing-v0",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "background": "neurodiv/oz2.webp",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz2.webp",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<b>Neurodivergens vagyok?!</b>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "content": "Közösségi segítség, egyéni mentoring, társadalmi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "content": "<br><br>↓"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                        "content": "Kinek szól ez az oldal?<br><br><hr>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container bg-white z-50 masonry-3 masonry-mobile-1",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Neurotipikusoknak, offline módra vágyó képernyő-függőknek, kiégett és elszigetelt modern embereknek<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Tényleg mindenki neurodivergens? Mi az, hogy mindenki ott van a spektrumon? Lehet az ADHD mindenre kifogás? Baj ha szkeptikus vagyok?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Miért töltünk napi 6-12 órát képernyők előtt? A social media és az online dating összeköthet bárkivel - miért érezzük magunkat mégis egyre elszigeteltebbnek? Miért nem élvezi a munkáját a legtöbb ember?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br><hr><br><b>Jelentkezz lentebb, ha érdekelne részvétel élő programokban, neurodivergens találkozókban, workshopokban, offline sétákban!</b>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Spektrum gyanús és diagnosztizált neurodivergenseknek, ADHD-soknak, autistáknak<br>...és szkeptikusoknak<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Miért lett hirtelen ennyi ADHD-s/autista, hogy több éves várólistákkal lehet diagnózisra eljutni? Miért nem kapunk felnőttként segítséget diagnózis után? Miért nem oldja meg a gyógyszer önmagában a nehézségeket?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>A világ akkor nyílik ki neurodivergensként, amikor rájössz, nagyon sok más embernek is vannak hasonló érzései, élményei. Ezek jól körülírt jelenségek, és popkultúrában, mémekben sokszor jobban átjönnek, mint a diagnosztikai kritériumokban."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br><hr><br><b>Iratkozz fel, hogy mások hasonló élményeiről olvashass, anonim beküldhesd a történeted, vagy jelentkezz peer support beszélgetésre*</b>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Pszichológusoknak, coachoknak, terapeutáknak és segítő szakmában dolgozóknak<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Milyen a neurodivergensek megélése a saját életükben, terápián kívül? <br><br>Használhaó-e az AI mint eszköz pszichodiagnosztikában és terápiában jól, biztonságosan és etikusan?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br>Mik a diagnosztikai folyamat és az ellátórendszer jelenlegi problémái? Hogyan tudnánk ezen együtt javítani?"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "<br><hr><br><b>Lépjünk kapcsolatba kollaborációs lehetőségekért, vendégposztokért, szakmai interjúkért!</b>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-title md:max-w-[80%] mt-[-15px] text-center text-black text-xl md:text-2xl p-4 mx-auto",
+                        "content": "<i>Az Overthinkers'Club nem szakmai tanácsadás, hanem tapasztalati úton szerzett tudás és megértés megosztása. Célunk, hogy hidat képezzünk az érintettek és a szakemberek között - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat.</i>"
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "div",
+                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'neurodiv: segment');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                                        "content": "<b>Hogyan tudsz csatlakozni ehhez a nyitott projekthez? </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Neved"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "text",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Hol érhetünk el? (Email, Facebook, Insta, anonim)",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Üzeneted"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "legend",
+                                                "content": "<br><b>Mi érdekelne?</b>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: newsletter",
+                                                        "id": "checkbox: newsletter"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: newsletter",
+                                                        "content": "Olvasgatnék bővebben, hírlevél formában"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: mentoring",
+                                                        "id": "checkbox: mentoring"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: mentoring",
+                                                        "content": "Peer support, önismereti támogatás, 1-1 tapasztalati mentoring"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: challenges",
+                                                        "id": "checkbox: challenges"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: challenges",
+                                                        "content": "Facebook csoport, kihívások, játékok"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: research",
+                                                        "id": "checkbox: research"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: research",
+                                                        "content": "Szakmai kollaboráció, kutatási együttműködések, pilot projektek"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: community",
+                                                        "id": "checkbox: community"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: community",
+                                                        "content": "Közösség, élő találkozók más érintettekkel"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "class": "mt-[10px]",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "label",
+                                                        "for": "role",
+                                                        "class": "semibold",
+                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b>"
+                                                    },
+                                                    {
+                                                        "type": "select",
+                                                        "name": "role",
+                                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                                        "children": [
+                                                            {
+                                                                "type": "option",
+                                                                "value": "",
+                                                                "content": ""
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "nem diagnosztizalt",
+                                                                "content": "Nem diagnosztizált, csak gyanítom"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "diagnosztizalt",
+                                                                "content": "Diagnosztizált neurodivergens"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "erdeklodo",
+                                                                "content": "Érdeklődő, hozzátartozó"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "pszichologus",
+                                                                "content": "Pszichológus, segítő szakmában dolgozó"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Küldés",
+                                        "typeAttr": "submit"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "text-black p-2 text-xs",
+                                        "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
                                     }
                                 ]
                             }

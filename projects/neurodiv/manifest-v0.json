@@ -6,7 +6,26 @@
         "robots": "noindex"
     },
     "nav": [
-        
+        {
+            "href": "/cel",
+            "label": "Célunk"
+        },
+        {
+            "href": "/diagnozis",
+            "label": "Diagnózis előtt és után"
+        },
+        {
+            "href": "/elet",
+            "label": "Élet neurodivergenciával"
+        },
+        {
+            "href": "/tortenetek",
+            "label": "Történetek"
+        },
+        {
+            "href": "/about",
+            "label": "Rólunk"
+        }
     ],
     "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
     "fonts": [
@@ -154,7 +173,7 @@
                                         "children": [
                                             {
                                                 "type": "legend",
-                                                "content": "<br><b>Mi érdekelne?</b><br><br>"
+                                                "content": "<br><b>Mi érdekelne?</b>"
                                             },
                                             {
                                                 "type": "div",
@@ -254,7 +273,7 @@
                                                         "type": "label",
                                                         "for": "role",
                                                         "class": "semibold",
-                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b><br><br>"
+                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b>"
                                                     },
                                                     {
                                                         "type": "select",
@@ -293,22 +312,16 @@
                                         ]
                                     },
                                     {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Küldés",
+                                        "typeAttr": "submit"
+                                    },
+                                    {
                                         "type": "div",
-                                        "class": " flex flex-col md:flex-row items-center justify-center",
-                                        "children": [
-                                            {
-                                                "type": "button",
-                                                "id": "submit",
-                                                "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                                "content": "Küldés",
-                                                "typeAttr": "submit"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "class": "text-black p-5 text-xs",
-                                                "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
-                                            }
-                                        ]
+                                        "class": "text-black p-2 text-xs",
+                                        "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
                                     }
                                 ]
                             }
@@ -320,7 +333,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "pt-[4rem] flex flex-col md:flex-row items-center justify-center p-4 max-w-[80%] mx-auto",
+                        "class": "pt-[2rem] flex flex-col md:flex-row items-center justify-center p-4 md:max-w-[80%]",
                         "children": [
                             {
                                 "type": "img",
@@ -333,18 +346,18 @@
                                 "children": [
                                     {
                                         "type": "h3",
-                                        "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Rólunk röviden<br><br>"
+                                        "class": "mb-4 font-semibold text-black text-2xl md:text-2xl",
+                                        "content": "Rólunk röviden<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Ati vagyok, későn diagnosztizált autista és ADHD-s. <br>Special interestjeim: AI fejlesztés, analóg/fashion fotózás, neuropszichológia. <br><br>"
+                                        "content": "Ati vagyok, későn diagnosztizált autista és ADHD-s, aki szeretne hidat építeni a különböző működésmódok között. <br><br>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Mióta megtudtam, hogy a nehézségeimnek neve is van, nagyon sok hasonló emberrel beszélgettem ezekről. Ha mindenki történetéből csak tizedannyit oszthatnánk meg, mint Donna Williams vagy Temple Grandin tette, más lenne a világ. <br><br><br>"
+                                        "content": "A mindennapi túlélésből, túlgondolásból és AI-fejlesztésből jött ez az ötlet: <i>ha már mind túlgondolunk, gondolkodjunk együtt.</i><br><br><br>"
                                     }
                                 ]
                             }
