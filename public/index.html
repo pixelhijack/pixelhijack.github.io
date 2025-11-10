@@ -167,11 +167,11 @@
   <!-- Navigation Menu -->
   <nav class="absolute top-0 left-0 w-full z-10 p-4 bg-transparent">
     <div id="logo" class="container mx-auto flex justify-between items-center px-4 md:px-0">
-      <a href="/" id="logo-link" class="font-title text-4xl font-bold text-white rounded-md p-2">
+      <a href="/" id="logo-link" class="font-title text-3xl font-bold text-white rounded-md p-2">
         <!-- manifest.logo will be injected -->
       </a>
       <!-- Hamburger button (shown on mobile) -->
-      <button id="hamburger-btn" class="md:hidden text-white text-5xl focus:outline-none" aria-label="Open menu">
+      <button id="hamburger-btn" class="hidden text-white text-5xl focus:outline-none" aria-label="Open menu">
         &equiv;
       </button>
       <!-- Desktop nav links -->
@@ -304,6 +304,9 @@
         const buildNav = (navArray) => {
           const desktop = document.getElementById('nav-links');
           const mobile = document.getElementById('mobile-nav-list');
+          const hamburgerBtn = document.getElementById("hamburger-btn");
+
+          if(hamburgerBtn) hamburgerBtn.style.display = "block";
           if (desktop) desktop.innerHTML = '';
           if (mobile) mobile.innerHTML = '';
           (navArray || []).forEach(item => {
@@ -316,7 +319,7 @@
             if (mobile) mobile.appendChild(am);
           });
         };
-        if (manifestData.nav) buildNav(manifestData.nav);
+        if (manifestData?.nav?.length) buildNav(manifestData.nav);
 
         // set footer from manifest.footer (if present)
         if (manifestData.footer) {

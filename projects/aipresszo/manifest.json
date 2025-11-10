@@ -33,11 +33,11 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "flex flex-col md:flex-row items-center justify-center min-h-screen",
+                        "class": "ml-[20px] flex flex-col md:flex-row items-center justify-center min-h-screen",
                         "children": [
                             {
                                 "type": "img",
-                                "class": "mt-[100px] max-w-[70%] md:w-[35%] max-h-[90vh] rounded-lg object-contain",
+                                "class": "mt-[100px] ml-[32px] max-w-[70%] md:w-[35%] max-h-[90vh] rounded-lg object-contain",
                                 "src": "about/me-rounded.png",
                                 "alt": "Póth Attila"
                             },
@@ -46,14 +46,18 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-title text-black font-bold md:pt-[88px] text-4xl md:text-5xl mb-4 max-w-[80%]",
+                                        "class": "font-title text-black font-bold md:pt-[88px] md:pl-[32px] text-4xl md:text-5xl mb-4 max-w-[80%]",
                                         "children": [
                                             {
                                                 "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "AI-t szeretnél tanulni, személyre szabottan?"
+                                                "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "AI, személyre szabottan?"
                                             }
                                         ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "content": "<br>"
                                     },
                                     {
                                         "type": "div",
@@ -61,8 +65,23 @@
                                         "children": [
                                             {
                                                 "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "<br><b>Hétköznapi AI oktatás egy kávé mellett: anyukádnak, pszichológusodnak, <i>NEKED.</i><br><br> Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t az emberi oldalról közelítjük meg.</b><br><br>"
+                                                "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "<b>Hétköznapi AI oktatás egy kávé mellett: anyukádnak, pszichológusodnak, <i>NEKED.</i>"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "content": "<br>"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t az emberi oldalról közelítjük meg.</b><br><br>"
                                             }
                                         ]
                                     },
@@ -72,7 +91,7 @@
                                         "children": [
                                             {
                                                 "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
                                                 "content": "<i>Attila vagyok, 15 év szoftverfejlesztői tapasztalattal. 2024-ben egy  magyar csapat tagjaként részt vehettem nagy nyelvi modellek (ChatGPT, Gemini, Llama) finomhangolását, trénelését végző nemzetközi cég projektjében, aminek a CEO-ja ma Mark Zuckerberg egyik jobbkeze, a Meta AI vezetője. Ha 2024 nyáron használtál AI-t (pl ChatGPT-t), akkor a mi közreműködésünk is benne volt. 2010 óta dolgozom kóddal, és 2023 óta nem csak munkámban, hanem hétköznapjaimban is intenzíven támaszkodok AI-ra. Legidősebb tanítványom akit AI-ra taníthattam 85 éves :)</i>"
                                             }
                                         ]
@@ -83,7 +102,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "absolute left-0 right-0 top-0 h-[100vh] bg-cover bg-center bg-fixed -z-10",
+                        "class": "absolute left-0 right-0 top-0 h-[87vh] bg-cover bg-center bg-fixed -z-10",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg)",
                             "background-position": "center bottom"
@@ -101,7 +120,7 @@
                             {
                                 "type": "div",
                                 "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "<b>Írj nekem emailt, vagy hívj az alábbi számon: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i><br><br><b>Megtalálsz minket Facebookon is:</b><br><i><a target=\"_blank\" href=\"https://www.facebook.com/ai.presszo\">AI.Presszó Facebook oldal</a></i>"
+                                "content": "<b>Írj emailt, vagy hívj: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i><br><br><b>Megtalálsz Facebookon is:</b><br><i><a target=\"_blank\" href=\"https://www.facebook.com/ai.presszo\">AI.Presszó Facebook oldal</a></i>"
                             },
                             {
                                 "type": "form",

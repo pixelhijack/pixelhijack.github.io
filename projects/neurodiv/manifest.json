@@ -29,7 +29,7 @@
                             {
                                 "type": "img",
                                 "src": "neurodiv/oz2.webp",
-                                "class": "w-full h-screen object-cover"
+                                "class": "w-full h-[87vh] object-cover"
                             },
                             {
                                 "type": "div",
