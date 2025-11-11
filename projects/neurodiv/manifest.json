@@ -726,11 +726,211 @@
                                     {
                                         "type": "h3",
                                         "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "Professzionálisoknak<br><br><hr>"
+                                        "content": "Pszichológusoknak, pszichiátereknek, terapeutáknak<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
                                         "content": "Használható-e az AI pszichodiagnosztikában és terápiában? <br><br>Kognitív torzítások és mintázatok észlelése mesterséges intelligencia támogatással <br><br>AI használata kutatásban: kvalitatív kódolás, adatfeldolgozás, brainstorming<br><br>Adatvédelem, jogi, etikai keretrendszerek: EU AI törvény, APA irányelvek, megmagyarázhatóság <br><br>A pszichometria és az LLM-ek jövője - lehetőségek és red flagek"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'neurodiv: AI');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                                        "content": "<b>Szeretnél többet megtudni a témáról? </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Neved",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "text",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Hol érhetünk el? (Email, Facebook, Insta, anonim)",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Üzeneted"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "legend",
+                                                "content": "<br><b>Mi érdekelne?</b><br><br>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: newsletter",
+                                                        "id": "checkbox: newsletter"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: newsletter",
+                                                        "content": "Olvasgatnék bővebben, hírlevél formában"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: hetkoznapi",
+                                                        "id": "checkbox: hetkoznapi"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: hetkoznapi",
+                                                        "content": "Hétköznapi ChatGPT / AI használat önismeretre, neurodivergenciám felfedezésére, tervezésre"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: professional",
+                                                        "id": "checkbox: professional"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: professional",
+                                                        "content": "Használat pszichometria, -diagnosztika, -terápia kontextusban"
+                                                    }
+                                                ]
+                                            },{
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: live coffee",
+                                                        "id": "checkbox: live coffee"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: live coffee",
+                                                        "content": "Tanulnék élőben, egy kávé mellett"
+                                                    }
+                                                ]
+                                            },{
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: online",
+                                                        "id": "checkbox: online"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: online",
+                                                        "content": "Tanulnék online tőled"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "class": "mt-[10px]",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "label",
+                                                        "for": "role",
+                                                        "class": "semibold",
+                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b><br><br>"
+                                                    },
+                                                    {
+                                                        "type": "select",
+                                                        "name": "role",
+                                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                                        "children": [
+                                                            {
+                                                                "type": "option",
+                                                                "value": "",
+                                                                "content": ""
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "erdeklodo",
+                                                                "content": "Civil érdeklődő vagyok"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "nem diagnosztizalt",
+                                                                "content": "Nem diagnosztizált, neurodivergenciám gyanítom"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "diagnosztizalt",
+                                                                "content": "Diagnosztizált neurodivergens vagyok"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "pszichologus",
+                                                                "content": "Pszichológus, segítő szakmában dolgozó"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": " flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                                "content": "Küldés",
+                                                "typeAttr": "submit"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-black p-5 text-xs",
+                                                "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
+                                            }
+                                        ]
                                     }
                                 ]
                             }

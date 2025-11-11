@@ -67,6 +67,10 @@ app.post('/form', async (req, res) => {
       sheetName = 'aipresszo.hu: contact';
       // Order must match the sheet's column order
       values = [timestamp, formData.name, formData.email, formData.message];
+  } else if (intent === 'aipresszo.hu: AI') {
+      sheetName = 'aipresszo.hu: AI';
+      // Order must match the sheet's column order
+      values = [timestamp, formData.name, formData.email, formData.role, formData.message, JSON.stringify(formData.checkboxes)];
   } else {
       return res.status(400).send('Invalid form type provided.');
   }
