@@ -6,9 +6,12 @@
         "robots": "noindex"
     },
     "nav": [
-        
+        {
+            "href": "/ai",
+            "label": "AI hétköznapokban & pszichológusoknak"
+        }
     ],
-    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
+    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. Nem célunk sem a diagnózisok népszerűsítése, sem a megkérdőjelezése, kizárólag a tudományos alapú edukáció. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap"
     ],
@@ -24,12 +27,12 @@
                     {
                         "type": "div",
                         "background": "neurodiv/oz2.webp",
-                        "class": "relative h-screen w-full",
+                        "class": "relative h-screen w-full mb-[-80px] md:mb-[0px]",
                         "children": [
                             {
                                 "type": "img",
                                 "src": "neurodiv/oz2.webp",
-                                "class": "w-full h-[87vh] object-cover"
+                                "class": "w-full h-[95vh] md:h-screen object-cover"
                             },
                             {
                                 "type": "div",
@@ -75,11 +78,11 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "❝ Vajon tényleg mindenki rajta van a spektrumon, vagy az ADHD csak egy jó kifogás bármire? Esetleg kordivat? Már senkinek sincs személyisége, csak diagnózisok? Tényleg triplázódott az ADHD-s tünetekkel küzdők száma, vagy a világ lett olyan, amiben nem érezzük jól magunkat? Napi 6-12 órát töltünk képernyők előtt, mégsem érdekel semmi; a social media és az online dating bárkivel összeköthet, mégis magányosak vagyunk?"
+                                        "content": "❝ Vajon tényleg mindenki rajta van a spektrumon, vagy az ADHD csak egy jó kifogás bármire? Esetleg kordivat? Már senkinek sincs személyisége, csak diagnózisok? Tényleg triplázódott az ADHD-s tünetekkel küzdők száma, vagy a világ lett olyan, amiben nem érezzük jól magunkat?<br>"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Hogyan lesznek éves várólisták diagnózishoz? Mi legyen a sok \"enyhe\" esettel, aki nem éri el a diagnosztizálható szintet, de egyértelműen gondjai vannak az életben? Miért nem kapunk felnőttként segítséget diagnózis után? Mi az amire jó, és amire nem a terápia, a gyógyszer, a coaching?"
+                                        "content": "Hogyan lesznek éves várólisták diagnózishoz? Mi legyen a sok \"enyhe\" esettel, aki nem éri el a diagnosztizálható szintet, de egyértelműen gondjai vannak az életben? Miért nem kapunk felnőttként segítséget diagnózis után? Mikor segít igazán a terápia, a gyógyszer, a coaching — és mikor érdemes valami mást is keresni?"
                                     }
                                 ]
                             },
@@ -94,7 +97,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>A régi felfogás szerint a világ \"egészséges / normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu, szégyen és félreértés, pedig az emberek nagy része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó-e ez így?"
+                                        "content": "<b>A régi felfogás szerint a világ \"egészséges / normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu és szégyen, pedig az emberek jó része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó ez így?"
                                     }
                                 ]
                             },
@@ -109,7 +112,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>Az Overthinkers'Club egy nyitott projekt</b>, amihez bárki csatlakozhat. Nem diagnózis, nem terápia, hanem platform egy párbeszédre - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat. A cél a táborok összehozása: mindegy hogy ki \"egészséges\" vagy \"beteg\", szakember vagy civil, neurotipikus vagy neurodivergens, friss diagnózissal rendelkező, várólistán álló, vagy csak magát gyanító, esetleg teljesen szkeptikus. Ha mind kilépünk a saját kis buborékunkból és megosztjuk a személyes történeteinket (akár anonimen) az egészen más eredményt ad, mint pusztán a szakkifejezések hosszas boncolgatása."
+                                        "content": "<b>Az Overthinkers'Club egy nyitott projekt</b>, amihez bárki csatlakozhat. Nem diagnózis, nem terápia, hanem platform egy párbeszédre - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat. A cél a táborok összehozása: mindegy hogy ki \"egészséges\" vagy \"beteg\", szakember vagy civil, neurotipikus vagy neurodivergens, friss diagnózissal rendelkező, várólistán álló, vagy csak magát gyanító, esetleg teljesen szkeptikus."
                                     }
                                 ]
                             }
@@ -192,7 +195,7 @@
                                                     {
                                                         "type": "label",
                                                         "for": "checkbox: mentoring",
-                                                        "content": "Peer support, önismereti támogatás, 1-1 tapasztalati mentoring más neurodivergensektől"
+                                                        "content": "Tapasztalati beszélgetés, önismereti támogatás más neurodivergensekkel (peer support, nem terápia)"
                                                     }
                                                 ]
                                             },
@@ -340,17 +343,17 @@
                                     {
                                         "type": "h3",
                                         "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Rólunk röviden<br><br>"
+                                        "content": "Ki áll az oldal mögött?<br><br>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Ati vagyok, későn diagnosztizált autista és ADHD-s. <br>Special interestjeim: AI fejlesztés, analóg/fashion fotózás, neuropszichológia. <br><br>"
+                                        "content": "Szia, Ati vagyok, későn diagnosztizált autista és ADHD-s. <br><br>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Mióta megtudtam, hogy a nehézségeimnek neve is van, nagyon sok hasonló emberrel beszélgettem ezekről. Ha mindenki történetéből csak tizedannyit oszthatnánk meg, mint Donna Williams vagy Temple Grandin tette, más lenne a világ. <br><br><br>"
+                                        "content": "Mióta megtudtam, hogy a napi kihívásaimnak neve is van, nagyon sok hasonló emberrel beszélgettem ezekről - innen született ez a projekt. Ha mindenki tizedannyit oszthatna meg a saját történetéből, mint Donna Williams vagy Temple Grandin tette, máris más lenne a világ. <br><br>Munkám és szenvedélyem (special interest) az AI fejlesztés, a neuropszichológia és az analóg/fashion fotózás."
                                     }
                                 ]
                             }
@@ -380,7 +383,7 @@
                                     {
                                         "type": "h2",
                                         "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": "<br>❝ ezer videó meg insta van már a témában, ahol elolvashatod mindenhol ugyanazokat, <br>de mi hiányzik mégis az egészből? - a személyesség <br><br>"
+                                        "content": ""
                                     }
                                 ]
                             }
@@ -491,7 +494,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Social kísérletek, challengek, játékok <br>Közösségtalálkozó <br>Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasnál az egészről"
+                                        "content": "Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasgatnál az egészről<br>Jövőbeli közösségtalálkozó, challengek, játékok"
                                     }
                                 ]
                             }
@@ -643,12 +646,97 @@
             }
         },
         {
-            "slug": "tesztek",
-            "background": "neurodiv/sw.jpg",
+            "slug": "ai",
+            "navColor": "white",
+            "background": null,
             "tree": {
                 "type": "div",
-                "class": "absolute inset-0 flex flex-col items-center justify-center text-4xl",
-                "content": "<i>Coming soon...</i>"
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full mb-[-80px] md:mb-[0px]",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/sw.jpg",
+                                "class": "w-full h-[95vh] md:h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-4xl p-4",
+                                        "content": "<b>AI: átok vagy áldás?</b>"
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "<i>Használható-e a mesterséges intelligencia <br>- jól, etikusan, biztonságosan - <br>önismeretre és professzionális keretek között?</i>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container bg-white z-50 masonry-3 masonry-mobile-1",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "ChatGPT-ről / AI-ról általánosságban mindenkinek<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Mik a nagy nyelvi modellek és a generatív mesterséges intelligencia - hogyan is működik mindez? <br><br>Hogyan érti a mesterséges intelligencia az érzelmeket, a személyiséget és a viselkedést (LLM-ek vs. valódi pszichológia)<br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Hétköznapi használat<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Beszélhetsz-e a ChatGPT-vel az érzéseidről? Biztonságos használati módok naplózáshoz, önreflexióhoz és önismerethez<br><br>A „mesterséges intelligencia általi öndiagnózis” gyakori csapdái - miért veszélyes, hogyan ellenőrizhetjük a tényeket? Lehet-e a terapeutád az AI?<br><br>Az AI használata a produktivitásban, tervezésben, az érzelmek megértésében, neurodivergenciával való megküzdés elősegítésében<br><br>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md md:max-w-[80%] break-inside-avoid",
+                                "children": [
+                                    {
+                                        "type": "h3",
+                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
+                                        "content": "Professzionálisoknak<br><br><hr>"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Használható-e az AI pszichodiagnosztikában és terápiában? <br><br>Kognitív torzítások és mintázatok észlelése mesterséges intelligencia támogatással <br><br>AI használata kutatásban: kvalitatív kódolás, adatfeldolgozás, brainstorming<br><br>Adatvédelem, jogi, etikai keretrendszerek: EU AI törvény, APA irányelvek, megmagyarázhatóság <br><br>A pszichometria és az LLM-ek jövője - lehetőségek és red flagek"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         },
         {
