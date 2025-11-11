@@ -171,7 +171,7 @@
         <!-- manifest.logo will be injected -->
       </a>
       <!-- Hamburger button (shown on mobile) -->
-      <button id="hamburger-btn" class="hidden text-white text-5xl focus:outline-none" aria-label="Open menu">
+      <button id="hamburger-btn" class="hidden md:hidden text-white text-5xl focus:outline-none self-center mr-4 mt-[-10px]" aria-label="Open menu">
         &equiv;
       </button>
       <!-- Desktop nav links -->
@@ -305,8 +305,17 @@
           const desktop = document.getElementById('nav-links');
           const mobile = document.getElementById('mobile-nav-list');
           const hamburgerBtn = document.getElementById("hamburger-btn");
+          const hasNav = Array.isArray(navArray) && navArray.length > 0;
 
-          if(hamburgerBtn) hamburgerBtn.style.display = "block";
+          // show hamburger only when there are nav items
+          if (hamburgerBtn) {
+            if (hasNav) {
+              hamburgerBtn.classList.remove('hidden');
+            } else {
+              hamburgerBtn.classList.add('hidden');
+            }
+          }
+
           if (desktop) desktop.innerHTML = '';
           if (mobile) mobile.innerHTML = '';
           (navArray || []).forEach(item => {
