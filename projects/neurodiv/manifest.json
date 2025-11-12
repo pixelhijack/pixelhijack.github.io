@@ -347,7 +347,7 @@
                                     {
                                         "type": "h3",
                                         "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Ki áll az oldal mögött?<br><br>"
+                                        "content": "Kávézz velem és beszélgessünk!<br><br>"
                                     },
                                     {
                                         "type": "p",
@@ -357,7 +357,7 @@
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
-                                        "content": "Mióta megtudtam, hogy a napi kihívásaimnak neve is van, nagyon sok hasonló emberrel beszélgettem ezekről - innen született ez a projekt. Ha mindenki tizedannyit oszthatna meg a saját történetéből, mint Donna Williams vagy Temple Grandin tette, máris más lenne a világ. <br><br>Munkám és szenvedélyem (special interest) az AI fejlesztés, a neuropszichológia és az analóg/fashion fotózás."
+                                        "content": "Mióta megtudtam, hogy a napi kihívásaimnak neve is van, nagyon sok hasonló emberrel beszélgettem ezekről - innen született ez a projekt. Ha mindenki tizedannyit oszthatna meg a saját történetéből, mint Donna Williams vagy Temple Grandin tette, máris más lenne a világ. <br><br>Munkám és szenvedélyem (special interest) az AI fejlesztés, a neuropszichológia és az analóg/fashion fotózás.<br><br>"
                                     }
                                 ]
                             }
