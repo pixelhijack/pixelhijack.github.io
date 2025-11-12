@@ -343,124 +343,16 @@
             "tree": {
                 "type": "div",
                 "class": "",
-                "children": [
-                    {
-                        "type": "div",
-                        "class": "flex flex-col md:flex-row items-stretch min-h-screen",
-                        "children": [
-                            {
-                                "type": "div",
-                                "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
-                                "children": [
-                                    {
-                                        "type": "img",
-                                        "src": "stories/love/DSC03016-2.jpg",
-                                        "class": "w-full h-full object-cover"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
-                                "children": [
-                                    {
-                                        "type": "h2",
-                                        "class": "font-title text-black text-3xl md:text-5xl mb-4",
-                                        "content": "Feature Title — Two Column"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "class": "text-lg md:text-xl text-black mb-6",
-                                        "content": "A bold deck paragraph that introduces the section. Designed to sit beside the hero image for a magazine-like composition."
-                                    },
-                                    {
-                                        "type": "div",
-                                        "class": "text-base md:text-lg text-black",
-                                        "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "div",
-                        "class": "flex flex-col md:flex-row items-stretch min-h-screen",
-                        "children": [
-                            {
-                                "type": "div",
-                                "class": "md:w-1/2 w-full p-8 flex flex-col justify-center",
-                                "children": [
-                                    {
-                                        "type": "h2",
-                                        "class": "font-title text-black text-3xl md:text-5xl mb-4",
-                                        "content": "Feature Title — Two Column"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "class": "text-lg md:text-xl text-black mb-6",
-                                        "content": "A bold deck paragraph that introduces the section. Designed to sit beside the hero image for a magazine-like composition."
-                                    },
-                                    {
-                                        "type": "div",
-                                        "class": "text-base md:text-lg text-black",
-                                        "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
-                                "children": [
-                                    {
-                                        "type": "img",
-                                        "src": "analog/portraits/HP5-240120-01804.jpg",
-                                        "class": "w-full h-full object-cover"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "img",
-                        "class": "p-20",
-                        "src": "bts/240428-02087.jpg"
-                    },
-                    {
-                        "type": "h2",
-                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                        "content": "I. Mi a baj azzal, ahogy ma fotózunk?<br><br><hr>"
-                    },
-                    {
-                        "type": "p",
-                        "class": "p-[25px] md:max-w-[80%]",
-                        "content": "Az autofókusz, szemkövető AI, modern kamerák tényleg gyerekjátékká tették a mesterséget, amit múlt századfordulón egy inas még évekig tanult egy mester mellett a napfényműteremben, hogy ne vakuljon meg a vegyszerek rossz használatától. A technológia fejlődésével nem csak a gépeink változtak meg, hanem velük mi is. Az élesség, tökéletesség mítosza nem csak a nagy kameragyártó márkák szlogenje lett minden reklámban, hogy minden évben vedd meg a legújabb objektívet - a perfekcionizmus belénk is beépült. Vajon tényleg szükség van 30 gombnyomásra, hogy egyetlen jó szelfid legyen? És milyen hatással van az önelfogadásunkra, hogy mindez már alapból beauty filterrel jön minden telefonban?"
-                    },
-                    {
-                        "type": "p",
-                        "class": "p-[25px] md:max-w-[80%]",
-                        "content": "Hol ment félre ez az egész? Az X, Y generáció fejében még élénken él az a kor, mikor a tömeggyártás még nem darálta be a fotózást: 80-as évek, a film, aminek az előhívására várni kellett, és nem is emlékeztél rá, mi volt rajta; 90-es évek, amikor még bénáztunk az első autofókusszal, de mégis bekerültek a családi albumokba, amiket olyan jó lapozgatni; korai 2000-s, a legelső kis kedves digitális kameráink nevetségesen alacsony felbontású vakus képei partikból, amiket még nem ezerszámra lőttünk."
-                    },
-                    {
-                        "type": "p",
-                        "class": "p-[25px] md:max-w-[80%]",
-                        "content": "Mi történik a millió képpel, amit készítünk? Visszanézi bárki is a régi telefonján vagy a fiókban porosodó winchesteren pihenő tízezer képet? Tényleg egy Facebookra van szükség, hogy feldobja ezeket a képeket egy, öt, tíz évvel ezelőttről? Miért sokkal értékesebb érzelmileg egy 24-36 kockás analóg filmre ellőtt homályos kép? Talán mert az emlékezetünk hasonlóan tárolja az életünk pillanatképeit magunkról, szeretteinkről: ködösen, tökéletlenül?"
-                    },
-                    {
-                        "type": "h2",
-                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                        "content": "II. Mitől más a narratív, történetmesélő stílus?<br><br><hr>"
-                    },
-                    {
-                        "type": "p",
-                        "class": "p-[25px] md:max-w-[80%]",
-                        "content": "Slow, lelassulunk, offline, nem pózolt, nem staged, nem beállított, hétköznapi, dokumentarizmus. A technológiai automatizmus túl tökéletes lett mi is áldozatul estünk ennek, az emlékeink viszont nem ilyenek, tökéletlenek, 80s aranykor, hogy lehet az h a gyerekkori fotóink sokkal többet jelentenek. ma tömeggyártás: tényleg szükség van 30 gombnyomásra, h egy jó szelfid legyen? mi történik a millió képpel amit készítünk? visszanézi-e valaki, vagy külső winchestereken porosodik örökre. miért jobb az a pár kép, a várakozás, a print, a tökéletlenség. self-acceptance. önmagunk elfogadása"
-                    },
-                    {
-                        "type": "h2",
-                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                        "content": "III. Hogyan illeszkedik erre az analóg film / vintage optikák, print?<br><br><hr>"
-                    }
-                ]
+                "children": []
+            }
+        },
+        {
+            "slug": "workshop",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "",
+                "children": []
             }
         },
         {
