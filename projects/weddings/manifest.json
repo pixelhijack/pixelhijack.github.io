@@ -1,6 +1,6 @@
 {
     "meta": {
-        "ga": "G-XXXXX",
+        "ga": null,
         "title": "Póth Attila",
         "logo": "Póth Attila"
     },
@@ -19,7 +19,11 @@
         },
         {
             "href": "/workflow",
-            "label": "Let's work together"
+            "label": "Hire me"
+        },
+        {
+            "href": "/workshop",
+            "label": "Workshop"
         },
         {
             "href": "/about",
@@ -31,7 +35,7 @@
         "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     ],
     "css": [
-        "/projects/skeleton/styles.css"
+        "/projects/weddings/styles.css"
     ],
     "testimonials": [
         "Kurvajok lettek! Ma kiis teszem oooket. Imadom oket nagyonjoook",
@@ -74,12 +78,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-5xl md:text-7xl p-4",
+                                        "class": "font-title mt-[-65px] text-center text-white text-5xl md:text-7xl p-4",
                                         "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "font-title mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
@@ -104,23 +108,13 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                                "class": "font-title text-black text-3xl md:text-5xl mb-4",
                                                 "content": "I. Mi a baj a mai fotókkal?"
                                             },
                                             {
                                                 "type": "p",
-                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
-                                                "content": "Az autofókusz, szemkövető AI, modern kamerák tényleg gyerekjátékká tették a mesterséget, amit múlt századfordulón egy inas még évekig tanult egy mester mellett a napfényműteremben, hogy ne vakuljon meg a vegyszerek rossz használatától. A technológia fejlődésével nem csak a gépeink változtak meg, hanem velük mi is. Az élesség, tökéletesség mítosza nem csak a nagy kameragyártó márkák szlogenje lett minden reklámban, hogy minden évben vedd meg a legújabb objektívet - a perfekcionizmus belénk is beépült. Vajon tényleg szükség van 30 gombnyomásra, hogy egyetlen jó szelfid legyen? És milyen hatással van az önelfogadásunkra, hogy mindez már alapból beauty filterrel jön minden telefonban?"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "class": "text-base font-eb-garamond md:text-lg text-black",
-                                                "content": "Hol ment félre ez az egész? Az X, Y generáció fejében még élénken él az a kor, mikor a tömeggyártás még nem darálta be a fotózást: 80-as évek, a film, aminek az előhívására várni kellett, és nem is emlékeztél rá, mi volt rajta; 90-es évek, amikor még bénáztunk az első autofókusszal, de mégis bekerültek a családi albumokba, amiket olyan jó lapozgatni; korai 2000-s, a legelső kis kedves digitális kameráink nevetségesen alacsony felbontású vakus képei partikból, amiket még nem ezerszámra lőttünk.<br><br>"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "class": "text-base font-eb-garamond md:text-lg text-black",
-                                                "content": "Mi történik a millió képpel, amit készítünk? Visszanézi bárki is a régi telefonján vagy a fiókban porosodó winchesteren pihenő tízezer képet? Tényleg egy Facebookra van szükség, hogy feldobja ezeket a képeket egy, öt, tíz évvel ezelőttről? Miért sokkal értékesebb érzelmileg egy 24-36 kockás analóg filmre ellőtt homályos kép? Talán mert az emlékezetünk hasonlóan tárolja az életünk pillanatképeit magunkról, szeretteinkről: ködösen, tökéletlenül?"
+                                                "class": "font-title text-lg md:text-xl text-black mb-6",
+                                                "content": "A modern kamerák gyerekjátékká tették a mesterséget, amit múlt századfordulón a fotósinas még évekig tanult egy mester mellett a napfényműteremben, hogy ne vakuljon meg a vegyszerek rossz használatától. A technológia fejlődésével nem csak a gépeink változtak meg, hanem velük mi is. Az élesség, tökéletesség mítosza nem csak a nagy kameragyártó márkák szlogenje lett minden reklámban, hogy minden évben vedd meg a legújabb Nikon, Canon, Sony objektívet - a perfekcionizmus belénk is beépült. Vajon tényleg szükség van 30 gombnyomásra, hogy egyetlen jó szelfid legyen? És milyen hatással van az önelfogadásunkra, hogy mindez már alapból beauty filterrel jön minden telefonban? Tényleg megnézi valaki egynél többször is azt a 900 képet, amit sok esküvőfotós elküld végül? Mi lesz ezeknek a képeknek a sorsa, miután letöltöttétek, hogy megmaradjon...?"
                                             }
                                         ]
                                     },
@@ -158,18 +152,18 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                                "class": "font-title text-black text-3xl md:text-5xl mb-4",
                                                 "content": "II. Mitől más a narratív, történetmesélő stílus?"
                                             },
                                             {
-                                                "type": "p",
-                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
-                                                "content": "Slow, lelassulunk, offline, nem pózolt, nem staged, nem beállított, hétköznapi, dokumentarizmus. A technológiai automatizmus túl tökéletes lett mi is áldozatul estünk ennek, az emlékeink viszont nem ilyenek, tökéletlenek, 80s aranykor, hogy lehet az h a gyerekkori fotóink sokkal többet jelentenek. ma tömeggyártás: tényleg szükség van 30 gombnyomásra, h egy jó szelfid legyen? mi történik a millió képpel amit készítünk? visszanézi-e valaki, vagy külső winchestereken porosodik örökre. miért jobb az a pár kép, a várakozás, a print, a tökéletlenség. self-acceptance. önmagunk elfogadása"
+                                                "type": "div",
+                                                "class": "text-base font-title md:text-lg text-black",
+                                                "content": "Az X, Y generáció fejében még talán él az a kor, mikor a tömeggyártás még nem darálta be a fotózást: 80-as évek, az analóg film, aminek az előhívására várni kellett, és nem is emlékeztél rá, mi volt rajta; 90-es évek, amikor még bénáztunk az első automata kamerákkal, de mégis bekerültek a családi albumokba, amiket olyan jó lapozgatni; korai 2000-s, a legelső kis digitális kameráink nevetségesen alacsony felbontású vakus képei partikból, amiket még nem ezerszámra lőttünk.<br><br>"
                                             },
                                             {
-                                                "type": "div",
-                                                "class": "font-eb-garamond text-base md:text-lg text-black",
-                                                "content": "Body copy continues here. Use multiple paragraphs to create typographic rhythm and breathing space around the image."
+                                                "type": "p",
+                                                "class": "font-title text-lg md:text-xl text-black mb-6",
+                                                "content": "A dokumentarizmusból, fotózsurnalizmusból vett történetmesélő irányzat pont erre épít. Slow, lelassulás, offline, nem pózolt, nem klisé, nem beállított, nem tökéletes. Spontán hétköznapi pillanatok <i>- ahogy az élet történik.</i>"
                                             }
                                         ]
                                     }
@@ -185,23 +179,18 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
-                                                "content": "III. Hogyan illeszkedik erre az analóg film / vintage optikák, print?"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "class": "font-eb-garamond text-lg md:text-xl text-black mb-6",
-                                                "content": ""
+                                                "class": "font-title text-black text-3xl md:text-5xl mb-4",
+                                                "content": "III. Hogyan illeszkedik erre az analóg film, a vintage optikák, a print szellemisége?"
                                             },
                                             {
                                                 "type": "div",
-                                                "class": "text-base font-eb-garamond md:text-lg text-black",
-                                                "content": "<br><br>"
+                                                "class": "text-base font-title md:text-lg text-black",
+                                                "content": "Mi történik a millió képpel, amit készítünk? Visszanézi bárki is a régi telefonján vagy a fiókban porosodó winchesteren pihenő tízezer képet? Tényleg egy Facebookra van szükség, hogy feldobja ezeket a képeket egy, öt, tíz évvel ezelőttről? Miért sokkal értékesebb érzelmileg egy 24-36 kockás analóg filmre ellőtt homályos kép? Talán mert az emlékezetünk hasonlóan tárolja az életünk pillanatképeit magunkról, szeretteinkről: ködösen, tökéletlenül.<br><br>"
                                             },
                                             {
                                                 "type": "div",
-                                                "class": "text-base font-eb-garamond md:text-lg text-black",
-                                                "content": ""
+                                                "class": "text-base font-title md:text-lg text-black",
+                                                "content": "Bizonyos technikák, nyersanyagok, az analóg film, a régi, manuális optikák képe pontosan ezt hozza vissza. A fotóinknak pedig apró képernyők és a social media helyett nagyban, kinyomtatva a falon vagy könyvként a helye a polcon."
                                             }
                                         ]
                                     },
@@ -251,12 +240,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "font-title mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "<b>WEDDINGS </b><i>by Póth Attila</i>"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "font-title mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
@@ -292,12 +281,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "font-title mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "<b>PEOPLE</b><br><i>-portraits, couples</i>"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "font-title mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
@@ -333,12 +322,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "font-title mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "font-title mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
@@ -376,7 +365,7 @@
                                 "children": [
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                        "class": "font-title text-black text-3xl md:text-5xl mb-4",
                                         "content": "Feature Title — Two Column"
                                     },
                                     {
@@ -403,7 +392,7 @@
                                 "children": [
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond text-black text-3xl md:text-5xl mb-4",
+                                        "class": "font-title text-black text-3xl md:text-5xl mb-4",
                                         "content": "Feature Title — Two Column"
                                     },
                                     {
@@ -438,7 +427,7 @@
                     },
                     {
                         "type": "h2",
-                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
                         "content": "I. Mi a baj azzal, ahogy ma fotózunk?<br><br><hr>"
                     },
                     {
@@ -458,7 +447,7 @@
                     },
                     {
                         "type": "h2",
-                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
                         "content": "II. Mitől más a narratív, történetmesélő stílus?<br><br><hr>"
                     },
                     {
@@ -468,7 +457,7 @@
                     },
                     {
                         "type": "h2",
-                        "class": "font-bold font-eb-garamond p-[25px] text-center text-black text-4xl",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
                         "content": "III. Hogyan illeszkedik erre az analóg film / vintage optikák, print?<br><br><hr>"
                     }
                 ]
@@ -502,12 +491,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
+                                        "class": "font-title mt-[-65px] text-center text-white text-4xl md:text-7xl p-4",
                                         "content": "<b>MEMORIES</b> <i>by Póth Attila</i>"
                                     },
                                     {
                                         "type": "h2",
-                                        "class": "font-eb-garamond mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
+                                        "class": "font-title mt-[-50px] text-center text-white text-xl md:text-2xl p-4",
                                         "content": "<i>Imperfection of vintage optics & analog film</i>"
                                     }
                                 ]
@@ -541,12 +530,12 @@
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-eb-garamond text-black font-bold pt-[88px] md:ml-8 text-2xl md:text-5xl mb-4",
+                                        "class": "font-title text-black font-bold pt-[88px] md:ml-8 text-2xl md:text-5xl mb-4",
                                         "content": "Szia, Ati vagyok!"
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "class": "font-title mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "content": "Professzionális fotós vagyok Budapesten, Magyarországon. Főként analóg filmes és vintage objektívekkel dolgozom, mivel szeretem a nem mainstream, tökéletlen, nosztalgikus megjelenéseket: piktorialistákat, régi hollywoodi, technicolor és 1980-as évekbeli filmeket."
                                     }
                                 ]
@@ -559,7 +548,7 @@
                         "children": [
                             {
                                 "type": "div",
-                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "class": "w-full md:w-1/2 font-title mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                 "content": "<b>Itt megtalálsz: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36309313580</i>"
                             },
                             {
@@ -567,11 +556,11 @@
                                 "action": "javascript:;",
                                 "onsubmit": "return submitForm(this, 'pothattila.com: contact');",
                                 "method": "POST",
-                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md max-w-[80%]",
+                                "class": "w-full md:w-1/2 font-title mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md max-w-[80%]",
                                 "children": [
                                     {
                                         "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md",
+                                        "class": "font-title mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md",
                                         "content": "<b>Vagy írj rám itt, és megkereslek: </b><br><br>"
                                     },
                                     {
@@ -612,7 +601,7 @@
                     },
                     {
                         "type": "h2",
-                        "class": "font-eb-garamond font-bold text-black text-2xl md:text-3xl mb-4",
+                        "class": "font-title font-bold text-black text-2xl md:text-3xl mb-4",
                         "content": "Így néztem ki kamera nélkül:"
                     },
                     {

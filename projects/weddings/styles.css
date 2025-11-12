@@ -1,0 +1,17 @@
+body {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    font-style: normal;
+    background-color: white;
+    color: #f5f5f5;
+    overflow-y: auto;
+}
+
+.font-title {
+    font-family: "EB Garamond", serif;   
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}

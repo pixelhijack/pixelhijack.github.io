@@ -756,6 +756,16 @@
         ]
       },
       {
+        "name": "bts",
+        "type": "folder",
+        "children": [
+          {
+            "name": "240428-02087.jpg",
+            "type": "file"
+          }
+        ]
+      },
+      {
         "name": "conceptual",
         "type": "folder",
         "children": [
@@ -1165,6 +1175,28 @@
           },
           {
             "name": "pothattila-footnote-sawubona-04558.jpg",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "family",
+        "type": "folder",
+        "children": [
+          {
+            "name": "231018-orwo-00407-2.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09357.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09495.jpg",
+            "type": "file"
+          },
+          {
+            "name": "DSC09904.jpg",
             "type": "file"
           }
         ]
@@ -2312,6 +2344,30 @@
             "type": "folder",
             "children": [
               {
+                "name": "20251029-DSC00457-bw.jpg",
+                "type": "file"
+              },
+              {
+                "name": "20251029-DSC00468-bw.jpg",
+                "type": "file"
+              },
+              {
+                "name": "20251029-DSC00472-bw.jpg",
+                "type": "file"
+              },
+              {
+                "name": "20251029-DSC00473.jpg",
+                "type": "file"
+              },
+              {
+                "name": "20251031-DSC00747.jpg",
+                "type": "file"
+              },
+              {
+                "name": "DSC03016-2.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC05881.jpg",
                 "type": "file"
               },
@@ -2439,6 +2495,11 @@
             "type": "file"
           }
         ]
+      },
+      {
+        "name": "weddings",
+        "type": "folder",
+        "children": []
       },
       {
         "name": "werk",
@@ -2723,6 +2784,9 @@
       "gold-malta-01988.jpg",
       "gold-malta-01995.jpg"
     ],
+    "bts": [
+      "240428-02087.jpg"
+    ],
     "conceptual/ada-leila": [
       "DSC08748.jpg",
       "DSC08778-crop-ort.jpg",
@@ -2833,6 +2897,12 @@
       "pothattila-footnote-sawubona-04342.jpg",
       "pothattila-footnote-sawubona-04516.jpg",
       "pothattila-footnote-sawubona-04558.jpg"
+    ],
+    "family": [
+      "231018-orwo-00407-2.jpg",
+      "DSC09357.jpg",
+      "DSC09495.jpg",
+      "DSC09904.jpg"
     ],
     "fashion/designers/anna-and-the-barbies": [
       "DSC07240.jpg",
@@ -3134,6 +3204,12 @@
       "DSC03363.jpg"
     ],
     "stories/love": [
+      "20251029-DSC00457-bw.jpg",
+      "20251029-DSC00468-bw.jpg",
+      "20251029-DSC00472-bw.jpg",
+      "20251029-DSC00473.jpg",
+      "20251031-DSC00747.jpg",
+      "DSC03016-2.jpg",
       "DSC05881.jpg",
       "DSC06138.jpg"
     ],
@@ -3364,6 +3440,7 @@
     "fp4-zoo-02049.jpg": "analog/south",
     "gold-malta-01988.jpg": "analog/south",
     "gold-malta-01995.jpg": "analog/south",
+    "240428-02087.jpg": "bts",
     "DSC08748.jpg": "conceptual/ada-leila",
     "DSC08778-crop-ort.jpg": "conceptual/ada-leila",
     "DSC08829-light.jpg": "conceptual/ada-leila",
@@ -3417,7 +3494,10 @@
     "DSC09863.jpg": "conceptual/the-mad-king",
     "DSC09454.jpg": "conceptual/the-pier",
     "DSC09471.jpg": "conceptual/the-pier",
-    "DSC09495.jpg": "conceptual/the-pier",
+    "DSC09495.jpg": [
+      "conceptual/the-pier",
+      "family"
+    ],
     "DSC07202-bw.jpg": "conceptual/the-statue",
     "DSC00351.jpg": "conceptual/vigado",
     "DSC00407.jpg": "conceptual/vigado",
@@ -3439,6 +3519,9 @@
     "pothattila-footnote-sawubona-04342.jpg": "dancers",
     "pothattila-footnote-sawubona-04516.jpg": "dancers",
     "pothattila-footnote-sawubona-04558.jpg": "dancers",
+    "231018-orwo-00407-2.jpg": "family",
+    "DSC09357.jpg": "family",
+    "DSC09904.jpg": "family",
     "DSC07240.jpg": "fashion/designers/anna-and-the-barbies",
     "DSC07371.jpg": "fashion/designers/anna-and-the-barbies",
     "241215-01919.jpg": "fashion/designers/antuseka",
@@ -3646,6 +3729,12 @@
     "pothattila-09975.jpg": "stories/hypnagogia",
     "DSC05904-2.jpg": "stories/inked",
     "DSC03363.jpg": "stories/kranicz-dodo",
+    "20251029-DSC00457-bw.jpg": "stories/love",
+    "20251029-DSC00468-bw.jpg": "stories/love",
+    "20251029-DSC00472-bw.jpg": "stories/love",
+    "20251029-DSC00473.jpg": "stories/love",
+    "20251031-DSC00747.jpg": "stories/love",
+    "DSC03016-2.jpg": "stories/love",
     "DSC05881.jpg": "stories/love",
     "DSC06138.jpg": "stories/love",
     "pothattila-minicooper-07162.jpg": "stories/mini-cooper",
