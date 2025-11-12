@@ -7,11 +7,15 @@
     },
     "nav": [
         {
+            "href": "/diagnozis",
+            "label": "Diagnózis előtt és után"
+        },
+        {
             "href": "/ai",
             "label": "AI hétköznapokban & pszichológusoknak"
         }
     ],
-    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. Nem célunk sem a diagnózisok népszerűsítése, sem a megkérdőjelezése, kizárólag a tudományos alapú edukáció. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional.",
+    "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. Nem célunk sem a diagnózisok népszerűsítése, sem a megkérdőjelezése, kizárólag a tudományos alapú edukáció. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional. // <a href='/ethics'>Ethical and Transparency Statement</a>",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab:wght@100..900&display=swap"
     ],
@@ -381,9 +385,15 @@
                                 "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
                                 "children": [
                                     {
-                                        "type": "h2",
-                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
-                                        "content": ""
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Kérdéseid vannak a diagnózissal kapcsolatban?"
+                                            }
+                                        ]
                                     }
                                 ]
                             }
@@ -434,7 +444,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Mi a baj a magyar ellátórendszerrel? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br>"
+                                        "content": "<br>Miért nem tudja az ellátórendszer lefedni az ennyi érintettet? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br>"
                                     }
                                 ]
                             },
@@ -449,7 +459,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>A coaching akkor most bullshit vagy jó? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg létezik ilyen neurodivergens közösség? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br>"
+                                        "content": "<br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>Mire jó a coaching a terápia alternatívájaként? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg léteznek neurodivergens közösségek? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br>"
                                     }
                                 ]
                             },
@@ -479,7 +489,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<br>Az ADHD járványt nem csak környezet váltotta ki? Nem a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? <br><br>"
+                                        "content": "<br>Miért mondják hogy az ADHD járvány, amit csak környezet váltott ki? Nem csak a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? Miért nem ismerkedik már senki élőben?<br><br>"
                                     }
                                 ]
                             },
@@ -494,7 +504,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasgatnál az egészről<br>Jövőbeli közösségtalálkozó, challengek, játékok"
+                                        "content": "Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasgatni szeretnék az egészről, hol tudok bővebben?<br>Lesznek a jövőben közösségtalálkozók?"
                                     }
                                 ]
                             }
@@ -953,7 +963,7 @@
                     },
                     {
                         "type": "p",
-                        "content": "A munkám személyes tapasztalaton, önképzésen és a neurodiverzitás, pszichológia és emberi viselkedés hosszú távú tanulmányozásán alapul. Nem vagyok engedéllyel rendelkező pszichológus, pszichoterapeuta vagy orvosi szakember. Tapasztalati alapú támogatást, mentorálást és edukatív iránymutatást nyújtok neurodivergens személyeknek, valamint azoknak, akik önismeretükben és mindennapi életvezetésükben keresnek segítséget."
+                        "content": "A munkám személyes tapasztalaton, önképzésen és a neurodiverzitás, pszichológia és emberi viselkedés hosszú távú tanulmányozásán alapul. Nem vagyok engedéllyel rendelkező pszichológus, pszichoterapeuta vagy orvosi szakember. Tapasztalati alapú edukációt nyújtok neurodivergens (és neurotipikus) személyeknek"
                     },
                     {
                         "type": "p",
@@ -961,11 +971,11 @@
                     },
                     {
                         "type": "p",
-                        "content": "<br>1. Transzparencia: Mindig igyekszem egyértelművé tenni a tevékenységem jellegét és határait. Nem diagnosztizálok, nem kezelek, és nem végzek terápiát. <br>2. Tisztelet és autonómia: A résztvevő a saját életének szakértője, felelőse. A célom az önállóság erősítése, nem pedig bárki “megjavítása”. <br>3. Privacy: A személyes információkat és beszélgetéseket bizalmasan kezelem, semmilyen harmadik félnek nem adom át. <br>4. Határok: Nem vállalok krízisintervenciót vagy bármilyen súlyos mentális állapot kezelését. Minden bizonytalan esetben engedéllyel rendelkező szakember felkeresését javaslom. <br>5. Integritás: Folyamatosan bővítem tudásomat a pszichológia, idegtudomány és mentálhigiéné területén, hogy felelős, tájékozott módon tudjak erről beszélni másnak is. <br>6. Tapasztalati szemlélet: A munkám a kölcsönös megértésen és közösségen alapul - nem hierarchián vagy “javításon”."
+                        "content": "<br><b>1. Transzparencia:</b> Mindig igyekszem egyértelművé tenni a tevékenységem jellegét és határait. Nem diagnosztizálok, nem kezelek, és nem végzek terápiát. <br><b>2. Tisztelet és autonómia:</b> A résztvevő a saját életének szakértője, felelőse. A célom az önállóság erősítése, nem pedig bárki “megjavítása”. <br><b>3. Privacy:</b> A személyes információkat és beszélgetéseket bizalmasan kezelem, semmilyen harmadik félnek nem adom át. <br><b>4. Határok:</b> Nem vállalok krízisintervenciót vagy bármilyen súlyos pszichés állapot kezelését, diagnosztizálását. Minden bizonytalan esetben engedéllyel rendelkező szakember felkeresését javaslom a velem beszélgetőnek. <br><b>5. Integritás:</b> Folyamatosan bővítem tudásomat a pszichológia, idegtudomány és mentálhigiéné területén, hogy felelős, tájékozott módon tudjak erről beszélni másnak is. <br><b>6. Tapasztalati szemlélet:</b> A munkám a kölcsönös megértésen és közösségen alapul - nem hierarchián vagy “javításon”. <br><b>7. Diagnózis:</b> Nem népszerűsítem és nem is tagadom a diagnózis fontosságát, kizárólag információt nyújtok tájékozódáshoz a lehetőségekről."
                     },
                     {
                         "type": "p",
-                        "content": "<br><br>Amennyiben bizonytalan vagy abban, hogy ez az együttműködési forma megfelelő-e számodra, beszéljünk róla, vagy keress fel mentálhigiénés szakembert. A célom hogy kiegészítsem, ne helyettesítsem a professzionális pszichoterápiás ellátást."
+                        "content": "<br><br>Amennyiben bizonytalan vagy abban, hogy az oldalon említett bármelyik együttműködési forma megfelelő-e számodra, beszéljünk róla, vagy keress fel mentálhigiénés szakembert. A cél hogy kiegészítsem és ne helyettesítsem a professzionális pszichoterápiás ellátást."
                     }
                 ]
             }
