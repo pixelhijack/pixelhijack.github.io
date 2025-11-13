@@ -76,7 +76,7 @@ app.post('/form', async (req, res) => {
   } else if (intent === 'neurodiv: segment') {
       sheetName = 'neurodiv: segment';
       // Order must match the sheet's column order
-      values = [timestamp, formData.name, formData.email, formData.role, formData.message, JSON.stringify(formData.checkboxes)];
+      values = [timestamp, formData.name || 'anonim', formData.email, formData.message || '', formData.role, JSON.stringify(formData.checkboxes)];
   } else if (intent === 'aipresszo.hu: contact') {
       sheetName = 'aipresszo.hu: contact';
       // Order must match the sheet's column order
@@ -84,7 +84,7 @@ app.post('/form', async (req, res) => {
   } else if (intent === 'aipresszo.hu: AI') {
       sheetName = 'aipresszo.hu: AI';
       // Order must match the sheet's column order
-      values = [timestamp, formData.name, formData.email, formData.role, formData.message, JSON.stringify(formData.checkboxes)];
+      values = [timestamp, formData.name || 'anonim', formData.email, formData.message || '', formData.role, JSON.stringify(formData.checkboxes)];
   } else {
       return res.status(400).send('Invalid form type provided.');
   }
