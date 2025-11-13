@@ -2,7 +2,17 @@
     "meta": {
         "ga": "G-0W5E848GDX",
         "title": "Póth Attila Photographer",
-        "logo": "<b>Póth Attila</b>"
+        "logo": "<b>Póth Attila</b>",
+        "og": {
+            "title": "Póth Attila Photographer",
+            "description": "Professional photographer based in Budapest. Analog film & vintage lens photography: fashion, portraits, and narrative documentary.",
+            "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/hypnagogia/masthead.jpg",
+            "type": "website",
+            "twitter": {
+                "card": "summary_large_image",
+                "site": "@pothattila"
+            }
+        }
     },
     "nav": [ 
         { "href": "/fashion", "label": "Fashion" },
@@ -30,6 +40,10 @@
     "pages": [
         {
             "slug": "",
+            "og": {
+                "title": "Póth Attila - Everyone has a story to tell",
+                "description": "Vintage lens & analog film photography by Póth Attila"
+            },
             "tree": {
                 "type": "div",
                 "children": [
@@ -237,6 +251,11 @@
             "background": null,
             "navColor": "black",
             "textColor": "black",
+            "og": {
+                "title": "Póth Attila Photographer",
+                "description": "I'm a professional photographer based in Budapest, working mainly with analog film & vintage lenses.",
+                "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/about/me-rounded.png"
+            },
             "tree": {
                 "type": "div",
                 "class": "flex flex-col items-center justify-center h-full",

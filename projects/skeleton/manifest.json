@@ -2,7 +2,17 @@
     "meta": {
         "ga": null,
         "title": "Title Here",
-        "logo": "This is your site"
+        "logo": "This is your site",
+        "og": {
+            "title": "Póth Attila",
+            "description": "Professional photographer based in Budapest. Analog film & vintage lens photography: fashion, portraits, and narrative documentary.",
+            "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/hypnagogia/masthead.jpg",
+            "type": "website",
+            "twitter": {
+                "card": "summary_large_image",
+                "site": "@pothattila"
+            }
+        }
     },
     "nav": [ 
         { "href": "/subpage", "label": "Subpage" },
