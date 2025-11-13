@@ -104,7 +104,7 @@
                         "type": "div",
                         "class": "absolute left-0 right-0 top-0 h-[87vh] bg-cover bg-center bg-fixed -z-10",
                         "style": {
-                            "background-image": "url(/img/stories/cruise/DSC07346.jpg)",
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)",
                             "background-position": "center bottom"
                         }
                     },
