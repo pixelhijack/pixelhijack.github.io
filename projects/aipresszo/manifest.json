@@ -81,7 +81,7 @@
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t az emberi oldalról közelítjük meg.</b><br><br>"
+                                                "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t gyakorlati oldalról közelítjük meg.</b><br><br>"
                                             }
                                         ]
                                     },
@@ -118,11 +118,6 @@
                         "class": "flex flex-col md:flex-row items-start md:items-stretch w-full gap-6 p-[20px] md:max-w-[80%]",
                         "children": [
                             {
-                                "type": "div",
-                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "<b>Írj emailt, vagy hívj: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i><br><br><b>Megtalálsz Facebookon is:</b><br><i><a target=\"_blank\" href=\"https://www.facebook.com/ai.presszo\">AI.Presszó Facebook oldal</a></i>"
-                            },
-                            {
                                 "type": "form",
                                 "action": "javascript:;",
                                 "onsubmit": "return submitForm(this, 'aipresszo.hu: contact');",
@@ -132,7 +127,7 @@
                                     {
                                         "type": "div",
                                         "class": "font-body mt-[20px] md:mt-0 text-2xl md:text-2xl text-black rounded-md",
-                                        "content": "<b>Vagy írd meg, ki vagy és milyen céllal szeretnél AI-t tanulni, és kidolgozunk együtt egy specifikusan rád szabott tananyagot:</b><br><br>"
+                                        "content": "<b>Írd meg, milyen céllal szeretnél AI-t használni, és specifikusan rád szabott témákban kapod, mit tudok kifejezetten <i>neked</i> tanítani:</b><br><br>"
                                     },
                                     {
                                         "type": "input",
@@ -163,6 +158,11 @@
                                         "typeAttr": "submit"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                "content": "<b>Elérsz emailben és telefonon is: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i>"
                             }
                         ]
                     }
