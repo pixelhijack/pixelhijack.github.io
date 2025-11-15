@@ -4,8 +4,21 @@
         "title": "🤖 AI.Presszó - Mesterséges intelligencia oktatás egy kávé mellett",
         "logo": "🤖 AI.Presszó"
     },
-    "nav": [],
-    "footer": "AI.Presszó &copy; 2025 Póth Attila.",
+    "nav": [
+        {
+            "href": "/onismeret-pszichologia",
+            "label": "Önismeret & pszichológia"
+        },
+        {
+            "href": "/hetkoznapi-ai",
+            "label": "Hétköznapi AI"
+        },
+        {
+            "href": "/ai-munkaban",
+            "label": "AI a munkában"
+        }
+    ],
+    "footer": "Póth Attila // pothattila@gmail.com // +36 30 931 3580",
     "fonts": [
         "https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
     ],
@@ -14,18 +27,9 @@
     ],
     "pages": [
         {
-            "slug": "subpage",
-            "navColor": "black",
-            "tree": {
-                "type": "div",
-                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
-                "content": "☠️"
-            }
-        },
-        {
             "slug": "",
             "background": null,
-            "navColor": "black",
+            "navColor": "white",
             "textColor": "black",
             "tree": {
                 "type": "div",
@@ -127,7 +131,7 @@
                                     {
                                         "type": "div",
                                         "class": "font-body mt-[20px] md:mt-0 text-2xl md:text-2xl text-black rounded-md",
-                                        "content": "<b>Írd meg, milyen céllal szeretnél AI-t használni, és specifikusan rád szabott témákban kapod, mit tudok kifejezetten <i>neked</i> tanítani:</b><br><br>"
+                                        "content": "<b>Milyen céllal szeretnél AI-t használni? Specifikusan rád szabott témákban kapod, mit tudok kifejezetten <i>neked</i> tanítani:</b><br><br>"
                                     },
                                     {
                                         "type": "input",
@@ -167,6 +171,33 @@
                         ]
                     }
                 ]
+            }
+        },
+        {
+            "slug": "hetkoznapi-ai",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "content": "☠️"
+            }
+        },
+        {
+            "slug": "ai-munkaban",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "content": "☠️"
+            }
+        },
+        {
+            "slug": "onismeret-pszichologia",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "content": "☠️"
             }
         }
     ]
