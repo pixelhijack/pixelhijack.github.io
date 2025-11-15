@@ -41,6 +41,19 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
 let manifestCached = loadProjectManifest(PROJECT);
+// Optional: watch for changes in dev
+if (process.env.NODE_ENV === 'development') {
+  const PROJECT = process.env.PROJECT_NAME || 'photographer';
+  const manifestFile = path.join(__dirname, 'projects', PROJECT, 'manifest.json');
+  let watchTimeout;
+  fs.watch(manifestFile, () => {
+    clearTimeout(watchTimeout);
+    watchTimeout = setTimeout(async () => {
+      manifestCached = await loadProjectManifest(PROJECT);
+      console.log('[manifest] reloaded');
+    }, 100);
+  });
+}
 
 // load HTML template for server-side rendering
 const templatePath = path.join(__dirname, 'public', 'index.html');
