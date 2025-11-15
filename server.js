@@ -3,6 +3,7 @@ import { google } from "googleapis";
 import express from 'express'; 
 import path from 'path';
 import fs from 'fs';
+import { marked } from 'marked';
 import { fileURLToPath } from 'url'; 
 // --- Define ES Module Equivalents for CommonJS __dirname previously ---
 const __filename = fileURLToPath(import.meta.url);
@@ -39,8 +40,17 @@ const auth = new google.auth.JWT({
 
 const sheets = google.sheets({ version: 'v4', auth });
 
+marked.setOptions({
+  breaks: true,        // Convert \n to <br>
+  gfm: true,          // GitHub Flavored Markdown
+  headerIds: true,    // Add IDs to headers
+  mangle: false,      // Don't escape email addresses
+  pedantic: false,    // Don't be overly strict
+});
+
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
 let manifestCached = loadProjectManifest(PROJECT);
+
 // Optional: watch for changes in dev
 if (process.env.NODE_ENV === 'development') {
   const PROJECT = process.env.PROJECT_NAME || 'photographer';
@@ -306,6 +316,29 @@ function renderTreeServer(node) {
   // map style guide shorthand
   if (node.class && manifestCached?.styleGuide && manifestCached.styleGuide[node.class]) {
     node.class = manifestCached.styleGuide[node.class];
+  }
+
+  // handle markdown type
+  if (node.type === "markdown" && node.file) {
+    const mdPath = path.join(__dirname, 'projects', PROJECT, 'markdown', node.file);
+    
+    let markdownContent = '';
+    if (fs.existsSync(mdPath)) {
+      try {
+        const rawMd = fs.readFileSync(mdPath, 'utf8');
+        markdownContent = marked.parse(rawMd);
+      } catch (err) {
+        console.error(`Failed to parse markdown file: ${node.file}`, err.message);
+        markdownContent = `<p class="hidden">md? ${node.file}</p>`;
+      }
+    } else {
+      console.warn(`Markdown file not found: ${mdPath}`);
+      markdownContent = `<p class="hidden">md? ${node.file}</p>`;
+    }
+    
+    // render as a div with the markdown HTML content
+    const classProp = node.class ? ` class="${node.class}"` : '';
+    return `<div${classProp}>${markdownContent}</div>`;
   }
 
   // handle source -> children population (folder.json)

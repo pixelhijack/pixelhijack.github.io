@@ -6,16 +6,8 @@
     },
     "nav": [
         {
-            "href": "/onismeret-pszichologia",
-            "label": "Önismeret & pszichológia"
-        },
-        {
-            "href": "/hetkoznapi-ai",
-            "label": "Hétköznapi AI"
-        },
-        {
-            "href": "/ai-munkaban",
-            "label": "AI a munkában"
+            "href": "/tartalom",
+            "label": "Tartalom"
         }
     ],
     "footer": "Póth Attila // pothattila@gmail.com // +36 30 931 3580",
@@ -171,6 +163,15 @@
                         ]
                     }
                 ]
+            }
+        },
+        {
+            "slug": "tartalom",
+            "navColor": "black",
+            "tree": {
+                "type": "markdown",
+                "file": "tartalom.md",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
             }
         },
         {
