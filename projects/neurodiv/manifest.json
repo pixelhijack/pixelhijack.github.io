@@ -13,6 +13,10 @@
         {
             "href": "/ai",
             "label": "AI hétköznapokban & pszichológusoknak"
+        },
+        {
+            "href": "/teszt",
+            "label": "Neurodivergencia teszt"
         }
     ],
     "footer": "*Disclaimer 🇭🇺 Az Overthinkers'Club NEM pszichoterápia, orvosi ellátás vagy pszichológiai tanácsadás, hanem tapasztalati alapú sorstárs támogatás és önismereti, edukatív beszélgetés és írott tartalom. Amennyiben úgy érzed hogy sürgős segítségre lenne szükséged, haladéktalanul keress fel engedéllyel rendelkező szakembert. Nem célunk sem a diagnózisok népszerűsítése, sem a megkérdőjelezése, kizárólag a tudományos alapú edukáció. 🇬🇧 This project or any services or activities here do not constitute psychotherapy, medical treatment, or psychological counselling. They are based on personal experience, peer support, and educational guidance. If you are in crisis or need mental health care, please contact a licensed professional. // <a href='/ethics'>Ethical and Transparency Statement</a>",
@@ -364,6 +368,15 @@
                         ]
                     }
                 ]
+            }
+        },
+        {
+            "slug": "teszt",
+            "navColor": "black",
+            "tree": {
+                "type": "markdown",
+                "file": "neurodiv-teszt.md",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
             }
         },
         {

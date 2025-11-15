@@ -14,6 +14,18 @@ h1 {
     margin-bottom: 1rem;
 }
 
+h2 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin: 1rem 0 1rem 0;
+}
+h3 { 
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin: 1rem 0 1rem 0;
+}
+
+
 .font-title {
     font-family: "Lora", serif, "SF Pro Display", -apple-system-headline, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .3);
@@ -22,4 +34,13 @@ h1 {
 .font-body {
     font-family: "Roboto Slab", serif;
     font-weight: 400;
+}
+
+ul li {
+    margin-left: 1.5rem;
+    list-style-type: disc;
+}
+ol li {
+    margin-left: 1.5rem;
+    list-style-type: decimal;
 }
