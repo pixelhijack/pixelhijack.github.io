@@ -11,8 +11,12 @@
             "label": "Diagnózis előtt és után"
         },
         {
+            "href": "/tortenetek",
+            "label": "Történetek"
+        },
+        {
             "href": "/ai",
-            "label": "AI hétköznapokban & pszichológusoknak"
+            "label": "AI használata?!"
         },
         {
             "href": "/teszt",
@@ -699,15 +703,6 @@
             }
         },
         {
-            "slug": "tortenetek",
-            "background": "neurodiv/oz.jpg",
-            "tree": {
-                "type": "div",
-                "class": "absolute inset-0 flex flex-col items-center justify-center text-2xl",
-                "content": "<i>Küldd be a történeted, kérdésed <br>anonim alapon, a kezdőoldalon</i>"
-            }
-        },
-        {
             "slug": "ai",
             "navColor": "white",
             "background": null,
@@ -993,6 +988,108 @@
                                                 "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
                                             }
                                         ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "tortenetek",
+            "navColor": "white",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full mb-[-80px] md:mb-[0px]",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz.jpg",
+                                "class": "w-full h-[95vh] md:h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "<b>Neurodivergens történetek</b>"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "h2",
+                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "<i>Küldd be a saját sztorid, kérdésed <br>- akár anonim alapon is - <br>hogy más is tanulhasson belőle!</i>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'overthinkers.club: történetek');",
+                                "method": "POST",
+                                "class": "mt-[20px] md:mt-0 md:ml-8 mb-8 text-sm text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<br><br><hr><br><b>A te történeted </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Email (opcionális, ha szeretnél visszajelzést kapni - nem lesz feltüntetve a történeted mellett)"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "typeAttr": "text",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Név (üresen is hagyhatod, ha anonim szeretnél maradni)"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "rows": "10",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Mit mesélnél el a saját életedből, dilemmáidból, tapasztalatodból?",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                        "content": "Küldés",
+                                        "typeAttr": "submit"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "text-black text-xs",
+                                        "content": "<br><br>A történeteiteket természetesen senkinek nem adjuk tovább, a legnagyobb bizalommal kezeljük, az email címet kizárólag kapcsolatfelvétel céljából használjuk ha szükség lenne ilyenre, harmadik félnek nem adjuk át."
                                     }
                                 ]
                             }
