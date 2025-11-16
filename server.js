@@ -3,7 +3,6 @@ import { google } from "googleapis";
 import express from 'express'; 
 import path from 'path';
 import fs from 'fs';
-import { marked } from 'marked';
 import { fileURLToPath } from 'url'; 
 // --- Define ES Module Equivalents for CommonJS __dirname previously ---
 const __filename = fileURLToPath(import.meta.url);
@@ -43,14 +42,6 @@ const auth = new google.auth.JWT({
 });
 
 const sheets = google.sheets({ version: 'v4', auth });
-
-marked.setOptions({
-  breaks: true,        // Convert \n to <br>
-  gfm: true,          // GitHub Flavored Markdown
-  headerIds: true,    // Add IDs to headers
-  mangle: false,      // Don't escape email addresses
-  pedantic: false,    // Don't be overly strict
-});
 
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
 let manifestCached = loadProjectManifest(PROJECT, __dirname);
@@ -166,7 +157,7 @@ app.get(/^(.*)$/, (req, res) => {
       currentPage = manifestCached.pages.find(p => p.slug === '') || manifestCached.pages[0];
     }
 
-    const contentHtml = renderTreeServer(currentPage.tree || {}, manifestCached);
+    const contentHtml = renderTreeServer(currentPage.tree || {}, manifestCached, __dirname);
     const title = manifestCached.meta?.title || 'Site';
     const logo = manifestCached.meta?.logo || '';
     const logoStyle = manifestCached.meta?.logoStyle || '';

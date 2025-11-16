@@ -1,10 +1,24 @@
+import path from 'path';
+import fs from 'fs';
+import { marked } from 'marked';
+
+const PROJECT = process.env.PROJECT_NAME || 'photographer';
+
+marked.setOptions({
+  breaks: true,        // Convert \n to <br>
+  gfm: true,          // GitHub Flavored Markdown
+  headerIds: true,    // Add IDs to headers
+  mangle: false,      // Don't escape email addresses
+  pedantic: false,    // Don't be overly strict
+});
+
 function getImageSrcServer(filename) {
   if (!filename) return '';
   if (process.env.NODE_ENV === 'development') return `/img/${filename}`;
   return `https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/${filename}`;
 }
 
-export default function renderTreeServer(node, manifest) {
+export default function renderTreeServer(node, manifest, baseDir) {
   if (!node) return '';
 
   // map style guide shorthand
@@ -14,7 +28,7 @@ export default function renderTreeServer(node, manifest) {
 
   // handle markdown type
   if (node.type === "markdown" && node.file) {
-    const mdPath = path.join(__dirname, 'projects', PROJECT, 'markdown', node.file);
+    const mdPath = path.join(baseDir, 'projects', PROJECT, 'markdown', node.file);
     
     let markdownContent = '';
     if (fs.existsSync(mdPath)) {
