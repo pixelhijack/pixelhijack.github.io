@@ -155,3 +155,7 @@ div.sidescroll-gallery::-webkit-scrollbar {
     display: none;
     /* For Chrome, Safari, Opera */
 }
+
+.markdown {
+    padding-bottom: 1.5rem;
+}

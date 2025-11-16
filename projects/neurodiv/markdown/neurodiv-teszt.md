@@ -1,5 +1,7 @@
 # **NEM HIATALOS neurodivergencia szelf-teszt**
 
+<small>(Disclaimer: a kérdéssor célja: pre-screening, vagyis segíthet eldönteni, érdemes lehet-e hivatalos diagnózisra jelentkezned. A teszt NEM váltja ki a diagnózist, sem a szakpszichológusi véleményt, továbbá nem tartalmaz differenciáldiagnosztikai irányokat sem)</small>
+
 ### **Szenzoros dolgok**
 
 1.  Vannak kedvenc textúráid?

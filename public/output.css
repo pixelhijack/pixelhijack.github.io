@@ -1347,6 +1347,10 @@ div.sidescroll-gallery::-webkit-scrollbar {
   /* For Chrome, Safari, Opera */
 }
 
+.markdown {
+  padding-bottom: 1.5rem;
+}
+
 .hover\:bg-gray-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));

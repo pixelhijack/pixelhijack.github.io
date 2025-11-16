@@ -88,39 +88,36 @@ app.post('/form', async (req, res) => {
   let values = [];
 
   // 1. Determine which sheet to write to based on formType
-  if (intent === 'pothattila.com: contact') {
-      sheetName = 'pothattila.com: contact';
-      // Order must match the sheet's column order: Timestamp, Name, Email, Message
-      values = [timestamp, formData.name, formData.email, formData.message];
-  } else if (intent === 'pothattila.com: workshop') {
-      sheetName = 'pothattila.com: workshop';
-      // Order must match the sheet's column order
-      values = [timestamp, formData.name, formData.email];
-  } else if (intent === 'neurodiv: segment') {
-      sheetName = 'neurodiv: segment';
-      // Order must match the sheet's column order
-      values = [timestamp, formData.name || 'anonim', formData.email, formData.message || '', formData.role, JSON.stringify(formData.checkboxes)];
-  } else if (intent === 'aipresszo.hu: contact') {
-      sheetName = 'aipresszo.hu: contact';
-      // Order must match the sheet's column order
-      values = [timestamp, formData.name, formData.email, formData.message];
-  } else if (intent === 'aipresszo.hu: AI') {
-      sheetName = 'aipresszo.hu: AI';
-      // Order must match the sheet's column order
-      values = [timestamp, formData.name || 'anonim', formData.email, formData.message || '', formData.role, JSON.stringify(formData.checkboxes)];
+  // later I can extend this with more form sheets if one is not enough, like this: 
+  // if (intent === 'pothattila.com: contact') {}
+  // else if (intent === 'pothattila.com: contact') {}
+
+  if (intent) {
+      sheetName = 'all forms'; // tab name in the sheet
+      // Order must match the sheet's column order: Timestamp, Name, Email, Contact, Message etc
+      values = [
+        timestamp, 
+        intent || 'unknown form',
+        formData.name || 'anonim', 
+        formData.email, 
+        formData.contact || '',
+        formData.message || '', 
+        formData.role || '', 
+        JSON.stringify(formData.checkboxes) || '' // "Goal"
+      ];
   } else {
       return res.status(400).send('Invalid form type provided.');
   }
-    
+  
   try {
     // 2. Call the Google Sheets API to append the data
-    await sheets.spreadsheets.values.append({
-        spreadsheetId: SPREADSHEET_ID,
-        range: sheetName, // Writes to the whole tab
-        valueInputOption: 'USER_ENTERED',
-        resource: {
-            values: [values], // Append one row of data
-        },
+    sheets.spreadsheets.values.append({
+      spreadsheetId: SPREADSHEET_ID,
+      range: sheetName, // Writes to the whole tab
+      valueInputOption: 'USER_ENTERED',
+      resource: {
+          values: [values], // Append one row of data
+      },
     });
 
     res.status(200).json({ message: 'Form submitted successfully!' });
@@ -337,7 +334,7 @@ function renderTreeServer(node) {
     }
     
     // render as a div with the markdown HTML content
-    const classProp = node.class ? ` class="${node.class}"` : '';
+    const classProp = node.class ? ` class="markdown ${node.class}"` : '';
     return `<div${classProp}>${markdownContent}</div>`;
   }
 
