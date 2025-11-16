@@ -13,7 +13,7 @@
 7.  Észreveszel olyan részleteket, ami másoknak gyakran nem tűnik fel?
 8.  Le tudsz írni egy olyan fizikai érzést, amit szeretsz, de mások talán nem?
 9.  Sokat izegsz-mozogsz anélkül, hogy észrevennéd?
-10. Vannak kedvenc anyagaid vagy ruhaszabásaid, amikben _biztonságban érzed magad_ ?
+10. Vannak kedvenc anyagaid vagy ruhaszabásaid, amikben _biztonságban érzed magad_ ?<br/><br/>
 
 ---
 
@@ -37,7 +37,7 @@
 
 19. A beszélgetéseidben dominál az őszinteség és a közvetlenség?
 
-20. Érezted már úgy, hogy csak "társasági szerepet” játszol?
+20. Érezted már úgy, hogy csak "társasági szerepet” játszol?<br/><br/>
 
 ---
 
@@ -55,7 +55,7 @@
 
 26. Szeretsz részletesen megtervezni vagy feltérképezni a dolgokat?
 
-27. Az agyad vágyik a struktúrára, még akkor is, ha az életed nem mindig követi azt?
+27. Az agyad vágyik a struktúrára, még akkor is, ha az életed nem mindig követi azt?<br/><br/>
 
 ---
 
@@ -79,7 +79,7 @@
 
 36. Előfordul, hogy az emberek intenzívnek, különcnek vagy „túl érzékenynek” neveznek?
 
-37. Előfordult már, hogy úgy érezted, „álcáznod kell” a valódi énedet? Hogy nem engedheted meg, hogy spontán legyél és lássák, milyen vagy valójában?
+37. Előfordult már, hogy úgy érezted, „álcáznod kell” a valódi énedet? Hogy nem engedheted meg, hogy spontán legyél és lássák, milyen vagy valójában?<br/><br/>
 
 ---
 
@@ -103,7 +103,7 @@
 
 46. Érzel-e zavart önmagadban, amikor megváltozik a környezeted vagy a kapcsolataid? Mintha elvesztenéd aki vagy?
 
-47. Volt már olyan problémád, hogy nehezen érted a saját érzelmeidet? Könnyű szavakba foglalnod őket?
+47. Volt már olyan problémád, hogy nehezen érted a saját érzelmeidet? Könnyű szavakba foglalnod őket?<br/><br/>
 
 ---
 
@@ -121,7 +121,7 @@
 
 53. Használsz kreatív kifejezésmódokat (írás, rajzolás, fotózás) az érzéseid feldolgozásához?
 
-54. Évek óta változatlanok az érdeklődési köreid, vagy inkább intenzív fellángolásokban jelentkeznek?
+54. Évek óta változatlanok az érdeklődési köreid, vagy inkább intenzív fellángolásokban jelentkeznek?<br/><br/>
 
 ---
 
@@ -139,7 +139,7 @@
 
 60. Jobban jelen érzed magad mozgás közben?
 
-61. Viccesen ügyetlen vagy, vagy túlságosan is tudatában vagy a testednek?
+61. Viccesen ügyetlen vagy, vagy túlságosan is tudatában vagy a testednek?<br/><br/>
 
 ---
 
@@ -157,7 +157,7 @@
 
 67. Nagyon halogatsz, de nyomás alatt hiper-koncentrált vagy?
 
-68. Elfelejted a határidőket, még akkor is, ha törődsz velük?
+68. Elfelejted a határidőket, még akkor is, ha törődsz velük?<br/><br/>
 
 ---
 
@@ -175,7 +175,7 @@
 
 74. Hogyan szoktad kimutatni a szeretetedet vagy a vonzalmadat? Nehezen? Vagy épp túlontúl lelkes vagy amit mások nem értenek?
 
-75. Előfordult már, hogy könnyebb volt chatelni, mint beszélgetni?
+75. Előfordult már, hogy könnyebb volt chatelni, mint beszélgetni?<br/><br/>
 
 ---
 
@@ -189,7 +189,7 @@
 
 79. A tanárok azért szerettek, mert csendes voltál, vagy azért nem bírtak, mert „nehéz eset” voltál?
 
-80. Voltak arra utaló jelek, hogy elfedted vagy elrejtetted a személyiséged egyes részeit?
+80. Voltak arra utaló jelek, hogy elfedted vagy elrejtetted a személyiséged egyes részeit?<br/><br/>
 
 ---
 
@@ -213,7 +213,7 @@
 
 89. Hogy bírod az unalmat?
 
-90. Szoktál metaforákban vagy szinesztézia-típusú asszociációkban gondolkodni? Mindig megy a fejedben valami zene? A kedvenc számaidat ezerszer meghallgatod egymás után?
+90. Szoktál metaforákban vagy szinesztézia-típusú asszociációkban gondolkodni? Mindig megy a fejedben valami zene? A kedvenc számaidat ezerszer meghallgatod egymás után?<br/><br/>
 
 ---
 

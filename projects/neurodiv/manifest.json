@@ -374,9 +374,48 @@
             "slug": "teszt",
             "navColor": "black",
             "tree": {
-                "type": "markdown",
-                "file": "neurodiv-teszt.md",
-                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4",
+                "children": [
+                    {
+                        "type": "markdown",
+                        "file": "neurodiv-teszt.md"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitForm(this, 'overthinkers.club: feedback');",
+                        "method": "POST",
+                        "class": "mt-[20px] md:mt-0 md:ml-8 mb-8 text-sm text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                "content": "<br><br><hr><br><b>Feedback </b><br><br>"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Email (opcionális, ha szeretnél visszajelzést kapni)"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Mit gondolsz a tesztről? Van ötleted, javaslatod?",
+                                "required": "true"
+                            },
+                            {
+                                "type": "button",
+                                "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                "content": "Küldés",
+                                "typeAttr": "submit"
+                            }
+                        ]
+                    }
+                ]
             }
         },
         {
