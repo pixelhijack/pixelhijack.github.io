@@ -1,0 +1,36 @@
+{
+    "meta": {
+        "ga": null,
+        "title": "Missing manifest",
+        "logo": "This is nowhere land",
+        "og": {
+            "title": "Póth Attila",
+            "description": "Professional photographer based in Budapest. Analog film & vintage lens photography: fashion, portraits, and narrative documentary.",
+            "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/hypnagogia/masthead.jpg",
+            "type": "website",
+            "twitter": {
+                "card": "summary_large_image",
+                "site": "@pothattila"
+            }
+        }
+    },
+    "nav": [],
+    "footer": "Ghost footer",
+    "fonts": [
+        "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    ],
+    "css": [
+        "/projects/skeleton/styles.css"
+    ],
+    "pages": [
+        {
+            "slug": "",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
+                "content": "HELLO, you found the ghost land ☠️"
+            }
+        }
+    ]
+}

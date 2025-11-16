@@ -3,6 +3,7 @@
         "ga": "G-0W5E848GDX",
         "title": "Póth Attila Photographer",
         "logo": "<b>Póth Attila</b>",
+        "logoStyle": "font-title text-4xl md:text-4xl font-bold rounded-md p-2",
         "og": {
             "title": "Póth Attila Photographer",
             "description": "Professional photographer based in Budapest. Analog film & vintage lens photography: fashion, portraits, and narrative documentary.",
