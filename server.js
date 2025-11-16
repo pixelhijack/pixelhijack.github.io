@@ -198,6 +198,7 @@ app.get(/^(.*)$/, (req, res) => {
       ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${manifestCached.meta.ga}"></script>
          <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${manifestCached.meta.ga}');</script>`
       : '';
+    console.log('[ga] meta.ga:', manifestCached.meta?.ga, 'NODE_ENV:', process.env.NODE_ENV);
     
     const footerHtml = manifestCached.footer || '';
 

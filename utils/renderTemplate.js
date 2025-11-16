@@ -50,7 +50,7 @@ export default function renderTemplate({
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   ${fontLinks}
   ${cssLinks}
-  ${process.env.NODE_ENV === 'development' ? '' : gaScript}
+  ${process.env.NODE_ENV === 'development' ? '<!-- GA skipped in dev or missing meta.ga -->' : gaScript}
   <style>
     /* common styles are in input.css */
   </style>
