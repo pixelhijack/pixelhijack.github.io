@@ -82,7 +82,7 @@ export default function renderTreeServer(node, manifest, baseDir) {
     const classProp = node.class ? ` class="${node.class}"` : "";
     const styleProp = ` style="${extraStyle}"`;
     let childrenStr = "";
-    if (Array.isArray(node.children)) childrenStr = node.children.map(child => renderTreeServer(child, manifest)).join("");
+    if (Array.isArray(node.children)) childrenStr = node.children.map(child => renderTreeServer(child, manifest, baseDir)).join("");
     return `<div${classProp}${styleProp}>${node.content || ""}${childrenStr}</div>`;
   }
 
@@ -173,7 +173,7 @@ export default function renderTreeServer(node, manifest, baseDir) {
 
   const propsStr = propsArr.length ? " " + propsArr.join(" ") : "";
   let childrenStr = "";
-  if (Array.isArray(node.children)) childrenStr = node.children.map(child => renderTreeServer(child, manifest)).join("");
+  if (Array.isArray(node.children)) childrenStr = node.children.map(child => renderTreeServer(child, manifest, baseDir)).join("");
   const selfClosing = ["img","br","hr","input","meta","link"];
   if (selfClosing.includes(node.type)) return `<${node.type}${propsStr}/>`;
   return `<${node.type}${propsStr}>${node.content || ""}${childrenStr}</${node.type}>`;
