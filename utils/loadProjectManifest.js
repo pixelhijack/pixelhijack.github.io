@@ -20,7 +20,7 @@ export default function loadProjectManifest(projectName, baseDir) {
   manifest.pages = Array.isArray(manifest.pages) ? manifest.pages : [];
 
   // load folder.json (project-independent)
-  const folderPath = path.join(__dirname, 'public', 'folder.json');
+  const folderPath = path.join(baseDir, 'public', 'folder.json');
   let folderData = { flat: {} };
   if (fs.existsSync(folderPath)) {
     try {
@@ -48,7 +48,7 @@ export default function loadProjectManifest(projectName, baseDir) {
       background: "conceptual/botanic/DSC09953.jpg",
       tree: {
         type: "div",
-        class: "pt-[100px] pl-[75px] min-h-screen flex flex-col items-left justify-center space-y-4 p-8",
+        class: "pt-[120px] pl-[75px] min-h-screen flex flex-col items-left justify-center space-y-4 p-8",
         children: [
           {
             type: "h1",

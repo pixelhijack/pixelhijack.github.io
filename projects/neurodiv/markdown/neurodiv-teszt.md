@@ -7,7 +7,7 @@
 1.  Vannak kedvenc textúráid?
 2.  Vannak olyan textúrák, hangok, érintések, amiktől borzasztóan érzed magad?
 3.  Milyen a viszonyod a zajhoz? A csendet, a háttérzajt vagy az állandó zenét szereted?
-4.  Hordod már ugyanazokat a ruhákat többször is, mert úgy érzed, _hogy pont jó neked_ ?
+4.  Hordtad már ugyanazokat a ruhákat többször is, mert úgy érzed, _hogy pont jó neked_ ?
 5.  Vannak olyan szagok vagy fények, amiktől úgy érzed, azonnal menekülni kell?
 6.  Előfordul, hogy túlterhelődsz zsúfolt helyeken, például bevásárlóközpontokban vagy klubokban?
 7.  Észreveszel olyan részleteket, ami másoknak gyakran nem tűnik fel?

@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 import renderTreeServer from './utils/renderTreeServer.js';
 import loadProjectManifest from './utils/loadProjectManifest.js';
 import renderTemplate, { escapeHtml } from './utils/renderTemplate.js';
+import { getImageSrcServer } from './utils/renderTreeServer.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -122,21 +123,6 @@ app.post('/form', async (req, res) => {
   }
 });
 
-
-// API: return manifest for current project or query param
-app.get('/api/manifest', (req, res) => {
-  const project = process.env.PROJECT_NAME || 'photographer';
-  try {
-    const manifest = loadProjectManifest(project, __dirname);
-    // include a few computed hints if you want
-    res.json(manifest);
-  } catch (err) {
-    console.error('manifest load error', err);
-    res.status(500).json({ error: 'failed to load manifest' });
-  }
-});
-
-
 app.get(/^(.*)$/, (req, res) => {
   try {
     const pathName = req.path === '/' ? '' : req.path.replace(/^\//, '').replace(/\/$/, '');
@@ -198,9 +184,13 @@ app.get(/^(.*)$/, (req, res) => {
       ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${manifestCached.meta.ga}"></script>
          <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${manifestCached.meta.ga}');</script>`
       : '';
-    console.log('[ga] meta.ga:', manifestCached.meta?.ga, 'NODE_ENV:', process.env.NODE_ENV);
+    // console.log('[ga] meta.ga:', manifestCached.meta?.ga, 'NODE_ENV:', process.env.NODE_ENV);
     
     const footerHtml = manifestCached.footer || '';
+
+    const backgroundStyle = currentPage.background
+      ? `background-image: url('${getImageSrcServer(currentPage.background)}'); background-size: cover; background-position: center; background-attachment: fixed;`
+      : '';
 
     const html = renderTemplate({
       title,
@@ -213,7 +203,8 @@ app.get(/^(.*)$/, (req, res) => {
       fontLinks,
       cssLinks,
       gaScript,
-      ogTags
+      ogTags,
+      contentContainerStyle: backgroundStyle
     });
 
     res.status(200).send(html);

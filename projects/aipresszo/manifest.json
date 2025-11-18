@@ -6,8 +6,28 @@
     },
     "nav": [
         {
-            "href": "/tartalom",
-            "label": "Tartalom"
+            "href": "/ai-alapok",
+            "label": "AI alapok"
+        },
+        {
+            "href": "/ai-pszichologia",
+            "label": "AI & pszichológia"
+        },
+        {
+            "href": "/ai-oktatasban",
+            "label": "AI tanulásban & kutatásban"
+        },
+        {
+            "href": "/ai-munkaban",
+            "label": "AI munkában"
+        },
+        {
+            "href": "/ai-szuloknek",
+            "label": "AI szülőknek"
+        },
+        {
+            "href": "/kepzesrol",
+            "label": "A képzésről"
         }
     ],
     "footer": "Póth Attila // pothattila@gmail.com // +36 30 931 3580",
@@ -47,7 +67,7 @@
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "AI, személyre szabottan?"
+                                                "content": "AI-t tanulnál, személyre szabottan?"
                                             }
                                         ]
                                     },
@@ -57,27 +77,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "class": "font-body mb-8 mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "children": [
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "<b>Hétköznapi AI oktatás egy kávé mellett: anyukádnak, pszichológusodnak, <i>NEKED.</i>"
+                                                "content": "<b>Hétköznapi AI oktatás egy kávé mellett: anyukádnak, pszichológusodnak, <i>NEKED.</i></b>"
                                             }
                                         ]
                                     },
                                     {
                                         "type": "div",
-                                        "content": "<br>"
-                                    },
-                                    {
-                                        "type": "div",
-                                        "class": "font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
+                                        "class": "font-body mt-[20px] mb-8 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
                                         "children": [
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t gyakorlati oldalról közelítjük meg.</b><br><br>"
+                                                "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t gyakorlati oldalról közelítjük meg.</b>"
                                             }
                                         ]
                                     },
@@ -175,30 +191,135 @@
             }
         },
         {
-            "slug": "hetkoznapi-ai",
-            "navColor": "black",
+            "slug": "ai-alapok",
+            "navColor": "white",
             "tree": {
                 "type": "div",
-                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
-                "content": "☠️"
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-alapok.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
             }
         },
         {
             "slug": "ai-munkaban",
-            "navColor": "black",
+            "navColor": "white",
             "tree": {
                 "type": "div",
-                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
-                "content": "☠️"
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-munkaban.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
             }
         },
         {
-            "slug": "onismeret-pszichologia",
-            "navColor": "black",
+            "slug": "ai-szuloknek",
+            "navColor": "white",
             "tree": {
                 "type": "div",
-                "class": "flex flex-col items-center justify-center text-black h-full min-h-screen mx-auto",
-                "content": "☠️"
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-szuloknek.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "ai-oktatasban",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-oktatasban.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "ai-pszichologia",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-pszichologia.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "kepzesrol",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "kepzesrol.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
             }
         }
     ]

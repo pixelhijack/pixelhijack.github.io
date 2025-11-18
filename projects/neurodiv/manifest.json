@@ -16,7 +16,7 @@
         },
         {
             "href": "/ai",
-            "label": "AI használata?!"
+            "label": "AI használata?"
         },
         {
             "href": "/teszt",
@@ -38,7 +38,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "background": "neurodiv/oz2.webp",
+                        "background": null,
                         "class": "relative h-screen w-full mb-[-80px] md:mb-[0px]",
                         "children": [
                             {
@@ -48,28 +48,40 @@
                             },
                             {
                                 "type": "div",
-                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "class": "absolute inset-0 grid place-items-center z-0 px-4",
                                 "children": [
                                     {
-                                        "type": "h1",
-                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
-                                        "content": "<b>Neurodivergens vagyok?!</b>"
-                                    },
-                                    {
-                                        "type": "h2",
-                                        "class": "italic font-title mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
+                                        "type": "div",
+                                        "class": "flex flex-col items-center gap-3 md:gap-4 text-center",
                                         "children": [
                                             {
-                                                "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Önsegítő kör, egyéni peer support, közösségi párbeszéd <br>- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                                "type": "h2",
+                                                "class": "font-title text-white text-xl md:text-3xl p-4 text-center md:text-left",
+                                                "children": [
+                                                    {
+                                                        "type": "span",
+                                                        "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
+                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring?</strike><br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "h1",
+                                                "class": "font-title text-white text-4xl md:text-7xl p-4",
+                                                "content": "<b>Neurodivergens vagyok?!</b>"
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "mt-[-50px] italic font-title text-white text-xl md:text-2xl p-4",
+                                                "children": [
+                                                    {
+                                                        "type": "span",
+                                                        "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
+                                                        "content": "- híd neurodivergensek, neurotipikusok, szakmabeliek és szkeptikusok között"
+                                                    }
+                                                ]
                                             }
                                         ]
-                                    },
-                                    {
-                                        "type": "p",
-                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-7xl p-4",
-                                        "content": "<br><br>↓"
                                     }
                                 ]
                             }
@@ -124,7 +136,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>Az Overthinkers'Club egy nyitott projekt</b>, amihez bárki csatlakozhat. Nem diagnózis, nem terápia, hanem platform egy párbeszédre - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat. A cél a táborok összehozása: mindegy hogy ki \"egészséges\" vagy \"beteg\", szakember vagy civil, neurotipikus vagy neurodivergens, friss diagnózissal rendelkező, várólistán álló, vagy csak magát gyanító, esetleg teljesen szkeptikus."
+                                        "content": "<b>Az Overthinkers'Club egy nyitott projekt</b>, amihez bárki csatlakozhat. Nem diagnózis, nem terápia, hanem platform egy párbeszédre - nem helyettesítve, hanem kiegészítve a hivatalos segítségformákat. A cél a táborok összehozása: mindegy hogy ki \"egészséges\" vagy \"beteg\", szakember vagy civil, neurotipikus vagy neurodivergens, friss diagnózissal rendelkező, várólistán álló, vagy csak magát gyanító, esetleg teljesen szkeptikus.<br>"
                                     }
                                 ]
                             }
@@ -887,7 +899,8 @@
                                                         "content": "Használat pszichometria, -diagnosztika, -terápia kontextusban"
                                                     }
                                                 ]
-                                            },{
+                                            },
+                                            {
                                                 "type": "div",
                                                 "children": [
                                                     {
@@ -903,7 +916,8 @@
                                                         "content": "Tanulnék élőben, egy kávé mellett"
                                                     }
                                                 ]
-                                            },{
+                                            },
+                                            {
                                                 "type": "div",
                                                 "children": [
                                                     {

@@ -17,7 +17,8 @@ export default function renderTemplate({
     fontLinks, 
     cssLinks, 
     gaScript, 
-    ogTags 
+    ogTags ,
+    contentContainerStyle
 }) {
   
   // Generate OG meta tags
@@ -67,8 +68,11 @@ export default function renderTemplate({
       <nav id="mobile-nav-list" class="flex flex-col items-center justify-center h-full space-y-8 text-center text-3xl font-bold" style="color: white">${navHtml}</nav>
     </div>
   </nav>
-  <main id="content-container" class="relative w-full min-h-screen">
-    ${contentHtml}
+  <main 
+    id="content-container" 
+    class="relative w-full min-h-screen"
+    ${contentContainerStyle ? `style="${contentContainerStyle}"` : ''}>
+        ${contentHtml}
   </main>
   <script>
     function submitForm(formElem, intent) {

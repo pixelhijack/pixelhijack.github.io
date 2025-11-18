@@ -12,7 +12,7 @@ marked.setOptions({
   pedantic: false,    // Don't be overly strict
 });
 
-function getImageSrcServer(filename) {
+export function getImageSrcServer(filename) {
   if (!filename) return '';
   if (process.env.NODE_ENV === 'development') return `/img/${filename}`;
   return `https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/${filename}`;

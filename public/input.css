@@ -43,11 +43,11 @@ img {
 /* Define the fade-in keyframe animation */
 @keyframes fadeIn {
     from {
-    opacity: 0;
+        opacity: 0;
     }
 
     to {
-    opacity: 1;
+        opacity: 1;
     }
 }
 
@@ -63,23 +63,23 @@ img {
 
 @media (min-width: 768px) {
     .masonry-container {
-    column-count: 4;
+        column-count: 4;
     }
 
     .masonry-container.masonry-2 {
-    column-count: 2;
+        column-count: 2;
     }
 
     .masonry-container.masonry-3 {
-    column-count: 3;
+        column-count: 3;
     }
 
     .masonry-container.masonry-4 {
-    column-count: 4;
+        column-count: 4;
     }
 
     .masonry-container.masonry-6 {
-    column-count: 5;
+        column-count: 5;
     }
 }
 
@@ -112,7 +112,7 @@ figure figcaption.caption-center {
 
 @media (max-width: 767px) {
     figure figcaption {
-    font-size: 1.5rem;
+        font-size: 1.5rem;
     }
 }
 

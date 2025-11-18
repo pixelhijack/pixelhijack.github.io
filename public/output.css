@@ -628,6 +628,10 @@ video {
   top: 1.5rem;
 }
 
+.top-\[-80\%\] {
+  top: -80%;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -750,6 +754,18 @@ video {
   margin-top: 20px;
 }
 
+.mt-\[-80\%\] {
+  margin-top: -80%;
+}
+
+.mt-\[-50\%\] {
+  margin-top: -50%;
+}
+
+.mb-\[-50\%\] {
+  margin-bottom: -50%;
+}
+
 .block {
   display: block;
 }
@@ -800,6 +816,22 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[20vh\] {
+  height: 20vh;
+}
+
+.h-\[40vh\] {
+  height: 40vh;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
+}
+
+.h-\[30vh\] {
+  height: 30vh;
 }
 
 .max-h-\[90vh\] {
@@ -875,6 +907,10 @@ video {
   flex-direction: column;
 }
 
+.place-items-center {
+  place-items: center;
+}
+
 .items-start {
   align-items: flex-start;
 }
@@ -893,6 +929,10 @@ video {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .gap-4 {
@@ -987,6 +1027,14 @@ video {
   background-position: center;
 }
 
+.bg-\[bottom_578px_right_0px\] {
+  background-position: bottom 578px right 0px;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
@@ -995,6 +1043,11 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-2 {
@@ -1081,6 +1134,14 @@ video {
 
 .pt-\[88px\] {
   padding-top: 88px;
+}
+
+.pt-\[140px\] {
+  padding-top: 140px;
+}
+
+.pt-\[200px\] {
+  padding-top: 200px;
 }
 
 .text-left {
@@ -1400,6 +1461,14 @@ div.sidescroll-gallery::-webkit-scrollbar {
     height: 100vh;
   }
 
+  .md\:h-\[40vh\] {
+    height: 40vh;
+  }
+
+  .md\:h-\[50vh\] {
+    height: 50vh;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -1440,6 +1509,14 @@ div.sidescroll-gallery::-webkit-scrollbar {
     align-items: stretch;
   }
 
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
+  .md\:bg-\[bottom_178px_right_0px\] {
+    background-position: bottom 178px right 0px;
+  }
+
   .md\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
@@ -1451,6 +1528,10 @@ div.sidescroll-gallery::-webkit-scrollbar {
 
   .md\:pt-\[88px\] {
     padding-top: 88px;
+  }
+
+  .md\:text-left {
+    text-align: left;
   }
 
   .md\:text-2xl {
