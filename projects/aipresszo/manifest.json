@@ -176,15 +176,6 @@
             }
         },
         {
-            "slug": "tartalom",
-            "navColor": "black",
-            "tree": {
-                "type": "markdown",
-                "file": "tartalom.md",
-                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
-            }
-        },
-        {
             "slug": "ai-alapok",
             "navColor": "white",
             "tree": {

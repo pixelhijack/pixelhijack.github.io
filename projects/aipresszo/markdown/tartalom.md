@@ -1,6 +1,6 @@
 # Tartalomjegyzék
 
-## 🤖 AI gyorstalpaló: alapfogalmak
+## 🤖 AI gyorstalpaló, alapfogalmak
 
 - Mi az az AI valójában? Mik azok a nagy nyelvi modellek?
 - Mennyire okos az AI? Hogyan _nem_ ért dolgokat?
