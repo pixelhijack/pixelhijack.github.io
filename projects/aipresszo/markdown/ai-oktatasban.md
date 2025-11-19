@@ -7,6 +7,12 @@
 - Írass-e AI-val dolgozatot?
 - AI mint nyelvtanár / vizsga partner / kutatótárs
 
+## **👩‍🎓 AI Nyelvtanuláshoz**
+
+- Helyettesítheti a ChatGPT (vagy más AI) a Duolingo-t? (Válasz: ABSZOLÚT, sőt!)
+- Hogyan használj AI-t nyelvtanuláshoz?
+- Hogyan tudsz magadnak egy privát AI nyelvtanárt promptolni?
+
 ## **👩‍🏫 Tanároknak, pedagógusoknak**
 
 - AI az oktatásban: hasznos segítség vagy túl könnyű csalás?

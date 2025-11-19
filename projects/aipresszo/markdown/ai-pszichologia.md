@@ -1,8 +1,18 @@
-## 🧠 Mentális egészségünk egy digitális korban
+## AI és önismeret
 
-- Hogyan hat social media (instagram, facebook) az agyunkra, a mentális egészségünkre?
-- Kontentdiéta – mi a baj a legtöbb online tartalommal?
-- Képernyők és a dopamin: Miért vagyunk képtelenek nem nyomkodni a telefonunkat? Miért veszítettük el az olvasás képességét?
-- Digitális detox – érdemes? Hogyan?
-- AI pszichózis – mikor szakadok el a valóságtól? Mennyi a túl sok?
 - Megbeszélheted-e a magánéleti, párkapcsolati, pszichés gondjaid AI-val?
+- AI pszichózis – mikor szakadsz el a valóságtól? Mennyi a túl sok?
+- Hogyan használj AI-t önismereti naplózásra, önfelfedezésre?
+- Beszéljünk az ön-diagnózisról! Szabad-e, jó-e?
+
+## Pszichológusoknak, terapeutáknak
+
+- Használható-e az AI pszichodiagnosztikára? Mik az etikai megfontolások?
+- ...és terápián, segítségül? AI mint transzszkript / szupervíziós segéd
+- AI mintafelismerésben (maladaptív sémák, kognitív torzítások, szövegelemzés)
+- Hogyan lehet AI-t privát, secure módon használni?
+- Mi a pszichometria jövője?
+
+## AI kutatásban
+
+- Hogyan használhatod az AI-t kutatásban, adatfeldolgozáshoz, kutatásmódszertani kérdésekben asszisztensként, mintakeresésben adathalmazokon, statisztikai metódusok kiválasztásához, kutatási stratégiák, hipotézisek validálásához

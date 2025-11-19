@@ -6,28 +6,32 @@
     },
     "nav": [
         {
-            "href": "/ai-alapok",
+            "href": "/alapok",
             "label": "AI alapok"
         },
         {
-            "href": "/ai-pszichologia",
+            "href": "/pszichologia",
             "label": "AI & pszichológia"
         },
         {
-            "href": "/ai-oktatasban",
-            "label": "AI tanulásban & kutatásban"
+            "href": "/oktatasban",
+            "label": "AI tanulásban"
         },
         {
-            "href": "/ai-munkaban",
+            "href": "/kutatasban",
+            "label": "AI kutatásban"
+        },
+        {
+            "href": "/munkaban",
             "label": "AI munkában"
         },
         {
-            "href": "/ai-szuloknek",
+            "href": "/szuloknek",
             "label": "AI szülőknek"
         },
         {
-            "href": "/kepzesrol",
-            "label": "A képzésről"
+            "href": "/tanrend",
+            "label": "Tanrend"
         }
     ],
     "footer": "Póth Attila // pothattila@gmail.com // +36 30 931 3580",
@@ -176,7 +180,7 @@
             }
         },
         {
-            "slug": "ai-alapok",
+            "slug": "alapok",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -198,7 +202,7 @@
             }
         },
         {
-            "slug": "ai-munkaban",
+            "slug": "munkaban",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -220,7 +224,7 @@
             }
         },
         {
-            "slug": "ai-szuloknek",
+            "slug": "szuloknek",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -242,7 +246,7 @@
             }
         },
         {
-            "slug": "ai-oktatasban",
+            "slug": "oktatasban",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -264,7 +268,7 @@
             }
         },
         {
-            "slug": "ai-pszichologia",
+            "slug": "pszichologia",
             "navColor": "white",
             "tree": {
                 "type": "div",
