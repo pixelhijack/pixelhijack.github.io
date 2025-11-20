@@ -2,8 +2,7 @@
     "meta": {
         "ga": "G-1Q8V9N3YPM",
         "title": "Overthinkers'Club",
-        "logo": "Overthinkers'Club",
-        "robots": "noindex"
+        "logo": "Overthinkers'Club"
     },
     "nav": [
         {
@@ -1068,8 +1067,8 @@
                                 "class": "mt-[20px] md:mt-0 md:ml-8 mb-8 text-sm text-black rounded-md max-w-[80%]",
                                 "children": [
                                     {
-                                        "type": "div",
-                                        "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "type": "h2",
+                                        "class": "text-center mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
                                         "content": "<br><br><hr><br><b>A te történeted </b><br><br>"
                                     },
                                     {
@@ -1108,6 +1107,20 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                        "content": "<b>Az én történetem </b><br><br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "mx-auto my-8 flex flex-col items-center justify-center overflow-hidden",
+                        "content": "<iframe src=\"https://autinaplo.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
                     }
                 ]
             }
