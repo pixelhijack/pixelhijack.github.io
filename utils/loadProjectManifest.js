@@ -7,8 +7,15 @@ const __dirname = path.dirname(__filename);
 // ------------------------------------
 
 // helper: load manifest for project and merge folder.json routes
-export default function loadProjectManifest(projectName, baseDir) {
-  const manifestPath = path.join(baseDir, 'projects', projectName, 'manifest.json');
+export default function loadProjectManifest(projectName, baseDir, language = 'en') {
+  // Try language-specific manifest first (e.g., manifest-hu.json)
+  let manifestPath = path.join(baseDir, 'projects', projectName, `manifest-${language}.json`);
+  
+  // Fallback to manifest.json if language-specific doesn't exist
+  if (!fs.existsSync(manifestPath)) {
+    manifestPath = path.join(baseDir, 'projects', projectName, 'manifest.json');
+  }
+  
   let manifest;
   if (fs.existsSync(manifestPath)) {
     manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));

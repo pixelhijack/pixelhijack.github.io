@@ -44,21 +44,57 @@ const auth = new google.auth.JWT({
 
 const sheets = google.sheets({ version: 'v4', auth });
 
+// Helper to detect language from Accept-Language header
+function detectLanguage(req) {
+  const acceptLang = req.headers['accept-language'] || '';
+  // Check if Hungarian is preferred
+  if (acceptLang.toLowerCase().includes('hu')) {
+    return 'hu';
+  }
+  return 'en'; // default to English
+}
+
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
-let manifestCached = loadProjectManifest(PROJECT, __dirname);
+// Cache manifests per language
+const manifestCache = {
+  en: loadProjectManifest(PROJECT, __dirname, 'en'),
+  hu: loadProjectManifest(PROJECT, __dirname, 'hu')
+};
 
 // Optional: watch for changes in dev
 if (process.env.NODE_ENV === 'development') {
   const PROJECT = process.env.PROJECT_NAME || 'photographer';
-  const manifestFile = path.join(__dirname, 'projects', PROJECT, 'manifest.json');
-  let watchTimeout;
-  fs.watch(manifestFile, () => {
-    clearTimeout(watchTimeout);
-    watchTimeout = setTimeout(async () => {
-      manifestCached = await loadProjectManifest(PROJECT, __dirname);
-      console.log('[manifest] reloaded');
-    }, 100);
+  const projectDir = path.join(__dirname, 'projects', PROJECT);
+  
+  // Watch both language manifests
+  ['en', 'hu'].forEach(lang => {
+    const manifestFile = path.join(projectDir, `manifest-${lang}.json`);
+    if (fs.existsSync(manifestFile)) {
+      let watchTimeout;
+      fs.watch(manifestFile, () => {
+        clearTimeout(watchTimeout);
+        watchTimeout = setTimeout(async () => {
+          manifestCache[lang] = await loadProjectManifest(PROJECT, __dirname, lang);
+          console.log(`[manifest] reloaded manifest-${lang}.json`);
+        }, 100);
+      });
+    }
   });
+  
+  // Also watch default manifest.json as fallback
+  const defaultManifest = path.join(projectDir, 'manifest.json');
+  if (fs.existsSync(defaultManifest)) {
+    let watchTimeout;
+    fs.watch(defaultManifest, () => {
+      clearTimeout(watchTimeout);
+      watchTimeout = setTimeout(async () => {
+        ['en', 'hu'].forEach(lang => {
+          manifestCache[lang] = loadProjectManifest(PROJECT, __dirname, lang);
+        });
+        console.log('[manifest] reloaded manifest.json');
+      }, 100);
+    });
+  }
 }
 
 // load HTML template for server-side rendering
@@ -125,6 +161,10 @@ app.post('/form', async (req, res) => {
 
 app.get(/^(.*)$/, (req, res) => {
   try {
+    // Detect language from browser headers
+    const language = detectLanguage(req);
+    const manifestCached = manifestCache[language];
+    
     const pathName = req.path === '/' ? '' : req.path.replace(/^\//, '').replace(/\/$/, '');
     let currentPage = manifestCached.pages.find(p => p.slug === pathName);
     
