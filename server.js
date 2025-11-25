@@ -3,6 +3,7 @@ import { google } from "googleapis";
 import express from 'express'; 
 import path from 'path';
 import fs from 'fs';
+import nodemailer from 'nodemailer';
 import { fileURLToPath } from 'url'; 
 // --- Define ES Module Equivalents for CommonJS __dirname previously ---
 const __filename = fileURLToPath(import.meta.url);
@@ -43,6 +44,21 @@ const auth = new google.auth.JWT({
 });
 
 const sheets = google.sheets({ version: 'v4', auth });
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        type: 'OAuth2',
+        user: 'pothattila@gmail.com', // Your sender email
+        clientId: process.env.GOOGLE_CLIENT_ID, // Client ID from Cloud Console
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Client Secret from Cloud Console
+        refreshToken: process.env.GOOGLE_REFRESH_TOKEN, // The token you just obtained
+        // Nodemailer will automatically use the refreshToken to fetch a new
+        // accessToken when needed, making the accessToken variable optional
+        // unless you want to set it initially.
+        accessToken: process.env.GOOGLE_ACCESS_TOKEN 
+    }
+});
 
 // Helper to detect language from Accept-Language header
 function detectLanguage(req) {
@@ -115,6 +131,21 @@ app.post('/form', async (req, res) => {
   const { intent, ...formData } = req.body || {};
   const timestamp = new Date().toLocaleString();
 
+  const mailOptions = {
+    from: '"Póth Attila" <pothattila@gmail.com>',
+    to: 'pothattila@gmail.com',
+    subject: intent || 'New Form Submission',
+    html: `
+        <h1>New Form Submission from ${formData.name || 'Anonymous'}!</h1>
+        <p>Intent: ${intent || 'No intent provided'}</p><br/>
+        <p>Email: ${formData.email || 'No email provided'}</p><br/>
+        <p>Contact: ${formData.contact || 'No contact provided'}</p><br/>
+        <p>Message: ${formData.message || 'No message provided'}</p><br/>
+        <p>Role: ${formData.role || 'No role provided'}</p><br/>
+        <p>Checkboxes: ${JSON.stringify(formData.checkboxes) || 'No checkboxes provided'}</p>
+      `
+  };
+
   // save to Google Sheets
   let sheetName = '';
   let values = [];
@@ -152,9 +183,18 @@ app.post('/form', async (req, res) => {
       },
     });
 
+    // 3. Send notification email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
+
     res.status(200).json({ message: 'Form submitted successfully!' });
   } catch (error) {
-    console.error('Error writing to Google Sheet:', error);
+    console.error('Error form submission:', error);
     res.status(500).json({ error: 'Failed to submit form.' });
   }
 });

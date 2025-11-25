@@ -4,6 +4,7 @@
     "express": "^5.1.0",
     "googleapis": "^164.1.0",
     "marked": "^15.0.12",
+    "nodemailer": "^7.0.10",
     "path": "^0.12.7"
   },
   "scripts": {
