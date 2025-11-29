@@ -16,11 +16,11 @@
         }
     },
     "nav": [ 
+        { "href": "/learn", "label": "Learn" },
         { "href": "/fashion", "label": "Fashion" },
         { "href": "/analog", "label": "Analog" },
         { "href": "/stories", "label": "Stories" },
         { "href": "/backstage", "label": "Backstage" },
-        { "href": "/projects", "label": "Projects" },
         { "href": "/prints", "label": "Prints" },
         { "href": "/about", "label": "About" }
     ],
@@ -36,7 +36,11 @@
         "hero-subtitle": "font-eb-garamond mt-[-15px] text-center text-white text-xl md:text-2xl p-4",
         "center-aligned": "",
         "paragraph": "",
-        "mobile-bg-cover": ""
+        "mobile-bg-cover": "",
+        "left-right__wrapper": "flex flex-col md:flex-row items-stretch min-h-screen",
+        "left-right__text": "md:w-1/2 w-full p-8 flex flex-col justify-center",
+        "left-right__image-wrapper": "md:w-1/2 w-full h-[70vh] md:h-auto overflow-hidden",
+        "left-right__image": "w-full h-full object-cover"
     },
     "pages": [
         {
@@ -68,7 +72,6 @@
                                     "conceptual/botanic/DSC09848.jpg",
                                     "conceptual/the-statue/DSC07202-bw.jpg",
                                     "analog/north/20250926-DSC09631.jpg",
-                                    "werk/20250531-DSC07961.jpg",
                                     "stories/hypnagogia/pothattila-09975.jpg",
                                     "stories/hypnagogia/DSC09831.jpg",
                                     "stories/hypnagogia/DSC01905-agi.jpg",
@@ -89,7 +92,7 @@
                                     {
                                         "type": "h2",
                                         "class": "hero-subtitle",
-                                        "content": "<i>Vintage lens & analog film photography <br>by Póth Attila</i>"
+                                        "content": "<i>Analog film, vintage lenses<br>& narrative documentary <br><b>PHOTOGRAPHY SCHOOL</b><br>by Póth Attila</i>"
                                     }
                                 ]
                             }
@@ -210,6 +213,112 @@
                                 "linkTo": "portraits"
                             }
                         ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "learn",
+            "navColor": "white",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "flex flex-col items-center justify-center h-full",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "relative h-screen w-full",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": [
+                                            "about/1734626801051.jpg"
+                                        ],
+                                        "class": "w-full h-full object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h1",
+                                                "class": "hero-title",
+                                                "content": "Learn narrative photography"
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
+                                                "content": "<i>the slow way: with analog film, vintage lenses</i>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-4 masonry-mobile-1 masonry-portrait",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "portraits/baueragi-01681.jpg"
+                                ],
+                                "caption": "I. Alapok: <br><i><small>fény, kompozíció, jelenlét</small></i>",
+                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl max-w-[90%]",
+                                "linkTo": "learn"
+                            },
+                            {
+                                "type": "img",
+                                "src": [
+                                    "analog/portraits/DSC02992-3-crop2.jpg"
+                                ],
+                                "caption": "II. Slow photography:<br><i><small>analóg mindset, vintage esztétika, színharmóniák</small></i>",
+                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-black max-w-[90%]",
+                                "linkTo": "learn"
+                            },
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/pride/DSC01077.jpg"
+                                ],
+                                "caption": "III. A szerkesztőségben: <br><i><small>képválogatás, szerkesztés, narratív történetmesélés</small></i>",
+                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-amber-300 max-w-[90%]",
+                                "linkTo": "learn"
+                            },
+                            {
+                                "type": "img",
+                                "src": [
+                                    "fashion/shows/marie-claire/DSC03593.jpg"
+                                ],
+                                "caption": "IV. Fashion fotózás:<br><i><small>hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel, modellekkel</small></i>",
+                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl max-w-[90%]",
+                                "linkTo": "learn"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "masonry-container masonry-4 masonry-mobile-1 masonry-portrait",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": [
+                                    "stories/pride/DSC01077.jpg"
+                                ],
+                                "caption": "A streetfotózás művészete<br><i><small>- Hogyan NE fotózzunk az utcán? Mit jelentett a jó streetfotózás a múltban?</small></i>",
+                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-amber-300",
+                                "linkTo": "learn"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "img",
+                        "src": "bts/240428-02087.jpg"
                     }
                 ]
             }
@@ -397,6 +506,7 @@
                             "fashion/lookbook/forrai-2024/DSC03289-bw.jpg",
                             "fashion/shows/forrai/20230527-08536.jpg",
                             "fashion/shows/the-balance/DSC09177.jpg",
+                            "werk/20250531-DSC07961.jpg",
                             "fashion/shows/bcefw/240831-00268.jpg",
                             "fashion/shows/the-balance/DSC09293.jpg"
                         ],
