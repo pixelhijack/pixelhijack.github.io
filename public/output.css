@@ -714,6 +714,10 @@ video {
   margin-top: -15px;
 }
 
+.mt-\[-45px\] {
+  margin-top: -45px;
+}
+
 .mt-\[-50px\] {
   margin-top: -50px;
 }
@@ -1071,12 +1075,20 @@ video {
   padding-bottom: 3rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .pb-\[2rem\] {
   padding-bottom: 2rem;
 }
 
 .pl-\[2rem\] {
   padding-left: 2rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .pt-\[120px\] {
@@ -1182,6 +1194,51 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-700 {
+  --tw-text-opacity: 1;
+  color: rgb(180 83 9 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-50 {
+  --tw-text-opacity: 1;
+  color: rgb(255 251 235 / var(--tw-text-opacity, 1));
+}
+
+.text-lime-50 {
+  --tw-text-opacity: 1;
+  color: rgb(247 254 231 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-300 {
+  --tw-text-opacity: 1;
+  color: rgb(252 211 77 / var(--tw-text-opacity, 1));
+}
+
+.text-emerald-300 {
+  --tw-text-opacity: 1;
+  color: rgb(110 231 183 / var(--tw-text-opacity, 1));
+}
+
+.text-indigo-300 {
+  --tw-text-opacity: 1;
+  color: rgb(165 180 252 / var(--tw-text-opacity, 1));
+}
+
+.text-fuchsia-300 {
+  --tw-text-opacity: 1;
+  color: rgb(240 171 252 / var(--tw-text-opacity, 1));
+}
+
+.text-rose-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 164 175 / var(--tw-text-opacity, 1));
+}
+
+.text-rose-700 {
+  --tw-text-opacity: 1;
+  color: rgb(190 18 60 / var(--tw-text-opacity, 1));
 }
 
 .underline {
@@ -1291,6 +1348,30 @@ img {
   margin-bottom: 1rem;
   -moz-column-break-inside: avoid;
        break-inside: avoid;
+}
+
+/* Force all images to portrait (3:2) aspect ratio */
+
+.masonry-container.masonry-portrait img {
+  aspect-ratio: 2 / 3;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Force all images to landscape (3:2) aspect ratio */
+
+.masonry-container.masonry-landscape img {
+  aspect-ratio: 3 / 2;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Force all images to square (1:1) aspect ratio */
+
+.masonry-container.masonry-square img {
+  aspect-ratio: 1 / 1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 figure {

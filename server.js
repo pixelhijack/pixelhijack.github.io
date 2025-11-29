@@ -170,7 +170,7 @@ app.post('/form', async (req, res) => {
     // 3. Send notification email via Resend
     try {
       await resend.emails.send({
-        from: intent + ' <pothattila-labs@resend.dev>', // Use this for testing, change to your domain later
+        from: intent + ' <noreply@pothattila.com>',
         to: 'pothattila@gmail.com',
         replyTo: 'pothattila@gmail.com',
         subject: intent || 'New Form Submission',
@@ -179,7 +179,6 @@ app.post('/form', async (req, res) => {
       console.log('Email notification sent successfully via Resend');
     } catch (emailError) {
       console.error('Failed to send email via Resend:', emailError);
-      // Don't fail the request if email fails
     }
 
     res.status(200).json({ 

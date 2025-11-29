@@ -90,6 +90,24 @@ img {
     break-inside: avoid;
 }
 
+/* Force all images to portrait (3:2) aspect ratio */
+.masonry-container.masonry-portrait img {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+/* Force all images to landscape (3:2) aspect ratio */
+.masonry-container.masonry-landscape img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+/* Force all images to square (1:1) aspect ratio */
+.masonry-container.masonry-square img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
 figure {
     position: relative;
 }

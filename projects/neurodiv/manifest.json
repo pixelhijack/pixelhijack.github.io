@@ -60,7 +60,7 @@
                                                     {
                                                         "type": "span",
                                                         "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring?</strike><br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
+                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring</strike>?<br>Edukáció<br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
                                                     }
                                                 ]
                                             },
