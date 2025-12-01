@@ -750,6 +750,10 @@ video {
   margin-top: 20px;
 }
 
+.mb-\[128px\] {
+  margin-bottom: 128px;
+}
+
 .block {
   display: block;
 }
@@ -1150,6 +1154,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
 .font-black {

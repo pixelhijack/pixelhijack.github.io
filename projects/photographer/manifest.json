@@ -246,12 +246,12 @@
                                             {
                                                 "type": "h1",
                                                 "class": "hero-title",
-                                                "content": "Learn narrative photography"
+                                                "content": "Tanuld meg a narratív <br>fotós stílus alapjait!"
                                             },
                                             {
                                                 "type": "h2",
                                                 "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
-                                                "content": "<i>the slow way: with analog film, vintage lenses</i>"
+                                                "content": "<i>slow photography: analóg film, vintage optikák, történetmesélés</i>"
                                             }
                                         ]
                                     }
@@ -261,64 +261,196 @@
                     },
                     {
                         "type": "div",
-                        "class": "masonry-container masonry-4 masonry-mobile-1 masonry-portrait",
+                        "class": "font-eb-garamond grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4",
                         "children": [
                             {
-                                "type": "img",
-                                "src": [
-                                    "portraits/baueragi-01681.jpg"
-                                ],
-                                "caption": "I. Alapok: <br><i><small>fény, kompozíció, jelenlét</small></i>",
-                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl max-w-[90%]",
-                                "linkTo": "learn"
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "portraits/baueragi-01681.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "I. Portré alapok: <br><i><small>- Fény, kompozíció, jelenlét.<br>Miért mások a mai mozifilmek? Miért olyan egyediek a retro színharmóniák? Hogyan legyen jelenlétünk egy fotózás során?</small></i>"
+                                    }
+                                ]
                             },
                             {
-                                "type": "img",
-                                "src": [
-                                    "analog/portraits/DSC02992-3-crop2.jpg"
-                                ],
-                                "caption": "II. Slow photography:<br><i><small>analóg mindset, vintage esztétika, színharmóniák</small></i>",
-                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-black max-w-[90%]",
-                                "linkTo": "learn"
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "analog/portraits/DSC02992-3-crop2.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "II. Slow photography:<br><i><small>- Mi az analóg mindset? Miért fotózzunk vintage manuál obikkal, ha sokkal nehezebb? Tényleg az élesség a fontos?</small></i>"
+                                    }
+                                ]
                             },
                             {
-                                "type": "img",
-                                "src": [
-                                    "stories/pride/DSC01077.jpg"
-                                ],
-                                "caption": "III. A szerkesztőségben: <br><i><small>képválogatás, szerkesztés, narratív történetmesélés</small></i>",
-                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-amber-300 max-w-[90%]",
-                                "linkTo": "learn"
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "stories/pride/DSC01077.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "III. Sorozatok: <br><i><small>- Hogy szerkeszd egységesre a képeid? Miért fontos lépés a képválogatás (sequencing)? Hány kép kell egy sorozathoz?</small></i>"
+                                    }
+                                ]
                             },
                             {
-                                "type": "img",
-                                "src": [
-                                    "fashion/shows/marie-claire/DSC03593.jpg"
-                                ],
-                                "caption": "IV. Fashion fotózás:<br><i><small>hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel, modellekkel</small></i>",
-                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl max-w-[90%]",
-                                "linkTo": "learn"
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "fashion/shows/marie-claire/DSC03593.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "IV. Fashion fotózás:<br><i><small>- Hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel? Milyen a jó moodboard? Hogyan fotózz location-ökön?</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "werk/DSC02902.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "Ki fizet kinek egy kollab fotózásban?<br><i><small>- Minden, amit a TFCD/TFP-ről kérdezni akartál, de sosem mertél</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "analog/gaia/DSC02601.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "Modell kommunikáció<br><i><small>- Hogy szervezz fotózást? Hogyan (NE) kommunikálj modellekkel? Soft skill training</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "analog/day/halfframe-foma-02082.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "A streetfotózás művészete<br><i><small>- Hogyan NE fotózzunk az utcán? Mit jelentett a jó streetfotózás a múltban?</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "learn/alapok",
+                                "class": "flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "zine/DSC06266.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "content": "Csinálj saját zine-t!<br><i><small>- Miért jó a print? Hogy fogj neki saját printek és magazinok készítésének?</small></i>"
+                                    }
+                                ]
                             }
                         ]
                     },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond text-center text-black text-6xl p-8",
+                        "content": "<i>Coming soon...</i>"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "learn/alapok",
+            "navColor": "white",
+            "background": null,
+            "tree": {
+                "type": "div",
+                "class": "",
+                "children": [
                     {
                         "type": "div",
-                        "class": "masonry-container masonry-4 masonry-mobile-1 masonry-portrait",
+                        "class": "flex flex-col items-center justify-center h-full",
                         "children": [
                             {
-                                "type": "img",
-                                "src": [
-                                    "stories/pride/DSC01077.jpg"
-                                ],
-                                "caption": "A streetfotózás művészete<br><i><small>- Hogyan NE fotózzunk az utcán? Mit jelentett a jó streetfotózás a múltban?</small></i>",
-                                "captionStyle": "caption-center font-eb-garamond text-4xl md:text-3xl text-amber-300",
-                                "linkTo": "learn"
+                                "type": "div",
+                                "class": "relative h-screen w-full",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": [
+                                            "bts/240428-02087.jpg"
+                                        ],
+                                        "class": "w-full h-full object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h1",
+                                                "class": "hero-title",
+                                                "content": ""
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
+                                                "content": "<i>Coming soon...</i>"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
-                    },
-                    {
-                        "type": "img",
-                        "src": "bts/240428-02087.jpg"
                     }
                 ]
             }
