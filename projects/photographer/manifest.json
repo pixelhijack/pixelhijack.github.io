@@ -404,7 +404,109 @@
                     {
                         "type": "h2",
                         "class": "font-eb-garamond text-center text-black text-6xl p-8",
-                        "content": "<i>Coming soon...</i>"
+                        "content": "<hr><br><br><i>Előjelentkezés</i>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col items-center justify-center mx-auto ",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'pothattila.com: learn');",
+                                "method": "POST",
+                                "class": "mt-[20px] md:mt-0 md:ml-8 mb-8 text-sm text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<br><hr><br><b>Mi érdekelne? </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Miről szeretnél többet megtudni? Melyik témák érdekelnek leginkább?",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "legend",
+                                                "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                                "content": "<br><b>Milyen formában?<br><br></b>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: 1-on-1",
+                                                        "id": "checkbox: 1-on-1"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: 1-on-1",
+                                                        "content": "Egyéni oktatás, konzultációk, fotós coaching, kihívások, feladatok"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: workshop",
+                                                        "id": "checkbox: workshop"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: workshop",
+                                                        "content": "Workshop, több emberrel egy időben"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: onlince-materials",
+                                                        "id": "checkbox: onlince-materials"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: onlince-materials",
+                                                        "content": "Online cikkek, letölthető segédanyagok (pdf)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "button",
+                                        "class": "bg-black text-white p-2 rounded-md mt-4 p-3 hover:bg-gray-800",
+                                        "content": "Jelentkezem",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
