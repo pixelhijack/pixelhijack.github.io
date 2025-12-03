@@ -17,7 +17,7 @@ export default function renderTemplate({
     fontLinks, 
     cssLinks, 
     gaScript, 
-    ogTags ,
+    ogTags,
     contentContainerStyle
 }) {
   

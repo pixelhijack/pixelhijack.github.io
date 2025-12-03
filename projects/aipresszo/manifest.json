@@ -2,7 +2,13 @@
     "meta": {
         "ga": "G-4DMZMEWT9E",
         "title": "🤖 AI.Presszó - Mesterséges intelligencia oktatás egy kávé mellett",
-        "logo": "🤖 AI.Presszó"
+        "logo": "🤖 AI.Presszó",
+        "og": {
+            "title": "🤖 AI.Presszó",
+            "description": "Mesterséges intelligencia oktatás egy kávé mellett: tanulóknak, kutatóknak, pszichológusoknak, szülőknek, dolgozóknak, NEKED.",
+            "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg",
+            "type": "website"
+        }
     },
     "nav": [
         {

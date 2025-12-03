@@ -2,7 +2,13 @@
     "meta": {
         "ga": "G-1Q8V9N3YPM",
         "title": "Overthinkers'Club",
-        "logo": "Overthinkers'Club"
+        "logo": "Overthinkers'Club",
+        "og": {
+            "title": "Overthinkers'Club",
+            "description": "Hogyan navigálj az ADHD / autizmus vizein? Hogyan integráld a neurodivergenciával az életed? Edukáció, önismeret, közösségi párbeszéd egy tapasztalati szakértőtől.",
+            "image": "https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/neurodiv/oz2.webp",
+            "type": "website"
+        }
     },
     "nav": [
         {
