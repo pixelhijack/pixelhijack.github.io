@@ -169,32 +169,123 @@ db.collection("submissions_photographer")
 
 ## Security Rules (Firestore)
 
+**Note:** Firestore rules don't support dynamic collection names with variables. You need to create explicit rules for each project collection.
+
 ```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Users can read their own data
+    // Shared users collection
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Project-specific user data
-    match /users_{project}/{userId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow write: if request.auth != null && request.auth.uid == userId;
+    // Helper function to check if user owns the document
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
 
-      // Engagements subcollection
+    // Project-specific user data - PHOTOGRAPHER
+    match /users_photographer/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+
       match /engagements/{engagementId} {
-        allow read: if request.auth != null && request.auth.uid == userId;
-        allow create: if request.auth != null && request.auth.uid == userId;
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId);
       }
     }
 
-    // Form submissions (users can create, admins can read all)
-    match /submissions_{project}/{submissionId} {
+    // Project-specific user data - NEURODIV
+    match /users_neurodiv/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+
+      match /engagements/{engagementId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId);
+      }
+    }
+
+    // Project-specific user data - AIPRESSZO
+    match /users_aipresszo/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+
+      match /engagements/{engagementId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId);
+      }
+    }
+
+    // Project-specific user data - WEDDINGS
+    match /users_weddings/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId);
+
+      match /engagements/{engagementId} {
+        allow read: if isOwner(userId);
+        allow create: if isOwner(userId);
+      }
+    }
+
+    // Form submissions - PHOTOGRAPHER
+    match /submissions_photographer/{submissionId} {
       allow create: if request.auth != null;
-      allow read: if request.auth.uid == resource.data.userId;
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+
+    // Form submissions - NEURODIV
+    match /submissions_neurodiv/{submissionId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+
+    // Form submissions - AIPRESSZO
+    match /submissions_aipresszo/{submissionId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+
+    // Quiz attempts - AIPRESSZO
+    match /quiz_attempts_aipresszo/{attemptId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+
+    // Quizzes - AIPRESSZO (read-only for authenticated users)
+    match /quizzes_aipresszo/{quizId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Only admins via Firebase Admin SDK
+    }
+  }
+}
+```
+
+### Alternative: Wildcard Pattern (Less Secure)
+
+If you want a more flexible approach that automatically covers new projects, you can use a wildcard pattern (but it's less secure):
+
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Match any collection starting with users_
+    match /{collection}/{userId}/{document=**} {
+      allow read, write: if collection.matches('users_.*')
+                        && request.auth != null
+                        && request.auth.uid == userId;
+    }
+
+    // Match any collection starting with submissions_
+    match /{collection}/{submissionId} {
+      allow create: if collection.matches('submissions_.*')
+                   && request.auth != null;
+      allow read: if collection.matches('submissions_.*')
+                 && request.auth != null
+                 && request.auth.uid == resource.data.userId;
     }
   }
 }
