@@ -1,11 +1,11 @@
-## ** Szakmáknak**
+## Szakmáknak
 
 - Hogyan változtatja meg az AI az orvos, ügyvéd, HR, mérnök, marketinges, coach, tanácsadó szakmákat?
 - Hogyan tanulj AI-t, ha nem vagy technológiai ember?
 - Hogyan működhetsz együtt AI-val a munkádban?
 - Mikor felesleges, indokolatlan az AI használata?
 
-## ** Hogyan teheti az AI hatékonyabbá a munkád?**
+## Hogyan teheti az AI hatékonyabbá a munkád?
 
 - Milyen munkafolyamataid vannak? Mi az ami repetitív, unalmas, vagy inkább nagy mennyiségű adat feldolgozását, esetleg ötletelést igényel?
 - Hogyan használj AI-t emailek írásához, hosszú dokumentumok összegzéséhez, információk strukturálásához?

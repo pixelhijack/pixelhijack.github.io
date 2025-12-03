@@ -1,8 +1,13 @@
 # Hogyan zajlik az AI magántanítás?
 
+## Helyszín
+
+- Az órákat, ha lehet, élőben tartjuk belvárosi kávézókban, előre megbeszélt helyszínen, ami mindenkinek jó.
+- Igény szerint van lehetőség online oktatásra is, vagy Budapest vonzáskörén belül nálad is lehetünk
+
 ## Első alkalom
 
-- Az első alkalom csak egy beszélgetés
+- Az első alkalom csak általános ismerkedő beszélgetés
 - Bemutatkozunk, mesélsz a hátteredről: ki vagy, milyen céllal szeretnél AI-t tanulni
 - Megállapodunk arról, hogy milyen mélységig van szükséged AI tanulására, milyen témaköröket szeretnénk érinteni, hány alkalomra / milyen időközönként szeretnél jönni
 
@@ -12,7 +17,7 @@
 - Amennyiben csak gyorstalpalóra van szükséged, egy rövid, de használható áttekintésben körbejárjuk a szóba jöhető eszközöket, modelleket, mi mire jó
 - Bármikor jöhetsz folytatásra, eseti alapon is
 
-## Személyes alkalmak: haladó szint
+## További alkalmak: haladó szint
 
 - Amennyiben több alkalmas, hosszabb távú vagy folyamatos oktatási stratégiát szeretnél, az általános alapozó után következnek azok a technikák, eszközök, amik a TE saját munkafolyamataidra, igényeidre illeszkedő megoldásokat adnak
 

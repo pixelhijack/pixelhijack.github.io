@@ -1,4 +1,4 @@
-## ** Szülőknek**
+## Szülőknek
 
 - Szabad-e AI-t használni gyereknevelési kérdésekben?
 - Hogyan beszélj a gyerekeiddel az AI-ról? Hány éves kortól engedd használni, és hogyan?

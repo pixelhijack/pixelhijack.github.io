@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { google } from "googleapis";
 import { Resend } from 'resend';
 import express from 'express'; 
+import cookieParser from 'cookie-parser';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url'; 
@@ -14,6 +15,8 @@ import renderTreeServer from './utils/renderTreeServer.js';
 import loadProjectManifest from './utils/loadProjectManifest.js';
 import renderTemplate, { escapeHtml } from './utils/renderTemplate.js';
 import { getImageSrcServer } from './utils/renderTreeServer.js';
+import { initializeFirebaseAdmin } from './utils/firebaseAdmin.js';
+import { verifyAuth, checkAccess, trackEngagement } from './utils/authMiddleware.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +26,7 @@ console.log("Starting Express server...");
 // parse JSON and urlencoded bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Serve static files from the "public" folder
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
@@ -48,6 +52,9 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 // Initialize Resend for email notifications
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Initialize Firebase Admin
+initializeFirebaseAdmin();
 
 // Helper to detect language from Accept-Language header
 function detectLanguage(req) {
@@ -190,7 +197,206 @@ app.post('/form', async (req, res) => {
   }
 });
 
-app.get(/^(.*)$/, (req, res) => {
+// Magic link authentication endpoint
+app.post('/auth/send-link', async (req, res) => {
+  const { email, redirectTo } = req.body;
+  
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+
+  try {
+    const actionCodeSettings = {
+      url: `${req.protocol}://${req.get('host')}/auth/verify?redirect=${encodeURIComponent(redirectTo || '/')}`,
+      handleCodeInApp: true,
+    };
+
+    // Send magic link email via Firebase (this requires Firebase client-side setup)
+    // For now, we'll generate a custom token and send it via Resend
+    const { getAuth } = await import('./utils/firebaseAdmin.js');
+    
+    // Create or get user
+    let user;
+    try {
+      user = await getAuth().getUserByEmail(email);
+      console.log('Found existing user:', user.uid);
+    } catch (error) {
+      // User doesn't exist, create them
+      console.log('Creating new user for:', email);
+      user = await getAuth().createUser({ email });
+      console.log('Created new user:', user.uid);
+    }
+
+    // Generate custom token
+    const customToken = await getAuth().createCustomToken(user.uid);
+    console.log('Generated custom token for user:', user.uid);
+    
+    // Create magic link
+    const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${customToken}&redirect=${encodeURIComponent(redirectTo || '/')}`;
+
+    // Send email via Resend
+    const host = req.get('host') || 'localhost';
+    let fromEmail = 'noreply@pothattila.com';
+
+    console.log('Sending magic link to:', email);
+    console.log('Magic link URL:', magicLink);
+    
+    const emailResult = await resend.emails.send({
+      from: `Magic Link <${fromEmail}>`,
+      to: email,
+      subject: 'Your magic link to access content',
+      html: `
+        <h1>Click below to access your content</h1>
+        <p>This link will expire in 1 hour.</p>
+        <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Access Content</a></p>
+        <p><small>Or copy this link: ${magicLink}</small></p>
+      `,
+    });
+
+    console.log('Email sent successfully:', emailResult);
+    res.status(200).json({ message: 'Magic link sent! Check your email.' });
+  } catch (error) {
+    console.error('Error sending magic link - Full error:', error);
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    
+    // Send more specific error to client
+    res.status(500).json({ 
+      error: 'Failed to send magic link',
+      details: error.message 
+    });
+  }
+});
+
+// Verify magic link and set auth cookie
+app.get('/auth/verify', async (req, res) => {
+  const { token, redirect } = req.query;
+
+  if (!token) {
+    return res.status(400).send('Invalid magic link');
+  }
+
+  try {
+    // Custom tokens need to be exchanged for ID tokens client-side using Firebase SDK
+    // We'll render a page that does this exchange, then sets the cookie
+    const exchangeHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Verifying...</title>
+        <script type="module">
+          import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+          import { getAuth, signInWithCustomToken } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+          
+          const firebaseConfig = {
+            apiKey: "${process.env.FIREBASE_API_KEY}",
+            authDomain: "${process.env.FIREBASE_AUTH_DOMAIN}",
+            projectId: "${process.env.FIREBASE_PROJECT_ID}",
+          };
+          
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth(app);
+          
+          async function verify() {
+            try {
+              const userCredential = await signInWithCustomToken(auth, "${token}");
+              const idToken = await userCredential.user.getIdToken();
+              
+              // Send ID token to server to create session cookie
+              const response = await fetch('/auth/session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idToken })
+              });
+              
+              if (response.ok) {
+                window.location.href = decodeURIComponent("${redirect || '/'}");
+              } else {
+                document.body.innerHTML = '<h1>Authentication failed</h1>';
+              }
+            } catch (error) {
+              console.error('Auth error:', error);
+              document.body.innerHTML = '<h1>Invalid or expired magic link</h1>';
+            }
+          }
+          
+          verify();
+        </script>
+        <style>
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+          }
+          .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+          }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="loader"></div>
+      </body>
+      </html>
+    `;
+    
+    res.send(exchangeHtml);
+  } catch (error) {
+    console.error('Auth verification error:', error);
+    res.status(401).send('Invalid or expired magic link');
+  }
+});
+
+// Create session cookie from ID token
+app.post('/auth/session', async (req, res) => {
+  const { idToken } = req.body;
+  
+  if (!idToken) {
+    return res.status(400).json({ error: 'ID token required' });
+  }
+
+  try {
+    const { getAuth } = await import('./utils/firebaseAdmin.js');
+    
+    // Create session cookie (expires in 5 days)
+    const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
+    const sessionCookie = await getAuth().createSessionCookie(idToken, { expiresIn });
+    
+    // Set cookie
+    res.cookie('authToken', sessionCookie, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: expiresIn,
+      sameSite: 'lax',
+    });
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.error('Session creation error:', error);
+    res.status(401).json({ error: 'Invalid token' });
+  }
+});
+
+// Logout endpoint
+app.post('/auth/logout', (req, res) => {
+  res.clearCookie('authToken');
+  res.status(200).json({ message: 'Logged out successfully' });
+});
+
+app.get(/^(.*)$/, async (req, res) => {
   try {
     // Detect language from browser headers
     const language = detectLanguage(req);
@@ -212,6 +418,28 @@ app.get(/^(.*)$/, (req, res) => {
     
     if (!currentPage) {
       currentPage = manifestCached.pages.find(p => p.slug === '') || manifestCached.pages[0];
+    }
+
+    // Check authentication and access
+    const authResult = await verifyAuth(req);
+    const hasAccess = await checkAccess(authResult.user, currentPage, PROJECT);
+
+    // Track engagement for authenticated users on protected routes
+    if (authResult.authenticated && currentPage.access) {
+      await trackEngagement(authResult.user.uid, PROJECT, {
+        email: authResult.user.email,
+        page: pathName || 'home',
+        action: 'view_protected_content',
+        pageTitle: currentPage.title || pathName,
+        accessLevel: currentPage.access,
+      });
+      console.log(`📊 Tracked engagement: ${authResult.user.email} viewed /${pathName}`);
+    }
+
+    // If page requires access but user doesn't have it, redirect to login page
+    if (!hasAccess && currentPage.access) {
+      const redirectUrl = `/login?redirect=${encodeURIComponent('/' + pathName)}`;
+      return res.redirect(redirectUrl);
     }
 
     const contentHtml = renderTreeServer(currentPage.tree || {}, manifestCached, __dirname);

@@ -37,7 +37,7 @@
         },
         {
             "href": "/kepzesrol",
-            "label": "Hogy működik?"
+            "label": "A képzésről"
         }
     ],
     "footer": "Póth Attila &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; pothattila@gmail.com &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; +36 30 931 3580",
@@ -263,6 +263,28 @@
             }
         },
         {
+            "slug": "kutatasban",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "ai-kutatasban.md",
+                        "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
+            }
+        },
+        {
             "slug": "oktatasban",
             "navColor": "white",
             "tree": {
@@ -324,6 +346,54 @@
                         "type": "markdown",
                         "file": "kepzesrol.md",
                         "class": "flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "login",
+            "navColor": "white",
+            "background": "conceptual/botanic/DSC09953.jpg",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] pl-[75px] min-h-screen flex flex-col items-left justify-center space-y-4 p-8",
+                "children": [
+                    {
+                        "type": "h1",
+                        "class": "text-4xl md:text-6xl font-ambroise",
+                        "content": "Ehhez az oldalhoz tudnunk kell, ki vagy."
+                    },
+                    {
+                        "type": "p",
+                        "content": "Az e-mail címedre küldött egyszeri varázslinkkel egyenesen oda jutsz."
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "id": "magicLinkForm",
+                        "onsubmit": "event.preventDefault(); const urlParams = new URLSearchParams(window.location.search); const redirectTo = urlParams.get('redirect') || '/'; sendMagicLink(this, redirectTo);",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 text-2xl text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "button",
+                                "class": "bg-white text-black p-2 rounded-md mt-2 p-3 mb-4",
+                                "content": "Küldj linket",
+                                "typeAttr": "submit"
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-8 p-3 rounded-lg hidden"
+                            }
+                        ]
                     }
                 ]
             }

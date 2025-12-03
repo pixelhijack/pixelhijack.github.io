@@ -115,6 +115,58 @@ export default function renderTemplate({
         console.error('submitForm error', err);
       }
     }
+
+    function sendMagicLink(formElem, redirectTo) {
+      const emailInput = formElem.querySelector('input[type="email"]');
+      const submitBtn = formElem.querySelector('button[type="submit"]');
+      const messageDiv = formElem.querySelector('.message') || formElem.parentElement.querySelector('.message');
+      
+      if (!emailInput || !emailInput.value) {
+        console.error('Email input not found or empty');
+        return;
+      }
+
+      const email = emailInput.value;
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Magic Link';
+      
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+      
+      if (messageDiv) {
+        messageDiv.className = 'message';
+        messageDiv.textContent = '';
+      }
+
+      fetch('/auth/send-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, redirectTo })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message) {
+            if (messageDiv) {
+              messageDiv.className = 'message success';
+              messageDiv.textContent = data.message;
+            }
+            formElem.reset();
+          } else if (data.error) {
+            throw new Error(data.error);
+          }
+        })
+        .catch(error => {
+          if (messageDiv) {
+            messageDiv.className = 'message error';
+            messageDiv.textContent = error.message;
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }
+        });
+    }
     /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
