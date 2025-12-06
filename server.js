@@ -220,6 +220,10 @@ app.post('/quiz/submit', async (req, res) => {
     const { getAuth, getFirestore } = await import('./utils/firebaseAdmin.js');
     const db = getFirestore();
     
+    // Check if user is already authenticated
+    const authResult = await verifyAuth(req);
+    const isAlreadyAuthenticated = authResult.authenticated;
+    
     // 1. Create or get user
     let user;
     try {
@@ -305,22 +309,34 @@ app.post('/quiz/submit', async (req, res) => {
       resource: { values: [values] }
     });
 
-    // 5. Generate and send magic link
-    const customToken = await getAuth().createCustomToken(user.uid);
-    const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${customToken}&redirect=${encodeURIComponent(redirectTo || '/')}`;
+    // 5. Send magic link only if user is not already authenticated
+    if (!isAlreadyAuthenticated) {
+      const customToken = await getAuth().createCustomToken(user.uid);
+      const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${customToken}&redirect=${encodeURIComponent(redirectTo || '/')}`;
 
-    await resend.emails.send(generateMagicLinkEmail({
-      projectName: projectNamePublic(projectName),
-      email,
-      magicLink
-    }));
+      await resend.emails.send(generateMagicLinkEmail({
+        projectName: projectNamePublic(projectName),
+        email,
+        magicLink
+      }));
 
-    console.log('✅ Quiz submitted, user created/updated, magic link sent:', email);
+      console.log('✅ Quiz submitted, user created/updated, magic link sent:', email);
 
-    res.status(200).json({ 
-      message: 'Siker! Ellenőrizd az emailjeid!',
-      userId: user.uid
-    });
+      res.status(200).json({ 
+        message: 'Siker! Ellenőrizd az emailjeid!',
+        userId: user.uid,
+        sentMagicLink: true
+      });
+    } else {
+      console.log('✅ Quiz submitted, user already authenticated, skipped magic link:', email);
+
+      res.status(200).json({ 
+        message: 'Siker! Válaszaid mentve.',
+        userId: user.uid,
+        sentMagicLink: false,
+        redirectTo: redirectTo || '/'
+      });
+    }
 
   } catch (error) {
     console.error('Error in quiz submission:', error);

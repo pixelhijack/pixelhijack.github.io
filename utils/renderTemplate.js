@@ -283,7 +283,7 @@ export default function renderTemplate({
           email: email,
           projectName: projectName,
           quizData: quizData,
-          redirectTo: '/'
+          redirectTo: redirectTo || '/'
         })
       })
         .then(res => res.json())
@@ -293,7 +293,16 @@ export default function renderTemplate({
               messageDiv.className = 'message success';
               messageDiv.textContent = data.message;
             }
-            formElem.reset();
+            
+            // If user is already authenticated, redirect immediately
+            if (data.sentMagicLink === false && data.redirectTo) {
+              setTimeout(() => {
+                window.location.href = data.redirectTo;
+              }, 1000);
+            } else {
+              // User needs to check email for magic link
+              formElem.reset();
+            }
           } else if (data.error) {
             throw new Error(data.error);
           }

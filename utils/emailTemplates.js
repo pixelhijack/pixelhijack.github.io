@@ -6,9 +6,9 @@ export function generateMagicLinkEmail({projectName, magicLink, email}) {
     to: email,
     subject: `${projectName}: egyszeri azonosító link`,
     html: `
-      <h1>Köszi, mostmár felismerünk! Itt a belépési linked:</h1>
-      <p>Végre eljött a jelszók és regisztrációk nélküli kor! Az alábbi linkkel tudni fogjuk, ki vagy, és te is megtalálod a személyes tartalmaidat:</p>
-      <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Vissza az oldalra →</a></p>
+      <h1>Köszi, mostmár felismerünk! Itt a belépési linked!</h1>
+      <p>Végre eljött a jelszók és regisztrációk nélküli kor :) Az alábbi linkkel tudni fogjuk, ki vagy, és te is megtalálod a személyes tartalmaidat:</p>
+      <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Vissza az oldalra ☞</a></p>
       <p><small>A link egy óráig érvényes.</small></p>
       <h2>Miért jó ez neked?</h2>
       <ul>
