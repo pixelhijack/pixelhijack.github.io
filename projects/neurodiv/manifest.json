@@ -10,7 +10,8 @@
             "type": "website"
         }
     },
-    "nav": [
+    "nav": [],
+    "nav_v0": [
         {
             "href": "/diagnozis",
             "label": "Diagnózis előtt és után"
@@ -44,7 +45,7 @@
                     {
                         "type": "div",
                         "background": null,
-                        "class": "relative h-screen w-full mb-[-80px] md:mb-[0px]",
+                        "class": "relative h-screen w-full mb-[-50px] md:mb-[0px]",
                         "children": [
                             {
                                 "type": "img",
@@ -61,7 +62,7 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-title text-white text-xl md:text-3xl p-4 text-center md:text-left",
+                                                "class": "font-title text-white text-base md:text-3xl p-4 text-center md:text-left",
                                                 "children": [
                                                     {
                                                         "type": "span",
@@ -72,19 +73,8 @@
                                             },
                                             {
                                                 "type": "h1",
-                                                "class": "font-title text-white text-4xl md:text-7xl p-4",
-                                                "content": "<b>Neurodivergens vagyok?!</b>"
-                                            },
-                                            {
-                                                "type": "h2",
-                                                "class": "mt-[-50px] italic font-title text-white text-xl md:text-2xl p-4",
-                                                "children": [
-                                                    {
-                                                        "type": "span",
-                                                        "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                        "content": "HOGYAN NAVIGÁLJ AZ ADHD / AUTIZMUS VIZEIN? <br>HOGYAN INTEGRÁLD EZZEL AZ ÉLETED?"
-                                                    }
-                                                ]
+                                                "class": "font-title text-white text-4xl md:text-5xl p-4",
+                                                "content": "<b>Hogyan navigálj a neurodivergencia vizein?</b>"
                                             }
                                         ]
                                     }
@@ -93,13 +83,8 @@
                         ]
                     },
                     {
-                        "type": "h2",
-                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                        "content": "<b>Ki vagy és mit keresel? </b>"
-                    },
-                    {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2",
+                        "class": "quiz-cards quiz-cards-2-2 relative mt-[-60px] md:mt-[-100px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
                         "children": [
                             {
                                 "type": "a",
@@ -275,6 +260,490 @@
                                         "content": "<i>Kávézz velem és beszélgessünk!</i><br><br>"
                                     }
                                 ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "onboarding/prediagnosis",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/labyrinth.webp",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "A diagnózis hosszú és nehéz út. <br>Miben van a legnagyobb szükséged segítségre?"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-200px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♣"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Az (ön)diagnózisban/önismeretben: szeretném megérteni a tüneteimet, a mindennapi nehézségeimet."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♥"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "A továbblépésben: hogyan találjak szakembert, mi vár rám a várólistán, diagnózis során?"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♠"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Sorstársi tapasztalatban: olyanokkal szeretnék beszélgetni, akik hasonlóan éreznek."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "onboarding/postdiagnosis",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz.jpg",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Diagnosztizált neurodivergensként a legnagyobb kihívás az integráció. <br>Miben kell támogatni a hétköznapjaidat?"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-200px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♣"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Közösségre, megértésre, mások tapasztalataira van szükségem (peer support)."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♥"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Életvezetési tanácsokra, eszközökre van szükségem a napi működéshez (pl. halogatás, kapcsolataim, karrier)."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♠"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Szeretnék mélyebben elmerülni a tudományos háttérben, a neuropszichológiában."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "onboarding/interested",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/sw.jpg",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Szeretnél többet tudni. <br>Melyik terület érdekel a leginkább?"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-200px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♣"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Szeretném érteni a neurodivergens / neurotipikus közti kommunikációs különbségeket (párkapcsolat, munkahely)."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♥"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Érdekelnek a személyes történetek, tapasztalatok (pl. Donna Williams, Temple Grandin)."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♠"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Szeretném megtanulni, hogyan tudok támogatni neurodivergens embereket (pl. családtag, barát, kolléga)."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "onboarding/professional",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/neverending.webp",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Szakemberként mi a célod az <br>Overthinkers'Clubbal való együttműködésben?"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-200px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♣"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Pilot projektek, kutatási együttműködések érdekelnek."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♥"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Tapasztalati szakértői kollaboráció érdekel."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♠"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Szeretném megtanulni, hogyan használhatok AI eszközöket professzionális munkámban."
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": ""
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "coming-soon",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz.jpg",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Coming soon...stay tuned!"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-150px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-white rounded-md",
+                                "content": "<b>Addig itt tudsz olvasgatni: </b>"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mx-auto my-8 flex flex-col items-center justify-center overflow-hidden",
+                                "content": "<iframe src=\"https://autinaplo.substack.com/embed\" width=\"480\" height=\"620\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
                             }
                         ]
                     }
