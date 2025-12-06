@@ -17,6 +17,7 @@ import renderTemplate, { escapeHtml } from './utils/renderTemplate.js';
 import { getImageSrcServer } from './utils/renderTreeServer.js';
 import { initializeFirebaseAdmin } from './utils/firebaseAdmin.js';
 import { verifyAuth, checkAccess, trackEngagement } from './utils/authMiddleware.js';
+import { generateMagicLinkEmail } from './utils/emailTemplates.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -67,6 +68,16 @@ function detectLanguage(req) {
 }
 
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
+
+function projectNamePublic(projectName){
+  // Convert internal project names to public-facing names:
+  if(projectName === 'photographer'){ return 'Póth Attila Photographer';}
+  if(projectName === 'wedding'){ return 'Póth Attila Photographer';}
+  if(projectName === 'neurodiv'){ return "Overthinkers' Club";}
+  if(projectName === 'aipresszo'){ return 'AI.Presszó';}
+  return 'Póth Attila Labs';
+}
+
 // Cache manifests per language
 const manifestCache = {
   en: loadProjectManifest(PROJECT, __dirname, 'en'),
@@ -189,11 +200,11 @@ app.post('/form', async (req, res) => {
     }
 
     res.status(200).json({ 
-      message: 'Form submitted successfully!' 
+      message: 'Sikeres elküldés! Hamarosan jelentkezem nálad.', 
     });
   } catch (error) {
     console.error('Error form submission:', error);
-    res.status(500).json({ error: 'Failed to submit form.' });
+    res.status(500).json({ error: 'Upsz. Valami hiba történt.' });
   }
 });
 
@@ -298,29 +309,23 @@ app.post('/quiz/submit', async (req, res) => {
     const customToken = await getAuth().createCustomToken(user.uid);
     const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${customToken}&redirect=${encodeURIComponent(redirectTo || '/')}`;
 
-    await resend.emails.send({
-      from: `${projectName} <noreply@pothattila.com>`,
-      to: email,
-      subject: 'Your magic link to continue',
-      html: `
-        <h1>Thanks for completing the quiz!</h1>
-        <p>Click below to access your personalized content:</p>
-        <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Continue →</a></p>
-        <p><small>This link will expire in 1 hour.</small></p>
-      `,
-    });
+    await resend.emails.send(generateMagicLinkEmail({
+      projectName: projectNamePublic(projectName),
+      email,
+      magicLink
+    }));
 
     console.log('✅ Quiz submitted, user created/updated, magic link sent:', email);
 
     res.status(200).json({ 
-      message: 'Siker! Ellenőrizd az emailed!',
+      message: 'Siker! Ellenőrizd az emailjeid!',
       userId: user.uid
     });
 
   } catch (error) {
     console.error('Error in quiz submission:', error);
     res.status(500).json({ 
-      error: 'Failed to submit quiz',
+      error: 'Upsz. Valami hiba történt.',
       details: error.message 
     });
   }
@@ -370,20 +375,15 @@ app.post('/auth/send-link', async (req, res) => {
     console.log('Sending magic link to:', email);
     console.log('Magic link URL:', magicLink);
     
-    const emailResult = await resend.emails.send({
-      from: `Magic Link <${fromEmail}>`,
-      to: email,
-      subject: 'Your magic link to access content',
-      html: `
-        <h1>Click below to access your content</h1>
-        <p>This link will expire in 1 hour.</p>
-        <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Access Content</a></p>
-        <p><small>Or copy this link: ${magicLink}</small></p>
-      `,
-    });
+
+    const emailResult = await resend.emails.send(generateMagicLinkEmail({
+      projectName: projectNamePublic(projectName),
+      email,
+      magicLink
+    }));
 
     console.log('Email sent successfully:', emailResult);
-    res.status(200).json({ message: 'Magic link sent! Check your email.' });
+    res.status(200).json({ message: 'Egyszeri belépési linket küldtünk az emailedre!' });
   } catch (error) {
     console.error('Error sending magic link - Full error:', error);
     console.error('Error name:', error.name);
@@ -577,6 +577,10 @@ app.get(/^(.*)$/, async (req, res) => {
     const logoStyle = manifestCached.meta?.logoStyle || '';
     const navColor = currentPage.navColor || 'white';
 
+    // Pass authentication state to template
+    const userEmail = authResult.authenticated ? authResult.user.email : null;
+    const isAuthenticated = authResult.authenticated;
+
     // Merge global and page-specific OG tags
     const globalOg = manifestCached.meta?.og || {};
     const pageOg = currentPage.og || {};
@@ -632,7 +636,9 @@ app.get(/^(.*)$/, async (req, res) => {
       cssLinks,
       gaScript,
       ogTags,
-      contentContainerStyle: backgroundStyle
+      contentContainerStyle: backgroundStyle,
+      isAuthenticated,
+      userEmail
     });
 
     res.status(200).send(html);

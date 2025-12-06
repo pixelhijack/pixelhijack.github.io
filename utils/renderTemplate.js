@@ -18,7 +18,9 @@ export default function renderTemplate({
     cssLinks, 
     gaScript, 
     ogTags,
-    contentContainerStyle
+    contentContainerStyle,
+    isAuthenticated = false,
+    userEmail = null
 }) {
   
   // Generate OG meta tags
@@ -56,7 +58,7 @@ export default function renderTemplate({
     /* common styles are in input.css */
   </style>
 </head>
-<body class="relative min-h-screen">
+<body class="relative min-h-screen${isAuthenticated ? ' authenticated' : ''}">
   <nav class="absolute top-0 left-0 w-full z-10 p-4 bg-transparent">
     <div id="logo" class="container mx-auto flex justify-between items-center px-4 md:px-0">
       <a href="/" class="${logoStyle || 'font-title text-2xl md:text-4xl font-bold rounded-md p-2'}" style="color: ${navColor}">${logo}</a>
@@ -70,11 +72,44 @@ export default function renderTemplate({
   </nav>
   <main 
     id="content-container" 
-    class="relative w-full min-h-screen"
-    ${contentContainerStyle ? `style="${contentContainerStyle}"` : ''}>
+    class="relative w-full min-h-screen${isAuthenticated ? ' authenticated' : ''}"
+    ${contentContainerStyle ? `style="${contentContainerStyle}"` : ''}
+    ${isAuthenticated && userEmail ? `data-user-email="${escapeHtml(userEmail)}"` : ''}>
         ${contentHtml}
   </main>
   <script>
+
+    const email = document.getElementById('content-container').getAttribute('data-user-email');
+
+    // Pre-fill email fields for authenticated users
+    ${isAuthenticated && userEmail ? `
+    (function() {
+      const userEmail = '${escapeHtml(userEmail)}';
+      
+      // Wait for DOM to be ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fillEmailFields);
+      } else {
+        fillEmailFields();
+      }
+      
+      function fillEmailFields() {
+        // Find all email inputs
+        const emailInputs = document.querySelectorAll('input[type="email"]');
+        emailInputs.forEach(input => {
+          // Only fill if empty
+          if (!input.value) {
+            input.value = userEmail;
+            // Optionally make it readonly
+            // input.setAttribute('readonly', 'true');
+            // Add a visual indicator
+            input.classList.add('autofilled');
+          }
+        });
+      }
+    })();
+    ` : ''}
+    
     function submitForm(formElem, intent) {
       try {
         const payload = { intent, checkboxes: [] };
@@ -203,7 +238,7 @@ export default function renderTemplate({
       
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
+        submitBtn.textContent = 'Loading...';
       }
 
       // Collect all form data
@@ -248,7 +283,7 @@ export default function renderTemplate({
           email: email,
           projectName: projectName,
           quizData: quizData,
-          redirectTo: redirectTo || '/'
+          redirectTo: '/'
         })
       })
         .then(res => res.json())

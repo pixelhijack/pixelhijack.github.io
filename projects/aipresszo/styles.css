@@ -69,6 +69,31 @@ ul li {
     border: 1px solid #ef4444;
 }
 
+/* Authenticated user styles */
+body.authenticated input[type="email"].autofilled {
+    background-color: #f0f9ff;
+    border-color: #0080bc;
+    cursor: not-allowed;
+}
+
+body.authenticated input[type="email"].autofilled:focus {
+    outline: 1px solid #0080bc;
+    outline-offset: 2px;
+}
+
+/* Optional: Hide email label for authenticated users */
+/* body.authenticated label[for*="email"] {
+    display: none;
+} */
+
+/* Optional: Different styles for authenticated users */
+/* body.authenticated button[type="submit"] {
+    background-color: #0ea5e9;
+} 
+    .welcome-badge { display: none; }
+    body.authenticated .welcome-badge { display: block; }    
+*/
+
 /* Quiz Card System */
 
 /* Card container - flexbox for better mobile behavior */
