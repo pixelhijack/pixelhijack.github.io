@@ -256,8 +256,8 @@ body.authenticated input[type="email"].autofilled:focus {
     min-height: 120px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -271,7 +271,7 @@ body.authenticated input[type="email"].autofilled:focus {
 @media (min-width: 768px) {
     .quiz-card {
         padding: 2rem;
-        min-height: 200px;
+        min-height: 250px;
         flex: 1 1 calc(33.333% - 1.5rem);
         max-width: calc(33.333% - 1rem);
     }

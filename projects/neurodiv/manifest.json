@@ -45,7 +45,7 @@
                     {
                         "type": "div",
                         "background": null,
-                        "class": "relative h-screen w-full mb-[-50px] md:mb-[0px]",
+                        "class": "relative h-[95vh] w-full mb-[-50px] md:mb-[0px]",
                         "children": [
                             {
                                 "type": "img",
@@ -67,7 +67,7 @@
                                                     {
                                                         "type": "span",
                                                         "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring</strike>?<br>Edukáció<br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
+                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring</strike>?<br>Edukáció.<br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
                                                     }
                                                 ]
                                             },
@@ -84,7 +84,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 relative mt-[-60px] md:mt-[-100px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
                         "children": [
                             {
                                 "type": "a",
@@ -319,11 +319,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Az (ön)diagnózisban/önismeretben: szeretném megérteni a tüneteimet, a mindennapi nehézségeimet."
+                                                "content": "Az önismeretben:"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "szeretném megérteni a mindennapi nehézségeimet, de nem tudom az öndiagnózis mennyire megbízható."
                                             }
                                         ]
                                     },
@@ -339,11 +339,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "A továbblépésben: hogyan találjak szakembert, mi vár rám a várólistán, diagnózis során?"
+                                                "content": "A továbblépésben a diagnózishoz:"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "hogyan találjak szakembert, mi vár rám a várólistán, diagnózis során, és utána?"
                                             }
                                         ]
                                     },
@@ -359,11 +359,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Sorstársi tapasztalatban: olyanokkal szeretnék beszélgetni, akik hasonlóan éreznek."
+                                                "content": "Sorstársi tapasztalatban: "
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "olyanokkal szeretnék beszélgetni, akik hasonlóan éreznek."
                                             }
                                         ]
                                     }

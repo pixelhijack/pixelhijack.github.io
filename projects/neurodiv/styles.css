@@ -47,4 +47,15 @@ ol li {
 
 .quiz-card {
     color: black!important;
+    min-height: 250px!important;
+    height: auto!important;
+}
+
+/* Ensure all cards in a row are equal height */
+.quiz-cards {
+    align-items: stretch!important;
+}
+
+.quiz-cards-2-2 .quiz-card {
+    min-height: 250px!important;
 }
