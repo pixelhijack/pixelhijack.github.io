@@ -624,10 +624,6 @@ video {
   top: 1.5rem;
 }
 
-.-z-10 {
-  z-index: -10;
-}
-
 .z-0 {
   z-index: 0;
 }
@@ -654,6 +650,10 @@ video {
   margin-bottom: 2rem;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -678,12 +678,20 @@ video {
   margin-bottom: 1rem;
 }
 
+.ml-8 {
+  margin-left: 2rem;
+}
+
 .ml-\[20px\] {
   margin-left: 20px;
 }
 
 .ml-\[32px\] {
   margin-left: 32px;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mr-4 {
@@ -696,6 +704,14 @@ video {
 
 .mt-0 {
   margin-top: 0px;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mt-16 {
+  margin-top: 4rem;
 }
 
 .mt-2 {
@@ -724,10 +740,6 @@ video {
 
 .mt-\[-50px\] {
   margin-top: -50px;
-}
-
-.mt-\[-60px\] {
-  margin-top: -60px;
 }
 
 .mt-\[-65px\] {
@@ -866,6 +878,10 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .break-inside-avoid {
   -moz-column-break-inside: avoid;
        break-inside: avoid;
@@ -873,6 +889,10 @@ video {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -1001,8 +1021,8 @@ video {
   background-attachment: fixed;
 }
 
-.bg-\[bottom_578px_right_0px\] {
-  background-position: bottom 578px right 0px;
+.bg-\[bottom_415px_right_0px\] {
+  background-position: bottom 415px right 0px;
 }
 
 .bg-center {
@@ -1075,6 +1095,11 @@ video {
   padding-right: 1.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
@@ -1083,6 +1108,16 @@ video {
 .py-12 {
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pb-\[2rem\] {
@@ -1446,6 +1481,14 @@ div.sidescroll-gallery::-webkit-scrollbar {
   outline-offset: 2px;
 }
 
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
 @media (min-width: 640px) {
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1471,10 +1514,6 @@ div.sidescroll-gallery::-webkit-scrollbar {
 
   .md\:mt-\[-100px\] {
     margin-top: -100px;
-  }
-
-  .md\:mt-\[-250px\] {
-    margin-top: -250px;
   }
 
   .md\:block {

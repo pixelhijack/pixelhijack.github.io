@@ -59,21 +59,15 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
                     },
                     {
                         "type": "div",
-                        "class": "ml-[20px] flex flex-col md:flex-row justify-center",
+                        "class": "flex justify-center flex-row items-center md:max-w-[50%] mx-auto px-4",
                         "children": [
-                            {
-                                "type": "img",
-                                "class": "mt-[-60px] md:mt-[-250px] ml-[32px] max-w-[70%] md:w-[30%] max-h-[90vh] rounded-lg object-contain",
-                                "src": "about/me-rounded.png",
-                                "alt": "Póth Attila"
-                            },
                             {
                                 "type": "div",
                                 "children": [
@@ -105,7 +99,7 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-body mt-[20px] mb-8 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md md:max-w-[80%]",
+                                        "class": "font-body mt-[20px] mb-0 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md md:max-w-[80%]",
                                         "children": [
                                             {
                                                 "type": "span",
@@ -113,6 +107,129 @@
                                                 "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t gyakorlati oldalról közelítjük meg.</b>"
                                             }
                                         ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col justify-center text-black",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "text-center text-black mb-8 mt-12 text-3xl",
+                                "content": "Töltsd ki a kvízt hogy megtudd, <br>mire is tudnád használni az AI-t"
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2",
+                                "children": [
+                                    {
+                                        "type": "a",
+                                        "href": "/quiz/alapok",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "🔬"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "AI alapok"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Még csak most ismerkedem az AI-val. Meg akarom érteni az alapokat, a működést, a fogalmakat."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/quiz/munkaban",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "🎓"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "AI munkában"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "A munkámban/karrieremben szeretnék jobb lenni. Érdekel a hatékonyság, a szakmám átalakulása, kreatív lehetőségek."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/quiz/oktatasban",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "💼"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "AI oktatásban, tanulásban"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Tanuláshoz vagy oktatáshoz használnám az AI-t. Diák, tanár, szülő vagyok, aki az AI-t a tudás megszerzésére használná."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/quiz/pszichologia",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "👨‍👩‍👧"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "AI és önismeret, pszichológia"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "A mentális egészségem, önismeretem érdekel. Vagy pszichológus/terapeuta vagyok, aki a szakmájában használná."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "content": "<br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "ml-[20px] flex flex-col md:flex-row justify-center",
+                        "children": [
+                            {
+                                "type": "img",
+                                "class": "ml-[32px] max-w-[70%] md:w-[30%] max-h-[90vh] rounded-lg object-contain",
+                                "src": "about/me-rounded.png",
+                                "alt": "Póth Attila"
+                            },
+                            {
+                                "type": "div",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "text-black mb-8 md:ml-8 text-3xl",
+                                        "content": "Hello, én tanítanálak AI-ra"
                                     },
                                     {
                                         "type": "div",
@@ -127,69 +244,2450 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-body mt-[20px] mb-8 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md md:max-w-[80%]",
+                                        "class": "font-body mt-[20px] mb-2 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md md:max-w-[80%]",
                                         "children": [
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md text-black px-1 py-0.5 rounded-sm mx-auto box-decoration-clone",
-                                                "content": "<a class='underline' href=\"/kepzesrol\">👉 Hogy zajlik az AI magántanítás?</a><br><br><br>"
+                                                "content": "<a class='underline' href=\"/kepzesrol\">👉 Hogy zajlik az AI magántanítás?</a>"
                                             }
                                         ]
                                     }
                                 ]
                             }
                         ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/example",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "min-h-screen flex flex-col justify-center text-black",
+                "children": [
+                    {
+                        "type": "h1",
+                        "class": "text-center text-black mb-8",
+                        "content": "Mit szeretnél tanulni az AI-ról?"
                     },
                     {
                         "type": "div",
-                        "class": "mx-auto flex flex-col md:flex-row items-start md:items-stretch w-full gap-6 p-[20px] md:max-w-[80%]",
+                        "class": "quiz-cards quiz-cards-2-3",
                         "children": [
                             {
-                                "type": "form",
-                                "action": "javascript:;",
-                                "onsubmit": "return submitForm(this, 'aipresszo.hu: contact');",
-                                "method": "POST",
-                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md max-w-[80%]",
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'kutatasban')",
                                 "children": [
                                     {
                                         "type": "div",
-                                        "class": "font-body mt-[20px] md:mt-0 text-2xl md:text-2xl text-black rounded-md",
-                                        "content": "<b>Milyen céllal szeretnél AI-t használni? Specifikusan rád szabott témákban kapod, mit tudok kifejezetten <i>neked</i> tanítani:</b><br><br>"
+                                        "class": "quiz-card-icon",
+                                        "content": "🔬"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI kutatásban"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Tudományos munkához, adatelemzéshez"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'oktatasban')",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "🎓"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI oktatásban"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Tanuláshoz, oktatás fejlesztéséhez"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'munkaban')",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "💼"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI munkában"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Produktivitás, munkafolyamatok"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'szulokent')",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "👨‍👩‍👧"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI szülőként"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Gyermekek támogatásához"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'pszichologia')",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "🧠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI & pszichológia"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Mentális egészség, viselkedés"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "quiz-card",
+                                "onclick": "selectCard(this, 'altalanos')",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "✨"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Általános tudás"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Mindent szeretnék megtudni"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "button",
+                        "id": "continueBtn",
+                        "class": "mx-auto mt-8 px-8 py-3 bg-black text-white rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed",
+                        "disabled": true,
+                        "onclick": "submitQuizStep('step1', '/quiz/level')",
+                        "content": "Tovább →"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/alapok",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Hogy állsz az AI használatával?<br>Mire lennél kíváncsi?"
+                    },
+                    {
+                        "type": "div",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "children": [
+                            {
+                                "type": "a",
+                                "href": "/quiz/alapok/kezdo",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Gyorstalpaló kezdőknek"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Hogy működik a mesterséges intelligencia?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/alapok/medior",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "A kérdezés művészete"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Mi a prompt és a kontextus? Miért nem kapsz jó válaszokat?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/alapok/advanced",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Túl a ChatGPT-n"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Milyen egyéb eszközök vannak? Hogy tudod használni a telefonodon, vagy testre szabni őket?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/munkaban",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Hogyan érint a szakmádban az AI?"
+                    },
+                    {
+                        "type": "div",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "children": [
+                            {
+                                "type": "a",
+                                "href": "/quiz/munkaban/hatekonysag",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Munkahelyi hatékonyság"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "E-mailek, dokumentumok, ismétlődő feladatok automatizálása."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/munkaban/atalakulas",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Szakmai átalakulás"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Orvos, ügyvéd, marketinges, fejlesztő - hogyan változik a szakmám?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/munkaban/kreativ",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Kreatív szakmák"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Grafikus, író, zenész - hogyan segít az AI a kreatív munkában? Etikai és jogi megfontolások."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/oktatasban",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Tanulnál, tanítanál, vagy kutatsz?"
+                    },
+                    {
+                        "type": "div",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "children": [
+                            {
+                                "type": "a",
+                                "href": "/quiz/oktatas/diak",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Diák, egyetemista"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Jegyzetelés, esszé, vizsgára készülés. Hogyan használjam az AI-t tanuláshoz?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/oktatas/tanar",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Tanár, pedagógus"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "AI integrálása a tananyagba, etikai alapelvek, csalás kiszűrése, tananyagfejlesztés, értékelés, AI oktatása tanulóknak."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/oktatas/nyelvtanulas",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Nyelvtanulás AI-val"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "AI, mint privát nyelvtanár. Gyakorlás, fordítás, beszédfejlesztés."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/oktatas/kutatok",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "AI kutatóknak"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "AI használata kutatásban, doktorihoz, akadémiai karrierben"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/pszichologia",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "AI a mentális egészséged vagy pszichológiai munkád támogatására?"
+                    },
+                    {
+                        "type": "div",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "children": [
+                            {
+                                "type": "a",
+                                "href": "/quiz/pszichologia/onismeret",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Személyes jólét és önismeret"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Hogyan használhatom önismereti célokra jól (naplózás, kérdések)?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/pszichologia/terapeuta",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Pszichológus <br>terapeuta"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Diagnosztika, mintafelismerés, etikus használat."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/pszichologia/szulo",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Szülőként"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Biztonság, korosztályok, beszélgetés az AI-ról."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/alapok/kezdo",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'alapok_kezdo', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/kezdo/0",
+                                        "name": "alapok/kezdo/0",
+                                        "class": "mr-2",
+                                        "data-label": "Mi az AI valójában? Milyen analógiákkal lehet jobban megérteni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/kezdo/0",
+                                        "content": "Mi az AI valójában? Milyen analógiákkal lehet jobban megérteni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
                                     },
                                     {
                                         "type": "input",
-                                        "name": "name",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Neved",
-                                        "required": "true"
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/kezdo/1",
+                                        "name": "alapok/kezdo/1",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan „gondolkodik” a gép? A nagy nyelvi modellek (LLM-ek) működése a háttérben."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/kezdo/1",
+                                        "content": "Hogyan „gondolkodik” a gép? A nagy nyelvi modellek (LLM-ek) működése a háttérben.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
                                     },
                                     {
                                         "type": "input",
-                                        "name": "email",
-                                        "typeAttr": "email",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Email címed",
-                                        "required": "true"
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/kezdo/2",
+                                        "name": "alapok/kezdo/2",
+                                        "class": "mr-2",
+                                        "data-label": "A „hallucináció” jelensége: szabad-e bíznom az AI válaszaiban?"
                                     },
                                     {
-                                        "type": "textarea",
-                                        "name": "message",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Üzenet",
-                                        "required": "true"
+                                        "type": "label",
+                                        "for": "alapok/kezdo/2",
+                                        "content": "A „hallucináció” jelensége: szabad-e bíznom az AI válaszaiban?",
+                                        "class": "text-lg cursor-pointer"
                                     },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/kezdo/3",
+                                        "name": "alapok/kezdo/3",
+                                        "class": "mr-2",
+                                        "data-label": "Az AI korlátai: Mit nem ért a mesterséges intelligencia?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/kezdo/3",
+                                        "content": "Az AI korlátai: Mit nem ért a mesterséges intelligencia?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/kezdo/4",
+                                        "name": "alapok/kezdo/4",
+                                        "class": "mr-2",
+                                        "data-label": "AI és a munkahelyek: elveszi az AI a munkámat, vagy segít jobbá tenni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/kezdo/4",
+                                        "content": "AI és a munkahelyek: elveszi az AI a munkámat, vagy segít jobbá tenni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
                                     {
                                         "type": "button",
-                                        "class": "bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                        "content": "Küldés",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
                                         "typeAttr": "submit"
                                     }
                                 ]
                             },
                             {
                                 "type": "div",
-                                "class": "w-full md:w-1/2 font-body mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md max-w-[80%]",
-                                "content": "<b>Elérsz emailben és telefonon is: </b><br><i>Email: <a target='_blank' href='mailto:pothattila@gmail.com' class='underline'>pothattila@gmail.com</a><br>Tel: +36 30 931 3580</i>"
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/alapok/medior",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'alapok_medior', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/0",
+                                        "name": "alapok/medior/0",
+                                        "class": "mr-2",
+                                        "data-label": "A jó prompt titka: így írj olyan kérdéseket, amik a maximumot hozzák ki az AI-ból."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/0",
+                                        "content": "A jó prompt titka: így írj olyan kérdéseket, amik a maximumot hozzák ki az AI-ból.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/1",
+                                        "name": "alapok/medior/1",
+                                        "class": "mr-2",
+                                        "data-label": "Kontextus és memória: hogyan „emlékszik” az AI a korábbi kérdéseidre?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/1",
+                                        "content": "Kontextus és memória: hogyan „emlékszik” az AI a korábbi kérdéseidre?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/2",
+                                        "name": "alapok/medior/2",
+                                        "class": "mr-2",
+                                        "data-label": "Mire NE használd az AI-t?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/2",
+                                        "content": "Mire NE használd az AI-t?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/3",
+                                        "name": "alapok/medior/3",
+                                        "class": "mr-2",
+                                        "data-label": "Veszélyek és etikai kérdések: elbutít a sok használat?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/3",
+                                        "content": "Veszélyek és etikai kérdések: elbutít a sok használat?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/4",
+                                        "name": "alapok/medior/4",
+                                        "class": "mr-2",
+                                        "data-label": "Hibakeresés a válaszokban: hogyan ellenőrizd, amit az AI generál?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/4",
+                                        "content": "Hibakeresés a válaszokban: hogyan ellenőrizd, amit az AI generál?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/alapok/advanced",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'alapok_advanced', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/0",
+                                        "name": "alapok/medior/0",
+                                        "class": "mr-2",
+                                        "data-label": "Mi van a ChatGPT-n kívül? Van-e haszna más modelleket használni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/0",
+                                        "content": "Mi van a ChatGPT-n kívül? Van-e haszna más modelleket használni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/1",
+                                        "name": "alapok/medior/1",
+                                        "class": "mr-2",
+                                        "data-label": "Miben különböznek a különböző AI modellek, szolgáltatók? (ChatGPT, Gemini, Claude, stb)"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/1",
+                                        "content": "Miben különböznek a különböző AI modellek, szolgáltatók? (ChatGPT, Gemini, Claude, stb)",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/2",
+                                        "name": "alapok/medior/2",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan tudod személyre szabni az AI-t?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/2",
+                                        "content": "Hogyan tudod személyre szabni az AI-t?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "alapok/medior/3",
+                                        "name": "alapok/medior/3",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan használj AI-t telefonon?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "alapok/medior/3",
+                                        "content": "Hogyan használj AI-t telefonon?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/munkaban/hatekonysag",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_hatekonysag', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/hatekonysag/0",
+                                        "name": "munkaban/hatekonysag/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI a naptárban: feladatok, időbeosztás és prioritáskezelés AI-val."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/hatekonysag/0",
+                                        "content": "AI a naptárban: feladatok, időbeosztás és prioritáskezelés AI-val.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/hatekonysag/1",
+                                        "name": "munkaban/hatekonysag/1",
+                                        "class": "mr-2",
+                                        "data-label": "Email írás 2 perc alatt: hogyan gyorsítsd fel a repetitív feladataid?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/hatekonysag/1",
+                                        "content": "Email írás 2 perc alatt: hogyan gyorsítsd fel a repetitív feladataid?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/hatekonysag/2",
+                                        "name": "munkaban/hatekonysag/2",
+                                        "class": "mr-2",
+                                        "data-label": "Hosszú dokumentumok összegzése: információk strukturálása, lényegkiemelés."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/hatekonysag/2",
+                                        "content": "Hosszú dokumentumok összegzése: információk strukturálása, lényegkiemelés.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/hatekonysag/3",
+                                        "name": "munkaban/hatekonysag/3",
+                                        "class": "mr-2",
+                                        "data-label": "Stílus és hangnem finomítása: javíts a hivatalos vagy kreatív szövegeiden."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/hatekonysag/3",
+                                        "content": "Stílus és hangnem finomítása: javíts a hivatalos vagy kreatív szövegeiden.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/hatekonysag/4",
+                                        "name": "munkaban/hatekonysag/4",
+                                        "class": "mr-2",
+                                        "data-label": "Brainstorming: használd az AI-t kreatív partnerként."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/hatekonysag/4",
+                                        "content": "Brainstorming: használd az AI-t kreatív partnerként.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/munkaban/atalakulas",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_atalakulas', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/atalakulas/0",
+                                        "name": "munkaban/atalakulas/0",
+                                        "class": "mr-2",
+                                        "data-label": "Az orvos, ügyvéd, HR és marketing szakmák jövője."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/atalakulas/0",
+                                        "content": "Az orvos, ügyvéd, HR és marketing szakmák jövője.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/atalakulas/1",
+                                        "name": "munkaban/atalakulas/1",
+                                        "class": "mr-2",
+                                        "data-label": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/atalakulas/1",
+                                        "content": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/atalakulas/2",
+                                        "name": "munkaban/atalakulas/2",
+                                        "class": "mr-2",
+                                        "data-label": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/atalakulas/2",
+                                        "content": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/atalakulas/3",
+                                        "name": "munkaban/atalakulas/3",
+                                        "class": "mr-2",
+                                        "data-label": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/atalakulas/3",
+                                        "content": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/atalakulas/4",
+                                        "name": "munkaban/atalakulas/4",
+                                        "class": "mr-2",
+                                        "data-label": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/atalakulas/4",
+                                        "content": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/munkaban/kreativ",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_kreativ', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/kreativ/0",
+                                        "name": "munkaban/kreativ/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI, mint kreatív segéd: szövegírók, zenészek és grafikusok AI-eszközei."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/kreativ/0",
+                                        "content": "AI, mint kreatív segéd: szövegírók, zenészek és grafikusok AI-eszközei.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/kreativ/1",
+                                        "name": "munkaban/kreativ/1",
+                                        "class": "mr-2",
+                                        "data-label": "Etikus AI-használat: a művészet és az AI konfliktusa."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/kreativ/1",
+                                        "content": "Etikus AI-használat: a művészet és az AI konfliktusa.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/kreativ/2",
+                                        "name": "munkaban/kreativ/2",
+                                        "class": "mr-2",
+                                        "data-label": "AI és szerzői jog: mi a „lopás” és mi az „inspiráció” határa?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/kreativ/2",
+                                        "content": "AI és szerzői jog: mi a „lopás” és mi az „inspiráció” határa?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/kreativ/3",
+                                        "name": "munkaban/kreativ/3",
+                                        "class": "mr-2",
+                                        "data-label": "Szakmai kilátások: mi az illusztrátor, szövegíró, zenész szakmák jövője?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/kreativ/3",
+                                        "content": "Szakmai kilátások: mi az illusztrátor, szövegíró, zenész szakmák jövője?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/kreativ/4",
+                                        "name": "munkaban/kreativ/4",
+                                        "class": "mr-2",
+                                        "data-label": "A társproducer szerepében: AI, mint ötletgenerátor és stíluskorrektor?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/kreativ/4",
+                                        "content": "A társproducer szerepében: AI, mint ötletgenerátor és stíluskorrektor?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/oktatas/diak",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_diak', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/diak/0",
+                                        "name": "oktatas/diak/0",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan használd tanuláshoz? (jegyzet, esszé, vázlat, időbeosztás, Zettelkasten)"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/diak/0",
+                                        "content": "Hogyan használd tanuláshoz? (jegyzet, esszé, vázlat, időbeosztás, Zettelkasten)",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/diak/1",
+                                        "name": "oktatas/diak/1",
+                                        "class": "mr-2",
+                                        "data-label": "AI workflow egyetemistáknak"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/diak/1",
+                                        "content": "AI workflow egyetemistáknak",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/diak/2",
+                                        "name": "oktatas/diak/2",
+                                        "class": "mr-2",
+                                        "data-label": "Írass-e AI-val dolgozatot?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/diak/2",
+                                        "content": "Írass-e AI-val dolgozatot?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/diak/3",
+                                        "name": "oktatas/diak/3",
+                                        "class": "mr-2",
+                                        "data-label": "AI mint nyelvtanár / vizsga partner / kutatótárs"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/diak/3",
+                                        "content": "AI mint nyelvtanár / vizsga partner / kutatótárs",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/oktatas/tanar",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_tanar', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/tanar/0",
+                                        "name": "oktatas/tanar/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI a tananyagba integrálva: hogyan tanítsuk az AI-t, ne csak AI segítségével?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/tanar/0",
+                                        "content": "AI a tananyagba integrálva: hogyan tanítsuk az AI-t, ne csak AI segítségével?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/tanar/1",
+                                        "name": "oktatas/tanar/1",
+                                        "class": "mr-2",
+                                        "data-label": "AI-alapú feladatgenerálás és értékelés: időmegtakarítás a mindennapokban."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/tanar/1",
+                                        "content": "AI-alapú feladatgenerálás és értékelés: időmegtakarítás a mindennapokban.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/tanar/2",
+                                        "name": "oktatas/tanar/2",
+                                        "class": "mr-2",
+                                        "data-label": "Etikai kérdések a diákok AI-használata körül."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/tanar/2",
+                                        "content": "Etikai kérdések a diákok AI-használata körül.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/tanar/3",
+                                        "name": "oktatas/tanar/3",
+                                        "class": "mr-2",
+                                        "data-label": "A csalás elleni harc: hogyan ismerd fel az AI által írt munkát?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/tanar/3",
+                                        "content": "A csalás elleni harc: hogyan ismerd fel az AI által írt munkát?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/oktatas/nyelvtanulas",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_nyelvtanulas', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/nyelvtanulas/0",
+                                        "name": "oktatas/nyelvtanulas/0",
+                                        "class": "mr-2",
+                                        "data-label": "Helyettesítheti a ChatGPT (vagy más AI) a Duolingo-t? (Válasz: ABSZOLÚT, sőt!)"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/nyelvtanulas/0",
+                                        "content": "Helyettesítheti a ChatGPT (vagy más AI) a Duolingo-t? (Válasz: ABSZOLÚT, sőt!)",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/nyelvtanulas/1",
+                                        "name": "oktatas/nyelvtanulas/1",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan használj AI-t nyelvtanuláshoz?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/nyelvtanulas/1",
+                                        "content": "Hogyan használj AI-t nyelvtanuláshoz?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/nyelvtanulas/2",
+                                        "name": "oktatas/nyelvtanulas/2",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan tudsz magadnak egy privát AI nyelvtanárt promptolni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/nyelvtanulas/2",
+                                        "content": "Hogyan tudsz magadnak egy privát AI nyelvtanárt promptolni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/oktatas/kutatas",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_kutatas', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/kutatas/0",
+                                        "name": "oktatas/kutatas/0",
+                                        "class": "mr-2",
+                                        "data-label": "Milyen use case-ek vannak az akadémiai karrierben AI használatára?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/kutatas/0",
+                                        "content": "Milyen use case-ek vannak az akadémiai karrierben AI használatára?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/kutatas/1",
+                                        "name": "oktatas/kutatas/1",
+                                        "class": "mr-2",
+                                        "data-label": "Milyen prompting, context engineering technikák vannak arra, hogy nagyobb mennyiségű tanulmányt, cikket, kutatást feldolgozzunk, szintetizáljunk AI segítségével?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/kutatas/1",
+                                        "content": "Milyen prompting, context engineering technikák vannak arra, hogy nagyobb mennyiségű tanulmányt, cikket, kutatást feldolgozzunk, szintetizáljunk AI segítségével?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/kutatas/2",
+                                        "name": "oktatas/kutatas/2",
+                                        "class": "mr-2",
+                                        "data-label": "Milyen eszközök vannak a konverzáció alapú eszközökön (ChatGPT) túl?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/kutatas/2",
+                                        "content": "Milyen eszközök vannak a konverzáció alapú eszközökön (ChatGPT) túl?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "oktatas/kutatas/3",
+                                        "name": "oktatas/kutatas/3",
+                                        "class": "mr-2",
+                                        "data-label": "Hogyan tudsz szöveges publikációkból mind map-et vagy vonaton is hallgatható hanganyagot generálni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "oktatas/kutatas/3",
+                                        "content": "Hogyan tudsz szöveges publikációkból mind map-et vagy vonaton is hallgatható hanganyagot generálni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/pszichologia/onismeret",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'pszichologia_onismeret', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/onismeret/0",
+                                        "name": "pszichologia/onismeret/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI, mint önismereti napló: használhatjuk-e az AI-t strukturált önfelfedezésre, érzések elemzésére?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/onismeret/0",
+                                        "content": "AI, mint önismereti napló: használhatjuk-e az AI-t strukturált önfelfedezésre, érzések elemzésére?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/onismeret/1",
+                                        "name": "pszichologia/onismeret/1",
+                                        "class": "mr-2",
+                                        "data-label": "Magánéleti és kapcsolati kérdések: meddig mehet el az AI a tanácsadásban?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/onismeret/1",
+                                        "content": "Magánéleti és kapcsolati kérdések: meddig mehet el az AI a tanácsadásban?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/onismeret/2",
+                                        "name": "pszichologia/onismeret/2",
+                                        "class": "mr-2",
+                                        "data-label": "Véleménybuborék és AI pszichózis: mikor szakadunk el a valóságtól? Mennyi a „túl sok”?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/onismeret/2",
+                                        "content": "Véleménybuborék és AI pszichózis: mikor szakadunk el a valóságtól? Mennyi a „túl sok”?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/onismeret/3",
+                                        "name": "pszichologia/onismeret/3",
+                                        "class": "mr-2",
+                                        "data-label": "Öndiagnózis határai: mikor jó, és mikor veszélyes az AI-ra bízni szakemberek munkáját?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/onismeret/3",
+                                        "content": "Öndiagnózis határai: mikor jó, és mikor veszélyes az AI-ra bízni szakemberek munkáját?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/onismeret/4",
+                                        "name": "pszichologia/onismeret/4",
+                                        "class": "mr-2",
+                                        "data-label": "Stresszkezelés és a hangulati naplózás AI-val."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/onismeret/4",
+                                        "content": "Stresszkezelés és a hangulati naplózás AI-val.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/pszichologia/terapeuta",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'pszichologia_terapeuta', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/terapeuta/0",
+                                        "name": "pszichologia/terapeuta/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI mint szupervíziós segéd: transzkriptek és a terápia elemzése."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/terapeuta/0",
+                                        "content": "AI mint szupervíziós segéd: transzkriptek és a terápia elemzése.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/terapeuta/1",
+                                        "name": "pszichologia/terapeuta/1",
+                                        "class": "mr-2",
+                                        "data-label": "Etikai megfontolások: mikor használható az AI pszichodiagnosztikára?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/terapeuta/1",
+                                        "content": "Etikai megfontolások: mikor használható az AI pszichodiagnosztikára?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/terapeuta/2",
+                                        "name": "pszichologia/terapeuta/2",
+                                        "class": "mr-2",
+                                        "data-label": "Mintafelismerés AI-val: maladaptív sémák, kognitív torzítások azonosítása."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/terapeuta/2",
+                                        "content": "Mintafelismerés AI-val: maladaptív sémák, kognitív torzítások azonosítása.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/terapeuta/3",
+                                        "name": "pszichologia/terapeuta/3",
+                                        "class": "mr-2",
+                                        "data-label": "Adatbiztonság és titoktartás: hogyan használható az AI privát, secure módon?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/terapeuta/3",
+                                        "content": "Adatbiztonság és titoktartás: hogyan használható az AI privát, secure módon?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/terapeuta/4",
+                                        "name": "pszichologia/terapeuta/4",
+                                        "class": "mr-2",
+                                        "data-label": "A pszichometria jövője: AI az adatok feldolgozásában, tesztek optimalizálásában."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/terapeuta/4",
+                                        "content": "A pszichometria jövője: AI az adatok feldolgozásában, tesztek optimalizálásában.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "quiz/pszichologia/szulo",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-3xl ml-8 mt-16",
+                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'pszichologia_szulo', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/szulo/0",
+                                        "name": "pszichologia/szulo/0",
+                                        "class": "mr-2",
+                                        "data-label": "AI a gyereknevelési kérdésekben: szabad-e, vagy felesleges?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/szulo/0",
+                                        "content": "AI a gyereknevelési kérdésekben: szabad-e, vagy felesleges?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/szulo/1",
+                                        "name": "pszichologia/szulo/1",
+                                        "class": "mr-2",
+                                        "data-label": "Hány éves kortól engedjük? A korosztályi ajánlások és kockázatok."
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/szulo/1",
+                                        "content": "Hány éves kortól engedjük? A korosztályi ajánlások és kockázatok.",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/szulo/2",
+                                        "name": "pszichologia/szulo/2",
+                                        "class": "mr-2",
+                                        "data-label": "Beszélgetés az AI-ról a gyerekkel: hogyan magyarázzuk el a technológiát?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/szulo/2",
+                                        "content": "Beszélgetés az AI-ról a gyerekkel: hogyan magyarázzuk el a technológiát?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/szulo/3",
+                                        "name": "pszichologia/szulo/3",
+                                        "class": "mr-2",
+                                        "data-label": "Van-e szülői beállítási mód ChatGPT-n és más eszközökön?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/szulo/3",
+                                        "content": "Van-e szülői beállítási mód ChatGPT-n és más eszközökön?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "pszichologia/szulo/4",
+                                        "name": "pszichologia/szulo/4",
+                                        "class": "mr-2",
+                                        "data-label": "Tanulási segítség iskolás gyermekeddel: hogyan segítsd őt az AI-val (kötelezők, magyarázatok)?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "pszichologia/szulo/4",
+                                        "content": "Tanulási segítség iskolás gyermekeddel: hogyan segítsd őt az AI-val (kötelezők, magyarázatok)?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
                             }
                         ]
                     }
@@ -205,7 +2703,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -227,7 +2725,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -249,7 +2747,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -271,7 +2769,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -293,7 +2791,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -315,7 +2813,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }
@@ -337,7 +2835,7 @@
                 "children": [
                     {
                         "type": "div",
-                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed -z-10 bg-[bottom_578px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
                         "style": {
                             "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
                         }

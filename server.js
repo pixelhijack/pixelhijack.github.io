@@ -197,6 +197,135 @@ app.post('/form', async (req, res) => {
   }
 });
 
+// Quiz submission with user creation and magic link
+app.post('/quiz/submit', async (req, res) => {
+  const { email, projectName, quizData, redirectTo } = req.body;
+  
+  if (!email || !projectName) {
+    return res.status(400).json({ error: 'Email and project name are required' });
+  }
+
+  try {
+    const { getAuth, getFirestore } = await import('./utils/firebaseAdmin.js');
+    const db = getFirestore();
+    
+    // 1. Create or get user
+    let user;
+    try {
+      user = await getAuth().getUserByEmail(email);
+      console.log('Found existing user:', user.uid);
+    } catch (error) {
+      // User doesn't exist, create them
+      console.log('Creating new user for:', email);
+      user = await getAuth().createUser({ email });
+      console.log('Created new user:', user.uid);
+      
+      // Create user document in shared users collection
+      await db.collection('users').doc(user.uid).set({
+        email: email,
+        createdAt: new Date().toISOString(),
+        lastActive: new Date().toISOString(),
+        projects: [projectName]
+      });
+    }
+
+    // 2. Create or update project-specific user document
+    const projectUserRef = db.collection(`users_${projectName}`).doc(user.uid);
+    const projectUserDoc = await projectUserRef.get();
+    
+    if (!projectUserDoc.exists) {
+      // New user in this project
+      await projectUserRef.set({
+        email: email,
+        createdAt: new Date().toISOString(),
+        lastActive: new Date().toISOString(),
+        isPremium: false,
+        interests: quizData.checkboxes?.map(cb => cb.label) || [],
+        totalEngagements: 1,
+        quizResponses: {
+          [quizData.quizId || 'initial']: {
+            timestamp: new Date().toISOString(),
+            ...quizData
+          }
+        }
+      });
+    } else {
+      // Existing user - update
+      const existingData = projectUserDoc.data();
+      await projectUserRef.update({
+        lastActive: new Date().toISOString(),
+        interests: Array.from(new Set([
+          ...(existingData.interests || []),
+          ...(quizData.checkboxes?.map(cb => cb.label) || [])
+        ])),
+        totalEngagements: (existingData.totalEngagements || 0) + 1,
+        [`quizResponses.${quizData.quizId || 'initial'}`]: {
+          timestamp: new Date().toISOString(),
+          ...quizData
+        }
+      });
+    }
+
+    // 3. Save to engagements subcollection
+    await projectUserRef.collection('engagements').add({
+      timestamp: new Date().toISOString(),
+      action: 'quiz_submission',
+      quizId: quizData.quizId || 'initial',
+      data: quizData
+    });
+
+    // 4. Also save to Google Sheets for backup/analytics
+    const sheetName = 'all forms';
+    const values = [
+      new Date().toLocaleString(),
+      `${projectName}: quiz`,
+      email,
+      '',
+      '',
+      '',
+      quizData.role || '',
+      JSON.stringify(quizData.checkboxes || [])
+    ];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: SPREADSHEET_ID,
+      range: sheetName,
+      valueInputOption: 'USER_ENTERED',
+      resource: { values: [values] }
+    });
+
+    // 5. Generate and send magic link
+    const customToken = await getAuth().createCustomToken(user.uid);
+    const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${customToken}&redirect=${encodeURIComponent(redirectTo || '/')}`;
+
+    await resend.emails.send({
+      from: `${projectName} <noreply@pothattila.com>`,
+      to: email,
+      subject: 'Your magic link to continue',
+      html: `
+        <h1>Thanks for completing the quiz!</h1>
+        <p>Click below to access your personalized content:</p>
+        <p><a href="${magicLink}" style="display: inline-block; padding: 12px 24px; background-color: #000; color: #fff; text-decoration: none; border-radius: 4px;">Continue →</a></p>
+        <p><small>This link will expire in 1 hour.</small></p>
+      `,
+    });
+
+    console.log('✅ Quiz submitted, user created/updated, magic link sent:', email);
+
+    res.status(200).json({ 
+      message: 'Siker! Ellenőrizd az emailed!',
+      userId: user.uid
+    });
+
+  } catch (error) {
+    console.error('Error in quiz submission:', error);
+    res.status(500).json({ 
+      error: 'Failed to submit quiz',
+      details: error.message 
+    });
+  }
+});
+
 // Magic link authentication endpoint
 app.post('/auth/send-link', async (req, res) => {
   const { email, redirectTo } = req.body;

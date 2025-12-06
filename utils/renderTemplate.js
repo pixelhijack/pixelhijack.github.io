@@ -77,24 +77,44 @@ export default function renderTemplate({
   <script>
     function submitForm(formElem, intent) {
       try {
-        const payload = { intent, checkboxes: {} };
+        const payload = { intent, checkboxes: [] };
         const fd = new FormData(formElem);
         
-        // Collect form entries
+        // Collect form entries (skip checkboxes - they're handled separately below)
         for (const [key, value] of fd.entries()) {
-            // For checked checkboxes, key will be the unique name (e.g., 'option_1'), 
-            // and value will be its 'value' attribute (e.g., 'on' or a specific ID).
+            // Skip checkbox fields - they'll be processed in step 2
+            const inputElem = formElem.querySelector('[name="' + key + '"]');
+            if (inputElem && inputElem.type === 'checkbox') {
+                continue; // Skip checkboxes
+            }
+            
+            // For other fields (text, email, textarea, etc.)
             if (payload[key] === undefined) payload[key] = value;
-            // The array logic is still useful for multi-selects or other same-named fields, 
-            // but less likely to be hit by uniquely named checkboxes.
+            // The array logic is still useful for multi-selects or other same-named fields
             else if (Array.isArray(payload[key])) payload[key].push(value); 
             else payload[key] = [payload[key], value];
         }
-        // 2. Manually process checkboxes to capture the true/false state
+        // 2. Manually process checkboxes to capture checked state AND label text
         formElem.querySelectorAll('input[type="checkbox"]').forEach(cb => {
             // Use the UNIQUE NAME as the key in the payload
             if (cb.name) {
-                payload['checkboxes'][cb.name] = cb.checked;
+                // Find the associated label - avoid optional chaining in template literals
+                let label = cb.value; // fallback
+                if (cb.dataset && cb.dataset.label) {
+                    label = cb.dataset.label;
+                } else if (cb.id) {
+                    const labelElem = formElem.querySelector('label[for="' + cb.id + '"]');
+                    if (labelElem && labelElem.textContent) {
+                        label = labelElem.textContent.trim();
+                    }
+                }
+                
+                if(cb.checked){
+                  payload['checkboxes'].push({
+                    checked: cb.checked,
+                    label: label
+                  });
+                }
             }
         });
 
@@ -166,6 +186,95 @@ export default function renderTemplate({
             submitBtn.textContent = originalBtnText;
           }
         });
+    }
+
+    function submitQuiz(formElem, projectName, quizId, redirectTo) {
+      const emailInput = formElem.querySelector('input[type="email"]');
+      const submitBtn = formElem.querySelector('button[type="submit"]');
+      const messageDiv = formElem.querySelector('.message') || formElem.parentElement.querySelector('.message');
+      
+      if (!emailInput || !emailInput.value) {
+        alert('Please enter your email address');
+        return false;
+      }
+
+      const email = emailInput.value;
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit';
+      
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+      }
+
+      // Collect all form data
+      const fd = new FormData(formElem);
+      const quizData = {
+        quizId: quizId,
+        checkboxes: []
+      };
+
+      // Collect non-checkbox fields
+      for (const [key, value] of fd.entries()) {
+        const inputElem = formElem.querySelector('[name="' + key + '"]');
+        if (inputElem && inputElem.type !== 'checkbox' && key !== 'email') {
+          quizData[key] = value;
+        }
+      }
+
+      // Collect checkboxes with labels
+      formElem.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        if (cb.name && cb.checked) {
+          let label = cb.value;
+          if (cb.dataset && cb.dataset.label) {
+            label = cb.dataset.label;
+          } else if (cb.id) {
+            const labelElem = formElem.querySelector('label[for="' + cb.id + '"]');
+            if (labelElem && labelElem.textContent) {
+              label = labelElem.textContent.trim();
+            }
+          }
+          quizData.checkboxes.push({
+            name: cb.name,
+            label: label
+          });
+        }
+      });
+
+      // Submit to server
+      fetch('/quiz/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          projectName: projectName,
+          quizData: quizData,
+          redirectTo: redirectTo || '/'
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message) {
+            if (messageDiv) {
+              messageDiv.className = 'message success';
+              messageDiv.textContent = data.message;
+            }
+            formElem.reset();
+          } else if (data.error) {
+            throw new Error(data.error);
+          }
+        })
+        .catch(error => {
+          if (messageDiv) {
+            messageDiv.className = 'message error';
+            messageDiv.textContent = 'Error: ' + error.message;
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }
+        });
+
+      return false; // Prevent default form submission
     }
     /* prevent layout loading from anchoring scroll (avoid jumps when images load) */
     if ('scrollRestoration' in history) {
