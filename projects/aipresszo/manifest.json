@@ -123,7 +123,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 mx-auto",
+                                "class": "quiz-cards quiz-cards-2-2 mx-auto flex flex-col md:flex-row items-center justify-center",
                                 "children": [
                                     {
                                         "type": "a",
@@ -430,7 +430,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-row md:flex-row items-center justify-center",
                         "children": [
                             {
                                 "type": "a",
@@ -518,7 +518,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
                         "children": [
                             {
                                 "type": "a",
@@ -606,7 +606,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
                         "children": [
                             {
                                 "type": "a",
@@ -714,7 +714,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto",
+                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
                         "children": [
                             {
                                 "type": "a",

@@ -55,7 +55,3 @@ ol li {
 .quiz-cards {
     align-items: stretch!important;
 }
-
-.quiz-cards-2-2 .quiz-card {
-    min-height: 250px!important;
-}
