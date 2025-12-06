@@ -123,7 +123,7 @@
                             },
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2",
+                                "class": "quiz-cards quiz-cards-2-2 mx-auto",
                                 "children": [
                                     {
                                         "type": "a",

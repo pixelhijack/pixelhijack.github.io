@@ -44,3 +44,7 @@ ol li {
     margin-left: 1.5rem;
     list-style-type: decimal;
 }
+
+.quiz-card {
+    color: black!important;
+}

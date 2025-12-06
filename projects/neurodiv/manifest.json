@@ -93,6 +93,101 @@
                         ]
                     },
                     {
+                        "type": "h2",
+                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                        "content": "<b>Ki vagy és mit keresel? </b>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "quiz-cards quiz-cards-2-2",
+                        "children": [
+                            {
+                                "type": "a",
+                                "href": "/onboarding/prediagnosis",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♦"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Gyanítom, hogy neurodivergens (ADHD/autizmus) vagyok, de nincs diagnózisom, és nem tudom, merre induljak."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/postdiagnosis",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Diagnosztizált neurodivergens vagyok, és keresem, hogyan tudnám a mindennapokba integrálni, támogató közösségre van szükségem."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/interested",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Érdekel a téma, esetleg hozzátartozója vagyok egy érintettnek, de az is lehet, hogy szkeptikus. Hiteles információt keresek, olvasgatnék, informálódnék."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/professional",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Segítő szakmában dolgozom (pszichológus, coach, kutató) és szakmai kollaborációt, együttműködést keresek."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "hr",
+                        "class": "max-w-[80%] mx-auto my-8"
+                    },
+                    {
                         "type": "div",
                         "class": "masonry-container bg-white z-50 masonry-3 masonry-mobile-1",
                         "children": [
@@ -149,211 +244,6 @@
                     },
                     {
                         "type": "hr",
-                        "class": "max-w-[80%] mx-auto my-8"
-                    },
-                    {
-                        "type": "div",
-                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
-                        "children": [
-                            {
-                                "type": "form",
-                                "action": "javascript:;",
-                                "onsubmit": "return submitForm(this, 'neurodiv: segment');",
-                                "method": "POST",
-                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
-                                "children": [
-                                    {
-                                        "type": "h2",
-                                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
-                                        "content": "<b>Hogyan tudsz csatlakozni ehhez a nyitott projekthez? </b><br><br>"
-                                    },
-                                    {
-                                        "type": "input",
-                                        "name": "name",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Neved"
-                                    },
-                                    {
-                                        "type": "input",
-                                        "name": "email",
-                                        "typeAttr": "text",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Hol érhetünk el? (Email, Facebook, Insta, anonim)",
-                                        "required": "true"
-                                    },
-                                    {
-                                        "type": "textarea",
-                                        "name": "message",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Üzeneted"
-                                    },
-                                    {
-                                        "type": "fieldset",
-                                        "children": [
-                                            {
-                                                "type": "legend",
-                                                "content": "<br><b>Mi érdekelne?</b><br><br>"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: newsletter",
-                                                        "id": "checkbox: newsletter"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: newsletter",
-                                                        "content": "Olvasgatnék bővebben, hírlevél formában"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: mentoring",
-                                                        "id": "checkbox: mentoring"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: mentoring",
-                                                        "content": "Tapasztalati beszélgetés, önismereti támogatás más neurodivergensekkel (peer support, nem terápia)"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: challenges",
-                                                        "id": "checkbox: challenges"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: challenges",
-                                                        "content": "Facebook csoport, kihívások, játékok"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: research",
-                                                        "id": "checkbox: research"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: research",
-                                                        "content": "Szakmai kollaboráció, kutatási együttműködések, pilot projektek"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: community",
-                                                        "id": "checkbox: community"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: community",
-                                                        "content": "Közösség, élő találkozók más érintettekkel"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "fieldset",
-                                        "class": "mt-[10px]",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "label",
-                                                        "for": "role",
-                                                        "class": "semibold",
-                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b><br><br>"
-                                                    },
-                                                    {
-                                                        "type": "select",
-                                                        "name": "role",
-                                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                                        "children": [
-                                                            {
-                                                                "type": "option",
-                                                                "value": "",
-                                                                "content": ""
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "nem diagnosztizalt",
-                                                                "content": "Nem diagnosztizált, csak gyanítom"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "diagnosztizalt",
-                                                                "content": "Diagnosztizált neurodivergens"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "erdeklodo",
-                                                                "content": "Érdeklődő, hozzátartozó"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "pszichologus",
-                                                                "content": "Pszichológus, segítő szakmában dolgozó"
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "type": "div",
-                                        "class": " flex flex-col md:flex-row items-center justify-center",
-                                        "children": [
-                                            {
-                                                "type": "button",
-                                                "id": "submit",
-                                                "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                                "content": "Küldés",
-                                                "typeAttr": "submit"
-                                            },
-                                            {
-                                                "type": "div",
-                                                "class": "text-black p-5 text-xs",
-                                                "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "hr",
                         "class": "max-w-[80%] mx-auto"
                     },
                     {
@@ -372,17 +262,17 @@
                                     {
                                         "type": "h3",
                                         "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Kávézz velem és beszélgessünk!<br><br>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
                                         "content": "Szia, Ati vagyok, későn diagnosztizált autista és ADHD-s, neurodivergencia tapasztalati szakértő. <br><br>"
                                     },
                                     {
                                         "type": "p",
                                         "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 md:text-xl text-black rounded-md max-w-[80%]",
                                         "content": "Mióta megtudtam, hogy a napi kihívásaimnak neve is van, nagyon sok hasonló emberrel beszélgettem ezekről - innen született ez a projekt. Ha mindenki tizedannyit oszthatna meg a saját történetéből, mint Donna Williams vagy Temple Grandin tette, máris más lenne a világ. <br><br>Munkám és szenvedélyem (special interest) az AI fejlesztés, a neuropszichológia és az analóg/fashion fotózás.<br><br>"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
+                                        "content": "<i>Kávézz velem és beszélgessünk!</i><br><br>"
                                     }
                                 ]
                             }
@@ -1315,7 +1205,214 @@
             "tree": {
                 "type": "div",
                 "class": "flex items-center justify-center mt-8 mb-4",
-                "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                "children": [
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond font-bold text-2xl md:text-3xl mb-4 text-white bg-black/60 px-4 py-2 rounded-md",
+                        "content": "<iframe src=\"https://neurohackers.substack.com/embed\" width=\"480\" height=\"320\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "md:max-w-[80%] mx-auto my-8 flex flex-col items-center justify-center",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitForm(this, 'neurodiv: segment');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-sm md:text-xl text-black rounded-md max-w-[80%]",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "font-bold font-title p-[25px] text-center text-black text-4xl",
+                                        "content": "<b>És TE ki vagy és mit keresel? </b><br><br>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "name",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Neved"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "text",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Hol érhetünk el? (Email, Facebook, Insta, anonim)",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "textarea",
+                                        "name": "message",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                        "placeholder": "Üzeneted"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "legend",
+                                                "content": "<br><b>Mi érdekelne?</b><br><br>"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: newsletter",
+                                                        "id": "checkbox: newsletter"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: newsletter",
+                                                        "content": "Olvasgatnék bővebben, hírlevél formában"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: mentoring",
+                                                        "id": "checkbox: mentoring"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: mentoring",
+                                                        "content": "Tapasztalati beszélgetés, önismereti támogatás más neurodivergensekkel (peer support, nem terápia)"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: challenges",
+                                                        "id": "checkbox: challenges"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: challenges",
+                                                        "content": "Facebook csoport, kihívások, játékok"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: research",
+                                                        "id": "checkbox: research"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: research",
+                                                        "content": "Szakmai kollaboráció, kutatási együttműködések, pilot projektek"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: community",
+                                                        "id": "checkbox: community"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: community",
+                                                        "content": "Közösség, élő találkozók más érintettekkel"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "class": "mt-[10px]",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "label",
+                                                        "for": "role",
+                                                        "class": "semibold",
+                                                        "content": "<br><b>Milyen szerep illik rád leginkább?</b><br><br>"
+                                                    },
+                                                    {
+                                                        "type": "select",
+                                                        "name": "role",
+                                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                                        "children": [
+                                                            {
+                                                                "type": "option",
+                                                                "value": "",
+                                                                "content": ""
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "nem diagnosztizalt",
+                                                                "content": "Nem diagnosztizált, csak gyanítom"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "diagnosztizalt",
+                                                                "content": "Diagnosztizált neurodivergens"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "erdeklodo",
+                                                                "content": "Érdeklődő, hozzátartozó"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "pszichologus",
+                                                                "content": "Pszichológus, segítő szakmában dolgozó"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": " flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
+                                                "content": "Küldés",
+                                                "typeAttr": "submit"
+                                            },
+                                            {
+                                                "type": "div",
+                                                "class": "text-black p-5 text-xs",
+                                                "content": "Az űrlap kitöltésével hozzájárulsz, hogy az adataidat bizalmasan kezeljük, kizárólag kapcsolatfelvétel céljából, harmadik félnek nem adjuk át."
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
         },
         {
