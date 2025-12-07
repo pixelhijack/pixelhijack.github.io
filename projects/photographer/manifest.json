@@ -154,11 +154,6 @@
                                 "linkTo": "conceptual/b72"
                             },
                             {
-                                "type": "div",
-                                "class": "font-eb-garamond p-[20px] mt-0 md:ml-8 text-1xl md:text-2xl text-black rounded-md md:max-w-[80%] break-inside-avoid",
-                                "content": "❝ I'm a professional photographer, based in Budapest, Hungary. I work mainly with analog film & vintage lenses as I love non-mainstream, imperfect, nostalgic looks: pictorialists, old Hollywood, Technicolor and 1980s movies. <a class=\"underline\" target=\"_blank\" href=\"/about\">Do you want to work with me?</a> "
-                            },
-                            {
                                 "type": "img",
                                 "src": "conceptual/proud-mary/f5aafb7b-2e49-4921-b9cb-6af219fc049f_rw_1920.jpg",
                                 "linkTo": "conceptual/proud-mary"
@@ -187,6 +182,11 @@
                                 "type": "img",
                                 "src": "fashion/models/daniel-II/DSC05914-bw.jpg",
                                 "linkTo": "fashion/models/daniel-II"
+                            },
+                            {
+                                "type": "h1",
+                                "class": "text-4xl md:text-4xl text-black font-eb-garamond p-[20px]",
+                                "content": "<i>❝ <a class=\"underline\" href=\"/learn\">Tanulj stílust és látásmódot</a>, <br>fotózni bárki tud!</i>"
                             },
                             {
                                 "type": "img",
