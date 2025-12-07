@@ -248,6 +248,12 @@ export default function renderTemplate({
         checkboxes: []
       };
 
+      // Capture URL parameters (e.g., interest from ?interest=onboarding/pilot)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('interest')) {
+        quizData.interest = urlParams.get('interest');
+      }
+
       // Collect non-checkbox fields
       for (const [key, value] of fd.entries()) {
         const inputElem = formElem.querySelector('[name="' + key + '"]');

@@ -15,14 +15,35 @@
             }
         }
     },
-    "nav": [ 
-        { "href": "/learn", "label": "Learn" },
-        { "href": "/fashion", "label": "Fashion" },
-        { "href": "/analog", "label": "Analog" },
-        { "href": "/stories", "label": "Stories" },
-        { "href": "/backstage", "label": "Backstage" },
-        { "href": "/prints", "label": "Prints" },
-        { "href": "/about", "label": "About" }
+    "nav": [
+        {
+            "href": "/learn",
+            "label": "Learn"
+        },
+        {
+            "href": "/fashion",
+            "label": "Fashion"
+        },
+        {
+            "href": "/analog",
+            "label": "Analog"
+        },
+        {
+            "href": "/stories",
+            "label": "Stories"
+        },
+        {
+            "href": "/backstage",
+            "label": "Backstage"
+        },
+        {
+            "href": "/prints",
+            "label": "Prints"
+        },
+        {
+            "href": "/about",
+            "label": "About"
+        }
     ],
     "footer": "<a target=\"_blank\" href=\"https://pothattila.substack.com/\">Blog </a> ◦ <a target=\"_blank\" href=\"https://pothattila.hu/\">Travel </a> ◦ &copy; 2025 Póth Attila. <a href=\"/sitemap\">♠ </a>",
     "fonts": [
@@ -265,7 +286,7 @@
                         "children": [
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/portrait-basics",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -282,7 +303,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/slow-photography",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -299,7 +320,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/series-sequencing",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -316,7 +337,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/fashion-photography",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -333,7 +354,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/tfcd-collaboration",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -350,7 +371,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/model-communication",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -367,7 +388,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/street-photography",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -384,7 +405,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "learn/alapok",
+                                "href": "coming-soon?interest=learn/zine-making",
                                 "class": "flex flex-col items-center",
                                 "children": [
                                     {
@@ -512,7 +533,7 @@
             }
         },
         {
-            "slug": "learn/alapok",
+            "slug": "coming-soon",
             "access": "logged-in",
             "navColor": "white",
             "tree": {
@@ -540,13 +561,42 @@
                                         "children": [
                                             {
                                                 "type": "h1",
-                                                "class": "hero-title",
-                                                "content": ""
+                                                "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
+                                                "content": "<i><b>Jelezd a szándékod <br>és élvezz elsőbbséget <br>az elérhető időpontoknál:</b></i>"
                                             },
                                             {
-                                                "type": "h2",
-                                                "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
-                                                "content": "<i>Köszönjük az érdeklődésed, nemsokára érkezik...</i>"
+                                                "type": "form",
+                                                "action": "javascript:;",
+                                                "onsubmit": "return submitQuiz(this, 'neurodiv', 'coming_soon', '/');",
+                                                "method": "POST",
+                                                "class": "w-full md:w-1/3 text-black rounded-md",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "name": "email",
+                                                        "typeAttr": "email",
+                                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                                        "placeholder": "Email",
+                                                        "required": "true"
+                                                    },
+                                                    {
+                                                        "type": "div",
+                                                        "class": "flex flex-col md:flex-row items-center justify-center",
+                                                        "children": [
+                                                            {
+                                                                "type": "button",
+                                                                "id": "submit",
+                                                                "class": "bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                                                "content": "Előjelentkezés",
+                                                                "typeAttr": "submit"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "div",
+                                                        "class": "message mt-4 p-3 rounded-lg hidden"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }

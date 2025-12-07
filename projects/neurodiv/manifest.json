@@ -309,7 +309,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=prediagnosis/selfknowledge",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -329,7 +329,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=prediagnosis/diagnosis",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -349,7 +349,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=prediagnosis/peersupport",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -417,7 +417,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=postdiagnosis/community",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -437,7 +437,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=postdiagnosis/lifestyle",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -457,7 +457,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=postdiagnosis/science",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -525,7 +525,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=interested/communication",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -545,7 +545,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=interested/stories",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -565,7 +565,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=interested/support",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -633,7 +633,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=professional/research",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -653,7 +653,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=professional/collaboration",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -673,7 +673,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon",
+                                        "href": "/coming-soon?interest=professional/ai",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -733,16 +733,61 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-150px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitQuiz(this, 'neurodiv', 'coming_soon', '/');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 text-black rounded-md",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Mentsd el a preferenciáid és értesülj elsőként az indulásról:</b>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                                "content": "Mentés",
+                                                "typeAttr": "submit"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "message mt-4 p-3 rounded-lg hidden"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
                         "children": [
                             {
                                 "type": "h2",
-                                "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-white rounded-md",
-                                "content": "<b>Addig itt tudsz olvasgatni: </b>"
+                                "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md mb-4",
+                                "content": "<b>Addig pedig itt tudsz olvasgatni: </b>"
                             },
                             {
                                 "type": "div",
-                                "class": "mx-auto my-8 flex flex-col items-center justify-center overflow-hidden",
+                                "class": "mx-auto flex flex-col items-center justify-center overflow-hidden",
                                 "content": "<iframe src=\"https://autinaplo.substack.com/embed\" width=\"480\" height=\"620\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
                             }
                         ]
