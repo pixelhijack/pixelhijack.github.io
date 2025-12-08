@@ -122,7 +122,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "...keresem, hogyan tudnám a mindennapokba integrálni az ADHD-m, autizmusom. Támogató közösségre van szükségem."
+                                        "content": "...keresem, hogyan tudnám a mindennapokba integrálni az ADHD-m, autizmusom. Keresem a közösséget, a hasonlóakat."
                                     }
                                 ]
                             },
@@ -399,7 +399,7 @@
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Diagnosztizált neurodivergensként a legnagyobb kihívás az integráció. <br>Miben kell támogatni a hétköznapjaidat?"
+                                                "content": "Mindegy, hogy van-e diagnózisod <br>vagy csak mindig is sejtetted, ide tartozol. <br>Az igazi kérdés: hogyan integráld az életedbe?"
                                             }
                                         ]
                                     }
@@ -427,11 +427,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Közösségre, megértésre, mások tapasztalataira van szükségem (peer support)."
+                                                "content": "A közösség érdekel"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "Megértésre, mások tapasztalataira van szükségem (peer support). Jó lenne egy biztonságos tér, ahol hasonló gondolkodású emberekkel beszélgethetek."
                                             }
                                         ]
                                     },
@@ -447,11 +447,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Életvezetési tanácsokra, eszközökre van szükségem a napi működéshez (pl. halogatás, kapcsolataim, karrier)."
+                                                "content": "Magamat szeretném jobban megérteni"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "Életvezetési tanácsokra, eszközökre van szükségem a napi működéshez (pl. halogatás, kapcsolataim, karrier)."
                                             }
                                         ]
                                     },
@@ -467,11 +467,31 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Szeretnék mélyebben elmerülni a tudományos háttérben, a neuropszichológiában."
+                                                "content": "A tudományos háttér érdekel"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": ""
+                                                "content": "Szeretnék mélyebben elmerülni a tudományos háttérben, a neuropszichológiában."
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "a",
+                                        "href": "/coming-soon?interest=postdiagnosis/superpowers",
+                                        "class": "quiz-card",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "♠"
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Szeretnék másoknak segíteni"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Úgy érzem, a neurodivergenciám szuperképességekkel és nehéz, de tanulságos történetekkel is jár, és nem félnék ezeket megosztani másokkal."
                                             }
                                         ]
                                     }

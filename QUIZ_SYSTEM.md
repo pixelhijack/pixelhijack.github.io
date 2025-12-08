@@ -1,6 +1,145 @@
 # Client-Side Quiz System Documentation
 
-## Original prompt
+## Rebuild - Step by Step
+
+### Design Principles
+
+- **Functional programming only** - No classes, constructors, or OOP
+- **Simple IDs** - Questions: A, B, C... Cards: 1, 2, 3...
+- **Simplified exit syntax** - `exit: "/url"` instead of `exit: true, exitUrl: "/url"`
+- **Incremental features** - Building step by step
+
+### Current Status: Step 1 - Basic Rendering & Navigation
+
+**What works:**
+
+- ✅ Renders questions with cards
+- ✅ Grid layout based on card count
+- ✅ Click on card → visual selection
+- ✅ Navigate to sub-questions (tree depth-first)
+- ✅ Exit cards redirect to URLs
+- ✅ Simple functional implementation
+
+**Not yet implemented:**
+
+- ❌ Multi-choice questions
+- ❌ localStorage persistence
+- ❌ Choice tracking
+- ❌ Query parameter passing
+- ❌ Sibling question navigation
+- ❌ Resume capability
+
+### Quiz JSON Structure (Step 1)
+
+```json
+{
+  "type": "quiz",
+  "id": "quiz-id",
+  "defaultExit": "/fallback-page",
+  "questions": [
+    {
+      "id": "A",
+      "title": "Question text?",
+      "cards": [
+        {
+          "id": "1",
+          "icon": "🔬",
+          "title": "Option 1",
+          "body": "Description",
+          "questions": [
+            {
+              "id": "B",
+              "title": "Sub-question?",
+              "cards": [
+                { "id": "1", "title": "Sub-option 1", "exit": "/page1" },
+                { "id": "2", "title": "Sub-option 2", "exit": "/page2" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Option 2",
+          "exit": "/direct-exit"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Property Reference
+
+#### Card Properties (Simplified)
+
+| Property    | Type   | Required | Description                               |
+| ----------- | ------ | -------- | ----------------------------------------- |
+| `id`        | string | ✅       | Simple ID: "1", "2", "3"                  |
+| `icon`      | string | ❌       | Emoji or icon                             |
+| `title`     | string | ❌       | Card title                                |
+| `body`      | string | ❌       | Card description                          |
+| `exit`      | string | ❌       | URL to redirect to (presence = exit card) |
+| `questions` | array  | ❌       | Sub-questions (creates tree)              |
+
+Note: No more `exit: boolean` + `exitUrl` combo. Just `exit: "/url"` or omit for non-exit cards.
+
+### Current Implementation
+
+```javascript
+window.QuizEngine = (() => {
+  const getGridClass = (cardCount) => {
+    /* ... */
+  };
+  const renderCard = (card) => {
+    /* ... */
+  };
+  const renderQuestion = (question) => {
+    /* ... */
+  };
+
+  const create = (config) => {
+    let container = null;
+    let currentQuestion = null;
+
+    const handleCardClick = (cardId) => {
+      // 1. Visual selection
+      // 2. Find card data
+      // 3. Navigate: exit, sub-question, or complete
+    };
+
+    const render = () => {
+      container.innerHTML = renderQuestion(currentQuestion);
+      attachListeners();
+    };
+
+    const init = (containerId) => {
+      currentQuestion = config.questions[0];
+      render();
+    };
+
+    return { init };
+  };
+
+  return { create };
+})();
+```
+
+### Usage
+
+```javascript
+// In renderTreeServer.js, injected into page:
+const quiz = QuizEngine.create({
+  id: "my-quiz",
+  questions: [...]
+});
+quiz.init('content-container');
+```
+
+---
+
+## First iteration (archived)
+
+### Original prompt
 
 i figured card based quiz would be just a perfect candidate for a rather client side experience, instead of putting 2-4 cards to different subpages and always go the full round trip. i thought having a new manifest.json type called "quiz", with the following structure:
 

@@ -296,3 +296,115 @@ function submitQuiz(formElem, projectName, quizId, redirectTo) {
     }
   }
 })();
+
+
+/**
+ * Simple Quiz Engine - Functional approach
+ * Step 1: Basic rendering and navigation only
+ */
+window.QuizEngine = (() => {
+  
+  // Pure rendering functions
+  const getGridClass = (cardCount) => {
+    if (cardCount <= 2) return "quiz-cards-2-1";
+    if (cardCount <= 4) return "quiz-cards-2-2";
+    return "quiz-cards-2-3";
+  };
+
+  const renderCard = (card) => {
+    const icon = card.icon ? `<div class="quiz-card-icon">${card.icon}</div>` : "";
+    const title = card.title ? `<h3>${card.title}</h3>` : "";
+    const body = card.body ? `<p>${card.body}</p>` : "";
+    
+    return `
+      <div class="quiz-card" data-card-id="${card.id}">
+        ${icon}
+        ${title}
+        ${body}
+      </div>
+    `;
+  };
+
+  const renderQuestion = (question) => {
+    const title = question.title 
+      ? `<h2 class="text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left">${question.title}</h2>`
+      : "";
+    const gridClass = getGridClass(question.cards.length);
+    const cardsHtml = question.cards.map(renderCard).join("");
+
+    return `
+      <div class="min-h-screen flex flex-col justify-center text-black">
+        ${title}
+        <div class="quiz-cards ${gridClass}">
+          ${cardsHtml}
+        </div>
+      </div>
+    `;
+  };
+
+  // Factory function
+  const create = (config) => {
+    let container = null;
+    let currentQuestion = null;
+
+    const handleCardClick = (cardId) => {
+      // Visual feedback
+      const cards = container.querySelectorAll(".quiz-card");
+      cards.forEach(card => card.classList.remove("selected"));
+      const clickedCard = container.querySelector(`[data-card-id="${cardId}"]`);
+      if (clickedCard) clickedCard.classList.add("selected");
+
+      // Find the clicked card data
+      const card = currentQuestion.cards.find(c => c.id === cardId);
+      if (!card) return;
+
+      // Handle navigation
+      setTimeout(() => {
+        if (card.exit) {
+          // Exit to another page
+          window.location.href = card.exit;
+        } else if (card.questions && card.questions.length > 0) {
+          // Navigate to sub-question
+          currentQuestion = card.questions[0];
+          render();
+        } else {
+          // No more questions - could go to next sibling or complete
+          console.log("Quiz path complete");
+        }
+      }, 300);
+    };
+
+    const attachListeners = () => {
+      const cards = container.querySelectorAll(".quiz-card");
+      cards.forEach(card => {
+        const cardId = card.dataset.cardId;
+        card.addEventListener("click", () => handleCardClick(cardId));
+      });
+    };
+
+    const render = () => {
+      if (!currentQuestion) {
+        container.innerHTML = "<p>No questions available</p>";
+        return;
+      }
+      container.innerHTML = renderQuestion(currentQuestion);
+      attachListeners();
+    };
+
+    const init = (containerId) => {
+      container = document.getElementById(containerId);
+      if (!container) {
+        console.error(`Container #${containerId} not found`);
+        return;
+      }
+
+      // Start with first question
+      currentQuestion = config.questions[0];
+      render();
+    };
+
+    return { init };
+  };
+
+  return { create };
+})();

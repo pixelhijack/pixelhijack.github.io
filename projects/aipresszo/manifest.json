@@ -2880,87 +2880,78 @@
                 "defaultExit": "/alapok",
                 "questions": [
                     {
-                        "id": "Q1",
+                        "id": "A",
                         "title": "Mit szeretnél tanulni az AI-ról?",
-                        "multiChoice": false,
                         "cards": [
                             {
-                                "id": "Q1_kutatasban",
+                                "id": "1",
                                 "icon": "🔬",
                                 "title": "AI kutatásban",
                                 "body": "Tudományos munkához, adatelemzéshez",
                                 "questions": [
                                     {
-                                        "id": "Q1_1",
+                                        "id": "B",
                                         "title": "Milyen szinten használod az AI-t?",
-                                        "multiChoice": false,
                                         "cards": [
                                             {
-                                                "id": "Q1_1_kezdo",
+                                                "id": "1",
                                                 "icon": "🌱",
                                                 "title": "Kezdő",
                                                 "body": "Még nem használtam",
-                                                "exit": true,
-                                                "exitUrl": "/quiz/kutatas/kezdo"
+                                                "exit": "/quiz/kutatas/kezdo"
                                             },
                                             {
-                                                "id": "Q1_1_haladó",
+                                                "id": "2",
                                                 "icon": "🚀",
                                                 "title": "Haladó",
                                                 "body": "Már van tapasztalatom",
-                                                "exit": true,
-                                                "exitUrl": "/quiz/kutatas/halado"
+                                                "exit": "/quiz/kutatas/halado"
                                             }
                                         ]
                                     }
                                 ]
                             },
                             {
-                                "id": "Q1_oktatasban",
+                                "id": "2",
                                 "icon": "🎓",
                                 "title": "AI oktatásban",
                                 "body": "Tanuláshoz, oktatás fejlesztéséhez",
                                 "questions": [
                                     {
-                                        "id": "Q1_2",
+                                        "id": "C",
                                         "title": "Tanulnál, tanítanál, vagy kutatsz?",
-                                        "multiChoice": false,
                                         "cards": [
                                             {
-                                                "id": "Q1_2_diak",
+                                                "id": "1",
                                                 "icon": "📚",
                                                 "title": "Diák vagyok",
                                                 "body": "Tanuláshoz kellene",
-                                                "exit": true,
-                                                "exitUrl": "/quiz/oktatas/diak"
+                                                "exit": "/quiz/oktatas/diak"
                                             },
                                             {
-                                                "id": "Q1_2_tanar",
+                                                "id": "2",
                                                 "icon": "👨‍🏫",
                                                 "title": "Oktató vagyok",
                                                 "body": "Oktatáshoz használnám",
-                                                "exit": true,
-                                                "exitUrl": "/quiz/oktatas/tanar"
+                                                "exit": "/quiz/oktatas/tanar"
                                             }
                                         ]
                                     }
                                 ]
                             },
                             {
-                                "id": "Q1_munkaban",
+                                "id": "3",
                                 "icon": "💼",
                                 "title": "AI munkában",
                                 "body": "Produktivitás, munkafolyamatok",
-                                "exit": true,
-                                "exitUrl": "/quiz/munkaban"
+                                "exit": "/quiz/munkaban"
                             },
                             {
-                                "id": "Q1_pszichologia",
+                                "id": "4",
                                 "icon": "🧠",
                                 "title": "AI & pszichológia",
                                 "body": "Mentális egészség, viselkedés",
-                                "exit": true,
-                                "exitUrl": "/quiz/pszichologia"
+                                "exit": "/quiz/pszichologia"
                             }
                         ]
                     }

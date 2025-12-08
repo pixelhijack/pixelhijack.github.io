@@ -66,6 +66,26 @@ export default function renderTreeServer(node, manifest, baseDir) {
   if (node.type === undefined) node.type = "div";
   if (node.type === "text") return node.content || "";
 
+  // handle quiz type
+  if (node.type === "quiz") {
+    const quizConfig = JSON.stringify({
+      id: node.id,
+      defaultExit: node.defaultExit,
+      questions: node.questions
+    });
+    
+    return `
+      <div id="quiz-container"></div>
+      <script>
+        (function() {
+          const config = ${quizConfig};
+          const quiz = QuizEngine.create(config);
+          quiz.init('quiz-container');
+        })();
+      </script>
+    `;
+  }
+
   if (node.meta) {
     node.children = node.children || [];
     node.children.splice(1, 0, {
