@@ -129,7 +129,7 @@
                                             {
                                                 "type": "div",
                                                 "class": "quiz-card-icon",
-                                                "content": "🎓"
+                                                "content": "💼"
                                             },
                                             {
                                                 "type": "h3",
@@ -149,7 +149,7 @@
                                             {
                                                 "type": "div",
                                                 "class": "quiz-card-icon",
-                                                "content": "💼"
+                                                "content": "🎓"
                                             },
                                             {
                                                 "type": "h3",
@@ -169,7 +169,7 @@
                                             {
                                                 "type": "div",
                                                 "class": "quiz-card-icon",
-                                                "content": "👨‍👩‍👧"
+                                                "content": "❤️‍🔥"
                                             },
                                             {
                                                 "type": "h3",
@@ -405,7 +405,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-row md:flex-row items-center justify-center",
+                        "class": "quiz-cards quiz-cards-2-2",
                         "children": [
                             {
                                 "type": "a",
@@ -493,7 +493,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
+                        "class": "quiz-cards quiz-cards-2-2",
                         "children": [
                             {
                                 "type": "a",
@@ -581,7 +581,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
+                        "class": "quiz-cards quiz-cards-2-2",
                         "children": [
                             {
                                 "type": "a",
@@ -689,7 +689,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 text-black mx-auto flex flex-col md:flex-row items-center justify-center",
+                        "class": "quiz-cards quiz-cards-2-2",
                         "children": [
                             {
                                 "type": "a",
