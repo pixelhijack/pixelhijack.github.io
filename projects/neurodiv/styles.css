@@ -55,3 +55,7 @@ ol li {
 .quiz-cards {
     align-items: stretch!important;
 }
+
+.quiz-cards-2-2 .quiz-card {
+    aspect-ratio: 2 / 3;
+}
