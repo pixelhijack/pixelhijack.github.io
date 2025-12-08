@@ -84,7 +84,7 @@
                     },
                     {
                         "type": "div",
-                        "class": "quiz-cards quiz-cards-2-2 relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-1000 background-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-1000 background-white mx-auto my-4",
                         "children": [
                             {
                                 "type": "a",
@@ -170,7 +170,7 @@
                     },
                     {
                         "type": "hr",
-                        "class": "max-w-[80%] mx-auto my-8"
+                        "class": "max-w-[80%] mx-auto"
                     },
                     {
                         "type": "div",
@@ -305,7 +305,7 @@
                         "children": [
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "class": "quiz-cards quiz-cards-2-2",
                                 "children": [
                                     {
                                         "type": "a",
@@ -413,7 +413,7 @@
                         "children": [
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "class": "quiz-cards quiz-cards-2-2",
                                 "children": [
                                     {
                                         "type": "a",
@@ -521,7 +521,7 @@
                         "children": [
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "class": "quiz-cards quiz-cards-2-2",
                                 "children": [
                                     {
                                         "type": "a",
@@ -629,7 +629,7 @@
                         "children": [
                             {
                                 "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 flex flex-col md:flex-row items-center justify-center",
+                                "class": "quiz-cards quiz-cards-2-2",
                                 "children": [
                                     {
                                         "type": "a",
