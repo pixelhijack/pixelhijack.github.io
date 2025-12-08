@@ -81,6 +81,11 @@
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-white text-black px-1 py-0.5 rounded-sm box-decoration-clone",
                                                 "content": "Nem az AI fogja elvenni a munkád, hanem valaki, aki már tudja használni. Nem kell technológiai embernek lenned, csak kíváncsinak — az AI-t gyakorlati oldalról közelítjük meg.</b>"
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "text-left text-black mb-8 mt-12 text-2xl",
+                                                "content": "Töltsd ki a kvízt hogy megtudd, mire is tudnád használni az AI-t"
                                             }
                                         ]
                                     }
@@ -92,11 +97,6 @@
                         "type": "div",
                         "class": "flex flex-col justify-center text-black",
                         "children": [
-                            {
-                                "type": "h2",
-                                "class": "text-center text-black mb-8 mt-12 text-3xl",
-                                "content": "Töltsd ki a kvízt hogy megtudd, <br>mire is tudnád használni az AI-t"
-                            },
                             {
                                 "type": "div",
                                 "class": "quiz-cards quiz-cards-2-2 mx-auto",
@@ -205,7 +205,7 @@
                                     {
                                         "type": "h2",
                                         "class": "text-black mb-8 md:ml-8 text-3xl",
-                                        "content": "Hello, én tanítanálak AI-ra"
+                                        "content": "Hello, én foglak AI-ra tanítani"
                                     },
                                     {
                                         "type": "div",
@@ -220,12 +220,11 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "font-body mt-[20px] mb-2 md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md md:max-w-[80%]",
                                         "children": [
                                             {
-                                                "type": "span",
-                                                "class": "rounded-md text-black px-1 py-0.5 rounded-sm mx-auto box-decoration-clone",
-                                                "content": "<a class='underline' href=\"/kepzesrol\">👉 Hogy zajlik az AI magántanítás?</a>"
+                                                "type": "button",
+                                                "class": "mx-auto mt-8 mb-8 md:ml-8 px-3 py-3 bg-black text-white rounded-lg",
+                                                "content": "<a href=\"/kepzesrol\">👉 Hogy zajlik az AI magántanítás?</a>"
                                             }
                                         ]
                                     }
