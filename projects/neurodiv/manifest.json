@@ -477,7 +477,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=postdiagnosis/superpowers",
+                                        "href": "/superpowers/coming-soon?interest=postdiagnosis/superpowers",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -804,6 +804,103 @@
                                 "type": "h2",
                                 "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md mb-4",
                                 "content": "<b>Addig pedig itt tudsz olvasgatni: </b>"
+                            },
+                            {
+                                "type": "div",
+                                "class": "mx-auto flex flex-col items-center justify-center overflow-hidden",
+                                "content": "<iframe src=\"https://autinaplo.substack.com/embed\" width=\"480\" height=\"620\" style=\"border:1px solid #EEE; background:white;\" frameborder=\"0\" scrolling=\"no\"></iframe>"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "superpowers/coming-soon",
+            "tree": {
+                "type": "div",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "relative h-screen w-full",
+                        "children": [
+                            {
+                                "type": "img",
+                                "src": "neurodiv/oz.jpg",
+                                "class": "w-full h-screen object-cover"
+                            },
+                            {
+                                "type": "div",
+                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "children": [
+                                    {
+                                        "type": "h1",
+                                        "class": "font-title mt-[-95px] text-center text-white text-2xl md:text-4xl md:text-4xl p-4",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": "Coming soon...stay tuned!"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitQuiz(this, 'neurodiv', 'coming_soon', '/');",
+                                "method": "POST",
+                                "class": "w-full md:w-1/2 text-black rounded-md",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Kérlek azonnal írj rám, szükségem van rád:</b>"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                                "content": "Mentés",
+                                                "typeAttr": "submit"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "message mt-4 p-3 rounded-lg hidden"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md mb-4",
+                                "content": "<b>Míg megkereslek, addig én is bemutatkozom: </b>"
                             },
                             {
                                 "type": "div",
