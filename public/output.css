@@ -659,6 +659,10 @@ video {
   margin-bottom: 0px;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -1736,6 +1740,10 @@ body.authenticated input[type="email"].autofilled:focus {
     width: 33.333333%;
   }
 
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+
   .md\:w-\[30\%\] {
     width: 30%;
   }
@@ -1795,6 +1803,10 @@ body.authenticated input[type="email"].autofilled:focus {
 
   .md\:text-left {
     text-align: left;
+  }
+
+  .md\:text-center {
+    text-align: center;
   }
 
   .md\:text-2xl {

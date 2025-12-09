@@ -565,7 +565,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=interested/stories",
+                                        "href": "/read",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -961,148 +961,319 @@
             }
         },
         {
-            "slug": "diagnozis",
+            "slug": "faq/diagnosis",
+            "navColor": "black",
             "tree": {
                 "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
                 "children": [
                     {
+                        "type": "h1",
+                        "content": "Gyakori kérdések neurodivergenciáról"
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "faq-diagnosis.md"
+                    },
+                    {
                         "type": "div",
-                        "class": "relative h-screen w-full",
+                        "content": "<br><br><hr>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
                         "children": [
                             {
-                                "type": "img",
-                                "src": "neurodiv/labyrinth.webp",
-                                "class": "w-full h-screen object-cover"
-                            },
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitQuiz(this, 'neurodiv', 'coming_soon', '/');",
+                                "method": "POST",
+                                "class": "w-full md:w-2/3 text-black rounded-md",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Olvasni vagy beszélgetni szeretnél ezekről?</b>"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: read",
+                                                        "id": "checkbox: read"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: read",
+                                                        "content": "Olvasni szeretném a válaszokat"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: 1-on-1",
+                                                        "id": "checkbox: 1-on-1"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: 1-on-1",
+                                                        "content": "Beszélgetni szeretnék tapasztalati szakértővel (1-on-1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                                "content": "Küldés",
+                                                "typeAttr": "submit"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "message mt-4 p-3 rounded-lg hidden"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "faq/life",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
+                "children": [
+                    {
+                        "type": "h1",
+                        "content": "Gyakori kérdések neurodivergenciáról"
+                    },
+                    {
+                        "type": "markdown",
+                        "file": "faq-life.md"
+                    },
+                    {
+                        "type": "div",
+                        "content": "<br><br><hr>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "w-full flex flex-col items-center justify-center px-4 my-8",
+                        "children": [
+                            {
+                                "type": "form",
+                                "action": "javascript:;",
+                                "onsubmit": "return submitQuiz(this, 'neurodiv', 'coming_soon', '/');",
+                                "method": "POST",
+                                "class": "w-full md:w-2/3 text-black rounded-md",
+                                "children": [
+                                    {
+                                        "type": "h2",
+                                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                        "content": "<b>Olvasni vagy beszélgetni szeretnél ezekről?</b>"
+                                    },
+                                    {
+                                        "type": "fieldset",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: read",
+                                                        "id": "checkbox: read"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: read",
+                                                        "content": "Olvasni szeretném a válaszokat"
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "div",
+                                                "children": [
+                                                    {
+                                                        "type": "input",
+                                                        "class": "mr-[10px]",
+                                                        "typeAttr": "checkbox",
+                                                        "name": "checkbox: 1-on-1",
+                                                        "id": "checkbox: 1-on-1"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "for": "checkbox: 1-on-1",
+                                                        "content": "Beszélgetni szeretnék tapasztalati szakértővel (1-on-1)"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "input",
+                                        "name": "email",
+                                        "typeAttr": "email",
+                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                        "placeholder": "Email",
+                                        "required": "true"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "flex flex-col md:flex-row items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "button",
+                                                "id": "submit",
+                                                "class": "bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                                "content": "Küldés",
+                                                "typeAttr": "submit"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "message mt-4 p-3 rounded-lg hidden"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "read",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "background": null,
+                "class": "relative h-[95vh] w-full mb-[-50px] md:mb-[0px]",
+                "children": [
+                    {
+                        "type": "img",
+                        "src": "analog/hypnagogia/DSC06874-2.jpg",
+                        "class": "w-full h-full md:h-screen object-cover"
+                    },
+                    {
+                        "type": "div",
+                        "class": "absolute inset-0 grid place-items-center z-0 px-4",
+                        "children": [
                             {
                                 "type": "div",
-                                "class": "absolute inset-0 flex flex-col items-center justify-center z-0",
+                                "class": "flex flex-col items-center gap-3 md:gap-4 text-center",
                                 "children": [
                                     {
                                         "type": "h1",
-                                        "class": "font-title mt-[-95px] text-center text-white text-4xl md:text-4xl p-4",
+                                        "class": "font-title text-white text-base md:text-3xl p-4 text-center md:text-center",
                                         "children": [
                                             {
                                                 "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Kérdéseid vannak a diagnózissal kapcsolatban?"
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
+                                                "content": "Olvasnivalók, könyvajánlók neurodivergenseknek"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "class": "font-title text-white text-base md:text-3xl p-4 text-center md:text-center",
+                                        "children": [
+                                            {
+                                                "type": "span",
+                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
+                                                "content": "<a href=\"/book/donna-williams/lettelenul\" class=\"underline\">Léttelenül</a> - Donna Williams<br><a href=\"/book/donna-williams/autizmus\" class=\"underline\">Autizmus egyes szám első személyben</a> - Donna Williams<br><a href=\"/book/oliver-sacks/antropologus/eloszo\" class=\"underline\">Az antropológus a Marson - Előszó</a> - Oliver Sacks<br><a href=\"/book/temple-grandin/kepekben-gondolkodom\" class=\"underline\">Képekben gondolkodom</a> - Temple Grandin"
                                             }
                                         ]
                                     }
                                 ]
                             }
                         ]
-                    },
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "book/donna-williams/lettelenul",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
+                "children": [
                     {
-                        "type": "div",
-                        "class": "masonry-container masonry-3 masonry-mobile-1 bg-white",
-                        "children": [
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>1. Ha szkeptikus vagy</b><br>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Miért van ennyi ADHD oldal? <br>Tényleg ennyi az ADHD-s, vagy ez csak valami új divat? <br>Lehet ADHD a kifogás mindenre? <br>Minden személyiségjegyünk már valami pszichés betegség? <br>Miért diagnosztizálnak mindenkit? <br>Minek címkézzünk dolgokat? <br>Mi az hogy mindenki ott van a spektrumon? <br>Hány embert is érinthet ez az egész igazából? <br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>2. Ha gyanítod, hogy neurodivergens lehetsz</b><br>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Látszik-e valakin, ha ADHD-s/autista? <br>Mi a helyzet az öndiagnózissal? <br>Szégyen, félelem, tagadás <br>Hol tudsz utánajárni, hol jelentkezhetsz diagnózisra? <br>Kell-e a diagnózis, miben lesz más a papírral? <br>Igazak-e a tiktok/insta mémek? <br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>3. Ha már elhatároztad, hogy utánajársz, de nem tudod, hol</b>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Miért nem tudja az ellátórendszer lefedni az ennyi érintettet? <br>Ki állíthat fel diagnózist, ki nem? <br>Hogy zajlik a diagnózis, mi a menete? <br>Van-e előnye / hátránya, ha papírom is lesz a neurodivergenciámról? <br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>4. Ha diagnózis után vagy, de nem tudod mit kezdj az egésszel</b>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Milyen fázisokon mész keresztül diagnózis után? (megkönnyebbülés, unmasking, változások reménye, hitetlenség) <br>Tényleg mindenkinek kéne pszichoterápia? <br>Mire jó a coaching a terápia alternatívájaként? <br>Van-e a teendőd a neurodivergenciáddal? <br>Milyen gyógyszeres kezelések vannak, mik ezek előnyei-hátrányai? <br>Tényleg léteznek neurodivergens közösségek? <br>Miben befolyásolja a neurodivergenciád a munkát, magánéletet? <br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>5. Ha hozzátartozód ND</b>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Miben más egy neurotipikus-neurodivergens, neurodivergens-neurodivergens kapcsolat? <br>Mit tehetsz ha gyermeked más mint a többiek? <br>Mit tehetsz, ha párod neurodivergens lehet, de nem nyitott a témára? <br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>6. Ha nem vagy érintett, de problémád van az offline léttel</b>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "<br>Miért mondják hogy az ADHD járvány, amit csak környezet váltott ki? Nem csak a bolond felgyorsult világ eredménye? <br>Egész nap képernyőkön élek, hogyan találhatnék vissza a valósághoz? Miért nem ismerkedik már senki élőben?<br><br>"
-                                    }
-                                ]
-                            },
-                            {
-                                "type": "div",
-                                "class": "p-[20px] md:mt-0 md:ml-8 text-black rounded-md break-inside-avoid",
-                                "children": [
-                                    {
-                                        "type": "h3",
-                                        "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "<b>7. Ha csak érdekel a téma, és szeretnél részt venni valamiben</b>"
-                                    },
-                                    {
-                                        "type": "p",
-                                        "content": "Jelent-e segítséget, ha más neurodivergensekkel beszélgetsz? (peer support) <br>Ha csak olvasgatni szeretnék az egészről, hol tudok bővebben?<br>Lesznek a jövőben közösségtalálkozók?"
-                                    }
-                                ]
-                            }
-                        ]
+                        "type": "markdown",
+                        "file": "book-donna-williams-lettelenul.md"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "book/donna-williams/autizmus",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
+                "children": [
+                    {
+                        "type": "markdown",
+                        "file": "book-donna-williams-autizmus.md"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "book/oliver-sacks/antropologus/eloszo",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
+                "children": [
+                    {
+                        "type": "markdown",
+                        "file": "book-oliver-sacks-antropologus-eloszo.md"
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "book/temple-grandin/kepekben-gondolkodom",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "pt-[120px] flex flex-col text-black h-full min-h-screen mx-auto max-w-4xl px-4 mb-12",
+                "children": [
+                    {
+                        "type": "markdown",
+                        "file": "book-temple-grandin-kepekben.md"
                     }
                 ]
             }
