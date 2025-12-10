@@ -611,7 +611,10 @@
                                     {
                                         "type": "img",
                                         "src": [
-                                            "werk/20250527-bw-00142.jpg"
+                                            "werk/20250527-bw-00142.jpg",
+                                            "fashion/designers/gillichbetti/DSC08083.jpg",
+                                            "fashion/designers/antuseka/DSC02795.jpg",
+                                            "portraits/DSC09221-hell.jpg"
                                         ],
                                         "class": "w-full h-full object-cover"
                                     },
@@ -627,7 +630,7 @@
                                             {
                                                 "type": "h2",
                                                 "class": "font-eb-garamond mt-[-45px] text-white text-2xl md:text-4xl p-4 mt-0",
-                                                "content": "<i>Jelöld meg, ki vagy, milyen téma érdekel, <br>és meghívót küldünk a jövőbeli workshopokra!</i>"
+                                                "content": "<i>Jelöld meg, ki vagy, milyen téma érdekel, <br>és meghívót küldünk a készülőkre!</i>"
                                             }
                                         ]
                                     }
@@ -719,7 +722,7 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "Designer, stylist, brand vagyok"
+                                                "content": "Designer, stylist, brand"
                                             },
                                             {
                                                 "type": "p",
@@ -1216,53 +1219,6 @@
                                 "caption": "Conceptual series",
                                 "captionStyle": "caption-center font-eb-garamond",
                                 "linkTo": "conceptual"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "div",
-                        "class": "first-img-cover flex flex-col items-center justify-center",
-                        "children": [
-                            {
-                                "type": "img",
-                                "src": "fashion/designers/antuseka/DSC02795.jpg",
-                                "caption": "WORKSHOPS<br>Pre-apply for upcoming photography workshops",
-                                "captionStyle": "caption-center font-eb-garamond font-black"
-                            },
-                            {
-                                "type": "form",
-                                "action": "javascript:;",
-                                "onsubmit": "return submitForm(this, 'pothattila.com: workshop');",
-                                "method": "POST",
-                                "class": "flex flex-col items-center justify-center font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl text-black rounded-md md:max-w-[50%] p-3",
-                                "children": [
-                                    {
-                                        "type": "div",
-                                        "class": "font-eb-garamond mt-[20px] md:mt-0 md:ml-8 text-2xl md:text-2xl text-black rounded-md",
-                                        "content": "<br><b>Yes, I am interested in future workshops, count me in! </b><br><br>"
-                                    },
-                                    {
-                                        "type": "input",
-                                        "name": "name",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Your Name",
-                                        "required": "true"
-                                    },
-                                    {
-                                        "type": "input",
-                                        "name": "email",
-                                        "typeAttr": "email",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Email",
-                                        "required": "true"
-                                    },
-                                    {
-                                        "type": "button",
-                                        "class": "bg-black mb-[1rem] text-white p-2 rounded-md mt-2 p-3 hover:bg-gray-800",
-                                        "content": "Notify me!",
-                                        "typeAttr": "submit"
-                                    }
-                                ]
                             }
                         ]
                     }
