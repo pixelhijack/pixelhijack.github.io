@@ -360,3 +360,12 @@ body.authenticated input[type="email"].autofilled:focus {
         margin-bottom: 1rem;
     }
 }
+
+
+.hidden-toggle {
+    display: none;
+}
+.hidden-toggle:checked + .hidden-toggle-label {
+    box-shadow: 0px 2px 45px -8px rgba(0,0,0,0.75);
+    border: 1px solid black;
+}

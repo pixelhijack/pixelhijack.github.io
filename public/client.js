@@ -4,6 +4,25 @@
 // Email variable - will be set from data attribute
 const email = document.getElementById('content-container')?.getAttribute('data-user-email');
 
+function updateURLParams(param, value, multiple = false) {
+  try {
+    const url = new URL(window.location);
+    if (multiple) {
+      // For multiple values, we merge with existing ones
+        const existing = url.searchParams.getAll(param);
+        if (!existing.includes(value)) {
+          url.searchParams.append(param, value);
+        } 
+    } else {
+      url.searchParams.set(param, value);
+    }
+    window.history.replaceState({}, '', url);
+  } catch (err) {
+    console.error('updateURLParams error', err);
+  }
+}
+
+
 /**
  * Submit a form with intent tracking
  */
@@ -11,6 +30,9 @@ function submitForm(formElem, intent) {
   try {
     const payload = { intent, checkboxes: [] };
     const fd = new FormData(formElem);
+    
+    // Debug: Check what FormData captured
+    console.log('FormData entries:', Array.from(fd.entries()));
     
     // Collect form entries (skip checkboxes - they're handled separately below)
     for (const [key, value] of fd.entries()) {

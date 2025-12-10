@@ -21,6 +21,10 @@
             "label": "Learn"
         },
         {
+            "href": "/workshops",
+            "label": "Workshops"
+        },
+        {
             "href": "/fashion",
             "label": "Fashion"
         },
@@ -31,10 +35,6 @@
         {
             "href": "/stories",
             "label": "Stories"
-        },
-        {
-            "href": "/backstage",
-            "label": "Backstage"
         },
         {
             "href": "/prints",
@@ -186,7 +186,7 @@
                             {
                                 "type": "h1",
                                 "class": "text-4xl md:text-4xl text-black font-eb-garamond p-[20px]",
-                                "content": "<i>❝ <a class=\"underline\" href=\"/learn\">Tanulj stílust és látásmódot</a>, <br>fotózni bárki tud!</i>"
+                                "content": "<i>❝ Tanulj stílust és látásmódot <a class=\"underline\" href=\"/learn\">egyéniben</a> és <a class=\"underline\" href=\"/workshops\">workshopokon</a>, <br>fotózni bárki tud!</i>"
                             },
                             {
                                 "type": "img",
@@ -266,13 +266,13 @@
                                         "children": [
                                             {
                                                 "type": "h1",
-                                                "class": "hero-title",
-                                                "content": "Tanulj stílust és látásmódot, <br>fotózni bárki tud!"
+                                                "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-6xl p-4",
+                                                "content": "Tanulj stílust és látásmódot, <br><i>fotózni bárki tud!</i>"
                                             },
                                             {
                                                 "type": "h2",
                                                 "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
-                                                "content": "<i>slow photography, analóg film, színelmélet, történetmesélés</i>"
+                                                "content": "<i>Jelentkezz egyéni oktatásokra vagy következő workshopra!</i>"
                                             }
                                         ]
                                     }
@@ -297,7 +297,7 @@
                                     {
                                         "type": "div",
                                         "class": "mt-2 text-left text-4xl md:text-3xl text-black",
-                                        "content": "I. Portré alapok: <br><i><small>- Fény, kompozíció, jelenlét.<br>Miért mások a mai mozifilmek? Miért olyan egyediek a retro színharmóniák? Hogyan legyen jelenlétünk egy fotózás során?</small></i>"
+                                        "content": "I. Portré alapok: <br><i><small>- Fény, kompozíció, jelenlét.<br>Miért mások a mai mozifilmek? Miért olyan egyediek a régi filmek színei? Hogyan legyen jelenlétünk egy fotózás során?</small></i>"
                                     }
                                 ]
                             },
@@ -348,7 +348,7 @@
                                     {
                                         "type": "div",
                                         "class": "mt-2 text-left text-4xl md:text-3xl text-black",
-                                        "content": "IV. Fashion fotózás:<br><i><small>- Hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel? Milyen a jó moodboard? Hogyan fotózz location-ökön?</small></i>"
+                                        "content": "IV. Fashion fotózás:<br><i><small>- Hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel? Milyen a jó moodboard? Hogyan fotózz location-ön?</small></i>"
                                     }
                                 ]
                             },
@@ -526,6 +526,311 @@
                                         "typeAttr": "submit"
                                     }
                                 ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "slug": "workshops",
+            "navColor": "white",
+            "background": null,
+            "tree": {
+                "type": "form",
+                "action": "javascript:;",
+                "onsubmit": "return submitForm(this, 'pothattila.com: workshops');",
+                "method": "POST",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "flex flex-col items-center justify-center h-full",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "relative h-screen w-full",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": [
+                                            "werk/20250527-bw-00142.jpg"
+                                        ],
+                                        "class": "w-full h-full object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "absolute inset-0 flex flex-col items-center justify-center",
+                                        "children": [
+                                            {
+                                                "type": "h1",
+                                                "class": "font-eb-garamond mt-[-95px] md:mt-[95px] text-white text-4xl md:text-6xl p-4",
+                                                "content": "Tanulni együtt is jó:<br><i>csatlakozz workshopokhoz!</i>"
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "font-eb-garamond mt-[-45px] text-white text-2xl md:text-4xl p-4 mt-0",
+                                                "content": "<i>Jelöld meg, ki vagy, milyen téma érdekel, <br>és meghívót küldünk a jövőbeli workshopokra!</i>"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "relative mt-[-200px] md:max-w-[80%] z-1000 background-white mx-auto text-black",
+                        "children": [
+                            {
+                                "type": "div",
+                                "class": "quiz-cards quiz-cards-2-2",
+                                "children": [
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "radio",
+                                        "id": "role-photographer",
+                                        "name": "role",
+                                        "value": "role-photographer",
+                                        "class": "hidden-toggle hidden"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "role-photographer",
+                                        "class": "quiz-card hidden-toggle-label",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "a."
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Fotós vagyok"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Szeretnék egyénileg tanulni vagy workshopon részt venni"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "radio",
+                                        "id": "role-model",
+                                        "name": "role",
+                                        "value": "role-model",
+                                        "class": "hidden-toggle hidden"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "role-model",
+                                        "class": "quiz-card hidden-toggle-label",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "b."
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Modell vagyok"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Részt vennék workshopon és / vagy  tanulnék a fotós kommunikációról, pózolásról, lehetőségekről"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "radio",
+                                        "id": "role-designer",
+                                        "name": "role",
+                                        "value": "role-designer",
+                                        "class": "hidden-toggle hidden"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "role-designer",
+                                        "class": "quiz-card hidden-toggle-label",
+                                        "children": [
+                                            {
+                                                "type": "div",
+                                                "class": "quiz-card-icon",
+                                                "content": "c."
+                                            },
+                                            {
+                                                "type": "h3",
+                                                "content": "Designer, stylist, brand vagyok"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "content": "Érdekelne kollaboráció fotósokkal, workshopokon való részvétel"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "h2",
+                        "class": "font-eb-garamond text-black text-5xl p-4",
+                        "content": "Visszatérő és tervezett workshop témák:"
+                    },
+                    {
+                        "type": "div",
+                        "class": "font-eb-garamond grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4",
+                        "children": [
+                            {
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "workshop-portrait",
+                                "name": "workshop",
+                                "value": "portrait",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "workshop-portrait",
+                                "class": "hidden-toggle-label flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "portraits/DSC08650-2.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
+                                        "content": "A portréfotózás alapjai <br><i><small>- Fény, kompozíció, jelenlét.<br>Klasszikus világítások arcon. Mitől lesz <i>rossz</i> egy portré? Hogyan legyen jelenlétünk egy fotózás során?</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "workshop-editorial",
+                                "name": "workshop",
+                                "value": "editorial",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "workshop-editorial",
+                                "class": "hidden-toggle-label flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "fashion/designers/kun-anna-emilia/230719-00487.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
+                                        "content": "Fashion editorial<br><i><small>- Hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel? Milyen a jó moodboard? Hogyan fotózz location-ön?</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "workshop-TFCD",
+                                "name": "workshop",
+                                "value": "TFCD",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "workshop-TFCD",
+                                "class": "hidden-toggle-label flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "werk/DSC02902.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
+                                        "content": "Minden, amit a TFCD/TFP-ről kérdezni akartál...<br><i><small>- de sosem mertél. Ki fizet kinek egy kollab fotózásban?</small></i>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "workshop-megkereses",
+                                "name": "workshop",
+                                "value": "megkereses",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "workshop-megkereses",
+                                "class": "hidden-toggle-label flex flex-col items-center",
+                                "children": [
+                                    {
+                                        "type": "img",
+                                        "src": "conceptual/journeys-to-self-acceptance/1789-39.jpg",
+                                        "class": "w-full aspect-square object-cover"
+                                    },
+                                    {
+                                        "type": "div",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
+                                        "content": "Hol találsz fotóalanyokat?<br><i><small>- Fotózni szeretnél, de nincs kit? Hogy keress fel embereket? Hogy kommunikálj? Mikor fognak téged választani, téged keresni?</small></i>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "max-w-[80%] mx-auto my-8",
+                        "content": "<br><hr><br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex flex-col items-center justify-center mx-auto ",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "font-eb-garamond text-black text-5xl p-4",
+                                "content": "Jelentkezz!"
+                            },
+                            {
+                                "type": "p",
+                                "class": "text-black p-4 max-w-[600px]",
+                                "content": "Az emaillel feliratkozol a workshopok iránt érdeklődők listájára. <br>Megfelelő számú érdeklődő esetén emailben értesítünk a részletekről, itt döntheted el, hogy milyen időpontok felelhetnek meg neked, szeretnél-e részt venni az adott workshopon. <br><br>"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full w-[80%] md:w-1/2 text-black mb-2",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full text-black w-[80%] md:w-1/2 mb-2",
+                                "placeholder": "Egyéni preferenciáid, kérdéseid, igényeid"
+                            },
+                            {
+                                "type": "button",
+                                "class": "bg-black text-white p-2 rounded-md p-3 hover:bg-gray-800",
+                                "content": "Küldés",
+                                "typeAttr": "submit"
+                            },
+                            {
+                                "type": "div",
+                                "class": "text-sm",
+                                "content": "<br><i>Az adatkezelési tájékoztatót <a href='/privacy' class='underline'>itt</a> találod.</i>"
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
                             }
                         ]
                     }
