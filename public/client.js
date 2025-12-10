@@ -27,12 +27,25 @@ function updateURLParams(param, value, multiple = false) {
  * Submit a form with intent tracking
  */
 function submitForm(formElem, intent) {
+  const submitBtn = formElem.querySelector('button[type="submit"]');
+  const messageDiv = formElem.querySelector('.message') || formElem.parentElement.querySelector('.message');
+  
   try {
     const payload = { intent, checkboxes: [] };
     const fd = new FormData(formElem);
     
-    // Debug: Check what FormData captured
-    console.log('FormData entries:', Array.from(fd.entries()));
+    // Disable submit button
+    const originalBtnText = submitBtn ? submitBtn.textContent : 'Mentés';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Loading...';
+    }
+    
+    // Clear previous messages
+    if (messageDiv) {
+      messageDiv.className = 'message';
+      messageDiv.textContent = '';
+    }
     
     // Collect form entries (skip checkboxes - they're handled separately below)
     for (const [key, value] of fd.entries()) {
@@ -78,16 +91,38 @@ function submitForm(formElem, intent) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
-      .then(res => {
-        if (res.ok) {
+      .then(res => res.json())
+      .then(data => {
+        if (data.message) {
+          if (messageDiv) {
+            messageDiv.className = 'message success';
+            messageDiv.textContent = data.message;
+          }
           formElem.reset();
-        } else {
-          console.warn('Sorry, something went wrong at /', intent);
+        } else if (data.error) {
+          throw new Error(data.error);
         }
       })
-      .catch(() => console.error('Network error — please try again.'));
+      .catch(error => {
+        if (messageDiv) {
+          messageDiv.className = 'message error';
+          messageDiv.textContent = error.message || 'Network error — please try again.';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        }
+      });
   } catch (err) {
     console.error('submitForm error', err);
+    if (messageDiv) {
+      messageDiv.className = 'message error';
+      messageDiv.textContent = 'An error occurred. Please try again.';
+    }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
   }
 }
 
@@ -165,6 +200,11 @@ function submitQuiz(formElem, projectName, quizId, redirectTo) {
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Loading...';
+  }
+
+  if (messageDiv) {
+    messageDiv.className = 'message';
+    messageDiv.textContent = '';
   }
 
   // Collect all form data

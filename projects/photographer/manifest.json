@@ -243,7 +243,10 @@
             "navColor": "white",
             "background": null,
             "tree": {
-                "type": "div",
+                "type": "form",
+                "action": "javascript:;",
+                "onsubmit": "return submitForm(this, 'pothattila.com: learn');",
+                "method": "POST",
                 "children": [
                     {
                         "type": "div",
@@ -266,13 +269,13 @@
                                         "children": [
                                             {
                                                 "type": "h1",
-                                                "class": "font-eb-garamond mt-[-95px] text-center text-white text-4xl md:text-6xl p-4",
+                                                "class": "font-eb-garamond mt-[200px] md:mt-[-95px] text-center text-white text-4xl md:text-6xl p-4",
                                                 "content": "Tanulj stílust és látásmódot, <br><i>fotózni bárki tud!</i>"
                                             },
                                             {
                                                 "type": "h2",
                                                 "class": "font-eb-garamond mt-[-45px] text-center text-white text-2xl md:text-4xl p-4",
-                                                "content": "<i>Jelentkezz egyéni oktatásokra vagy következő workshopra!</i>"
+                                                "content": "<i>Jelöld meg, melyik téma érdekel és jelentkezz egyéni oktatásra!</i>"
                                             }
                                         ]
                                     }
@@ -285,9 +288,17 @@
                         "class": "font-eb-garamond grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4",
                         "children": [
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/portrait-basics",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-portrait-basics",
+                                "name": "learn",
+                                "value": "portrait-basics",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-portrait-basics",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -296,15 +307,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "I. Portré alapok: <br><i><small>- Fény, kompozíció, jelenlét.<br>Miért mások a mai mozifilmek? Miért olyan egyediek a régi filmek színei? Hogyan legyen jelenlétünk egy fotózás során?</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/slow-photography",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-slow-photography",
+                                "name": "learn",
+                                "value": "slow-photography",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-slow-photography",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -313,15 +332,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "II. Slow photography:<br><i><small>- Mi az analóg mindset? Miért fotózzunk vintage manuál obikkal, ha sokkal nehezebb? Tényleg az élesség a fontos?</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/series-sequencing",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-series-sequencing",
+                                "name": "learn",
+                                "value": "series-sequencing",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-series-sequencing",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -330,15 +357,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "III. Sorozatok: <br><i><small>- Hogy szerkeszd egységesre a képeid? Miért fontos lépés a képválogatás (sequencing)? Hány kép kell egy sorozathoz?</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/fashion-photography",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-fashion-teamwork",
+                                "name": "learn",
+                                "value": "fashion-teamwork",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-fashion-teamwork",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -347,15 +382,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "IV. Fashion fotózás:<br><i><small>- Hogyan dolgozz csapattal, ügynökségekkel, tervezőkkel? Milyen a jó moodboard? Hogyan fotózz location-ön?</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/tfcd-collaboration",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-TFCD",
+                                "name": "learn",
+                                "value": "TFCD",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-TFCD",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -364,15 +407,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "Ki fizet kinek egy kollab fotózásban?<br><i><small>- Minden, amit a TFCD/TFP-ről kérdezni akartál, de sosem mertél</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/model-communication",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-model-communication",
+                                "name": "learn",
+                                "value": "model-communication",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-model-communication",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -381,15 +432,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "Modell kommunikáció<br><i><small>- Hogy szervezz fotózást? Hogyan (NE) kommunikálj modellekkel? Soft skill training</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/street-photography",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-street-photography",
+                                "name": "learn",
+                                "value": "street-photography",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-street-photography",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -398,15 +457,23 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "A streetfotózás művészete<br><i><small>- Hogyan NE fotózzunk az utcán? Mit jelentett a jó streetfotózás a múltban?</small></i>"
                                     }
                                 ]
                             },
                             {
-                                "type": "a",
-                                "href": "coming-soon?interest=learn/zine-making",
-                                "class": "flex flex-col items-center",
+                                "type": "input",
+                                "typeAttr": "checkbox",
+                                "id": "learn-zine-making",
+                                "name": "learn",
+                                "value": "zine-making",
+                                "class": "hidden-toggle hidden"
+                            },
+                            {
+                                "type": "label",
+                                "for": "learn-zine-making",
+                                "class": "hidden-toggle-label flex flex-col items-center",
                                 "children": [
                                     {
                                         "type": "img",
@@ -415,7 +482,7 @@
                                     },
                                     {
                                         "type": "div",
-                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black",
+                                        "class": "mt-2 text-left text-4xl md:text-3xl text-black p-4",
                                         "content": "Csinálj saját zine-t!<br><i><small>- Miért jó a print? Hogy fogj neki saját printek és magazinok készítésének?</small></i>"
                                     }
                                 ]
@@ -425,107 +492,98 @@
                     {
                         "type": "h2",
                         "class": "font-eb-garamond text-center text-black text-6xl p-8",
-                        "content": "<hr><br><br><i>Előjelentkezés</i>"
+                        "content": "<br><i>Jelentkezz!</i>"
                     },
                     {
                         "type": "div",
-                        "class": "flex flex-col items-center justify-center mx-auto ",
+                        "class": "flex flex-col items-center justify-center mx-auto mt-[20px] md:mt-0 mb-8 text-sm text-black rounded-md max-w-[80%]",
                         "children": [
                             {
-                                "type": "form",
-                                "action": "javascript:;",
-                                "onsubmit": "return submitForm(this, 'pothattila.com: learn');",
-                                "method": "POST",
-                                "class": "mt-[20px] md:mt-0 md:ml-8 mb-8 text-sm text-black rounded-md max-w-[80%]",
+                                "type": "div",
+                                "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
+                                "content": "<br><hr><br><b>Mi érdekelne? </b><br><br>"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full md:w-1/2 mb-2",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full md:w-1/2 mb-2",
+                                "placeholder": "Miről szeretnél többet megtudni? Melyik témák érdekelnek leginkább?",
+                                "required": "true"
+                            },
+                            {
+                                "type": "fieldset",
                                 "children": [
                                     {
+                                        "type": "legend",
+                                        "class": "mt-[20px] md:mt-0 text-xl mx-auto md:text-2xl text-black rounded-md",
+                                        "content": "<br><b>Milyen formában?<br><br></b>"
+                                    },
+                                    {
                                         "type": "div",
-                                        "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
-                                        "content": "<br><hr><br><b>Mi érdekelne? </b><br><br>"
-                                    },
-                                    {
-                                        "type": "input",
-                                        "name": "email",
-                                        "typeAttr": "email",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Email",
-                                        "required": "true"
-                                    },
-                                    {
-                                        "type": "textarea",
-                                        "name": "message",
-                                        "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
-                                        "placeholder": "Miről szeretnél többet megtudni? Melyik témák érdekelnek leginkább?",
-                                        "required": "true"
-                                    },
-                                    {
-                                        "type": "fieldset",
                                         "children": [
                                             {
-                                                "type": "legend",
-                                                "class": "mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
-                                                "content": "<br><b>Milyen formában?<br><br></b>"
+                                                "type": "input",
+                                                "class": "mr-[10px]",
+                                                "typeAttr": "checkbox",
+                                                "name": "checkbox: 1-on-1",
+                                                "id": "checkbox: 1-on-1"
                                             },
                                             {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: 1-on-1",
-                                                        "id": "checkbox: 1-on-1"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: 1-on-1",
-                                                        "content": "Egyéni oktatás, konzultációk, fotós coaching, kihívások, feladatok"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: workshop",
-                                                        "id": "checkbox: workshop"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: workshop",
-                                                        "content": "Workshop, több emberrel egy időben"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "div",
-                                                "children": [
-                                                    {
-                                                        "type": "input",
-                                                        "class": "mr-[10px]",
-                                                        "typeAttr": "checkbox",
-                                                        "name": "checkbox: onlince-materials",
-                                                        "id": "checkbox: onlince-materials"
-                                                    },
-                                                    {
-                                                        "type": "label",
-                                                        "for": "checkbox: onlince-materials",
-                                                        "content": "Online cikkek, letölthető segédanyagok (pdf)"
-                                                    }
-                                                ]
+                                                "type": "label",
+                                                "for": "checkbox: 1-on-1",
+                                                "content": "Egyéni oktatás, konzultációk, fotós coaching, kihívások, feladatok"
                                             }
                                         ]
                                     },
                                     {
-                                        "type": "button",
-                                        "class": "bg-black text-white p-2 rounded-md mt-4 p-3 hover:bg-gray-800",
-                                        "content": "Jelentkezem",
-                                        "typeAttr": "submit"
+                                        "type": "div",
+                                        "children": [
+                                            {
+                                                "type": "input",
+                                                "class": "mr-[10px]",
+                                                "typeAttr": "checkbox",
+                                                "name": "checkbox: workshop",
+                                                "id": "checkbox: workshop"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "for": "checkbox: workshop",
+                                                "content": "Workshop, több emberrel egy időben"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "div",
+                                        "children": [
+                                            {
+                                                "type": "input",
+                                                "class": "mr-[10px]",
+                                                "typeAttr": "checkbox",
+                                                "name": "checkbox: onlince-materials",
+                                                "id": "checkbox: onlince-materials"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "for": "checkbox: onlince-materials",
+                                                "content": "Online cikkek, letölthető segédanyagok (pdf)"
+                                            }
+                                        ]
                                     }
                                 ]
+                            },
+                            {
+                                "type": "button",
+                                "class": "bg-black text-white p-2 rounded-md mt-8 p-3 hover:bg-gray-800",
+                                "content": "Jelentkezem",
+                                "typeAttr": "submit"
                             }
                         ]
                     }

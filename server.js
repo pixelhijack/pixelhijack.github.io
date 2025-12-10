@@ -200,7 +200,7 @@ app.post('/form', async (req, res) => {
     }
 
     res.status(200).json({ 
-      message: 'Sikeres elküldés! Hamarosan jelentkezem nálad.', 
+      message: 'Sikeres küldés!', 
     });
   } catch (error) {
     console.error('Error form submission:', error);

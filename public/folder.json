@@ -2506,6 +2506,10 @@
         "type": "folder",
         "children": [
           {
+            "name": "20250527-bw-00142.jpg",
+            "type": "file"
+          },
+          {
             "name": "20250531-DSC07961.jpg",
             "type": "file"
           },
@@ -3246,6 +3250,7 @@
       "DSC08914.jpg"
     ],
     "werk": [
+      "20250527-bw-00142.jpg",
       "20250531-DSC07961.jpg",
       "DIA05337.jpg",
       "DSC01899.jpg",
@@ -3753,6 +3758,7 @@
     "230831-03892.jpg": "theater",
     "230831-03963.jpg": "theater",
     "DSC08914.jpg": "theater",
+    "20250527-bw-00142.jpg": "werk",
     "20250531-DSC07961.jpg": "werk",
     "DIA05337.jpg": "werk",
     "DSC01899.jpg": "werk",
