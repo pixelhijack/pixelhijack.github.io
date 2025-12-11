@@ -84,8 +84,8 @@
                                             },
                                             {
                                                 "type": "h2",
-                                                "class": "text-left text-black mb-8 mt-12 text-2xl",
-                                                "content": "Töltsd ki a kvízt hogy megtudd, mire is tudnád használni az AI-t"
+                                                "class": "text-left text-black mb-8 mt-12 text-3xl",
+                                                "content": "Hogy szeretnél használni AI-t?"
                                             }
                                         ]
                                     }
@@ -117,7 +117,7 @@
                                             },
                                             {
                                                 "type": "p",
-                                                "content": "Még csak most ismerkedem az AI-val. Meg akarom érteni az alapokat, a működést, a fogalmakat."
+                                                "content": "Még csak most ismerkedem az AI-val. Gyorstalpalóra lenne szükségem, meg akarom érteni a működést, a fogalmakat."
                                             }
                                         ]
                                     },
@@ -133,11 +133,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "AI munkában"
+                                                "content": "AI munkában, vállalkozás-tervezésben"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": "A munkámban/karrieremben szeretnék jobb lenni. Érdekel a hatékonyság, a szakmám átalakulása, kreatív lehetőségek."
+                                                "content": "A munkámban/karrieremben szeretnék jobb lenni. Vagy: vállalkozásom tervezésében. Érdekel a hatékonyság, a szakmám átalakulása, kreatív lehetőségek."
                                             }
                                         ]
                                     },
@@ -511,7 +511,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "E-mailek, dokumentumok, ismétlődő feladatok automatizálása."
+                                        "content": "Jelenlegi munkámban érdekelne, mivel tehetném könnyebbé az életem. E-mailek, dokumentumok, ismétlődő feladatok automatizálása."
                                     }
                                 ]
                             },
@@ -531,7 +531,27 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Orvos, ügyvéd, marketinges, fejlesztő - hogyan változik a szakmám?"
+                                        "content": "Szeretnék versenyképes maradni. Orvos, ügyvéd, marketinges, fejlesztő - hogyan változik a szakmám?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/quiz/munkaban/vallalkozas",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": ""
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Vállalkozás tervezés AI-val"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Anyuka vagy vállalkozó vagyok, szeretném megtanulni, hogyan segíthet az AI az ötletelésben, tervezésben."
                                     }
                                 ]
                             },
@@ -551,7 +571,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Grafikus, író, zenész - hogyan segít az AI a kreatív munkában? Etikai és jogi megfontolások."
+                                        "content": "Grafikus, író, zenész - mit lehet tenni, hogy ne veszítsem el a munkámat, hanem jobb legyek AI-val? Etikai és jogi megfontolások."
                                     }
                                 ]
                             }
@@ -645,7 +665,7 @@
                             },
                             {
                                 "type": "a",
-                                "href": "/quiz/oktatas/kutatok",
+                                "href": "/quiz/oktatas/kutatas",
                                 "class": "quiz-card",
                                 "children": [
                                     {
@@ -773,7 +793,12 @@
                     {
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
-                        "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                        "content": "Gyorstalpaló kezdőknek<br>Mire vagy kíváncsi az AI működésével kapcsolatban?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",
@@ -931,6 +956,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'alapok_medior', '/you');",
@@ -1086,6 +1116,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'alapok_advanced', '/you');",
@@ -1224,6 +1259,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_hatekonysag', '/you');",
@@ -1360,6 +1400,166 @@
             }
         },
         {
+            "slug": "quiz/munkaban/vallalkozas",
+            "navColor": "white",
+            "tree": {
+                "type": "div",
+                "class": "relative",
+                "children": [
+                    {
+                        "type": "div",
+                        "class": "h-[30vh] md:h-[50vh] bg-no-repeat bg-cover bg-fixed bg-[bottom_415px_right_0px] md:bg-[bottom_178px_right_0px]",
+                        "style": {
+                            "background-image": "url(/img/stories/cruise/DSC07346.jpg), url(https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/stories/cruise/DSC07346.jpg)"
+                        }
+                    },
+                    {
+                        "type": "h2",
+                        "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
+                        "content": "Vállalkozáshoz szeretnéd használni az AI-t? Miben segíthet?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
+                        "type": "form",
+                        "action": "javascript:;",
+                        "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_vallalkozas', '/you');",
+                        "method": "POST",
+                        "class": "w-full md:w-1/2 mt-[20px] md:mt-0 md:ml-8 text-black rounded-md mx-auto max-w-[80%]",
+                        "children": [
+                            {
+                                "type": "fieldset",
+                                "children": [
+                                        {
+                                            "type": "input",
+                                            "typeAttr": "checkbox",
+                                            "id": "munkaban/vallalkozas/0",
+                                            "name": "munkaban/vallalkozas/0",
+                                            "class": "mr-2",
+                                            "data-label": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "for": "munkaban/vallalkozas/0",
+                                            "content": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?",
+                                            "class": "text-lg cursor-pointer"
+                                        },
+                                        {
+                                            "type": "br"
+                                        },
+                                        {
+                                            "type": "input",
+                                            "typeAttr": "checkbox",
+                                            "id": "munkaban/vallalkozas/1",
+                                            "name": "munkaban/vallalkozas/1",
+                                            "class": "mr-2",
+                                            "data-label": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "for": "munkaban/vallalkozas/1",
+                                            "content": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?",
+                                            "class": "text-lg cursor-pointer"
+                                        },
+                                        {
+                                            "type": "br"
+                                        },
+                                        {
+                                            "type": "input",
+                                            "typeAttr": "checkbox",
+                                            "id": "munkaban/vallalkozas/2",
+                                            "name": "munkaban/vallalkozas/2",
+                                            "class": "mr-2",
+                                            "data-label": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "for": "munkaban/vallalkozas/2",
+                                            "content": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?",
+                                            "class": "text-lg cursor-pointer"
+                                        },
+                                        {
+                                            "type": "br"
+                                        },
+                                        {
+                                            "type": "input",
+                                            "typeAttr": "checkbox",
+                                            "id": "munkaban/vallalkozas/3",
+                                            "name": "munkaban/vallalkozas/3",
+                                            "class": "mr-2",
+                                            "data-label": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "for": "munkaban/vallalkozas/3",
+                                            "content": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?",
+                                            "class": "text-lg cursor-pointer"
+                                        },
+                                        {
+                                            "type": "br"
+                                        },
+                                        {
+                                            "type": "input",
+                                            "typeAttr": "checkbox",
+                                            "id": "munkaban/vallalkozas/4",
+                                            "name": "munkaban/vallalkozas/4",
+                                            "class": "mr-2",
+                                            "data-label": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "for": "munkaban/vallalkozas/4",
+                                            "content": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?",
+                                            "class": "text-lg cursor-pointer"
+                                        },
+                                        {
+                                            "type": "br"
+                                        }
+                                    ]
+                            },
+                            {
+                                "type": "br"
+                            },
+                            {
+                                "type": "textarea",
+                                "name": "message",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2",
+                                "placeholder": "Egyéb"
+                            },
+                            {
+                                "type": "input",
+                                "name": "email",
+                                "typeAttr": "email",
+                                "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
+                                "placeholder": "Email",
+                                "required": "true"
+                            },
+                            {
+                                "type": "div",
+                                "class": "flex flex-col md:flex-row items-center justify-center",
+                                "children": [
+                                    {
+                                        "type": "button",
+                                        "id": "submit",
+                                        "class": "max-w-full md:max-w-[25%] bg-black text-white p-2 rounded-md mt-2 mb-4 p-3 hover:bg-gray-800",
+                                        "content": "Mentés",
+                                        "typeAttr": "submit"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "div",
+                                "class": "message mt-4 p-3 rounded-lg hidden"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
             "slug": "quiz/munkaban/atalakulas",
             "navColor": "white",
             "tree": {
@@ -1379,6 +1579,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'munkaban_atalakulas', '/you');",
@@ -1394,12 +1599,12 @@
                                         "id": "munkaban/atalakulas/0",
                                         "name": "munkaban/atalakulas/0",
                                         "class": "mr-2",
-                                        "data-label": "Az orvos, ügyvéd, HR és marketing szakmák jövője."
+                                        "data-label": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője."
                                     },
                                     {
                                         "type": "label",
                                         "for": "munkaban/atalakulas/0",
-                                        "content": "Az orvos, ügyvéd, HR és marketing szakmák jövője.",
+                                        "content": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője.",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1532,6 +1737,11 @@
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",
@@ -1689,6 +1899,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_diak', '/you');",
@@ -1825,6 +2040,11 @@
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",
@@ -1965,6 +2185,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'oktatas_nyelvtanulas', '/you');",
@@ -2084,6 +2309,11 @@
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",
@@ -2222,6 +2452,11 @@
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",
@@ -2379,6 +2614,11 @@
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
                     },
                     {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
+                    },
+                    {
                         "type": "form",
                         "action": "javascript:;",
                         "onsubmit": "return submitQuiz(this, 'aipresszo', 'pszichologia_terapeuta', '/you');",
@@ -2532,6 +2772,11 @@
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
                         "content": "Miben érint a szakmádban az AI? Mit szeretnél megtanulni?"
+                    },
+                    {
+                        "type": "h3",
+                        "class": "font-body text-black mb-8 text-xl mx-auto ml-8 text-left font-thin max-w-[80%]",
+                        "content": "<i>Ha elmented a preferenciáidat, személyre szabott tananyag tervet tudok küldeni emailben! <br>Ezután eldöntheted, érdekel-e a magánoktatás.</i>"
                     },
                     {
                         "type": "form",

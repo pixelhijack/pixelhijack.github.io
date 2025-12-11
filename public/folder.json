@@ -1192,7 +1192,7 @@
             "type": "file"
           },
           {
-            "name": "DSC09495.jpg",
+            "name": "DSC09495-c.jpg",
             "type": "file"
           },
           {
@@ -2074,6 +2074,14 @@
         "type": "folder",
         "children": [
           {
+            "name": "20250527-bw-00068.jpg",
+            "type": "file"
+          },
+          {
+            "name": "20250527-bw-00309.jpg",
+            "type": "file"
+          },
+          {
             "name": "231006-01333.jpg",
             "type": "file"
           },
@@ -2510,7 +2518,19 @@
             "type": "file"
           },
           {
+            "name": "20250527-bw-00286.jpg",
+            "type": "file"
+          },
+          {
+            "name": "20250527-bw-00317.jpg",
+            "type": "file"
+          },
+          {
             "name": "20250531-DSC07961.jpg",
+            "type": "file"
+          },
+          {
+            "name": "20251107-00181.jpg",
             "type": "file"
           },
           {
@@ -2905,7 +2925,7 @@
     "family": [
       "231018-orwo-00407-2.jpg",
       "DSC09357.jpg",
-      "DSC09495.jpg",
+      "DSC09495-c.jpg",
       "DSC09904.jpg"
     ],
     "fashion/designers/anna-and-the-barbies": [
@@ -3137,6 +3157,8 @@
       "sw.jpg"
     ],
     "portraits": [
+      "20250527-bw-00068.jpg",
+      "20250527-bw-00309.jpg",
       "231006-01333.jpg",
       "DIA05360.jpg",
       "DSC00043.jpg",
@@ -3251,7 +3273,10 @@
     ],
     "werk": [
       "20250527-bw-00142.jpg",
+      "20250527-bw-00286.jpg",
+      "20250527-bw-00317.jpg",
       "20250531-DSC07961.jpg",
+      "20251107-00181.jpg",
       "DIA05337.jpg",
       "DSC01899.jpg",
       "DSC02902.jpg",
@@ -3499,10 +3524,7 @@
     "DSC09863.jpg": "conceptual/the-mad-king",
     "DSC09454.jpg": "conceptual/the-pier",
     "DSC09471.jpg": "conceptual/the-pier",
-    "DSC09495.jpg": [
-      "conceptual/the-pier",
-      "family"
-    ],
+    "DSC09495.jpg": "conceptual/the-pier",
     "DSC07202-bw.jpg": "conceptual/the-statue",
     "DSC00351.jpg": "conceptual/vigado",
     "DSC00407.jpg": "conceptual/vigado",
@@ -3526,6 +3548,7 @@
     "pothattila-footnote-sawubona-04558.jpg": "dancers",
     "231018-orwo-00407-2.jpg": "family",
     "DSC09357.jpg": "family",
+    "DSC09495-c.jpg": "family",
     "DSC09904.jpg": "family",
     "DSC07240.jpg": "fashion/designers/anna-and-the-barbies",
     "DSC07371.jpg": "fashion/designers/anna-and-the-barbies",
@@ -3681,6 +3704,8 @@
     "oz.jpg": "neurodiv",
     "oz2.webp": "neurodiv",
     "sw.jpg": "neurodiv",
+    "20250527-bw-00068.jpg": "portraits",
+    "20250527-bw-00309.jpg": "portraits",
     "231006-01333.jpg": "portraits",
     "DIA05360.jpg": "portraits",
     "DSC00043.jpg": "portraits",
@@ -3759,7 +3784,10 @@
     "230831-03963.jpg": "theater",
     "DSC08914.jpg": "theater",
     "20250527-bw-00142.jpg": "werk",
+    "20250527-bw-00286.jpg": "werk",
+    "20250527-bw-00317.jpg": "werk",
     "20250531-DSC07961.jpg": "werk",
+    "20251107-00181.jpg": "werk",
     "DIA05337.jpg": "werk",
     "DSC01899.jpg": "werk",
     "DSC02902.jpg": "werk",
