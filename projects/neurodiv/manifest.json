@@ -67,7 +67,7 @@
                                                     {
                                                         "type": "span",
                                                         "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Mentoring</strike>?<br>Edukáció.<br>Önismeret.<br>Peer support.<br>Pályaorientáció.<br>Tehetséggondozás.<br>Közösségi párbeszéd.<br>"
+                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Ment</strike>oring?<br>Edukáció.<br>Önismeret.<br>Sorstárs segítség.<br>Közösségi párbeszéd.<br>"
                                                     }
                                                 ]
                                             },
@@ -206,7 +206,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>A régi felfogás szerint a világ \"egészséges / normális\" és \"beteg\" emberekből áll</b>, erre a kettősségre épül sok elnevezésünk is, pl \"mental health issues\". Holott az emberek nagy része valahol a kettő közötti szürke zónában él kimondatlanul, valamilyen nehézséggel, pszichés problémával, amire jó eséllyel semmilyen segítséget sem kap, és beszélni sem mer róla. Nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, mivel a hétköznapi közbeszédben rengeteg a sztereotípia, félinformáció, tabu és szégyen, pedig az emberek jó része valamiben eltér a többségi átlagtól. Ezért a legtöbben a ChatGPT-t használják öndiagnózisra, megértésre - de vajon jó ez így?"
+                                        "content": "<b>A régi orvosi felfogás szerint a világ \"egészséges\" és \"beteg\" emberekből áll</b>. A pszichológia a közbeszédben is még mindig nagyon sokszor erre a kettősségre épül: normálisokról, tünetekről és \"mental health issue\"-król beszélünk. Pedig a neurodivergencia nem betegség, nem is deficit, hanem egyszerűen egy különböző idegrendszeri variáció, mint pl a balkezesség. A balkezességet a múlt században még a szexuális deviancia jeleként kezelték, és egészen sokáig próbálták átnevelni - természetes, hogy aki ilyen környezetben él balkezesként, az másodlagos \"tüneteket\" fog produkálni: frusztrációt, szégyent, hiányt. Az emberek nagy valamiben eltér a többségi átlagtól, de beszélni sem mer róla, mert nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, a hétköznapokban annyi a sztereotípia és tabu. Ezért inkább a ChatGPT-t használják öndiagnózisra, megértésre - de vajon lehetne ez máshogy?"
                                     }
                                 ]
                             },
@@ -247,7 +247,7 @@
                                     {
                                         "type": "h3",
                                         "class": "font-semibold text-black md:ml-8 text-2xl md:text-2xl",
-                                        "content": "Szia, Ati vagyok, későn diagnosztizált autista és ADHD-s, neurodivergencia tapasztalati szakértő. <br><br>"
+                                        "content": "Szia, Ati vagyok, későn diagnosztizált autista és ADHD-s, <i>neurodivergencia tapasztalati szakértő. </i><br><br>"
                                     },
                                     {
                                         "type": "p",

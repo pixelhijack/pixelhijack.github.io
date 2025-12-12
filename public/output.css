@@ -663,6 +663,10 @@ video {
   margin-bottom: 3rem;
 }
 
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -785,10 +789,6 @@ video {
 
 .mt-\[20px\] {
   margin-top: 20px;
-}
-
-.mb-16 {
-  margin-bottom: 4rem;
 }
 
 .block {
