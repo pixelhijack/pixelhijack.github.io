@@ -231,6 +231,26 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "div",
+                        "content": "<br><hr><br>"
+                    },
+                    {
+                        "type": "div",
+                        "class": "flex justify-center flex-col items-center md:max-w-[50%] mx-auto px-4",
+                        "children": [
+                            {
+                                "type": "h2",
+                                "class": "text-black mb-8 md:ml-8 text-3xl",
+                                "content": "Miért éri meg magántanárral tanulni 2025-ben is?"
+                            },
+                            {
+                                "type": "div",
+                                "class": "font-body mt-[20px] mb-16 md:mt-0 md:ml-8 text-xl md:text-xl text-black rounded-md ",
+                                "content": "<i>Az AI eszközök és lehetőségek hihetetlenül gyorsan változnak. Amit ma megtanulsz, az holnap már elavult lehet. Egy magántanár tud neked személyre szabott, naprakész tudást adni, ami a te céljaidhoz igazodik. Nem kell egy egész tanfolyamot végigcsinálnod, csak azt tanulod meg, amire tényleg szükséged van. Ráadásul egy jó tanár segít elkerülni a buktatókat, és gyorsabban jutsz el a célodhoz.</i>"
+                            }
+                        ]
                     }
                 ]
             }
