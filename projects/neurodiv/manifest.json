@@ -742,8 +742,8 @@
                                         "children": [
                                             {
                                                 "type": "span",
-                                                "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
-                                                "content": "Coming soon...stay tuned!"
+                                                "class": "hidden rounded-md inline bg-black/60 text-white px-1 py-0.5 rounded-sm box-decoration-clone",
+                                                "content": ""
                                             }
                                         ]
                                     }
@@ -768,8 +768,24 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md",
-                                                "content": "<b>Mentsd el a preferenciáid és értesülj elsőként az indulásról:</b>"
+                                                "class": "text-left mx-auto mt-0 text-xl md:text-2xl text-black rounded-md",
+                                                "content": "<b>Ha egy tapasztalati szakértővel* szeretnél beszélgetni ezekről, küldd el az email címedet:</b>"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
+                                                "content": "<sm>(Az előző kérdésekre adott választásaid automatikusan mentésre kerülnek)</sm>"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
+                                                "content": "<i><sm>(*Tapasztalati szakértő = nem pszichológus, nem coach, hanem olyan személy, aki saját ADHD/autizmus tapasztalatai alapján nyújt támogatást)</sm></i>"
+                                            },
+                                            {
+                                                "type": "textarea",
+                                                "name": "message",
+                                                "class": "border border-gray-300 p-2 rounded-md w-full",
+                                                "placeholder": "Ha megosztanál, kérdeznél még valamit (opcionális)"
                                             },
                                             {
                                                 "type": "input",
@@ -806,7 +822,7 @@
                                 "children": [
                                     {
                                         "type": "h2",
-                                        "class": "text-center mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md mb-4",
+                                        "class": "text-left mx-auto mt-[20px] md:mt-0 text-xl md:text-2xl text-black rounded-md mb-4",
                                         "content": "<b>Addig pedig itt tudsz olvasgatni: </b>"
                                     },
                                     {
