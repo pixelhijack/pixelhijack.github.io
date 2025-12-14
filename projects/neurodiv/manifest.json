@@ -62,12 +62,12 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-title text-white text-base md:text-3xl p-4 mx-auto text-left mt-[88px] mb-[-30px]",
+                                                "class": "font-title text-white text-base md:text-3xl p-4 mx-auto text-left mt-[88px]",
                                                 "children": [
                                                     {
                                                         "type": "span",
                                                         "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Ment</strike>oring?<br>Edukáció.<br>Önismeret.<br>Sorstárs segítség."
+                                                        "content": "<strike>Diagnózis.</strike><br><strike>Terápia.</strike><br><strike>Coaching.</strike><br><strike>Ment</strike>oring?<br>Önismeret.<br>Pszichoedukáció.<br>Sorstárs segítség."
                                                     }
                                                 ]
                                             },
@@ -84,11 +84,11 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-50 bg-white mx-auto",
+                        "class": "relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-50 bg-white mx-auto rounded-md",
                         "children": [
                             {
                                 "type": "h2",
-                                "class": "font-title relative pt-[20px] text-black mx-auto text-left text-2xl md:text-4xl max-w-[80%]",
+                                "class": "font-title relative pt-[20px] text-black mx-auto text-center text-2xl md:text-3xl",
                                 "content": "<i>...de hogyan navigálj vele és integráld az életedbe?</i>"
                             },
                             {
