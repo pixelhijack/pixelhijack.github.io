@@ -213,11 +213,11 @@
                                     {
                                         "type": "h3",
                                         "class": "mb-4 font-semibold text-2xl md:text-2xl",
-                                        "content": "Miért van ennyi félreértés a témában?<br><br><hr>"
+                                        "content": "Miért van ennyi félreértés?<br><br><hr>"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "<b>A régi orvosi felfogás szerint a világ \"egészséges\" és \"beteg\" emberekből áll</b>. A pszichológia a közbeszédben is még mindig nagyon sokszor erre a kettősségre épül: normálisokról, tünetekről és \"mental health issue\"-król beszélünk. Pedig a neurodivergencia nem betegség, nem is deficit, hanem egyszerűen egy különböző idegrendszeri variáció, mint pl a balkezesség. A balkezességet a múlt században még a szexuális deviancia jeleként kezelték, és egészen sokáig próbálták átnevelni - természetes, hogy aki ilyen környezetben él balkezesként, az másodlagos \"tüneteket\" fog produkálni: frusztrációt, szégyent, hiányt. Az emberek nagy valamiben eltér a többségi átlagtól, de beszélni sem mer róla, mert nem akarunk címkézni, nem akarunk \"betegnek\" tűnni, a hétköznapokban annyi a sztereotípia és tabu. Ezért inkább a ChatGPT-t használják öndiagnózisra, megértésre - de vajon lehetne ez máshogy?"
+                                        "content": "<b>Az orvosi felfogás szerint a világ \"egészséges\" és \"beteg\" emberekből áll</b>. A pszichológia a közbeszédben is még mindig sokszor erre a felosztásra épül: normálisokról, tünetekről, \"mental health issue\"-król beszélünk. Pedig a neurodivergencia nem betegség, nem is deficit, hanem egyszerűen egy eltérő idegrendszeri variáció, mint pl a balkezesség. A balkezességet a múlt században még a szexuális deviancia jeleként kezelték, és egészen sokáig próbálták átnevelni - természetes, hogy aki ilyen környezetben él balkezesként, az másodlagos \"tüneteket\" fog produkálni: frusztrációt, szégyent, hiányt. Az emberek nagy része legalább egy-két dologban eltér a többségi átlagtól, de beszélni nem mer róla, hiszen nem akarunk címkézni, nem akarunk kevesebbnek, \"betegnek\" tűnni, a hétköznapokban annyi a sztereotípia és tabu. Ezért inkább a ChatGPT-t használjuk öndiagnózisra, megértésre - de vajon lehetne ez máshogy?"
                                     }
                                 ]
                             },
