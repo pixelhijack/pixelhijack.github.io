@@ -62,7 +62,7 @@
                                         "children": [
                                             {
                                                 "type": "h2",
-                                                "class": "font-title text-white text-base md:text-3xl p-4 mx-auto text-left mt-[88px]",
+                                                "class": "font-title text-white text-base md:text-2xl p-4 mx-auto text-left mt-[88px]",
                                                 "children": [
                                                     {
                                                         "type": "span",
@@ -75,6 +75,17 @@
                                                 "type": "h1",
                                                 "class": "font-title text-white mx-auto text-left text-3xl md:text-5xl p-4",
                                                 "content": "<b>Ha megérted hogy működik, <br>a neurodivergencia szupererő</b>"
+                                            },
+                                            {
+                                                "type": "h2",
+                                                "class": "font-title relative mt-[-30px] text-white mx-auto text-center text-2xl md:text-3xl",
+                                                "children": [
+                                                    {
+                                                        "type": "span",
+                                                        "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
+                                                        "content": "<i>...de hogyan navigálj vele és integráld az életedbe?</i>"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
@@ -84,96 +95,85 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-70px] md:mt-[-100px] md:max-w-[80%] z-50 bg-white mx-auto rounded-md",
+                        "class": "quiz-cards quiz-cards-2-2 mx-auto my-4 relative mt-[-50px] md:mt-[-100px] md:max-w-[80%] z-50 rounded-md",
                         "children": [
                             {
-                                "type": "h2",
-                                "class": "font-title relative pt-[20px] text-black mx-auto text-center text-2xl md:text-3xl",
-                                "content": "<i>...de hogyan navigálj vele és integráld az életedbe?</i>"
-                            },
-                            {
-                                "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2 mx-auto my-4",
+                                "type": "a",
+                                "href": "/onboarding/prediagnosis",
+                                "class": "quiz-card",
                                 "children": [
                                     {
-                                        "type": "a",
-                                        "href": "/onboarding/prediagnosis",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♦"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Gyanítom, hogy ADHD-s / a spektrumon vagyok"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "...de nincs diagnózisom, és nem tudom, merre induljak."
-                                            }
-                                        ]
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♦"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/onboarding/postdiagnosis",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♣"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Diagnosztizált / felvállalt neurodivergens vagyok"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "...keresem, hogyan tudnám a mindennapokba integrálni az ADHD-m, autizmusom. Keresem a közösséget, a hasonlóakat."
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Gyanítom, hogy ADHD-s / a spektrumon vagyok"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/onboarding/interested",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♥"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Érdekel a téma"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "...esetleg hozzátartozója vagyok egy érintettnek, de az is lehet, hogy szkeptikus. Hiteles információt keresek, olvasgatnék, informálódnék."
-                                            }
-                                        ]
+                                        "type": "p",
+                                        "content": "...de nincs diagnózisom, és nem tudom, merre induljak."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/postdiagnosis",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/onboarding/professional",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Segítő szakmában dolgozom (pszichológus, coach, kutató)"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "...és szakmai kollaborációt, együttműködést keresek."
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Diagnosztizált / felvállalt neurodivergens vagyok"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "...keresem, hogyan tudnám a mindennapokba integrálni az ADHD-m, autizmusom. Keresem a közösséget, a hasonlóakat."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/interested",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Érdekel a téma"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "...esetleg hozzátartozója vagyok egy érintettnek, de az is lehet, hogy szkeptikus. Hiteles információt keresek, olvasgatnék, informálódnék."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/onboarding/professional",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Segítő szakmában dolgozom (pszichológus, coach, kutató)"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "...és szakmai kollaborációt, együttműködést keresek."
                                     }
                                 ]
                             }
