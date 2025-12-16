@@ -325,7 +325,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=prediagnosis/selfknowledge",
+                                        "href": "/contact?interest=prediagnosis/selfknowledge",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -345,7 +345,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=prediagnosis/diagnosis",
+                                        "href": "/contact?interest=prediagnosis/diagnosis",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -365,7 +365,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=prediagnosis/peersupport",
+                                        "href": "/contact?interest=prediagnosis/peersupport",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -433,7 +433,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=postdiagnosis/community",
+                                        "href": "/contact?interest=postdiagnosis/community",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -453,7 +453,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=postdiagnosis/lifestyle",
+                                        "href": "/contact?interest=postdiagnosis/lifestyle",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -473,7 +473,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=postdiagnosis/science",
+                                        "href": "/contact?interest=postdiagnosis/science",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -493,7 +493,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/superpowers/coming-soon?interest=postdiagnosis/superpowers",
+                                        "href": "/superpowers/contact?interest=postdiagnosis/superpowers",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -561,7 +561,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=interested/communication",
+                                        "href": "/contact?interest=interested/communication",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -601,7 +601,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=interested/support",
+                                        "href": "/contact?interest=interested/support",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -669,7 +669,7 @@
                                 "children": [
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=professional/research",
+                                        "href": "/contact?interest=professional/research",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -689,7 +689,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=professional/collaboration",
+                                        "href": "/contact?interest=professional/collaboration",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -709,7 +709,7 @@
                                     },
                                     {
                                         "type": "a",
-                                        "href": "/coming-soon?interest=professional/ai",
+                                        "href": "/contact?interest=professional/ai",
                                         "class": "quiz-card",
                                         "children": [
                                             {
@@ -735,7 +735,7 @@
             }
         },
         {
-            "slug": "coming-soon",
+            "slug": "contact",
             "tree": {
                 "type": "div",
                 "children": [
@@ -785,17 +785,7 @@
                                             {
                                                 "type": "h2",
                                                 "class": "text-left mx-auto mt-0 text-xl md:text-2xl text-black rounded-md",
-                                                "content": "<b>Ha egy tapasztalati szakértővel<sup>*</sup> szeretnél beszélgetni ezekről, küldd el az email címedet:</b>"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
-                                                "content": "(Az előző kérdésekre adott választásaid automatikusan mentésre kerülnek)"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
-                                                "content": "<i><sup>*</sup>Tapasztalati szakértő = nem pszichológus, nem coach, hanem olyan személy, aki saját ADHD/autizmus tapasztalatai alapján segít, edukál</i>"
+                                                "content": "<b>Ha szeretnél velem, mint tapasztalati szakértővel<sup>*</sup> beszélgetni ezekről, felveszem veled a kapcsolatot:</b>"
                                             },
                                             {
                                                 "type": "textarea",
@@ -808,7 +798,7 @@
                                                 "name": "email",
                                                 "typeAttr": "email",
                                                 "class": "border border-gray-300 p-2 rounded-md w-full mb-2 mt-4",
-                                                "placeholder": "Email",
+                                                "placeholder": "Email címed",
                                                 "required": "true"
                                             },
                                             {
@@ -827,6 +817,16 @@
                                             {
                                                 "type": "div",
                                                 "class": "message mt-4 p-3 rounded-lg hidden"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
+                                                "content": "(Az előző kérdésekre adott döntéseid automatikusan mentésre kerülnek)"
+                                            },
+                                            {
+                                                "type": "p",
+                                                "class": "text-left mx-auto mb-6 text-xl md:text-sm text-black rounded-md",
+                                                "content": "<i><sup>*</sup>Tapasztalati szakértő = nem pszichológus, nem coach, hanem olyan személy, aki saját ADHD/autizmus tapasztalatai alapján segít, edukál</i>"
                                             }
                                         ]
                                     }
@@ -854,7 +854,7 @@
             }
         },
         {
-            "slug": "superpowers/coming-soon",
+            "slug": "superpowers/contact",
             "tree": {
                 "type": "div",
                 "children": [
