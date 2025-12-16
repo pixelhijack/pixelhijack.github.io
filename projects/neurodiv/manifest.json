@@ -317,71 +317,65 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-200px] md:max-w-[80%] z-50 bg-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 mx-auto my-4 relative mt-[-50px] md:mt-[-100px] md:max-w-[80%] z-50 rounded-md",
                         "children": [
                             {
-                                "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2",
+                                "type": "a",
+                                "href": "/contact?interest=prediagnosis/selfknowledge",
+                                "class": "quiz-card",
                                 "children": [
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=prediagnosis/selfknowledge",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♣"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Az önismeretben:"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "szeretném megérteni a mindennapi nehézségeimet, de nem tudom az öndiagnózis mennyire megbízható."
-                                            }
-                                        ]
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=prediagnosis/diagnosis",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♥"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "A továbblépésben a diagnózishoz:"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "hogyan találjak szakembert, mi vár rám a várólistán, diagnózis során, és utána?"
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Az önismeretben:"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=prediagnosis/peersupport",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Sorstársi tapasztalatban: "
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "olyanokkal szeretnék beszélgetni, akik hasonlóan éreznek."
-                                            }
-                                        ]
+                                        "type": "p",
+                                        "content": "szeretném megérteni a mindennapi nehézségeimet, de nem tudom az öndiagnózis mennyire megbízható."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=prediagnosis/diagnosis",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "A továbblépésben a diagnózishoz:"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "hogyan találjak szakembert, mi vár rám a várólistán, diagnózis során, és utána?"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=prediagnosis/peersupport",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Sorstársi tapasztalatban: "
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "olyanokkal szeretnék beszélgetni, akik hasonlóan éreznek."
                                     }
                                 ]
                             }
@@ -425,91 +419,85 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-200px] md:max-w-[80%] z-50 bg-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 mx-auto my-4 relative mt-[-50px] md:mt-[-100px] md:max-w-[80%] z-50 rounded-md",
                         "children": [
                             {
-                                "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2",
+                                "type": "a",
+                                "href": "/contact?interest=postdiagnosis/community",
+                                "class": "quiz-card",
                                 "children": [
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=postdiagnosis/community",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♣"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "A közösség érdekel"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "Megértésre, mások tapasztalataira van szükségem (peer support). Jó lenne egy biztonságos tér, ahol hasonló gondolkodású emberekkel beszélgethetek."
-                                            }
-                                        ]
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=postdiagnosis/lifestyle",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♥"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Magamat szeretném jobban megérteni"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "Életvezetési tanácsokra, eszközökre van szükségem a napi működéshez (pl. halogatás, kapcsolataim, karrier)."
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "A közösség érdekel"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=postdiagnosis/science",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "A tudományos háttér érdekel"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "Szeretnék mélyebben elmerülni a tudományos háttérben, a neuropszichológiában."
-                                            }
-                                        ]
+                                        "type": "p",
+                                        "content": "Megértésre, mások tapasztalataira van szükségem (peer support). Jó lenne egy biztonságos tér, ahol hasonló gondolkodású emberekkel beszélgethetek."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=postdiagnosis/lifestyle",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/superpowers/contact?interest=postdiagnosis/superpowers",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Szeretnék másoknak segíteni"
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": "Úgy érzem, a neurodivergenciám szuperképességekkel és nehéz, de tanulságos történetekkel is jár, és nem félnék ezeket megosztani másokkal."
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Magamat szeretném jobban megérteni"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Életvezetési tanácsokra, eszközökre van szükségem a napi működéshez (pl. halogatás, kapcsolataim, karrier)."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=postdiagnosis/science",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "A tudományos háttér érdekel"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Szeretnék mélyebben elmerülni a tudományos háttérben, a neuropszichológiában."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/superpowers/contact?interest=postdiagnosis/superpowers",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Szeretnék másoknak segíteni"
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": "Úgy érzem, a neurodivergenciám szuperképességekkel és nehéz, de tanulságos történetekkel is jár, és nem félnék ezeket megosztani másokkal."
                                     }
                                 ]
                             }
@@ -553,71 +541,65 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-200px] md:max-w-[80%] z-50 bg-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 mx-auto my-4 relative mt-[-50px] md:mt-[-100px] md:max-w-[80%] z-50 rounded-md",
                         "children": [
                             {
-                                "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2",
+                                "type": "a",
+                                "href": "/contact?interest=interested/communication",
+                                "class": "quiz-card",
                                 "children": [
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=interested/communication",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♣"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Szeretném érteni a neurodivergens / neurotipikus közti kommunikációs különbségeket (párkapcsolat, munkahely)."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/read",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♥"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Érdekelnek a személyes történetek, tapasztalatok (pl. Donna Williams, Temple Grandin)."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Szeretném érteni a neurodivergens / neurotipikus közti kommunikációs különbségeket (párkapcsolat, munkahely)."
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=interested/support",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Szeretném megtanulni, hogyan tudok támogatni neurodivergens embereket (pl. családtag, barát, kolléga)."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/read",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Érdekelnek a személyes történetek, tapasztalatok (pl. Donna Williams, Temple Grandin)."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=interested/support",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Szeretném megtanulni, hogyan tudok támogatni neurodivergens embereket (pl. családtag, barát, kolléga)."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
                                     }
                                 ]
                             }
@@ -661,71 +643,65 @@
                     },
                     {
                         "type": "div",
-                        "class": "relative mt-[-200px] md:max-w-[80%] z-50 bg-white mx-auto my-8",
+                        "class": "quiz-cards quiz-cards-2-2 mx-auto my-4 relative mt-[-50px] md:mt-[-100px] md:max-w-[80%] z-50 rounded-md",
                         "children": [
                             {
-                                "type": "div",
-                                "class": "quiz-cards quiz-cards-2-2",
+                                "type": "a",
+                                "href": "/contact?interest=professional/research",
+                                "class": "quiz-card",
                                 "children": [
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=professional/research",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♣"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Pilot projektek, kutatási együttműködések érdekelnek."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♣"
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=professional/collaboration",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♥"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Tapasztalati szakértői kollaboráció érdekel."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "h3",
+                                        "content": "Pilot projektek, kutatási együttműködések érdekelnek."
                                     },
                                     {
-                                        "type": "a",
-                                        "href": "/contact?interest=professional/ai",
-                                        "class": "quiz-card",
-                                        "children": [
-                                            {
-                                                "type": "div",
-                                                "class": "quiz-card-icon",
-                                                "content": "♠"
-                                            },
-                                            {
-                                                "type": "h3",
-                                                "content": "Szeretném megtanulni, hogyan használhatok AI eszközöket professzionális munkámban."
-                                            },
-                                            {
-                                                "type": "p",
-                                                "content": ""
-                                            }
-                                        ]
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=professional/collaboration",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♥"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Tapasztalati szakértői kollaboráció érdekel."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "a",
+                                "href": "/contact?interest=professional/ai",
+                                "class": "quiz-card",
+                                "children": [
+                                    {
+                                        "type": "div",
+                                        "class": "quiz-card-icon",
+                                        "content": "♠"
+                                    },
+                                    {
+                                        "type": "h3",
+                                        "content": "Szeretném megtanulni, hogyan használhatok AI eszközöket professzionális munkámban."
+                                    },
+                                    {
+                                        "type": "p",
+                                        "content": ""
                                     }
                                 ]
                             }
