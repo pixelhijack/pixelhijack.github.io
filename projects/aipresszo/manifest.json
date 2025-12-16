@@ -133,11 +133,11 @@
                                             },
                                             {
                                                 "type": "h3",
-                                                "content": "AI munkában, vállalkozás-tervezésben"
+                                                "content": "AI a munka világában"
                                             },
                                             {
                                                 "type": "p",
-                                                "content": "A munkámban/karrieremben szeretnék jobb lenni. Vagy: vállalkozásom tervezésében. Érdekel a hatékonyság, a szakmám átalakulása, kreatív lehetőségek."
+                                                "content": "A cégemnél kellene bevezetni az AI-t. <br>A karrieremben szeretnék jobb lenni. <br>A vállalkozásom tervezésében használnám.<br>Kreatív szakmában dolgozom."
                                             }
                                         ]
                                     },
@@ -517,7 +517,7 @@
                         "children": [
                             {
                                 "type": "a",
-                                "href": "/quiz/munkaban/hatekonysag",
+                                "href": "/quiz/munkaban/karrier",
                                 "class": "quiz-card",
                                 "children": [
                                     {
@@ -527,17 +527,17 @@
                                     },
                                     {
                                         "type": "h3",
-                                        "content": "Munkahelyi hatékonyság"
+                                        "content": "Saját karrieremben érdekelne"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Jelenlegi munkámban érdekelne, mivel tehetném könnyebbé az életem. E-mailek, dokumentumok, ismétlődő feladatok automatizálása."
+                                        "content": "Szeretnék versenyképes maradni alkalmazottként. Orvos, ügyvéd, marketinges, fejlesztő - hogyan változik a szakmám?"
                                     }
                                 ]
                             },
                             {
                                 "type": "a",
-                                "href": "/quiz/munkaban/atalakulas",
+                                "href": "/quiz/munkaban/vallalati",
                                 "class": "quiz-card",
                                 "children": [
                                     {
@@ -547,11 +547,11 @@
                                     },
                                     {
                                         "type": "h3",
-                                        "content": "Szakmai átalakulás"
+                                        "content": "Vállalati szintű bevezetés"
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Szeretnék versenyképes maradni. Orvos, ügyvéd, marketinges, fejlesztő - hogyan változik a szakmám?"
+                                        "content": "Cég szintjén kellene bevezetni az AI-t: dolgozók képzése, folyamatok átalakítása."
                                     }
                                 ]
                             },
@@ -591,7 +591,7 @@
                                     },
                                     {
                                         "type": "p",
-                                        "content": "Grafikus, író, zenész - mit lehet tenni, hogy ne veszítsem el a munkámat, hanem jobb legyek AI-val? Etikai és jogi megfontolások."
+                                        "content": "Grafikus, író, zenész - mit lehet tenni, hogy ne veszítsem el a munkámat, hanem jobb legyek AI-val?"
                                     }
                                 ]
                             }
@@ -1260,7 +1260,7 @@
             }
         },
         {
-            "slug": "quiz/munkaban/hatekonysag",
+            "slug": "quiz/munkaban/karrier",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -1276,7 +1276,7 @@
                     {
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
-                        "content": "Hogyan használhatod az AI-t a jelenlegi munkád könnyebbé, gyorsabbá tételére?"
+                        "content": "Hogyan használhatod az AI-t a jelenlegi munkádban, karrieredben?"
                     },
                     {
                         "type": "h3",
@@ -1296,15 +1296,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/hatekonysag/0",
-                                        "name": "munkaban/hatekonysag/0",
+                                        "id": "munkaban/karrier/0",
+                                        "name": "munkaban/karrier/0",
                                         "class": "mr-2",
-                                        "data-label": "AI a naptárban: feladatok, időbeosztás és prioritáskezelés AI-val."
+                                        "data-label": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője."
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/hatekonysag/0",
-                                        "content": "AI a naptárban: feladatok, időbeosztás és prioritáskezelés AI-val.",
+                                        "for": "munkaban/karrier/0",
+                                        "content": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője.",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1313,15 +1313,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/hatekonysag/1",
-                                        "name": "munkaban/hatekonysag/1",
+                                        "id": "munkaban/karrier/1",
+                                        "name": "munkaban/karrier/1",
                                         "class": "mr-2",
-                                        "data-label": "Email írás 2 perc alatt: hogyan gyorsítsd fel a repetitív feladataid?"
+                                        "data-label": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/hatekonysag/1",
-                                        "content": "Email írás 2 perc alatt: hogyan gyorsítsd fel a repetitív feladataid?",
+                                        "for": "munkaban/karrier/1",
+                                        "content": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1330,15 +1330,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/hatekonysag/2",
-                                        "name": "munkaban/hatekonysag/2",
+                                        "id": "munkaban/karrier/2",
+                                        "name": "munkaban/karrier/2",
                                         "class": "mr-2",
-                                        "data-label": "Hosszú dokumentumok összegzése: információk strukturálása, lényegkiemelés."
+                                        "data-label": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése."
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/hatekonysag/2",
-                                        "content": "Hosszú dokumentumok összegzése: információk strukturálása, lényegkiemelés.",
+                                        "for": "munkaban/karrier/2",
+                                        "content": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése.",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1347,15 +1347,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/hatekonysag/3",
-                                        "name": "munkaban/hatekonysag/3",
+                                        "id": "munkaban/karrier/3",
+                                        "name": "munkaban/karrier/3",
                                         "class": "mr-2",
-                                        "data-label": "Stílus és hangnem finomítása: javíts a hivatalos vagy kreatív szövegeiden."
+                                        "data-label": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/hatekonysag/3",
-                                        "content": "Stílus és hangnem finomítása: javíts a hivatalos vagy kreatív szövegeiden.",
+                                        "for": "munkaban/karrier/3",
+                                        "content": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1364,15 +1364,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/hatekonysag/4",
-                                        "name": "munkaban/hatekonysag/4",
+                                        "id": "munkaban/karrier/4",
+                                        "name": "munkaban/karrier/4",
                                         "class": "mr-2",
-                                        "data-label": "Brainstorming: használd az AI-t kreatív partnerként."
+                                        "data-label": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/hatekonysag/4",
-                                        "content": "Brainstorming: használd az AI-t kreatív partnerként.",
+                                        "for": "munkaban/karrier/4",
+                                        "content": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1453,92 +1453,92 @@
                             {
                                 "type": "fieldset",
                                 "children": [
-                                        {
-                                            "type": "input",
-                                            "typeAttr": "checkbox",
-                                            "id": "munkaban/vallalkozas/0",
-                                            "name": "munkaban/vallalkozas/0",
-                                            "class": "mr-2",
-                                            "data-label": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "for": "munkaban/vallalkozas/0",
-                                            "content": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?",
-                                            "class": "text-lg cursor-pointer"
-                                        },
-                                        {
-                                            "type": "br"
-                                        },
-                                        {
-                                            "type": "input",
-                                            "typeAttr": "checkbox",
-                                            "id": "munkaban/vallalkozas/1",
-                                            "name": "munkaban/vallalkozas/1",
-                                            "class": "mr-2",
-                                            "data-label": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "for": "munkaban/vallalkozas/1",
-                                            "content": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?",
-                                            "class": "text-lg cursor-pointer"
-                                        },
-                                        {
-                                            "type": "br"
-                                        },
-                                        {
-                                            "type": "input",
-                                            "typeAttr": "checkbox",
-                                            "id": "munkaban/vallalkozas/2",
-                                            "name": "munkaban/vallalkozas/2",
-                                            "class": "mr-2",
-                                            "data-label": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "for": "munkaban/vallalkozas/2",
-                                            "content": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?",
-                                            "class": "text-lg cursor-pointer"
-                                        },
-                                        {
-                                            "type": "br"
-                                        },
-                                        {
-                                            "type": "input",
-                                            "typeAttr": "checkbox",
-                                            "id": "munkaban/vallalkozas/3",
-                                            "name": "munkaban/vallalkozas/3",
-                                            "class": "mr-2",
-                                            "data-label": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "for": "munkaban/vallalkozas/3",
-                                            "content": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?",
-                                            "class": "text-lg cursor-pointer"
-                                        },
-                                        {
-                                            "type": "br"
-                                        },
-                                        {
-                                            "type": "input",
-                                            "typeAttr": "checkbox",
-                                            "id": "munkaban/vallalkozas/4",
-                                            "name": "munkaban/vallalkozas/4",
-                                            "class": "mr-2",
-                                            "data-label": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "for": "munkaban/vallalkozas/4",
-                                            "content": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?",
-                                            "class": "text-lg cursor-pointer"
-                                        },
-                                        {
-                                            "type": "br"
-                                        }
-                                    ]
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/vallalkozas/0",
+                                        "name": "munkaban/vallalkozas/0",
+                                        "class": "mr-2",
+                                        "data-label": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/vallalkozas/0",
+                                        "content": "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/vallalkozas/1",
+                                        "name": "munkaban/vallalkozas/1",
+                                        "class": "mr-2",
+                                        "data-label": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/vallalkozas/1",
+                                        "content": "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/vallalkozas/2",
+                                        "name": "munkaban/vallalkozas/2",
+                                        "class": "mr-2",
+                                        "data-label": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/vallalkozas/2",
+                                        "content": "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/vallalkozas/3",
+                                        "name": "munkaban/vallalkozas/3",
+                                        "class": "mr-2",
+                                        "data-label": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/vallalkozas/3",
+                                        "content": "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    },
+                                    {
+                                        "type": "input",
+                                        "typeAttr": "checkbox",
+                                        "id": "munkaban/vallalkozas/4",
+                                        "name": "munkaban/vallalkozas/4",
+                                        "class": "mr-2",
+                                        "data-label": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "for": "munkaban/vallalkozas/4",
+                                        "content": "Esetleg van valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?",
+                                        "class": "text-lg cursor-pointer"
+                                    },
+                                    {
+                                        "type": "br"
+                                    }
+                                ]
                             },
                             {
                                 "type": "br"
@@ -1580,7 +1580,7 @@
             }
         },
         {
-            "slug": "quiz/munkaban/atalakulas",
+            "slug": "quiz/munkaban/vallalati",
             "navColor": "white",
             "tree": {
                 "type": "div",
@@ -1596,7 +1596,7 @@
                     {
                         "type": "h2",
                         "class": "text-black mb-8 text-2xl mx-auto mt-16 ml-8 text-left",
-                        "content": "Hogy fog alakulni a munkád az AI elterjedésével?"
+                        "content": "Cég szintjén lenne szükségem AI képzésre és tanácsadásra."
                     },
                     {
                         "type": "h3",
@@ -1616,15 +1616,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/atalakulas/0",
-                                        "name": "munkaban/atalakulas/0",
+                                        "id": "munkaban/vallalati/0",
+                                        "name": "munkaban/vallalati/0",
                                         "class": "mr-2",
-                                        "data-label": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője."
+                                        "data-label": "A cégem szeretné használni az AI-t, hogyan kezdjünk neki?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/atalakulas/0",
-                                        "content": "Az orvos, ügyvéd, HR, marketing, egyéb szakmák jövője.",
+                                        "for": "munkaban/vallalati/0",
+                                        "content": "A cégem szeretné használni az AI-t, hogyan kezdjünk neki?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1633,15 +1633,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/atalakulas/1",
-                                        "name": "munkaban/atalakulas/1",
+                                        "id": "munkaban/vallalati/1",
+                                        "name": "munkaban/vallalati/1",
                                         "class": "mr-2",
-                                        "data-label": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?"
+                                        "data-label": "Én vagyok a vezető, miket kell végiggondolnom az AI bevezetésében?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/atalakulas/1",
-                                        "content": "Asszisztens a munkádban: hogyan használj AI-t ilyen célra?",
+                                        "for": "munkaban/vallalati/1",
+                                        "content": "Én vagyok a vezető, miket kell végiggondolnom az AI bevezetésében?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1650,15 +1650,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/atalakulas/2",
-                                        "name": "munkaban/atalakulas/2",
+                                        "id": "munkaban/vallalati/2",
+                                        "name": "munkaban/vallalati/2",
                                         "class": "mr-2",
-                                        "data-label": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése."
+                                        "data-label": "Change manager vagyok a cégnél, hogyan tárgyaljak az AI-ról a vezetőséggel?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/atalakulas/2",
-                                        "content": "AI a döntéshozatalban: adatok feldolgozása, trendek felismerése.",
+                                        "for": "munkaban/vallalati/2",
+                                        "content": "Change manager vagyok a cégnél, hogyan tárgyaljak az AI-ról a vezetőséggel?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1667,15 +1667,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/atalakulas/3",
-                                        "name": "munkaban/atalakulas/3",
+                                        "id": "munkaban/vallalati/3",
+                                        "name": "munkaban/vallalati/3",
                                         "class": "mr-2",
-                                        "data-label": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?"
+                                        "data-label": "Milyen jogi, etikai, security kérdéseket vet fel az AI használata a vállalatunkban?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/atalakulas/3",
-                                        "content": "Felesleges vs. indokolt AI-használat: mikor ne hagyatkozz rá?",
+                                        "for": "munkaban/vallalati/3",
+                                        "content": "Milyen jogi, etikai, security kérdéseket vet fel az AI használata a vállalatunkban?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {
@@ -1684,15 +1684,15 @@
                                     {
                                         "type": "input",
                                         "typeAttr": "checkbox",
-                                        "id": "munkaban/atalakulas/4",
-                                        "name": "munkaban/atalakulas/4",
+                                        "id": "munkaban/vallalati/4",
+                                        "name": "munkaban/vallalati/4",
                                         "class": "mr-2",
-                                        "data-label": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?"
+                                        "data-label": "Hogyan integrálhatjuk az AI-t a meglévő üzleti folyamatainkba?"
                                     },
                                     {
                                         "type": "label",
-                                        "for": "munkaban/atalakulas/4",
-                                        "content": "Karriertervezés AI-val: hogyan használhatod lehetőségek feltérképezésére, kimenetelek lemodellezésére?",
+                                        "for": "munkaban/vallalati/4",
+                                        "content": "Hogyan integrálhatjuk az AI-t a meglévő üzleti folyamatainkba?",
                                         "class": "text-lg cursor-pointer"
                                     },
                                     {

@@ -21,7 +21,7 @@ export function generateCheckboxes(topics, prefix = '') {
   topics.forEach((topic, index) => {
     // Create slug from topic text
     const slug = slugify(topic);
-    const id = 'munkaban/vallalkozas/' + index; // prefix ? `${prefix}_${slug}` : slug;
+    const id = 'munkaban/vallalati/' + index; // prefix ? `${prefix}_${slug}` : slug;
     
     // Checkbox input
     result.push({
@@ -78,11 +78,11 @@ function slugify(text) {
  */
 if (import.meta.url === `file://${process.argv[1]}`) {
   const exampleTopics = [
-    "Anyuka vagy otthon, és szeretnél valami új dolgot kitanulni, kipróbálni?",
-    "Vállalkozni szeretnél, de nincs ötleted, mivel indulj el?",
-    "Vagy kifejezetten sok ötleted lenne, de nem tudod, melyik lehetne piacképes?",
-    "Van egy különösen jó ötleted, amit szívesen megvalósítanál, de nem tudod, hogyan kezdj hozzá?",
-    "Esetleg már van is valamilyen hobbid, tevékenységed amit tovább fejlesztenél, de jó lenne ha bevételed is lehetne belőle?",
+    "A cégem szeretné használni az AI-t, hogyan kezdjünk neki?",
+    "Én vagyok a vezető, hogyan segíthetem a csapatomat az AI bevezetésében?",
+    "Change manager vagyok a cégnél, hogyan tárgyaljak az AI-ról a vezetőséggel?",
+    "Milyen jogi, etikai, security kérdéseket vet fel az AI használata a vállalatunkban?",
+    "Hogyan integrálhatjuk az AI-t a meglévő üzleti folyamatainkba?",
   ];
   
   const manifest = generateCheckboxes(exampleTopics, 'ai_alapok');
