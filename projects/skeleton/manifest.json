@@ -36,6 +36,14 @@
             }
         },
         {
+            "slug": "books",
+            "navColor": "black",
+            "tree": {
+                "type": "book",
+                "source": "books/my-book-1"
+            }
+        },
+        {
             "slug": "about",
             "background": null,
             "navColor": "black",

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "The Labyrinth of Choices",
+    "author": "Póth Attila",
+    "language": "en",
+    "description": "A Fighting Fantasy style adventure book",
+    "version": "1.0.0",
+    "lastUpdated": "2024-12-18"
+  },
+  "styling": {
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&display=swap"
+    ],
+    "theme": {
+      "pageBackground": "#fef9f3",
+      "textColor": "#2d2d2d",
+      "accentColor": "#8b4513"
+    }
+  },
+  "toc": [
+    { "id": "1", "file": "chapter-1.md", "title": "The Beginning" },
+    { "id": "2", "file": "chapter-2.md", "title": "The First Choice" },
+    { "id": "42", "file": "chapter-42.md", "title": "The Right Path" },
+    { "id": "99", "file": "chapter-99-example.md", "title": "Markdown Examples" }
+  ],
+  "settings": {
+    "enableProgress": true
+  }
+}

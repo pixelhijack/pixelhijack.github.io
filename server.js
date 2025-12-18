@@ -14,10 +14,12 @@ const __dirname = path.dirname(__filename);
 import renderTreeServer from './utils/renderTreeServer.js';
 import loadProjectManifest from './utils/loadProjectManifest.js';
 import renderTemplate, { escapeHtml } from './utils/renderTemplate.js';
+import renderBookTemplate from './utils/renderBookTemplate.js';
 import { getImageSrcServer } from './utils/renderTreeServer.js';
 import { initializeFirebaseAdmin } from './utils/firebaseAdmin.js';
 import { verifyAuth, checkAccess, trackEngagement } from './utils/authMiddleware.js';
 import { generateMagicLinkEmail } from './utils/emailTemplates.js';
+import { marked } from 'marked';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -539,6 +541,75 @@ app.post('/auth/session', async (req, res) => {
 app.post('/auth/logout', (req, res) => {
   res.clearCookie('authToken');
   res.status(200).json({ message: 'Logged out successfully' });
+});
+
+// Book reader endpoint
+app.get('/books/:bookId', async (req, res) => {
+  try {
+    const { bookId } = req.params;
+    const bookPath = path.join(__dirname, 'projects', PROJECT, 'books', bookId);
+    
+    // Check if book exists
+    const bookJsonPath = path.join(bookPath, 'book.json');
+    if (!fs.existsSync(bookJsonPath)) {
+      return res.status(404).send('Book not found');
+    }
+    
+    // Read book metadata and TOC
+    const bookData = JSON.parse(fs.readFileSync(bookJsonPath, 'utf8'));
+    
+    // Read all chapter files according to TOC
+    const chapters = await Promise.all(
+      bookData.toc.map(async (chapter) => {
+        const mdPath = path.join(bookPath, chapter.file);
+        if (!fs.existsSync(mdPath)) {
+          console.warn(`Chapter file not found: ${chapter.file}`);
+          return {
+            id: chapter.id,
+            title: chapter.title,
+            html: '<p>Chapter not found</p>'
+          };
+        }
+        const rawMd = fs.readFileSync(mdPath, 'utf8');
+        
+        // Convert markdown to HTML and process chapter links
+        let html = marked.parse(rawMd);
+        
+        // Convert markdown links to chapter navigation links
+        // Pattern: [text](#chapter-X) -> <a data-chapter="X">text</a>
+        html = html.replace(
+          /<a href="#chapter-(\d+)">(.*?)<\/a>/gi,
+          '<a href="#" class="chapter-link" data-chapter="$1">$2</a>'
+        );
+        
+        return {
+          id: chapter.id,
+          title: chapter.title,
+          html: html
+        };
+      })
+    );
+    
+    // Package everything
+    const compiledBook = {
+      meta: bookData.meta,
+      styling: bookData.styling,
+      chapters: chapters,
+      settings: bookData.settings
+    };
+    
+    // Get manifest for nav/logo
+    const language = detectLanguage(req);
+    const manifest = manifestCache[language];
+    
+    // Render book template
+    const bookHtml = renderBookTemplate(compiledBook, manifest, bookId);
+    
+    res.send(bookHtml);
+  } catch (error) {
+    console.error('Error loading book:', error);
+    res.status(500).send('Error loading book');
+  }
 });
 
 app.get(/^(.*)$/, async (req, res) => {
