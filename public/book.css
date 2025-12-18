@@ -25,7 +25,6 @@
 .book-page-content {
   /* CSS columns create pages */
   height: 100vh;
-  width: 100vw;
   box-sizing: border-box;
   padding: 5rem 0;
   
@@ -37,6 +36,21 @@
   /* Prevent column breaks within elements */
   orphans: 3;
   widows: 3;
+}
+
+/* Mobile: Force single column with strict width */
+@media (max-width: 768px) {
+  .book-page-content {
+    column-count: auto;
+    column-width: 100vw;
+  }
+  
+  /* Ensure content doesn't overflow horizontally */
+  .chapter-content {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
 }
 
 /* Tablet: 2 columns per viewport */
@@ -70,7 +84,6 @@
 }
 
 .book-nav .logo {
-  font-family: "ambroise-firmin-std", serif;
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: -0.05em;
