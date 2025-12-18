@@ -2,6 +2,7 @@
 
 /* Book container - Paginated reading mode with CSS columns */
 #book-container {
+  font-family: "ambroise-firmin-std", serif;
   position: fixed;
   top: 0;
   left: 0;

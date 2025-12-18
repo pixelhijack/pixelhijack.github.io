@@ -65,14 +65,14 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
   </div>
   
   <div class="book-progress">
-    <span id="progress-text">Chapter 1</span>
-    <button id="chapters-btn" class="chapters-btn">Chapters</button>
+    <span id="progress-text">Fejezet 1</span>
+    <button id="chapters-btn" class="chapters-btn">Tartalom</button>
   </div>
   
   <div id="toc-overlay" class="toc-overlay hidden">
     <div class="toc-container">
       <div class="toc-header">
-        <h2>Table of Contents</h2>
+        <h2>Tartalom</h2>
         <button id="close-toc" class="close-toc">&times;</button>
       </div>
       <ul class="toc-list">
@@ -107,7 +107,7 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
           const chapterIndex = bookData.chapters.findIndex(function(ch) { return ch.id === chapterId; });
           const chapterTitle = bookData.chapters[chapterIndex] ? bookData.chapters[chapterIndex].title : 'Chapter';
           document.getElementById('progress-text').textContent = 
-            'Chapter ' + (chapterIndex + 1) + ' of ' + bookData.chapters.length + ': ' + chapterTitle;
+            'Fejezet ' + (chapterIndex + 1) + ' / ' + bookData.chapters.length + ': ' + chapterTitle;
           
           // Reset scroll to top
           container.scrollTo(0, 0);

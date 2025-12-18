@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "Antropológus a Marson",
+    "author": "Oliver Sacks",
+    "language": "hu",
+    "description": "Oliver Sacks - Antropológus a Marson",
+    "version": "1.0.0",
+    "lastUpdated": "2024-12-18"
+  },
+  "styling": {
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    ],
+    "theme": {
+      "pageBackground": "#fef9f3",
+      "textColor": "#2d2d2d",
+      "accentColor": "#8b4513"
+    }
+  },
+  "toc": [
+    { "id": "1", "file": "eloszo.md", "title": "Előszó" },
+    { "id": "2", "file": "4-fejezet-vak-virgil.md", "title": "4. fejezet: Látva nem látni -  A vak Virgil esete" }
+  ],
+  "settings": {
+    "enableProgress": true
+  }
+}
