@@ -48,7 +48,7 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
 </head>
 <body>
   <nav class="book-nav">
-    <a href="/" class="logo">${manifest.meta?.logo || 'Home'}</a>
+    <a href="/" class="logo">☜</a>
   </nav>
   
   <div id="book-container">
