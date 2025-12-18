@@ -109,37 +109,6 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         }
       }
       
-      // Page navigation - horizontal scroll by viewport width
-      function nextPage() {
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        const pageWidth = window.innerWidth;
-        
-        if (container.scrollLeft < maxScroll - 10) {
-          container.scrollBy({ left: pageWidth, behavior: 'smooth' });
-          currentPage++;
-        }
-      }
-      
-      function prevPage() {
-        const pageWidth = window.innerWidth;
-        
-        if (container.scrollLeft > 10) {
-          container.scrollBy({ left: -pageWidth, behavior: 'smooth' });
-          currentPage--;
-        }
-      }
-      
-      // Keyboard navigation
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-          e.preventDefault();
-          nextPage();
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-          e.preventDefault();
-          prevPage();
-        }
-      });
-      
       // Handle chapter link clicks
       document.addEventListener('click', function(e) {
         if (e.target.classList.contains('chapter-link')) {
@@ -150,32 +119,6 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
           }
         }
       });
-      
-      // Touch swipe support for mobile - horizontal swipe
-      let touchStartX = 0;
-      let touchEndX = 0;
-      
-      container.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-      
-      container.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, { passive: true });
-      
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-          if (diff > 0) {
-            nextPage(); // Swipe left = next page
-          } else {
-            prevPage(); // Swipe right = prev page
-          }
-        }
-      }
       
       // Load saved progress
       if (bookData.settings && bookData.settings.enableProgress) {
