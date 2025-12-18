@@ -543,6 +543,19 @@ app.post('/auth/logout', (req, res) => {
   res.status(200).json({ message: 'Logged out successfully' });
 });
 
+// Serve book-specific CSS files
+app.get('/books/:bookId/book.css', (req, res) => {
+  const { bookId } = req.params;
+  const cssPath = path.join(__dirname, 'projects', PROJECT, 'books', bookId, 'book.css');
+  
+  if (fs.existsSync(cssPath)) {
+    res.sendFile(cssPath);
+  } else {
+    // Return empty CSS if book-specific CSS doesn't exist
+    res.type('text/css').send('/* No book-specific styles */');
+  }
+});
+
 // Book reader endpoint
 app.get('/books/:bookId', async (req, res) => {
   try {

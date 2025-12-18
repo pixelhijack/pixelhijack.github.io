@@ -1,0 +1,30 @@
+/* My Book 1 - Custom Styles */
+
+body {
+  background: #fef9f3;
+  color: #2d2d2d;
+  font-family: "EB Garamond", serif;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  font-family: "ambroise-firmin-std", serif;
+}
+
+.book-header {
+  border-bottom: 2px solid #8b4513;
+}
+
+.chapter-title {
+  color: #8b4513;
+}
+
+.chapter-content blockquote {
+  border-left: 4px solid #8b4513;
+}
+
+.chapter-link {
+  color: #8b4513;
+  border-bottom: 2px solid #8b4513;
+}

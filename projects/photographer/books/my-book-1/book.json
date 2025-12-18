@@ -9,7 +9,7 @@
   },
   "styling": {
     "fonts": [
-      "https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&display=swap"
+      "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
     ],
     "theme": {
       "pageBackground": "#fef9f3",
