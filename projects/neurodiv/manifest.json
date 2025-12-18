@@ -1225,7 +1225,7 @@
                                             {
                                                 "type": "span",
                                                 "class": "rounded-md inline bg-black/60 text-white px-1 py-0.5 box-decoration-clone",
-                                                "content": "<a href=\"/book/donna-williams/lettelenul\" class=\"underline\">Léttelenül</a> - Donna Williams<br><a href=\"/book/donna-williams/autizmus\" class=\"underline\">Autizmus egyes szám első személyben</a> - Donna Williams<br><a href=\"/book/oliver-sacks/antropologus/eloszo\" class=\"underline\">Az antropológus a Marson - Előszó</a> - Oliver Sacks<br><a href=\"/book/temple-grandin/kepekben-gondolkodom\" class=\"underline\">Képekben gondolkodom</a> - Temple Grandin"
+                                                "content": "<a href=\"/read/donna-williams/lettelenul\" class=\"underline\">Léttelenül</a> - Donna Williams<br><a href=\"/read/donna-williams/autizmus\" class=\"underline\">Autizmus egyes szám első személyben</a> - Donna Williams<br><a href=\"/read/oliver-sacks/antropologus/eloszo\" class=\"underline\">Az antropológus a Marson - Előszó</a> - Oliver Sacks<br><a href=\"/read/temple-grandin/kepekben-gondolkodom\" class=\"underline\">Képekben gondolkodom</a> - Temple Grandin"
                                             }
                                         ]
                                     }
@@ -1237,7 +1237,7 @@
             }
         },
         {
-            "slug": "book/donna-williams/lettelenul",
+            "slug": "read/donna-williams/lettelenul",
             "navColor": "black",
             "tree": {
                 "type": "div",
@@ -1251,7 +1251,7 @@
             }
         },
         {
-            "slug": "book/donna-williams/autizmus",
+            "slug": "read/donna-williams/autizmus",
             "navColor": "black",
             "tree": {
                 "type": "div",
@@ -1265,7 +1265,7 @@
             }
         },
         {
-            "slug": "book/oliver-sacks/antropologus/eloszo",
+            "slug": "read/oliver-sacks/antropologus/eloszo",
             "navColor": "black",
             "tree": {
                 "type": "div",
@@ -1279,7 +1279,7 @@
             }
         },
         {
-            "slug": "book/temple-grandin/kepekben-gondolkodom",
+            "slug": "read/temple-grandin/kepekben-gondolkodom",
             "navColor": "black",
             "tree": {
                 "type": "div",
