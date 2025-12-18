@@ -26,7 +26,7 @@
   /* CSS columns create pages */
   height: 100vh;
   box-sizing: border-box;
-  padding: 4rem 0 5rem 0;
+  padding: 4rem 0 4rem 0;
   
   /* Multi-column layout - each column is a "page" */
   column-width: 100vw;
@@ -43,6 +43,7 @@
   .book-page-content {
     column-count: auto;
     column-width: 100vw;
+    padding: 4rem 0 6rem 0;
   }
   
   /* Ensure content doesn't overflow horizontally */
