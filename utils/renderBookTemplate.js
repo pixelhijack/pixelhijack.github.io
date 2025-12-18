@@ -45,6 +45,31 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
   <link href="/book.css" rel="stylesheet">
   <link href="/books/${bookId}/book.css" rel="stylesheet">
   ${fontLinks}
+  
+  <style>
+    /* Apply theme colors from book.json */
+    body {
+      background: ${styling.theme?.pageBackground || '#fef9f3'};
+      color: ${styling.theme?.textColor || '#2d2d2d'};
+    }
+    
+    .book-header {
+      border-bottom-color: ${styling.theme?.accentColor || '#8b4513'};
+    }
+    
+    .chapter-title {
+      color: ${styling.theme?.accentColor || '#8b4513'};
+    }
+    
+    .chapter-content blockquote {
+      border-left-color: ${styling.theme?.accentColor || '#8b4513'};
+    }
+    
+    .chapter-link {
+      color: ${styling.theme?.accentColor || '#8b4513'};
+      border-bottom-color: ${styling.theme?.accentColor || '#8b4513'};
+    }
+  </style>
 </head>
 <body>
   <nav class="book-nav">
@@ -143,6 +168,22 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
           }
         }
       });
+      
+      // Keyboard navigation (desktop only)
+      var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      if (!isMobile) {
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+            e.preventDefault();
+            var pageWidth = window.innerWidth;
+            container.scrollBy({ left: pageWidth, behavior: 'smooth' });
+          } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            e.preventDefault();
+            var pageWidth = window.innerWidth;
+            container.scrollBy({ left: -pageWidth, behavior: 'smooth' });
+          }
+        });
+      }
       
       // TOC toggle
       document.getElementById('chapters-btn').addEventListener('click', function() {

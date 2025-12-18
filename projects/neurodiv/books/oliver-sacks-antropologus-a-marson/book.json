@@ -13,7 +13,7 @@
     ],
     "theme": {
       "pageBackground": "#fef9f3",
-      "textColor": "#2d2d2d",
+      "textColor": "rgba(45, 45, 45, 0.8)",
       "accentColor": "#8b4513"
     }
   },
