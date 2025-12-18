@@ -48,7 +48,8 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
 </head>
 <body>
   <nav class="book-nav">
-    <a href="/" class="logo">☜</a>
+    <a href="/" class="logo"> ☜ </a>
+    <div id="page-counter" class="page-counter">1 / 1</div>
   </nav>
   
   <div id="book-container">
@@ -65,6 +66,19 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
   
   <div class="book-progress">
     <span id="progress-text">Chapter 1</span>
+    <button id="chapters-btn" class="chapters-btn">Chapters</button>
+  </div>
+  
+  <div id="toc-overlay" class="toc-overlay hidden">
+    <div class="toc-container">
+      <div class="toc-header">
+        <h2>Table of Contents</h2>
+        <button id="close-toc" class="close-toc">&times;</button>
+      </div>
+      <ul class="toc-list">
+        ${chapters.map((ch, idx) => `<li><a href="#" class="toc-link" data-chapter="${ch.id}">${idx + 1}. ${escapeHtml(ch.title)}</a></li>`).join('\n        ')}
+      </ul>
+    </div>
   </div>
   
   <script>
@@ -118,6 +132,32 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
             showChapter(chapterId);
           }
         }
+        
+        // Handle TOC chapter clicks
+        if (e.target.classList.contains('toc-link')) {
+          e.preventDefault();
+          const chapterId = e.target.dataset.chapter;
+          if (chapterId) {
+            showChapter(chapterId);
+            document.getElementById('toc-overlay').classList.add('hidden');
+          }
+        }
+      });
+      
+      // TOC toggle
+      document.getElementById('chapters-btn').addEventListener('click', function() {
+        document.getElementById('toc-overlay').classList.remove('hidden');
+      });
+      
+      document.getElementById('close-toc').addEventListener('click', function() {
+        document.getElementById('toc-overlay').classList.add('hidden');
+      });
+      
+      // Close TOC on overlay click
+      document.getElementById('toc-overlay').addEventListener('click', function(e) {
+        if (e.target.id === 'toc-overlay') {
+          this.classList.add('hidden');
+        }
       });
       
       // Load saved progress
@@ -137,6 +177,30 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
       
       // Show first chapter
       showChapter(currentChapterId);
+      
+      // Page counter tracking
+      function updatePageCounter() {
+        const scrollLeft = container.scrollLeft;
+        const viewportWidth = window.innerWidth;
+        const totalWidth = container.scrollWidth;
+        
+        // Calculate current page and total pages
+        const currentPage = Math.floor(scrollLeft / viewportWidth) + 1;
+        const totalPages = Math.ceil(totalWidth / viewportWidth);
+        
+        document.getElementById('page-counter').textContent = currentPage + ' / ' + totalPages;
+      }
+      
+      // Update on scroll
+      container.addEventListener('scroll', updatePageCounter, { passive: true });
+      
+      // Update on resize
+      window.addEventListener('resize', function() {
+        setTimeout(updatePageCounter, 100);
+      });
+      
+      // Initial update
+      setTimeout(updatePageCounter, 100);
     })();
   </script>
 </body>
