@@ -220,20 +220,89 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         scheduleAutoHide();
       };
       
-      // Keyboard navigation (desktop only) - now vertical
+      // Page navigation helpers
+      function nextPage() {
+        var pageHeight = window.innerHeight * 0.92; // 92% to keep some context
+        var currentScroll = container.scrollTop;
+        var targetScroll = currentScroll + pageHeight;
+        container.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
+      
+      function prevPage() {
+        var pageHeight = window.innerHeight * 0.92; // 92% to keep some context
+        var currentScroll = container.scrollTop;
+        var targetScroll = currentScroll - pageHeight;
+        if (targetScroll < 0) targetScroll = 0;
+        container.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
+      
+      // Keyboard navigation (desktop only)
       var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       if (!isMobile) {
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+          // Down arrow, right arrow, page down, or space = next page
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
             e.preventDefault();
-            var pageHeight = window.innerHeight;
-            container.scrollBy({ top: pageHeight, behavior: 'smooth' });
-          } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            nextPage();
+          }
+          // Up arrow, left arrow, or page up = previous page
+          else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
             e.preventDefault();
-            var pageHeight = window.innerHeight;
-            container.scrollBy({ top: -pageHeight, behavior: 'smooth' });
+            prevPage();
           }
         });
+      }
+      
+      // Touch/swipe navigation for mobile
+      if (isMobile) {
+        var touchStartY = 0;
+        var touchStartX = 0;
+        var touchStartTime = 0;
+        var isSwiping = false;
+        
+        container.addEventListener('touchstart', function(e) {
+          touchStartY = e.touches[0].clientY;
+          touchStartX = e.touches[0].clientX;
+          touchStartTime = Date.now();
+          isSwiping = false;
+        }, { passive: true });
+        
+        container.addEventListener('touchmove', function(e) {
+          if (!isSwiping) {
+            var touchY = e.touches[0].clientY;
+            var touchX = e.touches[0].clientX;
+            var deltaY = Math.abs(touchY - touchStartY);
+            var deltaX = Math.abs(touchX - touchStartX);
+            
+            // Detect if this is a vertical swipe (not horizontal)
+            if (deltaY > deltaX && deltaY > 10) {
+              isSwiping = true;
+            }
+          }
+        }, { passive: true });
+        
+        container.addEventListener('touchend', function(e) {
+          if (!isSwiping) return;
+          
+          var touchEndY = e.changedTouches[0].clientY;
+          var touchEndTime = Date.now();
+          var deltaY = touchStartY - touchEndY;
+          var deltaTime = touchEndTime - touchStartTime;
+          var velocity = Math.abs(deltaY) / deltaTime;
+          
+          // Swipe threshold: at least 50px movement or fast velocity
+          if (Math.abs(deltaY) > 50 || velocity > 0.5) {
+            e.preventDefault();
+            
+            if (deltaY > 0) {
+              // Swiped up - next page
+              nextPage();
+            } else {
+              // Swiped down - previous page
+              prevPage();
+            }
+          }
+        }, { passive: false });
       }
       
       // TOC toggle
