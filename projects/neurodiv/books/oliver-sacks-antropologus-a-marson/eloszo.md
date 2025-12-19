@@ -1,3 +1,15 @@
+<!-- an example image in .md syntax -->
+<!-- ![alt text](/img/about/me-rounded.png "Title") -->
+
+<div class="page full-bleed center" style="background-image: url('/img/werk/20250527-bw-00142.jpg');">
+  <h1 style="color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Chapter Title</h1>
+</div>
+
+<div class="page">
+  <h2>Regular Content Page</h2>
+  <p>This has default padding...</p>
+</div>
+
 ❞Bal kézzel írom ezeket a sorokat, holott nagyon is jobbkezes vagyok. Egy hónappal ezelőtt megműtötték a jobb vállamat, így most nem szabad - nem is tudnám - a jobb karomat használni. Lassan és ügyetlenül írok - mégis mindennap egy kicsit könnyebben, egy kicsit természetesebben megy a dolog. Állandóan alkalmazkodom, valami újat tanulok - nem csupán írni tanulok meg bal kézzel, de egy sor más készséget is elsajátítok; sốt már a lábujjaimmal is remekül tudok fogni, így próbálom pótolni felkötött kezemet. Eleinte néhány napig az egyensúlyom is elég bizonytalan volt amiatt, hogy nem tudtam mozgatni a karomat, de most már máshogy járok, rátaláltam egy újfajta egyensúlyra. Kezdek új mintákat, új szokásokat kialakítani... mondhatni egy új identitást - legalábbis az életnek ezen a területén. Minden bizonnyal az agyamban futó áramkörökben és programokban is történik valami változás-ami megváltoztatja a szinaptikus kapcsolatokat és jelzéseket (bár agyi képalkotó eljárásaink egyelőre még nem elég finomak ahhoz, hogy ezeket a változásokat ki tudják mutatni).
 <br>
 Alkalmazkodási kísérleteim egy része szándékos, előre eltervezett, mások próba-szerencse alapon történtek (az első héten például mindegyik ujjam megsérült valahogy a bal kezemen), a legtöbb azonban magától ment végbe, tudattalanul, olyan újra-programozási és alkalmazkodási folyamatok révén, amelyekről én magam nem tudok semmit (legalábbis nem többet, mint amennyit az ember arról tud vagy tudhat, hogy hogyan jár). Ha minden jól megy, a jövő hónaptól kezdhetek újra megtanulni alkalmazkodni, hogy visszanyerjem a jobb karom használatának teljes (és „természetes”) képességeit, hogy újra integráljam a karomat testképembe, önmagamba, hogy újra jobb kezű, jobbkezes emberré váljak.

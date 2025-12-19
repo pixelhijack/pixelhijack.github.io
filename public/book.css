@@ -1,6 +1,6 @@
 /* Generic Book Reader Styles */
 
-/* Book container - Paginated reading mode with CSS columns */
+/* Book container - Vertical scroll-snap pagination */
 #book-container {
   font-family: "ambroise-firmin-std", serif;
   position: fixed;
@@ -8,9 +8,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  
+  /* Scroll snap for page-by-page */
+  scroll-snap-type: y mandatory;
   
   /* Hide scrollbar */
   scrollbar-width: none;
@@ -21,67 +24,81 @@
   display: none;
 }
 
-/* Wrapper for columned content */
+/* Wrapper for vertical content */
 .book-page-content {
-  /* CSS columns create pages */
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
-  padding: 4rem 0 4rem 0;
-  
-  /* Multi-column layout - each column is a "page" */
-  column-width: 100vw;
-  column-gap: 0;
-  column-fill: auto;
-  
-  /* Prevent column breaks within elements */
-  orphans: 3;
-  widows: 3;
 }
 
-/* Mobile: Force single column with strict width */
+/* Page helper class - for individual page styling */
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  
+  /* Scroll snap alignment */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  
+  /* Default padding for content pages */
+  padding: 4rem 2rem;
+  
+  /* Allow background images */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Full-bleed page variant - no padding for edge-to-edge content */
+.page.full-bleed {
+  padding: 0;
+}
+
+/* Center content within page */
+.page.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .book-page-content {
-    column-count: auto;
-    column-width: 100vw;
-    padding: 4rem 0 6rem 0;
+  .page {
+    padding: 4rem 1.5rem;
   }
   
-  /* Ensure content doesn't overflow horizontally */
-  .chapter-content {
-    max-width: 100%;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+  .page.full-bleed {
+    padding: 0;
   }
 }
 
-/* Tablet: 2 columns per viewport */
-@media (min-width: 769px) and (max-width: 1399px) {
-  .book-page-content {
-    column-width: 50vw;
-    column-count: 2;
-  }
-}
-
-/* Desktop: 3 columns per viewport */
-@media (min-width: 1400px) {
-  .book-page-content {
-    column-width: 33.33vw;
-    column-count: 3;
-  }
-}
-
-/* Minimal nav for book mode */
+/* Minimal nav for book mode - hidden by default */
 .book-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 500;
   padding: 1rem 2rem;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.book-nav.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .book-nav .logo {
@@ -119,9 +136,17 @@
 }
 
 .book-header {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-bottom: 3rem;
-  padding: 0 2rem 2rem;
+  padding: 4rem 2rem;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .book-title {
@@ -150,7 +175,13 @@
 
 /* Chapters */
 .book-chapter {
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
   line-height: 1.8;
+  padding: 4rem 2rem;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .book-chapter:not(.active) {
@@ -161,17 +192,21 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  padding: 0 2rem;
 }
 
 .chapter-content {
   font-size: 1.25rem;
-  padding: 0 2rem;
   text-align: justify;
   text-justify: inter-word;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
+  .book-chapter {
+    padding: 4rem 1.5rem;
+  }
+  
   .chapter-content {
     font-size: 1.1rem;
   }
@@ -206,20 +241,6 @@
 
 .chapter-content p {
   margin-bottom: 1.5rem;
-  break-inside: avoid-column;
-}
-
-/* Prevent awkward breaks */
-.chapter-content h1,
-.chapter-content h2,
-.chapter-content h3 {
-  break-after: avoid-column;
-}
-
-.chapter-content blockquote,
-.chapter-content ul,
-.chapter-content ol {
-  break-inside: avoid-column;
 }
 
 .chapter-content blockquote {
@@ -289,26 +310,38 @@
   opacity: 0.7;
 }
 
-/* Progress indicator */
+/* Progress indicator - hidden by default */
 .book-progress {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   text-align: center;
   font-size: 0.9rem;
-  opacity: 0.7;
-  z-index: 50;
+  z-index: 500;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.book-progress.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .book-progress #progress-text {
-  pointer-events: none;
+  flex: 1;
 }
 
 .book-progress #progress-text::after {

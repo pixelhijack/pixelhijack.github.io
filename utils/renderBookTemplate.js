@@ -169,18 +169,74 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         }
       });
       
-      // Keyboard navigation (desktop only)
+      // Long press / tap to show/hide nav and progress
+      let tapTimer = null;
+      let isNavVisible = false;
+      const nav = document.querySelector('.book-nav');
+      const progress = document.querySelector('.book-progress');
+      
+      function showControls() {
+        nav.classList.add('show');
+        progress.classList.add('show');
+        isNavVisible = true;
+      }
+      
+      function hideControls() {
+        nav.classList.remove('show');
+        progress.classList.remove('show');
+        isNavVisible = false;
+      }
+      
+      function toggleControls() {
+        if (isNavVisible) {
+          hideControls();
+        } else {
+          showControls();
+        }
+      }
+      
+      // Tap/click on container to toggle controls
+      container.addEventListener('click', function(e) {
+        // Don't toggle if clicking on a link or button
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+          return;
+        }
+        toggleControls();
+      });
+      
+      // Auto-hide after 3 seconds of showing
+      let hideTimeout = null;
+      function scheduleHide() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(function() {
+          hideControls();
+        }, 3000);
+      }
+      
+      // Show controls temporarily when scrolling starts
+      let scrollTimeout = null;
+      container.addEventListener('scroll', function() {
+        if (!isNavVisible) {
+          showControls();
+        }
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function() {
+          hideControls();
+        }, 1500);
+      }, { passive: true });
+      
+      // Keyboard navigation (desktop only) - now vertical
       var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
       if (!isMobile) {
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+          if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
             e.preventDefault();
-            var pageWidth = window.innerWidth;
-            container.scrollBy({ left: pageWidth, behavior: 'smooth' });
-          } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+            var pageHeight = window.innerHeight;
+            container.scrollBy({ top: pageHeight, behavior: 'smooth' });
+          } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
             e.preventDefault();
-            var pageWidth = window.innerWidth;
-            container.scrollBy({ left: -pageWidth, behavior: 'smooth' });
+            var pageHeight = window.innerHeight;
+            container.scrollBy({ top: -pageHeight, behavior: 'smooth' });
           }
         });
       }
@@ -219,15 +275,15 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
       // Show first chapter
       showChapter(currentChapterId);
       
-      // Page counter tracking
+      // Page counter tracking for vertical scroll
       function updatePageCounter() {
-        const scrollLeft = container.scrollLeft;
-        const viewportWidth = window.innerWidth;
-        const totalWidth = container.scrollWidth;
+        const scrollTop = container.scrollTop;
+        const viewportHeight = window.innerHeight;
+        const totalHeight = container.scrollHeight;
         
         // Calculate current page and total pages
-        const currentPage = Math.floor(scrollLeft / viewportWidth) + 1;
-        const totalPages = Math.ceil(totalWidth / viewportWidth);
+        const currentPage = Math.floor(scrollTop / viewportHeight) + 1;
+        const totalPages = Math.ceil(totalHeight / viewportHeight);
         
         document.getElementById('page-counter').textContent = currentPage + ' / ' + totalPages;
       }
