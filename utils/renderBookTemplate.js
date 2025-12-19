@@ -258,40 +258,37 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         var touchStartY = 0;
         var touchStartX = 0;
         var touchStartTime = 0;
-        var isSwiping = false;
+        var touchStartScroll = 0;
+        var isIntentionalSwipe = false;
         
         container.addEventListener('touchstart', function(e) {
           touchStartY = e.touches[0].clientY;
           touchStartX = e.touches[0].clientX;
           touchStartTime = Date.now();
-          isSwiping = false;
-        }, { passive: true });
-        
-        container.addEventListener('touchmove', function(e) {
-          if (!isSwiping) {
-            var touchY = e.touches[0].clientY;
-            var touchX = e.touches[0].clientX;
-            var deltaY = Math.abs(touchY - touchStartY);
-            var deltaX = Math.abs(touchX - touchStartX);
-            
-            // Detect if this is a vertical swipe (not horizontal)
-            if (deltaY > deltaX && deltaY > 10) {
-              isSwiping = true;
-            }
-          }
+          touchStartScroll = container.scrollTop;
+          isIntentionalSwipe = false;
         }, { passive: true });
         
         container.addEventListener('touchend', function(e) {
-          if (!isSwiping) return;
-          
           var touchEndY = e.changedTouches[0].clientY;
           var touchEndTime = Date.now();
           var deltaY = touchStartY - touchEndY;
+          var deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX);
           var deltaTime = touchEndTime - touchStartTime;
           var velocity = Math.abs(deltaY) / deltaTime;
+          var scrollMoved = Math.abs(container.scrollTop - touchStartScroll);
           
-          // Swipe threshold: at least 50px movement or fast velocity
-          if (Math.abs(deltaY) > 50 || velocity > 0.5) {
+          // Only trigger page turn if:
+          // 1. Mostly vertical (not horizontal swipe)
+          // 2. Fast velocity (> 1.0 px/ms) OR significant distance (> 100px)
+          // 3. User didn't scroll much during the gesture (< 50px natural scroll)
+          var isVertical = Math.abs(deltaY) > deltaX * 2;
+          var isFastSwipe = velocity > 1.0;
+          var isLongSwipe = Math.abs(deltaY) > 100;
+          var didntScrollMuch = scrollMoved < 50;
+          
+          if (isVertical && (isFastSwipe || isLongSwipe) && didntScrollMuch) {
+            // This looks like an intentional page turn
             e.preventDefault();
             
             if (deltaY > 0) {
@@ -302,6 +299,7 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
               prevPage();
             }
           }
+          // Otherwise let normal scrolling happen
         }, { passive: false });
       }
       
