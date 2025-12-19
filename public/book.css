@@ -13,7 +13,7 @@
   -webkit-overflow-scrolling: touch;
   
   /* Scroll snap for page-by-page */
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   
   /* Hide scrollbar */
   scrollbar-width: none;
@@ -176,12 +176,14 @@
 /* Chapters */
 .book-chapter {
   width: 100vw;
-  min-height: 100vh;
   box-sizing: border-box;
   line-height: 1.8;
   padding: 4rem 2rem;
+}
+
+/* Each chapter section should snap */
+.book-chapter > * {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .book-chapter:not(.active) {
@@ -200,6 +202,16 @@
   text-justify: inter-word;
   max-width: 800px;
   margin: 0 auto;
+}
+
+/* Make images full width */
+.chapter-content img {
+  max-width: 100vw;
+  width: 100vw;
+  height: auto;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  display: block;
 }
 
 @media (max-width: 768px) {

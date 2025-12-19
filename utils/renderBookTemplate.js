@@ -204,26 +204,21 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         toggleControls();
       });
       
-      // Auto-hide after 3 seconds of showing
+      // Auto-hide controls after 3 seconds when shown via tap
       let hideTimeout = null;
-      function scheduleHide() {
+      function scheduleAutoHide() {
         if (hideTimeout) clearTimeout(hideTimeout);
         hideTimeout = setTimeout(function() {
           hideControls();
         }, 3000);
       }
       
-      // Show controls temporarily when scrolling starts
-      let scrollTimeout = null;
-      container.addEventListener('scroll', function() {
-        if (!isNavVisible) {
-          showControls();
-        }
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-          hideControls();
-        }, 1500);
-      }, { passive: true });
+      // When controls are shown, schedule auto-hide
+      const originalShowControls = showControls;
+      showControls = function() {
+        originalShowControls();
+        scheduleAutoHide();
+      };
       
       // Keyboard navigation (desktop only) - now vertical
       var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -288,8 +283,12 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         document.getElementById('page-counter').textContent = currentPage + ' / ' + totalPages;
       }
       
-      // Update on scroll
-      container.addEventListener('scroll', updatePageCounter, { passive: true });
+      // Update on scroll (debounced to avoid showing controls)
+      let scrollUpdateTimeout = null;
+      container.addEventListener('scroll', function() {
+        if (scrollUpdateTimeout) clearTimeout(scrollUpdateTimeout);
+        scrollUpdateTimeout = setTimeout(updatePageCounter, 150);
+      }, { passive: true });
       
       // Update on resize
       window.addEventListener('resize', function() {
