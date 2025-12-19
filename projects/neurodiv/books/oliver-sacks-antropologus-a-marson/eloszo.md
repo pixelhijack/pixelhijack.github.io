@@ -1,20 +1,3 @@
-<!-- Full-bleed background image page -->
-<div class="page full-bleed center" style="background-image: url('/img/werk/20250527-bw-00142.jpg');">
-  <h1 style="color: white;">Full width!</h1>
-</div>
-
-<!-- Text page with readable width -->
-<div class="page">
-  <h2>This title is max 800px</h2>
-  <p>This paragraph is constrained for readability...</p>
-</div>
-
-<!-- Page with full-width image -->
-<div class="page">
-  <img src="/img/werk/20250527-bw-00142.jpg" alt="Full width">
-  <p>Text below is constrained to 800px</p>
-</div>
-
 <!-- an example image in .md syntax -->
 <!-- ![alt text](/img/about/me-rounded.png "Title") -->
 
