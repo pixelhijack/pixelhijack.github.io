@@ -236,22 +236,27 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
         container.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
       
-      // Keyboard navigation (desktop only)
+      // Keyboard navigation (always enabled)
+      document.addEventListener('keydown', function(e) {
+        // Only handle if not typing in an input field
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+          return;
+        }
+        
+        // Down arrow, right arrow, page down, or space = next page
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault();
+          nextPage();
+        }
+        // Up arrow, left arrow, or page up = previous page
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          prevPage();
+        }
+      });
+      
+      // Detect mobile for touch navigation
       var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      if (!isMobile) {
-        document.addEventListener('keydown', function(e) {
-          // Down arrow, right arrow, page down, or space = next page
-          if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
-            e.preventDefault();
-            nextPage();
-          }
-          // Up arrow, left arrow, or page up = previous page
-          else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
-            e.preventDefault();
-            prevPage();
-          }
-        });
-      }
       
       // Touch/swipe navigation for mobile
       if (isMobile) {
