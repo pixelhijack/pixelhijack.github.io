@@ -636,7 +636,18 @@ app.get('/books/:bookId', async (req, res) => {
     // Package everything
     const compiledBook = {
       meta: bookData.meta,
-      styling: bookData.styling,
+      styling: {
+        ...bookData.styling,
+        // Replace coverImage URL in production
+        coverImage: bookData.styling?.coverImage 
+          ? (process.env.NODE_ENV === 'development' 
+            ? bookData.styling.coverImage 
+            : bookData.styling.coverImage.replace(
+                /^\/img\/(.+)$/,
+                'https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/$1'
+              ))
+          : undefined
+      },
       chapters: chapters,
       settings: bookData.settings
     };
