@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "GUIRI",
+    "author": "Póth Attila",
+    "language": "en",
+    "description": "",
+    "version": "1.0.0",
+    "lastUpdated": "2024-12-18"
+  },
+  "styling": {
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    ],
+    "coverImage": "/img/travel/guiri/b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833_rw_1200.jpg",
+    "theme": {
+      "pageBackground": "#fef9f3",
+      "textColor": "#2d2d2d",
+      "accentColor": "#8b4513"
+    }
+  },
+  "toc": [
+    { "id": "1", "file": "guiri.md", "title": "GUIRI" }
+  ],
+  "settings": {
+    "enableProgress": true
+  }
+}

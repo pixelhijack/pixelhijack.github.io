@@ -538,6 +538,10 @@
             "type": "folder",
             "children": [
               {
+                "name": "20251107-00812.jpg",
+                "type": "file"
+              },
+              {
                 "name": "DSC01532.jpg",
                 "type": "file"
               },
@@ -2505,6 +2509,74 @@
         ]
       },
       {
+        "name": "travel",
+        "type": "folder",
+        "children": [
+          {
+            "name": "guiri",
+            "type": "folder",
+            "children": [
+              {
+                "name": "15ea7715-16ee-4b91-9571-bf1dec92d535_rw_600.jpg",
+                "type": "file"
+              },
+              {
+                "name": "1b92cf69-97a6-4c60-a121-b38ef056d48a_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "3d5209bb-800f-4d00-91c2-4eef761e3efc_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "493292be-3c49-45ea-ba10-6491b2c64c18_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "6ba2ee3f-2afc-411a-96aa-509e9cb34ace_rw_1200.jpeg",
+                "type": "file"
+              },
+              {
+                "name": "8a568048-1987-4eb7-bb42-47edee060d30_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "8ecb1480-c9bd-419c-80c8-f211a0a299ae_rw_600.jpg",
+                "type": "file"
+              },
+              {
+                "name": "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833.jpg",
+                "type": "file"
+              },
+              {
+                "name": "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "ccaf2ab2-abe6-4453-818c-b20f3dc4bf44_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "cfa54ca8-cccf-46bf-a5ce-d1e034a10747_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "d33ec3e2-c251-4167-b0c1-6523f764e79d_rw_1200.jpg",
+                "type": "file"
+              },
+              {
+                "name": "d90a30ae-3fdc-409e-bdef-8c2d7075f382_rw_600.jpg",
+                "type": "file"
+              },
+              {
+                "name": "ee63c801-a560-455d-b91c-56df2a34d0b4_rw_1200.jpg",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "name": "weddings",
         "type": "folder",
         "children": []
@@ -2753,6 +2825,7 @@
       "DSC05237.jpg"
     ],
     "analog/portraits": [
+      "20251107-00812.jpg",
       "DSC01532.jpg",
       "DSC01629-2.jpg",
       "DSC01638-2.jpg",
@@ -3271,6 +3344,22 @@
       "230831-03963.jpg",
       "DSC08914.jpg"
     ],
+    "travel/guiri": [
+      "15ea7715-16ee-4b91-9571-bf1dec92d535_rw_600.jpg",
+      "1b92cf69-97a6-4c60-a121-b38ef056d48a_rw_1200.jpg",
+      "3d5209bb-800f-4d00-91c2-4eef761e3efc_rw_1200.jpg",
+      "493292be-3c49-45ea-ba10-6491b2c64c18_rw_1200.jpg",
+      "6ba2ee3f-2afc-411a-96aa-509e9cb34ace_rw_1200.jpeg",
+      "8a568048-1987-4eb7-bb42-47edee060d30_rw_1200.jpg",
+      "8ecb1480-c9bd-419c-80c8-f211a0a299ae_rw_600.jpg",
+      "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833.jpg",
+      "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833_rw_1200.jpg",
+      "ccaf2ab2-abe6-4453-818c-b20f3dc4bf44_rw_1200.jpg",
+      "cfa54ca8-cccf-46bf-a5ce-d1e034a10747_rw_1200.jpg",
+      "d33ec3e2-c251-4167-b0c1-6523f764e79d_rw_1200.jpg",
+      "d90a30ae-3fdc-409e-bdef-8c2d7075f382_rw_600.jpg",
+      "ee63c801-a560-455d-b91c-56df2a34d0b4_rw_1200.jpg"
+    ],
     "werk": [
       "20250527-bw-00142.jpg",
       "20250527-bw-00286.jpg",
@@ -3418,6 +3507,7 @@
     "tatry-01447.jpg": "analog/north",
     "0180.jpg": "analog/nostalgia",
     "DSC05237.jpg": "analog/nostalgia",
+    "20251107-00812.jpg": "analog/portraits",
     "DSC01532.jpg": "analog/portraits",
     "DSC01629-2.jpg": "analog/portraits",
     "DSC01638-2.jpg": "analog/portraits",
@@ -3783,6 +3873,20 @@
     "230831-03892.jpg": "theater",
     "230831-03963.jpg": "theater",
     "DSC08914.jpg": "theater",
+    "15ea7715-16ee-4b91-9571-bf1dec92d535_rw_600.jpg": "travel/guiri",
+    "1b92cf69-97a6-4c60-a121-b38ef056d48a_rw_1200.jpg": "travel/guiri",
+    "3d5209bb-800f-4d00-91c2-4eef761e3efc_rw_1200.jpg": "travel/guiri",
+    "493292be-3c49-45ea-ba10-6491b2c64c18_rw_1200.jpg": "travel/guiri",
+    "6ba2ee3f-2afc-411a-96aa-509e9cb34ace_rw_1200.jpeg": "travel/guiri",
+    "8a568048-1987-4eb7-bb42-47edee060d30_rw_1200.jpg": "travel/guiri",
+    "8ecb1480-c9bd-419c-80c8-f211a0a299ae_rw_600.jpg": "travel/guiri",
+    "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833.jpg": "travel/guiri",
+    "b0c6ea4d-cb8b-4ee6-9bf0-e4f7d0728833_rw_1200.jpg": "travel/guiri",
+    "ccaf2ab2-abe6-4453-818c-b20f3dc4bf44_rw_1200.jpg": "travel/guiri",
+    "cfa54ca8-cccf-46bf-a5ce-d1e034a10747_rw_1200.jpg": "travel/guiri",
+    "d33ec3e2-c251-4167-b0c1-6523f764e79d_rw_1200.jpg": "travel/guiri",
+    "d90a30ae-3fdc-409e-bdef-8c2d7075f382_rw_600.jpg": "travel/guiri",
+    "ee63c801-a560-455d-b91c-56df2a34d0b4_rw_1200.jpg": "travel/guiri",
     "20250527-bw-00142.jpg": "werk",
     "20250527-bw-00286.jpg": "werk",
     "20250527-bw-00317.jpg": "werk",
