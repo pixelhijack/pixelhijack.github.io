@@ -55,7 +55,21 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
     
     .book-header {
       border-bottom-color: ${styling.theme?.accentColor || '#8b4513'};
+      ${styling.coverImage ? `
+      background-image: url('${styling.coverImage}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      ` : ''}
     }
+    
+    ${styling.coverImage ? `
+    /* Cover image overlay styling */
+    .book-header .book-title,
+    .book-header .book-author {
+      color: white;
+    }
+    ` : ''}
     
     .chapter-title {
       color: ${styling.theme?.accentColor || '#8b4513'};
@@ -81,7 +95,7 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
     <div class="book-page-content">
       <div class="book-header">
         <h1 class="book-title">${escapeHtml(meta.title)}</h1>
-        <p class="book-author">by ${escapeHtml(meta.author)}</p>
+        <p class="book-author">${escapeHtml(meta.author)}</p>
       </div>
       <div id="chapters-container">
         ${chaptersHtml}
