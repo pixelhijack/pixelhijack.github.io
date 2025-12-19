@@ -28,6 +28,8 @@
 .book-page-content {
   min-height: 100vh;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 /* Page helper class - for individual page styling */
@@ -42,8 +44,9 @@
   scroll-snap-align: start;
   scroll-snap-stop: always;
   
-  /* Default padding for content pages */
-  padding: 4rem 2rem;
+  /* No padding or margin */
+  padding: 0;
+  margin: 0;
   
   /* Allow background images */
   background-size: cover;
@@ -51,9 +54,63 @@
   background-repeat: no-repeat;
 }
 
-/* Full-bleed page variant - no padding for edge-to-edge content */
+/* Text content within page - constrained width for readability */
+.page > p,
+.page > h1,
+.page > h2,
+.page > h3,
+.page > h4,
+.page > h5,
+.page > h6,
+.page > blockquote,
+.page > ul,
+.page > ol {
+  max-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* First text element adds top padding */
+.page > :first-child:is(p, h1, h2, h3, h4, h5, h6) {
+  padding-top: 4rem;
+}
+
+/* Last text element adds bottom padding */
+.page > :last-child:is(p, h1, h2, h3, h4, h5, h6, blockquote, ul, ol) {
+  padding-bottom: 4rem;
+}
+
+/* Images within page are full width */
+.page > img,
+.page img {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Divs within page - no constraints */
+.page > div {
+  margin: 0;
+  padding: 0;
+}
+
+/* Full-bleed page variant - for background images, no constraints */
 .page.full-bleed {
   padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.page.full-bleed > * {
+  padding: 0;
+  max-width: none;
+  margin: 0;
 }
 
 /* Center content within page */
@@ -65,12 +122,18 @@
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .page {
-    padding: 4rem 1.5rem;
-  }
-  
-  .page.full-bleed {
-    padding: 0;
+  .page > p,
+  .page > h1,
+  .page > h2,
+  .page > h3,
+  .page > h4,
+  .page > h5,
+  .page > h6,
+  .page > blockquote,
+  .page > ul,
+  .page > ol {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -144,7 +207,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 0;
+  margin: 0;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -177,8 +241,8 @@
 .book-chapter {
   width: 100vw;
   box-sizing: border-box;
-  line-height: 1.8;
-  padding: 4rem 2rem;
+  line-height: 1.5;
+  padding: 0;
 }
 
 /* Each chapter section should snap */
@@ -193,34 +257,77 @@
 .chapter-title {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding: 0;
 }
 
 .chapter-content {
   font-size: 1.25rem;
   text-align: justify;
   text-justify: inter-word;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Constrain text elements for readability */
+.chapter-content > p,
+.chapter-content > h1,
+.chapter-content > h2,
+.chapter-content > h3,
+.chapter-content > h4,
+.chapter-content > h5,
+.chapter-content > h6,
+.chapter-content > blockquote,
+.chapter-content > ul,
+.chapter-content > ol,
+.chapter-content > hr,
+.chapter-content > pre {
   max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
 }
 
 /* Make images full width */
 .chapter-content img {
-  max-width: 100vw;
   width: 100vw;
+  max-width: 100vw;
   height: auto;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
   display: block;
+  padding: 0;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
-  .book-chapter {
-    padding: 4rem 1.5rem;
+  .chapter-content img {
+    width: 100vw;
+    margin: 0;
   }
-  
+}
+
+@media (max-width: 768px) {
   .chapter-content {
     font-size: 1.1rem;
+  }
+  
+  .chapter-content > p,
+  .chapter-content > h1,
+  .chapter-content > h2,
+  .chapter-content > h3,
+  .chapter-content > h4,
+  .chapter-content > h5,
+  .chapter-content > h6,
+  .chapter-content > blockquote,
+  .chapter-content > ul,
+  .chapter-content > ol,
+  .chapter-content > hr,
+  .chapter-content > pre {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
@@ -253,6 +360,16 @@
 
 .chapter-content p {
   margin-bottom: 1.5rem;
+}
+
+/* Add top padding to first text element */
+.chapter-content > :first-child:is(p, h1, h2, h3, h4, h5, h6) {
+  padding-top: 4rem;
+}
+
+/* Add bottom padding to last text element */
+.chapter-content > :last-child:is(p, h1, h2, h3, h4, h5, h6, blockquote, ul, ol) {
+  padding-bottom: 4rem;
 }
 
 .chapter-content blockquote {
