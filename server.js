@@ -71,6 +71,33 @@ function detectLanguage(req) {
 
 const PROJECT = process.env.PROJECT_NAME || 'photographer';
 
+// Helper to replace local image URLs with Cloudinary URLs in HTML
+function replaceImageUrls(html) {
+  if (process.env.NODE_ENV === 'development') {
+    return html; // Keep local URLs in development
+  }
+  
+  // Replace inline style background-image URLs
+  html = html.replace(
+    /url\(['"]?\/img\/([^'"\)]+)['"]?\)/gi,
+    (match, imagePath) => {
+      const cloudinaryUrl = `https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/${imagePath}`;
+      return `url('${cloudinaryUrl}')`;
+    }
+  );
+  
+  // Replace img src attributes
+  html = html.replace(
+    /<img([^>]+)src=['"]?\/img\/([^'"\s>]+)['"]?/gi,
+    (match, beforeSrc, imagePath) => {
+      const cloudinaryUrl = `https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/${imagePath}`;
+      return `<img${beforeSrc}src="${cloudinaryUrl}"`;
+    }
+  );
+  
+  return html;
+}
+
 function projectNamePublic(projectName){
   // Convert internal project names to public-facing names:
   if(projectName === 'photographer'){ return 'Póth Attila Photographer';}
@@ -587,6 +614,9 @@ app.get('/books/:bookId', async (req, res) => {
         
         // Convert markdown to HTML and process chapter links
         let html = marked.parse(rawMd);
+        
+        // Replace local image URLs with Cloudinary URLs in production
+        html = replaceImageUrls(html);
         
         // Convert markdown links to chapter navigation links
         // Pattern: [text](#chapter-X) -> <a data-chapter="X">text</a>
