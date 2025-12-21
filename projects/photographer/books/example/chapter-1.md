@@ -3,10 +3,26 @@
   <h1 style="color: white;">Full width!</h1>
 </div>
 
+<!-- ANCHORS -->
+
+<!-- Text page with readable width -->
+<div id="path-crossroads" class="page">
+  <h2>You find yourself at a crossroads. Do you:</h2>
+    <p><a href="#path-north">Go north</a></p>
+    <p><a href="#path-south">Go south</a></p>
+    <p>This paragraph is constrained for readability...</p>
+</div>
+
 <!-- Text page with readable width -->
 <div class="page">
-  <h2>This title is max 800px</h2>
-  <p>This paragraph is constrained for readability...</p>
+  <h2 id="path-north">Path North</h2>
+  <p><a href="#path-crossroads">Back to the crossroads</a></p>
+</div>
+
+<!-- Text page with readable width -->
+<div class="page">
+  <h2 id="path-south">Path South</h2>
+  <p><a href="#path-crossroads">Back to the crossroads</a></p>
 </div>
 
 <!-- Page with full-width image -->
