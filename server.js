@@ -15,6 +15,7 @@ import renderTreeServer from './utils/renderTreeServer.js';
 import loadProjectManifest from './utils/loadProjectManifest.js';
 import renderTemplate, { escapeHtml } from './utils/renderTemplate.js';
 import renderBookTemplate from './utils/renderBookTemplate.js';
+import renderSingleChapterTemplate from './utils/renderSingleChapterTemplate.js';
 import { getImageSrcServer } from './utils/renderTreeServer.js';
 import { initializeFirebaseAdmin } from './utils/firebaseAdmin.js';
 import { verifyAuth, checkAccess, trackEngagement } from './utils/authMiddleware.js';
@@ -583,7 +584,88 @@ app.get('/books/:bookId/book.css', (req, res) => {
   }
 });
 
-// Book reader endpoint
+// Single chapter route (must come before the all-chapters route)
+app.get('/books/:bookId/:chapterId', async (req, res) => {
+  try {
+    const { bookId, chapterId } = req.params;
+    const bookPath = path.join(__dirname, 'projects', PROJECT, 'books', bookId);
+    
+    // Check if book exists
+    const bookJsonPath = path.join(bookPath, 'book.json');
+    if (!fs.existsSync(bookJsonPath)) {
+      return res.status(404).send('Book not found');
+    }
+    
+    // Read book metadata and TOC
+    const bookData = JSON.parse(fs.readFileSync(bookJsonPath, 'utf8'));
+    
+    // Find the requested chapter in TOC
+    const chapterInfo = bookData.toc.find(ch => ch.id === chapterId);
+    if (!chapterInfo) {
+      return res.status(404).send('Chapter not found');
+    }
+    
+    // Read the chapter file
+    const mdPath = path.join(bookPath, chapterInfo.file);
+    if (!fs.existsSync(mdPath)) {
+      return res.status(404).send('Chapter file not found');
+    }
+    
+    const rawMd = fs.readFileSync(mdPath, 'utf8');
+    
+    // Convert markdown to HTML
+    let html = marked.parse(rawMd);
+    
+    // Replace local image URLs with Cloudinary URLs in production
+    html = replaceImageUrls(html);
+    
+    // Convert markdown links to route-based chapter links
+    // Pattern: [text](#chapter-X) -> <a href="/books/:bookId/X">text</a>
+    html = html.replace(
+      /<a href="#chapter-(\d+)">(.*?)<\/a>/gi,
+      `<a href="/books/${bookId}/$1" class="chapter-link">$2</a>`
+    );
+    
+    const chapterData = {
+      id: chapterInfo.id,
+      title: chapterInfo.title,
+      html: html
+    };
+    
+    // Package book metadata
+    const compiledBookMeta = {
+      meta: bookData.meta,
+      styling: {
+        ...bookData.styling,
+        // Replace coverImage URL in production
+        coverImage: bookData.styling?.coverImage 
+          ? (process.env.NODE_ENV === 'development' 
+            ? bookData.styling.coverImage 
+            : bookData.styling.coverImage.replace(
+                /^\/img\/(.+)$/,
+                'https://res.cloudinary.com/dg7vg50i9/image/upload/f_auto,q_auto/$1'
+              ))
+          : undefined
+      },
+      toc: bookData.toc,
+      settings: bookData.settings
+    };
+    
+    // Get manifest for nav/logo
+    const language = detectLanguage(req);
+    const manifest = manifestCache[language];
+    
+    // Render single chapter template
+    const chapterHtml = renderSingleChapterTemplate(compiledBookMeta, chapterData, manifest, bookId);
+    
+    res.send(chapterHtml);
+  } catch (error) {
+    console.error('Error loading chapter:', error);
+    res.status(500).send('Error loading chapter');
+  }
+});
+
+// Book reader endpoint (all chapters)
 app.get('/books/:bookId', async (req, res) => {
   try {
     const { bookId } = req.params;
