@@ -4,6 +4,11 @@ body {
     font-family: "EB Garamond", serif;
 }
 
+a {
+    text-decoration: underline solid rgba(0, 0, 0, 0.1);
+    color: inherit;
+}
+
 /* Book container - Vertical scroll-snap pagination */
 #book-container {
   font-family: "EB Garamond", serif;
