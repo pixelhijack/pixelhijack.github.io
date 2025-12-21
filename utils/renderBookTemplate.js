@@ -83,6 +83,11 @@ export default function renderBookTemplate(bookData, manifest, bookId) {
       color: ${styling.theme?.accentColor || '#8b4513'};
       border-bottom-color: ${styling.theme?.accentColor || '#8b4513'};
     }
+    
+    /* Smooth scrolling for anchor links and page navigation */
+    #book-container {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body>

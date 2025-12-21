@@ -95,6 +95,11 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
       display: block !important; /* Override the display:none from book.css */
     }
     
+    /* Smooth scrolling for anchor links and page navigation */
+    #book-container {
+      scroll-behavior: smooth;
+    }
+    
     /* Chapter navigation buttons */
     .chapter-navigation {
       position: fixed;
@@ -245,19 +250,45 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
       }
     });
     
+    // Page navigation helpers
+    const container = document.getElementById('book-container');
+    
+    function nextPage() {
+      const pageHeight = window.innerHeight * 0.92; // 92% to keep some context
+      const currentScroll = container.scrollTop;
+      const targetScroll = currentScroll + pageHeight;
+      container.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
+    
+    function prevPage() {
+      const pageHeight = window.innerHeight * 0.92; // 92% to keep some context
+      const currentScroll = container.scrollTop;
+      const targetScroll = currentScroll - pageHeight;
+      container.scrollTo({ top: Math.max(0, targetScroll), behavior: 'smooth' });
+    }
+    
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       
+      // Up/Down arrows, PageUp/PageDown, Space = scroll within chapter
+      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        nextPage();
+      }
+      else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevPage();
+      }
+      // Left/Right arrows = navigate between chapters
       ${prevChapter ? `
-      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      else if (e.key === 'ArrowLeft') {
         e.preventDefault();
         window.location.href = '/books/${bookId}/${prevChapter.id}';
       }
       ` : ''}
-      
       ${nextChapter ? `
-      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      else if (e.key === 'ArrowRight') {
         e.preventDefault();
         window.location.href = '/books/${bookId}/${nextChapter.id}';
       }
