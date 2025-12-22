@@ -2233,6 +2233,22 @@
             }
         },
         {
+            "slug": "example/book",
+            "navColor": "black",
+            "tree": {
+                "type": "div",
+                "class": "flex flex-col items-center h-[60vh] justify-center min-h-screen p-8 space-y-8",
+                "children": [
+                    {
+                        "type": "book",
+                        "bookId": "example",
+                        "chapters": ["1", "2"],
+                        "showNavigation": true
+                    }
+                ]
+            }
+        },
+        {
             "slug": "layout/masonry",
             "background": null,
             "navColor": "black",

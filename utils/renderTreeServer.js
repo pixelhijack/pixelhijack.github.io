@@ -85,6 +85,44 @@ export default function renderTreeServer(node, manifest, baseDir) {
       </script>
     `;
   }
+  
+  // handle book type (embedded book chapters)
+  if (node.type === "book") {
+    const bookId = node.bookId;
+    const chapters = node.chapters || ['1']; // Default to first chapter
+    const height = node.height || '70vh';
+    const showNavigation = node.showNavigation !== false;
+    const instanceId = `book-${bookId}-${Math.random().toString(36).substr(2, 9)}`;
+    
+    // Generate chapter iframes
+    const iframesHtml = chapters.map((chapterId, idx) => `
+      <div class="book-chapter-embed ${idx === 0 ? '' : 'hidden'}" data-chapter="${chapterId}">
+        <iframe 
+          src="/books/${bookId}/${chapterId}?embedded=true"
+          style="width: 100%; height: ${height}; border: none; display: block;"
+          title="Chapter ${chapterId}"
+          loading="lazy"
+        ></iframe>
+      </div>
+    `).join('\n');
+    
+    // Optional: Add chapter navigation buttons
+    const navHtml = showNavigation && chapters.length > 1 ? `
+      <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+        ${chapters.map(ch => `
+          <button 
+            onclick="document.querySelectorAll('#${instanceId} .book-chapter-embed').forEach(el => el.classList.add('hidden')); document.querySelector('#${instanceId} [data-chapter=\\"${ch}\\"]').classList.remove('hidden');" 
+            style="padding: 0.5rem 1.5rem; background: #8b4513; color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-family: 'EB Garamond', serif; font-size: 1rem;"
+          >
+            Chapter ${ch}
+          </button>
+        `).join('')}
+      </div>
+    ` : '';
+    
+    const classProp = node.class ? ` class="${node.class}"` : '';
+    return `<div id="${instanceId}" class="embedded-book"${classProp}>${iframesHtml}${navHtml}</div>`;
+  }
 
   if (node.meta) {
     node.children = node.children || [];

@@ -6,9 +6,10 @@ import { escapeHtml } from './renderTemplate.js';
  * @param {Object} chapterData - Current chapter {id, title, html}
  * @param {Object} manifest - Project manifest for nav/logo
  * @param {String} bookId - Book identifier
+ * @param {Boolean} isEmbedded - Whether this is embedded in another page (hides nav)
  * @returns {String} Complete HTML document
  */
-export default function renderSingleChapterTemplate(bookData, chapterData, manifest, bookId) {
+export default function renderSingleChapterTemplate(bookData, chapterData, manifest, bookId, isEmbedded = false) {
   const { meta, styling, toc, settings } = bookData;
   
   // Generate font links
@@ -100,6 +101,20 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
       scroll-behavior: smooth;
     }
     
+    ${isEmbedded ? `
+    /* Embedded mode: hide navigation and adjust layout */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .book-nav,
+    .chapter-navigation,
+    .chapter-selector-trigger {
+      display: none !important;
+    }
+    ` : ''}
+    
     /* Chapter navigation buttons */
     .chapter-navigation {
       position: fixed;
@@ -149,7 +164,7 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
   </style>
 </head>
 <body>
-  <!-- Book Navigation -->
+  ${!isEmbedded ? `<!-- Book Navigation -->
   <nav class="book-nav show">
     <a href="/" class="logo"> ☜ </a>
     
@@ -159,9 +174,9 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
       </div>
       ${settings?.enableProgress ? `<div class="page-counter">${currentIndex + 1} / ${toc.length}</div>` : ''}
     </div>
-  </nav>
+  </nav>` : ''}
 
-  <!-- Chapter Selector Dropdown -->
+  ${!isEmbedded ? `<!-- Chapter Selector Dropdown -->
   <div class="chapter-selector" style="
     position: fixed;
     top: 4rem;
@@ -194,7 +209,7 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
         >${escapeHtml(ch.title)}</a>
       `).join('\n')}
     </div>
-  </div>
+  </div>` : ''}
 
   <!-- Single Chapter Content -->
   <div id="book-container">
@@ -216,7 +231,7 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
   </div>
 
   <!-- Chapter Navigation -->
-  ${prevChapter || nextChapter ? `
+  ${!isEmbedded && (prevChapter || nextChapter) ? `
   <div class="chapter-navigation">
     ${prevChapter 
       ? `<a href="/books/${bookId}/${prevChapter.id}" class="chapter-nav-btn">← Previous</a>` 
@@ -231,24 +246,29 @@ export default function renderSingleChapterTemplate(bookData, chapterData, manif
     // Store book data for client-side chapter selection
     window.bookData = ${bookDataJson};
     
-    // Chapter selector toggle
+    ${!isEmbedded ? `
+    // Chapter selector toggle (only in non-embedded mode)
     const trigger = document.querySelector('.chapter-selector-trigger');
     const selector = document.querySelector('.chapter-selector');
-    let selectorVisible = false;
     
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      selectorVisible = !selectorVisible;
-      selector.style.display = selectorVisible ? 'block' : 'none';
-    });
-    
-    // Close selector when clicking outside
-    document.addEventListener('click', (e) => {
-      if (selectorVisible && !selector.contains(e.target) && !trigger.contains(e.target)) {
-        selectorVisible = false;
-        selector.style.display = 'none';
-      }
-    });
+    if (trigger && selector) {
+      let selectorVisible = false;
+      
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectorVisible = !selectorVisible;
+        selector.style.display = selectorVisible ? 'block' : 'none';
+      });
+      
+      // Close selector when clicking outside
+      document.addEventListener('click', (e) => {
+        if (selectorVisible && !selector.contains(e.target) && !trigger.contains(e.target)) {
+          selectorVisible = false;
+          selector.style.display = 'none';
+        }
+      });
+    }
+    ` : ''}
     
     // Page navigation helpers
     const container = document.getElementById('book-container');

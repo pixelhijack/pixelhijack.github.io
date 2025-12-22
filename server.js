@@ -588,6 +588,7 @@ app.get('/books/:bookId/book.css', (req, res) => {
 app.get('/books/:bookId/:chapterId', async (req, res) => {
   try {
     const { bookId, chapterId } = req.params;
+    const isEmbedded = req.query.embedded === 'true';
     const bookPath = path.join(__dirname, 'projects', PROJECT, 'books', bookId);
     
     // Check if book exists
@@ -656,7 +657,7 @@ app.get('/books/:bookId/:chapterId', async (req, res) => {
     const manifest = manifestCache[language];
     
     // Render single chapter template
-    const chapterHtml = renderSingleChapterTemplate(compiledBookMeta, chapterData, manifest, bookId);
+    const chapterHtml = renderSingleChapterTemplate(compiledBookMeta, chapterData, manifest, bookId, isEmbedded);
     
     res.send(chapterHtml);
   } catch (error) {
